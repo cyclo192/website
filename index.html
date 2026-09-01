@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reinouwers — websites voor kleine bedrijven</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Crect width='256' height='256' rx='56' fill='%233b6d11'/%3E%3Ctext x='128' y='172' text-anchor='middle' font-family='Georgia, Times New Roman, serif' font-size='140' font-weight='500' fill='%23ffffff'%3ER%3C/text%3E%3C/svg%3E">
+
+<style>
+  /* ===== Basisinstellingen ===== */
+  :root {
+    --achtergrond: #fdfcf9;
+    --paneel: #f4f1e8;
+    --tekst: #262620;
+    --tekst-zacht: #6b6b62;
+    --accent: #639922;
+    --accent-donker: #3b6d11;
+    --logo-groen: #3b6d11;
+    --rand: #e5e1d4;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    background: var(--achtergrond);
+    color: var(--tekst);
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.6;
+  }
+
+  /* ===== Navigatie bovenin ===== */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    border-bottom: 1px solid var(--rand);
+  }
+
+  nav .logo {
+    font-weight: 500;
+    font-size: 1.5rem;
+    font-family: Georgia, "Times New Roman", serif;
+  }
+
+  nav .logo .r-accent {
+    color: var(--logo-groen);
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 28px;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav a {
+    color: var(--tekst-zacht);
+    text-decoration: none;
+  }
+
+  nav a:hover,
+  nav a:focus-visible {
+    color: var(--accent);
+  }
+
+  /* ===== Hero sectie ===== */
+  header.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 100px 40px;
+  }
+
+  .hero-tekst {
+    max-width: 640px;
+    background: rgba(253, 252, 249, 0.85);
+    border-radius: 16px;
+    padding: 36px 40px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  .hero-tekst h1 {
+    font-size: 2.6rem;
+    margin-bottom: 12px;
+  }
+
+  .hero-tekst p {
+    color: var(--tekst-zacht);
+    font-size: 1.1rem;
+    margin-bottom: 28px;
+  }
+
+  .knop {
+    display: inline-block;
+    background: var(--accent);
+    color: #0b0f10;
+    font-weight: 600;
+    padding: 12px 26px;
+    border-radius: 8px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+
+  .knop:hover {
+    opacity: 0.9;
+  }
+
+  /* ===== Algemene sectie-stijl ===== */
+  section {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 60px 40px;
+    border-top: 1px solid var(--rand);
+  }
+
+  section h2 {
+    font-size: 1.6rem;
+    margin-bottom: 16px;
+  }
+
+  section p {
+    color: var(--tekst-zacht);
+  }
+
+  /* ===== Over-sectie met code-achtergrond ===== */
+  #over {
+    text-align: center;
+  }
+
+  #over .over-kaart {
+    position: relative;
+    max-width: 640px;
+    margin: 0 auto;
+    border-radius: 16px;
+    padding: 36px 40px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    background-color: #1f2d17;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNTYwIiB2aWV3Qm94PSIwIDAgOTAwIDU2MCI+CiAgPHJlY3Qgd2lkdGg9IjkwMCIgaGVpZ2h0PSI1NjAiIGZpbGw9IiMxZTFlMWUiLz4KICA8cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjM0IiBmaWxsPSIjMmQyZDJkIi8+CiAgPGNpcmNsZSBjeD0iMjAiIGN5PSIxNyIgcj0iNiIgZmlsbD0iI2ZmNWY1NiIvPgogIDxjaXJjbGUgY3g9IjQyIiBjeT0iMTciIHI9IjYiIGZpbGw9IiNmZmJkMmUiLz4KICA8Y2lyY2xlIGN4PSI2NCIgY3k9IjE3IiByPSI2IiBmaWxsPSIjMjdjOTNmIi8+CiAgPHRleHQgeD0iNDUwIiB5PSIyMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkNvbnNvbGFzLCBNZW5sbywgbW9ub3NwYWNlIiBmb250LXNpemU9IjEzIiBmaWxsPSIjOWQ5ZDlkIj5yZWlub3V3ZXJzLXdlYnNpdGUuaHRtbDwvdGV4dD4KCiAgPHJlY3QgeD0iMCIgeT0iMzQiIHdpZHRoPSI1MiIgaGVpZ2h0PSI1MjYiIGZpbGw9IiMyNTI1MjYiLz4KICA8dGV4dCB4PSIyMCIgeT0iNzAiIGZvbnQtZmFtaWx5PSJDb25zb2xhcywgbW9ub3NwYWNlIiBmb250LXNpemU9IjEyIiBmaWxsPSIjNmE2YTZhIj4xPC90ZXh0PgogIDx0ZXh0IHg9IjIwIiB5PSI5NCIgZm9udC1mYW1pbHk9IkNvbnNvbGFzLCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM2YTZhNmEiPjI8L3RleHQ+CiAgPHRleHQgeD0iMjAiIHk9IjExOCIgZm9udC1mYW1pbHk9IkNvbnNvbGFzLCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM2YTZhNmEiPjM8L3RleHQ+CiAgPHRleHQgeD0iMjAiIHk9IjE0MiIgZm9udC1mYW1pbHk9IkNvbnNvbGFzLCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM2YTZhNmEiPjQ8L3RleHQ+CiAgPHRleHQgeD0iMjAiIHk9IjE2NiIgZm9udC1mYW1pbHk9IkNvbnNvbGFzLCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM2YTZhNmEiPjU8L3RleHQ+CiAgPHRleHQgeD0iMjAiIHk9IjE5MCIgZm9udC1mYW1pbHk9IkNvbnNvbGFzLCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM2YTZhNmEiPjY8L3RleHQ+CiAgPHRleHQgeD0iMjAiIHk9IjIxNCIgZm9udC1mYW1pbHk9IkNvbnNvbGFzLCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM2YTZhNmEiPjc8L3RleHQ+CiAgPHRleHQgeD0iMjAiIHk9IjIzOCIgZm9udC1mYW1pbHk9IkNvbnNvbGFzLCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM2YTZhNmEiPjg8L3RleHQ+CiAgPHRleHQgeD0iMjAiIHk9IjI2MiIgZm9udC1mYW1pbHk9IkNvbnNvbGFzLCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM2YTZhNmEiPjk8L3RleHQ+CiAgPHRleHQgeD0iMjAiIHk9IjI4NiIgZm9udC1mYW1pbHk9IkNvbnNvbGFzLCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM2YTZhNmEiPjEwPC90ZXh0PgogIDx0ZXh0IHg9IjIwIiB5PSIzMTAiIGZvbnQtZmFtaWx5PSJDb25zb2xhcywgbW9ub3NwYWNlIiBmb250LXNpemU9IjEyIiBmaWxsPSIjNmE2YTZhIj4xMTwvdGV4dD4KICA8dGV4dCB4PSIyMCIgeT0iMzM0IiBmb250LWZhbWlseT0iQ29uc29sYXMsIG1vbm9zcGFjZSIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzZhNmE2YSI+MTI8L3RleHQ+CiAgPHRleHQgeD0iMjAiIHk9IjM1OCIgZm9udC1mYW1pbHk9IkNvbnNvbGFzLCBtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM2YTZhNmEiPjEzPC90ZXh0PgogIDx0ZXh0IHg9IjIwIiB5PSIzODIiIGZvbnQtZmFtaWx5PSJDb25zb2xhcywgbW9ub3NwYWNlIiBmb250LXNpemU9IjEyIiBmaWxsPSIjNmE2YTZhIj4xNDwvdGV4dD4KICA8dGV4dCB4PSIyMCIgeT0iNDA2IiBmb250LWZhbWlseT0iQ29uc29sYXMsIG1vbm9zcGFjZSIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzZhNmE2YSI+MTU8L3RleHQ+CgogIDxnIGZvbnQtZmFtaWx5PSJDb25zb2xhcywgTWVubG8sIG1vbm9zcGFjZSIgZm9udC1zaXplPSIxMyI+CiAgICA8dGV4dCB4PSI2NiIgeT0iNzAiPjx0c3BhbiBmaWxsPSIjNTY5Y2Q2Ij5uYXY8L3RzcGFuPjx0c3BhbiBmaWxsPSIjZDRkNGQ0Ij4gezwvdHNwYW4+PC90ZXh0PgogICAgPHRleHQgeD0iNjYiIHk9Ijk0Ij48dHNwYW4gZmlsbD0iIzljZGNmZSI+ICBkaXNwbGF5PC90c3Bhbj48dHNwYW4gZmlsbD0iI2Q0ZDRkNCI+OiA8L3RzcGFuPjx0c3BhbiBmaWxsPSIjY2U5MTc4Ij5mbGV4PC90c3Bhbj48dHNwYW4gZmlsbD0iI2Q0ZDRkNCI+OzwvdHNwYW4+PC90ZXh0PgogICAgPHRleHQgeD0iNjYiIHk9IjExOCI+PHRzcGFuIGZpbGw9IiM5Y2RjZmUiPiAgcGFkZGluZzwvdHNwYW4+PHRzcGFuIGZpbGw9IiNkNGQ0ZDQiPjogPC90c3Bhbj48dHNwYW4gZmlsbD0iI2I1Y2VhOCI+MjBweDwvdHNwYW4+IDx0c3BhbiBmaWxsPSIjYjVjZWE4Ij40MHB4PC90c3Bhbj48dHNwYW4gZmlsbD0iI2Q0ZDRkNCI+OzwvdHNwYW4+PC90ZXh0PgogICAgPHRleHQgeD0iNjYiIHk9IjE0MiI+PHRzcGFuIGZpbGw9IiNkNGQ0ZDQiPn08L3RzcGFuPjwvdGV4dD4KICAgIDx0ZXh0IHg9IjY2IiB5PSIxOTAiPjx0c3BhbiBmaWxsPSIjNTY5Y2Q2Ij4ua25vcDwvdHNwYW4+PHRzcGFuIGZpbGw9IiNkNGQ0ZDQiPiB7PC90c3Bhbj48L3RleHQ+CiAgICA8dGV4dCB4PSI2NiIgeT0iMjE0Ij48dHNwYW4gZmlsbD0iIzljZGNmZSI+ICBiYWNrZ3JvdW5kPC90c3Bhbj48dHNwYW4gZmlsbD0iI2Q0ZDRkNCI+OiA8L3RzcGFuPjx0c3BhbiBmaWxsPSIjNGVjOWIwIj4jNjM5OTIyPC90c3Bhbj48dHNwYW4gZmlsbD0iI2Q0ZDRkNCI+OzwvdHNwYW4+PC90ZXh0PgogICAgPHRleHQgeD0iNjYiIHk9IjIzOCI+PHRzcGFuIGZpbGw9IiM5Y2RjZmUiPiAgYm9yZGVyLXJhZGl1czwvdHNwYW4+PHRzcGFuIGZpbGw9IiNkNGQ0ZDQiPjogPC90c3Bhbj48dHNwYW4gZmlsbD0iI2I1Y2VhOCI+OHB4PC90c3Bhbj48dHNwYW4gZmlsbD0iI2Q0ZDRkNCI+OzwvdHNwYW4+PC90ZXh0PgogICAgPHRleHQgeD0iNjYiIHk9IjI2MiI+PHRzcGFuIGZpbGw9IiNkNGQ0ZDQiPn08L3RzcGFuPjwvdGV4dD4KICAgIDx0ZXh0IHg9IjY2IiB5PSIzMTAiPjx0c3BhbiBmaWxsPSIjYzU4NmMwIj5mdW5jdGlvbjwvdHNwYW4+IDx0c3BhbiBmaWxsPSIjZGNkY2FhIj52ZXJzdHV1ckZvcm11bGllcjwvdHNwYW4+PHRzcGFuIGZpbGw9IiNkNGQ0ZDQiPigpIHs8L3RzcGFuPjwvdGV4dD4KICAgIDx0ZXh0IHg9IjY2IiB5PSIzMzQiPjx0c3BhbiBmaWxsPSIjYzU4NmMwIj4gIGNvbnN0PC90c3Bhbj4gPHRzcGFuIGZpbGw9IiM5Y2RjZmUiPnN0YXR1czwvdHNwYW4+IDx0c3BhbiBmaWxsPSIjZDRkNGQ0Ij49IDwvdHNwYW4+PHRzcGFuIGZpbGw9IiNjZTkxNzgiPiJ2ZXJ6b25kZW4iPC90c3Bhbj48dHNwYW4gZmlsbD0iI2Q0ZDRkNCI+OzwvdHNwYW4+PC90ZXh0PgogICAgPHRleHQgeD0iNjYiIHk9IjM1OCI+PHRzcGFuIGZpbGw9IiNjNTg2YzAiPiAgcmV0dXJuPC90c3Bhbj4gPHRzcGFuIGZpbGw9IiM5Y2RjZmUiPnN0YXR1czwvdHNwYW4+PHRzcGFuIGZpbGw9IiNkNGQ0ZDQiPjs8L3RzcGFuPjwvdGV4dD4KICAgIDx0ZXh0IHg9IjY2IiB5PSIzODIiPjx0c3BhbiBmaWxsPSIjZDRkNGQ0Ij59PC90c3Bhbj48L3RleHQ+CiAgICA8dGV4dCB4PSI2NiIgeT0iNDMwIj48dHNwYW4gZmlsbD0iIzZhOTk1NSI+Ly8gc25lbC4gZHVpZGVsaWprLiB6b25kZXIgZ2Vkb2UuPC90c3Bhbj48L3RleHQ+CiAgPC9nPgo8L3N2Zz4K");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  #over .over-kaart::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 15, 5, 0.25);
+  }
+
+  #over h2, #over p {
+    position: relative;
+  }
+
+  #over h2 {
+    color: #ffffff;
+    margin-bottom: 12px;
+  }
+
+  #over p {
+    color: #e5e5e0;
+    margin-bottom: 16px;
+  }
+
+  #over p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ===== Contactformulier ===== */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 20px;
+    max-width: 480px;
+  }
+
+  form > div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  label {
+    font-size: 0.9rem;
+    color: var(--tekst-zacht);
+  }
+
+  input, textarea {
+    width: 100%;
+    box-sizing: border-box;
+    background: var(--paneel);
+    border: 1px solid var(--rand);
+    border-radius: 6px;
+    padding: 12px 14px;
+    color: var(--tekst);
+    font-family: inherit;
+    font-size: 1rem;
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  input:focus, textarea:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+  }
+
+  #bericht-status {
+    margin-top: 10px;
+    color: var(--accent);
+    font-size: 0.95rem;
+  }
+
+  footer {
+    text-align: center;
+    padding: 30px;
+    color: var(--tekst-zacht);
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 600px) {
+    header.hero { padding: 80px 20px; }
+    nav { flex-direction: column; gap: 12px; padding: 20px; }
+    section { padding: 40px 20px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ===== Navigatie ===== -->
+  <nav>
+    <div class="logo">
+      <span class="r-accent">R</span>einouwers
+    </div>
+    <ul>
+      <li><a href="#over">Over mij</a></li>
+      <li><a href="#projecten">Projecten</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===== Hero / introductie ===== -->
+  <header class="hero">
+    <div class="hero-tekst">
+      <h1>Reinouwers</h1>
+      <p>Websites op maat voor kleine bedrijven en zzp'ers — helder, snel en zonder gedoe.</p>
+      <a href="#contact" class="knop">Neem contact op</a>
+    </div>
+  </header>
+
+  <!-- ===== Over mij ===== -->
+  <section id="over">
+    <div class="over-kaart">
+      <h2>Over Reinouwers</h2>
+      <p>
+        Ik ben Djego, en ik bouw websites voor kleine bedrijven en zzp'ers.
+        Van eenvoudige informatiesites tot een pagina met contactformulier —
+        ik zorg dat je snel, duidelijk en zonder gedoe online staat.
+      </p>
+      <p>
+        Geen overbodige poespas of ingewikkelde systemen: gewoon een nette,
+        goed werkende site die laat zien wie je bent en hoe klanten je kunnen
+        bereiken. Hulp nodig bij je eigen website? Ik denk graag met je mee.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== Projecten ===== -->
+  <section id="projecten">
+    <h2>Voorbeelden</h2>
+    <p style="font-weight: 600;">
+      Let op: de voorbeeldwebsites hieronder zijn fictief — de bedrijven
+      bestaan niet echt. De websites zelf staan wel te koop.
+    </p>
+  </section>
+
+  <!-- ===== Contact ===== -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Heb je een vraag of wil je samenwerken? Stuur een bericht of neem contact met op.</p>
+
+    <form id="contactformulier" action="https://formspree.io/f/xnpqjydn" method="POST">
+      <div>
+        <label for="naam">Naam</label>
+        <input type="text" id="naam" name="naam" required>
+      </div>
+      <div>
+        <label for="email">E-mailadres</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div>
+        <label for="bericht">Bericht</label>
+        <textarea id="bericht" name="bericht" rows="4" required></textarea>
+      </div>
+      <button type="submit" class="knop">Versturen</button>
+      <p id="bericht-status"></p>
+    </form>
+  </section>
+
+  <footer>
+    &copy; <span id="jaar"></span> Reinouwers.
+  </footer>
+
+  <script>
+    // Zet automatisch het huidige jaar in de footer
+    document.getElementById("jaar").textContent = new Date().getFullYear();
+
+    // Verstuurt het formulier naar Formspree zonder de pagina te verversen
+    const formulier = document.getElementById("contactformulier");
+    const status = document.getElementById("bericht-status");
+
+    formulier.addEventListener("submit", async function (event) {
+      event.preventDefault(); // voorkomt dat de pagina ververst
+
+      const data = new FormData(formulier);
+      status.textContent = "Bezig met versturen...";
+
+      try {
+        const response = await fetch(formulier.action, {
+          method: "POST",
+          body: data,
+          headers: { "Accept": "application/json" }
+        });
+
+        if (response.ok) {
+          status.textContent = "Bedankt voor je bericht! Ik neem zo snel mogelijk contact met u op.";
+          formulier.reset();
+        } else {
+          status.textContent = "Er ging iets mis. Probeer het later nog eens.";
+        }
+      } catch (error) {
+        status.textContent = "Er ging iets mis. Controleer je internetverbinding.";
+      }
+    });
+  </script>
+
+</body>
+</html>
