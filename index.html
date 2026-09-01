@@ -177,20 +177,21 @@
 
   /* ===== Voorbeelden ===== */
   .projecten-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 220px));
-    gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
     margin-top: 28px;
   }
 
   .project-kaart {
     display: flex;
     flex-direction: column;
+    width: 160px;
     aspect-ratio: 1 / 1;
     background: var(--paneel);
     border: 1px solid var(--rand);
     border-radius: 12px;
-    padding: 22px 24px;
+    padding: 16px 18px;
     text-decoration: none;
     color: var(--tekst);
     transition: border-color 0.15s ease, transform 0.15s ease;
@@ -203,30 +204,30 @@
   }
 
   .project-kaart .project-label {
-    font-size: 0.8rem;
+    font-size: 0.68rem;
     font-weight: 600;
     color: var(--accent-donker);
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
 
   .project-kaart h3 {
-    font-size: 1.15rem;
-    margin: 0 0 8px;
+    font-size: 1rem;
+    margin: 0 0 6px;
   }
 
   .project-kaart p {
     color: var(--tekst-zacht);
-    font-size: 0.95rem;
-    margin: 0 0 16px;
+    font-size: 0.82rem;
+    margin: 0 0 10px;
   }
 
   .project-kaart .project-link {
     margin-top: auto;
     font-weight: 600;
     color: var(--accent-donker);
-    font-size: 0.95rem;
+    font-size: 0.82rem;
   }
 
   /* ===== Contactformulier ===== */
