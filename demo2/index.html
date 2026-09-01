@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kastanje — bistro &amp; keuken</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#f7ecd9;
+    --paper:#fffaf0;
+    --ink:#2b2118;
+    --ink-soft:#5a4a3a;
+    --wine:#6b1e23;
+    --wine-light:#8c2c32;
+    --gold:#b98a1f;
+    --line: rgba(43,33,24,0.12);
+    --max: 1080px;
+    --radius: 4px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Lora', serif;
+    font-size:16px;
+    line-height:1.6;
+  }
+
+  h1,h2,h3, .display{
+    font-family:'Playfair Display', serif;
+    font-weight:700;
+    line-height:1.15;
+    margin:0;
+  }
+
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+
+  .wrap{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  :focus-visible{
+    outline:2px solid var(--wine);
+    outline-offset:3px;
+  }
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:40;
+    background:rgba(247,236,217,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 0;
+  }
+  .logo{
+    font-family:'Playfair Display', serif;
+    font-weight:700;
+    font-size:1.4rem;
+    letter-spacing:0.01em;
+    display:flex;
+    align-items:baseline;
+    gap:8px;
+    color:var(--wine);
+  }
+  .logo small{
+    font-family:'Lora', serif;
+    font-weight:500;
+    font-size:0.6rem;
+    color:var(--ink-soft);
+    letter-spacing:0.14em;
+  }
+  nav.links{
+    display:flex;
+    gap:28px;
+    font-size:0.95rem;
+  }
+  nav.links a{
+    text-decoration:none;
+    color:var(--ink);
+    padding:4px 0;
+  }
+  nav.links a:hover{color:var(--wine);}
+
+  .btn{
+    display:inline-block;
+    font-family:'Lora', serif;
+    font-weight:600;
+    font-size:0.92rem;
+    padding:12px 22px;
+    border-radius:var(--radius);
+    border:1px solid var(--wine);
+    background:var(--wine);
+    color:#fff8ec;
+    text-decoration:none;
+    cursor:pointer;
+    transition:background .15s ease, transform .15s ease;
+  }
+  .btn:hover{background:var(--wine-light); transform:translateY(-1px);}
+  .btn.ghost{
+    background:transparent;
+    color:var(--ink);
+    border:1px solid var(--line);
+  }
+  .btn.ghost:hover{border-color:var(--wine); color:var(--wine);}
+
+  .menu-toggle{
+    display:none;
+    background:none;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    color:var(--ink);
+    padding:8px 10px;
+    font-size:1rem;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding:76px 0 84px;
+    border-bottom:1px dashed var(--line);
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.2fr 0.8fr;
+    gap:48px;
+    align-items:start;
+  }
+  .kicker{
+    font-family:'Lora', serif;
+    color:var(--wine);
+    font-size:0.95rem;
+    font-weight:600;
+    margin-bottom:14px;
+  }
+  h1.display{
+    font-size:clamp(2.4rem, 5vw, 3.8rem);
+    max-width:13ch;
+  }
+  .hero p.lede{
+    max-width:48ch;
+    margin-top:20px;
+    color:var(--ink-soft);
+    font-size:1.08rem;
+  }
+  .hero-actions{
+    display:flex;
+    gap:14px;
+    margin-top:32px;
+    flex-wrap:wrap;
+  }
+
+  .ticket{
+    background:var(--paper);
+    border:1px dashed var(--gold);
+    border-radius:var(--radius);
+    padding:26px 24px;
+    position:relative;
+  }
+  .ticket::before, .ticket::after{
+    content:"";
+    position:absolute;
+    width:18px; height:18px;
+    background:var(--cream);
+    border-radius:50%;
+    top:50%;
+    transform:translateY(-50%);
+  }
+  .ticket::before{ left:-9px; }
+  .ticket::after{ right:-9px; }
+  .ticket h3{font-size:1.05rem; margin-bottom:14px; color:var(--wine);}
+  .ticket dl{margin:0;}
+  .ticket .row{
+    display:flex;
+    justify-content:space-between;
+    padding:7px 0;
+    border-bottom:1px solid var(--line);
+    font-size:0.94rem;
+  }
+  .ticket .row:last-child{border-bottom:none;}
+  .ticket .row .day{color:var(--ink-soft);}
+  .ticket .row.today .day, .ticket .row.today .time{color:var(--wine); font-weight:600;}
+
+  section{padding:74px 0;}
+  .section-head{
+    margin-bottom:38px;
+    max-width:56ch;
+  }
+  .section-head h2{font-size:clamp(1.7rem, 3vw, 2.3rem);}
+  .section-head p{color:var(--ink-soft); margin-top:12px;}
+
+  .divider{
+    border:none;
+    border-top:1px dashed var(--line);
+    margin:0;
+  }
+
+  /* ---------- verhaal ---------- */
+  .story{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:56px;
+    align-items:center;
+  }
+  .story-mark{
+    aspect-ratio:1/1;
+    border:1px solid var(--line);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+  }
+  .story p{color:var(--ink-soft); margin-top:16px;}
+  .story p:first-of-type{margin-top:0;}
+
+  /* ---------- menu (receipt) ---------- */
+  .receipt{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:8px 0;
+  }
+  .receipt-group{
+    padding:22px 32px;
+  }
+  .receipt-group + .receipt-group{
+    border-top:1px dashed var(--line);
+  }
+  .receipt-group h3{
+    font-size:0.82rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--wine);
+    margin-bottom:14px;
+    font-family:'Lora', serif;
+    font-weight:600;
+  }
+  .receipt-line{
+    display:flex;
+    align-items:baseline;
+    gap:8px;
+    padding:9px 0;
+  }
+  .receipt-line .name{white-space:nowrap; font-weight:600;}
+  .receipt-line .fill{
+    flex:1;
+    border-bottom:1px dotted var(--ink-soft);
+    transform:translateY(-4px);
+    min-width:20px;
+    opacity:0.5;
+  }
+  .receipt-line .price{
+    white-space:nowrap;
+    font-family:'Playfair Display', serif;
+    font-weight:700;
+    color:var(--wine);
+  }
+  .receipt-line .desc{
+    display:block;
+    width:100%;
+    color:var(--ink-soft);
+    font-size:0.86rem;
+    margin-top:2px;
+    font-weight:400;
+  }
+  .receipt-line-wrap{width:100%;}
+
+  /* ---------- sfeer / iconen ---------- */
+  .tools{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:20px;
+  }
+  .tool{
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:26px 18px;
+    text-align:center;
+    background:var(--paper);
+  }
+  .tool svg{ width:38px; height:38px; margin:0 auto 14px; stroke:var(--wine); fill:none; stroke-width:1.4; }
+  .tool span{font-size:0.85rem; color:var(--ink-soft);}
+
+  /* ---------- reacties ---------- */
+  .quotes{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+  .quote{
+    background:var(--paper);
+    border-radius:var(--radius);
+    padding:26px 24px;
+    border-left:3px solid var(--gold);
+  }
+  .quote p{font-size:0.98rem; margin:0 0 14px; font-style:italic;}
+  .quote cite{
+    font-style:normal;
+    color:var(--ink-soft);
+    font-size:0.85rem;
+  }
+
+  /* ---------- openingstijden + reservering ---------- */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:56px;
+  }
+  table.hours{
+    width:100%;
+    border-collapse:collapse;
+  }
+  table.hours td{
+    padding:10px 0;
+    border-bottom:1px solid var(--line);
+    font-size:0.96rem;
+  }
+  table.hours td:last-child{text-align:right; color:var(--ink-soft);}
+  .info-line{
+    display:flex;
+    gap:10px;
+    margin-top:12px;
+    color:var(--ink-soft);
+    font-size:0.95rem;
+  }
+  .info-line svg{width:18px; height:18px; flex-shrink:0; stroke:var(--wine); fill:none; stroke-width:1.6; margin-top:2px;}
+
+  form.book{
+    display:grid;
+    gap:16px;
+  }
+  .field{
+    display:grid;
+    gap:6px;
+  }
+  .field label{font-size:0.86rem; color:var(--ink-soft);}
+  .field input, .field select{
+    background:var(--paper);
+    border:1px solid var(--line);
+    color:var(--ink);
+    border-radius:var(--radius);
+    padding:11px 12px;
+    font-family:'Lora', serif;
+    font-size:0.96rem;
+  }
+  .field input:focus, .field select:focus{border-color:var(--wine);}
+  .field-row{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .form-note{
+    font-size:0.85rem;
+    color:var(--ink-soft);
+    margin-top:2px;
+  }
+  #confirm{
+    display:none;
+    background:var(--paper);
+    border:1px solid var(--gold);
+    border-radius:var(--radius);
+    padding:16px 18px;
+    font-size:0.92rem;
+  }
+
+  /* ---------- footer ---------- */
+  footer{
+    border-top:1px solid var(--line);
+    padding:36px 0;
+  }
+  .foot-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:12px;
+    font-size:0.85rem;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 860px){
+    nav.links{
+      position:absolute;
+      top:100%; left:0; right:0;
+      background:var(--cream);
+      border-bottom:1px solid var(--line);
+      flex-direction:column;
+      gap:0;
+      display:none;
+      padding:8px 24px 18px;
+    }
+    nav.links.open{display:flex;}
+    nav.links a{padding:12px 0; border-bottom:1px solid var(--line);}
+    .menu-toggle{display:inline-block;}
+    .hero-grid{grid-template-columns:1fr;}
+    .story{grid-template-columns:1fr;}
+    .story-mark{max-width:180px; margin:0 auto;}
+    .tools{grid-template-columns:repeat(2,1fr);}
+    .quotes{grid-template-columns:1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+    .field-row{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav-row">
+    <div class="logo">Kastanje <small>BISTRO &amp; KEUKEN</small></div>
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    <nav class="links" id="navLinks">
+      <a href="#verhaal">Verhaal</a>
+      <a href="#menukaart">Menukaart</a>
+      <a href="#openingstijden">Openingstijden</a>
+      <a href="#reserveren" class="btn" style="padding:8px 16px;">Reserveren</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="kicker">Buurtbistro met een seizoensmenu</div>
+      <h1 class="display">Vers bereid,<br>met aandacht.</h1>
+      <p class="lede">Kastanje is een kleine bistro waar het menu meebeweegt met het seizoen. Lokale ingrediënten, een compacte kaart en gerechten die met rust worden bereid — geen haastige keuken, wel een volle tafel.</p>
+      <div class="hero-actions">
+        <a href="#reserveren" class="btn">Reserveer een tafel</a>
+        <a href="#menukaart" class="btn ghost">Bekijk menukaart</a>
+      </div>
+    </div>
+    <div class="ticket">
+      <h3>Vanavond open</h3>
+      <dl>
+        <div class="row today"><span class="day">Vanavond</span><span class="time">17:30 – 22:00</span></div>
+        <div class="row"><span class="day">Keuken sluit</span><span class="time">21:30</span></div>
+        <div class="row"><span class="day">Reserveren</span><span class="time">aanbevolen</span></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section id="verhaal">
+  <div class="wrap story">
+    <div class="story-mark">
+      <svg viewBox="0 0 64 64" width="120" height="120" fill="none" stroke="#6b1e23" stroke-width="1.4">
+        <path d="M32 10 C20 10 12 20 12 30 C12 42 22 50 32 54 C42 50 52 42 52 30 C52 20 44 10 32 10 Z"/>
+        <path d="M32 20 V44 M24 28 L32 34 L40 28"/>
+      </svg>
+    </div>
+    <div>
+      <div class="kicker">Het verhaal</div>
+      <h2>Een keuken zonder haast.</h2>
+      <p>Kastanje begon met een simpel idee: een paar gerechten, goed gemaakt, in plaats van een lange kaart vol compromissen. De menukaart verandert met de seizoenen, afhankelijk van wat er lokaal beschikbaar is — dus wat je vandaag proeft, staat er over drie maanden misschien niet meer op.</p>
+      <p>Geen grote zaal, geen lopende band. Wel een klein team dat elke avond opnieuw voor een volle tafel kookt, en gasten die daarvoor terugkomen.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="menukaart">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Menukaart</h2>
+      <p>Een compacte kaart die met het seizoen meebeweegt. Onderstaande gerechten zijn een voorbeeld van wat er momenteel op staat.</p>
+    </div>
+    <div class="receipt">
+      <div class="receipt-group">
+        <h3>Voorgerechten</h3>
+        <div class="receipt-line">
+          <div class="receipt-line-wrap">
+            <span class="name">Pompoensoep</span>
+            <span class="desc">Geroosterde pompoen, salie, crème fraîche</span>
+          </div>
+          <span class="fill"></span><span class="price">€ 9</span>
+        </div>
+        <div class="receipt-line">
+          <div class="receipt-line-wrap">
+            <span class="name">Carpaccio van biet</span>
+            <span class="desc">Geitenkaas, walnoot, honing-mosterddressing</span>
+          </div>
+          <span class="fill"></span><span class="price">€ 11</span>
+        </div>
+      </div>
+      <div class="receipt-group">
+        <h3>Hoofdgerechten</h3>
+        <div class="receipt-line">
+          <div class="receipt-line-wrap">
+            <span class="name">Ossenstaart-stoof</span>
+            <span class="desc">Langzaam gegaard, truffelaardappelpuree, wintergroente</span>
+          </div>
+          <span class="fill"></span><span class="price">€ 24</span>
+        </div>
+        <div class="receipt-line">
+          <div class="receipt-line-wrap">
+            <span class="name">Gegrilde zeebaars</span>
+            <span class="desc">Venkel, citrus, gepofte aardappel</span>
+          </div>
+          <span class="fill"></span><span class="price">€ 26</span>
+        </div>
+        <div class="receipt-line">
+          <div class="receipt-line-wrap">
+            <span class="name">Risotto van seizoensgroente</span>
+            <span class="desc">Parmezaan, bieslook — vegetarisch</span>
+          </div>
+          <span class="fill"></span><span class="price">€ 21</span>
+        </div>
+      </div>
+      <div class="receipt-group">
+        <h3>Nagerechten</h3>
+        <div class="receipt-line">
+          <div class="receipt-line-wrap">
+            <span class="name">Kastanjetaart</span>
+            <span class="desc">Met chocolade en gezouten karamel</span>
+          </div>
+          <span class="fill"></span><span class="price">€ 8</span>
+        </div>
+        <div class="receipt-line">
+          <div class="receipt-line-wrap">
+            <span class="name">Kaasplankje</span>
+            <span class="desc">Drie lokale kazen, vijgenbrood</span>
+          </div>
+          <span class="fill"></span><span class="price">€ 10</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="sfeer">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Waar we voor staan</h2>
+      <p>Een paar dingen die bij elk gerecht terugkomen.</p>
+    </div>
+    <div class="tools">
+      <div class="tool">
+        <svg viewBox="0 0 48 48"><path d="M14 8 V24 M10 8 V18 C10 21 12 22 14 22 M18 8 V18 C18 21 16 22 14 22 M14 22 V40"/><path d="M34 8 C28 8 28 16 28 20 C28 26 30 28 34 28 V40"/></svg>
+        <span>Vers bereid</span>
+      </div>
+      <div class="tool">
+        <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="17"/><path d="M24 14 V24 L30 28"/></svg>
+        <span>Seizoensgebonden</span>
+      </div>
+      <div class="tool">
+        <svg viewBox="0 0 48 48"><path d="M24 6 C14 6 8 14 8 22 C8 32 16 38 24 42 C32 38 40 32 40 22 C40 14 34 6 24 6 Z"/></svg>
+        <span>Lokale kwekers</span>
+      </div>
+      <div class="tool">
+        <svg viewBox="0 0 48 48"><rect x="10" y="18" width="28" height="20" rx="2"/><path d="M16 18 V12 C16 9 19 7 24 7 C29 7 32 9 32 12 V18"/></svg>
+        <span>Kleine kaart</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="reacties">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Wat gasten zeggen</h2>
+    </div>
+    <div class="quotes">
+      <div class="quote">
+        <p>De kaart is kort, maar alles wat we proefden was raak. Precies genoeg keuze.</p>
+        <cite>Gast, vier personen</cite>
+      </div>
+      <div class="quote">
+        <p>Voelt alsof je bij iemand thuis eet, maar dan met een keuken die weet wat ze doet.</p>
+        <cite>Vaste gast</cite>
+      </div>
+      <div class="quote">
+        <p>De ossenstaart was het beste wat ik dit jaar heb gegeten. Kom zeker terug.</p>
+        <cite>Eerste bezoek</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="openingstijden">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="section-head">
+        <h2>Openingstijden</h2>
+      </div>
+      <table class="hours">
+        <tr><td>Maandag</td><td>Gesloten</td></tr>
+        <tr><td>Dinsdag</td><td>Gesloten</td></tr>
+        <tr><td>Woensdag</td><td>17:30 – 22:00</td></tr>
+        <tr><td>Donderdag</td><td>17:30 – 22:00</td></tr>
+        <tr><td>Vrijdag</td><td>17:30 – 23:00</td></tr>
+        <tr><td>Zaterdag</td><td>17:00 – 23:00</td></tr>
+        <tr><td>Zondag</td><td>12:00 – 20:00</td></tr>
+      </table>
+      <div class="info-line">
+        <svg viewBox="0 0 24 24"><path d="M4 6 L12 13 L20 6"/><rect x="4" y="5" width="16" height="14" rx="2"/></svg>
+        <span>reserveren@kastanje-voorbeeld.nl</span>
+      </div>
+      <div class="info-line">
+        <svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
+        <span>Kastanjelaan 14 — fictief adres, alleen voor dit voorbeeld</span>
+      </div>
+    </div>
+
+    <div id="reserveren">
+      <div class="section-head">
+        <h2>Reserveren</h2>
+        <p>Vul het formulier in, je krijgt hieronder direct een bevestiging van je aanvraag.</p>
+      </div>
+      <form class="book" id="bookForm">
+        <div class="field-row">
+          <div class="field">
+            <label for="datum">Datum</label>
+            <input type="date" id="datum" required>
+          </div>
+          <div class="field">
+            <label for="tijd">Tijd</label>
+            <input type="time" id="tijd" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="personen">Aantal personen</label>
+          <select id="personen" required>
+            <option value="">Kies een aantal</option>
+            <option>2 personen</option>
+            <option>3 personen</option>
+            <option>4 personen</option>
+            <option>5 personen</option>
+            <option>6 of meer personen</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="naam">Naam</label>
+          <input type="text" id="naam" placeholder="Voor- en achternaam" required>
+        </div>
+        <div class="field">
+          <label for="mail">E-mailadres</label>
+          <input type="email" id="mail" placeholder="naam@voorbeeld.nl" required>
+        </div>
+        <button type="submit" class="btn">Reservering aanvragen</button>
+        <p class="form-note">Dit is een demo-formulier; er wordt niets daadwerkelijk verstuurd.</p>
+        <div id="confirm"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-row">
+    <span>Kastanje — bistro &amp; keuken</span>
+    <span>Fictieve zaak, gemaakt als websitevoorbeeld</span>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('menuToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    const isOpen = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
+
+  const form = document.getElementById('bookForm');
+  const confirm = document.getElementById('confirm');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const personen = document.getElementById('personen').value;
+    const datum = document.getElementById('datum').value;
+    const tijd = document.getElementById('tijd').value;
+    const naam = document.getElementById('naam').value;
+    confirm.style.display = 'block';
+    confirm.textContent = `Bedankt, ${naam}. Je reservering voor ${personen} op ${datum} om ${tijd} is genoteerd (demo).`;
+  });
+</script>
+
+</body>
+</html>
