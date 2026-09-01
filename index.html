@@ -175,6 +175,59 @@
     margin-bottom: 0;
   }
 
+  /* ===== Voorbeelden ===== */
+  .projecten-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 28px;
+  }
+
+  .project-kaart {
+    display: flex;
+    flex-direction: column;
+    background: var(--paneel);
+    border: 1px solid var(--rand);
+    border-radius: 12px;
+    padding: 22px 24px;
+    text-decoration: none;
+    color: var(--tekst);
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+
+  .project-kaart:hover,
+  .project-kaart:focus-visible {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  .project-kaart .project-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--accent-donker);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+  }
+
+  .project-kaart h3 {
+    font-size: 1.15rem;
+    margin: 0 0 8px;
+  }
+
+  .project-kaart p {
+    color: var(--tekst-zacht);
+    font-size: 0.95rem;
+    margin: 0 0 16px;
+  }
+
+  .project-kaart .project-link {
+    margin-top: auto;
+    font-weight: 600;
+    color: var(--accent-donker);
+    font-size: 0.95rem;
+  }
+
   /* ===== Contactformulier ===== */
   form {
     display: flex;
@@ -284,6 +337,15 @@
       Let op: de voorbeeldwebsites hieronder zijn fictief — de bedrijven
       bestaan niet echt. De websites zelf staan wel te koop.
     </p>
+
+    <div class="projecten-grid">
+      <a class="project-kaart" href="https://demo1.reinouwers.nl" target="_blank" rel="noopener">
+        <span class="project-label">Kapperszaak</span>
+        <h3>Slijperij</h3>
+        <p>Een kapperszaak met diensten, openingstijden en een afsprakenformulier.</p>
+        <span class="project-link">Bekijk demo &rarr;</span>
+      </a>
+    </div>
   </section>
 
   <!-- ===== Contact ===== -->
