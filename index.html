@@ -114,8 +114,14 @@
     font-size: 1rem;
   }
 
+  .knop {
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  }
+
   .knop:hover {
-    opacity: 0.9;
+    background: var(--accent-donker);
+    box-shadow: 0 6px 16px rgba(59, 109, 17, 0.25);
+    transform: translateY(-1px);
   }
 
   /* ===== Algemene sectie-stijl ===== */
@@ -237,6 +243,18 @@
     font-size: 0.82rem;
   }
 
+  /* ===== Secties met paneel-achtergrond ===== */
+  .sectie-paneel {
+    background: var(--paneel);
+    border: 1px solid var(--rand);
+    border-radius: 16px;
+    padding: 40px 44px;
+  }
+
+  @media (max-width: 600px) {
+    .sectie-paneel { padding: 28px 24px; }
+  }
+
   /* ===== Pakketten ===== */
   .pakketten-grid {
     display: grid;
@@ -255,8 +273,23 @@
   }
 
   .pakket-kaart.uitgelicht {
+    position: relative;
     border-color: var(--accent);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  }
+
+  .pakket-kaart .badge {
+    position: absolute;
+    top: -12px;
+    left: 26px;
+    background: var(--accent);
+    color: #0b0f10;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
   }
 
   .pakket-kaart .pakket-naam {
@@ -425,65 +458,70 @@
 
   <!-- ===== Pakketten ===== -->
   <section id="pakketten">
-    <h2>Pakketten</h2>
-    <p>Drie richtlijnen om een idee te geven — in overleg stel ik altijd maatwerk voor.</p>
+    <div class="sectie-paneel">
+      <h2>Pakketten</h2>
+      <p>Drie richtlijnen om een idee te geven — in overleg stel ik altijd maatwerk voor.</p>
 
-    <div class="pakketten-grid">
-      <div class="pakket-kaart">
-        <h3 class="pakket-naam">Basis</h3>
-        <p class="pakket-prijs">€ 000 <span>eenmalig</span></p>
-        <ul>
-          <li>Eén pagina</li>
-          <li>Responsive design</li>
-          <li>Contactformulier</li>
-        </ul>
-      </div>
+      <div class="pakketten-grid">
+        <div class="pakket-kaart">
+          <h3 class="pakket-naam">Basis</h3>
+          <p class="pakket-prijs">€ 000 <span>eenmalig</span></p>
+          <ul>
+            <li>Eén pagina</li>
+            <li>Responsive design</li>
+            <li>Contactformulier</li>
+          </ul>
+        </div>
 
-      <div class="pakket-kaart uitgelicht">
-        <h3 class="pakket-naam">Standaard</h3>
-        <p class="pakket-prijs">€ 000 <span>eenmalig</span></p>
-        <ul>
-          <li>Meerdere pagina's</li>
-          <li>Responsive design</li>
-          <li>Contactformulier</li>
-          <li>Basis SEO</li>
-        </ul>
-      </div>
+        <div class="pakket-kaart uitgelicht">
+          <span class="badge">Meest gekozen</span>
+          <h3 class="pakket-naam">Standaard</h3>
+          <p class="pakket-prijs">€ 000 <span>eenmalig</span></p>
+          <ul>
+            <li>Meerdere pagina's</li>
+            <li>Responsive design</li>
+            <li>Contactformulier</li>
+            <li>Basis SEO</li>
+          </ul>
+        </div>
 
-      <div class="pakket-kaart">
-        <h3 class="pakket-naam">Op maat</h3>
-        <p class="pakket-prijs">Prijs op aanvraag</p>
-        <ul>
-          <li>Volledig maatwerk design</li>
-          <li>Zoveel pagina's als nodig</li>
-          <li>Uitgebreide functionaliteit</li>
-          <li>Doorlopende ondersteuning</li>
-        </ul>
+        <div class="pakket-kaart">
+          <h3 class="pakket-naam">Op maat</h3>
+          <p class="pakket-prijs">Prijs op aanvraag</p>
+          <ul>
+            <li>Volledig maatwerk design</li>
+            <li>Zoveel pagina's als nodig</li>
+            <li>Uitgebreide functionaliteit</li>
+            <li>Doorlopende ondersteuning</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ===== Contact ===== -->
   <section id="contact">
-    <h2>Contact</h2>
-    <p>Heb je een vraag of wil je samenwerken? Stuur een bericht of neem contact met op.</p>
+    <div class="sectie-paneel">
+      <h2>Contact</h2>
+      <p>Heb je een vraag of wil je samenwerken? Stuur een bericht of neem contact met op.</p>
 
-    <form id="contactformulier" action="https://formspree.io/f/xnpqjydn" method="POST">
-      <div>
-        <label for="naam">Naam</label>
-        <input type="text" id="naam" name="naam" required>
-      </div>
-      <div>
-        <label for="email">E-mailadres</label>
-        <input type="email" id="email" name="email" required>
-      </div>
-      <div>
-        <label for="bericht">Bericht</label>
-        <textarea id="bericht" name="bericht" rows="4" required></textarea>
-      </div>
-      <button type="submit" class="knop">Versturen</button>
-      <p id="bericht-status"></p>
-    </form>
+      <form id="contactformulier" action="https://formspree.io/f/xnpqjydn" method="POST">
+        <div>
+          <label for="naam">Naam</label>
+          <input type="text" id="naam" name="naam" required>
+        </div>
+        <div>
+          <label for="email">E-mailadres</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+          <label for="bericht">Bericht</label>
+          <textarea id="bericht" name="bericht" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="knop">Versturen</button>
+        <p id="bericht-status"></p>
+      </form>
+    </div>
   </section>
 
   <footer>
