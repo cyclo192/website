@@ -178,7 +178,7 @@
   /* ===== Voorbeelden ===== */
   .projecten-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(180px, 220px));
     gap: 20px;
     margin-top: 28px;
   }
@@ -186,6 +186,7 @@
   .project-kaart {
     display: flex;
     flex-direction: column;
+    aspect-ratio: 1 / 1;
     background: var(--paneel);
     border: 1px solid var(--rand);
     border-radius: 12px;
