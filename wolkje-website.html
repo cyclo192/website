@@ -151,9 +151,25 @@
 
   /* ---------- openingstijden + afspraak ---------- */
   .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:48px;}
-  table.hours{width:100%; border-collapse:collapse;}
-  table.hours td{padding:10px 0; border-bottom:1px solid var(--line); font-size:0.96rem;}
-  table.hours td:last-child{text-align:right; color:var(--ink-soft);}
+
+  .day-grid{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:26px;}
+  .day-chip{
+    background:var(--white); border-radius:14px; padding:12px 16px;
+    min-width:82px; text-align:center; box-shadow: 0 6px 14px rgba(43,42,61,0.06);
+  }
+  .day-chip.closed{background:transparent; box-shadow:none; border:1px dashed var(--line);}
+  .day-chip .day-name{
+    display:block; font-family:'Baloo 2', sans-serif; font-weight:700;
+    font-size:0.95rem; color:var(--ink);
+  }
+  .day-chip .day-time{display:block; font-size:0.78rem; color:var(--ink-soft); margin-top:4px;}
+  .day-chip.closed .day-time{color:#b9b8c7;}
+
+  .afspraak-kaart{
+    position:relative; background:var(--white); border-radius:24px;
+    padding:36px 32px; box-shadow: 0 14px 34px rgba(43,42,61,0.08);
+  }
+  .afspraak-blob{position:absolute; top:-16px; right:24px;}
   .info-line{display:flex; gap:10px; margin-top:12px; color:var(--ink-soft); font-size:0.95rem;}
   .info-line svg{width:18px; height:18px; flex-shrink:0; stroke:var(--coral); fill:none; stroke-width:1.8; margin-top:2px;}
 
@@ -379,15 +395,15 @@
   <div class="wrap contact-grid">
     <div>
       <div class="section-head"><h2>Openingstijden</h2></div>
-      <table class="hours">
-        <tr><td>Maandag</td><td>Gesloten</td></tr>
-        <tr><td>Dinsdag</td><td>10:00 – 17:30</td></tr>
-        <tr><td>Woensdag</td><td>10:00 – 17:30</td></tr>
-        <tr><td>Donderdag</td><td>10:00 – 17:30</td></tr>
-        <tr><td>Vrijdag</td><td>10:00 – 18:00</td></tr>
-        <tr><td>Zaterdag</td><td>10:00 – 17:00</td></tr>
-        <tr><td>Zondag</td><td>12:00 – 16:00</td></tr>
-      </table>
+      <div class="day-grid">
+        <div class="day-chip closed"><span class="day-name">Ma</span><span class="day-time">Dicht</span></div>
+        <div class="day-chip"><span class="day-name">Di</span><span class="day-time">10:00–17:30</span></div>
+        <div class="day-chip"><span class="day-name">Wo</span><span class="day-time">10:00–17:30</span></div>
+        <div class="day-chip"><span class="day-name">Do</span><span class="day-time">10:00–17:30</span></div>
+        <div class="day-chip"><span class="day-name">Vr</span><span class="day-time">10:00–18:00</span></div>
+        <div class="day-chip"><span class="day-name">Za</span><span class="day-time">10:00–17:00</span></div>
+        <div class="day-chip"><span class="day-name">Zo</span><span class="day-time">12:00–16:00</span></div>
+      </div>
       <div class="info-line">
         <svg viewBox="0 0 24 24"><path d="M4 6 L12 13 L20 6"/><rect x="4" y="5" width="16" height="14" rx="2"/></svg>
         <span>info@wolkje-voorbeeld.nl</span>
@@ -398,8 +414,14 @@
       </div>
     </div>
 
-    <div id="afspraak">
-      <div class="section-head">
+    <div id="afspraak" class="afspraak-kaart">
+      <div class="afspraak-blob">
+        <svg viewBox="0 0 100 100" width="70" height="70" fill="none">
+          <circle cx="50" cy="50" r="34" fill="#fff2d2"/>
+          <path d="M35 55 Q50 35 65 55 Q50 68 35 55 Z" fill="#ffc857"/>
+        </svg>
+      </div>
+      <div class="section-head" style="margin-bottom:22px;">
         <h2>Pasafspraak plannen</h2>
         <p>Vul het formulier in, je krijgt hieronder direct een bevestiging van je aanvraag.</p>
       </div>
@@ -432,7 +454,7 @@
           <label for="mail">E-mailadres</label>
           <input type="email" id="mail" placeholder="naam@voorbeeld.nl" required>
         </div>
-        <button type="submit" class="btn">Aanvraag versturen</button>
+        <button type="submit" class="btn" style="width:100%; text-align:center;">Aanvraag versturen</button>
         <p class="form-note">Dit is een demo-formulier; er wordt niets daadwerkelijk verstuurd.</p>
         <div id="confirm"></div>
       </form>
