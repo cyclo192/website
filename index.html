@@ -67,7 +67,7 @@
   }
   .logo{
     font-family:'Fraunces', serif; font-weight:700; font-size:1.25rem;
-    letter-spacing:-0.01em;
+    letter-spacing:-0.01em; text-decoration:none; color:var(--ink);
   }
   .logo .dot{color:var(--accent);}
   nav.links{display:flex; align-items:center; gap:32px; font-size:0.95rem;}
@@ -170,9 +170,10 @@
 
 <header>
   <div class="wrap nav-row">
-    <div class="logo">Reinouwers<span class="dot">.</span></div>
+    <a href="#top" class="logo">Reinouwers<span class="dot">.</span></a>
     <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
     <nav class="links" id="navLinks">
+      <a href="#top">Home</a>
       <a href="#over">Over mij</a>
       <a href="#projecten">Voorbeelden</a>
       <a href="#contact" class="btn accent" style="padding:9px 18px;">Neem contact op</a>
@@ -180,11 +181,11 @@
   </div>
 </header>
 
-<section class="hero blueprint">
+<section id="top" class="hero blueprint">
   <div class="wrap hero-inner">
     <div class="kicker"><span class="swatch"></span>Websites voor kleine bedrijven en zzp'ers</div>
     <h1 class="display">Een website die klopt, zonder gedoe erbij.</h1>
-    <p class="lede">Ik bouw duidelijke, snelle websites voor kleine ondernemers — van eerste ontwerp tot een pagina die klanten daadwerkelijk kunnen vinden en gebruiken.</p>
+    <p class="lede">Ik bouw duidelijke, snelle websites voor kleine ondernemers van eerste ontwerp tot een pagina die klanten daadwerkelijk kunnen vinden en gebruiken.</p>
     <div class="hero-actions">
       <a href="#contact" class="btn accent">Neem contact op</a>
       <a href="#projecten" class="btn" style="background:transparent; color:var(--ink); border-color:var(--line);">Bekijk voorbeelden</a>
