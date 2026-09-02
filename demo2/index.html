@@ -345,38 +345,77 @@
   }
   .info-line svg{width:18px; height:18px; flex-shrink:0; stroke:var(--wine); fill:none; stroke-width:1.6; margin-top:2px;}
 
+  /* ---------- reserveringsformulier: eigen, onderscheidende stijl ---------- */
   form.book{
     display:grid;
-    gap:16px;
+    gap:22px;
   }
   .field{
     display:grid;
     gap:6px;
+    position:relative;
   }
-  .field label{font-size:0.86rem; color:var(--ink-soft);}
+  .field label{
+    font-size:0.72rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:600;
+  }
   .field input, .field select{
-    background:var(--paper);
-    border:1px solid var(--line);
+    background:transparent;
+    border:none;
+    border-bottom:1px solid var(--ink-soft);
     color:var(--ink);
-    border-radius:var(--radius);
-    padding:11px 12px;
+    border-radius:0;
+    padding:8px 2px;
     font-family:'Lora', serif;
-    font-size:0.96rem;
+    font-size:1rem;
+    transition:border-color .15s ease;
   }
-  .field input:focus, .field select:focus{border-color:var(--wine);}
+  .field select{
+    appearance:none;
+    -webkit-appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='14' height='14'%3E%3Cpath d='M6 9l6 6 6-6' stroke='%235a4a3a' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;
+    background-position:right 2px center;
+    padding-right:22px;
+  }
+  .field input:focus, .field select:focus{
+    border-bottom:1px solid var(--wine);
+    outline:none;
+  }
   .field-row{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
   .form-note{
     font-size:0.85rem;
     color:var(--ink-soft);
     margin-top:2px;
   }
+  .btn.reserve-btn{
+    justify-self:start;
+    background:transparent;
+    color:var(--wine);
+    border:1px solid var(--wine);
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    font-size:0.82rem;
+    padding:14px 30px;
+    border-radius:999px;
+  }
+  .btn.reserve-btn:hover{
+    background:var(--wine);
+    color:#fff8ec;
+    transform:none;
+  }
   #confirm{
     display:none;
-    background:var(--paper);
-    border:1px solid var(--gold);
-    border-radius:var(--radius);
-    padding:16px 18px;
+    background:transparent;
+    border:none;
+    border-left:2px solid var(--gold);
+    border-radius:0;
+    padding:10px 16px;
     font-size:0.92rem;
+    color:var(--ink-soft);
   }
 
   /* ---------- footer ---------- */
@@ -659,7 +698,7 @@
           <label for="mail">E-mailadres</label>
           <input type="email" id="mail" placeholder="naam@voorbeeld.nl" required>
         </div>
-        <button type="submit" class="btn">Reservering aanvragen</button>
+        <button type="submit" class="btn reserve-btn">Reservering aanvragen</button>
         <p class="form-note">Dit is een demo-formulier; er wordt niets daadwerkelijk verstuurd.</p>
         <div id="confirm"></div>
       </form>
