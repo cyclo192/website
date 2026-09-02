@@ -130,6 +130,38 @@
   .project-card p{font-size:0.95rem; color:var(--ink-soft); margin:0 0 18px;}
   .project-link{font-size:0.88rem; font-weight:600; color:var(--ink);}
 
+  #pakketten{border-top:1px solid var(--line);}
+  .pricing-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:20px; margin-top:8px; align-items:stretch;}
+  .pricing-card{
+    display:flex; flex-direction:column;
+    border:1px solid var(--line); border-radius:10px;
+    padding:30px 28px; background:var(--white);
+  }
+  .pricing-card.featured{
+    border:1px solid var(--accent);
+    background:var(--accent-soft);
+  }
+  .pricing-name{font-size:1.3rem; margin-bottom:6px;}
+  .pricing-for{color:var(--ink-soft); font-size:0.92rem; margin:0 0 22px;}
+  .pricing-price{display:flex; align-items:baseline; gap:6px; margin-bottom:24px;}
+  .pricing-price .amount{font-family:'Fraunces', serif; font-size:2rem; color:var(--ink);}
+  .pricing-price .period{color:var(--ink-soft); font-size:0.88rem;}
+  .pricing-featured-label{
+    font-size:0.82rem; color:var(--accent); font-weight:600; margin-bottom:10px;
+  }
+  .pricing-features{list-style:none; margin:0 0 28px; padding:0; display:flex; flex-direction:column; gap:12px; flex:1;}
+  .pricing-features li{
+    display:flex; align-items:flex-start; gap:10px;
+    font-size:0.95rem; color:var(--ink-soft);
+  }
+  .pricing-features li .check{
+    width:8px; height:8px; border-radius:50%; background:var(--accent);
+    margin-top:7px; flex-shrink:0;
+  }
+  .pricing-note{
+    max-width:56ch; color:var(--ink); font-size:0.95rem; font-weight:600; margin-top:28px;
+  }
+
   #contact{border-top:1px solid var(--line);}
   .contact-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:64px; align-items:start;}
   form{display:flex; flex-direction:column; gap:18px; max-width:460px;}
@@ -154,6 +186,7 @@
 
   @media (max-width: 900px){
     .project-grid{grid-template-columns:repeat(2, 1fr);}
+    .pricing-grid{grid-template-columns:1fr; max-width:420px; margin-left:auto; margin-right:auto;}
   }
 
   @media (max-width: 860px){
@@ -167,6 +200,7 @@
     .menu-toggle{display:inline-block;}
     .over-grid, .contact-grid{grid-template-columns:1fr; gap:36px;}
     .project-grid{grid-template-columns:1fr;}
+    .pricing-grid{grid-template-columns:1fr; max-width:none;}
   }
 </style>
 </head>
@@ -180,6 +214,7 @@
       <a href="#top">Home</a>
       <a href="#over">Over mij</a>
       <a href="#projecten">Voorbeelden</a>
+      <a href="#pakketten">Pakketten</a>
       <a href="#contact" class="btn accent" style="padding:9px 18px;">Neem contact op</a>
     </nav>
   </div>
@@ -252,6 +287,70 @@
         <span class="project-link">Bekijk demo</span>
       </a>
     </div>
+  </div>
+</section>
+
+<section id="pakketten">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker"><span class="swatch"></span>Pakketten</div>
+      <h2>Kies wat bij je bedrijf past.</h2>
+      <p>Drie vaste pakketten, zodat je vooraf weet wat je krijgt en wat het kost. Past geen enkel pakket precies? Dan stel ik in een kort gesprek iets op maat samen.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <h3 class="pricing-name">Basis</h3>
+        <p class="pricing-for">Voor wie snel en overzichtelijk online wil staan.</p>
+        <div class="pricing-price">
+          <span class="amount">&euro;450</span>
+          <span class="period">eenmalig</span>
+        </div>
+        <ul class="pricing-features">
+          <li><span class="check"></span>Eén pagina met de belangrijkste info</li>
+          <li><span class="check"></span>Duidelijke contactgegevens en openingstijden</li>
+          <li><span class="check"></span>Werkt goed op telefoon en tablet</li>
+          <li><span class="check"></span>Oplevering binnen een week</li>
+        </ul>
+        <a href="#contact" class="btn" style="background:transparent; color:var(--ink); border-color:var(--line); text-align:center;">Kies dit pakket</a>
+      </div>
+
+      <div class="pricing-card featured">
+        <div class="pricing-featured-label">Meest gekozen</div>
+        <h3 class="pricing-name">Compleet</h3>
+        <p class="pricing-for">Voor bedrijven die klanten willen laten reageren, niet alleen lezen.</p>
+        <div class="pricing-price">
+          <span class="amount">&euro;750</span>
+          <span class="period">eenmalig</span>
+        </div>
+        <ul class="pricing-features">
+          <li><span class="check"></span>Alles uit Basis</li>
+          <li><span class="check"></span>Meerdere pagina's of secties</li>
+          <li><span class="check"></span>Eigen contact- of afsprakenformulier</li>
+          <li><span class="check"></span>Volledig eigen ontwerp, geen sjabloon</li>
+          <li><span class="check"></span>Basis zoekmachine-optimalisatie</li>
+        </ul>
+        <a href="#contact" class="btn accent" style="text-align:center;">Kies dit pakket</a>
+      </div>
+
+      <div class="pricing-card">
+        <h3 class="pricing-name">Op maat</h3>
+        <p class="pricing-for">Voor bedrijven met extra functionaliteit en doorlopende wensen.</p>
+        <div class="pricing-price">
+          <span class="amount">&euro;1250</span>
+          <span class="period">vanaf, eenmalig</span>
+        </div>
+        <ul class="pricing-features">
+          <li><span class="check"></span>Alles uit Compleet</li>
+          <li><span class="check"></span>Formulier op maat, zoals reserveringen of aanvragen</li>
+          <li><span class="check"></span>Uitbreidbaar met bijvoorbeeld een webshop of agenda</li>
+          <li><span class="check"></span>Drie maanden ondersteuning en kleine aanpassingen inbegrepen</li>
+        </ul>
+        <a href="#contact" class="btn" style="background:transparent; color:var(--ink); border-color:var(--line); text-align:center;">Kies dit pakket</a>
+      </div>
+    </div>
+
+    <p class="pricing-note">Prijzen zijn indicatief en exclusief hosting en domeinnaam, en altijd bespreekbaar. Na het contactformulier krijg je een offerte op maat.</p>
   </div>
 </section>
 
