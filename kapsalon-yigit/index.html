@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kapsalon Yigit — Kapper in Purmerend sinds 2011</title>
+<meta name="description" content="Kapsalon Yigit, Plantsoenstraat 23-25 Purmerend. De eerste Turkse kapsalon van de stad, sinds 2011. Knippen, scheren, kleuren en meer. 4,6 sterren, 305 Google-reviews.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F2E9DC;
+    --paper:#FAF5EC;
+    --oxblood:#6B1E23;
+    --oxblood-deep:#3D1114;
+    --brass:#B08D57;
+    --brass-light:#D8BE8C;
+    --ink:#241A16;
+    --navy:#1E3538;
+    --line: rgba(36,26,22,0.14);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Big Shoulders Display', sans-serif;
+    font-weight:800;
+    line-height:0.92;
+    letter-spacing:0.01em;
+    margin:0;
+    text-transform:uppercase;
+  }
+  p{margin:0;}
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+
+  :focus-visible{outline:2px solid var(--brass); outline-offset:3px;}
+
+  /* barber-pole stripe accent, used sparingly */
+  .stripe{
+    height:10px;
+    background:repeating-linear-gradient(
+      -45deg,
+      var(--oxblood) 0 14px,
+      var(--paper) 14px 28px,
+      var(--navy) 28px 42px,
+      var(--paper) 42px 56px
+    );
+  }
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:var(--cream);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px;
+    max-width:1120px; margin:0 auto;
+  }
+  .brand{
+    display:flex; align-items:center; gap:12px;
+    font-family:'Big Shoulders Display', sans-serif;
+    font-weight:800; font-size:1.55rem; text-transform:uppercase;
+    letter-spacing:0.01em;
+    text-decoration:none; color:var(--ink);
+  }
+  .brand svg{width:34px;height:34px;flex-shrink:0;}
+  nav.links{display:flex; gap:28px; align-items:center;}
+  nav.links a{
+    font-size:0.92rem; text-decoration:none; color:var(--ink);
+    padding-bottom:3px; border-bottom:1px solid transparent;
+  }
+  nav.links a:hover{border-bottom-color:var(--brass);}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--oxblood); color:var(--paper);
+    padding:11px 20px; border-radius:2px;
+    text-decoration:none; font-weight:600; font-size:0.92rem;
+    border:1px solid var(--oxblood);
+    transition:background .18s ease, color .18s ease;
+    white-space:nowrap;
+  }
+  .btn:hover{background:var(--oxblood-deep);}
+  .btn.ghost{
+    background:transparent; color:var(--ink); border:1px solid var(--ink);
+  }
+  .btn.ghost:hover{background:var(--ink); color:var(--paper);}
+  .menu-toggle{display:none; background:none;border:none;cursor:pointer;padding:6px;}
+  .menu-toggle svg{width:26px;height:26px;}
+
+  /* ---------- hero ---------- */
+  .hero{
+    background:var(--oxblood);
+    color:var(--paper);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-inner{
+    max-width:1120px; margin:0 auto; padding:76px 28px 64px;
+    display:grid; grid-template-columns:1.15fr 0.85fr; gap:48px; align-items:center;
+  }
+  .kicker{
+    font-size:0.85rem; letter-spacing:0.02em; color:var(--brass-light);
+    font-weight:600; margin-bottom:18px;
+  }
+  .hero h1{
+    color:var(--paper);
+    font-size:clamp(3rem, 6.4vw, 5.4rem);
+  }
+  .hero h1 span{display:block;}
+  .hero-sub{
+    margin-top:22px; max-width:46ch;
+    font-size:1.08rem; color:rgba(250,245,236,0.86);
+  }
+  .hero-cta{
+    margin-top:32px; display:flex; gap:14px; flex-wrap:wrap; align-items:center;
+  }
+  .hero .btn.primary{background:var(--brass); border-color:var(--brass); color:var(--oxblood-deep);}
+  .hero .btn.primary:hover{background:var(--brass-light); border-color:var(--brass-light);}
+  .hero .btn.ghost{border-color:rgba(250,245,236,0.55); color:var(--paper);}
+  .hero .btn.ghost:hover{background:rgba(250,245,236,0.12); color:var(--paper);}
+
+  .rating-row{
+    margin-top:34px; display:flex; align-items:center; gap:14px;
+    padding-top:22px; border-top:1px solid rgba(250,245,236,0.2);
+    max-width:460px;
+  }
+  .stars{display:flex; gap:3px;}
+  .stars svg{width:17px;height:17px;fill:var(--brass-light);}
+  .rating-row .num{font-family:'Big Shoulders Display'; font-weight:800; font-size:1.4rem;}
+  .rating-row .meta{font-size:0.85rem; color:rgba(250,245,236,0.75);}
+
+  .hero-art{position:relative; display:flex; justify-content:center; align-items:center;}
+  .hero-art svg{width:100%; max-width:320px; height:auto;}
+
+  /* ---------- section basics ---------- */
+  section{padding:84px 0;}
+  .eyebrow-row{
+    display:flex; align-items:baseline; justify-content:space-between; gap:20px;
+    margin-bottom:44px; flex-wrap:wrap;
+  }
+  .section-title{font-size:clamp(2.1rem, 4vw, 3rem);}
+  .section-note{max-width:38ch; font-size:0.98rem; color:rgba(36,26,22,0.72);}
+
+  /* ---------- about ---------- */
+  .about{background:var(--paper);}
+  .about-grid{
+    display:grid; grid-template-columns:0.9fr 1.1fr; gap:56px; align-items:start;
+  }
+  .about-figure{
+    background:var(--oxblood-deep);
+    border-radius:2px;
+    padding:34px;
+    color:var(--paper);
+  }
+  .about-figure .yr{
+    font-family:'Big Shoulders Display'; font-weight:800;
+    font-size:4rem; color:var(--brass-light); line-height:1;
+  }
+  .about-figure p{margin-top:12px; font-size:0.95rem; color:rgba(250,245,236,0.82);}
+  .about-figure hr{border:none; border-top:1px solid rgba(250,245,236,0.22); margin:22px 0;}
+  .about-text p{margin-bottom:18px; font-size:1.02rem;}
+  .about-text p:last-child{margin-bottom:0;}
+  .about-text .lede{
+    font-size:1.28rem; font-family:'Big Shoulders Display'; font-weight:700;
+    text-transform:none; letter-spacing:0; line-height:1.28; color:var(--oxblood);
+    margin-bottom:22px;
+  }
+
+  /* ---------- diensten (menu board) ---------- */
+  .diensten{background:var(--ink); color:var(--paper);}
+  .diensten .eyebrow-row .section-title{color:var(--paper);}
+  .diensten .section-note{color:rgba(250,245,236,0.68);}
+  .menu-board{
+    display:grid; grid-template-columns:1fr 1fr; gap:0 60px;
+    border-top:1px solid rgba(250,245,236,0.2);
+  }
+  .menu-item{
+    display:flex; justify-content:space-between; align-items:baseline; gap:14px;
+    padding:20px 0; border-bottom:1px solid rgba(250,245,236,0.16);
+  }
+  .menu-item .name{font-size:1.08rem; font-weight:500;}
+  .menu-item .tag{
+    font-size:0.76rem; color:var(--brass-light); white-space:nowrap;
+    border:1px solid rgba(216,190,140,0.5); border-radius:2px; padding:3px 9px;
+  }
+  .menu-foot{
+    margin-top:30px; font-size:0.92rem; color:rgba(250,245,236,0.66);
+  }
+
+  /* ---------- reviews ---------- */
+  .reviews{background:var(--cream);}
+  .reviews-wrap{
+    display:grid; grid-template-columns:0.75fr 1.25fr; gap:56px; align-items:center;
+  }
+  .rating-card{
+    background:var(--paper); border:1px solid var(--line); border-radius:2px;
+    padding:40px 32px; text-align:center;
+  }
+  .rating-card .big{
+    font-family:'Big Shoulders Display'; font-weight:800; font-size:5rem; color:var(--oxblood); line-height:0.9;
+  }
+  .rating-card .stars{justify-content:center; margin:14px 0 10px;}
+  .rating-card .stars svg{fill:var(--brass); width:20px;height:20px;}
+  .rating-card .count{font-size:0.95rem; color:rgba(36,26,22,0.7);}
+  .rating-card a{
+    display:inline-block; margin-top:20px; font-size:0.88rem; font-weight:600;
+    text-decoration:underline; text-decoration-color:var(--brass); text-underline-offset:4px;
+  }
+  .quote-block p{font-size:1.4rem; font-family:'Big Shoulders Display'; font-weight:600;
+    text-transform:none; letter-spacing:0; line-height:1.32; color:var(--ink);}
+  .quote-block .cite{margin-top:18px; font-size:0.92rem; color:rgba(36,26,22,0.65); font-family:'Work Sans';}
+
+  /* ---------- visit / hours ---------- */
+  .visit{background:var(--paper);}
+  .visit-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:56px;
+  }
+  .hours-table{width:100%; border-collapse:collapse;}
+  .hours-table tr{border-bottom:1px solid var(--line);}
+  .hours-table tr:last-child{border-bottom:none;}
+  .hours-table td{padding:13px 0; font-size:0.98rem;}
+  .hours-table td:last-child{text-align:right; font-variant-numeric:tabular-nums;}
+  .hours-table tr.today td{font-weight:600; color:var(--oxblood);}
+  .info-block{margin-bottom:26px;}
+  .info-block .label{font-size:0.78rem; letter-spacing:0.02em; color:var(--brass); font-weight:600; margin-bottom:6px;}
+  .info-block .val{font-size:1.08rem;}
+  .info-block a{text-decoration:none; border-bottom:1px solid var(--line);}
+  .info-block a:hover{border-bottom-color:var(--ink);}
+  .social-row{display:flex; gap:12px; margin-top:8px;}
+  .social-row a{
+    width:38px; height:38px; border:1px solid var(--line); border-radius:2px;
+    display:flex; align-items:center; justify-content:center;
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .social-row a:hover{border-color:var(--ink); background:var(--ink); color:var(--paper);}
+  .social-row svg{width:17px;height:17px;}
+
+  /* ---------- CTA band ---------- */
+  .cta-band{
+    background:var(--oxblood-deep); color:var(--paper); text-align:center;
+    padding:70px 0;
+  }
+  .cta-band h2{font-size:clamp(2rem, 4.6vw, 3.2rem); color:var(--paper); margin-bottom:22px;}
+  .cta-band .btn.primary{background:var(--brass); border-color:var(--brass); color:var(--oxblood-deep);}
+  .cta-band .btn.primary:hover{background:var(--brass-light); border-color:var(--brass-light);}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--ink); color:rgba(250,245,236,0.7); padding:40px 0;}
+  .foot-row{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; font-size:0.86rem;}
+  .foot-row .brand-mini{font-family:'Big Shoulders Display'; font-weight:800; color:var(--paper); font-size:1.05rem; text-transform:uppercase;}
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 860px){
+    nav.links{display:none;}
+    .menu-toggle{display:block;}
+    .hero-inner{grid-template-columns:1fr; padding-top:52px;}
+    .hero-art{order:-1; max-width:180px; margin:0 auto;}
+    .about-grid, .visit-grid, .reviews-wrap{grid-template-columns:1fr; gap:36px;}
+    .menu-board{grid-template-columns:1fr;}
+    section{padding:60px 0;}
+    .foot-row{flex-direction:column; align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="#top" class="brand">
+      <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="19" stroke="currentColor" stroke-width="2"/><path d="M12 12l16 16M28 12L12 28" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+      Kapsalon Yigit
+    </a>
+    <nav class="links">
+      <a href="#over-ons">Over ons</a>
+      <a href="#diensten">Diensten</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#bezoek">Openingstijden</a>
+      <a href="https://www.fresha.com/lvp/hairdresser-yigit-plantsoenstraat-purmerend-bx9Y1D" class="btn" target="_blank" rel="noopener">Boek afspraak</a>
+    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu openen" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+  <div id="mobileMenu" style="display:none; flex-direction:column; gap:0; border-top:1px solid var(--line); background:var(--cream);">
+    <a href="#over-ons" style="padding:14px 28px; text-decoration:none; color:var(--ink); border-bottom:1px solid var(--line);">Over ons</a>
+    <a href="#diensten" style="padding:14px 28px; text-decoration:none; color:var(--ink); border-bottom:1px solid var(--line);">Diensten</a>
+    <a href="#reviews" style="padding:14px 28px; text-decoration:none; color:var(--ink); border-bottom:1px solid var(--line);">Reviews</a>
+    <a href="#bezoek" style="padding:14px 28px; text-decoration:none; color:var(--ink); border-bottom:1px solid var(--line);">Openingstijden</a>
+    <a href="https://www.fresha.com/lvp/hairdresser-yigit-plantsoenstraat-purmerend-bx9Y1D" target="_blank" rel="noopener" style="padding:16px 28px; text-decoration:none; color:var(--oxblood); font-weight:600;">Boek afspraak →</a>
+  </div>
+</header>
+
+<div id="top"></div>
+
+<section class="hero" style="padding-bottom:0;">
+  <div class="hero-inner">
+    <div>
+      <div class="kicker">Plantsoenstraat 23-25 · Purmerend</div>
+      <h1><span>Klassiek</span><span>vakwerk,</span><span>vertrouwd</span><span>gezicht.</span></h1>
+      <p class="hero-sub">Kapsalon Yigit knipt, scheert en kleurt Purmerend al sinds 2011 — als eerste Turkse kapsalon van de stad. Geen wachtlijst, wel een stoel die op je wacht.</p>
+      <div class="hero-cta">
+        <a class="btn primary" href="https://www.fresha.com/lvp/hairdresser-yigit-plantsoenstraat-purmerend-bx9Y1D" target="_blank" rel="noopener">Boek je afspraak</a>
+        <a class="btn ghost" href="tel:+31686155319">Bel 06 86 15 53 19</a>
+      </div>
+      <div class="rating-row">
+        <div class="stars" aria-hidden="true">
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.2 1.3 6-5.4-3.1-5.4 3.1 1.3-6L1.3 7.2l6.1-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.2 1.3 6-5.4-3.1-5.4 3.1 1.3-6L1.3 7.2l6.1-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.2 1.3 6-5.4-3.1-5.4 3.1 1.3-6L1.3 7.2l6.1-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.2 1.3 6-5.4-3.1-5.4 3.1 1.3-6L1.3 7.2l6.1-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.2 1.3 6-5.4-3.1-5.4 3.1 1.3-6L1.3 7.2l6.1-.6z"/></svg>
+        </div>
+        <div>
+          <span class="num">4,6</span>
+          <div class="meta">uit 305 beoordelingen op Google</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 200 340" fill="none">
+        <defs>
+          <pattern id="poleStripes" width="30" height="30" patternTransform="rotate(35)" patternUnits="userSpaceOnUse">
+            <rect width="30" height="30" fill="#F2E9DC"/>
+            <rect width="10" height="30" fill="#B08D57"/>
+            <rect x="10" width="10" height="30" fill="#6B1E23"/>
+          </pattern>
+        </defs>
+        <rect x="70" y="10" width="60" height="34" rx="4" fill="var(--brass-light)"/>
+        <rect x="80" y="0" width="40" height="16" rx="3" fill="var(--brass)"/>
+        <clipPath id="poleClip"><rect x="60" y="42" width="80" height="270" rx="40"/></clipPath>
+        <g clip-path="url(#poleClip)">
+          <rect x="40" y="20" width="120" height="320" fill="url(#poleStripes)"/>
+        </g>
+        <rect x="60" y="42" width="80" height="270" rx="40" fill="none" stroke="var(--brass-light)" stroke-width="2.5"/>
+        <rect x="70" y="312" width="60" height="20" rx="4" fill="var(--brass)"/>
+      </svg>
+    </div>
+  </div>
+  <div class="stripe"></div>
+</section>
+
+<section class="about" id="over-ons">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-figure">
+        <div class="yr">2011</div>
+        <p>Het jaar dat Kapsalon Yigit haar deuren opende aan de Plantsoenstraat — en de eerste Turkse kapsalon van Purmerend werd.</p>
+        <hr>
+        <p>Vijftien jaar later staat er nog altijd dezelfde stoel klaar, twee straten van waar het begon.</p>
+      </div>
+      <div class="about-text">
+        <p class="lede">Een buurtzaak die het vak serieus neemt — en de klant nog serieuzer.</p>
+        <p>Bij Yigit draait het om het handwerk: een scherpe lijn, een rustige scheerbeurt, kleur die klopt. Geen haast, geen vaste formule — wel een schaar die precies weet wat jouw haar nodig heeft.</p>
+        <p>Van de eerste kinderknipbeurt tot een vaste afspraak elke zes weken: klanten komen terug omdat ze weten wie er tegenover hen staat. Dat vertrouwen bouw je niet in een dag, maar in vijftien jaar wel.</p>
+        <p>Nieuw in de buurt of al jaren klant — bij Yigit ben je aan tafel, niet aan de beurt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="diensten" id="diensten">
+  <div class="wrap">
+    <div class="eyebrow-row">
+      <h2 class="section-title">Diensten</h2>
+      <p class="section-note">Voor heren, dames en kinderen. Exacte prijzen en duur zie je bij het boeken.</p>
+    </div>
+    <div class="menu-board">
+      <div>
+        <div class="menu-item"><span class="name">Knippen (heren)</span><span class="tag">Klassiek</span></div>
+        <div class="menu-item"><span class="name">Scheren</span><span class="tag">Traditioneel</span></div>
+        <div class="menu-item"><span class="name">Dameskapsel</span><span class="tag">Knippen &amp; stylen</span></div>
+        <div class="menu-item"><span class="name">Kinderknipbeurt</span><span class="tag">Alle leeftijden</span></div>
+      </div>
+      <div>
+        <div class="menu-item"><span class="name">Kleuren</span><span class="tag">Verven</span></div>
+        <div class="menu-item"><span class="name">Balayage</span><span class="tag">Highlights</span></div>
+        <div class="menu-item"><span class="name">Keratinebehandeling</span><span class="tag">Herstel</span></div>
+        <div class="menu-item"><span class="name">Wenkbrauwen epileren</span><span class="tag">Finishing</span></div>
+      </div>
+    </div>
+    <p class="menu-foot">Ook ervaring met krullend haar. Vraag gerust naar de mogelijkheden.</p>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="reviews-wrap">
+      <div class="rating-card">
+        <div class="big">4,6</div>
+        <div class="stars" aria-hidden="true">
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.2 1.3 6-5.4-3.1-5.4 3.1 1.3-6L1.3 7.2l6.1-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.2 1.3 6-5.4-3.1-5.4 3.1 1.3-6L1.3 7.2l6.1-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.2 1.3 6-5.4-3.1-5.4 3.1 1.3-6L1.3 7.2l6.1-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.2 1.3 6-5.4-3.1-5.4 3.1 1.3-6L1.3 7.2l6.1-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.2 1.3 6-5.4-3.1-5.4 3.1 1.3-6L1.3 7.2l6.1-.6z"/></svg>
+        </div>
+        <div class="count">305 Google-reviews</div>
+        <a href="https://www.google.com/search?q=kapsalon+yigit+purmerend" target="_blank" rel="noopener">Lees de reviews op Google →</a>
+      </div>
+      <div class="quote-block">
+        <p>Vijftien jaar aan dezelfde straat, honderden vaste klanten en een schaar die weet wat ze doet — dat lees je terug in elke nieuwe beoordeling.</p>
+        <div class="cite">— 305 klanten gingen je voor</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="visit" id="bezoek">
+  <div class="wrap">
+    <div class="eyebrow-row">
+      <h2 class="section-title">Langskomen</h2>
+    </div>
+    <div class="visit-grid">
+      <div>
+        <table class="hours-table">
+          <tr><td>Maandag</td><td>10:00 – 17:00</td></tr>
+          <tr><td>Dinsdag</td><td>09:00 – 18:00</td></tr>
+          <tr><td>Woensdag</td><td>09:00 – 18:00</td></tr>
+          <tr><td>Donderdag</td><td>09:00 – 18:00</td></tr>
+          <tr><td>Vrijdag</td><td>09:00 – 18:00</td></tr>
+          <tr><td>Zaterdag</td><td>09:00 – 17:00</td></tr>
+          <tr><td>Zondag</td><td>Gesloten</td></tr>
+        </table>
+      </div>
+      <div>
+        <div class="info-block">
+          <div class="label">Adres</div>
+          <div class="val"><a href="https://maps.google.com/?daddr=Plantsoenstraat+23-25,+1441+CW+Purmerend" target="_blank" rel="noopener">Plantsoenstraat 23-25, 1441 CW Purmerend</a></div>
+        </div>
+        <div class="info-block">
+          <div class="label">Telefoon</div>
+          <div class="val"><a href="tel:+31686155319">06 86 15 53 19</a></div>
+        </div>
+        <div class="info-block">
+          <div class="label">E-mail</div>
+          <div class="val"><a href="mailto:kapsalonyigit@gmail.com">kapsalonyigit@gmail.com</a></div>
+        </div>
+        <div class="info-block">
+          <div class="label">Sociale media</div>
+          <div class="social-row">
+            <a href="https://www.instagram.com/kapsalonyigit/" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1"/></svg>
+            </a>
+            <a href="https://www.facebook.com/Kapsalonyigit" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 4h-2a4 4 0 00-4 4v3H7v4h2v7h4v-7h2.5l.5-4h-3V8a1 1 0 011-1h2z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stripe"></div>
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Tijd voor een knipbeurt?</h2>
+    <a class="btn primary" href="https://www.fresha.com/lvp/hairdresser-yigit-plantsoenstraat-purmerend-bx9Y1D" target="_blank" rel="noopener">Bekijk beschikbare tijden</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-row">
+    <div class="brand-mini">Kapsalon Yigit</div>
+    <div>Plantsoenstraat 23-25, 1441 CW Purmerend · 06 86 15 53 19</div>
+    <div>© 2026 Kapsalon Yigit</div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('menuToggle');
+  const menu = document.getElementById('mobileMenu');
+  toggle.addEventListener('click', () => {
+    const open = menu.style.display === 'flex';
+    menu.style.display = open ? 'none' : 'flex';
+    toggle.setAttribute('aria-expanded', String(!open));
+  });
+  document.querySelectorAll('#mobileMenu a').forEach(a=>{
+    a.addEventListener('click', ()=>{ menu.style.display='none'; toggle.setAttribute('aria-expanded','false'); });
+  });
+</script>
+
+</body>
+</html>
