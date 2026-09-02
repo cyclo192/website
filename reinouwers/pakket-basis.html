@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Basis — Reinouwers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --paper:#efece4;
+    --ink:#14181c;
+    --ink-soft:#4b535a;
+    --line: rgba(20,24,28,0.12);
+    --accent:#3c8f65;
+    --accent-soft:#e4eee7;
+    --white:#fdfcf9;
+    --max:1120px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    line-height:1.1;
+    margin:0;
+  }
+
+  a{color:inherit;}
+  :focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 32px;}
+
+  .blueprint{
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  header{
+    position:sticky; top:0; z-index:40;
+    background:rgba(239,236,228,0.9);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-row{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 0;
+  }
+  .logo{
+    font-family:'Fraunces', serif; font-weight:700; font-size:1.25rem;
+    letter-spacing:-0.01em; text-decoration:none; color:var(--ink);
+  }
+  .logo .dot{color:var(--accent);}
+  nav.links{display:flex; align-items:center; gap:32px; font-size:0.95rem;}
+  nav.links a{text-decoration:none; color:var(--ink-soft);}
+  nav.links a:hover{color:var(--ink);}
+  nav.links a.btn{color:var(--white);}
+  nav.links a.btn:hover{color:var(--white);}
+  .menu-toggle{
+    display:none; background:none; border:1px solid var(--line); border-radius:6px;
+    color:var(--ink); padding:8px 12px; font-size:0.95rem; font-family:'Inter',sans-serif;
+  }
+
+  .btn{
+    display:inline-block; font-family:'Inter', sans-serif; font-weight:600;
+    font-size:0.92rem; padding:12px 22px; border-radius:6px;
+    border:1px solid var(--ink); background:var(--ink); color:var(--white);
+    text-decoration:none; cursor:pointer;
+    transition:background .15s ease, border-color .15s ease;
+  }
+  .btn:hover{background:#000;}
+  .btn.accent{background:var(--accent); border-color:var(--accent);}
+  .btn.accent:hover{background:#347753;}
+
+  section{padding:88px 0;}
+  .section-head{max-width:56ch; margin-bottom:44px;}
+  .section-head .kicker{margin-bottom:14px;}
+  .section-head h2{font-size:clamp(1.8rem, 3vw, 2.3rem);}
+  .section-head p{color:var(--ink-soft); margin-top:14px; font-size:1.02rem;}
+
+  .kicker{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:0.9rem; color:var(--ink-soft); margin-bottom:22px;
+  }
+  .kicker .swatch{width:8px; height:8px; border-radius:50%; background:var(--accent);}
+
+  footer{border-top:1px solid var(--line); padding:32px 0;}
+  .foot-row{
+    display:flex; justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:12px; font-size:0.88rem; color:var(--ink-soft);
+  }
+
+  @media (max-width: 860px){
+    nav.links{
+      position:absolute; top:100%; left:0; right:0; background:var(--paper);
+      border-bottom:1px solid var(--line); flex-direction:column; align-items:flex-start;
+      gap:0; display:none; padding:8px 32px 20px;
+    }
+    nav.links.open{display:flex;}
+    nav.links a{padding:12px 0; border-bottom:1px solid var(--line); width:100%;}
+    .menu-toggle{display:inline-block;}
+  }
+
+  .detail-hero{padding:72px 0 56px; border-bottom:1px solid var(--line);}
+  .detail-price{display:flex; align-items:baseline; gap:8px; margin-top:22px;}
+  .detail-price .amount{font-family:'Fraunces', serif; font-size:2.4rem;}
+  .detail-price .period{color:var(--ink-soft); font-size:0.95rem;}
+  .detail-body{max-width:70ch;}
+  .detail-body p{color:var(--ink-soft); font-size:1.05rem; margin:0 0 18px;}
+  .detail-features{list-style:none; margin:24px 0 0; padding:0; display:flex; flex-direction:column; gap:14px; max-width:60ch;}
+  .detail-features li{display:flex; align-items:flex-start; gap:10px; font-size:1rem; color:var(--ink);}
+  .detail-features li .check{width:8px; height:8px; border-radius:50%; background:var(--accent); margin-top:8px; flex-shrink:0;}
+  .detail-actions{margin-top:40px; display:flex; gap:14px; flex-wrap:wrap;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav-row">
+    <a href="index.html#top" class="logo">Reinouwers<span class="dot">.</span></a>
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    <nav class="links" id="navLinks">
+      <a href="index.html#top">Home</a>
+      <a href="index.html#wieikben">Wie ben ik</a>
+      <a href="index.html#over">Over mij</a>
+      <a href="index.html#projecten">Voorbeelden</a>
+      <a href="index.html#pakketten">Pakketten</a>
+      <a href="index.html#contact" class="btn accent" style="padding:9px 18px;">Neem contact op</a>
+    </nav>
+  </div>
+</header>
+
+<section class="detail-hero blueprint">
+  <div class="wrap">
+    <div class="kicker"><span class="swatch"></span>Pakket</div>
+    <h1 style="font-size:clamp(2.2rem, 5vw, 3.2rem);">Basis</h1>
+    <p style="color:var(--ink-soft); font-size:1.1rem; margin-top:14px; max-width:56ch;">Voor wie snel en overzichtelijk online wil staan, zonder poespas.</p>
+    <div class="detail-price">
+      <span class="amount">&euro;450</span>
+      <span class="period">eenmalig</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap detail-body">
+    <p>Het Basis-pakket is bedoeld voor kleine bedrijven en zzp&rsquo;ers die simpelweg een nette, professionele plek op internet nodig hebben. Denk aan een duidelijke uitleg wie je bent, wat je doet, en hoe klanten je kunnen bereiken. Geen overbodige extra&rsquo;s, wel een site die er verzorgd uitziet en gewoon goed werkt, ook op de telefoon.</p>
+    <ul class="detail-features">
+      <li><span class="check"></span>E&eacute;n pagina met de belangrijkste informatie over je bedrijf</li>
+      <li><span class="check"></span>Duidelijke contactgegevens en openingstijden</li>
+      <li><span class="check"></span>Werkt goed op telefoon, tablet en computer</li>
+      <li><span class="check"></span>Oplevering binnen een week na akkoord</li>
+      <li><span class="check"></span>Basis technische instellingen voor een snelle, veilige site</li>
+    </ul>
+    <div class="detail-actions">
+      <a href="index.html#contact" class="btn accent">Neem contact op</a>
+      <a href="index.html#pakketten" class="btn" style="background:transparent; color:var(--ink); border-color:var(--line);">Bekijk andere pakketten</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-row">
+    <span>Reinouwers — websites voor kleine bedrijven</span>
+    <span>&copy; <span id="jaar"></span></span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("jaar").textContent = new Date().getFullYear();
+  const toggle = document.getElementById('menuToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    const isOpen = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
+</script>
+
+</body>
+</html>
