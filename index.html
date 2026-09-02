@@ -118,7 +118,7 @@
   .over-figure .num{font-family:'Fraunces', serif; font-size:1.9rem; color:var(--accent); display:block;}
   .over-figure .label{color:var(--ink-soft); font-size:0.92rem; margin-top:4px;}
 
-  .project-grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:20px; margin-top:8px;}
+  .project-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:20px; margin-top:8px;}
   .project-card{
     display:block; border:1px solid var(--line); border-radius:10px;
     padding:26px 24px; text-decoration:none; background:var(--white);
@@ -150,6 +150,10 @@
   .foot-row{
     display:flex; justify-content:space-between; align-items:center;
     flex-wrap:wrap; gap:12px; font-size:0.88rem; color:var(--ink-soft);
+  }
+
+  @media (max-width: 900px){
+    .project-grid{grid-template-columns:repeat(2, 1fr);}
   }
 
   @media (max-width: 860px){
@@ -185,7 +189,7 @@
   <div class="wrap hero-inner">
     <div class="kicker"><span class="swatch"></span>Websites voor kleine bedrijven en zzp'ers</div>
     <h1 class="display">Een website die klopt, zonder gedoe erbij.</h1>
-    <p class="lede">Ik bouw duidelijke, snelle websites voor kleine ondernemers van eerste ontwerp tot een pagina die klanten daadwerkelijk kunnen vinden en gebruiken.</p>
+    <p class="lede">Ik bouw duidelijke, snelle websites voor kleine ondernemers — van eerste ontwerp tot een pagina die klanten daadwerkelijk kunnen vinden en gebruiken.</p>
     <div class="hero-actions">
       <a href="#contact" class="btn accent">Neem contact op</a>
       <a href="#projecten" class="btn" style="background:transparent; color:var(--ink); border-color:var(--line);">Bekijk voorbeelden</a>
@@ -238,6 +242,13 @@
         <span class="project-tag">Bistro &amp; keuken</span>
         <h3>Kastanje</h3>
         <p>Een bistro met menukaart, openingstijden en een reserveringsformulier.</p>
+        <span class="project-link">Bekijk demo</span>
+      </a>
+
+      <a href="https://wolkje.reinouwers.nl/" class="project-card" target="_blank" rel="noopener">
+        <span class="project-tag">Kinderkleding</span>
+        <h3>Wolkje</h3>
+        <p>Een kinderkledingwinkel met collectie, maten en een pasafspraak-formulier.</p>
         <span class="project-link">Bekijk demo</span>
       </a>
     </div>
