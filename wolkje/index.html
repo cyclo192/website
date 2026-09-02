@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wolkje — kinderkleding</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sky:#eaf6fb;
+    --ink:#2b2a3d;
+    --ink-soft:#5f5e73;
+    --coral:#ff8a65;
+    --yellow:#ffc857;
+    --mint:#5fd0a6;
+    --lilac:#a68bd9;
+    --line: rgba(43,42,61,0.10);
+    --white:#ffffff;
+    --max:1080px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  body{
+    margin:0;
+    background:var(--sky);
+    color:var(--ink);
+    font-family:'Nunito', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+  }
+
+  h1,h2,h3{
+    font-family:'Baloo 2', sans-serif;
+    font-weight:700;
+    line-height:1.15;
+    margin:0;
+  }
+
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+  :focus-visible{outline:3px solid var(--coral); outline-offset:3px;}
+
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky; top:0; z-index:40;
+    background:rgba(234,246,251,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-row{display:flex; align-items:center; justify-content:space-between; padding:18px 0;}
+  .logo{
+    font-family:'Baloo 2', sans-serif; font-weight:800; font-size:1.5rem;
+    color:var(--ink); display:flex; align-items:center; gap:8px;
+  }
+  .logo .cloud{color:var(--coral);}
+  nav.links{display:flex; align-items:center; gap:26px; font-size:0.95rem;}
+  nav.links a{text-decoration:none; color:var(--ink);}
+  nav.links a:hover{color:var(--coral);}
+  .menu-toggle{
+    display:none; background:none; border:1px solid var(--line); border-radius:12px;
+    color:var(--ink); padding:8px 12px; font-size:0.95rem; font-family:'Nunito',sans-serif;
+  }
+
+  .btn{
+    display:inline-block; font-family:'Nunito', sans-serif; font-weight:700;
+    font-size:0.95rem; padding:13px 26px; border-radius:999px;
+    border:2px solid var(--coral); background:var(--coral); color:var(--white);
+    text-decoration:none; cursor:pointer;
+    transition:transform .15s ease, background .15s ease;
+  }
+  .btn:hover{background:#ff7043; transform:translateY(-1px);}
+  .btn.ghost{background:transparent; color:var(--ink); border:2px solid var(--line);}
+  .btn.ghost:hover{border-color:var(--coral); color:var(--coral);}
+
+  /* ---------- hero ---------- */
+  .hero{padding:76px 0 84px;}
+  .hero-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px; align-items:center;}
+  .kicker{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:0.9rem; color:var(--ink-soft); margin-bottom:16px; font-weight:700;
+  }
+  .kicker .dot{width:9px; height:9px; border-radius:50%; background:var(--coral);}
+  h1.display{font-size:clamp(2.4rem, 5vw, 3.6rem); max-width:12ch;}
+  .hero p.lede{max-width:44ch; margin-top:18px; color:var(--ink-soft); font-size:1.08rem;}
+  .hero-actions{display:flex; gap:14px; margin-top:30px; flex-wrap:wrap;}
+
+  .blob{
+    aspect-ratio:1/1; background:var(--white); border-radius:44% 56% 62% 38% / 48% 42% 58% 52%;
+    display:flex; align-items:center; justify-content:center; padding:30px;
+    box-shadow: 0 12px 30px rgba(43,42,61,0.08);
+  }
+
+  section{padding:70px 0;}
+  .section-head{max-width:56ch; margin-bottom:36px;}
+  .section-head h2{font-size:clamp(1.7rem, 3vw, 2.2rem);}
+  .section-head p{color:var(--ink-soft); margin-top:12px;}
+
+  /* ---------- verhaal ---------- */
+  .story{display:grid; grid-template-columns:0.9fr 1.1fr; gap:48px; align-items:center;}
+  .story p{color:var(--ink-soft); margin-top:14px;}
+  .story p:first-of-type{margin-top:0;}
+
+  /* ---------- collectie ---------- */
+  .collectie-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
+  .item{
+    background:var(--white); border-radius:20px; overflow:hidden;
+    box-shadow: 0 8px 20px rgba(43,42,61,0.06);
+  }
+  .item-visual{
+    aspect-ratio:1/1; display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+  }
+  .item-visual img{display:block;}
+  .item-info{padding:14px 16px 18px;}
+  .item-info .cat{font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.03em;}
+  .item-info h3{font-size:0.98rem; margin-top:4px; font-family:'Nunito',sans-serif; font-weight:700;}
+  .item-info .price{
+    font-family:'Baloo 2', sans-serif; font-size:1.05rem; margin-top:6px; display:block;
+  }
+
+  /* kleur per categorie */
+  .item--coral .item-visual{background:#ffe3d6;} .item--coral .cat, .item--coral .price{color:var(--coral);}
+  .item--mint .item-visual{background:#dcf5ea;} .item--mint .cat, .item--mint .price{color:#2fa87e;}
+  .item--yellow .item-visual{background:#fff2d2;} .item--yellow .cat, .item--yellow .price{color:#d69a1a;}
+  .item--lilac .item-visual{background:#eee6fa;} .item--lilac .cat, .item--lilac .price{color:var(--lilac);}
+
+  /* ---------- maten ---------- */
+  .sizes{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
+  .size-card{
+    background:var(--white); border-radius:16px; padding:22px 18px; text-align:center;
+    box-shadow: 0 8px 20px rgba(43,42,61,0.06);
+  }
+  .size-card .range{font-family:'Baloo 2', sans-serif; font-size:1.3rem; color:var(--ink);}
+  .size-card .age{color:var(--ink-soft); font-size:0.85rem; margin-top:4px;}
+
+  /* ---------- reacties ---------- */
+  .quotes{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  .quote{background:var(--white); border-radius:16px; padding:24px 22px; box-shadow: 0 8px 20px rgba(43,42,61,0.06);}
+  .quote p{font-size:0.96rem; margin:0 0 12px;}
+  .quote cite{font-style:normal; color:var(--ink-soft); font-size:0.85rem;}
+
+  /* ---------- openingstijden + afspraak ---------- */
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:48px;}
+
+  .day-grid{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:26px;}
+  .day-chip{
+    background:var(--white); border-radius:14px; padding:12px 16px;
+    min-width:82px; text-align:center; box-shadow: 0 6px 14px rgba(43,42,61,0.06);
+  }
+  .day-chip.closed{background:transparent; box-shadow:none; border:1px dashed var(--line);}
+  .day-chip .day-name{
+    display:block; font-family:'Baloo 2', sans-serif; font-weight:700;
+    font-size:0.95rem; color:var(--ink);
+  }
+  .day-chip .day-time{display:block; font-size:0.78rem; color:var(--ink-soft); margin-top:4px;}
+  .day-chip.closed .day-time{color:#b9b8c7;}
+
+  .afspraak-kaart{
+    position:relative; background:var(--white); border-radius:24px;
+    padding:36px 32px; box-shadow: 0 14px 34px rgba(43,42,61,0.08);
+  }
+  .afspraak-blob{position:absolute; top:-16px; right:24px;}
+  .info-line{display:flex; gap:10px; margin-top:12px; color:var(--ink-soft); font-size:0.95rem;}
+  .info-line svg{width:18px; height:18px; flex-shrink:0; stroke:var(--coral); fill:none; stroke-width:1.8; margin-top:2px;}
+
+  form.book{display:grid; gap:16px;}
+  .field{display:grid; gap:6px;}
+  .field label{font-size:0.86rem; color:var(--ink-soft); font-weight:700;}
+  .field input, .field select{
+    background:var(--white); border:2px solid var(--line); color:var(--ink);
+    border-radius:12px; padding:11px 14px; font-family:'Nunito', sans-serif; font-size:0.98rem;
+  }
+  .field input:focus, .field select:focus{outline:none; border-color:var(--coral);}
+  .field-row{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .form-note{font-size:0.85rem; color:var(--ink-soft); margin-top:2px;}
+  #confirm{
+    display:none; background:var(--white); border:2px solid var(--mint);
+    border-radius:12px; padding:16px 18px; font-size:0.92rem;
+  }
+
+  footer{border-top:1px solid var(--line); padding:32px 0;}
+  .foot-row{
+    display:flex; justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:12px; font-size:0.88rem; color:var(--ink-soft);
+  }
+
+  @media (max-width: 860px){
+    nav.links{
+      position:absolute; top:100%; left:0; right:0; background:var(--sky);
+      border-bottom:1px solid var(--line); flex-direction:column; align-items:flex-start;
+      gap:0; display:none; padding:8px 28px 20px;
+    }
+    nav.links.open{display:flex;}
+    nav.links a{padding:12px 0; border-bottom:1px solid var(--line); width:100%;}
+    .menu-toggle{display:inline-block;}
+    .hero-grid, .story, .contact-grid{grid-template-columns:1fr;}
+    .collectie-grid{grid-template-columns:1fr 1fr;}
+    .sizes{grid-template-columns:1fr 1fr;}
+    .quotes{grid-template-columns:1fr;}
+    .field-row{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav-row">
+    <div class="logo"><span class="cloud">☁</span> Wolkje</div>
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    <nav class="links" id="navLinks">
+      <a href="#verhaal">Verhaal</a>
+      <a href="#collectie">Collectie</a>
+      <a href="#maten">Maten</a>
+      <a href="#openingstijden">Openingstijden</a>
+      <a href="#afspraak" class="btn" style="padding:9px 18px;">Pasafspraak</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="kicker"><span class="dot"></span>Kinderkleding van 0 tot 10 jaar</div>
+      <h1 class="display">Kleren om lekker in te spelen.</h1>
+      <p class="lede">Wolkje is een kinderkledingwinkel vol vrolijke, stevige kleding die tegen een stootje kan. Zachte stoffen, blije kleuren, en kleding die meebeweegt met een kind dat de hele dag in beweging is.</p>
+      <div class="hero-actions">
+        <a href="#collectie" class="btn">Bekijk collectie</a>
+        <a href="#afspraak" class="btn ghost">Plan een pasafspraak</a>
+      </div>
+    </div>
+    <div class="blob">
+      <svg viewBox="0 0 120 120" width="150" height="150" fill="none">
+        <circle cx="60" cy="60" r="46" fill="#ffe3d6"/>
+        <path d="M40 50 C40 40 48 34 60 34 C72 34 80 40 80 50 L80 78 C80 84 74 88 68 88 L52 88 C46 88 40 84 40 78 Z" fill="#ff8a65"/>
+        <circle cx="60" cy="24" r="7" fill="#ffc857"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="verhaal">
+  <div class="wrap story">
+    <div>
+      <div class="kicker"><span class="dot"></span>Het verhaal</div>
+      <h2>Voor kinderen die niet stilzitten.</h2>
+      <p>Wolkje begon met de zoektocht naar kleding die een dagje buitenspelen, knutselen en rennen overleeft — zonder dat de kleur of vorm eronder lijdt. Alles is getest op stevigheid en wasbestendigheid, in kleuren die kinderen zelf leuk vinden.</p>
+      <p>Van rompertjes tot regenjassen: alles is gemaakt om gedragen te worden, niet om voorzichtig te bewaren.</p>
+    </div>
+    <div class="blob" style="border-radius:38% 62% 55% 45% / 55% 45% 55% 45%;">
+      <svg viewBox="0 0 100 100" width="130" height="130" fill="none">
+        <circle cx="50" cy="50" r="36" fill="#dcf5ea"/>
+        <path d="M32 55 Q50 30 68 55 Q50 72 32 55 Z" fill="#5fd0a6"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="collectie">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Collectie</h2>
+      <p>Een greep uit wat er nu in de winkel hangt, per categorie een eigen kleurtje.</p>
+    </div>
+    <div class="collectie-grid">
+      <div class="item item--coral">
+        <div class="item-visual">
+          <img src="https://images.unsplash.com/photo-1622218286192-95f6a20083c7?w=500&q=70&auto=format&fit=crop" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div class="item-info">
+          <span class="cat">Trui</span>
+          <h3>Zachte fleece trui</h3>
+          <span class="price">€ 24</span>
+        </div>
+      </div>
+      <div class="item item--mint">
+        <div class="item-visual">
+          <img src="https://images.unsplash.com/photo-1632337950445-ba446cb0e26f?w=500&q=70&auto=format&fit=crop" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div class="item-info">
+          <span class="cat">Broek</span>
+          <h3>Stevige speelbroek</h3>
+          <span class="price">€ 22</span>
+        </div>
+      </div>
+      <div class="item item--yellow">
+        <div class="item-visual">
+          <img src="https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?w=500&q=70&auto=format&fit=crop" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div class="item-info">
+          <span class="cat">Regenjas</span>
+          <h3>Vrolijke regenjas</h3>
+          <span class="price">€ 34</span>
+        </div>
+      </div>
+      <div class="item item--lilac">
+        <div class="item-visual">
+          <img src="https://images.unsplash.com/photo-1566454544259-f4b94c3d758c?w=500&q=70&auto=format&fit=crop" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div class="item-info">
+          <span class="cat">Muts</span>
+          <h3>Gebreide muts</h3>
+          <span class="price">€ 14</span>
+        </div>
+      </div>
+      <div class="item item--coral">
+        <div class="item-visual">
+          <img src="https://images.unsplash.com/photo-1560506840-ec148e82a604?w=500&q=70&auto=format&fit=crop" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div class="item-info">
+          <span class="cat">Jurkje</span>
+          <h3>Katoenen jurkje</h3>
+          <span class="price">€ 26</span>
+        </div>
+      </div>
+      <div class="item item--mint">
+        <div class="item-visual">
+          <img src="https://images.unsplash.com/photo-1629546947792-f399d7e9f219?w=500&q=70&auto=format&fit=crop" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div class="item-info">
+          <span class="cat">Schoenen</span>
+          <h3>Speelse sneakers</h3>
+          <span class="price">€ 32</span>
+        </div>
+      </div>
+      <div class="item item--yellow">
+        <div class="item-visual">
+          <img src="https://images.unsplash.com/photo-1622290319146-7b63df48a635?w=500&q=70&auto=format&fit=crop" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div class="item-info">
+          <span class="cat">Rompertje</span>
+          <h3>Katoenen romper</h3>
+          <span class="price">€ 16</span>
+        </div>
+      </div>
+      <div class="item item--lilac">
+        <div class="item-visual">
+          <img src="https://images.unsplash.com/photo-1670014541811-9b0ec280ed60?w=500&q=70&auto=format&fit=crop" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div class="item-info">
+          <span class="cat">Rugtas</span>
+          <h3>Kleine rugtas</h3>
+          <span class="price">€ 19</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="maten">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Maten</h2>
+      <p>Onze collectie loopt van baby tot basisschoolleeftijd.</p>
+    </div>
+    <div class="sizes">
+      <div class="size-card"><div class="range">50–68</div><div class="age">0–6 maanden</div></div>
+      <div class="size-card"><div class="range">74–92</div><div class="age">6 mnd–2 jaar</div></div>
+      <div class="size-card"><div class="range">98–116</div><div class="age">2–6 jaar</div></div>
+      <div class="size-card"><div class="range">122–146</div><div class="age">6–10 jaar</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="reacties">
+  <div class="wrap">
+    <div class="section-head"><h2>Wat ouders zeggen</h2></div>
+    <div class="quotes">
+      <div class="quote">
+        <p>Eindelijk kleding die een middag buitenspelen overleeft zonder meteen kapot te gaan.</p>
+        <cite>Ouder van twee</cite>
+      </div>
+      <div class="quote">
+        <p>De pasafspraak was ontspannen, geen haastig moment met een huilend kind erbij.</p>
+        <cite>Vaste klant</cite>
+      </div>
+      <div class="quote">
+        <p>Mijn dochter koos zelf haar regenjas uit — ze wil 'm nu elke dag aan, ook als het droog is.</p>
+        <cite>Nieuwe klant</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="openingstijden">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="section-head"><h2>Openingstijden</h2></div>
+      <div class="day-grid">
+        <div class="day-chip closed"><span class="day-name">Ma</span><span class="day-time">Dicht</span></div>
+        <div class="day-chip"><span class="day-name">Di</span><span class="day-time">10:00–17:30</span></div>
+        <div class="day-chip"><span class="day-name">Wo</span><span class="day-time">10:00–17:30</span></div>
+        <div class="day-chip"><span class="day-name">Do</span><span class="day-time">10:00–17:30</span></div>
+        <div class="day-chip"><span class="day-name">Vr</span><span class="day-time">10:00–18:00</span></div>
+        <div class="day-chip"><span class="day-name">Za</span><span class="day-time">10:00–17:00</span></div>
+        <div class="day-chip"><span class="day-name">Zo</span><span class="day-time">12:00–16:00</span></div>
+      </div>
+      <div class="info-line">
+        <svg viewBox="0 0 24 24"><path d="M4 6 L12 13 L20 6"/><rect x="4" y="5" width="16" height="14" rx="2"/></svg>
+        <span>info@wolkje-voorbeeld.nl</span>
+      </div>
+      <div class="info-line">
+        <svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
+        <span>Regenboogplein 5 — fictief adres, alleen voor dit voorbeeld</span>
+      </div>
+    </div>
+
+    <div id="afspraak" class="afspraak-kaart">
+      <div class="afspraak-blob">
+        <svg viewBox="0 0 100 100" width="70" height="70" fill="none">
+          <circle cx="50" cy="50" r="34" fill="#fff2d2"/>
+          <path d="M35 55 Q50 35 65 55 Q50 68 35 55 Z" fill="#ffc857"/>
+        </svg>
+      </div>
+      <div class="section-head" style="margin-bottom:22px;">
+        <h2>Pasafspraak plannen</h2>
+        <p>Vul het formulier in, je krijgt hieronder direct een bevestiging van je aanvraag.</p>
+      </div>
+      <form class="book" id="bookForm">
+        <div class="field-row">
+          <div class="field">
+            <label for="datum">Gewenste dag</label>
+            <input type="date" id="datum" required>
+          </div>
+          <div class="field">
+            <label for="tijd">Gewenste tijd</label>
+            <input type="time" id="tijd" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="maat">Maat/leeftijd van je kind</label>
+          <select id="maat" required>
+            <option value="">Kies een optie</option>
+            <option>0–6 maanden (maat 50–68)</option>
+            <option>6 mnd–2 jaar (maat 74–92)</option>
+            <option>2–6 jaar (maat 98–116)</option>
+            <option>6–10 jaar (maat 122–146)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="naam">Naam</label>
+          <input type="text" id="naam" placeholder="Voor- en achternaam" required>
+        </div>
+        <div class="field">
+          <label for="mail">E-mailadres</label>
+          <input type="email" id="mail" placeholder="naam@voorbeeld.nl" required>
+        </div>
+        <button type="submit" class="btn" style="width:100%; text-align:center;">Aanvraag versturen</button>
+        <p class="form-note">Dit is een demo-formulier; er wordt niets daadwerkelijk verstuurd.</p>
+        <div id="confirm"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-row">
+    <span>Wolkje — kinderkleding</span>
+    <span>Fictieve zaak, gemaakt als websitevoorbeeld</span>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('menuToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    const isOpen = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
+
+  const form = document.getElementById('bookForm');
+  const confirm = document.getElementById('confirm');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const maat = document.getElementById('maat').value;
+    const datum = document.getElementById('datum').value;
+    const tijd = document.getElementById('tijd').value;
+    const naam = document.getElementById('naam').value;
+    confirm.style.display = 'block';
+    confirm.textContent = `Bedankt, ${naam}. Je pasafspraak voor "${maat}" op ${datum} om ${tijd} is genoteerd (demo).`;
+  });
+</script>
+
+</body>
+</html>
