@@ -8,7 +8,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-
   :root{
     --paper:#efece4;
     --ink:#14181c;
@@ -19,14 +18,12 @@
     --white:#fdfcf9;
     --max:1120px;
   }
-
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto;}
     *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
   }
-
   body{
     margin:0;
     background:var(--paper);
@@ -35,26 +32,21 @@
     font-size:16px;
     line-height:1.6;
   }
-
   h1,h2,h3{
     font-family:'Fraunces', serif;
     font-weight:600;
     line-height:1.1;
     margin:0;
   }
-
   a{color:inherit;}
   :focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
-
   .wrap{max-width:var(--max); margin:0 auto; padding:0 32px;}
-
   .blueprint{
     background-image:
       linear-gradient(var(--line) 1px, transparent 1px),
       linear-gradient(90deg, var(--line) 1px, transparent 1px);
     background-size: 48px 48px;
   }
-
   header{
     position:sticky; top:0; z-index:40;
     background:rgba(239,236,228,0.9);
@@ -79,7 +71,6 @@
     display:none; background:none; border:1px solid var(--line); border-radius:6px;
     color:var(--ink); padding:8px 12px; font-size:0.95rem; font-family:'Inter',sans-serif;
   }
-
   .btn{
     display:inline-block; font-family:'Inter', sans-serif; font-weight:600;
     font-size:0.92rem; padding:12px 22px; border-radius:6px;
@@ -90,25 +81,21 @@
   .btn:hover{background:#000;}
   .btn.accent{background:var(--accent); border-color:var(--accent);}
   .btn.accent:hover{background:#347753;}
-
   section{padding:88px 0;}
   .section-head{max-width:56ch; margin-bottom:44px;}
   .section-head .kicker{margin-bottom:14px;}
   .section-head h2{font-size:clamp(1.8rem, 3vw, 2.3rem);}
   .section-head p{color:var(--ink-soft); margin-top:14px; font-size:1.02rem;}
-
   .kicker{
     display:inline-flex; align-items:center; gap:8px;
     font-size:0.9rem; color:var(--ink-soft); margin-bottom:22px;
   }
   .kicker .swatch{width:8px; height:8px; border-radius:50%; background:var(--accent);}
-
   footer{border-top:1px solid var(--line); padding:32px 0;}
   .foot-row{
     display:flex; justify-content:space-between; align-items:center;
     flex-wrap:wrap; gap:12px; font-size:0.88rem; color:var(--ink-soft);
   }
-
   @media (max-width: 860px){
     nav.links{
       position:absolute; top:100%; left:0; right:0; background:var(--paper);
@@ -119,7 +106,6 @@
     nav.links a{padding:12px 0; border-bottom:1px solid var(--line); width:100%;}
     .menu-toggle{display:inline-block;}
   }
-
   .detail-hero{padding:72px 0 56px; border-bottom:1px solid var(--line);}
   .detail-price{display:flex; align-items:baseline; gap:8px; margin-top:22px;}
   .detail-price .amount{font-family:'Fraunces', serif; font-size:2.4rem;}
@@ -133,7 +119,6 @@
 </style>
 </head>
 <body>
-
 <header>
   <div class="wrap nav-row">
     <a href="index.html#top" class="logo">Reinouwers<span class="dot">.</span></a>
@@ -148,19 +133,17 @@
     </nav>
   </div>
 </header>
-
 <section class="detail-hero blueprint">
   <div class="wrap">
     <div class="kicker"><span class="swatch"></span>Pakket</div>
     <h1 style="font-size:clamp(2.2rem, 5vw, 3.2rem);">Op maat</h1>
     <p style="color:var(--ink-soft); font-size:1.1rem; margin-top:14px; max-width:56ch;">Voor bedrijven met extra functionaliteit en doorlopende wensen.</p>
     <div class="detail-price">
-      <span class="amount">&euro;1250</span>
+      <span class="amount">&euro;450</span>
       <span class="period">vanaf, eenmalig</span>
     </div>
   </div>
 </section>
-
 <section>
   <div class="wrap detail-body">
     <p>Heb je meer nodig dan een standaardsite? Het Op maat-pakket is er voor bedrijven die specifieke functionaliteit willen, zoals een reserveringssysteem, een uitgebreide agenda, of zelfs een webshop. Ook na oplevering sta je er niet alleen voor: de eerste drie maanden zijn kleine aanpassingen en ondersteuning gewoon inbegrepen.</p>
@@ -177,14 +160,12 @@
     </div>
   </div>
 </section>
-
 <footer>
   <div class="wrap foot-row">
     <span>Reinouwers — websites voor kleine bedrijven</span>
     <span>&copy; <span id="jaar"></span></span>
   </div>
 </footer>
-
 <script>
   document.getElementById("jaar").textContent = new Date().getFullYear();
   const toggle = document.getElementById('menuToggle');
@@ -198,6 +179,5 @@
     toggle.setAttribute('aria-expanded', 'false');
   }));
 </script>
-
 </body>
 </html>
