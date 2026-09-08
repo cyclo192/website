@@ -1,1 +1,497 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trouwauto Purmerend — Oldtimers met chauffeur</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F1E7D2;
+    --paper:#FAF3E4;
+    --ink:#2C2013;
+    --ink-soft:#4A3A28;
+    --wine:#6F2732;
+    --wine-dark:#521C24;
+    --gold:#A87F3F;
+    --gold-light:#C9A868;
+    --line:#C9B896;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'EB Garamond', Georgia, serif;
+    font-size:19px;
+    line-height:1.65;
+  }
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(112,80,40,0.035) 0, transparent 45%),
+      radial-gradient(circle at 80% 70%, rgba(112,80,40,0.035) 0, transparent 45%);
+    z-index:0;
+  }
+  h1,h2,h3{
+    font-family:'Playfair Display', Georgia, serif;
+    font-weight:600;
+    color:var(--wine-dark);
+    letter-spacing:.3px;
+  }
+  a{color:var(--wine);text-decoration:none;}
+  img,svg{display:block;max-width:100%;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px;}
+
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:14px;
+    color:var(--gold);margin:0 auto;
+  }
+  .ornament::before,.ornament::after{
+    content:"";flex:1;max-width:120px;height:1px;
+    background:linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+  .ornament svg{width:22px;height:22px;flex:none;}
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:relative;z-index:2;
+    background:var(--paper);
+    border-bottom:3px double var(--gold);
+  }
+  .topbar{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px 32px;max-width:1080px;margin:0 auto;
+  }
+  .brand{
+    display:flex;align-items:center;gap:14px;
+  }
+  .brand svg{width:46px;height:46px;color:var(--wine);}
+  .brand-text .name{
+    font-family:'Playfair Display',serif;
+    font-size:24px;font-weight:700;color:var(--wine-dark);
+    line-height:1.1;
+  }
+  .brand-text .tag{
+    font-size:14px;color:var(--gold);letter-spacing:1.5px;
+  }
+  nav ul{list-style:none;display:flex;gap:30px;}
+  nav a{
+    font-size:16px;color:var(--ink-soft);
+    border-bottom:1px solid transparent;
+    padding-bottom:3px;transition:border-color .2s, color .2s;
+  }
+  nav a:hover{color:var(--wine);border-color:var(--gold);}
+  .nav-toggle{display:none;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;z-index:1;
+    padding:76px 32px 90px;
+    text-align:center;
+    background:
+      linear-gradient(var(--cream), var(--cream));
+    border-bottom:1px solid var(--line);
+  }
+  .hero .eyebrow{
+    font-size:15px;color:var(--gold);letter-spacing:2px;margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:52px;line-height:1.15;max-width:780px;margin:0 auto 22px;
+  }
+  .hero h1 em{font-style:italic;color:var(--wine);}
+  .hero p.lede{
+    max-width:560px;margin:0 auto 34px;color:var(--ink-soft);font-size:20px;
+  }
+  .hero-car{width:100%;max-width:620px;margin:38px auto 0;color:var(--wine-dark);}
+  .btn{
+    display:inline-block;
+    font-family:'Playfair Display',serif;
+    font-weight:600;font-size:16px;letter-spacing:.5px;
+    padding:14px 34px;
+    border:1.5px solid var(--wine-dark);
+    color:var(--wine-dark);
+    background:transparent;
+    border-radius:2px;
+    transition:background .2s,color .2s;
+  }
+  .btn:hover{background:var(--wine-dark);color:var(--paper);}
+  .btn.filled{background:var(--wine-dark);color:var(--paper);}
+  .btn.filled:hover{background:var(--wine);}
+
+  /* ---------- SECTION shared ---------- */
+  section{padding:80px 0;position:relative;z-index:1;}
+  .section-head{text-align:center;margin-bottom:56px;}
+  .section-head .eyebrow{
+    font-size:14px;color:var(--gold);letter-spacing:2px;margin-bottom:10px;
+  }
+  .section-head h2{font-size:38px;}
+  .section-head p{color:var(--ink-soft);max-width:520px;margin:14px auto 0;}
+
+  /* ---------- FLEET ---------- */
+  .fleet{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .fleet-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:36px;
+  }
+  .car-card{
+    border:1px solid var(--line);
+    background:var(--cream);
+    padding:34px 26px 30px;
+    text-align:center;
+    position:relative;
+  }
+  .car-card::before{
+    content:"";position:absolute;inset:8px;
+    border:1px solid var(--gold-light);pointer-events:none;
+  }
+  .car-card svg{width:100%;height:100px;margin-bottom:20px;color:var(--wine-dark);}
+  .car-card h3{font-size:23px;margin-bottom:6px;}
+  .car-card .year{color:var(--gold);font-size:15px;letter-spacing:1px;margin-bottom:14px;}
+  .car-card p{font-size:17px;color:var(--ink-soft);margin-bottom:18px;}
+  .car-card .price{
+    font-family:'Playfair Display',serif;font-size:20px;color:var(--wine-dark);
+    border-top:1px solid var(--line);padding-top:14px;
+  }
+
+  /* ---------- WERKWIJZE ---------- */
+  .steps{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:30px;
+  }
+  .step{text-align:center;padding:0 12px;}
+  .step .num{
+    font-family:'Playfair Display',serif;font-size:34px;color:var(--gold);
+    margin-bottom:10px;
+  }
+  .step h3{font-size:20px;margin-bottom:8px;}
+  .step p{font-size:16px;color:var(--ink-soft);}
+
+  /* ---------- RECENSIES ---------- */
+  .reviews{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .reviews-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:32px;
+  }
+  .review{
+    background:var(--cream);border:1px solid var(--line);
+    padding:30px 26px;position:relative;
+  }
+  .review .stars{color:var(--gold);letter-spacing:3px;margin-bottom:14px;font-size:18px;}
+  .review p.quote{font-style:italic;color:var(--ink-soft);margin-bottom:18px;font-size:18px;}
+  .review .who{font-family:'Playfair Display',serif;font-size:16px;color:var(--wine-dark);}
+  .review .who span{display:block;font-family:'EB Garamond',serif;font-style:normal;color:var(--gold);font-size:14px;margin-top:2px;}
+
+  /* ---------- CTA STRIP ---------- */
+  .cta-strip{
+    background:var(--wine-dark);color:var(--paper);
+    text-align:center;padding:64px 32px;
+  }
+  .cta-strip h2{color:var(--gold-light);font-size:32px;margin-bottom:14px;}
+  .cta-strip p{color:#E7D9C2;max-width:480px;margin:0 auto 30px;}
+  .cta-strip .btn{border-color:var(--gold-light);color:var(--gold-light);}
+  .cta-strip .btn:hover{background:var(--gold-light);color:var(--wine-dark);}
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{
+    display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:start;
+  }
+  .contact-info h2{font-size:34px;margin-bottom:16px;}
+  .contact-info p{color:var(--ink-soft);margin-bottom:26px;}
+  .info-row{display:flex;gap:14px;margin-bottom:18px;align-items:flex-start;}
+  .info-row svg{width:22px;height:22px;color:var(--wine);flex:none;margin-top:3px;}
+  .info-row div .label{font-size:14px;color:var(--gold);letter-spacing:1px;}
+  .info-row div .val{font-size:18px;color:var(--ink);}
+
+  form{
+    background:var(--paper);border:1px solid var(--line);padding:34px;
+  }
+  form label{display:block;font-size:14px;color:var(--gold);letter-spacing:1px;margin-bottom:6px;}
+  form .field{margin-bottom:20px;}
+  form input, form textarea, form select{
+    width:100%;font-family:'EB Garamond',serif;font-size:17px;
+    padding:11px 12px;border:1px solid var(--line);background:var(--cream);
+    color:var(--ink);
+  }
+  form textarea{resize:vertical;min-height:100px;}
+  form input:focus, form textarea:focus, form select:focus{
+    outline:none;border-color:var(--wine);
+  }
+  form .btn{width:100%;text-align:center;cursor:pointer;}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--ink);color:#D9CBB2;
+    padding:50px 32px 26px;text-align:center;
+  }
+  footer .brand-text .name{color:var(--gold-light);}
+  footer nav ul{justify-content:center;flex-wrap:wrap;margin:22px 0;}
+  footer nav a{color:#D9CBB2;}
+  footer nav a:hover{color:var(--gold-light);}
+  footer .fine{font-size:14px;color:#9C8F76;margin-top:18px;}
+
+  @media (max-width: 860px){
+    .fleet-grid, .reviews-grid{grid-template-columns:1fr;}
+    .steps{grid-template-columns:repeat(2,1fr);}
+    .contact-grid{grid-template-columns:1fr;}
+    nav{display:none;}
+    .hero h1{font-size:36px;}
+    .section-head h2{font-size:30px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="topbar">
+    <div class="brand">
+      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+        <ellipse cx="32" cy="46" rx="26" ry="4"/>
+        <path d="M8 40c2-10 8-16 24-16s22 6 24 16" stroke-linecap="round"/>
+        <path d="M16 28c3-6 8-9 16-9s13 3 16 9" stroke-linecap="round"/>
+        <circle cx="20" cy="42" r="5"/>
+        <circle cx="44" cy="42" r="5"/>
+      </svg>
+      <div class="brand-text">
+        <div class="name">Trouwauto Purmerend</div>
+        <div class="tag">OLDTIMERS · SINDS JAAR EN DAG</div>
+      </div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#auto's">Onze auto's</a></li>
+        <li><a href="#werkwijze">Werkwijze</a></li>
+        <li><a href="#recensies">Recensies</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">TROUWVERVOER MET KARAKTER</div>
+    <h1>Rijd in stijl naar het<br><em>mooiste moment</em> van uw leven</h1>
+    <p class="lede">Een sierlijke oldtimer, een chauffeur in pak en een route die precies zo verloopt als u droomde. Al jarenlang het vertrouwde adres voor trouwvervoer in Purmerend en omstreken.</p>
+    <a href="#contact" class="btn filled">Vraag een offerte aan</a>
+
+    <svg class="hero-car" viewBox="0 0 620 220" fill="none" stroke="currentColor" stroke-width="2.2">
+      <path d="M40 165c60-4 420-4 480 0" stroke-linecap="round"/>
+      <path d="M70 165c4-38 24-64 60-72 30-7 260-7 300 6 26 9 46 34 60 66" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M120 118c14-24 34-34 70-34h150c30 0 52 10 66 30" stroke-linejoin="round"/>
+      <path d="M120 118h280" />
+      <path d="M198 118V90c0-4 3-6 6-6h96c4 0 7 3 7 6v28" stroke-linejoin="round"/>
+      <line x1="252" y1="84" x2="252" y2="118"/>
+      <circle cx="168" cy="168" r="27"/>
+      <circle cx="168" cy="168" r="9"/>
+      <circle cx="452" cy="168" r="27"/>
+      <circle cx="452" cy="168" r="9"/>
+      <path d="M96 140h30M470 140h34" stroke-linecap="round"/>
+      <path d="M96 154c-10 0-16 6-16 14" stroke-linecap="round"/>
+      <circle cx="518" cy="128" r="6"/>
+      <path d="M92 96c-14 8-24 20-30 38" stroke-linecap="round" opacity=".55"/>
+      <path d="M540 100c12 8 20 22 24 34" stroke-linecap="round" opacity=".55"/>
+    </svg>
+  </div>
+</section>
+
+<section class="fleet" id="auto's">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">DE VLOOT</div>
+      <h2>Onze oldtimers</h2>
+      <p>Elk model wordt met de hand onderhouden en compleet geleverd met chauffeur, lint en een zijden boeket op de motorkap.</p>
+    </div>
+    <div class="fleet-grid">
+
+      <div class="car-card">
+        <svg viewBox="0 0 200 100" fill="none" stroke="currentColor" stroke-width="2.4">
+          <path d="M15 72c50-3 120-3 170 0"/>
+          <path d="M22 72c2-16 10-27 26-31 14-3 88-3 102 3 12 5 18 15 22 28"/>
+          <path d="M46 46c6-10 14-14 28-14h44c11 0 20 4 26 12"/>
+          <line x1="46" y1="46" x2="144" y2="46"/>
+          <line x1="88" y1="32" x2="88" y2="46"/>
+          <circle cx="55" cy="74" r="12"/>
+          <circle cx="145" cy="74" r="12"/>
+        </svg>
+        <h3>A-Ford</h3>
+        <div class="year">MODELJAAR 1931</div>
+        <p>De klassieker bij uitstek: sierlijke spatborden en een tijdloze uitstraling voor een romantische aankomst.</p>
+        <div class="price">vanaf &euro;50 per uur</div>
+      </div>
+
+      <div class="car-card">
+        <svg viewBox="0 0 200 100" fill="none" stroke="currentColor" stroke-width="2.4">
+          <path d="M12 74c56-3 122-3 176 0"/>
+          <path d="M18 74c1-15 8-26 24-30 18-4 100-4 118 2 12 4 18 14 22 28"/>
+          <path d="M48 47c5-11 13-16 27-16h42c13 0 22 5 28 14"/>
+          <line x1="48" y1="47" x2="145" y2="47"/>
+          <line x1="96" y1="31" x2="96" y2="47"/>
+          <circle cx="58" cy="76" r="12"/>
+          <circle cx="146" cy="76" r="12"/>
+        </svg>
+        <h3>Citro&euml;n Traction Avant</h3>
+        <div class="year">MODELJAAR 1952 &amp; 1953</div>
+        <p>Verkrijgbaar in wit of paars: de gestroomlijnde Franse klassieker met een unieke, elegante silhouet.</p>
+        <div class="price">vanaf &euro;50 per uur</div>
+      </div>
+
+      <div class="car-card">
+        <svg viewBox="0 0 200 100" fill="none" stroke="currentColor" stroke-width="2.4">
+          <path d="M10 73c58-3 124-3 180 0"/>
+          <path d="M16 73c1-14 7-24 22-28 20-5 108-5 128 1 13 4 20 14 24 27"/>
+          <path d="M50 46c6-10 15-15 30-15h38c14 0 24 5 30 14"/>
+          <line x1="50" y1="46" x2="148" y2="46"/>
+          <line x1="99" y1="31" x2="99" y2="46"/>
+          <circle cx="60" cy="75" r="12"/>
+          <circle cx="150" cy="75" r="12"/>
+          <rect x="88" y="52" width="24" height="8" rx="1"/>
+        </svg>
+        <h3>Rolls&#8209;Royce Silver Shadow</h3>
+        <div class="year">MODELJAAR 1967</div>
+        <p>De koninklijke keuze: statig, ruim en indrukwekkend &mdash; voor een entree die niemand vergeet.</p>
+        <div class="price">vanaf &euro;50 per uur</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="werkwijze">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">HOE HET WERKT</div>
+      <h2>Van aanvraag tot aankomst</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="num">I</div>
+        <h3>Vraag aan</h3>
+        <p>Stuur uw datum, route en gewenste auto via het formulier of telefonisch door.</p>
+      </div>
+      <div class="step">
+        <div class="num">II</div>
+        <h3>Offerte</h3>
+        <p>Binnen &eacute;&eacute;n dag ontvangt u een heldere prijsopgave, zonder verrassingen achteraf.</p>
+      </div>
+      <div class="step">
+        <div class="num">III</div>
+        <h3>Bevestiging</h3>
+        <p>Na akkoord leggen we alle details vast: tijden, adressen en eventuele wensen.</p>
+      </div>
+      <div class="step">
+        <div class="num">IV</div>
+        <h3>De grote dag</h3>
+        <p>Onze chauffeur staat op tijd klaar, in pak, met de auto blinkend gepoetst.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="recensies">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">ERVARINGEN</div>
+      <h2>Wat bruidsparen zeggen</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="quote">De chauffeur dacht met ons mee en de A-Ford was prachtig gepoetst. Precies de sfeer die we zochten.</p>
+        <div class="who">Marieke &amp; Bas<span>Purmerend</span></div>
+      </div>
+      <div class="review">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="quote">Rustig, stipt en heel persoonlijk geregeld. De Citro&euml;n trok alle aandacht tijdens de foto's.</p>
+        <div class="who">Sanne &amp; Robert<span>Edam</span></div>
+      </div>
+      <div class="review">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="quote">Van eerste contact tot de rit zelf: alles verliep soepel. Een aanrader voor iedereen die iets bijzonders zoekt.</p>
+        <div class="who">Fam. de Groot<span>Hoorn</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-strip">
+  <h2>Reserveer uw trouwdatum</h2>
+  <p>Populaire data raken snel vol &mdash; neem tijdig contact op om uw wensdatum vast te leggen.</p>
+  <a href="#contact" class="btn">Bekijk beschikbaarheid</a>
+</div>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="eyebrow" style="color:var(--gold);font-size:14px;letter-spacing:2px;margin-bottom:10px;">CONTACT</div>
+        <h2>Laten we uw dag<br>bespreken</h2>
+        <p>Neem gerust contact op voor beschikbaarheid, prijzen of een vrijblijvend kennismakingsgesprek.</p>
+
+        <div class="info-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6l8 6 8-6" stroke-linecap="round" stroke-linejoin="round"/><rect x="3" y="5" width="18" height="14" rx="1.5"/></svg>
+          <div><div class="label">E-MAIL</div><div class="val">info@trouwautopurmerend.nl</div></div>
+        </div>
+        <div class="info-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h3l2 5-2.5 1.5a12 12 0 0 0 6 6L16 13l5 2v3c0 1-1 2-2 2-8 0-15-7-15-15 0-1 1-2 2-2z" stroke-linejoin="round"/></svg>
+          <div><div class="label">TELEFOON</div><div class="val">op aanvraag beschikbaar</div></div>
+        </div>
+        <div class="info-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="10" r="3"/><path d="M12 21c5-6 8-9.5 8-13a8 8 0 1 0-16 0c0 3.5 3 7 8 13z"/></svg>
+          <div><div class="label">WERKGEBIED</div><div class="val">Purmerend, Waterland &amp; Noord-Holland</div></div>
+        </div>
+      </div>
+
+      <form>
+        <div class="field">
+          <label for="naam">Naam</label>
+          <input id="naam" type="text" placeholder="Voor- en achternaam">
+        </div>
+        <div class="field">
+          <label for="datum">Trouwdatum</label>
+          <input id="datum" type="date">
+        </div>
+        <div class="field">
+          <label for="auto">Gewenste auto</label>
+          <select id="auto">
+            <option>A-Ford (1931)</option>
+            <option>Citro&euml;n Traction Avant</option>
+            <option>Rolls-Royce Silver Shadow</option>
+            <option>Weet ik nog niet</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="bericht">Bericht</label>
+          <textarea id="bericht" placeholder="Route, aantal uren, bijzondere wensen..."></textarea>
+        </div>
+        <button type="button" class="btn filled">Verstuur aanvraag</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="brand" style="justify-content:center;">
+    <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" style="width:38px;height:38px;color:var(--gold-light)">
+      <ellipse cx="32" cy="46" rx="26" ry="4"/>
+      <path d="M8 40c2-10 8-16 24-16s22 6 24 16" stroke-linecap="round"/>
+      <circle cx="20" cy="42" r="5"/>
+      <circle cx="44" cy="42" r="5"/>
+    </svg>
+    <div class="brand-text"><div class="name">Trouwauto Purmerend</div></div>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="#auto's">Onze auto's</a></li>
+      <li><a href="#werkwijze">Werkwijze</a></li>
+      <li><a href="#recensies">Recensies</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="fine">&copy; Trouwauto Purmerend &mdash; oldtimers met chauffeur voor uw mooiste dag</div>
+</footer>
+
+</body>
+</html>
 
