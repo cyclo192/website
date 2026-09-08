@@ -28,7 +28,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Crect width='256' height='256' rx='40' fill='%23162019'/%3E%3Ctext x='128' y='172' text-anchor='middle' font-family='Georgia, serif' font-size='140' font-weight='600' fill='%232f6f4f'%3ER%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Crect width='256' height='256' rx='40' fill='%23162019'/%3E%3Ctext x='128' y='172' text-anchor='middle' font-family='Georgia, serif' font-style='italic' font-size='140' font-weight='600' fill='%232f6f4f'%3ER%3C/text%3E%3C/svg%3E">
 <style>
   :root{
     --paper:#efece4;
@@ -84,6 +84,7 @@
     letter-spacing:-0.01em; text-decoration:none; color:var(--ink);
   }
   .logo .dot{color:var(--accent);}
+  .logo .logo-r{font-style:italic; color:var(--accent);}
   nav.links{display:flex; align-items:center; gap:32px; font-size:0.95rem;}
   nav.links a{text-decoration:none; color:var(--ink-soft);}
   nav.links a:hover{color:var(--ink);}
@@ -245,7 +246,7 @@
 <body>
 <header>
   <div class="wrap nav-row">
-    <a href="#top" class="logo">Reinouwers<span class="dot">.</span></a>
+    <a href="#top" class="logo"><span class="logo-r">R</span>einouwers<span class="dot">.</span></a>
     <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
     <nav class="links" id="navLinks">
       <a href="#top">Home</a>
