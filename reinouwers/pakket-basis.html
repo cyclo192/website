@@ -107,6 +107,12 @@
     nav.links a{padding:12px 0; border-bottom:1px solid var(--line); width:100%;}
     .menu-toggle{display:inline-block;}
   }
+  .back-link{
+    display:inline-flex; align-items:center; gap:6px;
+    font-size:0.9rem; color:var(--ink-soft); text-decoration:none;
+    margin-bottom:20px; font-family:'Inter', sans-serif;
+  }
+  .back-link:hover{color:var(--ink);}
   .detail-hero{padding:72px 0 56px; border-bottom:1px solid var(--line);}
   .detail-price{display:flex; align-items:baseline; gap:8px; margin-top:22px;}
   .detail-price .amount{font-family:'Fraunces', serif; font-size:2.4rem;}
@@ -136,6 +142,7 @@
 </header>
 <section class="detail-hero blueprint">
   <div class="wrap">
+    <a href="pakketten.html" class="back-link" onclick="if(window.history.length>1){window.history.back();return false;}">&larr; Terug</a>
     <div class="kicker"><span class="swatch"></span>Pakket</div>
     <h1 style="font-size:clamp(2.2rem, 5vw, 3.2rem);">Basis</h1>
     <p style="color:var(--ink-soft); font-size:1.1rem; margin-top:14px; max-width:56ch;">Voor wie snel en overzichtelijk online wil staan, zonder poespas.</p>
