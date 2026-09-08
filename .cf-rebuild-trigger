@@ -1,2 +1,0 @@
-Trigger a fresh build for all Cloudflare Pages/Workers projects after updating their root directories.
-Retry: 2
