@@ -184,6 +184,7 @@
   }
   #contact{border-top:1px solid var(--line);}
   .contact-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:64px; align-items:start;}
+  .pakketten-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:64px; align-items:center;}
   form{display:flex; flex-direction:column; gap:18px; max-width:460px;}
   form > div{display:flex; flex-direction:column; gap:6px;}
   label{font-size:0.85rem; color:var(--ink-soft); font-weight:500;}
@@ -209,13 +210,17 @@
   .contact-direct-value{color:var(--ink-soft); font-size:0.9rem;}
   .whatsapp-float{
     position:fixed; right:24px; bottom:24px; z-index:50;
+    right:calc(24px + env(safe-area-inset-right));
+    bottom:calc(24px + env(safe-area-inset-bottom));
     display:flex; align-items:center; gap:10px;
     background:#25D366; color:var(--white);
     padding:16px 24px; border-radius:999px;
     text-decoration:none; box-shadow:0 10px 26px rgba(20,24,28,0.28);
     transition:transform .15s ease, background .15s ease;
+    -webkit-tap-highlight-color:transparent;
   }
   .whatsapp-float:hover{background:#1ebc59; transform:translateY(-2px);}
+  .whatsapp-float:active{transform:scale(0.96);}
   .whatsapp-float svg{flex-shrink:0;}
   .whatsapp-float-label{font-weight:600; font-size:1.05rem;}
   footer{border-top:1px solid var(--line); padding:32px 0;}
@@ -236,44 +241,53 @@
     nav.links.open{display:flex;}
     nav.links a{padding:12px 0; border-bottom:1px solid var(--line); width:100%;}
     .menu-toggle{display:inline-block;}
-    .over-grid, .contact-grid, .wieikben-grid{grid-template-columns:1fr; gap:36px;}
+    .over-grid, .contact-grid, .wieikben-grid, .pakketten-grid{grid-template-columns:1fr; gap:36px;}
     .over-figures-row{grid-template-columns:1fr;}
     .over-figures-row .over-figure + .over-figure{border-left:none; border-top:1px solid var(--line);}
     .project-grid{grid-template-columns:1fr;}
     .pricing-grid{grid-template-columns:1fr; max-width:none;}
   }
   @media (max-width: 600px){
-    .whatsapp-float{padding:18px; border-radius:50%;}
+    .whatsapp-float{
+      padding:16px; border-radius:50%;
+      right:calc(16px + env(safe-area-inset-right));
+      bottom:calc(16px + env(safe-area-inset-bottom));
+    }
     .whatsapp-float-label{display:none;}
-  .intent-card{
-    position:fixed; right:24px; bottom:100px; z-index:80;
-    width:300px; max-width:calc(100vw - 48px);
-    background:var(--white); border:1px solid var(--line); border-radius:14px;
-    box-shadow:0 16px 40px rgba(20,24,28,0.18);
-    padding:22px 22px 20px;
-    transform:translateY(16px); opacity:0; pointer-events:none;
-    transition:transform .35s ease, opacity .35s ease;
   }
-  .intent-card.visible{transform:translateY(0); opacity:1; pointer-events:auto;}
-  .intent-card-close{
-    position:absolute; top:10px; right:12px; background:none; border:none;
-    font-size:1.2rem; color:var(--ink-soft); cursor:pointer; line-height:1; padding:4px;
+  .whatsapp-bubble{
+    position:fixed; right:24px; bottom:98px; z-index:79;
+    right:calc(24px + env(safe-area-inset-right));
+    bottom:calc(98px + env(safe-area-inset-bottom));
+    width:230px; max-width:calc(100vw - 48px);
+    background:var(--white); color:var(--ink);
+    border:1px solid var(--line); border-radius:14px;
+    padding:14px 32px 14px 16px;
+    font-size:0.9rem; line-height:1.4; font-weight:500;
+    box-shadow:0 10px 26px rgba(20,24,28,0.16);
+    opacity:0; transform:translateY(8px);
+    transition:opacity .4s ease, transform .4s ease;
+    pointer-events:none;
   }
-  .intent-card h3{font-size:1.05rem; margin-right:20px;}
-  .intent-card p{color:var(--ink-soft); font-size:0.88rem; margin-top:6px;}
-  .intent-card-options{list-style:none; margin:16px 0 0; padding:0; display:flex; flex-direction:column; gap:8px;}
-  .intent-card-options button{
-    width:100%; text-align:left; font-family:'Inter',sans-serif; font-size:0.9rem;
-    padding:10px 12px; border-radius:8px; border:1px solid var(--line);
-    background:var(--paper); color:var(--ink); cursor:pointer;
-    transition:background .15s ease, border-color .15s ease;
+  .whatsapp-bubble.visible{opacity:1; transform:translateY(0); pointer-events:auto;}
+  .whatsapp-bubble::after{
+    content:""; position:absolute; right:32px; bottom:-8px;
+    width:16px; height:16px; background:var(--white);
+    border-right:1px solid var(--line); border-bottom:1px solid var(--line);
+    transform:rotate(45deg);
   }
-  .intent-card-options button:hover{background:var(--accent-soft); border-color:var(--accent);}
-  .intent-card-options button.muted{background:transparent; border-color:transparent; color:var(--ink-soft); font-size:0.85rem; text-align:center;}
-  .intent-card-options button.muted:hover{color:var(--ink); background:transparent;}
+  .whatsapp-bubble-close{
+    position:absolute; top:0; right:0; background:none; border:none;
+    font-size:1.1rem; color:var(--ink-soft); cursor:pointer; line-height:1;
+    padding:12px; -webkit-tap-highlight-color:transparent;
+  }
   @media (max-width: 600px){
-    .intent-card{left:16px; right:16px; width:auto; bottom:92px;}
-  }
+    .whatsapp-bubble{
+      right:calc(12px + env(safe-area-inset-right));
+      bottom:calc(84px + env(safe-area-inset-bottom));
+      width:min(260px, calc(100vw - 24px));
+    }
+    .whatsapp-bubble::after{right:26px;}
   }
 </style>
 </head>
@@ -339,32 +353,39 @@
   </div>
 </section>
 <section id="pakketten">
-  <div class="wrap">
-    <div class="section-head">
+  <div class="wrap pakketten-grid">
+    <div>
       <div class="kicker"><span class="swatch"></span>Pakketten</div>
       <h2>Kies wat bij je bedrijf past.</h2>
-      <p>Dit is de meest gekozen optie. Bekijk alle pakketten voor Basis, Op maat en Custom, met alle details op een rij.</p>
+      <p style="margin-top:20px; color:var(--ink-soft); font-size:1.02rem;">Compleet is de meest gekozen optie: een site met meerdere pagina's of secties, een volledig eigen ontwerp en een werkend contact- of afsprakenformulier.</p>
+      <p style="color:var(--ink-soft); font-size:1.02rem;">Past dit niet precies bij jouw bedrijf? Bekijk ook Basis, Op maat en Custom, met alle details op een rij.</p>
+      <ul class="pricing-features" style="margin-top:24px;">
+        <li><span class="check"></span>Vaste prijs vooraf, geen verrassingen achteraf</li>
+        <li><span class="check"></span>Volledig eigen ontwerp, geen sjabloon van de plank</li>
+        <li><span class="check"></span>Persoonlijk contact, van start tot livegang</li>
+      </ul>
+      <a href="pakketten.html" class="btn" style="background:transparent; color:var(--ink); border-color:var(--line); margin-top:28px;">Bekijk alle pakketten</a>
     </div>
-    <div class="pricing-grid" style="grid-template-columns:1fr; max-width:420px; margin:0 auto;">
-      <div class="pricing-card featured">
-        <div class="pricing-featured-label">Meest gekozen</div>
-        <h3 class="pricing-name">Compleet</h3>
-        <p class="pricing-for">Voor bedrijven die klanten willen laten reageren, niet alleen lezen.</p>
-        <div class="pricing-price">
-          <span class="amount">&euro;300</span>
-          <span class="period">eenmalig</span>
-        </div>
-        <ul class="pricing-features">
-          <li><span class="check"></span>Alles uit Basis</li>
-          <li><span class="check"></span>Meerdere pagina's of secties</li>
-          <li><span class="check"></span>Eigen contact- of afsprakenformulier</li>
-          <li><span class="check"></span>Volledig eigen ontwerp, geen sjabloon</li>
-          <li><span class="check"></span>Basis zoekmachine-optimalisatie</li>
-        </ul>
-        <a href="pakketten.html" class="btn accent" style="text-align:center;">Bekijk alle pakketten</a>
+    <div class="pricing-card featured">
+      <div class="pricing-featured-label">Meest gekozen</div>
+      <h3 class="pricing-name">Compleet</h3>
+      <p class="pricing-for">Voor bedrijven die klanten willen laten reageren, niet alleen lezen.</p>
+      <div class="pricing-price">
+        <span class="amount">&euro;300</span>
+        <span class="period">eenmalig</span>
       </div>
+      <ul class="pricing-features">
+        <li><span class="check"></span>Alles uit Basis</li>
+        <li><span class="check"></span>Meerdere pagina's of secties</li>
+        <li><span class="check"></span>Eigen contact- of afsprakenformulier</li>
+        <li><span class="check"></span>Volledig eigen ontwerp, geen sjabloon</li>
+        <li><span class="check"></span>Basis zoekmachine-optimalisatie</li>
+      </ul>
+      <a href="pakket-compleet.html" class="btn accent" style="text-align:center;">Kies dit pakket</a>
     </div>
-    <p class="pricing-note">Prijzen zijn indicatief en exclusief hosting en domeinnaam, en altijd bespreekbaar. Na het contactformulier krijg je een offerte op maat.</p>
+  </div>
+  <div class="wrap">
+    <p class="pricing-note" style="margin-top:40px;">Prijzen zijn indicatief en exclusief hosting en domeinnaam, en altijd bespreekbaar. Na het contactformulier krijg je een offerte op maat.</p>
   </div>
 </section>
 <section id="overmij">
@@ -375,7 +396,7 @@
     <div class="wieikben-tekst">
       <div class="kicker"><span class="swatch"></span>Over mij</div>
       <h2>Hoi, ik ben Djego.</h2>
-      <p style="margin-top:20px;">Ik ben de persoon achter Reinouwers. Ik bouw websites voor kleine bedrijven en zzp&rsquo;ers omdat ik het leuk vind om iets tastbaars neer te zetten waar ondernemers echt iets aan hebben &mdash; een site die klopt, snel laadt, en precies laat zien wie je bent.</p>
+      <p style="margin-top:20px;">Ik ben de persoon achter Reinouwers. Ik bouw websites voor kleine bedrijven en zzp&rsquo;ers omdat ik het leuk vind om iets tastbaars neer te zetten waar ondernemers echt iets aan hebben. Een site die klopt, snel laadt, en precies laat zien wie je bent.</p>
       <p>Geen overbodige poespas of ingewikkelde systemen: ik werk het liefst persoonlijk, zonder tussenpersonen of wisselende contactpersonen. Je hebt gewoon mij, van het eerste idee tot de dag dat je site live staat.</p>
       <p style="margin-top:20px; font-weight:600; color:var(--ink);">Waarom bedrijven voor mij kiezen</p>
       <ul class="pricing-features" style="margin-top:14px;">
@@ -452,22 +473,14 @@
     <span>&copy; <span id="jaar"></span></span>
   </div>
 </footer>
+<div class="whatsapp-bubble" id="waBubble">
+  <button class="whatsapp-bubble-close" id="waBubbleClose" aria-label="Sluiten">&times;</button>
+  Heb je vragen? Neem contact op!
+</div>
 <a href="https://wa.me/31626683986?text=Hoi%20Djego%2C%20ik%20heb%20een%20vraag%20over%20een%20website" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Stuur een WhatsApp-bericht naar Djego">
   <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.36.101 11.943c0 2.105.549 4.16 1.595 5.976L0 24l6.335-1.652a11.882 11.882 0 0 0 5.71 1.447h.006c6.585 0 11.946-5.363 11.949-11.945 0-3.191-1.242-6.19-3.48-8.401"/></svg>
   <span class="whatsapp-float-label">WhatsApp</span>
 </a>
-<div class="intent-card" id="intentCard" role="dialog" aria-label="Waar ben je naar op zoek?">
-  <button class="intent-card-close" id="intentCardClose" aria-label="Sluiten">&times;</button>
-  <h3>Waar ben je naar op zoek?</h3>
-  <p>Ik help je graag meteen naar het juiste stuk van de site.</p>
-  <ul class="intent-card-options">
-    <li><button type="button" data-target="#pakketten">Wat kost een website?</button></li>
-    <li><button type="button" data-target="#projecten">Voorbeelden bekijken</button></li>
-    <li><button type="button" data-target="#overmij">Meer over mij</button></li>
-    <li><button type="button" data-target="#contact">Direct een offerte aanvragen</button></li>
-    <li><button type="button" class="muted" id="intentCardDismiss">Ik kijk gewoon rond</button></li>
-  </ul>
-</div>
 <script>
   document.getElementById("jaar").textContent = new Date().getFullYear();
   const toggle = document.getElementById('menuToggle');
@@ -503,26 +516,13 @@
     }
   });
   (function(){
-    var card = document.getElementById('intentCard');
-    if(!card) return;
-    var STORAGE_KEY = 'reinouwersIntentCardSeen';
-    function hideCard(){
-      card.classList.remove('visible');
-      try{ localStorage.setItem(STORAGE_KEY, '1'); }catch(e){}
-    }
-    var alreadySeen = false;
-    try{ alreadySeen = localStorage.getItem(STORAGE_KEY) === '1'; }catch(e){}
-    if(!alreadySeen){
-      setTimeout(function(){ card.classList.add('visible'); }, 4000);
-    }
-    document.getElementById('intentCardClose').addEventListener('click', hideCard);
-    document.getElementById('intentCardDismiss').addEventListener('click', hideCard);
-    card.querySelectorAll('button[data-target]').forEach(function(btn){
-      btn.addEventListener('click', function(){
-        var target = document.querySelector(btn.getAttribute('data-target'));
-        hideCard();
-        if(target){ target.scrollIntoView({behavior:'smooth'}); }
-      });
+    var bubble = document.getElementById('waBubble');
+    if(!bubble) return;
+    var timer = setTimeout(function(){ bubble.classList.add('visible'); }, 2200);
+    var closeBtn = document.getElementById('waBubbleClose');
+    closeBtn.addEventListener('click', function(){
+      clearTimeout(timer);
+      bubble.classList.remove('visible');
     });
   })();
 </script>
