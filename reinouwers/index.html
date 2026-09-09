@@ -485,6 +485,17 @@
 </a>
 <script>
   document.getElementById("jaar").textContent = new Date().getFullYear();
+  (function(){
+    var params = new URLSearchParams(window.location.search);
+    var pre = params.get('bericht');
+    if(pre){
+      var el = document.getElementById('bericht');
+      if(el){
+        el.value = pre;
+        el.focus();
+      }
+    }
+  })();
   const toggle = document.getElementById('menuToggle');
   const links = document.getElementById('navLinks');
   toggle.addEventListener('click', () => {

@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Custom Build — Reinouwers</title>
+<meta name="description" content="Stel zelf de richting van je website samen: kleurthema, secties, lettertype en branche. Je krijgt direct een levende preview en een offerte op maat.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Crect width='256' height='256' rx='40' fill='%23162019'/%3E%3Ctext x='128' y='172' text-anchor='middle' font-family='Georgia, serif' font-style='italic' font-size='140' font-weight='600' fill='%232f6f4f'%3ER%3C/text%3E%3C/svg%3E">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#efece4;
+    --ink:#14181c;
+    --ink-soft:#4b535a;
+    --line: rgba(20,24,28,0.12);
+    --accent:#3c8f65;
+    --accent-soft:#e4eee7;
+    --white:#fdfcf9;
+    --max:1120px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    line-height:1.1;
+    margin:0;
+  }
+  a{color:inherit;}
+  button{font-family:inherit;}
+  :focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 32px;}
+  .blueprint{
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  header{
+    position:sticky; top:0; z-index:40;
+    background:rgba(239,236,228,0.9);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-row{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 0;
+  }
+  .logo{
+    font-family:'Fraunces', serif; font-weight:700; font-size:1.25rem;
+    letter-spacing:-0.01em; text-decoration:none; color:var(--ink);
+  }
+  .logo .dot{color:var(--accent);}
+  .logo .logo-r{font-style:italic; color:var(--accent);}
+  nav.links{display:flex; align-items:center; gap:32px; font-size:0.95rem;}
+  nav.links a{text-decoration:none; color:var(--ink-soft);}
+  nav.links a:hover{color:var(--ink);}
+  nav.links a.btn{color:var(--white);}
+  nav.links a.btn:hover{color:var(--white);}
+  .menu-toggle{
+    display:none; background:none; border:1px solid var(--line); border-radius:6px;
+    color:var(--ink); padding:8px 12px; font-size:0.95rem; font-family:'Inter',sans-serif;
+  }
+  .btn{
+    display:inline-block; font-family:'Inter', sans-serif; font-weight:600;
+    font-size:0.92rem; padding:12px 22px; border-radius:6px;
+    border:1px solid var(--ink); background:var(--ink); color:var(--white);
+    text-decoration:none; cursor:pointer;
+    transition:background .15s ease, border-color .15s ease;
+  }
+  .btn:hover{background:#000;}
+  .btn.accent{background:var(--accent); border-color:var(--accent);}
+  .btn.accent:hover{background:#347753;}
+  section{padding:64px 0;}
+  .kicker{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:0.9rem; color:var(--ink-soft); margin-bottom:22px;
+  }
+  .kicker .swatch{width:8px; height:8px; border-radius:50%; background:var(--accent);}
+  .back-link{
+    display:flex; width:fit-content; align-items:center; gap:6px;
+    font-size:0.9rem; color:var(--ink-soft); text-decoration:none;
+    margin-bottom:20px; font-family:'Inter', sans-serif;
+  }
+  .back-link:hover{color:var(--ink);}
+  footer{border-top:1px solid var(--line); padding:32px 0;}
+  .foot-row{
+    display:flex; justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:12px; font-size:0.88rem; color:var(--ink-soft);
+  }
+  @media (max-width: 860px){
+    nav.links{
+      position:absolute; top:100%; left:0; right:0; background:var(--paper);
+      border-bottom:1px solid var(--line); flex-direction:column; align-items:flex-start;
+      gap:0; display:none; padding:8px 32px 20px;
+    }
+    nav.links.open{display:flex;}
+    nav.links a{padding:12px 0; border-bottom:1px solid var(--line); width:100%;}
+    .menu-toggle{display:inline-block;}
+  }
+
+  /* ---------- BUILDER ---------- */
+  .builder-intro h1{font-size:clamp(2rem, 4.5vw, 3rem);}
+  .builder-intro p.lede{color:var(--ink-soft); font-size:1.08rem; margin-top:14px; max-width:60ch;}
+  .builder-steps{display:flex; gap:26px; flex-wrap:wrap; margin-top:30px;}
+  .builder-step{display:flex; align-items:baseline; gap:10px; font-size:0.92rem; color:var(--ink-soft);}
+  .builder-step b{font-family:'Fraunces',serif; color:var(--ink); font-size:1.1rem;}
+
+  .builder-layout{
+    display:grid; grid-template-columns:1fr 1fr; gap:44px; align-items:start; margin-top:8px;
+  }
+  .builder-choices{display:flex; flex-direction:column; gap:20px;}
+  .choice-panel{
+    background:var(--white); border:1px solid var(--line); border-radius:14px; padding:24px;
+  }
+  .choice-panel h3{font-size:1.05rem;}
+  .choice-panel .hint{color:var(--ink-soft); font-size:0.85rem; margin-top:4px; margin-bottom:16px;}
+  .option-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:10px;}
+  .option-btn{
+    border:1.5px solid var(--line); background:var(--paper); border-radius:10px;
+    padding:12px 14px; text-align:left; cursor:pointer; font-size:0.86rem; color:var(--ink);
+    transition:border-color .15s, background .15s, transform .1s;
+    display:flex; flex-direction:column; gap:8px;
+  }
+  .option-btn:hover{border-color:#b9b2a2;}
+  .option-btn.active{border-color:var(--accent); background:var(--accent-soft); box-shadow:0 0 0 1px var(--accent);}
+  .option-btn .label-row{display:flex; align-items:center; justify-content:space-between; gap:6px;}
+  .option-btn .name{font-weight:600;}
+  .option-btn .check-dot{
+    width:16px; height:16px; border-radius:50%; border:1.5px solid var(--line);
+    flex:none; position:relative; background:var(--white);
+  }
+  .option-btn.active .check-dot{border-color:var(--accent); background:var(--accent);}
+  .option-btn.active .check-dot::after{
+    content:""; position:absolute; inset:4px; border-radius:50%; background:var(--white);
+  }
+  .swatch-row{display:flex; gap:5px;}
+  .swatch-row span{width:15px; height:15px; border-radius:50%; display:block; border:1px solid rgba(0,0,0,.08);}
+  .option-btn .desc{color:var(--ink-soft); font-size:0.78rem; line-height:1.35;}
+  .option-btn .font-sample{font-size:1.1rem; line-height:1;}
+  .section-toggle-list{display:flex; flex-direction:column; gap:8px;}
+  .section-toggle{
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    border:1.5px solid var(--line); border-radius:10px; padding:11px 14px;
+    cursor:pointer; background:var(--paper); transition:border-color .15s, background .15s;
+  }
+  .section-toggle:hover{border-color:#b9b2a2;}
+  .section-toggle.active{border-color:var(--accent); background:var(--accent-soft);}
+  .section-toggle .name{font-size:0.9rem; font-weight:500;}
+  .section-toggle .sub{color:var(--ink-soft); font-size:0.76rem;}
+  .switch{
+    width:36px; height:20px; border-radius:999px; background:var(--line); position:relative; flex:none;
+    transition:background .15s;
+  }
+  .switch::after{
+    content:""; position:absolute; top:2px; left:2px; width:16px; height:16px; border-radius:50%;
+    background:var(--white); transition:left .15s; box-shadow:0 1px 2px rgba(0,0,0,.25);
+  }
+  .section-toggle.active .switch{background:var(--accent);}
+  .section-toggle.active .switch::after{left:18px;}
+  .section-toggle.locked{opacity:.6; cursor:default;}
+
+  .builder-preview{position:sticky; top:96px; display:flex; flex-direction:column; gap:18px;}
+  .preview-frame{
+    border:1px solid var(--line); border-radius:16px; overflow:hidden;
+    box-shadow:0 24px 60px -24px rgba(20,24,28,.28); background:#fff;
+  }
+  .preview-chrome{
+    display:flex; align-items:center; gap:6px; padding:10px 14px;
+    background:#e9e6dd; border-bottom:1px solid var(--line);
+  }
+  .preview-chrome span{width:9px; height:9px; border-radius:50%; background:#c9c2b3;}
+  .preview-chrome .url-pill{
+    margin-left:10px; flex:1; background:#fff; border-radius:999px; height:16px;
+    max-width:220px; opacity:.7;
+  }
+  .preview-body{
+    background:var(--pv-bg, #fafaf8); color:var(--pv-text, #1c1f22);
+    font-family:var(--pv-font, 'Inter', sans-serif);
+    max-height:520px; overflow-y:auto;
+  }
+  .pv-header{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 20px; border-bottom:1px solid var(--pv-line, rgba(0,0,0,.1));
+  }
+  .pv-logo{font-family:'Fraunces',serif; font-weight:700; font-size:0.95rem;}
+  .pv-navlinks{display:flex; gap:14px; font-size:0.72rem; color:var(--pv-soft, #666); flex-wrap:wrap;}
+  .pv-hero{padding:38px 20px; text-align:center;}
+  .pv-icon{
+    width:64px; height:64px; margin:0 auto 16px; color:var(--pv-accent, #3c8f65);
+    display:flex; align-items:center; justify-content:center;
+    border-radius:50%;
+    background:color-mix(in srgb, var(--pv-accent, #3c8f65) 14%, transparent);
+    box-shadow:0 0 0 1px color-mix(in srgb, var(--pv-accent, #3c8f65) 22%, transparent);
+  }
+  .pv-icon svg{width:26px; height:26px;}
+  .pv-hero-title{font-family:var(--pv-font,'Inter',sans-serif); font-weight:700; font-size:1.35rem; max-width:24ch; margin:0 auto;}
+  .pv-hero-sub{font-size:0.8rem; color:var(--pv-soft,#666); margin-top:10px; max-width:32ch; margin-left:auto; margin-right:auto;}
+  .pv-btn{
+    display:inline-block; margin-top:18px; background:var(--pv-accent,#3c8f65); color:#fff;
+    font-size:0.76rem; font-weight:600; padding:9px 18px; border-radius:6px;
+  }
+  .pv-section{padding:26px 20px; border-top:1px solid var(--pv-line, rgba(0,0,0,.08));}
+  .pv-section[hidden]{display:none;}
+  .pv-section-title{font-family:var(--pv-font,'Inter',sans-serif); font-weight:700; font-size:0.95rem; margin-bottom:14px;}
+  .pv-lines span{display:block; height:8px; border-radius:4px; background:var(--pv-line,rgba(0,0,0,.1)); margin-bottom:7px;}
+  .pv-lines span:nth-child(1){width:96%;}
+  .pv-lines span:nth-child(2){width:88%;}
+  .pv-lines span:nth-child(3){width:60%;}
+  .pv-cards, .pv-gallery, .pv-reviewrow{display:grid; gap:8px;}
+  .pv-cards{grid-template-columns:repeat(3,1fr);}
+  .pv-cards div{background:var(--pv-card,#fff); border:1px solid var(--pv-line,rgba(0,0,0,.08)); border-radius:8px; height:52px;}
+  .pv-gallery{grid-template-columns:repeat(4,1fr);}
+  .pv-gallery div{background:var(--pv-card,#fff); border:1px solid var(--pv-line,rgba(0,0,0,.08)); border-radius:8px; aspect-ratio:1;}
+  .pv-reviewrow{grid-template-columns:repeat(2,1fr);}
+  .pv-reviewrow div{background:var(--pv-card,#fff); border:1px solid var(--pv-line,rgba(0,0,0,.08)); border-radius:8px; height:60px;}
+  .pv-formmock{display:flex; flex-direction:column; gap:8px; max-width:260px;}
+  .pv-formmock span{display:block; height:22px; border-radius:6px; background:var(--pv-card,#fff); border:1px solid var(--pv-line,rgba(0,0,0,.1));}
+  .pv-formmock span:last-child{height:26px; width:110px; background:var(--pv-accent,#3c8f65); border:none;}
+
+  .selection-summary{
+    background:var(--white); border:1px solid var(--line); border-radius:12px; padding:16px 18px;
+    font-size:0.82rem; color:var(--ink-soft);
+  }
+  .selection-summary b{color:var(--ink); font-weight:600;}
+  .builder-cta{
+    background:var(--white); border:1px solid var(--line); border-radius:12px; padding:20px;
+    text-align:center;
+  }
+  .builder-cta p{font-size:0.82rem; color:var(--ink-soft); margin:10px 0 0;}
+  .builder-cta .btn{width:100%; text-align:center; padding:13px 22px;}
+
+  @media (max-width: 980px){
+    .builder-layout{grid-template-columns:1fr;}
+    .builder-preview{position:static; order:-1;}
+    .option-grid{grid-template-columns:1fr 1fr;}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav-row">
+    <a href="index.html#top" class="logo"><span class="logo-r">R</span>einouwers<span class="dot">.</span></a>
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    <nav class="links" id="navLinks">
+      <a href="index.html#top">Home</a>
+      <a href="index.html#projecten">Voorbeelden</a>
+      <a href="pakketten.html">Pakketten</a>
+      <a href="index.html#overmij">Over mij</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="index.html#contact" class="btn accent" style="padding:9px 18px;">Offerte aanvragen</a>
+    </nav>
+  </div>
+</header>
+
+<section class="blueprint builder-intro" style="padding:64px 0 40px; border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <a href="pakketten.html" class="back-link" onclick="if(window.history.length>1){window.history.back();return false;}">&larr; Terug naar pakketten</a>
+    <div class="kicker"><span class="swatch"></span>Custom Build</div>
+    <h1>Stel zelf de richting van je website samen.</h1>
+    <p class="lede">Kies een kleurthema, de onderdelen die je nodig hebt, een lettertype-sfeer en je branche. Je ziet meteen een levende preview &mdash; en aan het eind vraag je op basis van die keuzes direct een offerte aan.</p>
+    <div class="builder-steps">
+      <div class="builder-step"><b>1.</b> Jij kiest de richting</div>
+      <div class="builder-step"><b>2.</b> Ik neem je keuzes door</div>
+      <div class="builder-step"><b>3.</b> Je krijgt een concreet voorstel + offerte</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="builder-layout">
+      <div class="builder-choices">
+
+        <div class="choice-panel">
+          <h3>Kleurthema &amp; sfeer</h3>
+          <p class="hint">Bepaalt de basiskleuren van je site.</p>
+          <div class="option-grid" id="themeOptions" role="group" aria-label="Kleurthema"></div>
+        </div>
+
+        <div class="choice-panel">
+          <h3>Onderdelen van je site</h3>
+          <p class="hint">Hero staat er altijd op &mdash; kies verder wat je nodig hebt.</p>
+          <div class="section-toggle-list" id="sectionOptions" role="group" aria-label="Secties"></div>
+        </div>
+
+        <div class="choice-panel">
+          <h3>Lettertype-sfeer</h3>
+          <p class="hint">De stijl van je koppen en teksten.</p>
+          <div class="option-grid" id="fontOptions" role="group" aria-label="Lettertype"></div>
+        </div>
+
+        <div class="choice-panel">
+          <h3>Branche</h3>
+          <p class="hint">Voor een voorbeeld dat aansluit bij jouw bedrijf.</p>
+          <div class="option-grid" id="brancheOptions" role="group" aria-label="Branche"></div>
+        </div>
+
+      </div>
+
+      <div class="builder-preview">
+        <div class="preview-frame">
+          <div class="preview-chrome">
+            <span></span><span></span><span></span>
+            <div class="url-pill"></div>
+          </div>
+          <div class="preview-body" id="previewBody">
+            <div class="pv-header">
+              <span class="pv-logo" id="pvLogo">Uw Bedrijf</span>
+              <span class="pv-navlinks"><span>Home</span><span>Diensten</span><span>Contact</span></span>
+            </div>
+            <div class="pv-hero">
+              <div class="pv-icon" id="pvIcon"></div>
+              <div class="pv-hero-title" id="pvHeroTitle">Titel van uw bedrijf</div>
+              <div class="pv-hero-sub" id="pvHeroSub">Korte, pakkende omschrijving van wat u doet.</div>
+              <div class="pv-btn">Neem contact op</div>
+            </div>
+            <div class="pv-section" data-section="over">
+              <div class="pv-section-title">Over ons</div>
+              <div class="pv-lines"><span></span><span></span><span></span></div>
+            </div>
+            <div class="pv-section" data-section="diensten">
+              <div class="pv-section-title">Diensten</div>
+              <div class="pv-cards"><div></div><div></div><div></div></div>
+            </div>
+            <div class="pv-section" data-section="portfolio">
+              <div class="pv-section-title">Portfolio</div>
+              <div class="pv-gallery"><div></div><div></div><div></div><div></div></div>
+            </div>
+            <div class="pv-section" data-section="reviews">
+              <div class="pv-section-title">Reviews</div>
+              <div class="pv-reviewrow"><div></div><div></div></div>
+            </div>
+            <div class="pv-section" data-section="contact">
+              <div class="pv-section-title">Contact</div>
+              <div class="pv-formmock"><span></span><span></span><span></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="selection-summary" id="selectionSummary"></div>
+
+        <div class="builder-cta">
+          <a href="index.html#contact" class="btn accent" id="builderCtaBtn">Vraag offerte aan op basis van deze keuzes</a>
+          <p>Dit is een levende schets, geen definitief ontwerp. Op basis van je keuzes stel ik een concreet voorstel en offerte op maat op.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-row">
+    <span>Reinouwers</span>
+    <span>&copy; <span id="jaar"></span></span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("jaar").textContent = new Date().getFullYear();
+  const toggle = document.getElementById('menuToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    const isOpen = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
+
+  /* ---------- BUILDER DATA ---------- */
+  const THEMES = [
+    { id:'licht', name:'Licht & minimalistisch', desc:'Wit met zwart, rustig en strak.',
+      bg:'#fafaf8', text:'#1c1f22', soft:'#5b6167', accent:'#3c8f65', card:'#ffffff', line:'rgba(20,24,28,.12)',
+      swatches:['#fafaf8','#1c1f22','#3c8f65'] },
+    { id:'donker', name:'Donker & luxe', desc:'Donkere achtergrond, warme accenten.',
+      bg:'#14181c', text:'#f5f1e6', soft:'#b9b2a2', accent:'#d4a24c', card:'#1e242a', line:'rgba(245,241,230,.16)',
+      swatches:['#14181c','#f5f1e6','#d4a24c'] },
+    { id:'kleurrijk', name:'Kleurrijk & speels', desc:'Warme, vrolijke basis met felle accentkleur.',
+      bg:'#fff8f0', text:'#2b2620', soft:'#6d6255', accent:'#ef6f5b', card:'#ffffff', line:'rgba(43,38,32,.12)',
+      swatches:['#fff8f0','#2b2620','#ef6f5b'] },
+    { id:'klassiek', name:'Klassiek & warm', desc:'Crèmetinten met een sierlijke, tijdloze toon.',
+      bg:'#f3ede1', text:'#2c2013', soft:'#5b4a36', accent:'#8a5a2b', card:'#faf6ec', line:'rgba(44,32,19,.15)',
+      swatches:['#f3ede1','#2c2013','#8a5a2b'] }
+  ];
+
+  const FONTS = [
+    { id:'modern', name:'Modern strak', sample:'Aa', family:"'Inter', sans-serif", desc:'Sans-serif, zakelijk en helder.' },
+    { id:'klassiek', name:'Klassiek sierlijk', sample:'Aa', family:"'Fraunces', serif", desc:'Serif, warm en tijdloos.' },
+    { id:'speels', name:'Speels', sample:'Aa', family:"'Quicksand', sans-serif", desc:'Rond en vriendelijk.' }
+  ];
+
+  const ICONS = {
+    horeca: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 2v8a2 2 0 0 0 2 2v10M7 2v6M9 2v6M11 2v8a2 2 0 0 1-2 2" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 2c-2 2-2 5-2 7 0 2 1 3 2 3v10" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    kapper: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.5 15.5M20 20 8.5 8.5" stroke-linecap="round"/></svg>',
+    bouw: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m14 6 4 4-8.5 8.5a2 2 0 0 1-2.8 0l-1.2-1.2a2 2 0 0 1 0-2.8L14 6Z" stroke-linejoin="round"/><path d="m17.5 2.5 4 4L19 9l-4-4 2.5-2.5Z" stroke-linejoin="round"/></svg>',
+    winkel: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 8h12l1 12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2L6 8Z" stroke-linejoin="round"/><path d="M9 8V6a3 3 0 0 1 6 0v2" stroke-linecap="round"/></svg>',
+    zakelijk: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke-linecap="round"/></svg>'
+  };
+
+  const BRANCHES = [
+    { id:'horeca', name:'Horeca', desc:'Restaurant, café, bistro.', title:'Genieten bij Bistro Voorbeeld', sub:'Verse gerechten en een gastvrije sfeer, iedere dag anders.' },
+    { id:'kapper', name:'Kapper & beauty', desc:'Salon, barbier, beauty.', title:'Style bij Salon Voorbeeld', sub:'Knippen, kleuren en styling met persoonlijke aandacht.' },
+    { id:'bouw', name:'Bouw & vakman', desc:'Aannemer, klusbedrijf.', title:'Vakwerk van Bouwbedrijf Voorbeeld', sub:'Verbouwen, renoveren en onderhoud waar u op kunt bouwen.' },
+    { id:'winkel', name:'Winkel & retail', desc:'Webshop, winkel.', title:'Nieuw bij Winkel Voorbeeld', sub:'Handgekozen collectie en persoonlijk advies in de winkel.' },
+    { id:'zakelijk', name:'Algemeen zakelijk', desc:'Advies, dienstverlening.', title:'Advies van Bureau Voorbeeld', sub:'Persoonlijk en professioneel, precies wat uw bedrijf nodig heeft.' }
+  ];
+
+  const SECTIONS = [
+    { id:'over', name:'Over ons', sub:'Wie u bent en waar u voor staat', locked:false },
+    { id:'diensten', name:'Diensten / producten', sub:'Wat u aanbiedt', locked:false },
+    { id:'portfolio', name:"Portfolio / foto's", sub:'Voorbeelden van uw werk', locked:false },
+    { id:'reviews', name:'Reviews', sub:'Wat klanten zeggen', locked:false },
+    { id:'contact', name:'Contact', sub:'Formulier of gegevens', locked:false }
+  ];
+
+  const state = {
+    theme:'licht',
+    font:'modern',
+    branche:'horeca',
+    sections: new Set(['over','diensten','contact'])
+  };
+
+  function buildThemeOptions(){
+    const wrap = document.getElementById('themeOptions');
+    wrap.innerHTML = THEMES.map(t => `
+      <button type="button" class="option-btn" data-theme="${t.id}" aria-pressed="false">
+        <div class="label-row">
+          <span class="name">${t.name}</span>
+          <span class="check-dot"></span>
+        </div>
+        <span class="swatch-row">${t.swatches.map(c=>`<span style="background:${c}"></span>`).join('')}</span>
+        <span class="desc">${t.desc}</span>
+      </button>
+    `).join('');
+    wrap.querySelectorAll('.option-btn').forEach(btn=>{
+      btn.addEventListener('click', ()=>{ state.theme = btn.dataset.theme; render(); });
+    });
+  }
+
+  function buildFontOptions(){
+    const wrap = document.getElementById('fontOptions');
+    wrap.innerHTML = FONTS.map(f => `
+      <button type="button" class="option-btn" data-font="${f.id}" aria-pressed="false">
+        <div class="label-row">
+          <span class="font-sample" style="font-family:${f.family}">${f.sample}</span>
+          <span class="check-dot"></span>
+        </div>
+        <span class="name">${f.name}</span>
+        <span class="desc">${f.desc}</span>
+      </button>
+    `).join('');
+    wrap.querySelectorAll('.option-btn').forEach(btn=>{
+      btn.addEventListener('click', ()=>{ state.font = btn.dataset.font; render(); });
+    });
+  }
+
+  function buildBrancheOptions(){
+    const wrap = document.getElementById('brancheOptions');
+    wrap.innerHTML = BRANCHES.map(b => `
+      <button type="button" class="option-btn" data-branche="${b.id}" aria-pressed="false">
+        <div class="label-row">
+          <span class="name">${b.name}</span>
+          <span class="check-dot"></span>
+        </div>
+        <span class="desc">${b.desc}</span>
+      </button>
+    `).join('');
+    wrap.querySelectorAll('.option-btn').forEach(btn=>{
+      btn.addEventListener('click', ()=>{ state.branche = btn.dataset.branche; render(); });
+    });
+  }
+
+  function buildSectionOptions(){
+    const wrap = document.getElementById('sectionOptions');
+    wrap.innerHTML = SECTIONS.map(s => `
+      <div class="section-toggle" data-section="${s.id}" role="checkbox" tabindex="0" aria-checked="false">
+        <div>
+          <div class="name">${s.name}</div>
+          <div class="sub">${s.sub}</div>
+        </div>
+        <div class="switch"></div>
+      </div>
+    `).join('');
+    wrap.querySelectorAll('.section-toggle').forEach(el=>{
+      const id = el.dataset.section;
+      const toggleIt = ()=>{
+        if(state.sections.has(id)) state.sections.delete(id); else state.sections.add(id);
+        render();
+      };
+      el.addEventListener('click', toggleIt);
+      el.addEventListener('keydown', (e)=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggleIt(); } });
+    });
+  }
+
+  function render(){
+    const theme = THEMES.find(t=>t.id===state.theme);
+    const font = FONTS.find(f=>f.id===state.font);
+    const branche = BRANCHES.find(b=>b.id===state.branche);
+
+    document.querySelectorAll('#themeOptions .option-btn').forEach(b=>{
+      const active = b.dataset.theme===state.theme;
+      b.classList.toggle('active', active); b.setAttribute('aria-pressed', active);
+    });
+    document.querySelectorAll('#fontOptions .option-btn').forEach(b=>{
+      const active = b.dataset.font===state.font;
+      b.classList.toggle('active', active); b.setAttribute('aria-pressed', active);
+    });
+    document.querySelectorAll('#brancheOptions .option-btn').forEach(b=>{
+      const active = b.dataset.branche===state.branche;
+      b.classList.toggle('active', active); b.setAttribute('aria-pressed', active);
+    });
+    document.querySelectorAll('#sectionOptions .section-toggle').forEach(el=>{
+      const active = state.sections.has(el.dataset.section);
+      el.classList.toggle('active', active); el.setAttribute('aria-checked', active);
+    });
+
+    const pv = document.getElementById('previewBody');
+    pv.style.setProperty('--pv-bg', theme.bg);
+    pv.style.setProperty('--pv-text', theme.text);
+    pv.style.setProperty('--pv-soft', theme.soft);
+    pv.style.setProperty('--pv-accent', theme.accent);
+    pv.style.setProperty('--pv-card', theme.card);
+    pv.style.setProperty('--pv-line', theme.line);
+    pv.style.setProperty('--pv-font', font.family);
+
+    document.getElementById('pvIcon').innerHTML = ICONS[branche.id];
+    document.getElementById('pvHeroTitle').textContent = branche.title;
+    document.getElementById('pvHeroSub').textContent = branche.sub;
+    document.getElementById('pvLogo').textContent = branche.title.split(' ').slice(-2).join(' ');
+
+    document.querySelectorAll('.pv-section').forEach(sec=>{
+      sec.hidden = !state.sections.has(sec.dataset.section);
+    });
+
+    const sectionNames = SECTIONS.filter(s=>state.sections.has(s.id)).map(s=>s.name);
+    document.getElementById('selectionSummary').innerHTML =
+      `<b>Jouw keuzes:</b> ${theme.name} &middot; ${font.name} &middot; ${branche.name}` +
+      (sectionNames.length ? ` &middot; secties: ${sectionNames.join(', ')}` : ' &middot; alleen een hero');
+
+    const berichtLines = [
+      'Aanvraag via de Custom Build:',
+      `- Kleurthema: ${theme.name}`,
+      `- Lettertype-sfeer: ${font.name}`,
+      `- Branche: ${branche.name}`,
+      `- Gewenste onderdelen: Hero${sectionNames.length ? ', ' + sectionNames.join(', ') : ''}`,
+      '',
+      'Vertel hieronder kort iets meer over je bedrijf en wensen:'
+    ].join('\n');
+    const url = 'index.html?bericht=' + encodeURIComponent(berichtLines) + '#contact';
+    document.getElementById('builderCtaBtn').setAttribute('href', url);
+  }
+
+  buildThemeOptions();
+  buildFontOptions();
+  buildBrancheOptions();
+  buildSectionOptions();
+  render();
+</script>
+</body>
+</html>
