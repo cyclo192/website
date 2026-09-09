@@ -140,6 +140,24 @@
   .pricing-features li .check{width:7px; height:7px; border-radius:50%; background:var(--accent); margin-top:7px; flex-shrink:0;}
   .pricing-card > .btn{margin-top:24px;}
   .pricing-note{color:var(--ink-soft); font-size:0.9rem; margin-top:28px;}
+  .maintenance-card{
+    display:flex; align-items:center; justify-content:space-between; gap:32px; flex-wrap:wrap;
+    background:var(--accent-soft); border:1px solid var(--line); border-radius:12px;
+    padding:30px 32px; margin-top:36px;
+  }
+  .maintenance-text h3{font-size:1.2rem;}
+  .maintenance-text p{color:var(--ink-soft); font-size:0.92rem; margin-top:6px; max-width:46ch;}
+  .maintenance-text ul{list-style:none; margin:14px 0 0; padding:0; display:flex; flex-wrap:wrap; gap:8px 22px;}
+  .maintenance-text ul li{display:flex; align-items:center; gap:8px; font-size:0.88rem; color:var(--ink);}
+  .maintenance-text ul li .check{width:7px; height:7px; border-radius:50%; background:var(--accent); flex-shrink:0;}
+  .maintenance-price{display:flex; flex-direction:column; align-items:flex-start; gap:12px; flex-shrink:0;}
+  .maintenance-price .amount{font-family:'Fraunces', serif; font-size:1.5rem;}
+  .maintenance-price .period{color:var(--ink-soft); font-size:0.85rem; margin-left:6px;}
+  @media (max-width:640px){
+    .maintenance-card{flex-direction:column; align-items:flex-start;}
+    .maintenance-price{width:100%;}
+    .maintenance-price .btn{width:100%; text-align:center;}
+  }
   @media (max-width: 980px){
     .pricing-grid{grid-template-columns:1fr 1fr; }
   }
@@ -178,7 +196,7 @@
         <h3 class="pricing-name">Basis</h3>
         <p class="pricing-for">Voor wie snel en overzichtelijk online wil staan.</p>
         <div class="pricing-price">
-          <span class="amount">&euro;150</span>
+          <span class="amount">&euro;195</span>
           <span class="period">eenmalig</span>
         </div>
         <ul class="pricing-features">
@@ -235,7 +253,22 @@
         <a href="builder.html" class="btn" style="background:transparent; color:var(--ink); border-color:var(--line); text-align:center;">Start je Custom Build</a>
       </div>
     </div>
-    <p class="pricing-note">Prijzen zijn indicatief en exclusief hosting en domeinnaam, en altijd bespreekbaar. Na het contactformulier krijg je een offerte op maat.</p>
+    <p class="pricing-note">Prijzen hierboven zijn indicatief en voor de bouw van de site, exclusief hosting en domeinnaam, en altijd bespreekbaar. Na het contactformulier krijg je een offerte op maat.</p>
+    <div class="maintenance-card">
+      <div class="maintenance-text">
+        <h3>Jaarlijks onderhoud</h3>
+        <p>Voor wie na oplevering niet meer naar de site hoeft om te kijken &mdash; ik houd 'm actueel en online.</p>
+        <ul>
+          <li><span class="check"></span>Site bijwerken met nieuwe info en foto's</li>
+          <li><span class="check"></span>Hosting inbegrepen</li>
+          <li><span class="check"></span>Domeinnaam inbegrepen</li>
+        </ul>
+      </div>
+      <div class="maintenance-price">
+        <div><span class="amount">Op aanvraag</span><span class="period">per jaar</span></div>
+        <a href="index.html#contact" class="btn accent" style="text-align:center;">Vraag aan</a>
+      </div>
+    </div>
   </div>
 </section>
 <footer>
