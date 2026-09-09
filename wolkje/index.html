@@ -121,6 +121,7 @@
     overflow:hidden;
   }
   .item-visual img{display:block;}
+  .item-icon{width:52%; height:52%;}
   .item-info{padding:14px 16px 18px;}
   .item-info .cat{font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.03em;}
   .item-info h3{font-size:0.98rem; margin-top:4px; font-family:'Nunito',sans-serif; font-weight:700;}
@@ -239,10 +240,14 @@
       </div>
     </div>
     <div class="blob">
-      <svg viewBox="0 0 120 120" width="150" height="150" fill="none">
+      <svg viewBox="0 0 120 120" width="170" height="170" fill="none">
         <circle cx="60" cy="60" r="46" fill="#ffe3d6"/>
         <path d="M40 50 C40 40 48 34 60 34 C72 34 80 40 80 50 L80 78 C80 84 74 88 68 88 L52 88 C46 88 40 84 40 78 Z" fill="#ff8a65"/>
         <circle cx="60" cy="24" r="7" fill="#ffc857"/>
+        <circle cx="24" cy="34" r="4" fill="#5fd0a6"/>
+        <circle cx="98" cy="40" r="5.5" fill="#a68bd9"/>
+        <circle cx="22" cy="86" r="3" fill="#ffc857"/>
+        <path d="M92 90 L96 94 M96 90 L92 94" stroke="#ff8a65" stroke-width="2.4" stroke-linecap="round"/>
       </svg>
     </div>
   </div>
@@ -257,9 +262,13 @@
       <p>Van rompertjes tot regenjassen: alles is gemaakt om gedragen te worden, niet om voorzichtig te bewaren.</p>
     </div>
     <div class="blob" style="border-radius:38% 62% 55% 45% / 55% 45% 55% 45%;">
-      <svg viewBox="0 0 100 100" width="130" height="130" fill="none">
+      <svg viewBox="0 0 100 100" width="150" height="150" fill="none">
         <circle cx="50" cy="50" r="36" fill="#dcf5ea"/>
         <path d="M32 55 Q50 30 68 55 Q50 72 32 55 Z" fill="#5fd0a6"/>
+        <circle cx="18" cy="30" r="3.5" fill="#ffc857"/>
+        <circle cx="84" cy="24" r="4.5" fill="#ff8a65"/>
+        <circle cx="86" cy="76" r="3" fill="#a68bd9"/>
+        <path d="M16 78 L20 82 M20 78 L16 82" stroke="#5fd0a6" stroke-width="2.2" stroke-linecap="round"/>
       </svg>
     </div>
   </div>
@@ -274,7 +283,10 @@
     <div class="collectie-grid">
       <div class="item item--coral">
         <div class="item-visual">
-          <img src="https://images.unsplash.com/photo-1622218286192-95f6a20083c7?w=500&q=70&auto=format&fit=crop" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+          <svg class="item-icon" viewBox="0 0 100 100" fill="none" stroke="#ff8a65" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M35 32 L21 43 L28 53 L35 47 L35 80 Q35 85 40 85 L60 85 Q65 85 65 80 L65 47 L72 53 L79 43 L65 32 Q50 41 35 32 Z"/>
+            <path d="M41 33 Q50 41 59 33"/>
+          </svg>
         </div>
         <div class="item-info">
           <span class="cat">Trui</span>
@@ -284,7 +296,11 @@
       </div>
       <div class="item item--mint">
         <div class="item-visual">
-          <img src="https://images.unsplash.com/photo-1632337950445-ba446cb0e26f?w=500&q=70&auto=format&fit=crop" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+          <svg class="item-icon" viewBox="0 0 100 100" fill="none" stroke="#2fa87e" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="32" y="23" width="36" height="11" rx="4"/>
+            <rect x="33" y="34" width="14" height="51" rx="6"/>
+            <rect x="53" y="34" width="14" height="51" rx="6"/>
+          </svg>
         </div>
         <div class="item-info">
           <span class="cat">Broek</span>
@@ -294,7 +310,14 @@
       </div>
       <div class="item item--yellow">
         <div class="item-visual">
-          <img src="https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?w=500&q=70&auto=format&fit=crop" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+          <svg class="item-icon" viewBox="0 0 100 100" fill="none" stroke="#d69a1a" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M50 17 L33 33 Q50 25 67 33 Z"/>
+            <rect x="29" y="33" width="42" height="50" rx="11"/>
+            <line x1="50" y1="33" x2="50" y2="83"/>
+            <circle cx="50" cy="46" r="1.8" fill="#d69a1a"/>
+            <circle cx="50" cy="57" r="1.8" fill="#d69a1a"/>
+            <circle cx="50" cy="68" r="1.8" fill="#d69a1a"/>
+          </svg>
         </div>
         <div class="item-info">
           <span class="cat">Regenjas</span>
@@ -304,7 +327,11 @@
       </div>
       <div class="item item--lilac">
         <div class="item-visual">
-          <img src="https://images.unsplash.com/photo-1566454544259-f4b94c3d758c?w=500&q=70&auto=format&fit=crop" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+          <svg class="item-icon" viewBox="0 0 100 100" fill="none" stroke="#a68bd9" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="50" cy="16" r="5.5"/>
+            <path d="M28 58 Q28 22 50 22 Q72 22 72 58"/>
+            <rect x="26" y="54" width="48" height="14" rx="7"/>
+          </svg>
         </div>
         <div class="item-info">
           <span class="cat">Muts</span>
@@ -314,7 +341,10 @@
       </div>
       <div class="item item--coral">
         <div class="item-visual">
-          <img src="https://images.unsplash.com/photo-1560506840-ec148e82a604?w=500&q=70&auto=format&fit=crop" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+          <svg class="item-icon" viewBox="0 0 100 100" fill="none" stroke="#ff8a65" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M41 20 L38 30 L50 36 L62 30 L59 20"/>
+            <path d="M38 30 L27 83 L73 83 L62 30 Q50 39 38 30 Z"/>
+          </svg>
         </div>
         <div class="item-info">
           <span class="cat">Jurkje</span>
@@ -324,7 +354,11 @@
       </div>
       <div class="item item--mint">
         <div class="item-visual">
-          <img src="https://images.unsplash.com/photo-1629546947792-f399d7e9f219?w=500&q=70&auto=format&fit=crop" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+          <svg class="item-icon" viewBox="0 0 100 100" fill="none" stroke="#2fa87e" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 75 Q22 52 42 48 Q58 45 70 57 L78 75 Z"/>
+            <rect x="18" y="75" width="64" height="9" rx="4.5"/>
+            <path d="M40 55 L46 63 M48 52 L54 61 M56 50 L62 59"/>
+          </svg>
         </div>
         <div class="item-info">
           <span class="cat">Schoenen</span>
@@ -334,7 +368,11 @@
       </div>
       <div class="item item--yellow">
         <div class="item-visual">
-          <img src="https://images.unsplash.com/photo-1622290319146-7b63df48a635?w=500&q=70&auto=format&fit=crop" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+          <svg class="item-icon" viewBox="0 0 100 100" fill="none" stroke="#d69a1a" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M37 30 L24 40 L30 49 L37 44 L37 65 Q37 78 50 78 Q63 78 63 65 L63 44 L70 49 L76 40 L63 30 Q50 38 37 30 Z"/>
+            <circle cx="45" cy="72" r="1.8" fill="#d69a1a"/>
+            <circle cx="55" cy="72" r="1.8" fill="#d69a1a"/>
+          </svg>
         </div>
         <div class="item-info">
           <span class="cat">Rompertje</span>
@@ -344,7 +382,11 @@
       </div>
       <div class="item item--lilac">
         <div class="item-visual">
-          <img src="https://images.unsplash.com/photo-1670014541811-9b0ec280ed60?w=500&q=70&auto=format&fit=crop" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+          <svg class="item-icon" viewBox="0 0 100 100" fill="none" stroke="#a68bd9" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M44 33 Q50 24 56 33"/>
+            <rect x="30" y="33" width="40" height="48" rx="11"/>
+            <rect x="37" y="52" width="26" height="19" rx="6"/>
+          </svg>
         </div>
         <div class="item-info">
           <span class="cat">Rugtas</span>
