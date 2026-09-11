@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Algemene voorwaarden — Reinouwers</title>
+<meta name="description" content="Algemene voorwaarden van Reinouwers: afspraken over offertes, levering, betaling, eigendom en aansprakelijkheid bij het laten maken van een website.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Crect width='256' height='256' rx='40' fill='%23162019'/%3E%3Ctext x='128' y='172' text-anchor='middle' font-family='Georgia, serif' font-style='italic' font-size='140' font-weight='600' fill='%232f6f4f'%3ER%3C/text%3E%3C/svg%3E">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#efece4;
+    --ink:#14181c;
+    --ink-soft:#4b535a;
+    --line: rgba(20,24,28,0.12);
+    --accent:#3c8f65;
+    --accent-soft:#e4eee7;
+    --white:#fdfcf9;
+    --max:1120px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    line-height:1.15;
+    margin:0;
+  }
+  a{color:inherit;}
+  :focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 32px;}
+  .blueprint{
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  header{
+    position:sticky; top:0; z-index:40;
+    background:rgba(239,236,228,0.9);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-row{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 0;
+  }
+  .logo{
+    font-family:'Fraunces', serif; font-weight:700; font-size:1.25rem;
+    letter-spacing:-0.01em; text-decoration:none; color:var(--ink);
+  }
+  .logo .dot{color:var(--accent);}
+  .logo .logo-r{font-style:italic; color:var(--accent);}
+  nav.links{display:flex; align-items:center; gap:32px; font-size:0.95rem;}
+  nav.links a{text-decoration:none; color:var(--ink-soft);}
+  nav.links a:hover{color:var(--ink);}
+  nav.links a.btn{color:var(--white);}
+  nav.links a.btn:hover{color:var(--white);}
+  .menu-toggle{
+    display:none; background:none; border:1px solid var(--line); border-radius:6px;
+    color:var(--ink); padding:8px 12px; font-size:0.95rem; font-family:'Inter',sans-serif;
+  }
+  .btn{
+    display:inline-block; font-family:'Inter', sans-serif; font-weight:600;
+    font-size:0.92rem; padding:12px 22px; border-radius:6px;
+    border:1px solid var(--ink); background:var(--ink); color:var(--white);
+    text-decoration:none; cursor:pointer;
+    transition:background .15s ease, border-color .15s ease;
+  }
+  .btn:hover{background:#000;}
+  .btn.accent{background:var(--accent); border-color:var(--accent);}
+  .btn.accent:hover{background:#347753;}
+  section{padding:88px 0;}
+  .kicker{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:0.9rem; color:var(--ink-soft); margin-bottom:22px;
+  }
+  .kicker .swatch{width:8px; height:8px; border-radius:50%; background:var(--accent);}
+  footer{border-top:1px solid var(--line); padding:32px 0;}
+  .foot-row{
+    display:flex; justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:12px; font-size:0.88rem; color:var(--ink-soft);
+  }
+  .foot-row a{text-decoration:none; color:var(--ink-soft);}
+  .foot-row a:hover{color:var(--ink);}
+  @media (max-width: 860px){
+    nav.links{
+      position:absolute; top:100%; left:0; right:0; background:var(--paper);
+      border-bottom:1px solid var(--line); flex-direction:column; align-items:flex-start;
+      gap:0; display:none; padding:8px 32px 20px;
+    }
+    nav.links.open{display:flex;}
+    nav.links a{padding:12px 0; border-bottom:1px solid var(--line); width:100%;}
+    .menu-toggle{display:inline-block;}
+  }
+  .back-link{
+    display:flex; width:fit-content; align-items:center; gap:6px;
+    font-size:0.9rem; color:var(--ink-soft); text-decoration:none;
+    margin-bottom:20px; font-family:'Inter', sans-serif;
+  }
+  .back-link:hover{color:var(--ink);}
+  .detail-hero{padding:72px 0 56px; border-bottom:1px solid var(--line);}
+  .detail-body{max-width:70ch;}
+  .detail-body p{color:var(--ink-soft); font-size:1.02rem; margin:0 0 18px;}
+  .detail-body h2{font-size:1.3rem; margin-top:52px; margin-bottom:16px;}
+  .detail-body h2:first-of-type{margin-top:0;}
+  .detail-body ul{color:var(--ink-soft); font-size:1.02rem; margin:0 0 18px; padding-left:22px;}
+  .detail-body li{margin-bottom:8px;}
+  .detail-body strong{color:var(--ink); font-weight:600;}
+  .meta-updated{font-size:0.88rem; color:var(--ink-soft); margin-top:-6px; margin-bottom:36px;}
+  .whatsapp-float{
+    position:fixed; right:24px; bottom:24px; z-index:50;
+    right:calc(24px + env(safe-area-inset-right));
+    bottom:calc(24px + env(safe-area-inset-bottom));
+    display:flex; align-items:center; gap:10px;
+    background:#25D366; color:var(--white);
+    padding:16px 24px; border-radius:999px;
+    text-decoration:none; box-shadow:0 10px 26px rgba(20,24,28,0.28);
+    transition:transform .15s ease, background .15s ease;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .whatsapp-float:hover{background:#1ebc59; transform:translateY(-2px);}
+  .whatsapp-float:active{transform:scale(0.96);}
+  .whatsapp-float svg{flex-shrink:0;}
+  .whatsapp-float-label{font-weight:600; font-size:1.05rem;}
+  @media (max-width: 600px){
+    .whatsapp-float{
+      padding:16px; border-radius:50%;
+      right:calc(16px + env(safe-area-inset-right));
+      bottom:calc(16px + env(safe-area-inset-bottom));
+    }
+    .whatsapp-float-label{display:none;}
+  }
+  .whatsapp-bubble{
+    position:fixed; right:24px; bottom:98px; z-index:79;
+    right:calc(24px + env(safe-area-inset-right));
+    bottom:calc(98px + env(safe-area-inset-bottom));
+    width:230px; max-width:calc(100vw - 48px);
+    background:var(--white); color:var(--ink);
+    border:1px solid var(--line); border-radius:14px;
+    padding:14px 32px 14px 16px;
+    font-size:0.9rem; line-height:1.4; font-weight:500;
+    box-shadow:0 10px 26px rgba(20,24,28,0.16);
+    opacity:0; transform:translateY(8px);
+    transition:opacity .4s ease, transform .4s ease;
+    pointer-events:none;
+  }
+  .whatsapp-bubble.visible{opacity:1; transform:translateY(0); pointer-events:auto;}
+  .whatsapp-bubble::after{
+    content:""; position:absolute; right:32px; bottom:-8px;
+    width:16px; height:16px; background:var(--white);
+    border-right:1px solid var(--line); border-bottom:1px solid var(--line);
+    transform:rotate(45deg);
+  }
+  .whatsapp-bubble-close{
+    position:absolute; top:0; right:0; background:none; border:none;
+    font-size:1.1rem; color:var(--ink-soft); cursor:pointer; line-height:1;
+    padding:12px; -webkit-tap-highlight-color:transparent;
+  }
+  @media (max-width: 600px){
+    .whatsapp-bubble{
+      right:calc(12px + env(safe-area-inset-right));
+      bottom:calc(84px + env(safe-area-inset-bottom));
+      width:min(260px, calc(100vw - 24px));
+    }
+    .whatsapp-bubble::after{right:26px;}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav-row">
+    <a href="index.html#top" class="logo"><span class="logo-r">R</span>einouwers<span class="dot">.</span></a>
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    <nav class="links" id="navLinks">
+      <a href="index.html#top">Home</a>
+      <a href="index.html#projecten">Voorbeelden</a>
+      <a href="pakketten.html">Pakketten</a>
+      <a href="index.html#overmij">Over mij</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="index.html#contact" class="btn accent" style="padding:9px 18px;">Neem contact op</a>
+    </nav>
+  </div>
+</header>
+<section class="detail-hero blueprint">
+  <div class="wrap">
+    <a href="index.html#top" class="back-link" onclick="if(window.history.length>1){window.history.back();return false;}">&larr; Terug</a>
+    <div class="kicker"><span class="swatch"></span>Voorwaarden</div>
+    <h1 style="font-size:clamp(2rem, 4.5vw, 2.8rem);">Algemene voorwaarden</h1>
+    <p style="color:var(--ink-soft); font-size:1.05rem; margin-top:14px; max-width:60ch;">Deze voorwaarden gelden bij elke opdracht via reinouwers.nl, naast de afspraken in een opdrachtbevestiging.</p>
+  </div>
+</section>
+<section>
+  <div class="wrap detail-body">
+    <p class="meta-updated">Laatst bijgewerkt: 11 september 2026</p>
+
+    <h2>Toepasselijkheid</h2>
+    <p>Deze algemene voorwaarden zijn van toepassing op alle offertes, opdrachtbevestigingen en overeenkomsten tussen Reinouwers (Djego Reinouwers) en de opdrachtgever, tenzij schriftelijk anders is afgesproken.</p>
+
+    <h2>Offerte en overeenkomst</h2>
+    <p>Een offerte van Reinouwers is vrijblijvend, tenzij uitdrukkelijk anders vermeld. Een overeenkomst komt tot stand zodra de opdrachtgever akkoord geeft, bijvoorbeeld via een ondertekende of per e-mail bevestigde opdrachtbevestiging.</p>
+
+    <h2>Prijzen</h2>
+    <p>Het in de offerte of opdrachtbevestiging genoemde bedrag is het overeengekomen bedrag. Prijzen zijn exclusief hosting, domeinnaam en diensten van derden, tenzij uitdrukkelijk anders vermeld.</p>
+
+    <h2>Uitvoering en levertermijn</h2>
+    <p>Reinouwers spant zich in om de website op te leveren binnen de termijn die in de opdrachtbevestiging is genoemd. Deze termijn is een inschatting: vertraging door het laat aanleveren van teksten, beeldmateriaal of feedback door de opdrachtgever komt niet voor rekening van Reinouwers.</p>
+
+    <h2>Medewerking van de opdrachtgever</h2>
+    <p>De opdrachtgever levert tijdig de benodigde teksten, afbeeldingen en informatie aan en reageert binnen een redelijke termijn op vragen en concepten. Vertraging door het uitblijven hiervan komt voor rekening van de opdrachtgever.</p>
+
+    <h2>Wijzigingen en meerwerk</h2>
+    <p>Wijzigingen ten opzichte van de oorspronkelijke opdracht kunnen leiden tot meerwerk. Reinouwers informeert de opdrachtgever hierover vooraf en voert meerwerk pas uit na akkoord.</p>
+
+    <h2>Betaling</h2>
+    <p>Facturen dienen te worden voldaan binnen de termijn die in de opdrachtbevestiging of factuur is vermeld, doorgaans binnen 14 dagen. Bij het uitblijven van tijdige betaling kan Reinouwers de werkzaamheden opschorten totdat betaling heeft plaatsgevonden.</p>
+
+    <h2>Eigendom en intellectueel eigendom</h2>
+    <p>Het ontwerp en de broncode van de website blijven eigendom van Reinouwers totdat volledige betaling heeft plaatsgevonden. Na volledige betaling krijgt de opdrachtgever het recht om de geleverde website te gebruiken voor het overeengekomen doel. Reinouwers mag het geleverde werk, tenzij anders afgesproken, tonen als voorbeeld in zijn portfolio.</p>
+
+    <h2>Ondersteuning na oplevering</h2>
+    <p>Voor pakketten waarbij ondersteuning is inbegrepen, geldt de periode zoals vermeld bij het gekozen pakket of in de opdrachtbevestiging. Buiten deze periode, of bij pakketten zonder ondersteuning, worden aanpassingen apart afgesproken.</p>
+
+    <h2>Aansprakelijkheid</h2>
+    <p>Reinouwers is niet aansprakelijk voor schade die ontstaat door het gebruik van de website, tenzij sprake is van opzet of grove nalatigheid. De aansprakelijkheid van Reinouwers is in alle gevallen beperkt tot het factuurbedrag van de betreffende opdracht. Reinouwers is niet aansprakelijk voor schade veroorzaakt door diensten van derden, zoals hostingpartijen.</p>
+
+    <h2>Annulering</h2>
+    <p>Annuleert de opdrachtgever een lopende opdracht, dan is deze de reeds gemaakte kosten en verrichte werkzaamheden verschuldigd.</p>
+
+    <h2>Klachten</h2>
+    <p>Klachten over de uitvoering van de opdracht kunnen worden gemeld via <a href="mailto:info@reinouwers.nl">info@reinouwers.nl</a>. Reinouwers reageert binnen een redelijke termijn.</p>
+
+    <h2>Toepasselijk recht</h2>
+    <p>Op alle overeenkomsten met Reinouwers is Nederlands recht van toepassing.</p>
+
+    <h2>Wijzigingen van deze voorwaarden</h2>
+    <p>Reinouwers kan deze voorwaarden aanpassen. De datum bovenaan deze pagina laat zien wanneer ze voor het laatst zijn bijgewerkt.</p>
+  </div>
+</section>
+<footer>
+  <div class="wrap foot-row">
+    <span>Reinouwers</span>
+    <div style="display:flex; align-items:center; gap:18px;">
+      <a href="privacyverklaring.html">Privacyverklaring</a>
+      <a href="algemene-voorwaarden.html">Algemene voorwaarden</a>
+      <a href="https://www.instagram.com/reinouwers/" target="_blank" rel="noopener noreferrer" aria-label="Reinouwers op Instagram" style="display:inline-flex; align-items:center;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line></svg>
+      </a>
+    </div>
+    <span>&copy; <span id="jaar"></span></span>
+  </div>
+</footer>
+<div class="whatsapp-bubble" id="waBubble">
+  <button class="whatsapp-bubble-close" id="waBubbleClose" aria-label="Sluiten">&times;</button>
+  Heb je vragen? Neem contact op!
+</div>
+<a href="https://wa.me/31626683986?text=Hoi%20Djego%2C%20ik%20heb%20een%20vraag%20over%20een%20website" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Stuur een WhatsApp-bericht naar Djego">
+  <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.36.101 11.943c0 2.105.549 4.16 1.595 5.976L0 24l6.335-1.652a11.882 11.882 0 0 0 5.71 1.447h.006c6.585 0 11.946-5.363 11.949-11.945 0-3.191-1.242-6.19-3.48-8.401"/></svg>
+  <span class="whatsapp-float-label">WhatsApp</span>
+</a>
+<script>
+  document.getElementById("jaar").textContent = new Date().getFullYear();
+  (function(){
+    var bubble = document.getElementById('waBubble');
+    if(!bubble) return;
+    var timer = setTimeout(function(){ bubble.classList.add('visible'); }, 2200);
+    var closeBtn = document.getElementById('waBubbleClose');
+    closeBtn.addEventListener('click', function(){
+      clearTimeout(timer);
+      bubble.classList.remove('visible');
+    });
+  })();
+  const toggle = document.getElementById('menuToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    const isOpen = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
+</script>
+</body>
+</html>
