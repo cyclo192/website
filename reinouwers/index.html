@@ -11,6 +11,13 @@
 <meta property="og:description" content="Duidelijke, snelle websites voor kleine ondernemers in Purmerend en omgeving. Vaste prijzen, persoonlijk contact, snel online.">
 <meta property="og:url" content="https://reinouwers.nl/">
 <meta property="og:locale" content="nl_NL">
+<meta property="og:image" content="https://reinouwers.nl/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Reinouwers — Website laten maken in Purmerend">
+<meta name="twitter:description" content="Duidelijke, snelle websites voor kleine ondernemers in Purmerend en omgeving. Vaste prijzen, persoonlijk contact, snel online.">
+<meta name="twitter:image" content="https://reinouwers.nl/og-image.jpg">
 <meta name="theme-color" content="#3c8f65">
 <script type="application/ld+json">
 {
@@ -252,7 +259,7 @@
     nav.links.open{display:flex;}
     nav.links a{padding:12px 0; border-bottom:1px solid var(--line); width:100%;}
     .menu-toggle{display:inline-block;}
-    .over-grid, .contact-grid, .wieikben-grid, .pakketten-grid{grid-template-columns:1fr; gap:36px;}
+    .over-grid, .contact-grid, .wieikben-grid, .pakketten-grid, .process-grid{grid-template-columns:1fr; gap:36px;}
     .over-figures-row{grid-template-columns:1fr;}
     .over-figures-row .over-figure + .over-figure{border-left:none; border-top:1px solid var(--line);}
     .project-grid{grid-template-columns:1fr;}
@@ -300,6 +307,29 @@
     }
     .whatsapp-bubble::after{right:26px;}
   }
+  #hoewerkthet{border-top:1px solid var(--line);}
+  .process-grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:20px; margin-top:8px;}
+  .process-card{border:1px solid var(--line); border-radius:10px; padding:26px 24px; background:var(--white);}
+  .process-num{font-family:'Fraunces', serif; font-size:1.7rem; color:var(--accent); display:block; margin-bottom:14px;}
+  .process-card h3{font-size:1.1rem; margin:0 0 8px;}
+  .process-card p{font-size:0.92rem; color:var(--ink-soft); margin:0;}
+  #faq{border-top:1px solid var(--line);}
+  .faq-list{max-width:76ch; display:flex; flex-direction:column; gap:12px;}
+  .faq-item{border:1px solid var(--line); border-radius:10px; background:var(--white); padding:4px 24px;}
+  .faq-item summary{
+    list-style:none; cursor:pointer; padding:18px 0;
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    font-weight:600; font-size:1rem; color:var(--ink);
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary .faq-icon{flex-shrink:0; width:20px; height:20px; position:relative;}
+  .faq-item summary .faq-icon::before, .faq-item summary .faq-icon::after{
+    content:""; position:absolute; background:var(--ink-soft); transition:transform .15s ease;
+  }
+  .faq-item summary .faq-icon::before{left:2px; right:2px; top:9px; height:2px;}
+  .faq-item summary .faq-icon::after{top:2px; bottom:2px; left:9px; width:2px;}
+  .faq-item[open] summary .faq-icon::after{transform:rotate(90deg); opacity:0;}
+  .faq-item p{color:var(--ink-soft); font-size:0.98rem; margin:0 0 20px;}
 </style>
 </head>
 <body>
@@ -325,6 +355,37 @@
     <div class="hero-actions">
       <a href="#contact" class="btn accent">Vraag een gratis kennismaking aan</a>
       <a href="#projecten" class="btn" style="background:transparent; color:var(--ink); border-color:var(--line);">Bekijk voorbeelden</a>
+    </div>
+  </div>
+</section>
+<section id="hoewerkthet">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker"><span class="swatch"></span>Hoe werkt het</div>
+      <h2>Van eerste bericht tot live site.</h2>
+      <p>Geen ingewikkeld traject: vier duidelijke stappen, met mij als vast aanspreekpunt.</p>
+    </div>
+    <div class="process-grid">
+      <div class="process-card">
+        <span class="process-num">1</span>
+        <h3>Kennismaking</h3>
+        <p>Je stuurt een bericht of vult het formulier in. We bespreken kort wat je nodig hebt, helemaal vrijblijvend.</p>
+      </div>
+      <div class="process-card">
+        <span class="process-num">2</span>
+        <h3>Ontwerp</h3>
+        <p>Ik maak een ontwerp op maat dat past bij jouw bedrijf. Geen kant-en-klaar sjabloon.</p>
+      </div>
+      <div class="process-card">
+        <span class="process-num">3</span>
+        <h3>Feedback</h3>
+        <p>Je geeft feedback en ik verwerk de aanpassingen, tot de site precies klopt.</p>
+      </div>
+      <div class="process-card">
+        <span class="process-num">4</span>
+        <h3>Livegang</h3>
+        <p>Je site gaat live en is vindbaar. Ook daarna blijf ik gewoon bereikbaar voor vragen.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -397,6 +458,40 @@
   </div>
   <div class="wrap">
     <p class="pricing-note" style="margin-top:40px;">Prijzen zijn indicatief en exclusief hosting en domeinnaam, en altijd bespreekbaar. Na het contactformulier krijg je een offerte op maat.</p>
+  </div>
+</section>
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker"><span class="swatch"></span>Veelgestelde vragen</div>
+      <h2>Nog vragen? Hier alvast antwoord.</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Hoe lang duurt het voordat mijn site live staat?<span class="faq-icon"></span></summary>
+        <p>Meestal binnen een week na akkoord, afhankelijk van hoe snel je teksten en foto's aanlevert en hoeveel feedbackrondes er nodig zijn.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Wat moet ik zelf aanleveren?<span class="faq-icon"></span></summary>
+        <p>Teksten en foto's van je bedrijf werken het snelst. Heb je dat liever niet zelf, dan denk ik graag mee over de inhoud.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Kan ik mijn site later zelf aanpassen?<span class="faq-icon"></span></summary>
+        <p>Kleine aanpassingen zijn na oplevering altijd bespreekbaar. Voor grotere wijzigingen kun je me gewoon benaderen.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Regel jij ook hosting en een domeinnaam?<span class="faq-icon"></span></summary>
+        <p>Ik denk graag mee en help je op weg, maar hosting en domeinnaam zitten niet inbegrepen bij de vaste prijs.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Wat kost het precies?<span class="faq-icon"></span></summary>
+        <p>Vanaf &euro;195, afhankelijk van wat je nodig hebt. Bekijk de <a href="pakketten.html" style="text-decoration:underline;">pakketten</a> voor een overzicht, of vraag een offerte op maat aan.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Wat als ik niet tevreden ben met het ontwerp?<span class="faq-icon"></span></summary>
+        <p>Dan passen we het samen aan tot het klopt. Pas als je tevreden bent, gaat de site live.</p>
+      </details>
+    </div>
   </div>
 </section>
 <section id="overmij">
@@ -481,7 +576,13 @@
 <footer>
   <div class="wrap foot-row">
     <span>Reinouwers</span>
-    <a href="privacyverklaring.html">Privacyverklaring</a>
+    <div style="display:flex; align-items:center; gap:18px;">
+      <a href="privacyverklaring.html">Privacyverklaring</a>
+      <a href="algemene-voorwaarden.html">Algemene voorwaarden</a>
+      <a href="https://www.instagram.com/reinouwers/" target="_blank" rel="noopener noreferrer" aria-label="Reinouwers op Instagram" style="display:inline-flex; align-items:center;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line></svg>
+      </a>
+    </div>
     <span>&copy; <span id="jaar"></span></span>
   </div>
 </footer>
