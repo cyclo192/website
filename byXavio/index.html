@@ -12,10 +12,10 @@
 <meta property="og:description" content="Een website die klopt, zonder poespas. Vaste prijs vooraf, eigen ontwerp, live binnen een week.">
 <meta property="og:locale" content="nl_NL">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#1a1b3a">
+<meta name="theme-color" content="#00d2df">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Poppins:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
 </head>
 <body>
 <style>
@@ -26,12 +26,12 @@
     --panel:#ffffff;
     --cream:#fff2e9;
     --cream-2:#ffe8db;
-    --teal:#28bbb1;
-    --teal-btn:#016e6d;
-    --teal-ink:#01767a;
+    --cyan:#00d2df;
+    --cyan-btn:#00707a;
+    --cyan-ink:#00707a;
     --amber:#ffb23f;
     --amber-soft:#ffe6bd;
-    --mint:#d4f2ef;
+    --mint:#d6f6f9;
     --muted:#5a5c7a;
     --line:#efe4da;
     --white:#ffffff;
@@ -67,9 +67,9 @@
   .eyebrow{
     display:inline-flex; align-items:center; gap:8px;
     font-size:.78rem; font-weight:700; letter-spacing:.09em; text-transform:uppercase;
-    color:var(--teal-ink); margin:0 0 16px;
+    color:var(--cyan-ink); margin:0 0 16px;
   }
-  .eyebrow::before{content:""; width:20px; height:3px; background:var(--teal); border-radius:2px;}
+  .eyebrow::before{content:""; width:20px; height:3px; background:var(--cyan); border-radius:2px;}
 
   .lead{color:var(--muted); font-size:1.06rem;}
 
@@ -86,28 +86,27 @@
   .btn-primary:hover{background:var(--ink-2); transform:translateY(-2px);}
   .btn-outline{background:var(--white); color:var(--ink); border-color:var(--line);}
   .btn-outline:hover{border-color:var(--ink); transform:translateY(-2px);}
-  .btn-teal{background:var(--teal); color:var(--ink); box-shadow:0 10px 22px -14px rgba(40,187,177,.95);}
-  .btn-teal:hover{background:#21a8a0; transform:translateY(-2px);}
+  .btn-cyan{background:var(--cyan); color:var(--ink); box-shadow:0 10px 22px -14px rgba(0,210,223,.95);}
+  .btn-cyan:hover{background:#00bcc8; transform:translateY(-2px);}
   .btn-sm{padding:10px 18px; font-size:.9rem; border-radius:9px;}
 
   /* ---------- logo ---------- */
 
-  .xmark line{stroke-width:13; stroke-linecap:round;}
-  .xmark .xa{stroke:var(--x-a,var(--ink));}
-  .xmark .xb{stroke:var(--x-b,var(--teal));}
-  .xmark{display:block; width:100%; height:auto;}
-
-  .logo{display:flex; align-items:center; gap:10px; text-decoration:none; flex:0 0 auto;}
-  .logo .xmark{width:30px;}
-  .logo .word{
-    font-family:var(--display); font-weight:800; font-size:1.34rem;
-    letter-spacing:.04em; color:var(--ink); white-space:nowrap;
+  .logo{display:flex; align-items:center; text-decoration:none; flex:0 0 auto;}
+  .wm{
+    font-family:'Poppins','Outfit',sans-serif;
+    font-weight:800; font-size:1.6rem; line-height:1;
+    letter-spacing:-.018em; color:#0a0a0e;
+    position:relative; padding-top:.44em; padding-left:.04em;
+    white-space:nowrap; display:inline-block;
   }
-  .logo .word .by{
-    font-size:.55em; font-weight:700; letter-spacing:.17em;
-    color:var(--muted); margin-right:.3em; vertical-align:.22em;
+  .wm .by{
+    position:absolute; top:.02em; left:-.03em;
+    font-size:.43em; font-weight:800; letter-spacing:-.025em;
+    transform:rotate(-13deg); transform-origin:left bottom;
+    color:#0a0a0e;
   }
-  .logo .word b{color:var(--teal); font-weight:800;}
+  .wm .x{color:var(--cyan);}
 
   /* ---------- header ---------- */
 
@@ -124,7 +123,7 @@
     text-decoration:none; font-weight:500; font-size:.96rem; color:var(--muted);
     padding-bottom:3px; border-bottom:2px solid transparent;
   }
-  nav.main a:hover{color:var(--ink); border-bottom-color:var(--teal);}
+  nav.main a:hover{color:var(--ink); border-bottom-color:var(--cyan);}
 
   .menu-btn{
     display:none; margin-left:auto; background:var(--white); border:2px solid var(--line);
@@ -142,7 +141,7 @@
     position:relative; overflow:hidden;
     background:
       radial-gradient(760px 420px at 88% -12%, var(--cream-2) 0%, rgba(255,232,219,0) 62%),
-      radial-gradient(620px 380px at 4% 108%, var(--mint) 0%, rgba(212,242,239,0) 60%);
+      radial-gradient(620px 380px at 4% 108%, var(--mint) 0%, rgba(214,246,249,0) 60%);
   }
   .hero-in{
     display:grid; grid-template-columns:1.06fr .94fr; gap:clamp(24px,4.5vw,56px);
@@ -189,9 +188,9 @@
 
   .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(14px,2.4vw,26px);}
   .step{position:relative; padding-top:26px; border-top:3px solid var(--line);}
-  .step:nth-child(1){border-top-color:var(--teal);}
+  .step:nth-child(1){border-top-color:var(--cyan);}
   .step:nth-child(2){border-top-color:var(--amber);}
-  .step:nth-child(3){border-top-color:#6fd6ce;}
+  .step:nth-child(3){border-top-color:#66e4ec;}
   .step:nth-child(4){border-top-color:var(--ink);}
   .step .num{
     font-family:var(--display); font-weight:800; font-size:.82rem; letter-spacing:.12em;
@@ -217,14 +216,14 @@
   .demo:hover{transform:translateY(-4px); box-shadow:0 18px 34px -24px rgba(26,27,58,.4);}
   .demo .art{aspect-ratio:4/3; display:block; width:100%;}
   .demo .body{padding:17px 18px 20px;}
-  .demo .kind{font-size:.74rem; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--teal-ink);}
+  .demo .kind{font-size:.74rem; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--cyan-ink);}
   .demo h3{margin-top:5px;}
   .demo p{font-size:.9rem; color:var(--muted); margin-top:7px;}
   .demo .go{
     margin-top:14px; display:inline-flex; align-items:center; gap:7px;
     font-weight:700; font-size:.9rem; color:var(--ink); text-decoration:none;
   }
-  .demo .go:hover{color:var(--teal-ink);}
+  .demo .go:hover{color:var(--cyan-ink);}
 
   /* ---------- packages ---------- */
 
@@ -282,7 +281,7 @@
   .faq summary::-webkit-details-marker{display:none;}
   .faq .ic{
     margin-left:auto; flex:0 0 auto; position:relative; width:20px; height:20px;
-    border-radius:50%; background:var(--teal);
+    border-radius:50%; background:var(--cyan);
   }
   .faq .ic::before,.faq .ic::after{
     content:""; position:absolute; background:var(--ink); border-radius:2px;
@@ -292,7 +291,7 @@
   .faq .ic::after{width:2px; height:10px; transition:opacity .15s ease;}
   .faq details[open] .ic::after{opacity:0;}
   .faq details p{padding:0 0 19px; color:var(--muted); font-size:.97rem; max-width:66ch;}
-  .faq details p a{color:var(--teal-ink); font-weight:600;}
+  .faq details p a{color:var(--cyan-ink); font-weight:600;}
 
   /* ---------- over mij ---------- */
 
@@ -334,7 +333,7 @@
     border:1.5px solid var(--line); border-radius:10px; background:var(--paper); color:var(--ink);
     min-width:0; width:100%; max-width:100%;
   }
-  .field input:focus,.field textarea:focus,.field select:focus{outline:2px solid var(--teal); outline-offset:1px; border-color:var(--teal);}
+  .field input:focus,.field textarea:focus,.field select:focus{outline:2px solid var(--cyan); outline-offset:1px; border-color:var(--cyan);}
   .form .btn{width:100%; margin-top:4px;}
   .form .mini{font-size:.82rem; color:var(--muted); margin-top:11px; text-align:center;}
 
@@ -364,6 +363,9 @@
     padding:10px 15px; border-radius:11px; box-shadow:0 12px 26px -14px rgba(0,0,0,.5);
     max-width:210px;
   }
+
+  /* ---------- preview banner ---------- */
+
 
   /* ---------- responsive ---------- */
 
@@ -400,8 +402,7 @@
   <div class="wrap">
     <div class="bar">
       <a class="logo" href="#top">
-        <svg class="xmark" viewBox="0 0 64 64" aria-hidden="true"><line class="xa" x1="18" y1="18" x2="46" y2="46"/><line class="xb" x1="46" y1="18" x2="18" y2="46"/></svg>
-        <span class="word"><span class="by">BY</span><b>X</b>AVIO</span>
+        <span class="wm"><span class="by">by</span><span class="x">X</span>avio</span>
       </a>
       <nav class="main" aria-label="Hoofdmenu">
         <ul>
@@ -411,7 +412,7 @@
           <li><a href="#overmij">Over mij</a></li>
         </ul>
       </nav>
-      <a class="btn btn-teal btn-sm" href="#contact">Offerte aanvragen</a>
+      <a class="btn btn-cyan btn-sm" href="#contact">Offerte aanvragen</a>
       <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mobnav">Menu</button>
     </div>
     <div id="mobnav">
@@ -422,7 +423,7 @@
         <li><a href="#overmij">Over mij</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-      <a class="btn btn-teal" href="#contact">Offerte aanvragen</a>
+      <a class="btn btn-cyan" href="#contact">Offerte aanvragen</a>
     </div>
   </div>
 </header>
@@ -436,35 +437,35 @@
         <h1>Een website die <span class="hl">klopt</span>, zonder poespas.</h1>
         <p class="lead">Ik bouw duidelijke, snelle websites voor kleine ondernemers, van eerste ontwerp tot een pagina die klanten daadwerkelijk kunnen vinden en gebruiken.</p>
         <div class="cta">
-          <a class="btn btn-teal" href="#contact">Vraag een gratis kennismaking aan</a>
+          <a class="btn btn-cyan" href="#contact">Vraag een gratis kennismaking aan</a>
           <a class="btn btn-outline" href="#voorbeelden">Bekijk voorbeelden</a>
         </div>
         <div class="under">
-          <span><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#28bbb1"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Vanaf &euro;195</span>
-          <span><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#28bbb1"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Live binnen een week</span>
-          <span><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#28bbb1"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Geen abonnement</span>
+          <span><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Vanaf &euro;195</span>
+          <span><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Live binnen een week</span>
+          <span><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Geen abonnement</span>
         </div>
       </div>
 
       <div>
         <svg class="hero-art" viewBox="0 0 400 320" role="img" aria-label="Illustratie van een website op laptop en telefoon">
           <circle cx="332" cy="52" r="30" fill="#ffe6bd"/>
-          <rect x="18" y="238" width="76" height="76" rx="18" fill="#d4f2ef"/>
+          <rect x="18" y="238" width="76" height="76" rx="18" fill="#d6f6f9"/>
           <!-- laptop -->
           <rect x="44" y="40" width="292" height="196" rx="14" fill="#ffffff" stroke="#1a1b3a" stroke-width="3"/>
           <rect x="44" y="40" width="292" height="30" rx="14" fill="#1a1b3a"/>
           <rect x="44" y="56" width="292" height="14" fill="#1a1b3a"/>
-          <circle cx="62" cy="55" r="4" fill="#28bbb1"/>
+          <circle cx="62" cy="55" r="4" fill="#00d2df"/>
           <circle cx="76" cy="55" r="4" fill="#ffb23f"/>
-          <circle cx="90" cy="55" r="4" fill="#6fd6ce"/>
+          <circle cx="90" cy="55" r="4" fill="#66e4ec"/>
           <rect x="66" y="92" width="120" height="13" rx="4" fill="#1a1b3a"/>
           <rect x="66" y="114" width="166" height="13" rx="4" fill="#1a1b3a"/>
           <rect x="66" y="144" width="132" height="8" rx="4" fill="#d8d4e4"/>
           <rect x="66" y="160" width="104" height="8" rx="4" fill="#d8d4e4"/>
-          <rect x="66" y="186" width="92" height="28" rx="9" fill="#28bbb1"/>
+          <rect x="66" y="186" width="92" height="28" rx="9" fill="#00d2df"/>
           <rect x="166" y="186" width="74" height="28" rx="9" fill="none" stroke="#1a1b3a" stroke-width="2.4"/>
           <line x1="268" y1="112" x2="308" y2="152" stroke="#1a1b3a" stroke-width="13" stroke-linecap="round"/>
-          <line x1="308" y1="112" x2="268" y2="152" stroke="#28bbb1" stroke-width="13" stroke-linecap="round"/>
+          <line x1="308" y1="112" x2="268" y2="152" stroke="#00d2df" stroke-width="13" stroke-linecap="round"/>
           <rect x="120" y="242" width="140" height="10" rx="5" fill="#1a1b3a"/>
           <!-- phone -->
           <rect x="286" y="176" width="92" height="132" rx="16" fill="#ffffff" stroke="#1a1b3a" stroke-width="3"/>
@@ -549,7 +550,7 @@
           <rect width="200" height="150" fill="#fff2e9"/>
           <circle cx="72" cy="58" r="13" fill="none" stroke="#1a1b3a" stroke-width="3.4"/>
           <circle cx="72" cy="96" r="13" fill="none" stroke="#1a1b3a" stroke-width="3.4"/>
-          <path d="M82 50l52 52M82 104l52-52" stroke="#28bbb1" stroke-width="3.8" stroke-linecap="round"/>
+          <path d="M82 50l52 52M82 104l52-52" stroke="#00d2df" stroke-width="3.8" stroke-linecap="round"/>
           <rect x="140" y="66" width="34" height="6" rx="3" fill="#1a1b3a"/>
           <rect x="140" y="80" width="24" height="6" rx="3" fill="#ffb23f"/>
         </svg>
@@ -563,11 +564,11 @@
 
       <article class="demo">
         <svg class="art" viewBox="0 0 200 150" aria-hidden="true">
-          <rect width="200" height="150" fill="#d4f2ef"/>
+          <rect width="200" height="150" fill="#d6f6f9"/>
           <circle cx="100" cy="75" r="36" fill="#ffffff" stroke="#1a1b3a" stroke-width="3.4"/>
           <circle cx="100" cy="75" r="18" fill="#ffe6bd"/>
           <path d="M46 48v34M46 48c-5 0-8 4-8 9s3 9 8 9M46 48c5 0 8 4 8 9s-3 9-8 9M46 90v14" stroke="#1a1b3a" stroke-width="3" stroke-linecap="round" fill="none"/>
-          <path d="M156 48v56M148 48v18a8 8 0 0 0 16 0V48" stroke="#28bbb1" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M156 48v56M148 48v18a8 8 0 0 0 16 0V48" stroke="#00d2df" stroke-width="3" stroke-linecap="round" fill="none"/>
         </svg>
         <div class="body">
           <span class="kind">Bistro &amp; keuken</span>
@@ -581,7 +582,7 @@
         <svg class="art" viewBox="0 0 200 150" aria-hidden="true">
           <rect width="200" height="150" fill="#ffe8db"/>
           <path d="M78 44h44l22 16-12 14-8-6v40H76v-40l-8 6-12-14 22-16Z" fill="#ffffff" stroke="#1a1b3a" stroke-width="3.4" stroke-linejoin="round"/>
-          <path d="M88 44a12 12 0 0 0 24 0" fill="none" stroke="#28bbb1" stroke-width="3.2"/>
+          <path d="M88 44a12 12 0 0 0 24 0" fill="none" stroke="#00d2df" stroke-width="3.2"/>
           <circle cx="100" cy="88" r="7" fill="#ffb23f"/>
         </svg>
         <div class="body">
@@ -597,7 +598,7 @@
           <rect width="200" height="150" fill="#eceaf6"/>
           <path d="M44 104V66l32-24 32 24v38Z" fill="#ffffff" stroke="#1a1b3a" stroke-width="3.4" stroke-linejoin="round"/>
           <rect x="64" y="80" width="24" height="24" fill="#ffb23f"/>
-          <rect x="120" y="70" width="38" height="34" fill="#28bbb1"/>
+          <rect x="120" y="70" width="38" height="34" fill="#00d2df"/>
           <rect x="120" y="58" width="38" height="8" fill="#1a1b3a"/>
           <rect x="40" y="106" width="122" height="7" rx="3.5" fill="#1a1b3a"/>
         </svg>
@@ -629,10 +630,10 @@
         <p class="for">Voor wie snel en overzichtelijk online wil staan.</p>
         <div class="prijs"><span class="v">&euro;195</span><span class="u">eenmalig</span></div>
         <ul>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#28bbb1"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Een pagina met de belangrijkste info</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#28bbb1"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Duidelijke contactgegevens en openingstijden</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#28bbb1"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Werkt goed op telefoon en tablet</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#28bbb1"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Oplevering binnen een week</span></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Een pagina met de belangrijkste info</span></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Duidelijke contactgegevens en openingstijden</span></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Werkt goed op telefoon en tablet</span></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Oplevering binnen een week</span></li>
         </ul>
         <a class="btn btn-outline" href="#contact">Bekijk Basis</a>
       </div>
@@ -643,13 +644,13 @@
         <p class="for">Voor bedrijven die klanten willen laten reageren, niet alleen lezen.</p>
         <div class="prijs"><span class="v">&euro;300</span><span class="u">eenmalig</span></div>
         <ul>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#28bbb1"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Alles uit Basis</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#28bbb1"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Meerdere pagina&rsquo;s of secties</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#28bbb1"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Eigen contact- of afsprakenformulier</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#28bbb1"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Volledig eigen ontwerp, geen sjabloon</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#28bbb1"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Basis zoekmachine-optimalisatie</span></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Alles uit Basis</span></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Meerdere pagina&rsquo;s of secties</span></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Eigen contact- of afsprakenformulier</span></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Volledig eigen ontwerp, geen sjabloon</span></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Basis zoekmachine-optimalisatie</span></li>
         </ul>
-        <a class="btn btn-teal" href="#contact">Kies dit pakket</a>
+        <a class="btn btn-cyan" href="#contact">Kies dit pakket</a>
       </div>
 
       <div class="pack">
@@ -657,10 +658,10 @@
         <p class="for">Voor bedrijven met extra functionaliteit en doorlopende wensen.</p>
         <div class="prijs"><span class="v">&euro;450</span><span class="u">vanaf, eenmalig</span></div>
         <ul>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#28bbb1"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Alles uit Compleet</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#28bbb1"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Formulier op maat, zoals reserveringen of aanvragen</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#28bbb1"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Uitbreidbaar met webshop of agenda</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#28bbb1"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Drie maanden ondersteuning inbegrepen</span></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Alles uit Compleet</span></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Formulier op maat, zoals reserveringen of aanvragen</span></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Uitbreidbaar met webshop of agenda</span></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Drie maanden ondersteuning inbegrepen</span></li>
         </ul>
         <a class="btn btn-outline" href="#contact">Bekijk Op maat</a>
       </div>
@@ -670,9 +671,9 @@
         <p class="for">Voor wie meer wil dan een standaard pakket &mdash; stel zelf de richting samen.</p>
         <div class="prijs"><span class="v txt">Op aanvraag</span></div>
         <ul>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#28bbb1"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Volledig op maat, geen vaste kaders</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#28bbb1"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Kies zelf kleur, secties, stijl en branche</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#28bbb1"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Direct een offerte op basis van jouw keuzes</span></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Volledig op maat, geen vaste kaders</span></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Kies zelf kleur, secties, stijl en branche</span></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Direct een offerte op basis van jouw keuzes</span></li>
         </ul>
         <a class="btn btn-outline" href="#contact">Start je Custom Build</a>
       </div>
@@ -683,9 +684,9 @@
         <h3>Jaarlijks onderhoud</h3>
         <p class="lead" style="font-size:.95rem; margin-top:5px;">Voor wie na oplevering niet meer naar de site hoeft om te kijken &mdash; ik houd &rsquo;m actueel en online.</p>
         <ul>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#28bbb1"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Site bijwerken met nieuwe info en foto&rsquo;s</li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#28bbb1"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Hosting inbegrepen</li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#28bbb1"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Domeinnaam inbegrepen</li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Site bijwerken met nieuwe info en foto&rsquo;s</li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Hosting inbegrepen</li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Domeinnaam inbegrepen</li>
         </ul>
       </div>
       <div class="right">
@@ -752,10 +753,10 @@
       <div class="waarom">
         <h3>Waarom bedrijven voor mij kiezen</h3>
         <ul>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#28bbb1"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Persoonlijk contact met mij, geen wisselende accountmanagers</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#28bbb1"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Vaste prijs vooraf, geen verrassingen achteraf</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#28bbb1"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Volledig eigen ontwerp, geen sjabloon van de plank</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#28bbb1"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Bereikbaar na oplevering, ook voor kleine vragen</span></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Persoonlijk contact met mij, geen wisselende accountmanagers</span></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Vaste prijs vooraf, geen verrassingen achteraf</span></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Volledig eigen ontwerp, geen sjabloon van de plank</span></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Bereikbaar na oplevering, ook voor kleine vragen</span></li>
         </ul>
       </div>
     </div>
@@ -802,7 +803,7 @@
           <label for="bericht">Waar kan ik je mee helpen?</label>
           <textarea id="bericht" name="bericht" rows="3" placeholder="Bijvoorbeeld: ik heb nog geen site en wil beter gevonden worden."></textarea>
         </div>
-        <button class="btn btn-teal" type="submit">Verstuur aanvraag</button>
+        <button class="btn btn-cyan" type="submit">Verstuur aanvraag</button>
         <p class="mini" id="formMini">Je gegevens worden alleen gebruikt om je aanvraag te beantwoorden.</p>
       </form>
     </div>
@@ -814,8 +815,7 @@
   <div class="wrap">
     <div class="foot-top">
       <a class="logo" href="#top">
-        <svg class="xmark" viewBox="0 0 64 64" aria-hidden="true"><line class="xa" x1="18" y1="18" x2="46" y2="46"/><line class="xb" x1="46" y1="18" x2="18" y2="46"/></svg>
-        <span class="word"><span class="by">BY</span><b>X</b>AVIO</span>
+        <span class="wm"><span class="by">by</span><span class="x">X</span>avio</span>
       </a>
       <span class="tagline">Websites voor kleine bedrijven en zzp&rsquo;ers.</span>
       <div class="foot-links">
@@ -868,7 +868,7 @@
   if (f) f.addEventListener('submit', function(e){
     e.preventDefault();
     var m = document.getElementById('formMini');
-    if (m) { m.textContent = 'Bedankt! Je aanvraag is verstuurd.'; m.style.color = '#01767a'; m.style.fontWeight = '600'; }
+    if (m) { m.textContent = 'Bedankt! Je aanvraag is verstuurd.'; m.style.color = '#00707a'; m.style.fontWeight = '600'; }
   });
 })();
 </script>
