@@ -785,11 +785,15 @@
         </div>
       </div>
 
-      <form class="form" id="offerteForm">
+      <form class="form" id="offerteForm" action="https://formspree.io/f/mgavkkev" method="POST">
         <h3>Offerte aanvragen</h3>
         <div class="field">
           <label for="naam">Naam</label>
-          <input id="naam" name="naam" type="text" placeholder="Je naam" autocomplete="name">
+          <input id="naam" name="naam" type="text" placeholder="Je naam" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="email">E-mail</label>
+          <input id="email" name="_replyto" type="email" placeholder="je@email.nl" autocomplete="email" required>
         </div>
         <div class="field">
           <label for="bedrijf">Bedrijf</label>
@@ -810,6 +814,8 @@
           <label for="bericht">Waar kan ik je mee helpen?</label>
           <textarea id="bericht" name="bericht" rows="3" placeholder="Bijvoorbeeld: ik heb nog geen site en wil beter gevonden worden."></textarea>
         </div>
+        <input type="hidden" name="_subject" value="Nieuwe offerteaanvraag via byxavio.nl">
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
         <button class="btn btn-cyan" type="submit">Verstuur aanvraag</button>
         <p class="mini" id="formMini">Je gegevens worden alleen gebruikt om je aanvraag te beantwoorden.</p>
       </form>
@@ -871,12 +877,30 @@
   var bub = document.getElementById('waBubble');
   if (bub) setTimeout(function(){ bub.style.display = 'none'; }, 7000);
 
-  // demo form
+  // offerte form -> Formspree
   var f = document.getElementById('offerteForm');
   if (f) f.addEventListener('submit', function(e){
     e.preventDefault();
     var m = document.getElementById('formMini');
-    if (m) { m.textContent = 'Bedankt! Je aanvraag is verstuurd.'; m.style.color = '#00707a'; m.style.fontWeight = '600'; }
+    var btn = f.querySelector('button[type="submit"]');
+    if (btn) { btn.disabled = true; btn.textContent = 'Versturen...'; }
+    fetch(f.action, {
+      method: 'POST',
+      body: new FormData(f),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(res){
+      if (res.ok) {
+        f.reset();
+        if (m) { m.textContent = 'Bedankt! Je aanvraag is verstuurd, ik reageer zo snel mogelijk.'; m.style.color = '#00707a'; m.style.fontWeight = '600'; }
+        if (btn) { btn.textContent = 'Verstuurd ✓'; }
+      } else {
+        if (m) { m.textContent = 'Er ging iets mis. Probeer het nogmaals of mail infobyxavio@gmail.com.'; m.style.color = '#c0392b'; m.style.fontWeight = '600'; }
+        if (btn) { btn.disabled = false; btn.textContent = 'Verstuur aanvraag'; }
+      }
+    }).catch(function(){
+      if (m) { m.textContent = 'Er ging iets mis. Probeer het nogmaals of mail infobyxavio@gmail.com.'; m.style.color = '#c0392b'; m.style.fontWeight = '600'; }
+      if (btn) { btn.disabled = false; btn.textContent = 'Verstuur aanvraag'; }
+    });
   });
 })();
 </script>
