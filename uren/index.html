@@ -1,1 +1,607 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>byXavio Uren</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="theme-color" content="#2b6b5a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="byXavio Uren">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap');
+
+  :root {
+    --bg: #faf9f5;
+    --surface: #ffffff;
+    --surface-2: #f2efe6;
+    --border: #e3ddce;
+    --text: #201d17;
+    --text-muted: #766f5d;
+    --accent: #2b6b5a;
+    --accent-strong: #1e4f42;
+    --accent-soft: #e1eee8;
+    --warn: #b5542e;
+    --warn-soft: #f6e6dd;
+    --danger: #a4392c;
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    color-scheme: light dark;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1a1812; --surface: #231f18; --surface-2: #2b271e; --border: #3a3527;
+      --text: #f1eee2; --text-muted: #a89f89; --accent: #6cc4a5; --accent-strong: #8fdcbc;
+      --accent-soft: #253a30; --warn: #e28f5f; --warn-soft: #3c2a1c; --danger: #e0796a;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1a1812; --surface: #231f18; --surface-2: #2b271e; --border: #3a3527;
+    --text: #f1eee2; --text-muted: #a89f89; --accent: #6cc4a5; --accent-strong: #8fdcbc;
+    --accent-soft: #253a30; --warn: #e28f5f; --warn-soft: #3c2a1c; --danger: #e0796a;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    padding-inline: max(18px, env(safe-area-inset-left, 0px));
+    padding-block: 24px;
+  }
+  .wrap { max-width: 780px; margin: 0 auto; }
+  .tabular { font-variant-numeric: tabular-nums; }
+
+  /* ---------- auth screen ---------- */
+  #authScreen {
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-block: 40px;
+  }
+  .auth-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px 28px;
+    max-width: 360px;
+    width: 100%;
+  }
+  .auth-card h1 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    margin: 0 0 4px;
+  }
+  .auth-card .sub { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 20px; }
+  .auth-card .field { margin-bottom: 12px; }
+  .auth-error { color: var(--danger); font-size: 0.82rem; margin-top: 10px; min-height: 1.1em; }
+
+  header.top {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 12px; flex-wrap: wrap; margin-bottom: 22px;
+  }
+  header.top h1 { font-family: var(--font-display); font-weight: 600; font-size: 1.7rem; margin: 0; letter-spacing: -0.01em; }
+  header.top .sub { color: var(--text-muted); font-size: 0.85rem; margin-top: 2px; }
+  .top-controls { display: flex; align-items: center; gap: 8px; }
+  .year-select {
+    font-family: var(--font-mono); font-size: 0.85rem; font-weight: 600;
+    background: var(--surface); border: 1px solid var(--border); color: var(--text);
+    border-radius: 8px; padding: 7px 10px;
+  }
+  .link-btn {
+    background: none; border: none; color: var(--text-muted); font-size: 0.8rem;
+    cursor: pointer; text-decoration: underline; padding: 4px;
+  }
+
+  .banner {
+    background: var(--warn-soft); color: var(--warn); border-radius: 10px;
+    padding: 10px 14px; font-size: 0.83rem; margin-bottom: 18px; display: none;
+  }
+
+  section { margin-bottom: 28px; }
+
+  .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 14px; }
+  .stat { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; }
+  .stat .label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 6px; }
+  .stat .value { font-family: var(--font-mono); font-size: 1.5rem; font-weight: 600; }
+  .stat .value small { font-size: 0.9rem; color: var(--text-muted); font-weight: 500; }
+
+  .progress-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; }
+  .progress-card .row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; flex-wrap: wrap; gap: 4px; }
+  .progress-card .row .title { font-weight: 600; font-size: 0.9rem; }
+  .progress-card .row .figures { font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted); }
+  .progress-track { height: 10px; background: var(--surface-2); border-radius: 999px; overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--accent); border-radius: 999px; transition: width 0.4s ease; }
+  .progress-card .note { font-size: 0.75rem; color: var(--text-muted); margin-top: 8px; }
+
+  h2.section-title { font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; margin: 0 0 10px; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px; }
+
+  .timer-row {
+    display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap;
+    padding-bottom: 16px; margin-bottom: 16px; border-bottom: 1px solid var(--border);
+  }
+  .timer-display { font-family: var(--font-mono); font-size: 1.9rem; font-weight: 600; letter-spacing: 0.02em; }
+  .timer-display.idle { color: var(--text-muted); }
+  button {
+    font-family: var(--font-body); font-weight: 600; border: none; border-radius: 9px;
+    padding: 10px 16px; cursor: pointer; font-size: 0.87rem;
+  }
+  .btn-accent { background: var(--accent); color: var(--bg); }
+  .btn-accent:hover { background: var(--accent-strong); }
+  .btn-stop { background: var(--danger); color: #fff; }
+  .btn-ghost { background: transparent; border: 1px solid var(--border); color: var(--text); }
+  .btn-ghost:hover { background: var(--surface-2); }
+  button:disabled { opacity: 0.6; cursor: default; }
+  button:focus-visible, select:focus-visible, input:focus-visible, textarea:focus-visible {
+    outline: 2px solid var(--accent); outline-offset: 1px;
+  }
+
+  form.entry-form { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  form.entry-form .full { grid-column: 1 / -1; }
+  @media (max-width: 480px) { form.entry-form { grid-template-columns: 1fr; } }
+  .field label { display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 5px; }
+  .field input, .field select, .field textarea {
+    width: 100%; background: var(--surface-2); border: 1px solid var(--border); color: var(--text);
+    border-radius: 8px; padding: 9px 10px; font-family: var(--font-body); font-size: 0.9rem;
+  }
+  .field.duo { display: flex; gap: 8px; }
+  .field.duo > div { flex: 1; }
+  textarea { resize: vertical; min-height: 42px; font-family: var(--font-body); }
+
+  .form-actions { grid-column: 1 / -1; display: flex; justify-content: flex-end; gap: 8px; margin-top: 4px; }
+
+  .breakdown { display: flex; flex-direction: column; gap: 10px; }
+  .bd-row { display: grid; grid-template-columns: 140px 1fr 52px; gap: 10px; align-items: center; }
+  .bd-row .cat-name { font-size: 0.83rem; }
+  .bd-track { height: 8px; background: var(--surface-2); border-radius: 999px; overflow: hidden; }
+  .bd-fill { height: 100%; background: var(--accent); border-radius: 999px; }
+  .bd-row .cat-hours { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); text-align: right; }
+  @media (max-width: 480px) { .bd-row { grid-template-columns: 90px 1fr 44px; } }
+
+  .month-group { margin-bottom: 18px; }
+  .month-heading {
+    font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--text-muted); margin: 0 0 8px; padding-top: 4px;
+  }
+  .entry-row { display: flex; align-items: flex-start; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--border); }
+  .entry-row:last-child { border-bottom: none; }
+  .entry-date { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted); width: 38px; flex-shrink: 0; padding-top: 2px; }
+  .entry-body { flex: 1; min-width: 0; }
+  .entry-top { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 3px; }
+  .chip { background: var(--accent-soft); color: var(--accent-strong); font-size: 0.72rem; font-weight: 600; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+  .entry-client { font-weight: 600; font-size: 0.9rem; }
+  .entry-note { color: var(--text-muted); font-size: 0.83rem; overflow-wrap: break-word; }
+  .entry-duration { font-family: var(--font-mono); font-weight: 600; font-size: 0.88rem; flex-shrink: 0; padding-top: 2px; }
+  .entry-del { background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 0.95rem; padding: 2px 4px; flex-shrink: 0; }
+  .entry-del:hover { color: var(--danger); }
+
+  .empty-state { text-align: center; padding: 30px 10px; color: var(--text-muted); font-size: 0.88rem; }
+
+  footer.actions { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+  footer.actions .total-note { font-size: 0.78rem; color: var(--text-muted); }
+
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div id="authScreen">
+    <form class="auth-card" id="loginForm">
+      <h1>byXavio Uren</h1>
+      <div class="sub">Log in om je urenregistratie te openen.</div>
+      <div class="field">
+        <label for="authEmail">E-mail</label>
+        <input type="email" id="authEmail" required autocomplete="username">
+      </div>
+      <div class="field">
+        <label for="authPassword">Wachtwoord</label>
+        <input type="password" id="authPassword" required autocomplete="current-password">
+      </div>
+      <button type="submit" class="btn-accent" id="loginBtn" style="width:100%;">Inloggen</button>
+      <div class="auth-error" id="authError"></div>
+    </form>
+  </div>
+
+  <div id="app" hidden>
+    <div class="banner" id="offlineBanner">Geen verbinding met de database — probeer de pagina te vernieuwen.</div>
+
+    <header class="top">
+      <div>
+        <h1>byXavio Uren</h1>
+        <div class="sub">Urenregistratie voor de administratie</div>
+      </div>
+      <div class="top-controls">
+        <select class="year-select" id="yearSelect"></select>
+        <button class="link-btn" id="logoutBtn">Uitloggen</button>
+      </div>
+    </header>
+
+    <section>
+      <div class="stats-grid">
+        <div class="stat"><div class="label">Deze maand</div><div class="value tabular" id="statMonth">0<small> u</small></div></div>
+        <div class="stat"><div class="label">Dit jaar</div><div class="value tabular" id="statYear">0<small> u</small></div></div>
+        <div class="stat"><div class="label">Registraties</div><div class="value tabular" id="statCount">0</div></div>
+      </div>
+      <div class="progress-card">
+        <div class="row">
+          <span class="title">Urencriterium <span id="progressYearLabel"></span></span>
+          <span class="figures tabular" id="progressFigures">0 / 1225 u</span>
+        </div>
+        <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+        <div class="note">Richtlijn voor zelfstandigenaftrek: minimaal 1225 uur per kalenderjaar aan je onderneming besteed. Check de actuele grens bij de Belastingdienst.</div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Uren toevoegen</h2>
+      <div class="card">
+        <div class="timer-row">
+          <div class="timer-display idle tabular" id="timerDisplay">00:00:00</div>
+          <div style="display:flex; gap:8px;">
+            <button class="btn-accent" id="timerStart" type="button">Start timer</button>
+            <button class="btn-stop" id="timerStop" type="button" hidden>Stop &amp; invullen</button>
+          </div>
+        </div>
+        <form class="entry-form" id="entryForm">
+          <div class="field">
+            <label for="fDate">Datum</label>
+            <input type="date" id="fDate" required>
+          </div>
+          <div class="field">
+            <label for="fCategory">Categorie</label>
+            <select id="fCategory">
+              <option>Website bouwen</option>
+              <option>Ontwerp &amp; content</option>
+              <option>Promotie &amp; acquisitie</option>
+              <option>Klantcontact &amp; overleg</option>
+              <option>Administratie &amp; boekhouding</option>
+              <option>Bijscholing</option>
+              <option>Overig</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label for="fClient">Klant / project</label>
+            <input type="text" id="fClient" placeholder="bv. Bakkerij De Molen, of intern">
+          </div>
+          <div class="field full">
+            <label for="fNote">Omschrijving</label>
+            <textarea id="fNote" placeholder="Wat heb je gedaan?"></textarea>
+          </div>
+          <div class="field duo full">
+            <div><label for="fHours">Uren</label><input type="number" id="fHours" min="0" max="24" value="0"></div>
+            <div><label for="fMinutes">Minuten</label><input type="number" id="fMinutes" min="0" max="59" value="0"></div>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn-accent" id="submitBtn">Toevoegen</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Verdeling per categorie <span id="breakdownYearLabel" style="color:var(--text-muted); font-weight:500;"></span></h2>
+      <div class="card"><div class="breakdown" id="breakdown"></div></div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Registraties</h2>
+      <div class="card"><div id="entriesList"></div></div>
+    </section>
+
+    <footer class="actions">
+      <span class="total-note" id="footerNote"></span>
+      <button class="btn-ghost" id="exportBtn" type="button">Exporteer CSV</button>
+    </footer>
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+(function () {
+  "use strict";
+
+  // ---- Vul deze twee waarden in na het aanmaken van je Supabase-project ----
+  // Project Settings -> API -> Project URL / anon public key
+  var SUPABASE_URL = "https://wifbnkvrhjvlkofsoipg.supabase.co";
+  var SUPABASE_ANON_KEY = "sb_publishable_swgxRkVZnkml5-wu3Mv0bw_UEjdNTDt";
+  // ---------------------------------------------------------------------------
+
+  var MONTH_NAMES = ["januari","februari","maart","april","mei","juni","juli","augustus","september","oktober","november","december"];
+  var URENCRITERIUM = 1225;
+
+  var supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  var allEntries = [];
+  var selectedYear = new Date().getFullYear();
+  var timerStart = null;
+  var timerInterval = null;
+  var channel = null;
+
+  function pad(n) { return String(n).padStart(2, "0"); }
+  function todayISO() {
+    var d = new Date();
+    return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
+  }
+  function fmtHours(minutes) { return (minutes / 60).toFixed(1).replace(".", ","); }
+  function escapeHtml(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  var authScreen = document.getElementById("authScreen");
+  var appEl = document.getElementById("app");
+  var offlineBanner = document.getElementById("offlineBanner");
+
+  document.getElementById("fDate").value = todayISO();
+
+  // ---------- auth ----------
+  document.getElementById("loginForm").addEventListener("submit", async function (ev) {
+    ev.preventDefault();
+    var btn = document.getElementById("loginBtn");
+    var errEl = document.getElementById("authError");
+    errEl.textContent = "";
+    btn.disabled = true;
+    btn.textContent = "Bezig...";
+    var email = document.getElementById("authEmail").value.trim();
+    var password = document.getElementById("authPassword").value;
+    var res = await supabase.auth.signInWithPassword({ email: email, password: password });
+    btn.disabled = false;
+    btn.textContent = "Inloggen";
+    if (res.error) {
+      errEl.textContent = "Inloggen mislukt: controleer e-mail en wachtwoord.";
+    }
+  });
+
+  document.getElementById("logoutBtn").addEventListener("click", async function () {
+    if (channel) { supabase.removeChannel(channel); channel = null; }
+    await supabase.auth.signOut();
+  });
+
+  supabase.auth.onAuthStateChange(function (event, session) {
+    if (session) {
+      authScreen.hidden = true;
+      appEl.hidden = false;
+      startData();
+    } else {
+      appEl.hidden = true;
+      authScreen.hidden = false;
+      allEntries = [];
+    }
+  });
+
+  // ---------- data ----------
+  async function fetchEntries() {
+    var res = await supabase.from("entries").select("*").order("date", { ascending: false }).limit(1000);
+    if (res.error) {
+      offlineBanner.style.display = "block";
+      return;
+    }
+    offlineBanner.style.display = "none";
+    allEntries = res.data.map(function (row) {
+      return {
+        id: row.id,
+        date: row.date,
+        category: row.category,
+        client: row.client || "",
+        note: row.note || "",
+        minutes: row.minutes || 0
+      };
+    });
+    render();
+  }
+
+  function startData() {
+    fetchEntries();
+    if (channel) supabase.removeChannel(channel);
+    channel = supabase.channel("entries-changes")
+      .on("postgres_changes", { event: "*", schema: "public", table: "entries" }, function () { fetchEntries(); })
+      .subscribe();
+  }
+
+  async function addEntry(entry) {
+    var res = await supabase.from("entries").insert(entry);
+    if (res.error) { alert("Opslaan mislukt: " + res.error.message); }
+  }
+
+  async function deleteEntry(id) {
+    var res = await supabase.from("entries").delete().eq("id", id);
+    if (res.error) { alert("Verwijderen mislukt: " + res.error.message); }
+  }
+
+  // ---------- timer ----------
+  var timerDisplay = document.getElementById("timerDisplay");
+  var timerStartBtn = document.getElementById("timerStart");
+  var timerStopBtn = document.getElementById("timerStop");
+
+  timerStartBtn.addEventListener("click", function () {
+    timerStart = Date.now();
+    timerDisplay.classList.remove("idle");
+    timerStartBtn.hidden = true;
+    timerStopBtn.hidden = false;
+    timerInterval = setInterval(updateTimerDisplay, 1000);
+    updateTimerDisplay();
+  });
+
+  timerStopBtn.addEventListener("click", function () {
+    clearInterval(timerInterval);
+    var elapsedMs = Date.now() - timerStart;
+    var totalMinutes = Math.max(1, Math.round(elapsedMs / 60000));
+    document.getElementById("fHours").value = Math.floor(totalMinutes / 60);
+    document.getElementById("fMinutes").value = totalMinutes % 60;
+    document.getElementById("fDate").value = todayISO();
+    timerDisplay.classList.add("idle");
+    timerDisplay.textContent = "00:00:00";
+    timerStartBtn.hidden = false;
+    timerStopBtn.hidden = true;
+    document.getElementById("fClient").focus();
+  });
+
+  function updateTimerDisplay() {
+    var elapsed = Math.floor((Date.now() - timerStart) / 1000);
+    var h = Math.floor(elapsed / 3600), m = Math.floor((elapsed % 3600) / 60), s = elapsed % 60;
+    timerDisplay.textContent = pad(h) + ":" + pad(m) + ":" + pad(s);
+  }
+
+  // ---------- form ----------
+  document.getElementById("entryForm").addEventListener("submit", async function (ev) {
+    ev.preventDefault();
+    var hours = parseInt(document.getElementById("fHours").value, 10) || 0;
+    var minutes = parseInt(document.getElementById("fMinutes").value, 10) || 0;
+    var totalMinutes = hours * 60 + minutes;
+    if (totalMinutes <= 0) { document.getElementById("fHours").focus(); return; }
+    var btn = document.getElementById("submitBtn");
+    btn.disabled = true;
+    await addEntry({
+      date: document.getElementById("fDate").value || todayISO(),
+      category: document.getElementById("fCategory").value,
+      client: document.getElementById("fClient").value.trim(),
+      note: document.getElementById("fNote").value.trim(),
+      minutes: totalMinutes
+    });
+    btn.disabled = false;
+    document.getElementById("fClient").value = "";
+    document.getElementById("fNote").value = "";
+    document.getElementById("fHours").value = "0";
+    document.getElementById("fMinutes").value = "0";
+    document.getElementById("fDate").value = todayISO();
+  });
+
+  // ---------- year select ----------
+  var yearSelect = document.getElementById("yearSelect");
+  function rebuildYearOptions() {
+    var years = {};
+    years[new Date().getFullYear()] = true;
+    allEntries.forEach(function (e) { years[parseInt(e.date.slice(0, 4), 10)] = true; });
+    var list = Object.keys(years).map(Number).sort(function (a, b) { return b - a; });
+    var prevVal = selectedYear;
+    yearSelect.innerHTML = list.map(function (y) { return '<option value="' + y + '">' + y + "</option>"; }).join("");
+    if (list.indexOf(prevVal) === -1) selectedYear = list[0];
+    yearSelect.value = selectedYear;
+  }
+  yearSelect.addEventListener("change", function () { selectedYear = parseInt(yearSelect.value, 10); render(); });
+
+  // ---------- export ----------
+  document.getElementById("exportBtn").addEventListener("click", function () {
+    var yearEntries = allEntries.filter(function (e) { return e.date.slice(0, 4) === String(selectedYear); })
+      .sort(function (a, b) { return a.date < b.date ? -1 : 1; });
+    var rows = [["Datum", "Categorie", "Klant/project", "Omschrijving", "Uren"]];
+    yearEntries.forEach(function (e) { rows.push([e.date, e.category, e.client, e.note, fmtHours(e.minutes)]); });
+    var csv = rows.map(function (r) {
+      return r.map(function (v) {
+        var s = String(v == null ? "" : v).replace(/"/g, '""');
+        return /[",\n;]/.test(s) ? '"' + s + '"' : s;
+      }).join(";");
+    }).join("\r\n");
+    var blob = new Blob(["﻿" + csv], { type: "text/csv;charset=utf-8;" });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = "urenregistratie-" + selectedYear + ".csv";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  });
+
+  // ---------- render ----------
+  function render() {
+    rebuildYearOptions();
+    var yearEntries = allEntries.filter(function (e) { return e.date.slice(0, 4) === String(selectedYear); });
+    var nowMonth = new Date().getFullYear() === selectedYear ? new Date().getMonth() : -1;
+    var monthMinutes = yearEntries.filter(function (e) { return parseInt(e.date.slice(5, 7), 10) - 1 === nowMonth; })
+      .reduce(function (s, e) { return s + e.minutes; }, 0);
+    var yearMinutes = yearEntries.reduce(function (s, e) { return s + e.minutes; }, 0);
+
+    document.getElementById("statMonth").innerHTML = fmtHours(monthMinutes) + "<small> u</small>";
+    document.getElementById("statYear").innerHTML = fmtHours(yearMinutes) + "<small> u</small>";
+    document.getElementById("statCount").textContent = yearEntries.length;
+
+    var yearHours = yearMinutes / 60;
+    var pct = Math.min(100, (yearHours / URENCRITERIUM) * 100);
+    document.getElementById("progressFill").style.width = pct + "%";
+    document.getElementById("progressFigures").textContent = fmtHours(yearMinutes) + " / " + URENCRITERIUM + " u";
+    document.getElementById("progressYearLabel").textContent = selectedYear;
+
+    var byCat = {};
+    yearEntries.forEach(function (e) { byCat[e.category] = (byCat[e.category] || 0) + e.minutes; });
+    var maxCat = Math.max(1, Object.values(byCat).reduce(function (m, v) { return Math.max(m, v); }, 0));
+    var breakdownEl = document.getElementById("breakdown");
+    document.getElementById("breakdownYearLabel").textContent = selectedYear;
+    var catKeys = Object.keys(byCat).sort(function (a, b) { return byCat[b] - byCat[a]; });
+    if (catKeys.length === 0) {
+      breakdownEl.innerHTML = '<div class="empty-state">Nog geen uren in ' + selectedYear + ".</div>";
+    } else {
+      breakdownEl.innerHTML = catKeys.map(function (cat) {
+        var w = (byCat[cat] / maxCat) * 100;
+        return '<div class="bd-row"><span class="cat-name">' + escapeHtml(cat) + '</span>' +
+          '<div class="bd-track"><div class="bd-fill" style="width:' + w + '%"></div></div>' +
+          '<span class="cat-hours tabular">' + fmtHours(byCat[cat]) + "u</span></div>";
+      }).join("");
+    }
+
+    var sorted = yearEntries.slice().sort(function (a, b) { return a.date < b.date ? 1 : -1; });
+    var entriesList = document.getElementById("entriesList");
+    if (sorted.length === 0) {
+      entriesList.innerHTML = '<div class="empty-state">Nog geen registraties in ' + selectedYear + '. Gebruik de timer of vul hierboven direct uren in.</div>';
+    } else {
+      var groups = {}, order = [];
+      sorted.forEach(function (e) {
+        var key = e.date.slice(0, 7);
+        if (!groups[key]) { groups[key] = []; order.push(key); }
+        groups[key].push(e);
+      });
+      entriesList.innerHTML = order.map(function (key) {
+        var parts = key.split("-");
+        var label = MONTH_NAMES[parseInt(parts[1], 10) - 1] + " " + parts[0];
+        var rows = groups[key].map(function (e) {
+          var day = e.date.slice(8, 10);
+          return '<div class="entry-row">' +
+            '<div class="entry-date tabular">' + day + "</div>" +
+            '<div class="entry-body">' +
+              '<div class="entry-top"><span class="chip">' + escapeHtml(e.category) + '</span>' +
+              (e.client ? '<span class="entry-client">' + escapeHtml(e.client) + "</span>" : "") + "</div>" +
+              (e.note ? '<div class="entry-note">' + escapeHtml(e.note) + "</div>" : "") +
+            "</div>" +
+            '<div class="entry-duration tabular">' + fmtHours(e.minutes) + "u</div>" +
+            '<button class="entry-del" data-id="' + e.id + '" title="Verwijderen" aria-label="Verwijderen">✕</button>' +
+          "</div>";
+        }).join("");
+        return '<div class="month-group"><h3 class="month-heading">' + label + "</h3>" + rows + "</div>";
+      }).join("");
+      Array.prototype.forEach.call(entriesList.querySelectorAll(".entry-del"), function (btn) {
+        btn.addEventListener("click", function () { deleteEntry(btn.getAttribute("data-id")); });
+      });
+    }
+
+    document.getElementById("footerNote").textContent = yearEntries.length + " registratie" + (yearEntries.length === 1 ? "" : "s") + " in " + selectedYear;
+  }
+
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () {
+      navigator.serviceWorker.register("sw.js").catch(function () {});
+    });
+  }
+
+  // resume existing session on load
+  supabase.auth.getSession().then(function (res) {
+    if (res.data && res.data.session) {
+      authScreen.hidden = true;
+      appEl.hidden = false;
+      startData();
+    }
+  });
+})();
+</script>
+</body>
+</html>
 
