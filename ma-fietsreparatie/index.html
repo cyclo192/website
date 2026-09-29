@@ -4,176 +4,242 @@
 <meta charset="UTF-8">
 <meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>M&amp;A Fietsreparatie – Fietsenmaker aan huis in Purmerend</title>
-<meta name="description" content="Fiets kapot? M&A Fietsreparatie haalt je fiets op, repareert hem en brengt hem terug. Reparatie en onderhoud van fietsen, e-bikes en pedelecs in Purmerend en omgeving.">
+<title>M&amp;A Fietsreparatie – Fiets- en e-bike reparatie in Purmerend</title>
+<meta name="description" content="Professionele reparatie en onderhoud van pedelecs, e-bikes, fatbikes, bakfietsen en gewone fietsen in Purmerend. Ophalen en brengen of reparatie op locatie. Sinds 2005.">
+<link rel="icon" href="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=300,fit=crop/mk3qBXVLRaurkEjr/yeni-logo-son-zonder-tel-fSOivZBGCF2deLVQ.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{
-  --ink:#0f1f1a;
-  --ink-2:#1b3a30;
-  --paper:#f6f3ec;
-  --card:#ffffff;
-  --muted:#5b6b64;
-  --line:#e3ddd0;
-  --accent:#ff6a1a;
-  --accent-dark:#e0540a;
-  --mint:#cfe8dc;
-  --radius:18px;
-}
+:root{--ink:#10201b;--ink-2:#1d3a31;--paper:#f6f3ec;--card:#fff;--muted:#5b6b64;--line:#e3ddd0;--accent:#e63323;--accent-dark:#c4261a;--mint:#dcebe3;--radius:18px}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:Inter,system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
-h1,h2,h3{font-family:"Bricolage Grotesque",Inter,sans-serif;line-height:1.05;letter-spacing:-.02em}
+h1,h2,h3{font-family:"Bricolage Grotesque",Inter,sans-serif;line-height:1.08;letter-spacing:-.02em}
 a{color:inherit;text-decoration:none}
-.wrap{max-width:1140px;margin:0 auto;padding:0 20px}
+img{display:block;max-width:100%}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
 
-/* NAV */
-header{position:sticky;top:0;z-index:50;background:rgba(246,243,236,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
-.logo{display:flex;align-items:center;gap:10px;font-family:"Bricolage Grotesque";font-weight:800;font-size:1.25rem}
-.logo-mark{width:38px;height:38px;border-radius:11px;background:var(--ink);display:grid;place-items:center}
-.nav-links{display:flex;gap:28px;font-weight:500;font-size:.95rem}
-.nav-links a:hover{color:var(--accent-dark)}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;font-weight:600;font-size:.97rem;transition:transform .15s,background .15s}
+.topbar{background:var(--ink);color:#e9efec;font-size:.85rem}
+.topbar .wrap{display:flex;justify-content:space-between;gap:16px;padding-top:9px;padding-bottom:9px;flex-wrap:wrap}
+.topbar b{color:#fff}
+.topbar span.hl{color:#ff8a7e;font-weight:600}
+
+header{position:sticky;top:0;z-index:50;background:rgba(246,243,236,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:74px;gap:20px}
+.logo{display:flex;align-items:center;gap:12px;font-family:"Bricolage Grotesque";font-weight:800;font-size:1.15rem;line-height:1.1}
+.logo img{width:52px;height:52px;object-fit:contain;background:#fff;border-radius:12px;border:1px solid var(--line);padding:3px}
+.logo small{display:block;font-family:Inter;font-weight:500;font-size:.75rem;color:var(--muted)}
+.nav-links{display:flex;gap:24px;font-weight:500;font-size:.93rem}
+.nav-links a:hover{color:var(--accent)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;font-weight:600;font-size:.97rem;transition:transform .15s,background .15s;cursor:pointer;border:none;font-family:inherit}
 .btn:hover{transform:translateY(-2px)}
 .btn-accent{background:var(--accent);color:#fff}
 .btn-accent:hover{background:var(--accent-dark)}
-.btn-ghost{border:1.5px solid var(--ink);color:var(--ink)}
+.btn-ghost{border:1.5px solid var(--ink);color:var(--ink);background:transparent}
 .btn-light{background:#fff;color:var(--ink)}
 .nav .btn{padding:10px 18px}
 
-/* HERO */
-.hero{padding:72px 0 88px;position:relative;overflow:hidden}
-.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.hero{padding:64px 0 80px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center}
 .badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);padding:7px 14px;border-radius:999px;font-size:.87rem;font-weight:500;margin-bottom:22px}
 .stars{color:#f5a300;letter-spacing:1px}
-.hero h1{font-size:clamp(2.6rem,6vw,4.6rem);font-weight:800;margin-bottom:22px}
-.hero h1 em{font-style:normal;color:var(--accent);position:relative}
-.hero p.lead{font-size:1.15rem;color:var(--muted);max-width:520px;margin-bottom:32px}
-.hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
-.hero-meta{display:flex;gap:26px;margin-top:36px;flex-wrap:wrap;font-size:.92rem;color:var(--muted)}
+.hero h1{font-size:clamp(2.5rem,5.6vw,4.4rem);font-weight:800;margin-bottom:22px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.lead{font-size:1.13rem;color:var(--muted);max-width:540px;margin-bottom:30px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.hero-meta{display:flex;gap:28px;margin-top:36px;flex-wrap:wrap;font-size:.9rem;color:var(--muted)}
 .hero-meta strong{display:block;color:var(--ink);font-family:"Bricolage Grotesque";font-size:1.5rem}
-.hero-visual{position:relative;aspect-ratio:1/1;border-radius:32px;background:var(--ink);overflow:hidden;display:grid;place-items:center}
-.hero-visual::before{content:"";position:absolute;width:140%;height:140%;background:radial-gradient(circle at 70% 25%,#2d5a4a 0,transparent 55%)}
-.hero-visual svg{position:relative;width:82%}
-.float-card{position:absolute;background:#fff;border-radius:14px;padding:12px 16px;box-shadow:0 12px 30px rgba(0,0,0,.18);font-size:.85rem;display:flex;align-items:center;gap:10px}
-.float-card b{font-family:"Bricolage Grotesque";font-size:1.05rem;display:block;line-height:1.1}
-.fc-1{left:-14px;bottom:44px}
-.fc-2{right:18px;top:26px}
-.dot{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:var(--mint);flex-shrink:0}
+.hero-photo{position:relative}
+.hero-photo .main{border-radius:28px;aspect-ratio:4/5;object-fit:cover;width:100%;box-shadow:0 30px 60px rgba(16,32,27,.18)}
+.float{position:absolute;background:#fff;border-radius:16px;padding:12px 16px;box-shadow:0 14px 34px rgba(0,0,0,.16);font-size:.85rem;display:flex;align-items:center;gap:10px}
+.float b{font-family:"Bricolage Grotesque";font-size:1.05rem;display:block;line-height:1.1}
+.f1{left:-22px;bottom:40px}
+.f2{right:-14px;top:30px}
+.dot{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:var(--mint);flex-shrink:0;font-size:1.05rem}
 
-/* STRIP */
-.strip{background:var(--ink);color:#fff;padding:18px 0;overflow:hidden}
-.strip-inner{display:flex;gap:44px;white-space:nowrap;animation:scroll 28s linear infinite;font-family:"Bricolage Grotesque";font-weight:700;font-size:1.15rem}
-.strip-inner span::after{content:"✦";color:var(--accent);margin-left:44px}
+.strip{background:var(--accent);color:#fff;padding:16px 0;overflow:hidden}
+.strip-inner{display:flex;gap:40px;white-space:nowrap;animation:scroll 32s linear infinite;font-family:"Bricolage Grotesque";font-weight:700;font-size:1.1rem;width:max-content}
+.strip-inner span::after{content:"✦";margin-left:40px;opacity:.6}
 @keyframes scroll{to{transform:translateX(-50%)}}
 
-/* SECTIONS */
-section{padding:96px 0}
-.eyebrow{font-size:.82rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--accent-dark);margin-bottom:12px}
-.sec-head{max-width:640px;margin-bottom:52px}
-.sec-head h2{font-size:clamp(2rem,4.4vw,3.1rem);font-weight:800;margin-bottom:14px}
-.sec-head p{color:var(--muted);font-size:1.07rem}
+section{padding:92px 0}
+.eyebrow{font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:12px}
+.head{max-width:660px;margin-bottom:48px}
+.head h2{font-size:clamp(2rem,4.2vw,3rem);font-weight:800;margin-bottom:14px}
+.head p{color:var(--muted);font-size:1.06rem}
+
+/* DEAL */
+.deal{background:var(--ink);color:#fff;border-radius:32px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr}
+.deal-txt{padding:52px}
+.deal .eyebrow{color:#ff8a7e}
+.deal h2{font-size:clamp(2rem,4vw,2.9rem);font-weight:800;margin-bottom:14px}
+.deal p.sub{opacity:.8;margin-bottom:28px}
+.deal-item{display:flex;gap:16px;align-items:flex-start;padding:18px 0;border-top:1px solid rgba(255,255,255,.14)}
+.deal-item h3{font-size:1.15rem;margin-bottom:3px}
+.deal-item p{opacity:.75;font-size:.93rem}
+.price-tag{margin-left:auto;text-align:right;font-family:"Bricolage Grotesque";font-weight:800;font-size:1.6rem;white-space:nowrap}
+.price-tag s{display:block;font-size:.95rem;opacity:.5;font-weight:500}
+.deal-imgs{display:grid;grid-template-rows:1.3fr 1fr;background:#fff}
+.deal-imgs img{width:100%;height:100%;object-fit:contain;padding:24px}
+.deal-imgs img+img{border-top:1px solid var(--line)}
 
 /* STEPS */
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:30px;position:relative}
-.step-num{font-family:"Bricolage Grotesque";font-weight:800;font-size:3.4rem;color:var(--accent);line-height:1;margin-bottom:18px}
-.step h3{font-size:1.35rem;margin-bottom:8px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:30px}
+.step-num{font-family:"Bricolage Grotesque";font-weight:800;font-size:3.2rem;color:var(--accent);line-height:1;margin-bottom:16px}
+.step h3{font-size:1.3rem;margin-bottom:8px}
 .step p{color:var(--muted)}
 
-/* SERVICES / PRICES */
-.prices{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+/* SERVICES */
+.services{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.svc{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--paper);display:flex;flex-direction:column}
+.svc img{aspect-ratio:4/3;object-fit:cover;width:100%}
+.svc div{padding:24px}
+.svc h3{font-size:1.25rem;margin-bottom:8px}
+.svc p{color:var(--muted);font-size:.95rem}
+.brands{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px;align-items:center}
+.brands span{background:var(--paper);border:1px solid var(--line);padding:8px 16px;border-radius:999px;font-weight:600;font-size:.9rem}
+.brands em{font-style:normal;color:var(--muted);margin-right:6px;font-size:.92rem}
+.checklist{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
+.checklist .box{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:28px}
+.checklist h3{font-size:1.2rem;margin-bottom:12px}
+.checklist ul{list-style:none;display:grid;gap:8px}
+.checklist li{padding-left:28px;position:relative;color:var(--ink-2)}
+.checklist li::before{content:"✓";position:absolute;left:0;color:#fff;background:var(--accent);width:19px;height:19px;border-radius:50%;display:grid;place-items:center;font-size:.7rem;top:3px;font-weight:700}
+
+/* PRICES */
 .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.price-card{border:1px solid var(--line);border-radius:var(--radius);padding:28px;background:var(--paper)}
-.price-card h3{font-size:1.3rem;margin-bottom:18px;display:flex;align-items:center;gap:10px}
-.price-row{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:11px 0;border-bottom:1px dashed var(--line)}
-.price-row:last-child{border-bottom:none}
-.price-row span{color:var(--ink-2)}
-.price-row b{font-family:"Bricolage Grotesque";font-size:1.15rem;white-space:nowrap}
-.price-note{margin-top:28px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:space-between;background:var(--ink);color:#fff;padding:22px 28px;border-radius:var(--radius)}
-.price-note p{opacity:.85;font-size:.95rem}
-.price-note strong{font-family:"Bricolage Grotesque";font-size:1.25rem;display:block;opacity:1}
+.pcard{border:1px solid var(--line);border-radius:var(--radius);padding:28px;background:#fff}
+.pcard h3{font-size:1.25rem;margin-bottom:16px}
+.prow{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:11px 0;border-bottom:1px dashed var(--line)}
+.prow:last-child{border-bottom:none}
+.prow span{color:var(--ink-2)}
+.prow b{font-family:"Bricolage Grotesque";font-size:1.12rem;white-space:nowrap}
+.pnote{margin-top:24px;display:flex;gap:18px;flex-wrap:wrap;align-items:center;justify-content:space-between;background:var(--ink);color:#fff;padding:24px 30px;border-radius:var(--radius)}
+.pnote strong{font-family:"Bricolage Grotesque";font-size:1.25rem;display:block}
+.pnote p{opacity:.8;font-size:.93rem}
+.small{margin-top:18px;color:var(--muted);font-size:.86rem;max-width:860px}
 
-/* USP */
-.usp-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
-.usp-list{display:grid;gap:16px}
-.usp{display:flex;gap:16px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px}
-.usp h3{font-size:1.15rem;margin-bottom:4px}
-.usp p{color:var(--muted);font-size:.96rem}
-.review-box{background:var(--ink);color:#fff;border-radius:28px;padding:44px;text-align:center}
-.review-score{font-family:"Bricolage Grotesque";font-weight:800;font-size:6rem;line-height:1}
-.review-box .stars{font-size:1.6rem;margin:6px 0 12px}
-.review-box p{opacity:.8;margin-bottom:26px}
+/* PRODUCTS */
+.shop{background:#fff;border-top:1px solid var(--line)}
+.prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.prod{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--paper);display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+.prod:hover{transform:translateY(-4px);box-shadow:0 16px 30px rgba(16,32,27,.1)}
+.prod-img{aspect-ratio:1/1;background:#fff;overflow:hidden}
+.prod-img img{width:100%;height:100%;object-fit:cover}
+.prod-img.light img{object-fit:contain;padding:18px}
+.prod-body{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1}
+.prod-body h3{font-size:1.02rem;margin-bottom:12px;line-height:1.25}
+.tag{display:inline-block;background:var(--mint);color:var(--ink-2);font-size:.74rem;font-weight:600;padding:3px 10px;border-radius:999px;margin-bottom:8px;align-self:flex-start;text-transform:uppercase;letter-spacing:.05em}
+.prod-foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.prod-foot b{font-family:"Bricolage Grotesque";font-size:1.25rem}
+.mini{font-size:.83rem;font-weight:600;background:var(--ink);color:#fff;padding:7px 13px;border-radius:999px}
+.mini:hover{background:var(--accent)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
+.filters button{font:inherit;font-weight:600;font-size:.9rem;padding:9px 18px;border-radius:999px;border:1.5px solid var(--line);background:#fff;cursor:pointer;color:var(--ink)}
+.filters button.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.sub-head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin:70px 0 26px}
+.sub-head h3{font-size:clamp(1.6rem,3vw,2.2rem)}
+.sub-head p{color:var(--muted)}
 
-/* SECOND HAND */
-.used{background:var(--mint)}
-.used-inner{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center}
-.used-visual{background:#fff;border-radius:28px;aspect-ratio:4/3;display:grid;place-items:center}
-.used-visual svg{width:70%}
-.used h2{font-size:clamp(2rem,4.4vw,3rem);font-weight:800;margin-bottom:14px}
-.used p{color:var(--ink-2);margin-bottom:26px;font-size:1.07rem}
+/* GALLERY */
+.gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;gap:12px}
+.gal img{width:100%;height:100%;object-fit:cover;border-radius:16px}
+.gal .tall{grid-row:span 2}
+.gal .wide{grid-column:span 2}
+
+/* ABOUT */
+.about{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+.about-photo{position:relative}
+.about-photo img{border-radius:28px;aspect-ratio:4/5;object-fit:cover;width:100%}
+.since{position:absolute;right:-18px;bottom:-18px;background:var(--accent);color:#fff;border-radius:22px;padding:20px 24px;text-align:center;font-family:"Bricolage Grotesque";box-shadow:0 14px 30px rgba(230,51,35,.35)}
+.since b{display:block;font-size:2.4rem;line-height:1}
+.about h2{font-size:clamp(2rem,4.2vw,3rem);font-weight:800;margin-bottom:16px}
+.about p{color:var(--ink-2);margin-bottom:16px;font-size:1.05rem}
+.usps{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:26px}
+.usp{display:flex;gap:12px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;font-weight:600;font-size:.95rem}
+
+.reviews{background:var(--mint)}
+.rev-head{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap;margin-bottom:40px}
+.score{display:flex;align-items:center;gap:18px;background:#fff;border-radius:22px;padding:18px 26px}
+.score b{font-family:"Bricolage Grotesque";font-size:3.4rem;line-height:1}
+.score .stars{font-size:1.2rem}
+.score small{color:var(--muted);display:block}
 
 /* CONTACT */
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.contact-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:32px}
-.contact-card h3{font-size:1.5rem;margin-bottom:20px}
-.c-item{display:flex;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
-.c-item:last-child{border-bottom:none}
-.c-item small{display:block;color:var(--muted);font-size:.8rem}
-.c-item a,.c-item span{font-weight:600}
-.c-item a:hover{color:var(--accent-dark)}
+.ccard{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:32px}
+.ccard h3{font-size:1.45rem;margin-bottom:18px}
+.ci{display:flex;gap:14px;align-items:center;padding:13px 0;border-bottom:1px solid var(--line)}
+.ci:last-of-type{border-bottom:none}
+.ci small{display:block;color:var(--muted);font-size:.8rem}
+.ci a,.ci span{font-weight:600}
+.ci a:hover{color:var(--accent)}
+.map{margin-top:18px;border-radius:14px;overflow:hidden;border:1px solid var(--line);height:210px}
+.map iframe{width:100%;height:100%;border:0}
 form{display:grid;gap:12px}
 input,textarea,select{width:100%;padding:13px 15px;border:1.5px solid var(--line);border-radius:12px;font:inherit;background:var(--paper);color:var(--ink)}
 input:focus,textarea:focus,select:focus{outline:none;border-color:var(--accent)}
-textarea{min-height:110px;resize:vertical}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-form .btn{justify-content:center;border:none;cursor:pointer}
+textarea{min-height:120px;resize:vertical}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+form .btn{justify-content:center}
 
-/* CTA + FOOTER */
 .cta{background:var(--accent);color:#fff;text-align:center;padding:84px 0}
-.cta h2{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;margin-bottom:14px}
+.cta h2{font-size:clamp(2.2rem,5vw,3.5rem);font-weight:800;margin-bottom:14px}
 .cta p{font-size:1.1rem;opacity:.92;margin-bottom:30px}
-.cta .hero-ctas{justify-content:center}
+.cta .ctas{justify-content:center}
 .cta .btn-ghost{border-color:#fff;color:#fff}
-footer{background:var(--ink);color:#c9d3cf;padding:44px 0;font-size:.9rem}
-.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
-footer .logo{color:#fff}
-footer .logo-mark{background:var(--accent)}
-
-/* Mobile sticky call */
+footer{background:var(--ink);color:#c9d3cf;padding:52px 0 40px;font-size:.9rem}
+.foot{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:30px}
+footer h4{color:#fff;font-family:"Bricolage Grotesque";font-size:1.05rem;margin-bottom:12px}
+footer ul{list-style:none;display:grid;gap:6px}
+footer a:hover{color:#fff}
+footer .logo{color:#fff;margin-bottom:12px}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:36px;padding-top:20px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.85rem}
+.foot-bottom a{color:#ff8a7e;font-weight:600}
 .mobile-call{display:none}
 
-@media (max-width:900px){
+@media (max-width:980px){
   .nav-links{display:none}
-  .hero{padding:44px 0 64px}
-  .hero-grid,.usp-grid,.used-inner,.contact-grid{grid-template-columns:1fr}
-  .hero-visual{max-width:440px;margin:0 auto;width:100%}
-  .steps,.price-grid{grid-template-columns:1fr}
-  section{padding:68px 0}
-  .form-row{grid-template-columns:1fr}
-  .fc-1{left:10px}
-  .mobile-call{display:flex;position:fixed;bottom:14px;left:14px;right:14px;z-index:60;justify-content:center;box-shadow:0 10px 28px rgba(255,106,26,.45)}
-  footer{padding-bottom:96px}
+  .hero-grid,.deal,.about,.contact-grid{grid-template-columns:1fr}
+  .hero-photo{max-width:480px;margin:0 auto;width:100%}
+  .f1{left:8px}.f2{right:8px}
+  .steps,.svc-grid,.price-grid{grid-template-columns:1fr}
+  .prod-grid{grid-template-columns:repeat(2,1fr)}
+  .gal{grid-template-columns:repeat(2,1fr);grid-auto-rows:170px}
+  .checklist,.usps{grid-template-columns:1fr}
+  .deal-txt{padding:34px 26px}
+  .deal-imgs{grid-template-rows:none;grid-template-columns:1fr 1fr}
+  .deal-imgs img+img{border-top:none;border-left:1px solid var(--line)}
+  .since{right:12px}
+  .foot{grid-template-columns:1fr 1fr}
+  section{padding:66px 0}
+  .frow{grid-template-columns:1fr}
+  .mobile-call{display:flex;position:fixed;bottom:14px;left:14px;right:14px;z-index:60;justify-content:center;box-shadow:0 10px 28px rgba(230,51,35,.45)}
+  footer{padding-bottom:100px}
+  .topbar .hide-m{display:none}
 }
+@media (max-width:520px){.prod-grid{grid-template-columns:1fr 1fr;gap:10px}.prod-body{padding:12px}.prod-body h3{font-size:.92rem}.prod-foot{flex-direction:column;align-items:flex-start}.foot{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
+<div class="topbar"><div class="wrap">
+  <div><span class="hl">Ophalen &amp; brengen</span> · Reparatie op locatie mogelijk</div>
+  <div class="hide-m">Ma–Vr <b>08:30 – 21:00</b> · <a href="tel:0639115441"><b>06 - 39 11 54 41</b></a></div>
+</div></div>
+
 <header>
   <div class="wrap nav">
-    <a href="#" class="logo">
-      <span class="logo-mark">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff6a1a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17" r="3.5"/><circle cx="18.5" cy="17" r="3.5"/><path d="M5.5 17 9 9h6l3.5 8M9 9 12 17h-1M14 6h2"/></svg>
-      </span>
-      M&amp;A Fietsreparatie
-    </a>
+    <a href="#" class="logo"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=300,fit=crop/mk3qBXVLRaurkEjr/yeni-logo-son-zonder-tel-fSOivZBGCF2deLVQ.png" alt="M&amp;A Fietsreparatie logo"><span>M&amp;A Fietsreparatie<small>Altijd transparant · sinds 2005</small></span></a>
     <nav class="nav-links">
-      <a href="#hoe">Hoe het werkt</a>
+      <a href="#diensten">Diensten</a>
       <a href="#prijzen">Prijzen</a>
-      <a href="#tweedehands">Tweedehands</a>
+      <a href="#fietsen">Fietsen</a>
+      <a href="#onderdelen">Onderdelen</a>
+      <a href="#klanten">Klanten</a>
       <a href="#contact">Contact</a>
     </nav>
     <a href="tel:0639115441" class="btn btn-accent">📞 Bel direct</a>
@@ -185,154 +251,213 @@ footer .logo-mark{background:var(--accent)}
   <div class="wrap hero-grid">
     <div>
       <span class="badge"><span class="stars">★★★★★</span> 4,9 op Google · Purmerend</span>
-      <h1>Fiets kapot?<br>Wij <em>halen</em> 'm op.</h1>
-      <p class="lead">Reparatie en onderhoud van fietsen, e-bikes en pedelecs. We halen je fiets bij je thuis op en brengen 'm gerepareerd terug. Of we repareren direct op locatie.</p>
-      <div class="hero-ctas">
-        <a href="#contact" class="btn btn-accent">Plan een ophaalmoment →</a>
+      <h1>Fiets of e-bike kapot?<br>Wij <em>halen</em> 'm op.</h1>
+      <p class="lead">Professionele reparatie en onderhoud van pedelecs, e-bikes, fatbikes, bakfietsen en gewone fietsen. We halen je fiets op en brengen 'm terug, of repareren direct bij jou op locatie. Met gegarandeerd de laagste prijs.</p>
+      <div class="ctas">
+        <a href="#contact" class="btn btn-accent">Plan een reparatie →</a>
         <a href="https://wa.me/31639115441" class="btn btn-ghost">WhatsApp ons</a>
       </div>
       <div class="hero-meta">
-        <div><strong>€20</strong>halen &amp; brengen</div>
-        <div><strong>€28</strong>binnenband incl. montage</div>
-        <div><strong>4,9★</strong>klantbeoordeling</div>
+        <div><strong>Sinds 2005</strong>ervaring</div>
+        <div><strong>€ 20</strong>halen &amp; brengen</div>
+        <div><strong>4,9★</strong>op Google</div>
       </div>
     </div>
-    <div class="hero-visual">
-      <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g stroke="#f6f3ec" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="95" cy="200" r="68"/>
-          <circle cx="305" cy="200" r="68"/>
-          <path d="M95 200 160 90h120L305 200M160 90l55 110h-120M280 90l-65 110"/>
-          <path d="M150 70h40M270 90l-10-30h32"/>
-        </g>
-        <g stroke="#ff6a1a" stroke-width="9" stroke-linecap="round">
-          <circle cx="215" cy="200" r="16"/>
-          <path d="M95 200l0 0M305 200l0 0"/>
-        </g>
-        <g stroke="#f6f3ec" stroke-width="2" opacity=".35">
-          <path d="M95 132v136M27 200h136M47 152l96 96M143 152l-96 96"/>
-          <path d="M305 132v136M237 200h136M257 152l96 96M353 152l-96 96"/>
-        </g>
-      </svg>
-      <div class="float-card fc-1">
-        <span class="dot">🚐</span>
-        <div><b>Opgehaald</b>vandaag, 14:00</div>
+    <div class="hero-photo">
+      <img class="main" src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1200,fit=crop/mk3qBXVLRaurkEjr/foto-galeray6-d957V26PBaU5W093.jpg" alt="Monteur van M&amp;A Fietsreparatie aan het werk">
+      <div class="float f1"><span class="dot">🚐</span><div><b>Op locatie</b>reparatie aan huis</div></div>
+      <div class="float f2"><span class="dot">⚡</span><div><b>E-bike specialist</b>Bosch · Shimano · Bafang</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="strip" aria-hidden="true"><div class="strip-inner">
+  <span>E-bikes &amp; pedelecs</span><span>Fatbikes</span><span>Bakfietsen</span><span>Accu capaciteitstest</span><span>Systeem uitlezen &amp; updaten</span><span>Winterbeurten</span><span>Nexus achterwielen</span><span>Ophalen &amp; brengen</span>
+  <span>E-bikes &amp; pedelecs</span><span>Fatbikes</span><span>Bakfietsen</span><span>Accu capaciteitstest</span><span>Systeem uitlezen &amp; updaten</span><span>Winterbeurten</span><span>Nexus achterwielen</span><span>Ophalen &amp; brengen</span>
+</div></div>
+
+<!-- FATBIKE DEAL -->
+<section style="padding-bottom:40px">
+  <div class="wrap">
+    <div class="deal">
+      <div class="deal-txt">
+        <div class="eyebrow">Aanbieding · Fatbike specialist</div>
+        <h2>Jouw fatbike weer als nieuw.</h2>
+        <p class="sub">Wij zijn dé specialist voor alle fatbike-reparaties. Snel, vakkundig en nu tijdelijk met flinke korting.</p>
+        <div class="deal-item"><span class="dot">🛞</span><div><h3>Banden deal</h3><p>Buiten- én binnenband, inclusief montage</p></div><div class="price-tag">€ 70</div></div>
+        <div class="deal-item"><span class="dot">🛡️</span><div><h3>Shimano hydraulisch remsysteem</h3><p>Compleet systeem: één rem voor de helft van de prijs</p></div><div class="price-tag"><s>€ 350</s>€ 200</div></div>
+        <div class="deal-item"><span class="dot">⚡</span><div><h3>Extra korting</h3><p>Op alle overige fatbike-reparaties</p></div><div class="price-tag" style="font-size:1.1rem">Vraag<br>ernaar</div></div>
+        <div class="ctas" style="margin-top:26px"><a href="tel:0639115441" class="btn btn-accent">Maak een afspraak →</a></div>
       </div>
-      <div class="float-card fc-2">
-        <span class="dot">✓</span>
-        <div><b>Klaar</b>terug bij jou</div>
+      <div class="deal-imgs">
+        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=900,fit=crop/mk3qBXVLRaurkEjr/174843712068370880d174b-Du8Hp3k6mI8xmmNq.jpg" alt="Fatbike">
+        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=900,fit=crop/mk3qBXVLRaurkEjr/whatsapp-image-2026-02-09-at-13.26.19-5NpBNa6DQ1ILQtXz.jpeg" alt="Shimano hydraulische remmen">
       </div>
     </div>
   </div>
 </section>
 
-<div class="strip" aria-hidden="true">
-  <div class="strip-inner">
-    <span>Lekke band</span><span>Onderhoudsbeurt</span><span>E-bikes &amp; pedelecs</span><span>Remmen</span><span>Ketting</span><span>Spaken &amp; wielen</span><span>Online fiets monteren</span><span>Haal &amp; breng</span>
-    <span>Lekke band</span><span>Onderhoudsbeurt</span><span>E-bikes &amp; pedelecs</span><span>Remmen</span><span>Ketting</span><span>Spaken &amp; wielen</span><span>Online fiets monteren</span><span>Haal &amp; breng</span>
-  </div>
-</div>
-
 <!-- HOE HET WERKT -->
 <section id="hoe">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="head">
       <div class="eyebrow">Haal- en brengservice</div>
       <h2>Geen gesjouw. Wij regelen het.</h2>
       <p>Jij hoeft nergens heen. In drie stappen staat je fiets weer gerepareerd voor de deur.</p>
     </div>
     <div class="steps">
-      <div class="step">
-        <div class="step-num">01</div>
-        <h3>Bel of app</h3>
-        <p>Vertel wat er mis is met je fiets en we spreken een moment af dat jou uitkomt.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">02</div>
-        <h3>Wij halen op</h3>
-        <p>We komen je fiets thuis ophalen. Kleine reparaties doen we vaak direct op locatie.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">03</div>
-        <h3>Terug als nieuw</h3>
-        <p>Na de reparatie brengen we je fiets netjes terug. Jij stapt op en fietst weg.</p>
-      </div>
+      <div class="step"><div class="step-num">01</div><h3>Bel of app</h3><p>Vertel wat er mis is en we plannen een moment dat jou uitkomt. Maandag t/m vrijdag van 08:30 tot 21:00.</p></div>
+      <div class="step"><div class="step-num">02</div><h3>Ophalen of op locatie</h3><p>We halen je fiets bij je op, of we repareren direct bij jou voor de deur.</p></div>
+      <div class="step"><div class="step-num">03</div><h3>Weer rijden</h3><p>Na de reparatie brengen we je fiets netjes terug. Altijd transparant over wat we doen en wat het kost.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- DIENSTEN -->
+<section id="diensten" class="services">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">Onze diensten</div>
+      <h2>Van lekke band tot e-bike storing.</h2>
+      <p>Wij lezen systemen uit, updaten ze en verhelpen storingen voor bijna alle merken. Ook voor bakfietsen ben je bij ons aan het juiste adres.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc"><img loading="lazy" src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=900,fit=crop/mk3qBXVLRaurkEjr/171538008_170625481579278_8174763005154259844_n-mk3qBgg6L9hvj8wQ.jpg" alt="Accu capaciteitstester"><div><h3>Accu capaciteitstest</h3><p>Weet precies hoe goed je e-bike accu nog is. We testen de capaciteit, zodat je altijd goed geïnformeerd bent over je batterij.</p></div></div>
+      <div class="svc"><img loading="lazy" src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=900,fit=crop/mk3qBXVLRaurkEjr/brinckers-graville-ebike3-AwvDNgQPl5TrKpal.jpg" alt="E-bike"><div><h3>Systeem uitlezen &amp; updaten</h3><p>Storingen verwijderen en software updaten voor Bosch, Shimano, Bafang, Rih, Brose en Panasonic.</p></div></div>
+      <div class="svc"><img loading="lazy" src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=900,fit=crop/mk3qBXVLRaurkEjr/171301831_170625031579323_1083247356775416109_n-YD0BPQQerWC2LB4p.jpg" alt="Wiel in richtbank"><div><h3>Wielen &amp; spaken</h3><p>Wielen richten, spaken vervangen en een ruime voorraad nieuwe en goede gebruikte (Nexus) wielen.</p></div></div>
+    </div>
+    <div class="brands"><em>Merken &amp; systemen:</em><span>Bosch</span><span>Shimano</span><span>Bafang</span><span>Rih</span><span>Brose</span><span>Panasonic</span><span>Ion</span><span>Keola</span></div>
+    <div class="checklist">
+      <div class="box"><h3>🔧 Servicebeurt</h3><ul>
+        <li>E-bike servicebeurt</li>
+        <li>Buiten- en binnenbanden voor en achter vervangen (gewone fiets &amp; e-bike)</li>
+        <li>Remkabelset vervangen</li>
+        <li>Versnellingsnaaf onderhoud en smering</li>
+        <li>Ketting en tandwielen vervangen</li>
+        <li>Wielen richten</li>
+      </ul></div>
+      <div class="box"><h3>❄️ Winterbeurten &amp; meer</h3><ul>
+        <li>Winterbeurt voor e-bike, reisfiets, gewone fiets en mountainbike</li>
+        <li>Accu capaciteitstest</li>
+        <li>Nieuwe Bafang, Keola, Bosch, Panasonic en Ion accu's en motoren op voorraad, voor de helft van de prijs</li>
+        <li>Nieuwe en goede gebruikte Nexus 3, 7 en 8 achterwielen en alle soorten voorwielen</li>
+        <li>Onderdelen bestellen is altijd mogelijk</li>
+      </ul></div>
     </div>
   </div>
 </section>
 
 <!-- PRIJZEN -->
-<section id="prijzen" class="prices">
+<section id="prijzen">
   <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow">Eerlijke prijzen</div>
+    <div class="head">
+      <div class="eyebrow">Altijd transparant</div>
       <h2>Je weet vooraf wat het kost.</h2>
-      <p>Geen verrassingen achteraf. Materiaal wordt apart berekend.</p>
+      <p>Gegarandeerd de laagste prijs voor al onze fietsreparaties en onderhoud in Purmerend.</p>
     </div>
     <div class="price-grid">
-      <div class="price-card">
-        <h3>🔧 Onderhoudsbeurt</h3>
-        <div class="price-row"><span>Stadsfiets</span><b>€ 50</b></div>
-        <div class="price-row"><span>Hybride, race, ATB</span><b>€ 60</b></div>
-        <div class="price-row"><span>E-bike</span><b>€ 60</b></div>
+      <div class="pcard"><h3>🔧 Onderhoudsbeurt</h3>
+        <div class="prow"><span>Stadsfiets</span><b>€ 60</b></div>
+        <div class="prow"><span>Hybride, racefiets, ATB</span><b>€ 70</b></div>
+        <div class="prow"><span>E-bike</span><b>€ 70</b></div>
+        <div class="prow"><span>Bakfiets</span><b>€ 95</b></div>
       </div>
-      <div class="price-card">
-        <h3>🛞 Banden &amp; wielen</h3>
-        <div class="price-row"><span>Binnenband incl. montage</span><b>€ 28</b></div>
-        <div class="price-row"><span>Nieuw wiel in spaken</span><b>v.a. € 25</b></div>
-        <div class="price-row"><span>Oud wiel, nieuwe spaken</span><b>€ 70</b></div>
+      <div class="pcard"><h3>🛞 Banden &amp; wielen</h3>
+        <div class="prow"><span>Binnenband vervangen incl. montage</span><b>€ 28</b></div>
+        <div class="prow"><span>Wielen richten &amp; spaken monteren</span><b>v.a. € 25</b></div>
+        <div class="prow"><span>Oud wiel, nieuwe spaken</span><b>€ 90</b></div>
       </div>
-      <div class="price-card">
-        <h3>📦 Overig</h3>
-        <div class="price-row"><span>Online fiets monteren &amp; afstellen</span><b>v.a. € 50</b></div>
-        <div class="price-row"><span>Overige werkzaamheden</span><b>per uur</b></div>
-        <div class="price-row"><span>Remmen, ketting, afstellen</span><b>in overleg</b></div>
+      <div class="pcard"><h3>📦 Overig</h3>
+        <div class="prow"><span>Fiets via internet gekocht? Monteren &amp; afstellen</span><b>v.a. € 50</b></div>
+        <div class="prow"><span>Niet genoemde werkzaamheden</span><b>per uur</b></div>
+        <div class="prow"><span>Accu capaciteitstest</span><b>in overleg</b></div>
       </div>
     </div>
-    <div class="price-note">
-      <div>
-        <strong>Voorrijkosten: € 20 in Purmerend · € 25 in de regio</strong>
-        <p>Geldt voor ophalen &amp; brengen of reparatie op locatie. Buiten ons werkgebied in overleg.</p>
-      </div>
+    <div class="pnote">
+      <div><strong>Voorrijkosten: € 20 in Purmerend · € 25 in de regio</strong><p>Voor ophalen &amp; brengen of reparatie op locatie. Buiten het werkgebied in overleg.</p></div>
       <a href="tel:0639115441" class="btn btn-light">Vraag een prijs →</a>
     </div>
+    <p class="small">Onderhoudsbeurten zijn exclusief materiaal. Overige genoemde prijzen zijn vanafprijzen, inclusief btw en inclusief materiaal tenzij anders vermeld. In verband met garantie en verantwoording monteren wij geen door de klant aangeleverde materialen of onderdelen. Gaat een klus niet door of ben je niet thuis op het afgesproken tijdstip, dan rekenen we binnen Purmerend € 27,50.</p>
   </div>
 </section>
 
-<!-- WAAROM -->
+<!-- FIETSEN + ONDERDELEN -->
+<section id="fietsen" class="shop">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">Fietsen te koop</div>
+      <h2>Nieuwe en gebruikte e-bikes.</h2>
+      <p>Nagekeken en klaar om mee weg te rijden. Interesse? Stuur een appje of bel even.</p>
+    </div>
+    <div class="prod-grid"><article class="prod"><div class="prod-img"><img loading="lazy" src="https://cdn.zyrosite.com/cdn-ecommerce/store_01JKRQY5PF4X9CRSYVS99732T2%2Fassets%2F1739372743962-PuchKildemoeselektrischedamesfietshelemaalnieuwe.jpg" alt="Puch Kildemoes elektrische damesfiets"></div><div class="prod-body"><span class="tag">28 inch</span><h3>Puch Kildemoes elektrische damesfiets</h3><div class="prod-foot"><b>€ 900</b><a class="mini" href="https://wa.me/31639115441?text=Puch%20Kildemoes%20elektrische%20damesfiets">Interesse?</a></div></div></article><article class="prod"><div class="prod-img"><img loading="lazy" src="https://cdn.zyrosite.com/cdn-ecommerce/store_01JKRQY5PF4X9CRSYVS99732T2%2Fassets%2F1739373227239-SpartaC4Emotionelektrischedamesfiets.jpg" alt="Sparta C4 Emotion elektrische damesfiets"></div><div class="prod-body"><span class="tag">28 inch</span><h3>Sparta C4 Emotion elektrische damesfiets</h3><div class="prod-foot"><b>€ 600</b><a class="mini" href="https://wa.me/31639115441?text=Sparta%20C4%20Emotion%20elektrische%20damesfiets">Interesse?</a></div></div></article><article class="prod"><div class="prod-img"><img loading="lazy" src="https://cdn.zyrosite.com/cdn-ecommerce/store_01JKRQY5PF4X9CRSYVS99732T2/assets/4cc63718-81a8-4b01-8786-bf32bc742ead.jpg" alt="Popal E Pristige elektrische damesfiets / transporterfiets"></div><div class="prod-body"><span class="tag">Nieuw · direct klaar</span><h3>Popal E Pristige elektrische damesfiets / transporterfiets</h3><div class="prod-foot"><b>€ 1.100</b><a class="mini" href="https://wa.me/31639115441?text=Popal%20E%20Pristige%20elektrische%20damesfiets%20/%20transporterfiets">Interesse?</a></div></div></article><article class="prod"><div class="prod-img"><img loading="lazy" src="https://cdn.zyrosite.com/cdn-ecommerce/store_01JKRQY5PF4X9CRSYVS99732T2/assets/b82c1df9-305f-4878-b30c-6c1371133c92.jpg" alt="Popal elektrische moederfiets"></div><div class="prod-body"><span class="tag">Nieuw</span><h3>Popal elektrische moederfiets</h3><div class="prod-foot"><b>€ 1.000</b><a class="mini" href="https://wa.me/31639115441?text=Popal%20elektrische%20moederfiets">Interesse?</a></div></div></article></div>
+
+    <div class="sub-head" id="onderdelen">
+      <div><div class="eyebrow">Onderdelen</div><h3>Accu's, motoren, displays &amp; meer</h3></div>
+      <p>Iets anders nodig? Bestellen is altijd mogelijk.</p>
+    </div>
+    <div class="filters">
+      <button class="on" data-f="all">Alles</button>
+      <button data-f="accu">Accu's</button>
+      <button data-f="motor">Motoren</button>
+      <button data-f="display">Displays</button>
+      <button data-f="lader">Laders</button>
+      <button data-f="wiel">Wielen</button>
+      <button data-f="overig">Overig</button>
+    </div>
+    <div class="prod-grid" id="parts"><article class="prod" data-cat="accu"><div class="prod-img light"><img loading="lazy" src="https://cdn.zyrosite.com/cdn-ecommerce/store_01JKRQY5PF4X9CRSYVS99732T2%2Fassets%2F1740515883676-image.webp" alt="Bosch PowerTube 625"></div><div class="prod-body"><h3>Bosch PowerTube 625</h3><div class="prod-foot"><b>€ 500</b><a class="mini" href="https://wa.me/31639115441">Bestellen</a></div></div></article><article class="prod" data-cat="accu"><div class="prod-img light"><img loading="lazy" src="https://cdn.zyrosite.com/cdn-ecommerce/store_01JKRQY5PF4X9CRSYVS99732T2%2Fassets%2F1740515899429-image.webp" alt="Bosch PowerTube 500 watt (verticaal of horizontaal)"></div><div class="prod-body"><h3>Bosch PowerTube 500 watt (verticaal of horizontaal)</h3><div class="prod-foot"><b>€ 400</b><a class="mini" href="https://wa.me/31639115441">Bestellen</a></div></div></article><article class="prod" data-cat="accu"><div class="prod-img light"><img loading="lazy" src="https://cdn.zyrosite.com/cdn-ecommerce/store_01JKRQY5PF4X9CRSYVS99732T2%2Fassets%2F1740515923388-image.webp" alt="Bosch PowerTube 400 watt (verticaal of horizontaal)"></div><div class="prod-body"><h3>Bosch PowerTube 400 watt (verticaal of horizontaal)</h3><div class="prod-foot"><b>€ 300</b><a class="mini" href="https://wa.me/31639115441">Bestellen</a></div></div></article><article class="prod" data-cat="accu"><div class="prod-img light"><img loading="lazy" src="https://cdn.zyrosite.com/cdn-ecommerce/store_01JKRQY5PF4X9CRSYVS99732T2%2Fassets%2F1740515987342-image.webp" alt="Shimano STEPS BT-E8035 Intube accu"></div><div class="prod-body"><h3>Shimano STEPS BT-E8035 Intube accu</h3><div class="prod-foot"><b>€ 400</b><a class="mini" href="https://wa.me/31639115441">Bestellen</a></div></div></article><article class="prod" data-cat="motor"><div class="prod-img light"><img loading="lazy" src="https://cdn.zyrosite.com/cdn-ecommerce/store_01JKRQY5PF4X9CRSYVS99732T2%2Fassets%2F1740516102566-image.webp" alt="Ion achterwiel e-bike motor"></div><div class="prod-body"><h3>Ion achterwiel e-bike motor</h3><div class="prod-foot"><b>€ 200</b><a class="mini" href="https://wa.me/31639115441">Bestellen</a></div></div></article><article class="prod" data-cat="motor"><div class="prod-img light"><img loading="lazy" src="https://cdn.zyrosite.com/cdn-ecommerce/store_01JKRQY5PF4X9CRSYVS99732T2%2Fassets%2F1740516084776-image.webp" alt="Sparta Ion middenmotor"></div><div class="prod-body"><h3>Sparta Ion middenmotor</h3><div class="prod-foot"><b>€ 400</b><a class="mini" href="https://wa.me/31639115441">Bestellen</a></div></div></article><article class="prod" data-cat="motor"><div class="prod-img light"><img loading="lazy" src="https://cdn.zyrosite.com/cdn-ecommerce/store_01JKRQY5PF4X9CRSYVS99732T2%2Fassets%2F1740515967377-image.webp" alt="MC (Multi Cykel) voorwielmotor"></div><div class="prod-body"><h3>MC (Multi Cykel) voorwielmotor</h3><div class="prod-foot"><b>€ 200</b><a class="mini" href="https://wa.me/31639115441">Bestellen</a></div></div></article><article class="prod" data-cat="display"><div class="prod-img light"><img loading="lazy" src="https://cdn.zyrosite.com/cdn-ecommerce/store_01JKRQY5PF4X9CRSYVS99732T2%2Fassets%2F1740516007843-image.webp" alt="Shimano display SC-E6100"></div><div class="prod-body"><h3>Shimano display SC-E6100</h3><div class="prod-foot"><b>€ 99,95</b><a class="mini" href="https://wa.me/31639115441">Bestellen</a></div></div></article><article class="prod" data-cat="display"><div class="prod-img light"><img loading="lazy" src="https://cdn.zyrosite.com/cdn-ecommerce/store_01JKRQY5PF4X9CRSYVS99732T2%2Fassets%2F1740515855074-image.webp" alt="Bosch Nyon"></div><div class="prod-body"><h3>Bosch Nyon</h3><div class="prod-foot"><b>€ 240</b><a class="mini" href="https://wa.me/31639115441">Bestellen</a></div></div></article><article class="prod" data-cat="lader"><div class="prod-img light"><img loading="lazy" src="https://cdn.zyrosite.com/cdn-ecommerce/store_01JKRQY5PF4X9CRSYVS99732T2%2Fassets%2F1740515834490-image.webp" alt="Bosch eBike oplader"></div><div class="prod-body"><h3>Bosch eBike oplader</h3><div class="prod-foot"><b>€ 90</b><a class="mini" href="https://wa.me/31639115441">Bestellen</a></div></div></article><article class="prod" data-cat="lader"><div class="prod-img light"><img loading="lazy" src="https://cdn.zyrosite.com/cdn-ecommerce/store_01JKRQY5PF4X9CRSYVS99732T2%2Fassets%2F1740515941675-image.webp" alt="E-motion Ecomo lader"></div><div class="prod-body"><h3>E-motion Ecomo lader</h3><div class="prod-foot"><b>€ 45</b><a class="mini" href="https://wa.me/31639115441">Bestellen</a></div></div></article><article class="prod" data-cat="wiel"><div class="prod-img light"><img loading="lazy" src="https://cdn.zyrosite.com/cdn-ecommerce/store_01JKRQY5PF4X9CRSYVS99732T2%2Fassets%2F1740680042273-image.webp" alt="Shimano Nexus 7 achterwiel (28 inch)"></div><div class="prod-body"><h3>Shimano Nexus 7 achterwiel (28 inch)</h3><div class="prod-foot"><b>€ 100</b><a class="mini" href="https://wa.me/31639115441">Bestellen</a></div></div></article><article class="prod" data-cat="wiel"><div class="prod-img light"><img loading="lazy" src="https://cdn.zyrosite.com/cdn-ecommerce/store_01JKRQY5PF4X9CRSYVS99732T2%2Fassets%2F1740680096720-image.webp" alt="Nexus 8 achterwiel (28 inch)"></div><div class="prod-body"><h3>Nexus 8 achterwiel (28 inch)</h3><div class="prod-foot"><b>€ 110</b><a class="mini" href="https://wa.me/31639115441">Bestellen</a></div></div></article><article class="prod" data-cat="overig"><div class="prod-img light"><img loading="lazy" src="https://cdn.zyrosite.com/cdn-ecommerce/store_01JKRQY5PF4X9CRSYVS99732T2%2Fassets%2F1740509684426-image.webp" alt="Gazelle enkele tas"></div><div class="prod-body"><h3>Gazelle enkele tas</h3><div class="prod-foot"><b>€ 65</b><a class="mini" href="https://wa.me/31639115441">Bestellen</a></div></div></article><article class="prod" data-cat="overig"><div class="prod-img light"><img loading="lazy" src="https://cdn.zyrosite.com/cdn-ecommerce/store_01JKRQY5PF4X9CRSYVS99732T2%2Fassets%2F1740515809565-image.webp" alt="AXA Defender fietsslot"></div><div class="prod-body"><h3>AXA Defender fietsslot</h3><div class="prod-foot"><b>€ 20</b><a class="mini" href="https://wa.me/31639115441">Bestellen</a></div></div></article></div>
+  </div>
+</section>
+
+<!-- OVER -->
 <section>
-  <div class="wrap usp-grid">
-    <div>
-      <div class="sec-head" style="margin-bottom:32px">
-        <div class="eyebrow">Waarom M&amp;A</div>
-        <h2>Een fietsenmaker die naar jóu komt.</h2>
-      </div>
-      <div class="usp-list">
-        <div class="usp"><span class="dot">⚡</span><div><h3>E-bikes &amp; pedelecs</h3><p>Ook voor elektrische fietsen ben je bij ons aan het goede adres.</p></div></div>
-        <div class="usp"><span class="dot">🏠</span><div><h3>Reparatie op locatie</h3><p>Veel reparaties doen we meteen bij je voor de deur.</p></div></div>
-        <div class="usp"><span class="dot">🤝</span><div><h3>Persoonlijk contact</h3><p>Je hebt direct de monteur zelf aan de lijn. Geen callcenter.</p></div></div>
-      </div>
+  <div class="wrap about">
+    <div class="about-photo">
+      <img loading="lazy" src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=900,fit=crop/mk3qBXVLRaurkEjr/foto-galeray2-mxBM6ORbLKCDMnLO.jpg" alt="Mehmet aan het werk">
+      <div class="since"><b>2005</b>sinds</div>
     </div>
-    <div class="review-box">
-      <div class="review-score">4,9</div>
-      <div class="stars">★★★★★</div>
-      <p>Gemiddelde beoordeling van klanten op Google</p>
-      <a href="#" class="btn btn-accent">Lees de reviews →</a>
+    <div>
+      <div class="eyebrow">Over M&amp;A</div>
+      <h2>Vakmanschap, gewoon bij jou om de hoek.</h2>
+      <p>Achter M&amp;A Fietsreparatie zit Mehmet Elcik. Sinds 2005 repareert en onderhoudt hij fietsen in Purmerend, van gewone stadsfietsen tot de nieuwste e-bikes en fatbikes.</p>
+      <p>Geen callcenter, maar direct contact met de monteur zelf. Eerlijk advies, heldere prijzen en een fiets waar je weer met een gerust hart op stapt.</p>
+      <div class="usps">
+        <div class="usp"><span class="dot">💶</span>Laagste prijs garantie</div>
+        <div class="usp"><span class="dot">🔍</span>Altijd transparant</div>
+        <div class="usp"><span class="dot">🏠</span>Reparatie op locatie</div>
+        <div class="usp"><span class="dot">🤝</span>Persoonlijk contact</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- TWEEDEHANDS -->
-<section id="tweedehands" class="used">
-  <div class="wrap used-inner">
-    <div class="used-visual">
-      <svg viewBox="0 0 400 260" fill="none"><g stroke="#0f1f1a" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"><circle cx="90" cy="180" r="58"/><circle cx="310" cy="180" r="58"/><path d="M90 180 150 90h110l50 90M150 90l50 90H90M260 90l-60 90"/><path d="M135 70h40M255 90l-8-26h28"/></g><circle cx="200" cy="180" r="13" stroke="#ff6a1a" stroke-width="8"/><rect x="250" y="20" width="110" height="44" rx="22" fill="#ff6a1a"/><text x="305" y="49" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="19" fill="#fff">Nagekeken</text></svg>
+<!-- WERKPLAATS -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="head"><div class="eyebrow">De werkplaats</div><h2>Het juiste gereedschap voor elke klus.</h2></div>
+    <div class="gal">
+      <img class="tall" loading="lazy" src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=900,fit=crop/mk3qBXVLRaurkEjr/171219431_170624961579330_1833808087041571555_n-AR0MKX4VEDtalGKr.jpg" alt="Fietsen in de werkplaats">
+      <img class="wide" loading="lazy" src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1200,fit=crop/mk3qBXVLRaurkEjr/werkplaats-AoPqL2xo3buWqxa7.jpg" alt="Gereedschapswand">
+      <img loading="lazy" src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=900,fit=crop/mk3qBXVLRaurkEjr/foto-galeray7-mP42Kb5LDBieP735.jpg" alt="Montagestandaard">
+      <img loading="lazy" src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=900,fit=crop/mk3qBXVLRaurkEjr/171046932_170625011579325_2070263889210944579_n-dOq8oJ3xj3tjbn0L.jpg" alt="Accu tester">
+      <img loading="lazy" src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=900,fit=crop/mk3qBXVLRaurkEjr/171858060_170625108245982_8260437887221244214_n-YleqagglgycgeX3a.jpg" alt="Shimano remolie">
+      <img loading="lazy" src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=900,fit=crop/mk3qBXVLRaurkEjr/generated/generated-dOq8Onb2xDhyq884.png" alt="Onderhoud aan de fiets">
     </div>
-    <div>
-      <div class="eyebrow">Tweedehands fietsen</div>
-      <h2>Goede fiets, eerlijke prijs.</h2>
-      <p>Op zoek naar een betrouwbare tweedehands fiets? We verkopen nagekeken fietsen die klaar zijn om mee weg te rijden. Vraag gerust wat er op dit moment beschikbaar is.</p>
-      <a href="https://wa.me/31639115441" class="btn btn-accent">Vraag wat er beschikbaar is →</a>
+  </div>
+</section>
+
+<!-- KLANTEN -->
+<section id="klanten" class="reviews">
+  <div class="wrap">
+    <div class="rev-head">
+      <div class="head" style="margin-bottom:0"><div class="eyebrow">Tevreden klanten</div><h2>Een kleine greep uit vele blije fietsers.</h2></div>
+      <div class="score"><b>4,9</b><div><span class="stars">★★★★★</span><small>Gemiddelde beoordeling op Google</small></div></div>
+    </div>
+    <div class="gal">
+      <img class="tall" loading="lazy" src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=900,fit=crop/mk3qBXVLRaurkEjr/een-kleine-greep-van-vele-tevreden-klanten-voor-fotoa-galarij-m7V57va91Zt3qL8b.jpg" alt="Tevreden klant">
+      <img loading="lazy" src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=900,fit=crop/mk3qBXVLRaurkEjr/foto-galeray-AGBnDawyPlt6jkZR.jpg" alt="Tevreden klant">
+      <img loading="lazy" src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=900,fit=crop/mk3qBXVLRaurkEjr/foto-galeray1-YleqalRbBPF9nZaL.jpg" alt="Tevreden klant">
+      <img class="tall" loading="lazy" src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=900,fit=crop/mk3qBXVLRaurkEjr/foto-galeray5-m7V57va9n2CX7klx.jpg" alt="Tevreden klant">
+      <img class="wide" loading="lazy" src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1200,fit=crop/mk3qBXVLRaurkEjr/foto-galeray6-d957V26PBaU5W093.jpg" alt="Reparatie op locatie">
     </div>
   </div>
 </section>
@@ -340,35 +465,26 @@ footer .logo-mark{background:var(--accent)}
 <!-- CONTACT -->
 <section id="contact">
   <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow">Contact</div>
-      <h2>Plan je reparatie.</h2>
-      <p>Bellen of appen is het snelst. Liever een bericht sturen? Vul het formulier in.</p>
-    </div>
+    <div class="head"><div class="eyebrow">Contact</div><h2>Plan je reparatie.</h2><p>Bellen of appen is het snelst. Liever een bericht? Vul het formulier in.</p></div>
     <div class="contact-grid">
-      <div class="contact-card">
+      <div class="ccard">
         <h3>Direct contact</h3>
-        <div class="c-item"><span class="dot">📞</span><div><small>Telefoon</small><a href="tel:0639115441">06 - 39 11 54 41</a></div></div>
-        <div class="c-item"><span class="dot">💬</span><div><small>WhatsApp</small><a href="https://wa.me/31639115441">Stuur een appje</a></div></div>
-        <div class="c-item"><span class="dot">✉️</span><div><small>E-mail</small><a href="mailto:info@ma-fietsreparatie.nl">info@ma-fietsreparatie.nl</a></div></div>
-        <div class="c-item"><span class="dot">📍</span><div><small>Adres</small><span>Rijtuigstraat 10, 1445 NS Purmerend</span></div></div>
+        <div class="ci"><span class="dot">📞</span><div><small>Klantenservice</small><a href="tel:0639115441">06 - 39 11 54 41</a></div></div>
+        <div class="ci"><span class="dot">💬</span><div><small>WhatsApp</small><a href="https://wa.me/31639115441">Stuur een appje</a></div></div>
+        <div class="ci"><span class="dot">✉️</span><div><small>E-mail</small><a href="mailto:info@ma-fietsreparatie.nl">info@ma-fietsreparatie.nl</a></div></div>
+        <div class="ci"><span class="dot">🕒</span><div><small>Openingstijden</small><span>Maandag t/m vrijdag 08:30 – 21:00</span></div></div>
+        <div class="ci"><span class="dot">📍</span><div><small>Adres · Mehmet Elcik</small><span>Rijtuigstraat 10, 1445 NS Purmerend</span></div></div>
+        <div class="map"><iframe loading="lazy" title="Kaart" src="https://maps.google.com/maps?q=Rijtuigstraat%2010%2C%201445%20NS%20Purmerend&z=15&output=embed"></iframe></div>
       </div>
-      <div class="contact-card">
+      <div class="ccard">
         <h3>Stuur een aanvraag</h3>
-        <form onsubmit="event.preventDefault();this.innerHTML='<p style=&quot;font-weight:600&quot;>Bedankt! We nemen snel contact met je op.</p>'">
-          <div class="form-row">
-            <input type="text" placeholder="Naam" required>
-            <input type="tel" placeholder="Telefoonnummer" required>
-          </div>
-          <input type="text" placeholder="Adres (voor ophalen)">
+        <form onsubmit="event.preventDefault();this.innerHTML='<p style=&quot;font-weight:600&quot;>Bedankt! We nemen zo snel mogelijk contact met je op.</p>'">
+          <div class="frow"><input type="text" placeholder="Naam" required><input type="tel" placeholder="Telefoonnummer" required></div>
+          <input type="email" placeholder="E-mailadres">
+          <input type="text" placeholder="Adres (voor ophalen of reparatie op locatie)">
           <select>
             <option>Wat moet er gebeuren?</option>
-            <option>Lekke band</option>
-            <option>Onderhoudsbeurt</option>
-            <option>E-bike reparatie</option>
-            <option>Online fiets monteren</option>
-            <option>Tweedehands fiets</option>
-            <option>Iets anders</option>
+            <option>Lekke band</option><option>Onderhoudsbeurt</option><option>E-bike storing / systeem uitlezen</option><option>Accu capaciteitstest</option><option>Fatbike reparatie</option><option>Bakfiets</option><option>Online gekochte fiets monteren</option><option>Fiets of onderdeel kopen</option><option>Iets anders</option>
           </select>
           <textarea placeholder="Beschrijf kort het probleem"></textarea>
           <button type="submit" class="btn btn-accent">Verstuur aanvraag →</button>
@@ -378,27 +494,33 @@ footer .logo-mark{background:var(--accent)}
   </div>
 </section>
 
-<!-- CTA -->
 <section class="cta">
   <div class="wrap">
     <h2>Vandaag gebeld,<br>snel weer op de fiets.</h2>
     <p>Fietsenmaker aan huis in Purmerend en omgeving.</p>
-    <div class="hero-ctas">
-      <a href="tel:0639115441" class="btn btn-light">📞 06 - 39 11 54 41</a>
-      <a href="https://wa.me/31639115441" class="btn btn-ghost">WhatsApp ons</a>
-    </div>
+    <div class="ctas"><a href="tel:0639115441" class="btn btn-light">📞 06 - 39 11 54 41</a><a href="https://wa.me/31639115441" class="btn btn-ghost">WhatsApp ons</a></div>
   </div>
 </section>
 
 <footer>
-  <div class="wrap foot">
-    <a href="#" class="logo"><span class="logo-mark"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17" r="3.5"/><circle cx="18.5" cy="17" r="3.5"/><path d="M5.5 17 9 9h6l3.5 8M9 9 12 17h-1M14 6h2"/></svg></span>M&amp;A Fietsreparatie</a>
-    <div>Rijtuigstraat 10, 1445 NS Purmerend · KVK 90212959</div>
-    <div>Concept door <a href="https://byxavio.nl" style="color:#ff6a1a;font-weight:600">byXavio</a></div>
+  <div class="wrap">
+    <div class="foot">
+      <div><a href="#" class="logo"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=300,fit=crop/mk3qBXVLRaurkEjr/yeni-logo-son-zonder-tel-fSOivZBGCF2deLVQ.png" alt=""><span>M&amp;A Fietsreparatie<small style="color:#9fb0a9">Altijd transparant · sinds 2005</small></span></a><p>Professionele reparatie en onderhoud van pedelecs, e-bikes en gewone fietsen in Purmerend.</p></div>
+      <div><h4>Diensten</h4><ul><li><a href="#diensten">Reparatie &amp; onderhoud</a></li><li><a href="#diensten">Accu capaciteitstest</a></li><li><a href="#hoe">Ophalen &amp; brengen</a></li><li><a href="#prijzen">Prijzen</a></li></ul></div>
+      <div><h4>Winkel</h4><ul><li><a href="#fietsen">Fietsen</a></li><li><a href="#onderdelen">Accu's &amp; motoren</a></li><li><a href="#onderdelen">Displays &amp; laders</a></li><li><a href="#onderdelen">Wielen</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li><a href="tel:0639115441">06 - 39 11 54 41</a></li><li><a href="mailto:info@ma-fietsreparatie.nl">info@ma-fietsreparatie.nl</a></li><li>Rijtuigstraat 10</li><li>1445 NS Purmerend</li><li>Ma–Vr 08:30 – 21:00</li></ul></div>
+    </div>
+    <div class="foot-bottom"><div>© 2026 M&amp;A Fietsreparatie · KVK 90212959</div><div>Concept door <a href="https://byxavio.nl">byXavio</a></div></div>
   </div>
 </footer>
 
 <a href="tel:0639115441" class="btn btn-accent mobile-call">📞 Bel direct: 06 - 39 11 54 41</a>
 
+<script>
+document.querySelectorAll('.filters button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.filters button').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  const f=b.dataset.f;document.querySelectorAll('#parts .prod').forEach(p=>p.style.display=(f==='all'||p.dataset.cat===f)?'':'none');
+}));
+</script>
 </body>
 </html>
