@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>M&amp;A Fietsreparatie – Fietsenmaker aan huis in Purmerend</title>
+<meta name="description" content="Fiets kapot? M&A Fietsreparatie haalt je fiets op, repareert hem en brengt hem terug. Reparatie en onderhoud van fietsen, e-bikes en pedelecs in Purmerend en omgeving.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f1f1a;
+  --ink-2:#1b3a30;
+  --paper:#f6f3ec;
+  --card:#ffffff;
+  --muted:#5b6b64;
+  --line:#e3ddd0;
+  --accent:#ff6a1a;
+  --accent-dark:#e0540a;
+  --mint:#cfe8dc;
+  --radius:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:"Bricolage Grotesque",Inter,sans-serif;line-height:1.05;letter-spacing:-.02em}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1140px;margin:0 auto;padding:0 20px}
+
+/* NAV */
+header{position:sticky;top:0;z-index:50;background:rgba(246,243,236,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:flex;align-items:center;gap:10px;font-family:"Bricolage Grotesque";font-weight:800;font-size:1.25rem}
+.logo-mark{width:38px;height:38px;border-radius:11px;background:var(--ink);display:grid;place-items:center}
+.nav-links{display:flex;gap:28px;font-weight:500;font-size:.95rem}
+.nav-links a:hover{color:var(--accent-dark)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;font-weight:600;font-size:.97rem;transition:transform .15s,background .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn-accent{background:var(--accent);color:#fff}
+.btn-accent:hover{background:var(--accent-dark)}
+.btn-ghost{border:1.5px solid var(--ink);color:var(--ink)}
+.btn-light{background:#fff;color:var(--ink)}
+.nav .btn{padding:10px 18px}
+
+/* HERO */
+.hero{padding:72px 0 88px;position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);padding:7px 14px;border-radius:999px;font-size:.87rem;font-weight:500;margin-bottom:22px}
+.stars{color:#f5a300;letter-spacing:1px}
+.hero h1{font-size:clamp(2.6rem,6vw,4.6rem);font-weight:800;margin-bottom:22px}
+.hero h1 em{font-style:normal;color:var(--accent);position:relative}
+.hero p.lead{font-size:1.15rem;color:var(--muted);max-width:520px;margin-bottom:32px}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+.hero-meta{display:flex;gap:26px;margin-top:36px;flex-wrap:wrap;font-size:.92rem;color:var(--muted)}
+.hero-meta strong{display:block;color:var(--ink);font-family:"Bricolage Grotesque";font-size:1.5rem}
+.hero-visual{position:relative;aspect-ratio:1/1;border-radius:32px;background:var(--ink);overflow:hidden;display:grid;place-items:center}
+.hero-visual::before{content:"";position:absolute;width:140%;height:140%;background:radial-gradient(circle at 70% 25%,#2d5a4a 0,transparent 55%)}
+.hero-visual svg{position:relative;width:82%}
+.float-card{position:absolute;background:#fff;border-radius:14px;padding:12px 16px;box-shadow:0 12px 30px rgba(0,0,0,.18);font-size:.85rem;display:flex;align-items:center;gap:10px}
+.float-card b{font-family:"Bricolage Grotesque";font-size:1.05rem;display:block;line-height:1.1}
+.fc-1{left:-14px;bottom:44px}
+.fc-2{right:18px;top:26px}
+.dot{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:var(--mint);flex-shrink:0}
+
+/* STRIP */
+.strip{background:var(--ink);color:#fff;padding:18px 0;overflow:hidden}
+.strip-inner{display:flex;gap:44px;white-space:nowrap;animation:scroll 28s linear infinite;font-family:"Bricolage Grotesque";font-weight:700;font-size:1.15rem}
+.strip-inner span::after{content:"✦";color:var(--accent);margin-left:44px}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* SECTIONS */
+section{padding:96px 0}
+.eyebrow{font-size:.82rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--accent-dark);margin-bottom:12px}
+.sec-head{max-width:640px;margin-bottom:52px}
+.sec-head h2{font-size:clamp(2rem,4.4vw,3.1rem);font-weight:800;margin-bottom:14px}
+.sec-head p{color:var(--muted);font-size:1.07rem}
+
+/* STEPS */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:30px;position:relative}
+.step-num{font-family:"Bricolage Grotesque";font-weight:800;font-size:3.4rem;color:var(--accent);line-height:1;margin-bottom:18px}
+.step h3{font-size:1.35rem;margin-bottom:8px}
+.step p{color:var(--muted)}
+
+/* SERVICES / PRICES */
+.prices{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.price-card{border:1px solid var(--line);border-radius:var(--radius);padding:28px;background:var(--paper)}
+.price-card h3{font-size:1.3rem;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.price-row{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:11px 0;border-bottom:1px dashed var(--line)}
+.price-row:last-child{border-bottom:none}
+.price-row span{color:var(--ink-2)}
+.price-row b{font-family:"Bricolage Grotesque";font-size:1.15rem;white-space:nowrap}
+.price-note{margin-top:28px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:space-between;background:var(--ink);color:#fff;padding:22px 28px;border-radius:var(--radius)}
+.price-note p{opacity:.85;font-size:.95rem}
+.price-note strong{font-family:"Bricolage Grotesque";font-size:1.25rem;display:block;opacity:1}
+
+/* USP */
+.usp-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.usp-list{display:grid;gap:16px}
+.usp{display:flex;gap:16px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+.usp h3{font-size:1.15rem;margin-bottom:4px}
+.usp p{color:var(--muted);font-size:.96rem}
+.review-box{background:var(--ink);color:#fff;border-radius:28px;padding:44px;text-align:center}
+.review-score{font-family:"Bricolage Grotesque";font-weight:800;font-size:6rem;line-height:1}
+.review-box .stars{font-size:1.6rem;margin:6px 0 12px}
+.review-box p{opacity:.8;margin-bottom:26px}
+
+/* SECOND HAND */
+.used{background:var(--mint)}
+.used-inner{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center}
+.used-visual{background:#fff;border-radius:28px;aspect-ratio:4/3;display:grid;place-items:center}
+.used-visual svg{width:70%}
+.used h2{font-size:clamp(2rem,4.4vw,3rem);font-weight:800;margin-bottom:14px}
+.used p{color:var(--ink-2);margin-bottom:26px;font-size:1.07rem}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.contact-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:32px}
+.contact-card h3{font-size:1.5rem;margin-bottom:20px}
+.c-item{display:flex;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
+.c-item:last-child{border-bottom:none}
+.c-item small{display:block;color:var(--muted);font-size:.8rem}
+.c-item a,.c-item span{font-weight:600}
+.c-item a:hover{color:var(--accent-dark)}
+form{display:grid;gap:12px}
+input,textarea,select{width:100%;padding:13px 15px;border:1.5px solid var(--line);border-radius:12px;font:inherit;background:var(--paper);color:var(--ink)}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--accent)}
+textarea{min-height:110px;resize:vertical}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+form .btn{justify-content:center;border:none;cursor:pointer}
+
+/* CTA + FOOTER */
+.cta{background:var(--accent);color:#fff;text-align:center;padding:84px 0}
+.cta h2{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;margin-bottom:14px}
+.cta p{font-size:1.1rem;opacity:.92;margin-bottom:30px}
+.cta .hero-ctas{justify-content:center}
+.cta .btn-ghost{border-color:#fff;color:#fff}
+footer{background:var(--ink);color:#c9d3cf;padding:44px 0;font-size:.9rem}
+.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+footer .logo{color:#fff}
+footer .logo-mark{background:var(--accent)}
+
+/* Mobile sticky call */
+.mobile-call{display:none}
+
+@media (max-width:900px){
+  .nav-links{display:none}
+  .hero{padding:44px 0 64px}
+  .hero-grid,.usp-grid,.used-inner,.contact-grid{grid-template-columns:1fr}
+  .hero-visual{max-width:440px;margin:0 auto;width:100%}
+  .steps,.price-grid{grid-template-columns:1fr}
+  section{padding:68px 0}
+  .form-row{grid-template-columns:1fr}
+  .fc-1{left:10px}
+  .mobile-call{display:flex;position:fixed;bottom:14px;left:14px;right:14px;z-index:60;justify-content:center;box-shadow:0 10px 28px rgba(255,106,26,.45)}
+  footer{padding-bottom:96px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="logo">
+      <span class="logo-mark">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff6a1a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17" r="3.5"/><circle cx="18.5" cy="17" r="3.5"/><path d="M5.5 17 9 9h6l3.5 8M9 9 12 17h-1M14 6h2"/></svg>
+      </span>
+      M&amp;A Fietsreparatie
+    </a>
+    <nav class="nav-links">
+      <a href="#hoe">Hoe het werkt</a>
+      <a href="#prijzen">Prijzen</a>
+      <a href="#tweedehands">Tweedehands</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="tel:0639115441" class="btn btn-accent">📞 Bel direct</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="badge"><span class="stars">★★★★★</span> 4,9 op Google · Purmerend</span>
+      <h1>Fiets kapot?<br>Wij <em>halen</em> 'm op.</h1>
+      <p class="lead">Reparatie en onderhoud van fietsen, e-bikes en pedelecs. We halen je fiets bij je thuis op en brengen 'm gerepareerd terug. Of we repareren direct op locatie.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-accent">Plan een ophaalmoment →</a>
+        <a href="https://wa.me/31639115441" class="btn btn-ghost">WhatsApp ons</a>
+      </div>
+      <div class="hero-meta">
+        <div><strong>€20</strong>halen &amp; brengen</div>
+        <div><strong>€28</strong>binnenband incl. montage</div>
+        <div><strong>4,9★</strong>klantbeoordeling</div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="#f6f3ec" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="95" cy="200" r="68"/>
+          <circle cx="305" cy="200" r="68"/>
+          <path d="M95 200 160 90h120L305 200M160 90l55 110h-120M280 90l-65 110"/>
+          <path d="M150 70h40M270 90l-10-30h32"/>
+        </g>
+        <g stroke="#ff6a1a" stroke-width="9" stroke-linecap="round">
+          <circle cx="215" cy="200" r="16"/>
+          <path d="M95 200l0 0M305 200l0 0"/>
+        </g>
+        <g stroke="#f6f3ec" stroke-width="2" opacity=".35">
+          <path d="M95 132v136M27 200h136M47 152l96 96M143 152l-96 96"/>
+          <path d="M305 132v136M237 200h136M257 152l96 96M353 152l-96 96"/>
+        </g>
+      </svg>
+      <div class="float-card fc-1">
+        <span class="dot">🚐</span>
+        <div><b>Opgehaald</b>vandaag, 14:00</div>
+      </div>
+      <div class="float-card fc-2">
+        <span class="dot">✓</span>
+        <div><b>Klaar</b>terug bij jou</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="strip" aria-hidden="true">
+  <div class="strip-inner">
+    <span>Lekke band</span><span>Onderhoudsbeurt</span><span>E-bikes &amp; pedelecs</span><span>Remmen</span><span>Ketting</span><span>Spaken &amp; wielen</span><span>Online fiets monteren</span><span>Haal &amp; breng</span>
+    <span>Lekke band</span><span>Onderhoudsbeurt</span><span>E-bikes &amp; pedelecs</span><span>Remmen</span><span>Ketting</span><span>Spaken &amp; wielen</span><span>Online fiets monteren</span><span>Haal &amp; breng</span>
+  </div>
+</div>
+
+<!-- HOE HET WERKT -->
+<section id="hoe">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Haal- en brengservice</div>
+      <h2>Geen gesjouw. Wij regelen het.</h2>
+      <p>Jij hoeft nergens heen. In drie stappen staat je fiets weer gerepareerd voor de deur.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Bel of app</h3>
+        <p>Vertel wat er mis is met je fiets en we spreken een moment af dat jou uitkomt.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Wij halen op</h3>
+        <p>We komen je fiets thuis ophalen. Kleine reparaties doen we vaak direct op locatie.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Terug als nieuw</h3>
+        <p>Na de reparatie brengen we je fiets netjes terug. Jij stapt op en fietst weg.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRIJZEN -->
+<section id="prijzen" class="prices">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Eerlijke prijzen</div>
+      <h2>Je weet vooraf wat het kost.</h2>
+      <p>Geen verrassingen achteraf. Materiaal wordt apart berekend.</p>
+    </div>
+    <div class="price-grid">
+      <div class="price-card">
+        <h3>🔧 Onderhoudsbeurt</h3>
+        <div class="price-row"><span>Stadsfiets</span><b>€ 50</b></div>
+        <div class="price-row"><span>Hybride, race, ATB</span><b>€ 60</b></div>
+        <div class="price-row"><span>E-bike</span><b>€ 60</b></div>
+      </div>
+      <div class="price-card">
+        <h3>🛞 Banden &amp; wielen</h3>
+        <div class="price-row"><span>Binnenband incl. montage</span><b>€ 28</b></div>
+        <div class="price-row"><span>Nieuw wiel in spaken</span><b>v.a. € 25</b></div>
+        <div class="price-row"><span>Oud wiel, nieuwe spaken</span><b>€ 70</b></div>
+      </div>
+      <div class="price-card">
+        <h3>📦 Overig</h3>
+        <div class="price-row"><span>Online fiets monteren &amp; afstellen</span><b>v.a. € 50</b></div>
+        <div class="price-row"><span>Overige werkzaamheden</span><b>per uur</b></div>
+        <div class="price-row"><span>Remmen, ketting, afstellen</span><b>in overleg</b></div>
+      </div>
+    </div>
+    <div class="price-note">
+      <div>
+        <strong>Voorrijkosten: € 20 in Purmerend · € 25 in de regio</strong>
+        <p>Geldt voor ophalen &amp; brengen of reparatie op locatie. Buiten ons werkgebied in overleg.</p>
+      </div>
+      <a href="tel:0639115441" class="btn btn-light">Vraag een prijs →</a>
+    </div>
+  </div>
+</section>
+
+<!-- WAAROM -->
+<section>
+  <div class="wrap usp-grid">
+    <div>
+      <div class="sec-head" style="margin-bottom:32px">
+        <div class="eyebrow">Waarom M&amp;A</div>
+        <h2>Een fietsenmaker die naar jóu komt.</h2>
+      </div>
+      <div class="usp-list">
+        <div class="usp"><span class="dot">⚡</span><div><h3>E-bikes &amp; pedelecs</h3><p>Ook voor elektrische fietsen ben je bij ons aan het goede adres.</p></div></div>
+        <div class="usp"><span class="dot">🏠</span><div><h3>Reparatie op locatie</h3><p>Veel reparaties doen we meteen bij je voor de deur.</p></div></div>
+        <div class="usp"><span class="dot">🤝</span><div><h3>Persoonlijk contact</h3><p>Je hebt direct de monteur zelf aan de lijn. Geen callcenter.</p></div></div>
+      </div>
+    </div>
+    <div class="review-box">
+      <div class="review-score">4,9</div>
+      <div class="stars">★★★★★</div>
+      <p>Gemiddelde beoordeling van klanten op Google</p>
+      <a href="#" class="btn btn-accent">Lees de reviews →</a>
+    </div>
+  </div>
+</section>
+
+<!-- TWEEDEHANDS -->
+<section id="tweedehands" class="used">
+  <div class="wrap used-inner">
+    <div class="used-visual">
+      <svg viewBox="0 0 400 260" fill="none"><g stroke="#0f1f1a" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"><circle cx="90" cy="180" r="58"/><circle cx="310" cy="180" r="58"/><path d="M90 180 150 90h110l50 90M150 90l50 90H90M260 90l-60 90"/><path d="M135 70h40M255 90l-8-26h28"/></g><circle cx="200" cy="180" r="13" stroke="#ff6a1a" stroke-width="8"/><rect x="250" y="20" width="110" height="44" rx="22" fill="#ff6a1a"/><text x="305" y="49" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="19" fill="#fff">Nagekeken</text></svg>
+    </div>
+    <div>
+      <div class="eyebrow">Tweedehands fietsen</div>
+      <h2>Goede fiets, eerlijke prijs.</h2>
+      <p>Op zoek naar een betrouwbare tweedehands fiets? We verkopen nagekeken fietsen die klaar zijn om mee weg te rijden. Vraag gerust wat er op dit moment beschikbaar is.</p>
+      <a href="https://wa.me/31639115441" class="btn btn-accent">Vraag wat er beschikbaar is →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Contact</div>
+      <h2>Plan je reparatie.</h2>
+      <p>Bellen of appen is het snelst. Liever een bericht sturen? Vul het formulier in.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>Direct contact</h3>
+        <div class="c-item"><span class="dot">📞</span><div><small>Telefoon</small><a href="tel:0639115441">06 - 39 11 54 41</a></div></div>
+        <div class="c-item"><span class="dot">💬</span><div><small>WhatsApp</small><a href="https://wa.me/31639115441">Stuur een appje</a></div></div>
+        <div class="c-item"><span class="dot">✉️</span><div><small>E-mail</small><a href="mailto:info@ma-fietsreparatie.nl">info@ma-fietsreparatie.nl</a></div></div>
+        <div class="c-item"><span class="dot">📍</span><div><small>Adres</small><span>Rijtuigstraat 10, 1445 NS Purmerend</span></div></div>
+      </div>
+      <div class="contact-card">
+        <h3>Stuur een aanvraag</h3>
+        <form onsubmit="event.preventDefault();this.innerHTML='<p style=&quot;font-weight:600&quot;>Bedankt! We nemen snel contact met je op.</p>'">
+          <div class="form-row">
+            <input type="text" placeholder="Naam" required>
+            <input type="tel" placeholder="Telefoonnummer" required>
+          </div>
+          <input type="text" placeholder="Adres (voor ophalen)">
+          <select>
+            <option>Wat moet er gebeuren?</option>
+            <option>Lekke band</option>
+            <option>Onderhoudsbeurt</option>
+            <option>E-bike reparatie</option>
+            <option>Online fiets monteren</option>
+            <option>Tweedehands fiets</option>
+            <option>Iets anders</option>
+          </select>
+          <textarea placeholder="Beschrijf kort het probleem"></textarea>
+          <button type="submit" class="btn btn-accent">Verstuur aanvraag →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="wrap">
+    <h2>Vandaag gebeld,<br>snel weer op de fiets.</h2>
+    <p>Fietsenmaker aan huis in Purmerend en omgeving.</p>
+    <div class="hero-ctas">
+      <a href="tel:0639115441" class="btn btn-light">📞 06 - 39 11 54 41</a>
+      <a href="https://wa.me/31639115441" class="btn btn-ghost">WhatsApp ons</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <a href="#" class="logo"><span class="logo-mark"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17" r="3.5"/><circle cx="18.5" cy="17" r="3.5"/><path d="M5.5 17 9 9h6l3.5 8M9 9 12 17h-1M14 6h2"/></svg></span>M&amp;A Fietsreparatie</a>
+    <div>Rijtuigstraat 10, 1445 NS Purmerend · KVK 90212959</div>
+    <div>Concept door <a href="https://byxavio.nl" style="color:#ff6a1a;font-weight:600">byXavio</a></div>
+  </div>
+</footer>
+
+<a href="tel:0639115441" class="btn btn-accent mobile-call">📞 Bel direct: 06 - 39 11 54 41</a>
+
+</body>
+</html>
