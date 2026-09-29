@@ -134,6 +134,14 @@
     border-radius:10px; padding:9px 12px; cursor:pointer; font-family:var(--body);
     font-weight:600; font-size:.9rem; color:var(--ink);
   }
+
+  .langsw{margin-left:12px; flex:0 0 auto;}
+  .langsw select{
+    font-family:var(--body); font-weight:600; font-size:.88rem; color:var(--ink);
+    background:var(--white); border:2px solid var(--line); border-radius:10px;
+    padding:9px 10px; cursor:pointer;
+  }
+  .langsw select:focus{outline:2px solid var(--cyan); outline-offset:1px;}
   #mobnav{display:none; border-top:1px solid var(--line); padding:10px 0 18px;}
   #mobnav ul{list-style:none; margin:0; padding:0; display:grid; gap:2px;}
   #mobnav a{display:block; text-decoration:none; font-weight:600; padding:11px 0; border-bottom:1px solid var(--line); color:var(--ink);}
@@ -358,17 +366,14 @@
 
   .wa{
     position:fixed; right:18px; bottom:calc(18px + env(safe-area-inset-bottom,0px)); z-index:60;
-    width:62px; height:62px; border-radius:50%; background:#25d366;
+    width:56px; height:56px; border-radius:50%; background:#25d366;
     display:flex; align-items:center; justify-content:center;
-    box-shadow:0 10px 26px rgba(37,211,102,.45); text-decoration:none;
-    border:none; cursor:pointer; transition:transform .2s;
+    box-shadow:0 12px 26px -10px rgba(0,0,0,.4); text-decoration:none;
+    border:none; cursor:pointer;
   }
-  .wa:hover{transform:scale(1.08);}
-  .wa::before{content:""; position:absolute; inset:0; border-radius:50%; background:#25d366; z-index:-1; animation:wapulse 2.4s infinite;}
-  @keyframes wapulse{0%{transform:scale(1); opacity:.6;} 100%{transform:scale(1.6); opacity:0;}}
-  .wa svg{width:34px; height:34px;}
+  .wa svg{width:30px; height:30px;}
   .wa-bubble{
-    position:fixed; right:92px; bottom:calc(32px + env(safe-area-inset-bottom,0px)); z-index:60;
+    position:fixed; right:84px; bottom:calc(30px + env(safe-area-inset-bottom,0px)); z-index:60;
     background:var(--ink); color:var(--white); font-size:.88rem; font-weight:500;
     padding:10px 15px; border-radius:11px; box-shadow:0 12px 26px -14px rgba(0,0,0,.5);
     max-width:210px;
@@ -416,24 +421,33 @@
       </a>
       <nav class="main" aria-label="Hoofdmenu">
         <ul>
-          <li><a href="#hoe">Hoe werkt het</a></li>
-          <li><a href="#voorbeelden">Voorbeelden</a></li>
-          <li><a href="#pakketten">Pakketten</a></li>
-          <li><a href="#overmij">Over mij</a></li>
+          <li><a href="#hoe" data-i18n="nav.hoe">Hoe werkt het</a></li>
+          <li><a href="#voorbeelden" data-i18n="nav.voorbeelden">Voorbeelden</a></li>
+          <li><a href="#pakketten" data-i18n="nav.pakketten">Pakketten</a></li>
+          <li><a href="#overmij" data-i18n="nav.overmij">Over mij</a></li>
         </ul>
       </nav>
-      <a class="btn btn-cyan btn-sm" href="#contact">Offerte aanvragen</a>
-      <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mobnav">Menu</button>
+      <div class="langsw">
+        <select id="langSelect" aria-label="Taal / Language">
+          <option value="nl">🇳🇱 NL</option>
+          <option value="en">🇬🇧 EN</option>
+          <option value="de">🇩🇪 DE</option>
+          <option value="fr">🇫🇷 FR</option>
+          <option value="es">🇪🇸 ES</option>
+        </select>
+      </div>
+      <a class="btn btn-cyan btn-sm" href="#contact" data-i18n="nav.cta">Offerte aanvragen</a>
+      <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mobnav" data-i18n="nav.menu">Menu</button>
     </div>
     <div id="mobnav">
       <ul>
-        <li><a href="#hoe">Hoe werkt het</a></li>
-        <li><a href="#voorbeelden">Voorbeelden</a></li>
-        <li><a href="#pakketten">Pakketten</a></li>
-        <li><a href="#overmij">Over mij</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#hoe" data-i18n="nav.hoe">Hoe werkt het</a></li>
+        <li><a href="#voorbeelden" data-i18n="nav.voorbeelden">Voorbeelden</a></li>
+        <li><a href="#pakketten" data-i18n="nav.pakketten">Pakketten</a></li>
+        <li><a href="#overmij" data-i18n="nav.overmij">Over mij</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
       </ul>
-      <a class="btn btn-cyan" href="#contact">Offerte aanvragen</a>
+      <a class="btn btn-cyan" href="#contact" data-i18n="nav.cta">Offerte aanvragen</a>
     </div>
   </div>
 </header>
@@ -443,17 +457,17 @@
   <div class="wrap">
     <div class="hero-in">
       <div>
-        <p class="eyebrow">Websites voor kleine bedrijven en zzp&rsquo;ers</p>
-        <h1>Een website die <span class="hl">klopt</span>, zonder poespas.</h1>
-        <p class="lead">Ik bouw duidelijke, snelle websites voor kleine ondernemers, van eerste ontwerp tot een pagina die klanten daadwerkelijk kunnen vinden en gebruiken.</p>
+        <p class="eyebrow" data-i18n="hero.eyebrow">Websites voor kleine bedrijven en zzp&rsquo;ers</p>
+        <h1 data-i18n-html="hero.h1">Een website die <span class="hl">klopt</span>, zonder poespas.</h1>
+        <p class="lead" data-i18n="hero.lead">Ik bouw duidelijke, snelle websites voor kleine ondernemers, van eerste ontwerp tot een pagina die klanten daadwerkelijk kunnen vinden en gebruiken.</p>
         <div class="cta">
-          <a class="btn btn-cyan" href="#contact">Vraag een gratis kennismaking aan</a>
-          <a class="btn btn-outline" href="#voorbeelden">Bekijk voorbeelden</a>
+          <a class="btn btn-cyan" href="#contact" data-i18n="hero.cta1">Vraag een gratis kennismaking aan</a>
+          <a class="btn btn-outline" href="#voorbeelden" data-i18n="hero.cta2">Bekijk voorbeelden</a>
         </div>
         <div class="under">
-          <span><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Vanaf &euro;195</span>
-          <span><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Live binnen een week</span>
-          <span><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Geen abonnement</span>
+          <span><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="hero.under1">Vanaf &euro;195</span></span>
+          <span><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="hero.under2">Live binnen een week</span></span>
+          <span><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="hero.under3">Geen abonnement</span></span>
         </div>
       </div>
 
@@ -496,9 +510,9 @@
 <div class="strip">
   <div class="wrap">
     <div class="strip-in">
-      <div><span class="n">01</span><h3>Vaste prijs vooraf</h3><p>Je weet wat het kost voordat ik begin. Geen verrassingen achteraf.</p></div>
-      <div><span class="n">02</span><h3>Eigen ontwerp</h3><p>Volledig op jouw bedrijf gemaakt, geen sjabloon van de plank.</p></div>
-      <div><span class="n">03</span><h3>Persoonlijk contact</h3><p>Je hebt mij, van start tot livegang. Geen wisselende accountmanagers.</p></div>
+      <div><span class="n">01</span><h3 data-i18n="strip.1.title">Vaste prijs vooraf</h3><p data-i18n="strip.1.desc">Je weet wat het kost voordat ik begin. Geen verrassingen achteraf.</p></div>
+      <div><span class="n">02</span><h3 data-i18n="strip.2.title">Eigen ontwerp</h3><p data-i18n="strip.2.desc">Volledig op jouw bedrijf gemaakt, geen sjabloon van de plank.</p></div>
+      <div><span class="n">03</span><h3 data-i18n="strip.3.title">Persoonlijk contact</h3><p data-i18n="strip.3.desc">Je hebt mij, van start tot livegang. Geen wisselende accountmanagers.</p></div>
     </div>
   </div>
 </div>
@@ -508,31 +522,31 @@
   <div class="wrap">
     <div class="head">
       <div>
-        <p class="eyebrow">Hoe werkt het</p>
-        <h2>Van eerste bericht tot live site.</h2>
+        <p class="eyebrow" data-i18n="nav.hoe">Hoe werkt het</p>
+        <h2 data-i18n="hoe.h2">Van eerste bericht tot live site.</h2>
       </div>
-      <p class="lead">Geen ingewikkeld traject: vier duidelijke stappen, met mij als vast aanspreekpunt.</p>
+      <p class="lead" data-i18n="hoe.lead">Geen ingewikkeld traject: vier duidelijke stappen, met mij als vast aanspreekpunt.</p>
     </div>
     <div class="steps">
       <div class="step">
-        <span class="num">STAP 01</span>
-        <h3>Kennismaking</h3>
-        <p>Je stuurt een bericht of vult het formulier in. We bespreken kort wat je nodig hebt, helemaal vrijblijvend.</p>
+        <span class="num" data-i18n="step1.num">STAP 01</span>
+        <h3 data-i18n="step1.title">Kennismaking</h3>
+        <p data-i18n="step1.desc">Je stuurt een bericht of vult het formulier in. We bespreken kort wat je nodig hebt, helemaal vrijblijvend.</p>
       </div>
       <div class="step">
-        <span class="num">STAP 02</span>
-        <h3>Ontwerp</h3>
-        <p>Ik maak een ontwerp op maat dat past bij jouw bedrijf. Geen kant-en-klaar sjabloon.</p>
+        <span class="num" data-i18n="step2.num">STAP 02</span>
+        <h3 data-i18n="step2.title">Ontwerp</h3>
+        <p data-i18n="step2.desc">Ik maak een ontwerp op maat dat past bij jouw bedrijf. Geen kant-en-klaar sjabloon.</p>
       </div>
       <div class="step">
-        <span class="num">STAP 03</span>
-        <h3>Feedback</h3>
-        <p>Je geeft feedback en ik verwerk de aanpassingen, tot de site precies klopt.</p>
+        <span class="num" data-i18n="step3.num">STAP 03</span>
+        <h3 data-i18n="step3.title">Feedback</h3>
+        <p data-i18n="step3.desc">Je geeft feedback en ik verwerk de aanpassingen, tot de site precies klopt.</p>
       </div>
       <div class="step">
-        <span class="num">STAP 04</span>
-        <h3>Livegang</h3>
-        <p>Je site gaat live en is vindbaar. Ook daarna blijf ik gewoon bereikbaar voor vragen.</p>
+        <span class="num" data-i18n="step4.num">STAP 04</span>
+        <h3 data-i18n="step4.title">Livegang</h3>
+        <p data-i18n="step4.desc">Je site gaat live en is vindbaar. Ook daarna blijf ik gewoon bereikbaar voor vragen.</p>
       </div>
     </div>
   </div>
@@ -543,15 +557,15 @@
   <div class="wrap">
     <div class="head">
       <div>
-        <p class="eyebrow">Voorbeelden</p>
-        <h2>Zo kan jouw site eruitzien.</h2>
+        <p class="eyebrow" data-i18n="nav.voorbeelden">Voorbeelden</p>
+        <h2 data-i18n="voorb.h2">Zo kan jouw site eruitzien.</h2>
       </div>
-      <p class="lead">Vier voorbeelden uit verschillende branches, elk met een eigen kleur, opbouw en formulier.</p>
+      <p class="lead" data-i18n="voorb.lead">Vier voorbeelden uit verschillende branches, elk met een eigen kleur, opbouw en formulier.</p>
     </div>
 
     <div class="notice">
       <span aria-hidden="true">&#9432;</span>
-      <span><b>Let op:</b> de voorbeeldwebsites hieronder zijn fictief. De bedrijven bestaan niet echt. De websites zelf staan wel te koop.</span>
+      <span data-i18n-html="notice.html"><b>Let op:</b> de voorbeeldwebsites hieronder zijn fictief. De bedrijven bestaan niet echt. De websites zelf staan wel te koop.</span>
     </div>
 
     <div class="demos">
@@ -565,10 +579,10 @@
           <rect x="140" y="80" width="24" height="6" rx="3" fill="#ffb23f"/>
         </svg>
         <div class="body">
-          <span class="kind">Kapperszaak</span>
+          <span class="kind" data-i18n="demo1.kind">Kapperszaak</span>
           <h3>Slijperij</h3>
-          <p>Diensten, openingstijden en een afsprakenformulier.</p>
-          <a class="go" href="https://demo1.byxavio.nl" target="_blank" rel="noopener">Bekijk demo &rarr;</a>
+          <p data-i18n="demo1.desc">Diensten, openingstijden en een afsprakenformulier.</p>
+          <a class="go" href="https://demo1.byxavio.nl" target="_blank" rel="noopener" data-i18n="demo.go">Bekijk demo &rarr;</a>
         </div>
       </article>
 
@@ -581,10 +595,10 @@
           <path d="M156 48v56M148 48v18a8 8 0 0 0 16 0V48" stroke="#00d2df" stroke-width="3" stroke-linecap="round" fill="none"/>
         </svg>
         <div class="body">
-          <span class="kind">Bistro &amp; keuken</span>
+          <span class="kind" data-i18n="demo2.kind">Bistro &amp; keuken</span>
           <h3>Kastanje</h3>
-          <p>Menukaart, openingstijden en een reserveringsformulier.</p>
-          <a class="go" href="https://demo2.byxavio.nl" target="_blank" rel="noopener">Bekijk demo &rarr;</a>
+          <p data-i18n="demo2.desc">Menukaart, openingstijden en een reserveringsformulier.</p>
+          <a class="go" href="https://demo2.byxavio.nl" target="_blank" rel="noopener" data-i18n="demo.go">Bekijk demo &rarr;</a>
         </div>
       </article>
 
@@ -596,10 +610,10 @@
           <circle cx="100" cy="88" r="7" fill="#ffb23f"/>
         </svg>
         <div class="body">
-          <span class="kind">Kinderkleding</span>
+          <span class="kind" data-i18n="demo3.kind">Kinderkleding</span>
           <h3>Wolkje</h3>
-          <p>Collectie, maten en een pasafspraak-formulier.</p>
-          <a class="go" href="https://wolkje.byxavio.nl" target="_blank" rel="noopener">Bekijk demo &rarr;</a>
+          <p data-i18n="demo3.desc">Collectie, maten en een pasafspraak-formulier.</p>
+          <a class="go" href="https://wolkje.byxavio.nl" target="_blank" rel="noopener" data-i18n="demo.go">Bekijk demo &rarr;</a>
         </div>
       </article>
 
@@ -613,10 +627,10 @@
           <rect x="40" y="106" width="122" height="7" rx="3.5" fill="#1a1b3a"/>
         </svg>
         <div class="body">
-          <span class="kind">Bouwbedrijf</span>
+          <span class="kind" data-i18n="demo4.kind">Bouwbedrijf</span>
           <h3>Winkelaar</h3>
-          <p>Specialismen, werkwijze en een projectenoverzicht.</p>
-          <a class="go" href="https://winkelaar.byxavio.nl" target="_blank" rel="noopener">Bekijk demo &rarr;</a>
+          <p data-i18n="demo4.desc">Specialismen, werkwijze en een projectenoverzicht.</p>
+          <a class="go" href="https://winkelaar.byxavio.nl" target="_blank" rel="noopener" data-i18n="demo.go">Bekijk demo &rarr;</a>
         </div>
       </article>
     </div>
@@ -628,74 +642,74 @@
   <div class="wrap">
     <div class="head">
       <div>
-        <p class="eyebrow">Pakketten</p>
-        <h2>Kies wat bij je bedrijf past.</h2>
+        <p class="eyebrow" data-i18n="nav.pakketten">Pakketten</p>
+        <h2 data-i18n="pak.h2">Kies wat bij je bedrijf past.</h2>
       </div>
-      <p class="lead">Drie opties, zodat je vooraf weet wat je krijgt en wat het kost. Past er geen precies? Dan stel ik in een kort gesprek iets op maat samen.</p>
+      <p class="lead" data-i18n="pak.lead">Drie opties, zodat je vooraf weet wat je krijgt en wat het kost. Past er geen precies? Dan stel ik in een kort gesprek iets op maat samen.</p>
     </div>
 
     <div class="packs">
       <div class="pack">
-        <h3>Basis</h3>
-        <p class="for">Een volwaardige site om snel en overzichtelijk online te staan &mdash; geen halfbakken instapversie.</p>
-        <div class="prijs"><span class="v">&euro;195</span><span class="u">eenmalig, excl. btw</span></div>
+        <h3 data-i18n="pack.basis.title">Basis</h3>
+        <p class="for" data-i18n="pack.basis.for">Een volwaardige site om snel en overzichtelijk online te staan &mdash; geen halfbakken instapversie.</p>
+        <div class="prijs"><span class="v">&euro;195</span><span class="u" data-i18n="pack.basis.unit">eenmalig, excl. btw</span></div>
         <ul>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>E&eacute;n ronde feedback op het ontwerp inbegrepen</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Een pagina met de belangrijkste info</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Duidelijke contactgegevens en openingstijden</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Werkt goed op telefoon en tablet</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Oplevering binnen een week</span></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pack.basis.li1">E&eacute;n ronde feedback op het ontwerp inbegrepen</span></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pack.basis.li2">Een pagina met de belangrijkste info</span></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pack.basis.li3">Duidelijke contactgegevens en openingstijden</span></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pack.basis.li4">Werkt goed op telefoon en tablet</span></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pack.basis.li5">Oplevering binnen een week</span></li>
         </ul>
-        <a class="btn btn-outline" href="#contact">Bekijk Basis</a>
+        <a class="btn btn-outline" href="#contact" data-i18n="pack.basis.btn">Bekijk Basis</a>
       </div>
 
       <div class="pack best">
-        <span class="ribbon">Meest gekozen</span>
-        <h3>Compleet</h3>
-        <p class="for">Voor bedrijven die klanten willen laten reageren, niet alleen lezen.</p>
-        <div class="prijs"><span class="v">&euro;300</span><span class="u">eenmalig, excl. btw</span></div>
+        <span class="ribbon" data-i18n="pack.ribbon">Meest gekozen</span>
+        <h3 data-i18n="pack.compleet.title">Compleet</h3>
+        <p class="for" data-i18n="pack.compleet.for">Voor bedrijven die klanten willen laten reageren, niet alleen lezen.</p>
+        <div class="prijs"><span class="v">&euro;300</span><span class="u" data-i18n="pack.basis.unit">eenmalig, excl. btw</span></div>
         <ul>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Alles uit Basis</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Meerdere pagina&rsquo;s of secties</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Eigen contact- of afsprakenformulier</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Volledig eigen ontwerp, geen sjabloon</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Basis zoekmachine-optimalisatie</span></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pack.compleet.li1">Alles uit Basis</span></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pack.compleet.li2">Meerdere pagina&rsquo;s of secties</span></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pack.compleet.li3">Eigen contact- of afsprakenformulier</span></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pack.compleet.li4">Volledig eigen ontwerp, geen sjabloon</span></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pack.compleet.li5">Basis zoekmachine-optimalisatie</span></li>
         </ul>
-        <a class="btn btn-cyan" href="#contact">Kies dit pakket</a>
+        <a class="btn btn-cyan" href="#contact" data-i18n="pack.compleet.btn">Kies dit pakket</a>
       </div>
 
       <div class="pack">
-        <h3>Op maat</h3>
-        <p class="for">Voor bedrijven met extra functionaliteit en doorlopende wensen.</p>
-        <div class="prijs"><span class="v">&euro;450</span><span class="u">vanaf, eenmalig, excl. btw</span></div>
+        <h3 data-i18n="pack.opmaat.title">Op maat</h3>
+        <p class="for" data-i18n="pack.opmaat.for">Voor bedrijven met extra functionaliteit en doorlopende wensen.</p>
+        <div class="prijs"><span class="v">&euro;450</span><span class="u" data-i18n="pack.opmaat.unit">vanaf, eenmalig, excl. btw</span></div>
         <ul>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Alles uit Compleet</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Formulier op maat, zoals reserveringen of aanvragen</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Uitbreidbaar met webshop of agenda</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Drie maanden ondersteuning inbegrepen</span></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pack.opmaat.li1">Alles uit Compleet</span></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pack.opmaat.li2">Formulier op maat, zoals reserveringen of aanvragen</span></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pack.opmaat.li3">Uitbreidbaar met webshop of agenda</span></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pack.opmaat.li4">Drie maanden ondersteuning inbegrepen</span></li>
         </ul>
-        <a class="btn btn-outline" href="#contact">Bekijk Op maat</a>
+        <a class="btn btn-outline" href="#contact" data-i18n="pack.opmaat.btn">Bekijk Op maat</a>
       </div>
     </div>
 
     <div class="onderhoud">
       <div>
-        <h3>Jaarlijks onderhoud</h3>
-        <p class="lead" style="font-size:.95rem; margin-top:5px;">Voor wie na oplevering niet meer naar de site hoeft om te kijken &mdash; ik houd &rsquo;m actueel en online.</p>
+        <h3 data-i18n="onderhoud.title">Jaarlijks onderhoud</h3>
+        <p class="lead" style="font-size:.95rem; margin-top:5px;" data-i18n="onderhoud.lead">Voor wie na oplevering niet meer naar de site hoeft om te kijken &mdash; ik houd &rsquo;m actueel en online.</p>
         <ul>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Site bijwerken met nieuwe info en foto&rsquo;s</li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Hosting inbegrepen</li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Domeinnaam inbegrepen</li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="onderhoud.li1">Site bijwerken met nieuwe info en foto&rsquo;s</span></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="onderhoud.li2">Hosting inbegrepen</span></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="onderhoud.li3">Domeinnaam inbegrepen</span></li>
         </ul>
       </div>
       <div class="right">
         <span class="v">&euro;149</span>
-        <span class="u">per jaar, excl. btw</span>
-        <a class="btn btn-primary btn-sm" href="#contact" style="margin-top:12px;">Vraag aan</a>
+        <span class="u" data-i18n="onderhoud.unit">per jaar, excl. btw</span>
+        <a class="btn btn-primary btn-sm" href="#contact" style="margin-top:12px;" data-i18n="onderhoud.btn">Vraag aan</a>
       </div>
     </div>
 
-    <p class="fineprint">Prijzen zijn indicatief, exclusief btw, en voor de bouw van de site, exclusief hosting en domeinnaam, en altijd bespreekbaar. Na het contactformulier krijg je een offerte op maat. Basis is een prima blijvende keuze op zich &mdash; upgraden naar Compleet kan later altijd nog.</p>
+    <p class="fineprint" data-i18n="fineprint">Prijzen zijn indicatief, exclusief btw, en voor de bouw van de site, exclusief hosting en domeinnaam, en altijd bespreekbaar. Na het contactformulier krijg je een offerte op maat. Basis is een prima blijvende keuze op zich &mdash; upgraden naar Compleet kan later altijd nog.</p>
   </div>
 </section>
 
@@ -704,36 +718,36 @@
   <div class="wrap">
     <div class="head">
       <div>
-        <p class="eyebrow">Veelgestelde vragen</p>
-        <h2>Nog vragen? Hier alvast antwoord.</h2>
+        <p class="eyebrow" data-i18n="faq.eyebrow">Veelgestelde vragen</p>
+        <h2 data-i18n="faq.h2">Nog vragen? Hier alvast antwoord.</h2>
       </div>
-      <p class="lead">Staat je vraag er niet bij? Stuur een berichtje, dan krijg je meestal dezelfde dag antwoord.</p>
+      <p class="lead" data-i18n="faq.lead">Staat je vraag er niet bij? Stuur een berichtje, dan krijg je meestal dezelfde dag antwoord.</p>
     </div>
 
     <div class="faq">
       <details open>
-        <summary>Hoe lang duurt het voordat mijn site live staat?<span class="ic" aria-hidden="true"></span></summary>
-        <p>Meestal binnen een week na akkoord, afhankelijk van hoe snel je teksten en foto&rsquo;s aanlevert en hoeveel feedbackrondes er nodig zijn.</p>
+        <summary><span data-i18n="faq1.q">Hoe lang duurt het voordat mijn site live staat?</span><span class="ic" aria-hidden="true"></span></summary>
+        <p data-i18n="faq1.a">Meestal binnen een week na akkoord, afhankelijk van hoe snel je teksten en foto&rsquo;s aanlevert en hoeveel feedbackrondes er nodig zijn.</p>
       </details>
       <details>
-        <summary>Wat moet ik zelf aanleveren?<span class="ic" aria-hidden="true"></span></summary>
-        <p>Teksten en foto&rsquo;s van je bedrijf werken het snelst. Heb je dat liever niet zelf, dan denk ik graag mee over de inhoud.</p>
+        <summary><span data-i18n="faq2.q">Wat moet ik zelf aanleveren?</span><span class="ic" aria-hidden="true"></span></summary>
+        <p data-i18n="faq2.a">Teksten en foto&rsquo;s van je bedrijf werken het snelst. Heb je dat liever niet zelf, dan denk ik graag mee over de inhoud.</p>
       </details>
       <details>
-        <summary>Kan ik mijn site later zelf aanpassen?<span class="ic" aria-hidden="true"></span></summary>
-        <p>Kleine aanpassingen zijn na oplevering altijd bespreekbaar. Voor grotere wijzigingen kun je me gewoon benaderen.</p>
+        <summary><span data-i18n="faq3.q">Kan ik mijn site later zelf aanpassen?</span><span class="ic" aria-hidden="true"></span></summary>
+        <p data-i18n="faq3.a">Kleine aanpassingen zijn na oplevering altijd bespreekbaar. Voor grotere wijzigingen kun je me gewoon benaderen.</p>
       </details>
       <details>
-        <summary>Regel jij ook hosting en een domeinnaam?<span class="ic" aria-hidden="true"></span></summary>
-        <p>Hosting en domeinnaam zitten niet inbegrepen bij de vaste prijs, maar dat kan ik wel voor je regelen: bekijk het <a href="#pakketten">jaarlijks onderhoud</a>-pakket, waarin hosting en domeinnaam gewoon inbegrepen zijn.</p>
+        <summary><span data-i18n="faq4.q">Regel jij ook hosting en een domeinnaam?</span><span class="ic" aria-hidden="true"></span></summary>
+        <p data-i18n-html="faq4.a">Hosting en domeinnaam zitten niet inbegrepen bij de vaste prijs, maar dat kan ik wel voor je regelen: bekijk het <a href="#pakketten">jaarlijks onderhoud</a>-pakket, waarin hosting en domeinnaam gewoon inbegrepen zijn.</p>
       </details>
       <details>
-        <summary>Wat kost het precies?<span class="ic" aria-hidden="true"></span></summary>
-        <p>Vanaf &euro;195, afhankelijk van wat je nodig hebt. Bekijk de <a href="#pakketten">pakketten</a> voor een overzicht, of vraag een offerte op maat aan.</p>
+        <summary><span data-i18n="faq5.q">Wat kost het precies?</span><span class="ic" aria-hidden="true"></span></summary>
+        <p data-i18n-html="faq5.a">Vanaf &euro;195, afhankelijk van wat je nodig hebt. Bekijk de <a href="#pakketten">pakketten</a> voor een overzicht, of vraag een offerte op maat aan.</p>
       </details>
       <details>
-        <summary>Wat als ik niet tevreden ben met het ontwerp?<span class="ic" aria-hidden="true"></span></summary>
-        <p>Dan passen we het samen aan tot het klopt. Pas als je tevreden bent, gaat de site live.</p>
+        <summary><span data-i18n="faq6.q">Wat als ik niet tevreden ben met het ontwerp?</span><span class="ic" aria-hidden="true"></span></summary>
+        <p data-i18n="faq6.a">Dan passen we het samen aan tot het klopt. Pas als je tevreden bent, gaat de site live.</p>
       </details>
     </div>
   </div>
@@ -742,23 +756,23 @@
 <!-- ============ OVER MIJ ============ -->
 <section class="band" id="overmij">
   <div class="wrap">
-    <p class="eyebrow">Over mij</p>
+    <p class="eyebrow" data-i18n="nav.overmij">Over mij</p>
     <div class="over">
       <div class="prose">
         <div style="display:flex; align-items:center; gap:18px; margin-bottom:4px;">
-          <img src="djego.jpg" alt="Djego, oprichter van byXavio" width="88" height="88" style="width:88px; height:88px; border-radius:50%; object-fit:cover; border:3px solid var(--white); box-shadow:0 10px 22px -12px rgba(26,27,58,.4); flex:0 0 auto;">
-          <h2>Hoi, ik ben Djego.</h2>
+          <img src="djego.jpg" alt="Djego, oprichter van byXavio" data-i18n-attr-alt="over.img.alt" width="88" height="88" style="width:88px; height:88px; border-radius:50%; object-fit:cover; border:3px solid var(--white); box-shadow:0 10px 22px -12px rgba(26,27,58,.4); flex:0 0 auto;">
+          <h2 data-i18n="over.h2">Hoi, ik ben Djego.</h2>
         </div>
-        <p style="margin-top:18px;">Ik ben de persoon achter byXavio. Ik bouw websites voor kleine bedrijven en zzp&rsquo;ers omdat ik het leuk vind om iets tastbaars neer te zetten waar ondernemers echt iets aan hebben. Een site die klopt, snel laadt, en precies laat zien wie je bent.</p>
-        <p>Geen overbodige poespas of ingewikkelde systemen: ik werk het liefst persoonlijk, zonder tussenpersonen of wisselende contactpersonen. Je hebt gewoon mij, van het eerste idee tot de dag dat je site live staat.</p>
+        <p style="margin-top:18px;" data-i18n="over.p1">Ik ben de persoon achter byXavio. Ik bouw websites voor kleine bedrijven en zzp&rsquo;ers omdat ik het leuk vind om iets tastbaars neer te zetten waar ondernemers echt iets aan hebben. Een site die klopt, snel laadt, en precies laat zien wie je bent.</p>
+        <p data-i18n="over.p2">Geen overbodige poespas of ingewikkelde systemen: ik werk het liefst persoonlijk, zonder tussenpersonen of wisselende contactpersonen. Je hebt gewoon mij, van het eerste idee tot de dag dat je site live staat.</p>
       </div>
       <div class="waarom">
-        <h3>Waarom bedrijven voor mij kiezen</h3>
+        <h3 data-i18n="waarom.title">Waarom bedrijven voor mij kiezen</h3>
         <ul>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Persoonlijk contact met mij, geen wisselende accountmanagers</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Vaste prijs vooraf, geen verrassingen achteraf</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Volledig eigen ontwerp, geen sjabloon van de plank</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Bereikbaar na oplevering, ook voor kleine vragen</span></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="waarom.li1">Persoonlijk contact met mij, geen wisselende accountmanagers</span></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="waarom.li2">Vaste prijs vooraf, geen verrassingen achteraf</span></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="waarom.li3">Volledig eigen ontwerp, geen sjabloon van de plank</span></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="waarom.li4">Bereikbaar na oplevering, ook voor kleine vragen</span></li>
         </ul>
       </div>
     </div>
@@ -770,50 +784,50 @@
   <div class="wrap">
     <div class="contact">
       <div>
-        <p class="eyebrow" style="color:var(--amber);">Contact</p>
-        <h2>Even kennismaken?</h2>
-        <p class="lead">Vertel kort wat je bedrijf doet en wat je zoekt. Je krijgt van mij een vrijblijvende offerte op maat, meestal dezelfde dag nog.</p>
+        <p class="eyebrow" style="color:var(--amber);" data-i18n="contact.eyebrow">Contact</p>
+        <h2 data-i18n="contact.h2">Even kennismaken?</h2>
+        <p class="lead" data-i18n="contact.lead">Vertel kort wat je bedrijf doet en wat je zoekt. Je krijgt van mij een vrijblijvende offerte op maat, meestal dezelfde dag nog.</p>
         <div class="rows">
-          <div class="row"><span class="k">Telefoon</span><span class="v"><a href="tel:+31626683986">06 26 68 39 86</a></span></div>
-          <div class="row"><span class="k">E-mail</span><span class="v"><a href="mailto:infobyxavio@gmail.com">infobyxavio@gmail.com</a></span></div>
+          <div class="row"><span class="k" data-i18n="contact.row.phone">Telefoon</span><span class="v"><a href="tel:+31626683986">06 26 68 39 86</a></span></div>
+          <div class="row"><span class="k" data-i18n="contact.row.email">E-mail</span><span class="v"><a href="mailto:infobyxavio@gmail.com">infobyxavio@gmail.com</a></span></div>
           <div class="row"><span class="k">KVK</span><span class="v">42165581</span></div>
-          <div class="row"><span class="k">Btw-id</span><span class="v">NL005549301B15</span></div>
+          <div class="row"><span class="k" data-i18n="contact.row.btw">Btw-id</span><span class="v">NL005549301B15</span></div>
         </div>
       </div>
 
       <form class="form" id="offerteForm" action="https://formspree.io/f/mgavkkev" method="POST">
-        <h3>Offerte aanvragen</h3>
+        <h3 data-i18n="nav.cta">Offerte aanvragen</h3>
         <div class="field">
-          <label for="naam">Naam</label>
-          <input id="naam" name="naam" type="text" placeholder="Je naam" autocomplete="name" required>
+          <label for="naam" data-i18n="form.naam.label">Naam</label>
+          <input id="naam" name="naam" type="text" placeholder="Je naam" data-i18n-attr-placeholder="form.naam.ph" autocomplete="name" required>
         </div>
         <div class="field">
-          <label for="email">E-mail</label>
-          <input id="email" name="_replyto" type="email" placeholder="je@email.nl" autocomplete="email" required>
+          <label for="email" data-i18n="contact.row.email">E-mail</label>
+          <input id="email" name="_replyto" type="email" placeholder="je@email.nl" data-i18n-attr-placeholder="form.email.ph" autocomplete="email" required>
         </div>
         <div class="field">
-          <label for="bedrijf">Bedrijf</label>
-          <input id="bedrijf" name="bedrijf" type="text" placeholder="Naam van je zaak" autocomplete="organization">
+          <label for="bedrijf" data-i18n="form.bedrijf.label">Bedrijf</label>
+          <input id="bedrijf" name="bedrijf" type="text" placeholder="Naam van je zaak" data-i18n-attr-placeholder="form.bedrijf.ph" autocomplete="organization">
         </div>
         <div class="field">
-          <label for="pakket">Welk pakket heeft je interesse?</label>
+          <label for="pakket" data-i18n="form.pakket.label">Welk pakket heeft je interesse?</label>
           <select id="pakket" name="pakket">
-            <option>Weet ik nog niet</option>
-            <option>Basis &mdash; &euro;195</option>
-            <option selected>Compleet &mdash; &euro;300</option>
-            <option>Op maat &mdash; vanaf &euro;450</option>
-            <option>Jaarlijks onderhoud</option>
+            <option data-i18n="form.opt.weet">Weet ik nog niet</option>
+            <option data-i18n="form.opt.basis">Basis &mdash; &euro;195</option>
+            <option selected data-i18n="form.opt.compleet">Compleet &mdash; &euro;300</option>
+            <option data-i18n="form.opt.opmaat">Op maat &mdash; vanaf &euro;450</option>
+            <option data-i18n="onderhoud.title">Jaarlijks onderhoud</option>
           </select>
         </div>
         <div class="field">
-          <label for="bericht">Waar kan ik je mee helpen?</label>
-          <textarea id="bericht" name="bericht" rows="3" placeholder="Bijvoorbeeld: ik heb nog geen site en wil beter gevonden worden."></textarea>
+          <label for="bericht" data-i18n="form.bericht.label">Waar kan ik je mee helpen?</label>
+          <textarea id="bericht" name="bericht" rows="3" placeholder="Bijvoorbeeld: ik heb nog geen site en wil beter gevonden worden." data-i18n-attr-placeholder="form.bericht.ph"></textarea>
         </div>
         <input type="hidden" name="_subject" value="Nieuwe offerteaanvraag via byxavio.nl">
         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-        <button class="btn btn-cyan" type="submit">Verstuur aanvraag</button>
-        <p class="mini" id="formMini">Je gegevens worden alleen gebruikt om je aanvraag te beantwoorden.</p>
-        <p class="mini" style="margin-top:10px; text-align:center;">Liever appen? <a href="https://wa.me/31626683986?text=Hoi%20Djego%2C%20ik%20heb%20een%20vraag%20over%20een%20website" target="_blank" rel="noopener" style="color:var(--cyan-ink); font-weight:700; text-decoration:underline;">Stuur een WhatsApp-bericht</a></p>
+        <button class="btn btn-cyan" type="submit" data-i18n="form.submit">Verstuur aanvraag</button>
+        <p class="mini" id="formMini" data-i18n="form.mini1">Je gegevens worden alleen gebruikt om je aanvraag te beantwoorden.</p>
+        <p class="mini" style="margin-top:10px; text-align:center;" data-i18n-html="form.mini2">Liever appen? <a href="https://wa.me/31626683986?text=Hoi%20Djego%2C%20ik%20heb%20een%20vraag%20over%20een%20website" target="_blank" rel="noopener" style="color:var(--cyan-ink); font-weight:700; text-decoration:underline;">Stuur een WhatsApp-bericht</a></p>
       </form>
     </div>
   </div>
@@ -826,26 +840,26 @@
       <a class="logo" href="#top">
         <span class="wm"><span class="by">by</span><span class="x">X</span>avio</span>
       </a>
-      <span class="tagline">Websites voor kleine bedrijven en zzp&rsquo;ers.</span>
+      <span class="tagline" data-i18n="footer.tagline">Websites voor kleine bedrijven en zzp&rsquo;ers.</span>
       <div class="foot-links">
-        <a href="#pakketten">Pakketten</a>
-        <a href="#voorbeelden">Voorbeelden</a>
-        <a href="#overmij">Over mij</a>
-        <a href="#contact">Contact</a>
+        <a href="#pakketten" data-i18n="nav.pakketten">Pakketten</a>
+        <a href="#voorbeelden" data-i18n="nav.voorbeelden">Voorbeelden</a>
+        <a href="#overmij" data-i18n="nav.overmij">Over mij</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
       </div>
     </div>
     <div class="foot-bot">
       <span>&copy; <span id="jaar">2026</span> byXavio &middot; KVK 42165581 &middot; NL005549301B15</span>
       <div class="legal">
-        <a href="privacyverklaring.html">Privacyverklaring</a>
-        <a href="algemene-voorwaarden.html">Algemene voorwaarden</a>
+        <a href="privacyverklaring.html" data-i18n="footer.privacy">Privacyverklaring</a>
+        <a href="algemene-voorwaarden.html" data-i18n="footer.terms">Algemene voorwaarden</a>
       </div>
     </div>
   </div>
 </footer>
 
-<div class="wa-bubble" id="waBubble">Vragen? Stuur me even een berichtje.</div>
-<a class="wa" id="waBtn" href="https://wa.me/31626683986?text=Hoi%20Djego%2C%20ik%20heb%20een%20vraag%20over%20een%20website" target="_blank" rel="noopener" aria-label="Stuur een WhatsApp-bericht">
+<div class="wa-bubble" id="waBubble" data-i18n="wa.bubble">Vragen? Stuur me even een berichtje.</div>
+<a class="wa" id="waBtn" href="https://wa.me/31626683986?text=Hoi%20Djego%2C%20ik%20heb%20een%20vraag%20over%20een%20website" target="_blank" rel="noopener" aria-label="Stuur een WhatsApp-bericht" data-i18n-attr-aria-label="wa.aria">
   <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="#fff" d="M16 3C8.8 3 3 8.8 3 16c0 2.3.6 4.4 1.7 6.3L3 29l6.9-1.6c1.8 1 3.9 1.6 6.1 1.6 7.2 0 13-5.8 13-13S23.2 3 16 3Zm0 23.6c-2 0-3.9-.5-5.5-1.5l-.4-.2-4.1 1 1-4-.3-.4A10.5 10.5 0 0 1 5.4 16c0-5.8 4.8-10.6 10.6-10.6S26.6 10.2 26.6 16 21.8 26.6 16 26.6Zm6-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.1-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.5-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.1c-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.6s1.1 3 1.3 3.2c.1.2 2 3.2 5 4.4 1.8.7 2.5.8 3.4.7.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.5-.3Z"/></svg>
 </a>
 
@@ -873,13 +887,270 @@
   var bub = document.getElementById('waBubble');
   if (bub) setTimeout(function(){ bub.style.display = 'none'; }, 7000);
 
+  // ============ i18n ============
+  var I18N = {
+    nl: {
+      "nav.hoe":"Hoe werkt het","nav.voorbeelden":"Voorbeelden","nav.pakketten":"Pakketten","nav.overmij":"Over mij","nav.contact":"Contact","nav.cta":"Offerte aanvragen","nav.menu":"Menu",
+      "hero.eyebrow":"Websites voor kleine bedrijven en zzp’ers","hero.h1":"Een website die <span class=\"hl\">klopt</span>, zonder poespas.","hero.lead":"Ik bouw duidelijke, snelle websites voor kleine ondernemers, van eerste ontwerp tot een pagina die klanten daadwerkelijk kunnen vinden en gebruiken.","hero.cta1":"Vraag een gratis kennismaking aan","hero.cta2":"Bekijk voorbeelden","hero.under1":"Vanaf €195","hero.under2":"Live binnen een week","hero.under3":"Geen abonnement",
+      "strip.1.title":"Vaste prijs vooraf","strip.1.desc":"Je weet wat het kost voordat ik begin. Geen verrassingen achteraf.","strip.2.title":"Eigen ontwerp","strip.2.desc":"Volledig op jouw bedrijf gemaakt, geen sjabloon van de plank.","strip.3.title":"Persoonlijk contact","strip.3.desc":"Je hebt mij, van start tot livegang. Geen wisselende accountmanagers.",
+      "hoe.h2":"Van eerste bericht tot live site.","hoe.lead":"Geen ingewikkeld traject: vier duidelijke stappen, met mij als vast aanspreekpunt.",
+      "step1.num":"STAP 01","step1.title":"Kennismaking","step1.desc":"Je stuurt een bericht of vult het formulier in. We bespreken kort wat je nodig hebt, helemaal vrijblijvend.",
+      "step2.num":"STAP 02","step2.title":"Ontwerp","step2.desc":"Ik maak een ontwerp op maat dat past bij jouw bedrijf. Geen kant-en-klaar sjabloon.",
+      "step3.num":"STAP 03","step3.title":"Feedback","step3.desc":"Je geeft feedback en ik verwerk de aanpassingen, tot de site precies klopt.",
+      "step4.num":"STAP 04","step4.title":"Livegang","step4.desc":"Je site gaat live en is vindbaar. Ook daarna blijf ik gewoon bereikbaar voor vragen.",
+      "voorb.h2":"Zo kan jouw site eruitzien.","voorb.lead":"Vier voorbeelden uit verschillende branches, elk met een eigen kleur, opbouw en formulier.",
+      "notice.html":"<b>Let op:</b> de voorbeeldwebsites hieronder zijn fictief. De bedrijven bestaan niet echt. De websites zelf staan wel te koop.",
+      "demo1.kind":"Kapperszaak","demo1.desc":"Diensten, openingstijden en een afsprakenformulier.",
+      "demo2.kind":"Bistro & keuken","demo2.desc":"Menukaart, openingstijden en een reserveringsformulier.",
+      "demo3.kind":"Kinderkleding","demo3.desc":"Collectie, maten en een pasafspraak-formulier.",
+      "demo4.kind":"Bouwbedrijf","demo4.desc":"Specialismen, werkwijze en een projectenoverzicht.",
+      "demo.go":"Bekijk demo →",
+      "pak.h2":"Kies wat bij je bedrijf past.","pak.lead":"Drie opties, zodat je vooraf weet wat je krijgt en wat het kost. Past er geen precies? Dan stel ik in een kort gesprek iets op maat samen.",
+      "pack.basis.title":"Basis","pack.basis.for":"Een volwaardige site om snel en overzichtelijk online te staan — geen halfbakken instapversie.","pack.basis.unit":"eenmalig, excl. btw","pack.basis.li1":"Eén ronde feedback op het ontwerp inbegrepen","pack.basis.li2":"Een pagina met de belangrijkste info","pack.basis.li3":"Duidelijke contactgegevens en openingstijden","pack.basis.li4":"Werkt goed op telefoon en tablet","pack.basis.li5":"Oplevering binnen een week","pack.basis.btn":"Bekijk Basis",
+      "pack.ribbon":"Meest gekozen","pack.compleet.title":"Compleet","pack.compleet.for":"Voor bedrijven die klanten willen laten reageren, niet alleen lezen.","pack.compleet.li1":"Alles uit Basis","pack.compleet.li2":"Meerdere pagina’s of secties","pack.compleet.li3":"Eigen contact- of afsprakenformulier","pack.compleet.li4":"Volledig eigen ontwerp, geen sjabloon","pack.compleet.li5":"Basis zoekmachine-optimalisatie","pack.compleet.btn":"Kies dit pakket",
+      "pack.opmaat.title":"Op maat","pack.opmaat.for":"Voor bedrijven met extra functionaliteit en doorlopende wensen.","pack.opmaat.unit":"vanaf, eenmalig, excl. btw","pack.opmaat.li1":"Alles uit Compleet","pack.opmaat.li2":"Formulier op maat, zoals reserveringen of aanvragen","pack.opmaat.li3":"Uitbreidbaar met webshop of agenda","pack.opmaat.li4":"Drie maanden ondersteuning inbegrepen","pack.opmaat.btn":"Bekijk Op maat",
+      "onderhoud.title":"Jaarlijks onderhoud","onderhoud.lead":"Voor wie na oplevering niet meer naar de site hoeft om te kijken — ik houd ’m actueel en online.","onderhoud.li1":"Site bijwerken met nieuwe info en foto’s","onderhoud.li2":"Hosting inbegrepen","onderhoud.li3":"Domeinnaam inbegrepen","onderhoud.unit":"per jaar, excl. btw","onderhoud.btn":"Vraag aan",
+      "fineprint":"Prijzen zijn indicatief, exclusief btw, en voor de bouw van de site, exclusief hosting en domeinnaam, en altijd bespreekbaar. Na het contactformulier krijg je een offerte op maat. Basis is een prima blijvende keuze op zich — upgraden naar Compleet kan later altijd nog.",
+      "faq.eyebrow":"Veelgestelde vragen","faq.h2":"Nog vragen? Hier alvast antwoord.","faq.lead":"Staat je vraag er niet bij? Stuur een berichtje, dan krijg je meestal dezelfde dag antwoord.",
+      "faq1.q":"Hoe lang duurt het voordat mijn site live staat?","faq1.a":"Meestal binnen een week na akkoord, afhankelijk van hoe snel je teksten en foto’s aanlevert en hoeveel feedbackrondes er nodig zijn.",
+      "faq2.q":"Wat moet ik zelf aanleveren?","faq2.a":"Teksten en foto’s van je bedrijf werken het snelst. Heb je dat liever niet zelf, dan denk ik graag mee over de inhoud.",
+      "faq3.q":"Kan ik mijn site later zelf aanpassen?","faq3.a":"Kleine aanpassingen zijn na oplevering altijd bespreekbaar. Voor grotere wijzigingen kun je me gewoon benaderen.",
+      "faq4.q":"Regel jij ook hosting en een domeinnaam?","faq4.a":"Hosting en domeinnaam zitten niet inbegrepen bij de vaste prijs, maar dat kan ik wel voor je regelen: bekijk het <a href=\"#pakketten\">jaarlijks onderhoud</a>-pakket, waarin hosting en domeinnaam gewoon inbegrepen zijn.",
+      "faq5.q":"Wat kost het precies?","faq5.a":"Vanaf €195, afhankelijk van wat je nodig hebt. Bekijk de <a href=\"#pakketten\">pakketten</a> voor een overzicht, of vraag een offerte op maat aan.",
+      "faq6.q":"Wat als ik niet tevreden ben met het ontwerp?","faq6.a":"Dan passen we het samen aan tot het klopt. Pas als je tevreden bent, gaat de site live.",
+      "over.h2":"Hoi, ik ben Djego.","over.img.alt":"Djego, oprichter van byXavio","over.p1":"Ik ben de persoon achter byXavio. Ik bouw websites voor kleine bedrijven en zzp’ers omdat ik het leuk vind om iets tastbaars neer te zetten waar ondernemers echt iets aan hebben. Een site die klopt, snel laadt, en precies laat zien wie je bent.","over.p2":"Geen overbodige poespas of ingewikkelde systemen: ik werk het liefst persoonlijk, zonder tussenpersonen of wisselende contactpersonen. Je hebt gewoon mij, van het eerste idee tot de dag dat je site live staat.",
+      "waarom.title":"Waarom bedrijven voor mij kiezen","waarom.li1":"Persoonlijk contact met mij, geen wisselende accountmanagers","waarom.li2":"Vaste prijs vooraf, geen verrassingen achteraf","waarom.li3":"Volledig eigen ontwerp, geen sjabloon van de plank","waarom.li4":"Bereikbaar na oplevering, ook voor kleine vragen",
+      "contact.eyebrow":"Contact","contact.h2":"Even kennismaken?","contact.lead":"Vertel kort wat je bedrijf doet en wat je zoekt. Je krijgt van mij een vrijblijvende offerte op maat, meestal dezelfde dag nog.","contact.row.phone":"Telefoon","contact.row.email":"E-mail","contact.row.btw":"Btw-id",
+      "form.naam.label":"Naam","form.naam.ph":"Je naam","form.email.ph":"je@email.nl","form.bedrijf.label":"Bedrijf","form.bedrijf.ph":"Naam van je zaak","form.pakket.label":"Welk pakket heeft je interesse?",
+      "form.opt.weet":"Weet ik nog niet","form.opt.basis":"Basis — €195","form.opt.compleet":"Compleet — €300","form.opt.opmaat":"Op maat — vanaf €450",
+      "form.bericht.label":"Waar kan ik je mee helpen?","form.bericht.ph":"Bijvoorbeeld: ik heb nog geen site en wil beter gevonden worden.","form.submit":"Verstuur aanvraag","form.mini1":"Je gegevens worden alleen gebruikt om je aanvraag te beantwoorden.",
+      "form.mini2":"Liever appen? <a href=\"https://wa.me/31626683986?text=Hoi%20Djego%2C%20ik%20heb%20een%20vraag%20over%20een%20website\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--cyan-ink); font-weight:700; text-decoration:underline;\">Stuur een WhatsApp-bericht</a>",
+      "form.sending":"Versturen...","form.sent":"Verstuurd ✓","form.thanks":"Bedankt! Je aanvraag is verstuurd, ik reageer zo snel mogelijk.","form.error":"Er ging iets mis. Probeer het nogmaals of mail infobyxavio@gmail.com.",
+      "footer.tagline":"Websites voor kleine bedrijven en zzp’ers.","footer.privacy":"Privacyverklaring","footer.terms":"Algemene voorwaarden",
+      "wa.bubble":"Vragen? Stuur me even een berichtje.","wa.aria":"Stuur een WhatsApp-bericht",
+      "meta.title":"byXavio — Websites voor kleine bedrijven en zzp’ers"
+    },
+    en: {
+      "nav.hoe":"How it works","nav.voorbeelden":"Examples","nav.pakketten":"Packages","nav.overmij":"About me","nav.contact":"Contact","nav.cta":"Request a quote","nav.menu":"Menu",
+      "hero.eyebrow":"Websites for small businesses and freelancers","hero.h1":"A website that <span class=\"hl\">works</span>, without the fuss.","hero.lead":"I build clear, fast websites for small business owners — from first design to a page customers can actually find and use.","hero.cta1":"Book a free introduction","hero.cta2":"View examples","hero.under1":"From €195","hero.under2":"Live within a week","hero.under3":"No subscription",
+      "strip.1.title":"Fixed price upfront","strip.1.desc":"You know the cost before I start. No surprises afterwards.","strip.2.title":"Custom design","strip.2.desc":"Made entirely around your business, no off-the-shelf template.","strip.3.title":"Personal contact","strip.3.desc":"You have me, from start to launch. No rotating account managers.",
+      "hoe.h2":"From first message to live site.","hoe.lead":"No complicated process: four clear steps, with me as your single point of contact.",
+      "step1.num":"STEP 01","step1.title":"Introduction","step1.desc":"You send a message or fill in the form. We briefly discuss what you need, completely without obligation.",
+      "step2.num":"STEP 02","step2.title":"Design","step2.desc":"I create a custom design that fits your business. No ready-made template.",
+      "step3.num":"STEP 03","step3.title":"Feedback","step3.desc":"You give feedback and I process the changes, until the site is exactly right.",
+      "step4.num":"STEP 04","step4.title":"Launch","step4.desc":"Your site goes live and is findable. I stay reachable for questions afterwards too.",
+      "voorb.h2":"This is what your site could look like.","voorb.lead":"Four examples from different industries, each with its own colour, layout and form.",
+      "notice.html":"<b>Note:</b> the example websites below are fictional. The businesses don't really exist. The websites themselves are for sale.",
+      "demo1.kind":"Hair salon","demo1.desc":"Services, opening hours and an appointment form.",
+      "demo2.kind":"Bistro & kitchen","demo2.desc":"Menu, opening hours and a reservation form.",
+      "demo3.kind":"Children's clothing","demo3.desc":"Collection, sizes and a fitting appointment form.",
+      "demo4.kind":"Construction company","demo4.desc":"Specialties, working method and a project overview.",
+      "demo.go":"View demo →",
+      "pak.h2":"Choose what fits your business.","pak.lead":"Three options, so you know upfront what you get and what it costs. Nothing quite fit? I'll put together something custom in a short conversation.",
+      "pack.basis.title":"Basic","pack.basis.for":"A fully-fledged site to get online quickly and clearly — no half-baked starter version.","pack.basis.unit":"one-time, excl. VAT","pack.basis.li1":"One round of design feedback included","pack.basis.li2":"One page with the key information","pack.basis.li3":"Clear contact details and opening hours","pack.basis.li4":"Works well on phone and tablet","pack.basis.li5":"Delivered within a week","pack.basis.btn":"View Basic",
+      "pack.ribbon":"Most chosen","pack.compleet.title":"Complete","pack.compleet.for":"For businesses that want customers to respond, not just read.","pack.compleet.li1":"Everything from Basic","pack.compleet.li2":"Multiple pages or sections","pack.compleet.li3":"Custom contact or booking form","pack.compleet.li4":"Fully custom design, no template","pack.compleet.li5":"Basic search engine optimisation","pack.compleet.btn":"Choose this package",
+      "pack.opmaat.title":"Custom","pack.opmaat.for":"For businesses with extra functionality and ongoing needs.","pack.opmaat.unit":"from, one-time, excl. VAT","pack.opmaat.li1":"Everything from Complete","pack.opmaat.li2":"Custom form, such as reservations or requests","pack.opmaat.li3":"Expandable with a webshop or booking calendar","pack.opmaat.li4":"Three months of support included","pack.opmaat.btn":"View Custom",
+      "onderhoud.title":"Annual maintenance","onderhoud.lead":"For those who don't want to worry about their site after delivery — I keep it up to date and online.","onderhoud.li1":"Updating the site with new info and photos","onderhoud.li2":"Hosting included","onderhoud.li3":"Domain name included","onderhoud.unit":"per year, excl. VAT","onderhoud.btn":"Request",
+      "fineprint":"Prices are indicative, excluding VAT, and for building the site only, excluding hosting and domain name, and always negotiable. After the contact form you'll get a custom quote. Basic is a perfectly fine lasting choice on its own — upgrading to Complete is always possible later.",
+      "faq.eyebrow":"Frequently asked questions","faq.h2":"Still have questions? Here are some answers.","faq.lead":"Don't see your question? Send a message and you'll usually get a reply the same day.",
+      "faq1.q":"How long until my site is live?","faq1.a":"Usually within a week after agreement, depending on how quickly you supply texts and photos and how many feedback rounds are needed.",
+      "faq2.q":"What do I need to provide myself?","faq2.a":"Texts and photos of your business work fastest. If you'd rather not do that yourself, I'm happy to help think through the content.",
+      "faq3.q":"Can I edit my site myself later?","faq3.a":"Small changes are always negotiable after delivery. For bigger changes you can simply contact me.",
+      "faq4.q":"Do you also arrange hosting and a domain name?","faq4.a":"Hosting and a domain name aren't included in the fixed price, but I can arrange that for you: check out the <a href=\"#pakketten\">annual maintenance</a> package, which includes hosting and a domain name.",
+      "faq5.q":"What does it cost exactly?","faq5.a":"From €195, depending on what you need. Check out the <a href=\"#pakketten\">packages</a> for an overview, or request a custom quote.",
+      "faq6.q":"What if I'm not happy with the design?","faq6.a":"Then we adjust it together until it's right. The site only goes live once you're happy with it.",
+      "over.h2":"Hi, I'm Djego.","over.img.alt":"Djego, founder of byXavio","over.p1":"I'm the person behind byXavio. I build websites for small businesses and freelancers because I enjoy creating something tangible that entrepreneurs genuinely benefit from. A site that works, loads fast, and shows exactly who you are.","over.p2":"No unnecessary fuss or complicated systems: I prefer to work personally, without middlemen or rotating contacts. You simply have me, from the first idea to the day your site goes live.",
+      "waarom.title":"Why businesses choose me","waarom.li1":"Personal contact with me, no rotating account managers","waarom.li2":"Fixed price upfront, no surprises afterwards","waarom.li3":"Fully custom design, no off-the-shelf template","waarom.li4":"Reachable after delivery, even for small questions",
+      "contact.eyebrow":"Contact","contact.h2":"Let's get in touch?","contact.lead":"Briefly tell me what your business does and what you're looking for. You'll get a no-obligation custom quote from me, usually the same day.","contact.row.phone":"Phone","contact.row.email":"Email","contact.row.btw":"VAT ID",
+      "form.naam.label":"Name","form.naam.ph":"Your name","form.email.ph":"you@email.com","form.bedrijf.label":"Company","form.bedrijf.ph":"Name of your business","form.pakket.label":"Which package interests you?",
+      "form.opt.weet":"Not sure yet","form.opt.basis":"Basic — €195","form.opt.compleet":"Complete — €300","form.opt.opmaat":"Custom — from €450",
+      "form.bericht.label":"How can I help you?","form.bericht.ph":"For example: I don't have a site yet and want to be found more easily.","form.submit":"Send request","form.mini1":"Your details are only used to respond to your request.",
+      "form.mini2":"Prefer WhatsApp? <a href=\"https://wa.me/31626683986?text=Hoi%20Djego%2C%20ik%20heb%20een%20vraag%20over%20een%20website\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--cyan-ink); font-weight:700; text-decoration:underline;\">Send a WhatsApp message</a>",
+      "form.sending":"Sending...","form.sent":"Sent ✓","form.thanks":"Thanks! Your request has been sent, I'll respond as soon as possible.","form.error":"Something went wrong. Please try again or email infobyxavio@gmail.com.",
+      "footer.tagline":"Websites for small businesses and freelancers.","footer.privacy":"Privacy policy","footer.terms":"Terms and conditions",
+      "wa.bubble":"Questions? Send me a quick message.","wa.aria":"Send a WhatsApp message",
+      "meta.title":"byXavio — Websites for small businesses and freelancers"
+    },
+    de: {
+      "nav.hoe":"So funktioniert's","nav.voorbeelden":"Beispiele","nav.pakketten":"Pakete","nav.overmij":"Über mich","nav.contact":"Kontakt","nav.cta":"Angebot anfragen","nav.menu":"Menü",
+      "hero.eyebrow":"Websites für kleine Unternehmen und Selbstständige","hero.h1":"Eine Website, die <span class=\"hl\">passt</span>, ganz ohne Schnickschnack.","hero.lead":"Ich baue klare, schnelle Websites für kleine Unternehmer — vom ersten Entwurf bis zu einer Seite, die Kunden wirklich finden und nutzen können.","hero.cta1":"Kostenloses Kennenlernen anfragen","hero.cta2":"Beispiele ansehen","hero.under1":"Ab €195","hero.under2":"Live innerhalb einer Woche","hero.under3":"Kein Abo",
+      "strip.1.title":"Festpreis im Voraus","strip.1.desc":"Du weißt, was es kostet, bevor ich anfange. Keine Überraschungen hinterher.","strip.2.title":"Individuelles Design","strip.2.desc":"Ganz auf dein Unternehmen zugeschnitten, keine Vorlage von der Stange.","strip.3.title":"Persönlicher Kontakt","strip.3.desc":"Du hast mich, vom Start bis zum Livegang. Keine wechselnden Ansprechpartner.",
+      "hoe.h2":"Von der ersten Nachricht bis zur Live-Website.","hoe.lead":"Kein komplizierter Prozess: vier klare Schritte, mit mir als festem Ansprechpartner.",
+      "step1.num":"SCHRITT 01","step1.title":"Kennenlernen","step1.desc":"Du schickst eine Nachricht oder füllst das Formular aus. Wir besprechen kurz, was du brauchst — völlig unverbindlich.",
+      "step2.num":"SCHRITT 02","step2.title":"Design","step2.desc":"Ich erstelle ein maßgeschneidertes Design, das zu deinem Unternehmen passt. Keine Fertigvorlage.",
+      "step3.num":"SCHRITT 03","step3.title":"Feedback","step3.desc":"Du gibst Feedback und ich setze die Anpassungen um, bis die Website genau passt.",
+      "step4.num":"SCHRITT 04","step4.title":"Livegang","step4.desc":"Deine Website geht live und ist auffindbar. Auch danach bleibe ich für Fragen erreichbar.",
+      "voorb.h2":"So könnte deine Website aussehen.","voorb.lead":"Vier Beispiele aus verschiedenen Branchen, jedes mit eigener Farbe, Aufbau und Formular.",
+      "notice.html":"<b>Hinweis:</b> Die Beispielwebsites unten sind fiktiv. Die Unternehmen existieren nicht wirklich. Die Websites selbst stehen zum Verkauf.",
+      "demo1.kind":"Friseursalon","demo1.desc":"Dienstleistungen, Öffnungszeiten und ein Terminformular.",
+      "demo2.kind":"Bistro & Küche","demo2.desc":"Speisekarte, Öffnungszeiten und ein Reservierungsformular.",
+      "demo3.kind":"Kinderkleidung","demo3.desc":"Kollektion, Größen und ein Formular für Anprobetermine.",
+      "demo4.kind":"Bauunternehmen","demo4.desc":"Spezialgebiete, Arbeitsweise und eine Projektübersicht.",
+      "demo.go":"Demo ansehen →",
+      "pak.h2":"Wähle, was zu deinem Unternehmen passt.","pak.lead":"Drei Optionen, damit du vorab weißt, was du bekommst und was es kostet. Passt nichts genau? Dann stellen wir in einem kurzen Gespräch etwas Individuelles zusammen.",
+      "pack.basis.title":"Basis","pack.basis.for":"Eine vollwertige Website, um schnell und übersichtlich online zu sein — keine halbgare Einstiegsversion.","pack.basis.unit":"einmalig, zzgl. MwSt.","pack.basis.li1":"Eine Feedbackrunde zum Design inbegriffen","pack.basis.li2":"Eine Seite mit den wichtigsten Infos","pack.basis.li3":"Klare Kontaktdaten und Öffnungszeiten","pack.basis.li4":"Funktioniert gut auf Handy und Tablet","pack.basis.li5":"Lieferung innerhalb einer Woche","pack.basis.btn":"Basis ansehen",
+      "pack.ribbon":"Meistgewählt","pack.compleet.title":"Komplett","pack.compleet.for":"Für Unternehmen, die Kunden zur Reaktion bewegen wollen, nicht nur zum Lesen.","pack.compleet.li1":"Alles aus Basis","pack.compleet.li2":"Mehrere Seiten oder Bereiche","pack.compleet.li3":"Eigenes Kontakt- oder Terminformular","pack.compleet.li4":"Vollständig individuelles Design, kein Template","pack.compleet.li5":"Grundlegende Suchmaschinenoptimierung","pack.compleet.btn":"Dieses Paket wählen",
+      "pack.opmaat.title":"Maßgeschneidert","pack.opmaat.for":"Für Unternehmen mit zusätzlichen Funktionen und laufenden Wünschen.","pack.opmaat.unit":"ab, einmalig, zzgl. MwSt.","pack.opmaat.li1":"Alles aus Komplett","pack.opmaat.li2":"Individuelles Formular, z. B. für Reservierungen oder Anfragen","pack.opmaat.li3":"Erweiterbar mit Webshop oder Terminkalender","pack.opmaat.li4":"Drei Monate Support inbegriffen","pack.opmaat.btn":"Maßgeschneidert ansehen",
+      "onderhoud.title":"Jährliche Wartung","onderhoud.lead":"Für alle, die sich nach der Lieferung nicht mehr um die Website kümmern wollen — ich halte sie aktuell und online.","onderhoud.li1":"Website mit neuen Infos und Fotos aktualisieren","onderhoud.li2":"Hosting inbegriffen","onderhoud.li3":"Domainname inbegriffen","onderhoud.unit":"pro Jahr, zzgl. MwSt.","onderhoud.btn":"Anfragen",
+      "fineprint":"Preise sind unverbindlich, zzgl. MwSt., und gelten für den Bau der Website, exklusive Hosting und Domainname, und immer verhandelbar. Nach dem Kontaktformular erhältst du ein individuelles Angebot. Basis ist eine durchaus dauerhafte Wahl — ein Upgrade auf Komplett ist später jederzeit möglich.",
+      "faq.eyebrow":"Häufig gestellte Fragen","faq.h2":"Noch Fragen? Hier schon mal Antworten.","faq.lead":"Deine Frage ist nicht dabei? Schick eine Nachricht, meist bekommst du noch am selben Tag Antwort.",
+      "faq1.q":"Wie lange dauert es, bis meine Website live ist?","faq1.a":"Meist innerhalb einer Woche nach Zusage, je nachdem wie schnell du Texte und Fotos lieferst und wie viele Feedbackrunden nötig sind.",
+      "faq2.q":"Was muss ich selbst liefern?","faq2.a":"Texte und Fotos deines Unternehmens funktionieren am schnellsten. Möchtest du das lieber nicht selbst machen, denke ich gerne beim Inhalt mit.",
+      "faq3.q":"Kann ich meine Website später selbst anpassen?","faq3.a":"Kleine Anpassungen sind nach der Lieferung immer besprechbar. Für größere Änderungen kannst du mich einfach kontaktieren.",
+      "faq4.q":"Kümmerst du dich auch um Hosting und einen Domainnamen?","faq4.a":"Hosting und Domainname sind im Festpreis nicht enthalten, aber das kann ich gerne für dich regeln: siehe das Paket <a href=\"#pakketten\">jährliche Wartung</a>, bei dem Hosting und Domainname inbegriffen sind.",
+      "faq5.q":"Was kostet es genau?","faq5.a":"Ab €195, je nach Bedarf. Sieh dir die <a href=\"#pakketten\">Pakete</a> für einen Überblick an, oder frage ein individuelles Angebot an.",
+      "faq6.q":"Was, wenn mir das Design nicht gefällt?","faq6.a":"Dann passen wir es gemeinsam an, bis es passt. Erst wenn du zufrieden bist, geht die Website live.",
+      "over.h2":"Hallo, ich bin Djego.","over.img.alt":"Djego, Gründer von byXavio","over.p1":"Ich bin die Person hinter byXavio. Ich baue Websites für kleine Unternehmen und Selbstständige, weil ich es liebe, etwas Greifbares zu schaffen, von dem Unternehmer wirklich profitieren. Eine Website, die passt, schnell lädt und genau zeigt, wer du bist.","over.p2":"Kein unnötiger Schnickschnack oder komplizierte Systeme: Ich arbeite am liebsten persönlich, ohne Zwischenhändler oder wechselnde Ansprechpartner. Du hast einfach mich, von der ersten Idee bis zum Tag, an dem deine Website live geht.",
+      "waarom.title":"Warum Unternehmen sich für mich entscheiden","waarom.li1":"Persönlicher Kontakt mit mir, keine wechselnden Ansprechpartner","waarom.li2":"Festpreis im Voraus, keine Überraschungen hinterher","waarom.li3":"Vollständig individuelles Design, keine Vorlage von der Stange","waarom.li4":"Erreichbar nach der Lieferung, auch für kleine Fragen",
+      "contact.eyebrow":"Kontakt","contact.h2":"Kurz kennenlernen?","contact.lead":"Erzähl kurz, was dein Unternehmen macht und was du suchst. Du bekommst von mir ein unverbindliches, individuelles Angebot, meist noch am selben Tag.","contact.row.phone":"Telefon","contact.row.email":"E-Mail","contact.row.btw":"USt-ID",
+      "form.naam.label":"Name","form.naam.ph":"Dein Name","form.email.ph":"du@email.de","form.bedrijf.label":"Unternehmen","form.bedrijf.ph":"Name deines Unternehmens","form.pakket.label":"Welches Paket interessiert dich?",
+      "form.opt.weet":"Weiß ich noch nicht","form.opt.basis":"Basis — €195","form.opt.compleet":"Komplett — €300","form.opt.opmaat":"Maßgeschneidert — ab €450",
+      "form.bericht.label":"Wobei kann ich dir helfen?","form.bericht.ph":"Zum Beispiel: Ich habe noch keine Website und möchte besser gefunden werden.","form.submit":"Anfrage senden","form.mini1":"Deine Daten werden nur verwendet, um deine Anfrage zu beantworten.",
+      "form.mini2":"Lieber per WhatsApp? <a href=\"https://wa.me/31626683986?text=Hoi%20Djego%2C%20ik%20heb%20een%20vraag%20over%20een%20website\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--cyan-ink); font-weight:700; text-decoration:underline;\">WhatsApp-Nachricht senden</a>",
+      "form.sending":"Wird gesendet...","form.sent":"Gesendet ✓","form.thanks":"Danke! Deine Anfrage wurde gesendet, ich melde mich so schnell wie möglich.","form.error":"Etwas ist schiefgelaufen. Bitte versuche es erneut oder schreibe an infobyxavio@gmail.com.",
+      "footer.tagline":"Websites für kleine Unternehmen und Selbstständige.","footer.privacy":"Datenschutzerklärung","footer.terms":"Allgemeine Geschäftsbedingungen",
+      "wa.bubble":"Fragen? Schick mir kurz eine Nachricht.","wa.aria":"WhatsApp-Nachricht senden",
+      "meta.title":"byXavio — Websites für kleine Unternehmen und Selbstständige"
+    },
+    fr: {
+      "nav.hoe":"Comment ça marche","nav.voorbeelden":"Exemples","nav.pakketten":"Forfaits","nav.overmij":"À propos","nav.contact":"Contact","nav.cta":"Demander un devis","nav.menu":"Menu",
+      "hero.eyebrow":"Sites web pour petites entreprises et indépendants","hero.h1":"Un site web qui <span class=\"hl\">fonctionne</span>, sans fioritures.","hero.lead":"Je crée des sites web clairs et rapides pour les petits entrepreneurs, du premier design à une page que vos clients peuvent réellement trouver et utiliser.","hero.cta1":"Demandez une prise de contact gratuite","hero.cta2":"Voir des exemples","hero.under1":"À partir de 195 €","hero.under2":"En ligne en une semaine","hero.under3":"Sans abonnement",
+      "strip.1.title":"Prix fixe à l'avance","strip.1.desc":"Vous savez ce que cela coûte avant que je commence. Aucune surprise après coup.","strip.2.title":"Design sur mesure","strip.2.desc":"Entièrement conçu pour votre entreprise, pas de modèle standard.","strip.3.title":"Contact personnel","strip.3.desc":"Vous m'avez moi, du début à la mise en ligne. Pas de chargés de compte qui changent.",
+      "hoe.h2":"Du premier message au site en ligne.","hoe.lead":"Aucun parcours compliqué : quatre étapes claires, avec moi comme interlocuteur unique.",
+      "step1.num":"ÉTAPE 01","step1.title":"Prise de contact","step1.desc":"Vous envoyez un message ou remplissez le formulaire. Nous discutons brièvement de vos besoins, sans engagement.",
+      "step2.num":"ÉTAPE 02","step2.title":"Conception","step2.desc":"Je crée un design sur mesure adapté à votre entreprise. Pas de modèle tout fait.",
+      "step3.num":"ÉTAPE 03","step3.title":"Retours","step3.desc":"Vous donnez votre avis et j'apporte les modifications, jusqu'à ce que le site soit parfait.",
+      "step4.num":"ÉTAPE 04","step4.title":"Mise en ligne","step4.desc":"Votre site est mis en ligne et devient visible. Je reste joignable pour toute question par la suite.",
+      "voorb.h2":"Voici à quoi pourrait ressembler votre site.","voorb.lead":"Quatre exemples de secteurs différents, chacun avec sa propre couleur, structure et formulaire.",
+      "notice.html":"<b>Remarque :</b> les sites web d'exemple ci-dessous sont fictifs. Les entreprises n'existent pas réellement. Les sites eux-mêmes sont à vendre.",
+      "demo1.kind":"Salon de coiffure","demo1.desc":"Services, horaires d'ouverture et un formulaire de rendez-vous.",
+      "demo2.kind":"Bistro & cuisine","demo2.desc":"Carte, horaires d'ouverture et un formulaire de réservation.",
+      "demo3.kind":"Vêtements pour enfants","demo3.desc":"Collection, tailles et un formulaire de rendez-vous d'essayage.",
+      "demo4.kind":"Entreprise de construction","demo4.desc":"Spécialités, méthode de travail et un aperçu des projets.",
+      "demo.go":"Voir la démo →",
+      "pak.h2":"Choisissez ce qui convient à votre entreprise.","pak.lead":"Trois options, pour que vous sachiez à l'avance ce que vous obtenez et ce que cela coûte. Rien ne vous convient exactement ? Je compose une offre sur mesure lors d'un court échange.",
+      "pack.basis.title":"Basique","pack.basis.for":"Un site complet pour être en ligne rapidement et clairement — pas une version d'entrée de gamme bâclée.","pack.basis.unit":"unique, hors TVA","pack.basis.li1":"Une série de retours sur le design incluse","pack.basis.li2":"Une page avec les informations essentielles","pack.basis.li3":"Coordonnées et horaires clairs","pack.basis.li4":"Fonctionne bien sur mobile et tablette","pack.basis.li5":"Livraison en une semaine","pack.basis.btn":"Voir Basique",
+      "pack.ribbon":"Le plus choisi","pack.compleet.title":"Complet","pack.compleet.for":"Pour les entreprises qui veulent que les clients réagissent, pas seulement qu'ils lisent.","pack.compleet.li1":"Tout ce qui est dans Basique","pack.compleet.li2":"Plusieurs pages ou sections","pack.compleet.li3":"Formulaire de contact ou de rendez-vous personnalisé","pack.compleet.li4":"Design entièrement sur mesure, pas de modèle","pack.compleet.li5":"Optimisation SEO de base","pack.compleet.btn":"Choisir ce forfait",
+      "pack.opmaat.title":"Sur mesure","pack.opmaat.for":"Pour les entreprises ayant des fonctionnalités supplémentaires et des besoins continus.","pack.opmaat.unit":"à partir de, unique, hors TVA","pack.opmaat.li1":"Tout ce qui est dans Complet","pack.opmaat.li2":"Formulaire sur mesure, comme des réservations ou des demandes","pack.opmaat.li3":"Extensible avec une boutique en ligne ou un agenda","pack.opmaat.li4":"Trois mois d'assistance inclus","pack.opmaat.btn":"Voir Sur mesure",
+      "onderhoud.title":"Maintenance annuelle","onderhoud.lead":"Pour ceux qui ne veulent plus s'occuper du site après la livraison — je le maintiens à jour et en ligne.","onderhoud.li1":"Mise à jour du site avec de nouvelles infos et photos","onderhoud.li2":"Hébergement inclus","onderhoud.li3":"Nom de domaine inclus","onderhoud.unit":"par an, hors TVA","onderhoud.btn":"Demander",
+      "fineprint":"Les prix sont indicatifs, hors TVA, et concernent uniquement la création du site, hors hébergement et nom de domaine, et sont toujours négociables. Après le formulaire de contact, vous recevrez un devis sur mesure. Basique est un choix durable en soi — une mise à niveau vers Complet reste toujours possible plus tard.",
+      "faq.eyebrow":"Questions fréquentes","faq.h2":"Encore des questions ? Voici déjà quelques réponses.","faq.lead":"Votre question n'y figure pas ? Envoyez un message, vous recevrez généralement une réponse le jour même.",
+      "faq1.q":"Combien de temps avant que mon site soit en ligne ?","faq1.a":"Généralement dans la semaine suivant l'accord, selon la rapidité avec laquelle vous fournissez textes et photos et le nombre de séries de retours nécessaires.",
+      "faq2.q":"Que dois-je fournir moi-même ?","faq2.a":"Textes et photos de votre entreprise, c'est le plus rapide. Si vous préférez ne pas vous en charger, je peux vous aider à réfléchir au contenu.",
+      "faq3.q":"Puis-je modifier mon site moi-même plus tard ?","faq3.a":"De petites modifications sont toujours possibles après la livraison. Pour des changements plus importants, contactez-moi simplement.",
+      "faq4.q":"Vous occupez-vous aussi de l'hébergement et d'un nom de domaine ?","faq4.a":"L'hébergement et le nom de domaine ne sont pas inclus dans le prix fixe, mais je peux m'en occuper pour vous : consultez le forfait <a href=\"#pakketten\">maintenance annuelle</a>, qui inclut l'hébergement et le nom de domaine.",
+      "faq5.q":"Combien cela coûte-t-il exactement ?","faq5.a":"À partir de 195 €, selon vos besoins. Consultez les <a href=\"#pakketten\">forfaits</a> pour un aperçu, ou demandez un devis sur mesure.",
+      "faq6.q":"Que se passe-t-il si le design ne me plaît pas ?","faq6.a":"Nous l'ajustons ensemble jusqu'à ce qu'il vous convienne. Le site ne sera mis en ligne que lorsque vous serez satisfait.",
+      "over.h2":"Salut, je suis Djego.","over.img.alt":"Djego, fondateur de byXavio","over.p1":"Je suis la personne derrière byXavio. Je crée des sites web pour les petites entreprises et les indépendants parce que j'aime concevoir quelque chose de concret dont les entrepreneurs profitent vraiment. Un site qui fonctionne, se charge rapidement et montre exactement qui vous êtes.","over.p2":"Pas de fioritures inutiles ni de systèmes compliqués : je préfère travailler de manière personnelle, sans intermédiaires ni interlocuteurs changeants. Vous m'avez simplement moi, de la première idée jusqu'au jour où votre site est mis en ligne.",
+      "waarom.title":"Pourquoi les entreprises me choisissent","waarom.li1":"Contact personnel avec moi, pas de chargés de compte qui changent","waarom.li2":"Prix fixe à l'avance, aucune surprise après coup","waarom.li3":"Design entièrement sur mesure, pas de modèle standard","waarom.li4":"Joignable après la livraison, même pour de petites questions",
+      "contact.eyebrow":"Contact","contact.h2":"On fait connaissance ?","contact.lead":"Dites-moi brièvement ce que fait votre entreprise et ce que vous recherchez. Vous recevrez de ma part un devis sur mesure sans engagement, généralement le jour même.","contact.row.phone":"Téléphone","contact.row.email":"E-mail","contact.row.btw":"N° TVA",
+      "form.naam.label":"Nom","form.naam.ph":"Votre nom","form.email.ph":"vous@email.fr","form.bedrijf.label":"Entreprise","form.bedrijf.ph":"Nom de votre entreprise","form.pakket.label":"Quel forfait vous intéresse ?",
+      "form.opt.weet":"Je ne sais pas encore","form.opt.basis":"Basique — 195 €","form.opt.compleet":"Complet — 300 €","form.opt.opmaat":"Sur mesure — à partir de 450 €",
+      "form.bericht.label":"Comment puis-je vous aider ?","form.bericht.ph":"Par exemple : je n'ai pas encore de site et je veux être mieux trouvé.","form.submit":"Envoyer la demande","form.mini1":"Vos données sont uniquement utilisées pour répondre à votre demande.",
+      "form.mini2":"Vous préférez WhatsApp ? <a href=\"https://wa.me/31626683986?text=Hoi%20Djego%2C%20ik%20heb%20een%20vraag%20over%20een%20website\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--cyan-ink); font-weight:700; text-decoration:underline;\">Envoyer un message WhatsApp</a>",
+      "form.sending":"Envoi...","form.sent":"Envoyé ✓","form.thanks":"Merci ! Votre demande a été envoyée, je vous répondrai dès que possible.","form.error":"Une erreur s'est produite. Réessayez ou envoyez un e-mail à infobyxavio@gmail.com.",
+      "footer.tagline":"Sites web pour petites entreprises et indépendants.","footer.privacy":"Politique de confidentialité","footer.terms":"Conditions générales",
+      "wa.bubble":"Des questions ? Envoyez-moi un message.","wa.aria":"Envoyer un message WhatsApp",
+      "meta.title":"byXavio — Sites web pour petites entreprises et indépendants"
+    },
+    es: {
+      "nav.hoe":"Cómo funciona","nav.voorbeelden":"Ejemplos","nav.pakketten":"Paquetes","nav.overmij":"Sobre mí","nav.contact":"Contacto","nav.cta":"Solicitar presupuesto","nav.menu":"Menú",
+      "hero.eyebrow":"Sitios web para pequeñas empresas y autónomos","hero.h1":"Una web que <span class=\"hl\">funciona</span>, sin complicaciones.","hero.lead":"Construyo sitios web claros y rápidos para pequeños empresarios, desde el primer diseño hasta una página que los clientes realmente puedan encontrar y usar.","hero.cta1":"Solicita una toma de contacto gratuita","hero.cta2":"Ver ejemplos","hero.under1":"Desde 195 €","hero.under2":"En línea en una semana","hero.under3":"Sin suscripción",
+      "strip.1.title":"Precio fijo por adelantado","strip.1.desc":"Sabes el coste antes de que empiece. Sin sorpresas después.","strip.2.title":"Diseño propio","strip.2.desc":"Hecho totalmente a medida de tu negocio, sin plantillas genéricas.","strip.3.title":"Contacto personal","strip.3.desc":"Me tienes a mí, desde el inicio hasta el lanzamiento. Sin gestores de cuenta que cambian.",
+      "hoe.h2":"Del primer mensaje al sitio en línea.","hoe.lead":"Sin procesos complicados: cuatro pasos claros, conmigo como único punto de contacto.",
+      "step1.num":"PASO 01","step1.title":"Toma de contacto","step1.desc":"Envías un mensaje o rellenas el formulario. Hablamos brevemente sobre lo que necesitas, sin ningún compromiso.",
+      "step2.num":"PASO 02","step2.title":"Diseño","step2.desc":"Creo un diseño a medida que encaja con tu negocio. Sin plantillas prefabricadas.",
+      "step3.num":"PASO 03","step3.title":"Comentarios","step3.desc":"Das tu opinión y aplico los cambios, hasta que el sitio quede perfecto.",
+      "step4.num":"PASO 04","step4.title":"Lanzamiento","step4.desc":"Tu sitio se publica y es fácil de encontrar. Sigo disponible para preguntas después también.",
+      "voorb.h2":"Así podría verse tu sitio.","voorb.lead":"Cuatro ejemplos de diferentes sectores, cada uno con su propio color, estructura y formulario.",
+      "notice.html":"<b>Atención:</b> los sitios web de ejemplo a continuación son ficticios. Las empresas no existen realmente. Los propios sitios están en venta.",
+      "demo1.kind":"Peluquería","demo1.desc":"Servicios, horarios y un formulario de citas.",
+      "demo2.kind":"Bistró y cocina","demo2.desc":"Carta, horarios y un formulario de reservas.",
+      "demo3.kind":"Ropa infantil","demo3.desc":"Colección, tallas y un formulario de cita para pruebas.",
+      "demo4.kind":"Empresa de construcción","demo4.desc":"Especialidades, forma de trabajo y una visión general de proyectos.",
+      "demo.go":"Ver demo →",
+      "pak.h2":"Elige lo que encaje con tu negocio.","pak.lead":"Tres opciones, para que sepas de antemano qué obtienes y cuánto cuesta. ¿Ninguna encaja del todo? En una breve charla preparamos algo a medida.",
+      "pack.basis.title":"Básico","pack.basis.for":"Un sitio completo para estar en línea rápido y con claridad — nada de versión inicial a medias.","pack.basis.unit":"único, sin IVA","pack.basis.li1":"Una ronda de comentarios sobre el diseño incluida","pack.basis.li2":"Una página con la información esencial","pack.basis.li3":"Datos de contacto y horarios claros","pack.basis.li4":"Funciona bien en móvil y tablet","pack.basis.li5":"Entrega en una semana","pack.basis.btn":"Ver Básico",
+      "pack.ribbon":"El más elegido","pack.compleet.title":"Completo","pack.compleet.for":"Para negocios que quieren que los clientes respondan, no solo lean.","pack.compleet.li1":"Todo lo del plan Básico","pack.compleet.li2":"Varias páginas o secciones","pack.compleet.li3":"Formulario de contacto o citas propio","pack.compleet.li4":"Diseño totalmente propio, sin plantilla","pack.compleet.li5":"Optimización SEO básica","pack.compleet.btn":"Elegir este paquete",
+      "pack.opmaat.title":"A medida","pack.opmaat.for":"Para negocios con funcionalidades adicionales y necesidades continuas.","pack.opmaat.unit":"desde, único, sin IVA","pack.opmaat.li1":"Todo lo del plan Completo","pack.opmaat.li2":"Formulario a medida, como reservas o solicitudes","pack.opmaat.li3":"Ampliable con tienda online o agenda","pack.opmaat.li4":"Tres meses de soporte incluidos","pack.opmaat.btn":"Ver A medida",
+      "onderhoud.title":"Mantenimiento anual","onderhoud.lead":"Para quienes no quieren volver a mirar su sitio tras la entrega — yo lo mantengo actualizado y en línea.","onderhoud.li1":"Actualización del sitio con nueva información y fotos","onderhoud.li2":"Hosting incluido","onderhoud.li3":"Nombre de dominio incluido","onderhoud.unit":"al año, sin IVA","onderhoud.btn":"Solicitar",
+      "fineprint":"Los precios son orientativos, sin IVA, y corresponden solo a la construcción del sitio, sin hosting ni dominio, y siempre son negociables. Tras el formulario de contacto recibirás un presupuesto a medida. Básico es una opción perfectamente válida por sí sola — siempre puedes pasar a Completo más adelante.",
+      "faq.eyebrow":"Preguntas frecuentes","faq.h2":"¿Aún tienes dudas? Aquí tienes algunas respuestas.","faq.lead":"¿No está tu pregunta? Envía un mensaje, normalmente respondo el mismo día.",
+      "faq1.q":"¿Cuánto tarda en publicarse mi sitio?","faq1.a":"Normalmente en una semana tras el acuerdo, según lo rápido que envíes textos y fotos y cuántas rondas de comentarios hagan falta.",
+      "faq2.q":"¿Qué debo aportar yo?","faq2.a":"Textos y fotos de tu negocio es lo más rápido. Si prefieres no hacerlo tú mismo, con gusto te ayudo a pensar el contenido.",
+      "faq3.q":"¿Puedo editar mi sitio yo mismo más adelante?","faq3.a":"Los pequeños ajustes siempre se pueden hablar tras la entrega. Para cambios mayores, simplemente contáctame.",
+      "faq4.q":"¿Te encargas también del hosting y el dominio?","faq4.a":"El hosting y el dominio no están incluidos en el precio fijo, pero puedo gestionarlo por ti: consulta el paquete de <a href=\"#pakketten\">mantenimiento anual</a>, que incluye hosting y dominio.",
+      "faq5.q":"¿Cuánto cuesta exactamente?","faq5.a":"Desde 195 €, según lo que necesites. Consulta los <a href=\"#pakketten\">paquetes</a> para ver un resumen, o solicita un presupuesto a medida.",
+      "faq6.q":"¿Qué pasa si no me gusta el diseño?","faq6.a":"Entonces lo ajustamos juntos hasta que quede bien. El sitio solo se publica cuando estás satisfecho.",
+      "over.h2":"Hola, soy Djego.","over.img.alt":"Djego, fundador de byXavio","over.p1":"Soy la persona detrás de byXavio. Construyo sitios web para pequeñas empresas y autónomos porque me encanta crear algo tangible del que los emprendedores realmente se benefician. Un sitio que funciona, carga rápido y muestra exactamente quién eres.","over.p2":"Sin complicaciones innecesarias ni sistemas complejos: prefiero trabajar de forma personal, sin intermediarios ni contactos que cambian. Simplemente me tienes a mí, desde la primera idea hasta el día en que tu sitio se publica.",
+      "waarom.title":"Por qué las empresas me eligen","waarom.li1":"Contacto personal conmigo, sin gestores de cuenta que cambian","waarom.li2":"Precio fijo por adelantado, sin sorpresas después","waarom.li3":"Diseño totalmente propio, sin plantillas genéricas","waarom.li4":"Disponible después de la entrega, incluso para pequeñas preguntas",
+      "contact.eyebrow":"Contacto","contact.h2":"¿Nos conocemos?","contact.lead":"Cuéntame brevemente a qué se dedica tu negocio y qué buscas. Recibirás de mí un presupuesto a medida sin compromiso, normalmente el mismo día.","contact.row.phone":"Teléfono","contact.row.email":"Correo","contact.row.btw":"NIF/IVA",
+      "form.naam.label":"Nombre","form.naam.ph":"Tu nombre","form.email.ph":"tu@email.es","form.bedrijf.label":"Empresa","form.bedrijf.ph":"Nombre de tu negocio","form.pakket.label":"¿Qué paquete te interesa?",
+      "form.opt.weet":"Aún no lo sé","form.opt.basis":"Básico — 195 €","form.opt.compleet":"Completo — 300 €","form.opt.opmaat":"A medida — desde 450 €",
+      "form.bericht.label":"¿En qué puedo ayudarte?","form.bericht.ph":"Por ejemplo: aún no tengo sitio web y quiero que me encuentren mejor.","form.submit":"Enviar solicitud","form.mini1":"Tus datos solo se usan para responder a tu solicitud.",
+      "form.mini2":"¿Prefieres WhatsApp? <a href=\"https://wa.me/31626683986?text=Hoi%20Djego%2C%20ik%20heb%20een%20vraag%20over%20een%20website\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--cyan-ink); font-weight:700; text-decoration:underline;\">Enviar un mensaje de WhatsApp</a>",
+      "form.sending":"Enviando...","form.sent":"Enviado ✓","form.thanks":"¡Gracias! Tu solicitud ha sido enviada, te responderé lo antes posible.","form.error":"Algo salió mal. Inténtalo de nuevo o escribe a infobyxavio@gmail.com.",
+      "footer.tagline":"Sitios web para pequeñas empresas y autónomos.","footer.privacy":"Política de privacidad","footer.terms":"Términos y condiciones",
+      "wa.bubble":"¿Preguntas? Envíame un mensaje rápido.","wa.aria":"Enviar un mensaje de WhatsApp",
+      "meta.title":"byXavio — Sitios web para pequeñas empresas y autónomos"
+    }
+  };
+
+  var SUPPORTED = ['nl','en','de','fr','es'];
+  var currentLang = 'nl';
+
+  function t(key){
+    var d = I18N[currentLang] || I18N.nl;
+    return (d && d[key] != null) ? d[key] : (I18N.nl[key] != null ? I18N.nl[key] : key);
+  }
+
+  function applyLang(lang){
+    if (SUPPORTED.indexOf(lang) === -1) lang = 'nl';
+    currentLang = lang;
+    document.documentElement.setAttribute('lang', lang);
+
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var key = el.getAttribute('data-i18n');
+      el.textContent = t(key);
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el){
+      var key = el.getAttribute('data-i18n-html');
+      el.innerHTML = t(key);
+    });
+    document.querySelectorAll('[data-i18n-attr-placeholder]').forEach(function(el){
+      el.setAttribute('placeholder', t(el.getAttribute('data-i18n-attr-placeholder')));
+    });
+    document.querySelectorAll('[data-i18n-attr-alt]').forEach(function(el){
+      el.setAttribute('alt', t(el.getAttribute('data-i18n-attr-alt')));
+    });
+    document.querySelectorAll('[data-i18n-attr-aria-label]').forEach(function(el){
+      el.setAttribute('aria-label', t(el.getAttribute('data-i18n-attr-aria-label')));
+    });
+    document.title = t('meta.title');
+
+    try { localStorage.setItem('byxavio_lang', lang); } catch(e){}
+    var sel = document.getElementById('langSelect');
+    if (sel) sel.value = lang;
+  }
+
+  var savedLang = null;
+  try { savedLang = localStorage.getItem('byxavio_lang'); } catch(e){}
+  if (!savedLang) {
+    var browserLang = (navigator.language || 'nl').slice(0,2).toLowerCase();
+    savedLang = SUPPORTED.indexOf(browserLang) !== -1 ? browserLang : 'nl';
+  }
+  applyLang(savedLang);
+
+  var langSelect = document.getElementById('langSelect');
+  if (langSelect) langSelect.addEventListener('change', function(){ applyLang(this.value); });
+
   // offerte form -> Formspree
   var f = document.getElementById('offerteForm');
   if (f) f.addEventListener('submit', function(e){
     e.preventDefault();
     var m = document.getElementById('formMini');
     var btn = f.querySelector('button[type="submit"]');
-    if (btn) { btn.disabled = true; btn.textContent = 'Versturen...'; }
+    if (btn) { btn.disabled = true; btn.textContent = t('form.sending'); }
     fetch(f.action, {
       method: 'POST',
       body: new FormData(f),
@@ -887,15 +1158,15 @@
     }).then(function(res){
       if (res.ok) {
         f.reset();
-        if (m) { m.textContent = 'Bedankt! Je aanvraag is verstuurd, ik reageer zo snel mogelijk.'; m.style.color = '#00707a'; m.style.fontWeight = '600'; }
-        if (btn) { btn.textContent = 'Verstuurd ✓'; }
+        if (m) { m.textContent = t('form.thanks'); m.style.color = '#00707a'; m.style.fontWeight = '600'; }
+        if (btn) { btn.textContent = t('form.sent'); }
       } else {
-        if (m) { m.textContent = 'Er ging iets mis. Probeer het nogmaals of mail infobyxavio@gmail.com.'; m.style.color = '#c0392b'; m.style.fontWeight = '600'; }
-        if (btn) { btn.disabled = false; btn.textContent = 'Verstuur aanvraag'; }
+        if (m) { m.textContent = t('form.error'); m.style.color = '#c0392b'; m.style.fontWeight = '600'; }
+        if (btn) { btn.disabled = false; btn.textContent = t('form.submit'); }
       }
     }).catch(function(){
-      if (m) { m.textContent = 'Er ging iets mis. Probeer het nogmaals of mail infobyxavio@gmail.com.'; m.style.color = '#c0392b'; m.style.fontWeight = '600'; }
-      if (btn) { btn.disabled = false; btn.textContent = 'Verstuur aanvraag'; }
+      if (m) { m.textContent = t('form.error'); m.style.color = '#c0392b'; m.style.fontWeight = '600'; }
+      if (btn) { btn.disabled = false; btn.textContent = t('form.submit'); }
     });
   });
 })();
