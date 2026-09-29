@@ -48,8 +48,8 @@ header{position:sticky;top:0;z-index:50;background:rgba(247,244,238,.92);backdro
 .hero h1 .stroke::after{content:"";position:absolute;left:-4px;right:-6px;bottom:.06em;height:.34em;background:var(--ochre);opacity:.55;z-index:-1;border-radius:4px 10px 6px 12px;transform:rotate(-1.2deg)}
 .lead{font-size:1.14rem;color:var(--muted);max-width:520px;margin-bottom:30px}
 .ctas{display:flex;gap:12px;flex-wrap:wrap}
-.hero-photos{display:grid;grid-template-columns:1.3fr 1fr;grid-template-rows:1fr 1fr;gap:12px;height:540px;position:relative}
-.hero-photos img{width:100%;height:100%;object-fit:cover;object-position:center 75%;border-radius:22px}
+.hero-photos{display:grid;grid-template-columns:1.3fr 1fr;grid-template-rows:minmax(0,1fr) minmax(0,1fr);gap:12px;height:540px;position:relative}
+.hero-photos img{width:100%;height:100%;min-height:0;object-fit:cover;object-position:center 75%;border-radius:22px}
 .hero-photos .big{grid-row:span 2}
 .badge-float{position:absolute;left:-26px;bottom:34px;background:#fff;border-radius:18px;padding:16px 20px;box-shadow:0 18px 40px rgba(28,31,29,.16);display:flex;align-items:center;gap:14px}
 .badge-float b{font-family:Fraunces,serif;font-size:2rem;line-height:1}
