@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Klussenbedrijf Noord-Limburg – Elke klus in en rondom huis</title>
+<meta name="description" content="Kluswerk, badkamers, keukens, schilderwerk, tegelwerk, timmerwerk en tuin in Noord-Limburg en de Duitse grensstreek. Vaste prijs vooraf, reactie binnen 24 uur.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--black:#0d0d0d;--ink:#161616;--ink-2:#1f1f1f;--line:#2a2a2a;--txt:#f2f2f2;--muted:#a3a3a3;--orange:#f7931e;--orange-2:#e07d07;--paper:#f6f4f1;--card:#fff;--lineL:#e7e2db;--mutedL:#5f5a55;--radius:14px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:Oswald,Impact,sans-serif;font-weight:700;line-height:1.02;text-transform:uppercase;letter-spacing:.01em}
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+.or{color:var(--orange)}
+
+/* HEADER */
+header{position:sticky;top:0;z-index:50;background:rgba(13,13,13,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:74px;gap:20px}
+.logo{display:flex;align-items:center;gap:10px;color:#fff}
+.logo svg{width:42px;height:42px}
+.logo b{font-family:Oswald;font-weight:700;font-size:1.05rem;letter-spacing:.06em;line-height:1;display:block;text-transform:uppercase}
+.logo b span{display:block;font-size:1.35rem;letter-spacing:.02em}
+.nav-links{display:flex;gap:26px;font-weight:600;font-size:.9rem;color:#d6d6d6;text-transform:uppercase;letter-spacing:.05em}
+.nav-links a:hover{color:var(--orange)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 24px;border-radius:8px;font-weight:700;font-size:.95rem;letter-spacing:.03em;text-transform:uppercase;transition:transform .15s,background .15s;cursor:pointer;border:none;font-family:inherit}
+.btn:hover{transform:translateY(-2px)}
+.btn-or{background:var(--orange);color:#111}
+.btn-or:hover{background:#ffa53d}
+.btn-line{border:2px solid rgba(255,255,255,.35);color:#fff;background:transparent}
+.btn-line:hover{border-color:var(--orange)}
+.btn-wa{background:#25d366;color:#fff}
+.btn-dark{background:var(--black);color:#fff}
+.nav .btn{padding:10px 18px;font-size:.85rem}
+
+/* HERO */
+.hero{background:var(--black);color:var(--txt);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 420px at 85% 30%,rgba(247,147,30,.22),transparent 65%),repeating-linear-gradient(135deg,rgba(255,255,255,.025) 0 2px,transparent 2px 22px)}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;padding-top:80px;padding-bottom:90px}
+.pillars{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px}
+.pillars span{font-family:Oswald;font-weight:600;font-size:.86rem;letter-spacing:.12em;text-transform:uppercase;color:#d6d6d6;border:1px solid var(--line);padding:6px 12px;border-radius:6px;background:rgba(255,255,255,.03)}
+.pillars span b{color:var(--orange)}
+.hero h1{font-size:clamp(3rem,7vw,5.6rem);margin-bottom:10px}
+.hero .tagline{font-family:Oswald;font-weight:600;font-size:clamp(1.2rem,2.4vw,1.6rem);text-transform:uppercase;letter-spacing:.06em;color:var(--orange);margin-bottom:22px;display:flex;align-items:center;gap:12px}
+.hero .tagline::before{content:"";width:40px;height:3px;background:var(--orange)}
+.hero p{font-size:1.1rem;color:#c9c9c9;max-width:540px;margin-bottom:32px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.hero-art{position:relative}
+.hero-art svg{width:100%;height:auto}
+.badge24{position:absolute;right:0;bottom:6%;background:var(--orange);color:#111;border-radius:14px;padding:14px 18px;font-family:Oswald;text-transform:uppercase;text-align:center;box-shadow:0 18px 40px rgba(247,147,30,.35)}
+.badge24 b{display:block;font-size:2.2rem;line-height:1}
+.badge24 span{font-size:.82rem;font-weight:600;letter-spacing:.06em}
+
+/* TRUST */
+.trust{background:var(--orange);color:#111}
+.trust .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding-top:20px;padding-bottom:20px}
+.trust div{display:flex;align-items:center;gap:10px;font-weight:700;font-size:.95rem}
+.trust svg{width:24px;height:24px;flex-shrink:0;stroke:#111;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+section{padding:90px 0}
+.eyebrow{font-family:Oswald;font-weight:600;font-size:.9rem;letter-spacing:.16em;text-transform:uppercase;color:var(--orange-2);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:26px;height:3px;background:var(--orange)}
+.head{max-width:680px;margin-bottom:46px}
+.head h2{font-size:clamp(2.3rem,5vw,3.6rem);margin-bottom:14px}
+.head p{color:var(--mutedL);font-size:1.06rem}
+
+/* SERVICES */
+.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.svc{background:var(--card);border:1px solid var(--lineL);border-radius:var(--radius);padding:26px 22px;transition:transform .2s,box-shadow .2s,border-color .2s;position:relative;overflow:hidden}
+.svc::after{content:"";position:absolute;left:0;top:0;height:4px;width:0;background:var(--orange);transition:width .3s}
+.svc:hover{transform:translateY(-4px);box-shadow:0 18px 34px rgba(0,0,0,.08)}
+.svc:hover::after{width:100%}
+.svc .ic{width:52px;height:52px;border-radius:12px;background:var(--black);display:grid;place-items:center;margin-bottom:18px}
+.svc .ic svg{width:26px;height:26px;stroke:var(--orange);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.svc h3{font-size:1.35rem;margin-bottom:8px}
+.svc p{color:var(--mutedL);font-size:.93rem}
+.svc.alt{background:var(--black);color:#fff;border-color:var(--black)}
+.svc.alt .ic{background:var(--orange)}
+.svc.alt .ic svg{stroke:#111}
+.svc.alt p{color:#bdbdbd}
+.svc.alt a{display:inline-block;margin-top:14px;color:var(--orange);font-weight:700;font-size:.9rem}
+
+/* WHY */
+.why{background:var(--black);color:var(--txt)}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.why h2{font-size:clamp(2.3rem,5vw,3.6rem);margin-bottom:18px}
+.why p{color:#c4c4c4;font-size:1.05rem;margin-bottom:14px}
+.why .quote{font-family:Oswald;font-size:1.5rem;text-transform:uppercase;color:#fff;border-left:4px solid var(--orange);padding-left:18px;margin:24px 0;line-height:1.2}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ck{background:var(--ink-2);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;gap:12px;align-items:center;font-weight:600}
+.ck::before{content:"";width:24px;height:24px;flex-shrink:0;border-radius:6px;background:var(--orange) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center/14px no-repeat}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:56px}
+.stat{border:1px solid var(--line);border-radius:12px;padding:22px;text-align:center;background:var(--ink)}
+.stat b{display:block;font-family:Oswald;font-size:2.6rem;color:var(--orange);line-height:1}
+.stat span{font-family:Oswald;font-size:.9rem;letter-spacing:.1em;text-transform:uppercase;color:#cfcfcf}
+
+/* PROJECTS placeholder */
+.proj-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:12px}
+.ph{border:2px dashed #d3cbbf;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:#9b9186;background:repeating-linear-gradient(135deg,#fbf9f6 0 10px,#f4f0ea 10px 20px);text-align:center;padding:14px;font-size:.88rem;font-weight:600}
+.ph svg{width:30px;height:30px;stroke:#b8ad9f;fill:none;stroke-width:1.8}
+.ph.wide{grid-column:span 2}
+.ph.tall{grid-row:span 2}
+.proj-note{margin-top:18px;color:var(--mutedL);font-size:.92rem}
+
+/* AREA */
+.area{background:#fff;border-top:1px solid var(--lineL);border-bottom:1px solid var(--lineL)}
+.area-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:start}
+.region{margin-bottom:22px}
+.region h3{font-size:1.2rem;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.flag{display:inline-flex;width:28px;height:18px;border-radius:3px;overflow:hidden;flex-direction:column;box-shadow:0 0 0 1px rgba(0,0,0,.1)}
+.flag i{flex:1}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{background:var(--paper);border:1px solid var(--lineL);padding:7px 14px;border-radius:999px;font-weight:600;font-size:.88rem}
+.chips span.home{background:var(--orange);border-color:var(--orange);color:#111}
+.de{background:var(--black);color:#fff;border-radius:var(--radius);padding:30px}
+.de h3{font-size:1.6rem;margin-bottom:10px}
+.de p{color:#c4c4c4;margin-bottom:20px}
+
+/* STEPS */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:s}
+.step{background:#fff;border:1px solid var(--lineL);border-radius:var(--radius);padding:26px;position:relative}
+.step::before{counter-increment:s;content:counter(s);position:absolute;right:18px;top:10px;font-family:Oswald;font-size:3.6rem;color:#efe9e1;line-height:1}
+.step h3{font-size:1.35rem;margin-bottom:8px;position:relative}
+.step p{color:var(--mutedL);font-size:.94rem;position:relative}
+.step .bar{width:38px;height:4px;background:var(--orange);margin-bottom:16px}
+
+/* CTA band */
+.band{background:var(--orange);color:#111}
+.band .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding-top:46px;padding-bottom:46px}
+.band h2{font-size:clamp(2rem,4.4vw,3rem)}
+.band p{font-weight:600}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:24px}
+.ccard{background:#fff;border:1px solid var(--lineL);border-radius:var(--radius);padding:32px}
+.ccard.dark{background:var(--black);color:#fff;border-color:var(--black)}
+.ccard h3{font-size:1.8rem;margin-bottom:6px}
+.ccard .sub{color:#bdbdbd;margin-bottom:20px}
+.ci{display:flex;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
+.ci:last-of-type{border-bottom:none}
+.ci .ic{width:44px;height:44px;border-radius:10px;background:var(--orange);display:grid;place-items:center;flex-shrink:0}
+.ci .ic svg{width:21px;height:21px;stroke:#111;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.ci small{display:block;color:#a3a3a3;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;font-weight:600}
+.ci a,.ci span{font-weight:600}
+.ci a:hover{color:var(--orange)}
+.resp{margin-top:20px;background:var(--ink-2);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;align-items:center;gap:12px;font-weight:600}
+.resp b{font-family:Oswald;font-size:1.8rem;color:var(--orange);line-height:1}
+form{display:grid;gap:12px}
+label.l{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mutedL);margin-bottom:-6px}
+input,textarea,select{width:100%;padding:13px 15px;border:1.5px solid var(--lineL);border-radius:8px;font:inherit;background:var(--paper);color:var(--ink)}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--orange)}
+textarea{min-height:120px;resize:vertical}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.frow>div{display:grid;gap:12px}
+
+footer{background:var(--black);color:#9a9a9a;padding:54px 0 40px;font-size:.9rem}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:28px}
+footer h4{color:#fff;font-family:Oswald;font-size:1.05rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+footer ul{list-style:none;display:grid;gap:6px}
+footer a:hover{color:var(--orange)}
+.foot p{margin-top:14px;max-width:320px}
+.foot-bottom{border-top:1px solid var(--line);margin-top:36px;padding-top:20px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.85rem}
+.foot-bottom a{color:var(--orange);font-weight:700}
+
+.wa-float{position:fixed;right:22px;bottom:22px;z-index:70;width:62px;height:62px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 10px 26px rgba(37,211,102,.45);transition:transform .2s,opacity .25s}
+.wa-float:hover{transform:scale(1.08)}
+.wa-float svg{width:34px;height:34px}
+.wa-float::before{content:"";position:absolute;inset:0;border-radius:50%;background:#25d366;animation:wapulse 2.4s infinite;z-index:-1}
+.wa-float.hide{opacity:0;pointer-events:none}
+@keyframes wapulse{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.6);opacity:0}}
+.mobile-call{display:none}
+
+@media (max-width:1000px){
+  .nav-links{display:none}
+  .hero .wrap,.why-grid,.area-grid,.contact-grid{grid-template-columns:1fr}
+  .hero-art{max-width:420px;margin:0 auto;width:100%}
+  .trust .wrap{grid-template-columns:1fr 1fr}
+  .svc-grid,.steps{grid-template-columns:1fr 1fr}
+  .stats{grid-template-columns:1fr 1fr}
+  .proj-grid{grid-template-columns:1fr 1fr;grid-auto-rows:150px}
+  .foot{grid-template-columns:1fr 1fr}
+  section{padding:66px 0}
+  .mobile-call{display:flex;position:fixed;bottom:14px;left:14px;right:14px;z-index:60;box-shadow:0 10px 28px rgba(247,147,30,.45)}
+  .wa-float{bottom:86px;right:16px;width:56px;height:56px}
+  footer{padding-bottom:104px}
+}
+@media (max-width:600px){
+  .svc-grid,.steps,.checks,.frow{grid-template-columns:1fr}
+  .foot{grid-template-columns:1fr}
+  .nav .btn{display:none}
+  .trust div{font-size:.86rem}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="logo" aria-label="Klussenbedrijf Noord-Limburg">
+      <svg viewBox="0 0 48 48" fill="none"><path d="M5 24L24 8l12 10" stroke="#f7931e" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><rect x="18" y="22" width="4.5" height="4.5" fill="#fff"/><rect x="24" y="22" width="4.5" height="4.5" fill="#fff"/><rect x="18" y="28" width="4.5" height="4.5" fill="#fff"/><rect x="24" y="28" width="4.5" height="4.5" fill="#fff"/><path d="M34 6l8 8-3 3-8-8z" fill="#fff"/><path d="M36 13L26 23" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/></svg>
+      <b>Klussenbedrijf<span>Noord<span class="or" style="display:inline;font-size:inherit">limburg</span></span></b>
+    </a>
+    <nav class="nav-links">
+      <a href="#diensten">Diensten</a>
+      <a href="#over">Over ons</a>
+      <a href="#werkgebied">Werkgebied</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="btn btn-or">Offerte aanvragen</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" style="padding:0">
+  <div class="wrap">
+    <div>
+      <div class="pillars"><span>Vakmanschap</span><span><b>·</b> Betrouwbaar</span><span><b>·</b> Kwaliteit</span></div>
+      <h1>Elke klus<br>in en rondom <span class="or">huis.</span></h1>
+      <div class="tagline">Van A tot Z geregeld</div>
+      <p>Badkamer, keuken, schilderwerk, tegels, timmerwerk of de tuin. Eén vakman voor het hele plaatje, met een vaste prijs vooraf. In heel Noord-Limburg en de Duitse grensstreek.</p>
+      <div class="ctas">
+        <a href="#contact" class="btn btn-or">Vrijblijvende offerte →</a>
+        <a href="https://wa.me/31616142098?text=Hoi,%20ik%20heb%20een%20vraag%20over%20een%20klus" class="btn btn-wa">WhatsApp</a>
+        <a href="tel:+31616142098" class="btn btn-line">Bel direct</a>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 400 360" fill="none">
+        <circle cx="220" cy="190" r="150" fill="#f7931e" opacity=".08"/>
+        <path d="M60 200L200 80l140 120" stroke="#f7931e" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M95 175v130h210V175" stroke="#2a2a2a" stroke-width="10" stroke-linejoin="round"/>
+        <rect x="160" y="190" width="34" height="34" fill="#fff"/><rect x="204" y="190" width="34" height="34" fill="#fff"/>
+        <rect x="160" y="234" width="34" height="34" fill="#fff"/><rect x="204" y="234" width="34" height="34" fill="#fff"/>
+        <g transform="rotate(40 300 90)"><rect x="268" y="40" width="64" height="30" rx="6" fill="#fff"/><rect x="292" y="66" width="14" height="110" rx="5" fill="#fff"/><path d="M332 46l18-8v34l-18-8z" fill="#fff"/></g>
+        <path d="M40 320h320" stroke="#2a2a2a" stroke-width="6" stroke-linecap="round"/>
+      </svg>
+      <div class="badge24"><b>24u</b><span>reactie</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="trust"><div class="wrap">
+  <div><svg viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Vaste prijs vooraf</div>
+  <div><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Eén vast aanspreekpunt</div>
+  <div><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Reactie binnen 24 uur</div>
+  <div><svg viewBox="0 0 24 24"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg>Werkplek schoon</div>
+</div></div>
+
+<!-- DIENSTEN -->
+<section id="diensten">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">Wat wij doen</div>
+      <h2>Eén bedrijf voor het hele plaatje.</h2>
+      <p>Geen drie verschillende vaklui die naar elkaar wijzen. Wij regelen het van begin tot eind.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc"><div class="ic"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.1-.4-.4-2.1z"/></svg></div><h3>Algemeen kluswerk</h3><p>Van een lekkende kraan tot een tv ophangen, van scharnieren stellen tot complete afwerking.</p></div>
+      <div class="svc"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 12h16v3a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M6 12V5a2 2 0 0 1 4 0"/><path d="M7 20l-1 2M17 20l1 2"/></svg></div><h3>Badkamer &amp; sanitair</h3><p>Complete renovaties of een nieuwe douchewand. Van strippen tot tegels en sanitair, met vaste prijs vooraf.</p></div>
+      <div class="svc"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 10h18M8 4v6M12 14v3"/></svg></div><h3>Keuken renovatie</h3><p>IKEA, Mandemakers of eigen ontwerp. Wij monteren, sluiten aan en werken netjes af. Ook met nieuw werkblad en tegels.</p></div>
+      <div class="svc"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="15" height="6" rx="1"/><path d="M18 6h3v5h-9v3"/><rect x="10" y="14" width="4" height="7" rx="1"/></svg></div><h3>Schilderwerk</h3><p>Strakke afwerking, goede voorbereiding, geen druipers. Van één kozijn tot een hele woning, binnen en buiten.</p></div>
+      <div class="svc"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8"/><rect x="13" y="3" width="8" height="8"/><rect x="3" y="13" width="8" height="8"/><rect x="13" y="13" width="8" height="8"/></svg></div><h3>Tegelwerk &amp; vloeren</h3><p>Wand- en vloertegels, laminaat, pvc en plinten. Recht, strak gevoegd en op maat. Ook lastige hoeken en patronen.</p></div>
+      <div class="svc"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 21l9-9M14 4l6 6-3 3-6-6z"/><path d="M11 7l6 6"/></svg></div><h3>Timmerwerk</h3><p>Inbouwkasten op maat, deuren, kozijnen, vlonders en schuttingen. Of flatpack-meubels in elkaar zetten.</p></div>
+      <div class="svc"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 22V12M12 12C12 7 8 4 4 4c0 5 3 8 8 8zM12 12c0-4 3-7 8-7 0 4-3 7-8 7z"/></svg></div><h3>Tuin &amp; bestrating</h3><p>Tegelpaden, terrassen, schuttingen en tuinhuisjes. Een nette tuin zonder gedoe, van zand tot afwerking.</p></div>
+      <div class="svc alt"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.7M12 17h.01"/></svg></div><h3>Iets anders?</h3><p>Staat je klus er niet bij? Negen van de tien keer pakken we het op, en anders zeggen we het eerlijk.</p><a href="https://wa.me/31616142098">Even appen →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- OVER -->
+<section id="over" class="why">
+  <div class="wrap">
+    <div class="why-grid">
+      <div>
+        <div class="eyebrow">Over ons</div>
+        <h2>Vakmanschap <span class="or">zonder poespas.</span></h2>
+        <p>Klussenbedrijf Noord-Limburg is opgericht vanuit één simpele frustratie: te veel mensen worden in de bouw aan het lijntje gehouden. Vage offertes, klussen die uitlopen, meerwerk dat ineens uit de lucht komt vallen.</p>
+        <p>Wij doen het anders. Vooraf een duidelijke prijs, een realistische planning en een aanspreekpunt dat de telefoon opneemt.</p>
+        <div class="quote">"Wij werken bij u thuis net zo netjes als bij ons eigen huis."</div>
+      </div>
+      <div class="checks">
+        <div class="ck">Vaste prijsafspraak vooraf</div>
+        <div class="ck">Eén vast aanspreekpunt</div>
+        <div class="ck">Werkplek schoon achterlaten</div>
+        <div class="ck">KvK-geregistreerd</div>
+        <div class="ck">Reactie binnen 24 uur</div>
+        <div class="ck">Eerlijke planning</div>
+        <div class="ck">Particulier &amp; zakelijk</div>
+        <div class="ck">Klein én groot</div>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>100%</b><span>Vaste prijs vooraf</span></div>
+      <div class="stat"><b>7+</b><span>Vakgebieden</span></div>
+      <div class="stat"><b>2</b><span>Landen werkgebied</span></div>
+      <div class="stat"><b>24u</b><span>Reactietijd</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTEN -->
+<section id="projecten">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">Projecten</div>
+      <h2>Ons werk in beeld.</h2>
+      <p>Foto's van recente klussen: badkamers, keukens, tegelwerk en tuinen.</p>
+    </div>
+    <div class="proj-grid">
+      <div class="ph wide tall"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5-5-9 7"/></svg>Badkamer renovatie</div>
+      <div class="ph"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5-5-9 7"/></svg>Keuken</div>
+      <div class="ph"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5-5-9 7"/></svg>Tegelwerk</div>
+      <div class="ph"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5-5-9 7"/></svg>Schilderwerk</div>
+      <div class="ph"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 17l-5-5-9 7"/></svg>Tuin &amp; terras</div>
+    </div>
+    <p class="proj-note">📸 In de echte site komen hier je eigen projectfoto's, bijvoorbeeld die van je Facebook-pagina.</p>
+  </div>
+</section>
+
+<!-- WERKGEBIED -->
+<section id="werkgebied" class="area">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">Werkgebied</div>
+      <h2>Heel Limburg &amp; de grensstreek.</h2>
+      <p>Vanuit Siebengewald zijn we snel ter plaatse in de hele regio, in Nederland én Duitsland.</p>
+    </div>
+    <div class="area-grid">
+      <div>
+        <div class="region"><h3><span class="flag"><i style="background:#ae1c28"></i><i style="background:#fff"></i><i style="background:#21468b"></i></span>Nederland</h3>
+          <div class="chips"><span class="home">📍 Siebengewald</span><span>Venlo</span><span>Bergen</span><span>Gennep</span><span>Boxmeer</span><span>Venray</span><span>Roermond</span><span>Weert</span><span>Sittard-Geleen</span><span>Heerlen</span><span>Maastricht</span></div></div>
+        <div class="region"><h3><span class="flag"><i style="background:#000"></i><i style="background:#dd0000"></i><i style="background:#ffce00"></i></span>Duitsland</h3>
+          <div class="chips"><span>Kleve</span><span>Goch</span><span>Geldern</span><span>Straelen</span><span>Kevelaer</span></div></div>
+      </div>
+      <div class="de">
+        <h3>Auch für Kunden aus Deutschland</h3>
+        <p>Wir arbeiten regelmäßig in der Grenzregion Niederrhein. Sprechen Sie uns einfach an, auf Deutsch geht selbstverständlich auch. Faire Preise, zuverlässige Termine, saubere Arbeit.</p>
+        <div class="ctas"><a href="tel:+31616142098" class="btn btn-or">Anrufen</a><a href="https://wa.me/31616142098" class="btn btn-wa">WhatsApp</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WERKWIJZE -->
+<section>
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">Hoe wij werken</div>
+      <h2>Helder van begin tot eind.</h2>
+      <p>Geen onduidelijkheid over wat er gebeurt en wanneer. Vier stappen, zo simpel houden we het.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="bar"></div><h3>Aanvraag</h3><p>Bel, mail of WhatsApp. Vertel kort wat de klus is, foto's helpen. Binnen 24 uur antwoord.</p></div>
+      <div class="step"><div class="bar"></div><h3>Offerte</h3><p>Bij grotere klussen komen we langs voor opname. Daarna een heldere offerte met vaste prijs.</p></div>
+      <div class="step"><div class="bar"></div><h3>Uitvoering</h3><p>Op de afgesproken dag staan we er. We werken door, communiceren en houden de werkplek netjes.</p></div>
+      <div class="step"><div class="bar"></div><h3>Oplevering</h3><p>Samen lopen we de klus na. Pas als u tevreden bent, sturen we de factuur.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="band"><div class="wrap">
+  <div><h2>Klus in gedachten?</h2><p>Bel of WhatsApp. Vrijblijvend, zonder verkooppraatjes.</p></div>
+  <div class="ctas"><a href="tel:+31616142098" class="btn btn-dark">📞 06 - 16 14 20 98</a><a href="https://wa.me/31616142098" class="btn btn-wa">WhatsApp</a></div>
+</div></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">Contact</div>
+      <h2>Laten we praten.</h2>
+      <p>Bel direct, stuur een WhatsApp of vul het formulier in. Je krijgt binnen 24 uur antwoord, vaak sneller.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="ccard dark">
+        <h3>Direct contact</h3>
+        <p class="sub">Liever even bellen of appen? Dat kan altijd.</p>
+        <div class="ci"><span class="ic"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span><div><small>Telefoon</small><a href="tel:+31616142098">06 - 16 14 20 98</a></div></div>
+        <div class="ci"><span class="ic"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.5A8.4 8.4 0 1 1 21 11.5z"/></svg></span><div><small>WhatsApp</small><a href="https://wa.me/31616142098">Stuur een bericht (foto's welkom)</a></div></div>
+        <div class="ci"><span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><div><small>E-mail</small><a href="mailto:rzepskib@gmail.com">rzepskib@gmail.com</a></div></div>
+        <div class="ci"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><div><small>Vestiging</small><span>Siebengewald, Noord-Limburg</span></div></div>
+        <div class="resp"><b>24u</b>Reactie gegarandeerd, vaak dezelfde dag.</div>
+      </div>
+      <div class="ccard">
+        <h3>Vrijblijvende offerte</h3>
+        <p style="color:var(--mutedL);margin-bottom:20px">Vertel kort wat er moet gebeuren.</p>
+        <form onsubmit="event.preventDefault();this.innerHTML='<p style=&quot;font-weight:600;font-size:1.1rem&quot;>Bedankt! Je hoort binnen 24 uur van ons.</p>'">
+          <div class="frow">
+            <div><label class="l">Naam</label><input type="text" required></div>
+            <div><label class="l">Telefoon</label><input type="tel" required></div>
+          </div>
+          <div class="frow">
+            <div><label class="l">E-mail</label><input type="email"></div>
+            <div><label class="l">Plaats van de klus</label><input type="text"></div>
+          </div>
+          <label class="l">Soort klus</label>
+          <select>
+            <option>Maak een keuze</option>
+            <option>Algemeen kluswerk</option><option>Badkamer &amp; sanitair</option><option>Keuken montage / renovatie</option><option>Schilderwerk binnen / buiten</option><option>Tegelwerk &amp; vloeren</option><option>Timmerwerk &amp; meubels</option><option>Tuin &amp; bestrating</option><option>Anders / weet ik niet</option>
+          </select>
+          <label class="l">Beschrijf je klus</label>
+          <textarea></textarea>
+          <button type="submit" class="btn btn-or">Verstuur aanvraag →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div><a href="#" class="logo"><svg viewBox="0 0 48 48" fill="none"><path d="M5 24L24 8l12 10" stroke="#f7931e" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><rect x="18" y="22" width="4.5" height="4.5" fill="#fff"/><rect x="24" y="22" width="4.5" height="4.5" fill="#fff"/><rect x="18" y="28" width="4.5" height="4.5" fill="#fff"/><rect x="24" y="28" width="4.5" height="4.5" fill="#fff"/><path d="M34 6l8 8-3 3-8-8z" fill="#fff"/><path d="M36 13L26 23" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/></svg><b>Klussenbedrijf<span>Noord<span class="or" style="display:inline;font-size:inherit">limburg</span></span></b></a><p>Vakmanschap zonder poespas. Vaste afspraken, eerlijke prijzen, netjes opgeleverd. In heel Limburg en de Duitse grensstreek.</p></div>
+      <div><h4>Diensten</h4><ul><li><a href="#diensten">Algemeen kluswerk</a></li><li><a href="#diensten">Badkamer</a></li><li><a href="#diensten">Keuken</a></li><li><a href="#diensten">Schilderwerk</a></li><li><a href="#diensten">Tegelwerk</a></li><li><a href="#diensten">Tuin</a></li></ul></div>
+      <div><h4>Bedrijf</h4><ul><li><a href="#over">Over ons</a></li><li><a href="#werkgebied">Werkgebied</a></li><li><a href="#contact">Contact</a></li></ul></div>
+      <div><h4>Gegevens</h4><ul><li><a href="tel:+31616142098">06 - 16 14 20 98</a></li><li>Siebengewald, NL</li><li>Handelsnaam: BR Freelance</li><li>KvK: 42050613</li></ul></div>
+    </div>
+    <div class="foot-bottom"><div>© 2026 Klussenbedrijf Noord-Limburg · BR Freelance</div><div>Concept door <a href="https://byxavio.nl">byXavio</a></div></div>
+  </div>
+</footer>
+
+<a href="https://wa.me/31616142098" class="wa-float" id="waf" aria-label="Chat via WhatsApp" target="_blank" rel="noopener"><svg viewBox="0 0 32 32" fill="#fff"><path d="M16.04 3C8.86 3 3.03 8.82 3.03 16c0 2.3.6 4.54 1.74 6.52L3 29l6.64-1.74A13 13 0 0 0 16.04 29C23.2 29 29 23.18 29 16S23.2 3 16.04 3Zm0 23.8c-2.02 0-4-.54-5.72-1.57l-.41-.24-3.94 1.03 1.05-3.84-.27-.4A10.78 10.78 0 0 1 5.2 16c0-5.97 4.86-10.83 10.84-10.83 5.97 0 10.82 4.86 10.82 10.83 0 5.98-4.85 10.8-10.82 10.8Zm5.94-8.1c-.33-.16-1.93-.95-2.23-1.06-.3-.11-.52-.16-.73.17-.22.32-.84 1.05-1.03 1.27-.19.22-.38.24-.7.08-.33-.16-1.38-.51-2.62-1.62-.97-.86-1.62-1.93-1.81-2.25-.19-.33-.02-.5.14-.66.15-.15.33-.38.49-.57.16-.19.22-.33.33-.54.11-.22.05-.41-.03-.57-.08-.16-.73-1.76-1-2.41-.26-.63-.53-.55-.73-.56h-.62c-.22 0-.57.08-.87.41-.3.32-1.14 1.11-1.14 2.72 0 1.6 1.17 3.15 1.33 3.37.16.22 2.3 3.5 5.56 4.91.78.34 1.39.54 1.86.69.78.25 1.49.21 2.05.13.63-.09 1.93-.79 2.2-1.55.27-.76.27-1.41.19-1.55-.08-.13-.3-.21-.62-.38Z"/></svg></a>
+<a href="tel:+31616142098" class="btn btn-or mobile-call">📞 Bel direct: 06 - 16 14 20 98</a>
+
+<script>
+(function(){var w=document.getElementById('waf'),c=document.getElementById('contact');
+if(w&&c&&'IntersectionObserver' in window){new IntersectionObserver(function(e){w.classList.toggle('hide',e[0].isIntersecting)},{threshold:.15}).observe(c)}})();
+</script>
+</body>
+</html>
