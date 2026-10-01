@@ -357,6 +357,9 @@
   }
   .contact .row .k{color:#9092b8; font-weight:500;}
   .contact .row .v{font-weight:600;}
+  .contact .row .v a,.foot-links a,.foot-bot .legal a{display:inline-block; padding-block:10px; margin-block:-10px;}
+  .wa{transition:opacity .25s, transform .25s;}
+  .wa.wa-hide{opacity:0; transform:scale(.6); pointer-events:none;}
   .contact .row a{text-decoration:none;}
   .contact .row a:hover{color:var(--amber);}
 
@@ -1186,6 +1189,13 @@
     var w=+sc.dataset.w,h=+sc.dataset.h,f=sc.querySelector('iframe');
     f.style.width=w+'px';f.style.height=h+'px';f.style.transform='scale('+(sc.clientWidth/w)+')';});}
   fit();window.addEventListener('resize',fit);
+})();
+</script>
+<script>
+(function(){
+  var wa=document.getElementById('waBtn'),bub=document.getElementById('waBubble'),c=document.getElementById('contact');
+  if(!wa||!c||!('IntersectionObserver' in window))return;
+  new IntersectionObserver(function(e){var on=e[0].isIntersecting;wa.classList.toggle('wa-hide',on);if(bub&&on)bub.style.display='none';},{threshold:0.15}).observe(c);
 })();
 </script>
 </body>
