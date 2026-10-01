@@ -3,12 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>byXavio &mdash; Websites voor kleine bedrijven en zzp'ers</title>
-<meta name="description" content="byXavio bouwt duidelijke, snelle websites voor kleine bedrijven en zzp'ers. Vaste prijs vooraf, eigen ontwerp, live binnen een week. Vanaf EUR 195.">
+<title>byXavio &mdash; Websites voor ondernemers in Purmerend en omgeving</title>
+<meta name="description" content="Webdesigner uit Purmerend. byXavio bouwt duidelijke, snelle websites voor kleine bedrijven en zzp'ers in Purmerend en omgeving. Vaste prijs vooraf, eigen ontwerp, live binnen een week. Vanaf EUR 195.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"byXavio","url":"https://byxavio.nl/","image":"https://byxavio.nl/djego.jpg","description":"Websites voor kleine bedrijven en zzp'ers in Purmerend en omgeving.","telephone":"+31626683986","founder":{"@type":"Person","name":"Djego Reinouwers"},"address":{"@type":"PostalAddress","addressLocality":"Purmerend","addressCountry":"NL"},"areaServed":["Purmerend","Zaandam","Amsterdam","Noord-Holland"],"priceRange":"€195 - €450"}</script>
 <link rel="canonical" href="https://byxavio.nl/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://byxavio.nl/">
-<meta property="og:title" content="byXavio &mdash; Websites voor kleine bedrijven en zzp'ers">
+<meta property="og:title" content="byXavio &mdash; Websites voor ondernemers in Purmerend en omgeving">
 <meta property="og:description" content="Een website die klopt, zonder poespas. Vaste prijs vooraf, eigen ontwerp, live binnen een week.">
 <meta property="og:locale" content="nl_NL">
 <meta name="twitter:card" content="summary_large_image">
@@ -180,6 +181,22 @@
   .tick{width:17px; height:17px; flex:0 0 auto;}
 
   .hero-art{width:100%; height:auto; display:block; filter:drop-shadow(0 26px 44px rgba(26,27,58,.14));}
+  .mock{position:relative; padding:4% 10% 12% 0;}
+  .mock-blob{position:absolute; right:2%; top:0; width:38%; aspect-ratio:1; border-radius:50%; background:#ffe6bd; z-index:0;}
+  .laptop{position:relative; z-index:1; background:#1a1b3a; border-radius:14px; padding:0 8px 8px; box-shadow:0 30px 60px -18px rgba(26,27,58,.35);}
+  .laptop-bar{display:flex; align-items:center; gap:6px; height:28px; padding-left:6px;}
+  .laptop-bar i{width:8px; height:8px; border-radius:50%; background:#00d2df;}
+  .laptop-bar i:nth-child(2){background:#ffb23f;} .laptop-bar i:nth-child(3){background:#66e4ec;}
+  .laptop-bar span{margin-left:10px; font-size:.68rem; color:#b9b8d6; background:rgba(255,255,255,.08); padding:2px 10px; border-radius:6px;}
+  .laptop .screen{aspect-ratio:16/10; border-radius:4px;}
+  .laptop-base{position:absolute; left:-6%; right:-6%; bottom:-14px; height:14px; background:#26284f; border-radius:0 0 14px 14px;}
+  .screen{position:relative; overflow:hidden; background:#fff;}
+  .screen iframe{position:absolute; left:0; top:0; border:0; transform-origin:0 0; pointer-events:none;}
+  .phone{position:absolute; z-index:2; right:0; bottom:0; width:28%; background:#1a1b3a; border-radius:22px; padding:8px; box-shadow:0 24px 44px -12px rgba(26,27,58,.45);}
+  .phone .screen{aspect-ratio:1/2; border-radius:15px;}
+  .phone-notch{position:absolute; z-index:3; top:12px; left:50%; transform:translateX(-50%); width:34%; height:10px; border-radius:6px; background:#1a1b3a;}
+  .mock-tag{position:absolute; z-index:3; left:4%; bottom:2%; background:#fff; color:#1a1b3a; font-weight:700; font-size:.82rem; padding:8px 14px; border-radius:999px; box-shadow:0 10px 24px -8px rgba(26,27,58,.3); text-decoration:none;}
+  .mock-tag:hover{background:#00d2df;}
 
   /* ---------- strip ---------- */
 
@@ -464,9 +481,9 @@
   <div class="wrap">
     <div class="hero-in">
       <div>
-        <p class="eyebrow" data-i18n="hero.eyebrow">Websites voor kleine bedrijven en zzp&rsquo;ers</p>
+        <p class="eyebrow" data-i18n="hero.eyebrow">Webdesign uit Purmerend &middot; voor kleine bedrijven en zzp&rsquo;ers</p>
         <h1 data-i18n-html="hero.h1">Een website die <span class="hl">klopt</span>, zonder poespas.</h1>
-        <p class="lead" data-i18n="hero.lead">Ik bouw duidelijke, snelle websites voor kleine ondernemers, van eerste ontwerp tot een pagina die klanten daadwerkelijk kunnen vinden en gebruiken.</p>
+        <p class="lead" data-i18n="hero.lead">Ik bouw duidelijke, snelle websites voor kleine ondernemers in Purmerend en omgeving, van eerste ontwerp tot een pagina die klanten daadwerkelijk kunnen vinden en gebruiken.</p>
         <div class="cta">
           <a class="btn btn-cyan" href="#contact" data-i18n="hero.cta1">Vraag een gratis kennismaking aan</a>
           <a class="btn btn-outline" href="#voorbeelden" data-i18n="hero.cta2">Bekijk voorbeelden</a>
@@ -479,35 +496,19 @@
       </div>
 
       <div>
-        <svg class="hero-art" viewBox="0 0 400 320" role="img" aria-label="Illustratie van een website op laptop en telefoon">
-          <circle cx="332" cy="52" r="30" fill="#ffe6bd"/>
-          <rect x="18" y="238" width="76" height="76" rx="18" fill="#d6f6f9"/>
-          <!-- laptop -->
-          <rect x="44" y="40" width="292" height="196" rx="14" fill="#ffffff" stroke="#1a1b3a" stroke-width="3"/>
-          <rect x="44" y="40" width="292" height="30" rx="14" fill="#1a1b3a"/>
-          <rect x="44" y="56" width="292" height="14" fill="#1a1b3a"/>
-          <circle cx="62" cy="55" r="4" fill="#00d2df"/>
-          <circle cx="76" cy="55" r="4" fill="#ffb23f"/>
-          <circle cx="90" cy="55" r="4" fill="#66e4ec"/>
-          <rect x="66" y="92" width="120" height="13" rx="4" fill="#1a1b3a"/>
-          <rect x="66" y="114" width="166" height="13" rx="4" fill="#1a1b3a"/>
-          <rect x="66" y="144" width="132" height="8" rx="4" fill="#d8d4e4"/>
-          <rect x="66" y="160" width="104" height="8" rx="4" fill="#d8d4e4"/>
-          <rect x="66" y="186" width="92" height="28" rx="9" fill="#00d2df"/>
-          <rect x="166" y="186" width="74" height="28" rx="9" fill="none" stroke="#1a1b3a" stroke-width="2.4"/>
-          <line x1="268" y1="112" x2="308" y2="152" stroke="#1a1b3a" stroke-width="13" stroke-linecap="round"/>
-          <line x1="308" y1="112" x2="268" y2="152" stroke="#00d2df" stroke-width="13" stroke-linecap="round"/>
-          <rect x="120" y="242" width="140" height="10" rx="5" fill="#1a1b3a"/>
-          <!-- phone -->
-          <rect x="286" y="176" width="92" height="132" rx="16" fill="#ffffff" stroke="#1a1b3a" stroke-width="3"/>
-          <rect x="286" y="176" width="92" height="22" rx="16" fill="#1a1b3a"/>
-          <rect x="286" y="188" width="92" height="10" fill="#1a1b3a"/>
-          <rect x="298" y="212" width="46" height="8" rx="4" fill="#1a1b3a"/>
-          <rect x="298" y="228" width="64" height="6" rx="3" fill="#d8d4e4"/>
-          <rect x="298" y="240" width="52" height="6" rx="3" fill="#d8d4e4"/>
-          <rect x="298" y="258" width="58" height="20" rx="7" fill="#ffb23f"/>
-          <rect x="298" y="286" width="40" height="6" rx="3" fill="#d8d4e4"/>
-        </svg>
+        <div class="mock" aria-label="Live voorbeeld van een website door byXavio, op laptop en telefoon">
+          <div class="mock-blob"></div>
+          <div class="laptop">
+            <div class="laptop-bar"><i></i><i></i><i></i><span>winkelaar.byxavio.nl</span></div>
+            <div class="screen" data-w="1280" data-h="800"><iframe src="https://winkelaar.byxavio.nl/" title="Voorbeeldsite Bouwbedrijf Winkelaar" loading="lazy" tabindex="-1" scrolling="no"></iframe></div>
+            <div class="laptop-base"></div>
+          </div>
+          <div class="phone">
+            <div class="phone-notch"></div>
+            <div class="screen" data-w="390" data-h="780"><iframe src="https://demo1.byxavio.nl/" title="Voorbeeldsite kapperszaak Slijperij" loading="lazy" tabindex="-1" scrolling="no"></iframe></div>
+          </div>
+          <a class="mock-tag" href="#voorbeelden">Live voorbeeld &rarr;</a>
+        </div>
       </div>
     </div>
   </div>
@@ -572,7 +573,7 @@
 
     <div class="notice">
       <span aria-hidden="true">&#9432;</span>
-      <span data-i18n-html="notice.html"><b>Let op:</b> de voorbeeldwebsites hieronder zijn fictief. De bedrijven bestaan niet echt. De websites zelf staan wel te koop.</span>
+      <span data-i18n-html="notice.html"><b>Goed om te weten:</b> dit zijn voorbeeldsites voor verzonnen bedrijven, gemaakt om te laten zien wat er kan. Je eigen site maak ik volledig op maat, of we gebruiken een van deze als basis.</span>
     </div>
 
     <div class="demos">
@@ -898,7 +899,7 @@
   var I18N = {
     nl: {
       "nav.hoe":"Hoe werkt het","nav.voorbeelden":"Voorbeelden","nav.pakketten":"Pakketten","nav.overmij":"Over mij","nav.contact":"Contact","nav.cta":"Offerte aanvragen","nav.menu":"Menu",
-      "hero.eyebrow":"Websites voor kleine bedrijven en zzp’ers","hero.h1":"Een website die <span class=\"hl\">klopt</span>, zonder poespas.","hero.lead":"Ik bouw duidelijke, snelle websites voor kleine ondernemers, van eerste ontwerp tot een pagina die klanten daadwerkelijk kunnen vinden en gebruiken.","hero.cta1":"Vraag een gratis kennismaking aan","hero.cta2":"Bekijk voorbeelden","hero.under1":"Vanaf €195","hero.under2":"Live binnen een week","hero.under3":"Geen abonnement",
+      "hero.eyebrow":"Webdesign uit Purmerend · voor kleine bedrijven en zzp’ers","hero.h1":"Een website die <span class=\"hl\">klopt</span>, zonder poespas.","hero.lead":"Ik bouw duidelijke, snelle websites voor kleine ondernemers in Purmerend en omgeving, van eerste ontwerp tot een pagina die klanten daadwerkelijk kunnen vinden en gebruiken.","hero.cta1":"Vraag een gratis kennismaking aan","hero.cta2":"Bekijk voorbeelden","hero.under1":"Vanaf €195","hero.under2":"Live binnen een week","hero.under3":"Geen abonnement",
       "strip.1.title":"Vaste prijs vooraf","strip.1.desc":"Je weet wat het kost voordat ik begin. Geen verrassingen achteraf.","strip.2.title":"Eigen ontwerp","strip.2.desc":"Volledig op jouw bedrijf gemaakt, geen sjabloon van de plank.","strip.3.title":"Persoonlijk contact","strip.3.desc":"Je hebt mij, van start tot livegang. Geen wisselende accountmanagers.",
       "hoe.h2":"Van eerste bericht tot live site.","hoe.lead":"Geen ingewikkeld traject: vier duidelijke stappen, met mij als vast aanspreekpunt.",
       "step1.num":"STAP 01","step1.title":"Kennismaking","step1.desc":"Je stuurt een bericht of vult het formulier in. We bespreken kort wat je nodig hebt, helemaal vrijblijvend.",
@@ -906,7 +907,7 @@
       "step3.num":"STAP 03","step3.title":"Feedback","step3.desc":"Je geeft feedback en ik verwerk de aanpassingen, tot de site precies klopt.",
       "step4.num":"STAP 04","step4.title":"Livegang","step4.desc":"Je site gaat live en is vindbaar. Ook daarna blijf ik gewoon bereikbaar voor vragen.",
       "voorb.h2":"Zo kan jouw site eruitzien.","voorb.lead":"Vier voorbeelden uit verschillende branches, elk met een eigen kleur, opbouw en formulier.",
-      "notice.html":"<b>Let op:</b> de voorbeeldwebsites hieronder zijn fictief. De bedrijven bestaan niet echt. De websites zelf staan wel te koop.",
+      "notice.html":"<b>Goed om te weten:</b> dit zijn voorbeeldsites voor verzonnen bedrijven, gemaakt om te laten zien wat er kan. Je eigen site maak ik volledig op maat, of we gebruiken een van deze als basis.",
       "demo1.kind":"Kapperszaak","demo1.desc":"Diensten, openingstijden en een afsprakenformulier.",
       "demo2.kind":"Bistro & keuken","demo2.desc":"Menukaart, openingstijden en een reserveringsformulier.",
       "demo3.kind":"Kinderkleding","demo3.desc":"Collectie, maten en een pasafspraak-formulier.",
@@ -939,7 +940,7 @@
     },
     en: {
       "nav.hoe":"How it works","nav.voorbeelden":"Examples","nav.pakketten":"Packages","nav.overmij":"About me","nav.contact":"Contact","nav.cta":"Request a quote","nav.menu":"Menu",
-      "hero.eyebrow":"Websites for small businesses and freelancers","hero.h1":"A website that <span class=\"hl\">works</span>, without the fuss.","hero.lead":"I build clear, fast websites for small business owners — from first design to a page customers can actually find and use.","hero.cta1":"Book a free introduction","hero.cta2":"View examples","hero.under1":"From €195","hero.under2":"Live within a week","hero.under3":"No subscription",
+      "hero.eyebrow":"Web design from Purmerend · for small businesses and freelancers","hero.h1":"A website that <span class=\"hl\">works</span>, without the fuss.","hero.lead":"I build clear, fast websites for small business owners in and around Purmerend — from first design to a page customers can actually find and use.","hero.cta1":"Book a free introduction","hero.cta2":"View examples","hero.under1":"From €195","hero.under2":"Live within a week","hero.under3":"No subscription",
       "strip.1.title":"Fixed price upfront","strip.1.desc":"You know the cost before I start. No surprises afterwards.","strip.2.title":"Custom design","strip.2.desc":"Made entirely around your business, no off-the-shelf template.","strip.3.title":"Personal contact","strip.3.desc":"You have me, from start to launch. No rotating account managers.",
       "hoe.h2":"From first message to live site.","hoe.lead":"No complicated process: four clear steps, with me as your single point of contact.",
       "step1.num":"STEP 01","step1.title":"Introduction","step1.desc":"You send a message or fill in the form. We briefly discuss what you need, completely without obligation.",
@@ -947,7 +948,7 @@
       "step3.num":"STEP 03","step3.title":"Feedback","step3.desc":"You give feedback and I process the changes, until the site is exactly right.",
       "step4.num":"STEP 04","step4.title":"Launch","step4.desc":"Your site goes live and is findable. I stay reachable for questions afterwards too.",
       "voorb.h2":"This is what your site could look like.","voorb.lead":"Four examples from different industries, each with its own colour, layout and form.",
-      "notice.html":"<b>Note:</b> the example websites below are fictional. The businesses don't really exist. The websites themselves are for sale.",
+      "notice.html":"<b>Good to know:</b> these are example sites for made-up businesses, built to show what's possible. Your own site is fully custom-made, or we can use one of these as a starting point.",
       "demo1.kind":"Hair salon","demo1.desc":"Services, opening hours and an appointment form.",
       "demo2.kind":"Bistro & kitchen","demo2.desc":"Menu, opening hours and a reservation form.",
       "demo3.kind":"Children's clothing","demo3.desc":"Collection, sizes and a fitting appointment form.",
@@ -980,7 +981,7 @@
     },
     de: {
       "nav.hoe":"So funktioniert's","nav.voorbeelden":"Beispiele","nav.pakketten":"Pakete","nav.overmij":"Über mich","nav.contact":"Kontakt","nav.cta":"Angebot anfragen","nav.menu":"Menü",
-      "hero.eyebrow":"Websites für kleine Unternehmen und Selbstständige","hero.h1":"Eine Website, die <span class=\"hl\">passt</span>, ganz ohne Schnickschnack.","hero.lead":"Ich baue klare, schnelle Websites für kleine Unternehmer — vom ersten Entwurf bis zu einer Seite, die Kunden wirklich finden und nutzen können.","hero.cta1":"Kostenloses Kennenlernen anfragen","hero.cta2":"Beispiele ansehen","hero.under1":"Ab €195","hero.under2":"Live innerhalb einer Woche","hero.under3":"Kein Abo",
+      "hero.eyebrow":"Webdesign aus Purmerend · für kleine Unternehmen und Selbstständige","hero.h1":"Eine Website, die <span class=\"hl\">passt</span>, ganz ohne Schnickschnack.","hero.lead":"Ich baue klare, schnelle Websites für kleine Unternehmer in und um Purmerend — vom ersten Entwurf bis zu einer Seite, die Kunden wirklich finden und nutzen können.","hero.cta1":"Kostenloses Kennenlernen anfragen","hero.cta2":"Beispiele ansehen","hero.under1":"Ab €195","hero.under2":"Live innerhalb einer Woche","hero.under3":"Kein Abo",
       "strip.1.title":"Festpreis im Voraus","strip.1.desc":"Du weißt, was es kostet, bevor ich anfange. Keine Überraschungen hinterher.","strip.2.title":"Individuelles Design","strip.2.desc":"Ganz auf dein Unternehmen zugeschnitten, keine Vorlage von der Stange.","strip.3.title":"Persönlicher Kontakt","strip.3.desc":"Du hast mich, vom Start bis zum Livegang. Keine wechselnden Ansprechpartner.",
       "hoe.h2":"Von der ersten Nachricht bis zur Live-Website.","hoe.lead":"Kein komplizierter Prozess: vier klare Schritte, mit mir als festem Ansprechpartner.",
       "step1.num":"SCHRITT 01","step1.title":"Kennenlernen","step1.desc":"Du schickst eine Nachricht oder füllst das Formular aus. Wir besprechen kurz, was du brauchst — völlig unverbindlich.",
@@ -988,7 +989,7 @@
       "step3.num":"SCHRITT 03","step3.title":"Feedback","step3.desc":"Du gibst Feedback und ich setze die Anpassungen um, bis die Website genau passt.",
       "step4.num":"SCHRITT 04","step4.title":"Livegang","step4.desc":"Deine Website geht live und ist auffindbar. Auch danach bleibe ich für Fragen erreichbar.",
       "voorb.h2":"So könnte deine Website aussehen.","voorb.lead":"Vier Beispiele aus verschiedenen Branchen, jedes mit eigener Farbe, Aufbau und Formular.",
-      "notice.html":"<b>Hinweis:</b> Die Beispielwebsites unten sind fiktiv. Die Unternehmen existieren nicht wirklich. Die Websites selbst stehen zum Verkauf.",
+      "notice.html":"<b>Gut zu wissen:</b> Das sind Beispielseiten für erfundene Unternehmen, die zeigen, was möglich ist. Deine eigene Seite baue ich komplett nach Maß, oder wir nehmen eine davon als Basis.",
       "demo1.kind":"Friseursalon","demo1.desc":"Dienstleistungen, Öffnungszeiten und ein Terminformular.",
       "demo2.kind":"Bistro & Küche","demo2.desc":"Speisekarte, Öffnungszeiten und ein Reservierungsformular.",
       "demo3.kind":"Kinderkleidung","demo3.desc":"Kollektion, Größen und ein Formular für Anprobetermine.",
@@ -1021,7 +1022,7 @@
     },
     fr: {
       "nav.hoe":"Comment ça marche","nav.voorbeelden":"Exemples","nav.pakketten":"Forfaits","nav.overmij":"À propos","nav.contact":"Contact","nav.cta":"Demander un devis","nav.menu":"Menu",
-      "hero.eyebrow":"Sites web pour petites entreprises et indépendants","hero.h1":"Un site web qui <span class=\"hl\">fonctionne</span>, sans fioritures.","hero.lead":"Je crée des sites web clairs et rapides pour les petits entrepreneurs, du premier design à une page que vos clients peuvent réellement trouver et utiliser.","hero.cta1":"Demandez une prise de contact gratuite","hero.cta2":"Voir des exemples","hero.under1":"À partir de 195 €","hero.under2":"En ligne en une semaine","hero.under3":"Sans abonnement",
+      "hero.eyebrow":"Web design depuis Purmerend · pour petites entreprises et indépendants","hero.h1":"Un site web qui <span class=\"hl\">fonctionne</span>, sans fioritures.","hero.lead":"Je crée des sites web clairs et rapides pour les petits entrepreneurs de Purmerend et ses environs, du premier design à une page que vos clients peuvent réellement trouver et utiliser.","hero.cta1":"Demandez une prise de contact gratuite","hero.cta2":"Voir des exemples","hero.under1":"À partir de 195 €","hero.under2":"En ligne en une semaine","hero.under3":"Sans abonnement",
       "strip.1.title":"Prix fixe à l'avance","strip.1.desc":"Vous savez ce que cela coûte avant que je commence. Aucune surprise après coup.","strip.2.title":"Design sur mesure","strip.2.desc":"Entièrement conçu pour votre entreprise, pas de modèle standard.","strip.3.title":"Contact personnel","strip.3.desc":"Vous m'avez moi, du début à la mise en ligne. Pas de chargés de compte qui changent.",
       "hoe.h2":"Du premier message au site en ligne.","hoe.lead":"Aucun parcours compliqué : quatre étapes claires, avec moi comme interlocuteur unique.",
       "step1.num":"ÉTAPE 01","step1.title":"Prise de contact","step1.desc":"Vous envoyez un message ou remplissez le formulaire. Nous discutons brièvement de vos besoins, sans engagement.",
@@ -1029,7 +1030,7 @@
       "step3.num":"ÉTAPE 03","step3.title":"Retours","step3.desc":"Vous donnez votre avis et j'apporte les modifications, jusqu'à ce que le site soit parfait.",
       "step4.num":"ÉTAPE 04","step4.title":"Mise en ligne","step4.desc":"Votre site est mis en ligne et devient visible. Je reste joignable pour toute question par la suite.",
       "voorb.h2":"Voici à quoi pourrait ressembler votre site.","voorb.lead":"Quatre exemples de secteurs différents, chacun avec sa propre couleur, structure et formulaire.",
-      "notice.html":"<b>Remarque :</b> les sites web d'exemple ci-dessous sont fictifs. Les entreprises n'existent pas réellement. Les sites eux-mêmes sont à vendre.",
+      "notice.html":"<b>Bon à savoir :</b> ce sont des sites d'exemple pour des entreprises inventées, créés pour montrer ce qui est possible. Votre site est entièrement sur mesure, ou nous partons de l'un d'eux.",
       "demo1.kind":"Salon de coiffure","demo1.desc":"Services, horaires d'ouverture et un formulaire de rendez-vous.",
       "demo2.kind":"Bistro & cuisine","demo2.desc":"Carte, horaires d'ouverture et un formulaire de réservation.",
       "demo3.kind":"Vêtements pour enfants","demo3.desc":"Collection, tailles et un formulaire de rendez-vous d'essayage.",
@@ -1062,7 +1063,7 @@
     },
     es: {
       "nav.hoe":"Cómo funciona","nav.voorbeelden":"Ejemplos","nav.pakketten":"Paquetes","nav.overmij":"Sobre mí","nav.contact":"Contacto","nav.cta":"Solicitar presupuesto","nav.menu":"Menú",
-      "hero.eyebrow":"Sitios web para pequeñas empresas y autónomos","hero.h1":"Una web que <span class=\"hl\">funciona</span>, sin complicaciones.","hero.lead":"Construyo sitios web claros y rápidos para pequeños empresarios, desde el primer diseño hasta una página que los clientes realmente puedan encontrar y usar.","hero.cta1":"Solicita una toma de contacto gratuita","hero.cta2":"Ver ejemplos","hero.under1":"Desde 195 €","hero.under2":"En línea en una semana","hero.under3":"Sin suscripción",
+      "hero.eyebrow":"Diseño web desde Purmerend · para pequeñas empresas y autónomos","hero.h1":"Una web que <span class=\"hl\">funciona</span>, sin complicaciones.","hero.lead":"Construyo sitios web claros y rápidos para pequeños empresarios de Purmerend y alrededores, desde el primer diseño hasta una página que los clientes realmente puedan encontrar y usar.","hero.cta1":"Solicita una toma de contacto gratuita","hero.cta2":"Ver ejemplos","hero.under1":"Desde 195 €","hero.under2":"En línea en una semana","hero.under3":"Sin suscripción",
       "strip.1.title":"Precio fijo por adelantado","strip.1.desc":"Sabes el coste antes de que empiece. Sin sorpresas después.","strip.2.title":"Diseño propio","strip.2.desc":"Hecho totalmente a medida de tu negocio, sin plantillas genéricas.","strip.3.title":"Contacto personal","strip.3.desc":"Me tienes a mí, desde el inicio hasta el lanzamiento. Sin gestores de cuenta que cambian.",
       "hoe.h2":"Del primer mensaje al sitio en línea.","hoe.lead":"Sin procesos complicados: cuatro pasos claros, conmigo como único punto de contacto.",
       "step1.num":"PASO 01","step1.title":"Toma de contacto","step1.desc":"Envías un mensaje o rellenas el formulario. Hablamos brevemente sobre lo que necesitas, sin ningún compromiso.",
@@ -1070,7 +1071,7 @@
       "step3.num":"PASO 03","step3.title":"Comentarios","step3.desc":"Das tu opinión y aplico los cambios, hasta que el sitio quede perfecto.",
       "step4.num":"PASO 04","step4.title":"Lanzamiento","step4.desc":"Tu sitio se publica y es fácil de encontrar. Sigo disponible para preguntas después también.",
       "voorb.h2":"Así podría verse tu sitio.","voorb.lead":"Cuatro ejemplos de diferentes sectores, cada uno con su propio color, estructura y formulario.",
-      "notice.html":"<b>Atención:</b> los sitios web de ejemplo a continuación son ficticios. Las empresas no existen realmente. Los propios sitios están en venta.",
+      "notice.html":"<b>Bueno saber:</b> son sitios de ejemplo para empresas inventadas, creados para mostrar lo que es posible. Tu propio sitio se hace totalmente a medida, o usamos uno de estos como base.",
       "demo1.kind":"Peluquería","demo1.desc":"Servicios, horarios y un formulario de citas.",
       "demo2.kind":"Bistró y cocina","demo2.desc":"Carta, horarios y un formulario de reservas.",
       "demo3.kind":"Ropa infantil","demo3.desc":"Colección, tallas y un formulario de cita para pruebas.",
@@ -1179,5 +1180,13 @@
 })();
 </script>
 
+<script>
+(function(){
+  function fit(){document.querySelectorAll('.mock .screen').forEach(function(sc){
+    var w=+sc.dataset.w,h=+sc.dataset.h,f=sc.querySelector('iframe');
+    f.style.width=w+'px';f.style.height=h+'px';f.style.transform='scale('+(sc.clientWidth/w)+')';});}
+  fit();window.addEventListener('resize',fit);
+})();
+</script>
 </body>
 </html>
