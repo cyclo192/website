@@ -166,6 +166,23 @@ nav .btn{padding:.8em 1.2em;font-size:1rem}
 .park figcaption{margin-top:10px;font-weight:700;font-size:1rem;line-height:1.3}
 .park+.fac{margin-top:32px}
 
+/* uit eten */
+#eten{background:#fff;border-bottom:1px solid var(--line)}
+.eat{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px}
+.eat li{display:grid;gap:12px;align-content:start;padding:24px 24px 22px;border-radius:20px;background:var(--paper);border:1px solid var(--line)}
+.eat li:first-child{grid-column:1/-1;background:var(--sun-soft);border-color:var(--sun)}
+.where{justify-self:start;font:700 .9rem/1 var(--body);padding:.5em .85em;border-radius:999px;background:var(--ink);color:#fff}
+.eat h3{font-size:1.5rem}
+.eat p{color:var(--ink-soft)}
+.hours{display:grid;grid-template-columns:auto 1fr;gap:4px 20px;padding:12px 0;border-block:1px solid var(--line)}
+.eat li:first-child .hours{border-color:#ecd9a4}
+.hours dt{font-weight:700}
+.eat-links{display:flex;flex-wrap:wrap;gap:8px 22px;max-width:none}
+.eat-links a{font-weight:700;color:var(--ink);text-underline-offset:3px}
+.eat-links a:hover{color:var(--rose)}
+.eat-note{margin-top:22px;max-width:none;font-size:.98rem;color:var(--muted)}
+#camping .note a{color:#fff;text-underline-offset:3px}
+
 /* omgeving */
 .env{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start}
 .env a{font-weight:700;text-underline-offset:3px}
@@ -309,6 +326,7 @@ dialog::backdrop{background:rgba(15,20,36,.95)}
   .intro,.out,.env,.ask,.more,.price-foot{grid-template-columns:1fr;gap:30px}
   .more{margin-top:40px;padding-top:34px}
   .prices,.park{grid-template-columns:1fr 1fr}
+  .eat{grid-template-columns:1fr}
   .park figure:first-child{grid-column:1/-1}
   .park figure:first-child img{aspect-ratio:16/9}
   .cal-months{grid-template-columns:1fr}
@@ -334,6 +352,10 @@ dialog::backdrop{background:rgba(15,20,36,.95)}
   .room{grid-template-columns:112px 1fr;gap:16px;align-items:center}
   .room button{aspect-ratio:4/5}
   .fac,.incl{grid-template-columns:1fr}
+  .eat li{padding:20px 18px}
+  .hours{grid-template-columns:1fr;gap:0}
+  .hours dd{margin-bottom:8px}
+  .hours dd:last-child{margin-bottom:0}
   .prices{gap:10px}
   .prices li{padding:16px 16px 18px}
   .prices b{font-size:2.1rem}
@@ -376,6 +398,7 @@ dialog::backdrop{background:rgba(15,20,36,.95)}
       <a href="#chalet">Het chalet</a>
       <a href="#fotos">Foto's</a>
       <a href="#camping">De camping</a>
+      <a href="#eten">Uit eten</a>
       <a href="#omgeving">Omgeving</a>
       <a href="#prijzen">Prijzen</a>
       <a class="btn btn-rose" href="#aanvragen">Beschikbaarheid</a>
@@ -520,7 +543,68 @@ dialog::backdrop{background:rgba(15,20,36,.95)}
         <li><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="6" cy="17" r="3"/><circle cx="18" cy="17" r="3"/><path d="M6 17h7l3-7h-3M9.5 17l1.5-5h3.500M15 7h3"/></svg><b>Skelters</b><span>Te huur bij de receptie</span></li>
         <li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3.5 10h17l-1.7 9.500H5.200zM8 10l3-6M16 10l-3-6M9 13.500v2.500M12 13.500v2.500M15 13.500v2.5"/></svg><b>Supermarkt en wasserette</b><span>Handig voor de dagelijkse dingen</span></li>
       </ul>
-      <p class="note">De voorzieningen zijn van de camping. Openingstijden verschillen per seizoen.</p>
+      <p class="note">De voorzieningen zijn van de camping en zijn open in het campingseizoen. In 2026 liep dat van 27 maart t/m 30 september. De actuele openingstijden van het zwembad en het paviljoen staan op <a href="https://otterberg.nl/openingstijden/" target="_blank" rel="noopener">otterberg.nl</a>.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="eten">
+    <div class="wrap">
+      <h2>Uit eten in de buurt</h2>
+      <p class="sub">Geen zin om te koken? Op de camping en in de dorpen eromheen kun je goed terecht.</p>
+      <ul class="eat">
+        <li>
+          <span class="where">Op de camping</span>
+          <h3>Paviljoen De Otterberg</h3>
+          <p>Restaurant met terras voor lunch en diner, met een kindermenu. In de snackbar haal je patat, snacks, burgers, ijs en milkshakes. Afhalen kan ook.</p>
+          <dl class="hours">
+            <dt>Seizoen</dt><dd>Open in het campingseizoen. In 2026 liep dat van 27 maart t/m 30 september.</dd>
+            <dt>Buiten het seizoen</dt><dd>Gesloten</dd>
+          </dl>
+          <p class="eat-links"><a href="tel:+31593562362">0593 - 56 23 62</a><a href="https://otterberg.nl/openingstijden-horeca/" target="_blank" rel="noopener">Actuele openingstijden</a></p>
+        </li>
+        <li>
+          <span class="where">Wijster</span>
+          <h3>Herberg Eijg&amp;Wijs</h3>
+          <p>Herberg in het dorp met een restaurant en een eigen ijserij.</p>
+          <dl class="hours">
+            <dt>Maandag t/m vrijdag</dt><dd>vanaf 11.00 uur</dd>
+            <dt>Zaterdag en zondag</dt><dd>vanaf 10.00 uur</dd>
+          </dl>
+          <p class="eat-links"><a href="tel:+31593856450">0593 - 85 64 50</a><a href="http://www.eijgenwijs.com" target="_blank" rel="noopener">eijgenwijs.com</a></p>
+        </li>
+        <li>
+          <span class="where">Wijster</span>
+          <h3>Snackbar Wiester</h3>
+          <p>Snackbar in het dorp, voor patat en een snack. Bruntingerweg 6.</p>
+          <dl class="hours">
+            <dt>Openingstijden</dt><dd>Bel even of kijk op hun Facebookpagina</dd>
+          </dl>
+          <p class="eat-links"><a href="tel:+31652680179">06 - 52 68 01 79</a><a href="https://www.facebook.com/Snackbarwiester/" target="_blank" rel="noopener">Facebookpagina</a></p>
+        </li>
+        <li>
+          <span class="where">Elp</span>
+          <h3>Pannenkoekenrestaurant De Strohoed</h3>
+          <p>Gezellig pannenkoekenrestaurant met een speeltuin. Afhalen kan ook.</p>
+          <dl class="hours">
+            <dt>Woensdag</dt><dd>17.00 tot 20.30 uur</dd>
+            <dt>Donderdag t/m zondag</dt><dd>12.00 tot 20.30 uur</dd>
+            <dt>Maandag en dinsdag</dt><dd>Gesloten</dd>
+          </dl>
+          <p class="eat-links"><a href="tel:+31593346467">0593 - 34 64 67</a><a href="https://www.destrohoed.nl/" target="_blank" rel="noopener">destrohoed.nl</a></p>
+        </li>
+        <li>
+          <span class="where">Beilen</span>
+          <h3>Rickkies Boer'n Bistro</h3>
+          <p>Bistro op de boerderij, waar de boer zelf voor je kookt.</p>
+          <dl class="hours">
+            <dt>Vrijdag en zaterdag</dt><dd>Diner</dd>
+            <dt>Zondag</dt><dd>Lunch van 12.00 tot 14.30 uur</dd>
+            <dt>Maandag t/m donderdag</dt><dd>Gesloten</dd>
+          </dl>
+          <p class="eat-links"><a href="tel:+31650273686">06 - 50 27 36 86</a><a href="https://rickkies.nl/" target="_blank" rel="noopener">rickkies.nl</a></p>
+        </li>
+      </ul>
+      <p class="eat-note">Openingstijden gecontroleerd op 2 oktober 2026. Ze kunnen veranderen, dus bel even of kijk op de site van het restaurant voordat je gaat.</p>
     </div>
   </section>
 
