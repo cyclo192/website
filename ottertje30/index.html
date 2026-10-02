@@ -172,33 +172,42 @@ nav .btn{padding:.8em 1.2em;font-size:1rem}
 
 /* agenda */
 .cal{background:#fff;color:var(--ink);border-radius:24px;padding:26px 30px 24px;margin-bottom:44px;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
-.cal-bar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:18px}
-.cal-nav{flex:none;width:50px;height:50px;border-radius:50%;border:2px solid var(--ink);background:#fff;cursor:pointer;display:grid;place-items:center}
-.cal-nav svg{width:22px;height:22px;fill:none;stroke:var(--ink);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
-.cal-nav:hover:not(:disabled){background:var(--ink)}
-.cal-nav:hover:not(:disabled) svg{stroke:#fff}
-.cal-nav:disabled{opacity:.25;cursor:default}
-.cal-legend{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 22px;font-size:1rem}
+.pick{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:22px}
+.pick li{border:2px solid var(--line);border-radius:16px;padding:14px 18px;background:var(--paper)}
+.pick span{display:block;color:var(--muted);font-size:1rem}
+.pick b{display:block;font-size:1.22rem;line-height:1.3}
+.pick li.on{border-color:var(--ink);background:var(--sun-soft);box-shadow:0 0 0 3px var(--sun)}
+.pick li.done{border-color:var(--ink);background:#fff}
+.cal-bar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:20px}
+.cal-nav{flex:none;display:inline-flex;align-items:center;gap:.4em;min-height:52px;padding:0 1.2em;border-radius:999px;border:2px solid var(--ink);background:#fff;font:700 1.05rem/1 var(--body);cursor:pointer}
+.cal-nav svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.cal-nav:hover:not(:disabled){background:var(--ink);color:#fff}
+.cal-nav:disabled{opacity:.3;cursor:default}
+.cal-legend{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 24px;font-size:1.05rem;font-weight:700}
 .cal-legend li{display:flex;align-items:center;gap:.5em}
-.cal-legend i{width:22px;height:22px;border-radius:7px}
-.k-vrij{background:#e3f1e6;border:1px solid #bcd9c3}
-.k-bezet{background:repeating-linear-gradient(135deg,#f6d9de 0 5px,#fbecee 5px 10px);border:1px solid #ebbcc4}
-.k-keuze{background:var(--ink)}
+.cal-legend i{width:26px;height:26px;border-radius:8px}
+.k-vrij{background:#cdebd4;border:1px solid #9ccfa9}
+.k-bezet{background:repeating-linear-gradient(135deg,#f1bcc4 0 5px,#f9dde1 5px 10px);border:1px solid #e09aa5}
 .cal-months{display:grid;grid-template-columns:1fr 1fr;gap:44px}
 .cal-month h3{font-size:1.35rem;text-align:center;margin-bottom:12px;text-transform:capitalize}
 .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
 .cal-wd{text-align:center;font-size:.92rem;color:var(--muted);padding-bottom:4px}
-.cal-day{height:46px;border:0;border-radius:11px;background:#e3f1e6;color:var(--ink);font:700 1.05rem/1 var(--body);cursor:pointer;padding:0}
-.cal-day:hover:not(:disabled){box-shadow:inset 0 0 0 2px var(--ink)}
-.cal-day:disabled{cursor:default}
-.cal-day.past{background:transparent;color:#a9aebb;font-weight:400}
-.cal-day.bezet{background:repeating-linear-gradient(135deg,#f6d9de 0 5px,#fbecee 5px 10px);color:#9a5560;font-weight:400;text-decoration:line-through}
+.cal-day{height:52px;border:0;border-radius:12px;background:#cdebd4;color:var(--ink);font:700 1.2rem/1 var(--body);cursor:pointer;padding:0}
+.cal-day:hover{box-shadow:inset 0 0 0 2px var(--ink)}
+.cal-day.past{background:transparent;color:#a9aebb;font-weight:400;cursor:default;box-shadow:none}
+.cal-day.bezet{background:repeating-linear-gradient(135deg,#f1bcc4 0 5px,#f9dde1 5px 10px);color:#8f2233;font-weight:400;text-decoration:line-through}
 .cal-day.in{background:#46557f;color:#fff}
 .cal-day.pre{background:var(--sun-soft);box-shadow:inset 0 0 0 2px var(--sun)}
-.cal-day.sel{background:var(--ink);color:#fff;text-decoration:none;box-shadow:none}
-.cal-status{margin-top:20px;max-width:none;font-weight:700;font-size:1.08rem;padding:.8em 1em;border-radius:14px;background:var(--paper)}
-.cal-status.ok{background:#e3f1e6}
-.cal-status.warn{background:#fbecee;color:#8f2233}
+.cal-day.sel{background:var(--ink);color:#fff;text-decoration:none;box-shadow:0 0 0 3px var(--sun)}
+.cal-status{margin-top:22px;max-width:none;font-weight:700;font-size:1.2rem;line-height:1.4;padding:.85em 1em;border-radius:14px;background:var(--paper)}
+.cal-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px}
+.cal-actions:has(button:not([hidden])){margin-bottom:4px}
+.cal-actions [hidden]{display:none}
+.periode .lbl{display:block;font-weight:700;margin-bottom:6px}
+.periode p{max-width:none;padding:.8em .9em;border-radius:12px;background:var(--paper);border:1.5px dashed #c3c9d4}
+.periode.ok p{background:#cdebd4;border:1.5px solid #9ccfa9;font-weight:700}
+.cal-status.ok{background:#cdebd4}
+.cal-status.warn{background:#f9dde1;color:#8f2233}
 .cal-note{margin-top:12px;max-width:none;font-size:.95rem;color:var(--muted)}
 .contact a{text-decoration:none;font-family:var(--display);font-size:1.6rem;overflow-wrap:anywhere}
 .contact a.mail{font-size:1.2rem}
@@ -285,12 +294,19 @@ dialog::backdrop{background:rgba(15,20,36,.95)}
   .near li{grid-template-columns:1fr auto;gap:8px 12px}
   .near i{grid-column:1/-1;grid-row:2}
   form{grid-template-columns:1fr;padding:20px}
-  .cal{padding:18px 14px 18px;border-radius:20px}
+  .cal{padding:16px 12px 18px;border-radius:20px}
+  .pick{gap:8px}
+  .pick li{padding:10px 12px}
+  .pick span{font-size:.92rem}
+  .pick b{font-size:1.02rem}
+  .cal-bar{flex-wrap:wrap}
+  .cal-legend{order:3;flex-basis:100%;gap:6px 18px;font-size:1rem}
+  .cal-nav{padding:0 1em;min-height:50px}
+  .cal-nav span{display:none}
   .cal-grid{gap:4px}
-  .cal-day{height:44px;font-size:1rem}
-  .cal-legend{gap:6px 14px;font-size:.92rem}
-  .cal-legend i{width:18px;height:18px}
-  .cal-nav{width:46px;height:46px}
+  .cal-day{height:48px;font-size:1.1rem}
+  .cal-status{font-size:1.08rem}
+  .cal-actions .btn{flex:1 1 100%}
   .send .btn{flex:1 1 100%}
   .hero-cta .btn{flex:1 1 100%}
 }
@@ -453,20 +469,27 @@ dialog::backdrop{background:rgba(15,20,36,.95)}
     <div class="wrap">
       <div class="ask-head">
         <h2>Wanneer wil je komen?</h2>
-        <p class="sub">Kies in de agenda je aankomst en je vertrek. Daarna stuur je de aanvraag via WhatsApp of e-mail en hoor je snel wat het kost.</p>
+        <p class="sub">Kijk in de agenda welke dagen vrij zijn. Tik eerst op de dag dat je aankomt en daarna op de dag dat je vertrekt.</p>
       </div>
       <div class="cal" id="cal">
+        <ol class="pick">
+          <li id="pickA" class="on"><span>Stap 1: aankomst</span><b id="pickAv">Tik op een groene dag</b></li>
+          <li id="pickB"><span>Stap 2: vertrek</span><b id="pickBv">Kies daarna je vertrekdag</b></li>
+        </ol>
         <div class="cal-bar">
-          <button type="button" class="cal-nav" id="calprev" aria-label="Vorige maand"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
-          <ul class="cal-legend" aria-label="Legenda">
-            <li><i class="k-vrij"></i>Vrij</li>
-            <li><i class="k-bezet"></i>Bezet</li>
-            <li><i class="k-keuze"></i>Jouw periode</li>
+          <button type="button" class="cal-nav" id="calprev"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>Vorige<span> maand</span></button>
+          <ul class="cal-legend" aria-label="Uitleg van de kleuren">
+            <li><i class="k-vrij"></i>Groen is vrij</li>
+            <li><i class="k-bezet"></i>Rood is bezet</li>
           </ul>
-          <button type="button" class="cal-nav" id="calnext" aria-label="Volgende maand"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+          <button type="button" class="cal-nav" id="calnext">Volgende<span> maand</span><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
         </div>
         <div class="cal-months" id="calmonths"></div>
         <p class="cal-status" id="calstatus" role="status">Tik op de dag dat je wilt aankomen.</p>
+        <div class="cal-actions">
+          <button type="button" class="btn btn-rose" id="calgo" hidden>Verder met aanvragen</button>
+          <button type="button" class="btn btn-line" id="calreset" hidden>Opnieuw kiezen</button>
+        </div>
         <p class="cal-note" id="calnote"></p>
         <noscript><p class="cal-note">De agenda werkt met JavaScript. Bel of app gerust om te vragen welke dagen vrij zijn.</p></noscript>
       </div>
@@ -480,9 +503,8 @@ dialog::backdrop{background:rgba(15,20,36,.95)}
         </ul>
       </div>
       <form id="form" novalidate>
+        <div class="full periode"><span class="lbl">Jouw periode</span><p id="periode">Nog niet gekozen. Kies je aankomst en vertrek in de agenda.</p><input id="van" name="van" type="hidden"><input id="tot" name="tot" type="hidden"></div>
         <div class="full"><label for="naam">Naam</label><input id="naam" name="naam" autocomplete="name" required></div>
-        <div><label for="van">Aankomst</label><input id="van" name="van" type="date" required></div>
-        <div><label for="tot">Vertrek</label><input id="tot" name="tot" type="date" required></div>
         <div><label for="pers">Aantal personen</label><select id="pers" name="pers"><option>1</option><option selected>2</option><option>3</option><option>4</option></select></div>
         <div><label for="hond">Hondje mee?</label><select id="hond" name="hond"><option>Nee</option><option>Ja, een klein hondje</option></select></div>
         <div class="full"><label for="msg">Vraag of opmerking <small>(mag leeg blijven)</small></label><textarea id="msg" name="msg"></textarea></div>
@@ -542,8 +564,9 @@ f.van.addEventListener('change',()=>{f.tot.min=f.van.value||today;if(f.tot.value
 const nl=d=>new Date(d+'T12:00:00').toLocaleDateString('nl-NL',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
 f.querySelectorAll('[data-via]').forEach(b=>b.addEventListener('click',()=>{
   const naam=f.naam.value.trim();
-  if(!naam||!f.van.value||!f.tot.value){hint.textContent='Vul je naam, aankomst en vertrek in. Dan kunnen we direct kijken of het chalet vrij is.';hint.style.color='#a82b3f';(!naam?f.naam:!f.van.value?f.van:f.tot).focus();return;}
-  if(f.tot.value<=f.van.value){hint.textContent='De vertrekdatum moet na de aankomstdatum liggen.';hint.style.color='#a82b3f';f.tot.focus();return;}
+  if(!f.van.value||!f.tot.value){hint.textContent='Kies eerst in de agenda je aankomst en je vertrek.';hint.style.color='#a82b3f';status('Tik eerst op de dag dat je aankomt en daarna op de dag dat je vertrekt.','warn');document.getElementById('cal').scrollIntoView({block:'start'});return;}
+  if(!naam){hint.textContent='Vul nog even je naam in.';hint.style.color='#a82b3f';f.naam.focus();return;}
+  if(f.tot.value<=f.van.value){hint.textContent='De vertrekdatum moet na de aankomstdatum liggen.';hint.style.color='#a82b3f';return;}
   if(!periodeVrij(f.van.value,f.tot.value)){hint.textContent='In deze periode is het chalet al bezet. Kijk in de agenda welke dagen nog vrij zijn.';hint.style.color='#a82b3f';document.getElementById('cal').scrollIntoView({block:'center'});return;}
   const regels=['Hoi! Ik wil graag Slinger Ottertje 30 huren.','','Naam: '+naam,'Aankomst: '+nl(f.van.value),'Vertrek: '+nl(f.tot.value),'Aantal personen: '+f.pers.value,'Hondje mee: '+f.hond.value];
   if(f.msg.value.trim())regels.push('',f.msg.value.trim());
@@ -557,13 +580,25 @@ const BEZET=(window.BEZET||[]).filter(p=>Array.isArray(p)&&p[0]&&p[1]&&p[0]<p[1]
 const addDay=(s,n)=>{const d=new Date(s+'T12:00:00');d.setDate(d.getDate()+n);return iso(d)};
 const nachtBezet=s=>BEZET.some(p=>s>=p[0]&&s<p[1]);
 function periodeVrij(a,b){for(let s=a;s<b;s=addDay(s,1))if(nachtBezet(s))return false;return true;}
-const calM=document.getElementById('calmonths'),calS=document.getElementById('calstatus'),calPrev=document.getElementById('calprev'),calNext=document.getElementById('calnext');
+const $=id=>document.getElementById(id);
+const calM=$('calmonths'),calS=$('calstatus'),calPrev=$('calprev'),calNext=$('calnext');
 const twee=matchMedia('(min-width:901px)');
 const nu=new Date(),eerste=new Date(nu.getFullYear(),nu.getMonth(),1),laatste=new Date(nu.getFullYear(),nu.getMonth()+17,1);
 let view=new Date(eerste),selA='',selB='';
 const kort=d=>new Date(d+'T12:00:00').toLocaleDateString('nl-NL',{weekday:'long',day:'numeric',month:'long'});
 const lang=d=>new Date(d+'T12:00:00').toLocaleDateString('nl-NL',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+const nachten=()=>Math.round((new Date(selB+'T12:00:00')-new Date(selA+'T12:00:00'))/864e5);
 function status(t,k){calS.textContent=t;calS.className='cal-status'+(k?' '+k:'');}
+function werkBij(){
+  $('pickAv').textContent=selA?lang(selA):'Tik op een groene dag';
+  $('pickBv').textContent=selB?lang(selB):selA?'Tik nu op je vertrekdag':'Kies daarna je vertrekdag';
+  $('pickA').className=selA?'done':'on';$('pickB').className=selB?'done':selA?'on':'';
+  $('calgo').hidden=!(selA&&selB);$('calreset').hidden=!selA;
+  f.van.value=selA;f.tot.value=selB;
+  const klaar=selA&&selB,n=klaar?nachten():0;
+  $('periode').textContent=klaar?lang(selA)+' tot '+lang(selB)+' ('+n+(n===1?' nacht':' nachten')+')':'Nog niet gekozen. Kies je aankomst en vertrek in de agenda.';
+  $('periode').parentNode.classList.toggle('ok',!!klaar);
+}
 function teken(){
   const n=twee.matches?2:1;calM.innerHTML='';
   for(let i=0;i<n;i++){
@@ -576,12 +611,9 @@ function teken(){
     for(let d=1;d<=dagen;d++){
       const s=iso(new Date(m.getFullYear(),m.getMonth(),d)),b=document.createElement('button');
       b.type='button';b.className='cal-day';b.textContent=d;b.dataset.d=s;
-      const past=s<today,bezet=nachtBezet(s);
-      // een bezette dag mag wel als vertrekdag, als alle nachten ervoor vrij zijn
-      const alsVertrek=selA&&!selB&&s>selA&&periodeVrij(selA,s);
       let label=kort(s);
-      if(past){b.classList.add('past');b.disabled=true;label+=', voorbij';}
-      else if(bezet){b.classList.add('bezet');if(!alsVertrek)b.disabled=true;label+=alsVertrek?', vrij als vertrekdag':', bezet';}
+      if(s<today){b.classList.add('past');label+=', voorbij';}
+      else if(nachtBezet(s)){b.classList.add('bezet');label+=', bezet';}
       else label+=', vrij';
       if(s===selA||s===selB){b.classList.add('sel');label+=s===selA?', jouw aankomst':', jouw vertrek';}
       else if(selA&&selB&&s>selA&&s<selB)b.classList.add('in');
@@ -591,39 +623,36 @@ function teken(){
   }
   calPrev.disabled=view<=eerste;
   calNext.disabled=new Date(view.getFullYear(),view.getMonth()+n-1,1)>=laatste;
+  werkBij();
 }
 calM.addEventListener('click',e=>{
-  const b=e.target.closest('.cal-day');if(!b||b.disabled)return;const s=b.dataset.d;
-  if(!selA||selB||s<=selA){
-    if(nachtBezet(s))return;
-    selA=s;selB='';status('Aankomst op '+kort(s)+'. Tik nu op de dag dat je weer vertrekt. Alle dagen ertussen horen erbij. Blijf je langer, blader dan met de pijl naar een latere maand.');
-  }else if(periodeVrij(selA,s)){
-    selB=s;const n=Math.round((new Date(selB+'T12:00:00')-new Date(selA+'T12:00:00'))/864e5);
-    status('Vrij van '+lang(selA)+' tot '+lang(selB)+' ('+n+(n===1?' nacht':' nachten')+'). Vul hieronder je naam in en verstuur je aanvraag.','ok');
+  const b=e.target.closest('.cal-day');if(!b)return;const s=b.dataset.d;
+  if(s<today){status('Deze dag is al voorbij. Kies een groene dag.','warn');return;}
+  const kiestVertrek=selA&&!selB&&s>selA;
+  if(kiestVertrek){
+    // de vertrekdag mag een bezette dag zijn, zolang alle nachten ervoor vrij zijn
+    if(!periodeVrij(selA,s)){status('Tussen je aankomst en deze dag is het chalet al bezet. Kies een eerdere vertrekdag.','warn');return;}
+    selB=s;const n=nachten();
+    status('Het chalet is vrij van '+lang(selA)+' tot '+lang(selB)+'. Dat '+(n===1?'is 1 nacht':'zijn '+n+' nachten')+'.','ok');
   }else{
-    status('Tussen deze dagen is het chalet al bezet. Kies een eerdere vertrekdag of een andere aankomst.','warn');teken();return;
+    if(nachtBezet(s)){status('Deze dag is al bezet. Kies een groene dag.','warn');return;}
+    selA=s;selB='';status('Je komt aan op '+kort(s)+'. Tik nu op de dag dat je vertrekt. Blijf je langer, kies dan eerst Volgende maand.');
   }
-  f.van.value=selA;f.tot.min=selA;f.tot.value=selB;hint.style.color='';teken();
-  const nieuw=calM.querySelector('[data-d="'+s+'"]');if(nieuw)nieuw.focus();
+  hint.style.color='';hint.textContent='Je bericht opent in WhatsApp of je mailprogramma. Daar druk je zelf op verzenden.';teken();
+  const nieuw=calM.querySelector('[data-d="'+s+'"]');if(nieuw)nieuw.focus({preventScroll:true});
 });
 // Voorvertoning van de periode terwijl je met de muis de vertrekdag zoekt
 calM.addEventListener('mouseover',e=>{
-  const b=e.target.closest('.cal-day');if(!b||!selA||selB)return;const s=b.dataset.d,ok=!b.disabled&&s>selA&&periodeVrij(selA,s);
+  const b=e.target.closest('.cal-day');if(!b||!selA||selB)return;const s=b.dataset.d,ok=s>selA&&periodeVrij(selA,s);
   calM.querySelectorAll('.cal-day').forEach(x=>x.classList.toggle('pre',ok&&x.dataset.d>selA&&x.dataset.d<=s));
 });
 calM.addEventListener('mouseleave',()=>calM.querySelectorAll('.pre').forEach(x=>x.classList.remove('pre')));
 calPrev.addEventListener('click',()=>{view=new Date(view.getFullYear(),view.getMonth()-1,1);teken();});
 calNext.addEventListener('click',()=>{view=new Date(view.getFullYear(),view.getMonth()+1,1);teken();});
 twee.addEventListener('change',teken);
-// Datums die in het formulier worden getypt ook in de agenda laten zien
-function vanFormulier(){
-  selA=f.van.value>=today?f.van.value:'';selB=selA&&f.tot.value>selA?f.tot.value:'';
-  if(selA){const d=new Date(selA+'T12:00:00');view=new Date(d.getFullYear(),d.getMonth(),1);}
-  if(selA&&selB)status(periodeVrij(selA,selB)?'Vrij van '+lang(selA)+' tot '+lang(selB)+'.':'In deze periode is het chalet al bezet. Kies andere dagen.',periodeVrij(selA,selB)?'ok':'warn');
-  teken();
-}
-f.van.addEventListener('change',vanFormulier);f.tot.addEventListener('change',vanFormulier);
-if(window.BEZET_BIJGEWERKT)document.getElementById('calnote').textContent='Agenda bijgewerkt op '+new Date(window.BEZET_BIJGEWERKT+'T12:00:00').toLocaleDateString('nl-NL',{day:'numeric',month:'long',year:'numeric'})+'. Je verblijf is pas zeker na onze bevestiging.';
+$('calreset').addEventListener('click',()=>{selA='';selB='';status('Tik op de dag dat je wilt aankomen.');teken();});
+$('calgo').addEventListener('click',()=>{f.scrollIntoView({block:'start'});f.naam.focus({preventScroll:true});});
+if(window.BEZET_BIJGEWERKT)$('calnote').textContent='Agenda bijgewerkt op '+new Date(window.BEZET_BIJGEWERKT+'T12:00:00').toLocaleDateString('nl-NL',{day:'numeric',month:'long',year:'numeric'})+'. Je verblijf is pas zeker na onze bevestiging.';
 teken();
 
 // Foto's bij de kamers en de tuin openen dezelfde lightbox
