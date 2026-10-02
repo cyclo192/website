@@ -207,11 +207,6 @@ nav .btn{padding:.8em 1.2em;font-size:1rem}
 .hosts b{color:#fff}
 
 /* agenda */
-.free{margin-bottom:22px;padding:14px 16px 16px;border-radius:16px;background:var(--paper);border:1px solid var(--line)}
-.free b{display:block;margin-bottom:10px;font-size:1.05rem}
-.free ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
-.free button{border:1.5px solid #9ccfa9;background:#cdebd4;color:var(--ink);border-radius:999px;padding:.55em 1em;font:700 1rem/1.2 var(--body);cursor:pointer}
-.free button:hover{border-color:var(--ink)}
 .cal{background:#fff;color:var(--ink);border-radius:24px;padding:26px 30px 24px;margin-bottom:44px;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
 .pick{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:22px}
 .pick li{border:2px solid var(--line);border-radius:16px;padding:14px 18px;background:var(--paper)}
@@ -336,7 +331,6 @@ dialog::backdrop{background:rgba(15,20,36,.95)}
   .prices b{font-size:2.1rem}
   .price-foot .ticks{grid-template-columns:1fr}
   .price-foot .btn{width:100%}
-  .free button{font-size:.95rem}
   .facts{gap:12px 10px}
   .facts li{font-size:.95rem;gap:.5em}
   .facts svg{width:34px;height:34px;padding:7px}
@@ -592,7 +586,6 @@ dialog::backdrop{background:rgba(15,20,36,.95)}
         <p class="sub">Kijk in de agenda welke dagen vrij zijn. Tik eerst op de dag dat je aankomt en daarna op de dag dat je vertrekt.</p>
       </div>
       <div class="cal" id="cal">
-        <div class="free" id="free" hidden><b>Deze periodes zijn nog te boeken</b><ul id="freelist"></ul></div>
         <ol class="pick">
           <li id="pickA" class="on"><span>Stap 1: aankomst</span><b id="pickAv">Tik op een groene dag</b></li>
           <li id="pickB"><span>Stap 2: vertrek</span><b id="pickBv">Kies daarna je vertrekdag</b></li>
@@ -790,25 +783,6 @@ calNext.addEventListener('click',()=>{view=new Date(view.getFullYear(),view.getM
 twee.addEventListener('change',teken);
 $('calreset').addEventListener('click',()=>{selA='';selB='';status('Tik op de dag dat je wilt aankomen.');teken();});
 $('calgo').addEventListener('click',()=>{f.scrollIntoView({block:'start'});f.naam.focus({preventScroll:true});});
-// Lijstje met de periodes die nog vrij zijn. Tik op een periode om er in de agenda naartoe te gaan
-(function(){
-  if(!BEZET.length)return;
-  const vrij=[];let start='';
-  for(let s=today;s<=eind;s=addDay(s,1)){
-    if(!nachtBezet(s)){if(!start)start=s;}
-    else if(start){vrij.push([start,s]);start='';}
-  }
-  if(start)vrij.push([start,'']);
-  if(!vrij.length)return;
-  const dm=d=>new Date(d+'T12:00:00').toLocaleDateString('nl-NL',{day:'numeric',month:'long'}),jr=d=>d.slice(0,4);
-  vrij.forEach(([a,b])=>{
-    const li=document.createElement('li'),k=document.createElement('button');k.type='button';
-    k.textContent=!b?dm(a)+' '+jr(a)+' t/m eind '+laatste.getFullYear():jr(a)===jr(b)?dm(a)+' tot '+dm(b)+' '+jr(b):dm(a)+' '+jr(a)+' tot '+dm(b)+' '+jr(b);
-    k.addEventListener('click',()=>{view=maandVan(a)<eerste?new Date(eerste):maandVan(a);teken();calM.scrollIntoView({block:'nearest'});});
-    li.append(k);$('freelist').append(li);
-  });
-  $('free').hidden=false;
-})();
 if(window.BEZET_BIJGEWERKT)$('calnote').textContent='Agenda bijgewerkt op '+new Date(window.BEZET_BIJGEWERKT+'T12:00:00').toLocaleDateString('nl-NL',{day:'numeric',month:'long',year:'numeric'})+'. Je verblijf is pas zeker na onze bevestiging.';
 teken();
 
