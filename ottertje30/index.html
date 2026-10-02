@@ -228,7 +228,7 @@ nav .btn{padding:.8em 1.2em;font-size:1rem}
 .cal-legend li{display:flex;align-items:center;gap:.5em}
 .cal-legend i{width:26px;height:26px;border-radius:8px}
 .k-vrij{background:#cdebd4;border:1px solid #9ccfa9}
-.k-bezet{background:repeating-linear-gradient(135deg,#f1bcc4 0 5px,#f9dde1 5px 10px);border:1px solid #e09aa5}
+.k-bezet{background:var(--rose);border:1px solid var(--rose-deep)}
 .cal-months{display:grid;grid-template-columns:1fr 1fr;gap:44px}
 .cal-month h3{font-size:1.35rem;text-align:center;margin-bottom:12px;text-transform:capitalize}
 .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
@@ -236,7 +236,7 @@ nav .btn{padding:.8em 1.2em;font-size:1rem}
 .cal-day{height:52px;border:0;border-radius:12px;background:#cdebd4;color:var(--ink);font:700 1.2rem/1 var(--body);cursor:pointer;padding:0}
 .cal-day:hover{box-shadow:inset 0 0 0 2px var(--ink)}
 .cal-day.past{background:transparent;color:#a9aebb;font-weight:400;cursor:default;box-shadow:none}
-.cal-day.bezet{background:repeating-linear-gradient(135deg,#f1bcc4 0 5px,#f9dde1 5px 10px);color:#8f2233;font-weight:400;text-decoration:line-through}
+.cal-day.bezet{background:var(--rose);color:#fff;text-decoration:line-through;text-decoration-thickness:2px}
 .cal-day.in{background:#46557f;color:#fff}
 .cal-day.pre{background:var(--sun-soft);box-shadow:inset 0 0 0 2px var(--sun)}
 .cal-day.sel{background:var(--ink);color:#fff;text-decoration:none;box-shadow:0 0 0 3px var(--sun)}
@@ -731,8 +731,10 @@ function werkBij(){
   $('periode').textContent=klaar?lang(selA)+' tot '+lang(selB)+' ('+n+(n===1?' nacht':' nachten')+')':'Nog niet gekozen. Kies je aankomst en vertrek in de agenda.';
   $('periode').parentNode.classList.toggle('ok',!!klaar);
 }
+// Laatste dag waarop je nog kunt vertrekken: de dag waarop de volgende gasten aankomen
+function uiterlijk(a){for(let s=addDay(a,1);s<=eind;s=addDay(s,1))if(nachtBezet(s))return s;return '';}
 function teken(){
-  const n=twee.matches?2:1;calM.innerHTML='';
+  const n=twee.matches?2:1,wissel=selA&&!selB?uiterlijk(selA):'';calM.innerHTML='';
   for(let i=0;i<n;i++){
     const m=new Date(view.getFullYear(),view.getMonth()+i,1),box=document.createElement('div');box.className='cal-month';
     const h=document.createElement('h3');h.textContent=m.toLocaleDateString('nl-NL',{month:'long',year:'numeric'});box.append(h);
@@ -745,6 +747,7 @@ function teken(){
       b.type='button';b.className='cal-day';b.textContent=d;b.dataset.d=s;
       let label=kort(s);
       if(s<today){b.classList.add('past');label+=', voorbij';}
+      else if(s===wissel)label+=', hier kun je nog vertrekken';
       else if(nachtBezet(s)){b.classList.add('bezet');label+=', bezet';}
       else label+=', vrij';
       if(s===selA||s===selB){b.classList.add('sel');label+=s===selA?', jouw aankomst':', jouw vertrek';}
@@ -768,7 +771,7 @@ calM.addEventListener('click',e=>{
     status('Het chalet is vrij van '+lang(selA)+' tot '+lang(selB)+'. Dat '+(n===1?'is 1 nacht':'zijn '+n+' nachten')+'.'+zomerHint(selA,selB),'ok');
   }else{
     if(nachtBezet(s)){status('Deze dag is al bezet. Kies een groene dag.','warn');return;}
-    selA=s;selB='';status('Je komt aan op '+kort(s)+'. Tik nu op de dag dat je vertrekt. Blijf je langer, kies dan eerst Volgende maand.');
+    selA=s;selB='';const u=uiterlijk(s);status('Je komt aan op '+kort(s)+'. Tik nu op de dag dat je vertrekt.'+(u?' Vertrekken kan tot en met '+kort(u)+'.':'')+' Blijf je langer, kies dan eerst Volgende maand.');
   }
   hint.style.color='';hint.textContent='Je bericht opent in WhatsApp of je mailprogramma. Daar druk je zelf op verzenden.';teken();
   const nieuw=calM.querySelector('[data-d="'+s+'"]');if(nieuw)nieuw.focus({preventScroll:true});
