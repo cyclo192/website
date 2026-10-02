@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beauty With Evy – trendy sieraden & accessoires</title>
+<meta name="description" content="Handgemaakte sieraden en accessoires van Evy, om cadeau te doen of zelf te dragen. Elke week nieuwe items, online te bestellen en te zien op de markt.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:title" content="Beauty With Evy – trendy sieraden & accessoires">
+<meta property="og:description" content="Handgemaakte sieraden en accessoires van Evy. Elke week nieuwe items, online en op de markt.">
+<meta property="og:image" content="https://primary.jwwb.nl/public/j/z/n/temp-ltpqiltrycdgyreuesuf/img_9360-high.jpg?enable-io=true&amp;fit=bounds&amp;width=1200">
+<meta name="theme-color" content="#3d2130">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%233d2130'/%3E%3Cellipse cx='32' cy='32' rx='23' ry='19' fill='none' stroke='%23e2bf6b' stroke-width='2.5'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-weight='700' font-size='28' fill='%23fff' text-anchor='middle'%3EE%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://primary.jwwb.nl">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500..700;1,6..96,500&family=Karla:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#2f1d27;        /* de zwarte letters van het logo, iets warmer */
+  --ink-soft:#57434d;
+  --muted:#75626b;
+  --plum:#3d2130;
+  --gold:#b28a35;       /* de lauwerkrans in het logo */
+  --gold-bright:#e2bf6b;
+  --gold-deep:#d4ad52;
+  --gold-soft:#f8eed6;
+  --blush:#f9e3dc;      /* de roze vlakken van het reclamebord en het tafelkleed van de kraam */
+  --blush-deep:#f0cbc0;
+  --paper:#fffaf8;
+  --line:#efe0da;
+  --display:"Bodoni Moda","Bodoni 72",Didot,Georgia,serif;
+  --body:"Karla",system-ui,-apple-system,"Segoe UI",sans-serif;
+  /* kettinkje met bedeltjes */
+  --charms:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='70' viewBox='0 0 240 70'%3E%3Cpath d='M0 6 Q120 62 240 6' fill='none' stroke='%23e2bf6b' stroke-width='2.6' stroke-linecap='round' stroke-dasharray='0.1 6.2'/%3E%3Cg fill='%23e2bf6b'%3E%3Cpath d='M60 27.500v6' stroke='%23e2bf6b' stroke-width='1.4'/%3E%3Cpath d='M60 46.500c-5.500-3.400-7.800-6.300-7.800-9a4 4 0 0 1 7.800-1.300 4 4 0 0 1 7.800 1.300c0 2.700-2.300 5.600-7.800 9z'/%3E%3Cpath d='M120 34v7' stroke='%23e2bf6b' stroke-width='1.4'/%3E%3Cpath d='m120 41 2.700 5.800 6.300.7-4.700 4.300 1.300 6.200-5.600-3.100-5.600 3.100 1.300-6.200-4.700-4.300 6.300-.7z'/%3E%3Cpath d='M180 27.500v6' stroke='%23e2bf6b' stroke-width='1.4'/%3E%3Ccircle cx='180' cy='39.500' r='6'/%3E%3C/g%3E%3C/svg%3E");
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{font-family:var(--body);font-size:1.125rem;line-height:1.6;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;font-variant-numeric:lining-nums}
+h1,h2{font-family:var(--display);font-weight:600;line-height:1.06;letter-spacing:-.012em}
+h2{font-size:clamp(2rem,4.4vw,3rem);max-width:18ch}
+h3{font-family:var(--body);font-weight:700;font-size:1.15rem;line-height:1.25}
+p{max-width:60ch}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+.sec{padding-block:96px}
+.sub{color:var(--muted);margin-top:16px}
+
+/* demo-melding */
+.demo{background:var(--plum);color:#f3e6ea;font-size:.95rem;line-height:1.4;padding:9px 0;text-align:center}
+.demo p{max-width:none}
+.demo a{color:#fff;font-weight:700;text-underline-offset:3px}
+
+/* knoppen */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55em;font:700 1.05rem/1 var(--body);padding:1em 1.45em;border-radius:999px;border:2px solid transparent;text-decoration:none;cursor:pointer;transition:background-color .15s,color .15s,border-color .15s,transform .15s}
+.btn:active{transform:translateY(1px)}
+.btn-gold{background:var(--gold-bright);color:var(--ink)}
+.btn-gold:hover{background:var(--gold-deep)}
+.btn-line{border-color:var(--ink);color:var(--ink);background:transparent}
+.btn-line:hover{background:var(--ink);color:#fff}
+.btn svg{width:1.2em;height:1.2em;flex:none}
+.wa{background:#1f8f4e;color:#fff}
+.wa:hover{background:#18763f}
+
+/* kop */
+header{position:sticky;top:0;z-index:20;background:rgba(255,250,248,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:72px}
+.brand{font-family:var(--display);font-weight:700;font-size:1.4rem;letter-spacing:-.01em;text-decoration:none;display:flex;align-items:center;gap:.55em;white-space:nowrap}
+.brand svg{width:34px;height:30px;flex:none}
+nav{display:flex;align-items:center;gap:26px}
+nav a{text-decoration:none;font-size:1.02rem}
+nav a:not(.btn):hover{color:var(--gold)}
+nav .btn{padding:.8em 1.2em;font-size:1rem}
+
+/* hero */
+.hero{position:relative;padding:74px 0 84px;overflow:hidden}
+.hero::before,.hero::after{content:"";position:absolute;background:var(--blush);pointer-events:none}
+.hero::before{width:520px;height:440px;left:-210px;top:-150px;border-radius:58% 42% 55% 45%/48% 60% 40% 52%}
+.hero::after{width:620px;height:520px;right:-240px;bottom:-250px;border-radius:45% 55% 40% 60%/55% 42% 58% 45%}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);grid-template-areas:"head pend" "foot pend";column-gap:56px;row-gap:28px}
+.hero-head{grid-area:head;align-self:end}
+.hero-foot{grid-area:foot;align-self:start}
+.hero h1{font-size:clamp(2.75rem,5.6vw,4.6rem);line-height:1;margin-bottom:.4em}
+.hero h1 span{display:block;white-space:nowrap}
+.lead{font-size:1.28rem;line-height:1.5;max-width:31ch;color:var(--ink-soft)}
+.facts{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:14px 20px;margin-bottom:30px;max-width:490px}
+.facts li{display:flex;align-items:center;gap:.65em;font-weight:700;font-size:1.02rem;line-height:1.25}
+.facts svg{flex:none;width:40px;height:40px;padding:9px;border-radius:50%;background:#fff;border:1px solid var(--line);stroke:var(--gold);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.hero-cta .btn{font-size:1rem;padding:1em 1.25em}
+
+/* hangers aan een kettinkje */
+.pendants{grid-area:pend;position:relative;--d:92px;display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:22px;align-items:start;align-self:center;padding:0 6px 34px}
+.chain{position:absolute;left:0;top:0;width:100%;height:var(--d);overflow:visible;pointer-events:none}
+.chain path{fill:none;stroke:var(--gold);stroke-width:3.4;stroke-linecap:round;stroke-dasharray:.1 7.4;vector-effect:non-scaling-stroke}
+.pend{position:relative;margin-top:calc(var(--d)*.5 + 24px);transform-origin:50% -24px}
+.pend.mid{margin-top:calc(var(--d) + 24px)}
+.pend::before{content:"";position:absolute;left:50%;bottom:100%;width:2px;height:24px;margin-left:-1px;background:var(--gold)}
+.pend::after{content:"";position:absolute;left:50%;bottom:calc(100% + 17px);width:13px;height:13px;margin-left:-6.5px;border-radius:50%;border:2px solid var(--gold);background:var(--paper)}
+.oval{border-radius:50%;overflow:hidden;aspect-ratio:3/4;background:#eadfda;box-shadow:0 0 0 6px var(--paper),0 0 0 8px var(--gold),0 26px 34px -22px rgba(47,29,39,.55)}
+.oval img{width:100%;height:100%;object-fit:cover}
+.pend:nth-child(2) img{object-position:50% 62%}
+.pend:nth-child(3) img{object-position:50% 78%}
+.pend:nth-child(4) img{object-position:50% 46%}
+.plate{position:absolute;left:-8px;bottom:0;display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:9px 16px 9px 9px;line-height:1.25;font-size:.95rem;box-shadow:0 16px 30px -18px rgba(47,29,39,.5)}
+.since{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:var(--gold-bright);font:700 1.05rem/1 var(--display)}
+@media (prefers-reduced-motion:no-preference){
+  .pend{animation:sway 2.6s cubic-bezier(.3,.1,.3,1) both}
+  .pend.mid{animation-delay:.12s;animation-direction:normal}
+  .pend:nth-child(4){animation-delay:.22s}
+  @keyframes sway{0%{transform:rotate(5deg)}28%{transform:rotate(-3.200deg)}52%{transform:rotate(1.800deg)}74%{transform:rotate(-.7deg)}100%{transform:none}}
+}
+
+/* nieuwe items */
+.head-row{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+.head-row .sub{max-width:38ch}
+.items{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:36px 22px}
+.item a{display:block;text-decoration:none}
+.ph{position:relative;display:block;aspect-ratio:4/5;border-radius:18px;overflow:hidden;background:#eadfda}
+.ph img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+.item a:hover .ph img{transform:scale(1.04)}
+.price{position:absolute;left:12px;bottom:12px;display:inline-flex;align-items:center;gap:.5em;background:#fff;color:var(--ink);font:700 1.05rem/1 var(--body);padding:.6em .85em .6em .7em;border-radius:6px 12px 12px 6px;transform:rotate(-3deg);box-shadow:0 8px 16px -8px rgba(47,29,39,.6)}
+.price::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--paper);box-shadow:inset 0 0 0 2px var(--gold)}
+.item h3{margin-top:14px}
+.item small{display:block;color:var(--muted);font-size:1rem}
+.item a:hover h3{text-decoration:underline;text-underline-offset:3px}
+.more{display:flex;justify-content:center;margin-top:44px}
+
+/* collectie */
+#collectie{background:#fff;border-block:1px solid var(--line)}
+.cats{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:40px 26px;margin-top:48px}
+.cat a{display:grid;gap:16px;justify-items:center;text-align:center;text-decoration:none}
+.round{display:block;width:min(100%,190px);aspect-ratio:1;border-radius:50%;overflow:hidden;background:#eadfda;box-shadow:0 0 0 5px #fff,0 0 0 6.5px var(--gold)}
+.round img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+.cat a:hover .round img{transform:scale(1.05)}
+.cat h3{font-family:var(--display);font-weight:600;font-size:1.45rem;letter-spacing:-.01em}
+.cat p{color:var(--ink-soft);font-size:1.02rem;line-height:1.45;margin-top:4px;max-width:24ch}
+
+/* markten */
+.mk{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:64px;align-items:center}
+.agenda{list-style:none;display:grid;gap:12px;margin-top:30px}
+.agenda li{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px 20px 14px 14px;box-shadow:0 18px 30px -24px rgba(47,29,39,.5)}
+.day{display:grid;place-items:center;align-content:center;width:86px;height:86px;border-radius:14px;background:var(--blush);line-height:1}
+.day b{font-family:var(--display);font-weight:600;font-size:2.3rem}
+.day span{font-size:1rem;margin-top:4px}
+.agenda strong{display:block;font-size:1.25rem;line-height:1.25}
+.agenda em{font-style:normal;color:var(--ink-soft)}
+.agenda-empty{margin-top:26px;padding:1em 1.1em;border-radius:14px;background:var(--blush)}
+.mk-note{margin-top:20px;font-size:1rem;color:var(--muted)}
+.mk-photo{position:relative;padding:0 0 46px 0}
+.mk-big{width:86%;border-radius:22px;overflow:hidden;background:#eadfda}
+.mk-big img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.mk-small{position:absolute;right:0;bottom:0;width:42%;border-radius:50%;overflow:hidden;background:#eadfda;box-shadow:0 0 0 7px var(--paper),0 0 0 9px var(--gold)}
+.mk-small img{width:100%;aspect-ratio:1;object-fit:cover}
+.been{margin-top:72px}
+.been-cap{max-width:none;display:flex;justify-content:space-between;gap:16px;font-size:.98rem;color:var(--muted);padding-bottom:10px;border-bottom:2px solid var(--ink)}
+.spots{list-style:none;display:grid;grid-template-columns:1fr 1fr;column-gap:56px}
+.spots li{display:grid;grid-template-columns:minmax(0,15rem) minmax(40px,1fr) 4.2rem;gap:16px;align-items:center;padding:15px 0;border-bottom:1px solid var(--line)}
+.spots b{line-height:1.3}
+.spots i{display:block;position:relative;height:4px;border-radius:4px;background:#f1e6e1}
+.spots i::before{content:"";position:absolute;left:0;top:0;bottom:0;width:calc(var(--n)/var(--max)*100%);border-radius:4px;background:var(--gold)}
+.spots i::after{content:"";position:absolute;left:calc(var(--n)/var(--max)*100%);top:50%;width:13px;height:13px;margin:-6.5px 0 0 -6.5px;border-radius:50%;background:#fff;border:3px solid var(--gold)}
+.spots span{text-align:right;color:var(--muted);white-space:nowrap}
+
+/* over Evy */
+#evy{background:#fff;border-block:1px solid var(--line)}
+.about{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:64px;align-items:center}
+.about-photo{border-radius:22px;overflow:hidden;background:#eadfda}
+.about-photo img{width:100%;aspect-ratio:11/10;object-fit:cover}
+.about .sub+.sub{margin-top:14px}
+.sign{font-family:var(--display);font-style:italic;font-weight:500;font-size:1.7rem;margin-top:20px}
+.social{list-style:none;display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.social a{display:inline-flex;align-items:center;gap:.5em;padding:.6em 1em .6em .75em;border-radius:999px;background:var(--blush);text-decoration:none;font-weight:700;font-size:1rem}
+.social a:hover{background:var(--blush-deep)}
+.social svg{width:22px;height:22px;fill:var(--ink)}
+.live{margin-top:26px;padding:18px 20px;border-radius:16px;background:var(--gold-soft);max-width:none}
+.live a{font-weight:700;text-underline-offset:3px}
+
+/* bestellen */
+#bestellen{background:var(--blush)}
+#bestellen .sub{color:var(--ink-soft)}
+.fac{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:44px}
+.fac li{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;align-items:start;padding:20px;border-radius:16px;background:#fff}
+.fac svg{grid-row:1/3;width:46px;height:46px;padding:10px;border-radius:50%;background:var(--gold-bright);stroke:var(--ink);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.fac b{font-family:var(--display);font-weight:600;font-size:1.3rem;line-height:1.2;padding-top:3px}
+.fac span{color:var(--ink-soft);font-size:1.02rem;line-height:1.45}
+.note{margin-top:24px;font-size:1rem;color:var(--ink-soft)}
+.note a{font-weight:700;text-underline-offset:3px}
+
+/* contact */
+#contact{background:var(--plum);color:#fff;position:relative;padding-top:138px}
+#contact::before{content:"";position:absolute;left:0;right:0;top:0;height:70px;background:var(--charms) repeat-x center top}
+.ask{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:56px;align-items:start}
+#contact .sub{color:#dccbd3}
+.contact{list-style:none;margin-top:32px;display:grid;gap:18px}
+.contact a{text-decoration:none;font-family:var(--display);font-weight:600;font-size:1.6rem;overflow-wrap:anywhere}
+.contact a.mail{font-size:1.25rem}
+.contact a:hover{color:var(--gold-bright)}
+.contact small{display:block;color:#dccbd3;font-size:.95rem}
+.contact address{font-style:normal;line-height:1.5}
+form{background:#fff;color:var(--ink);border-radius:24px;padding:30px;display:grid;gap:18px;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+label{display:block;font-weight:700;font-size:1rem;margin-bottom:6px}
+input,select,textarea{width:100%;font:inherit;color:inherit;padding:.8em .9em;border:1.5px solid #d6c5cc;border-radius:12px;background:#fff;min-height:52px}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px rgba(226,191,107,.7)}
+textarea{min-height:128px;resize:vertical}
+.send{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.hint{font-size:.95rem;color:var(--muted);flex-basis:100%}
+
+footer{background:#2a1621;color:#dccbd3;padding:34px 0;font-size:.98rem}
+footer .wrap{display:flex;justify-content:space-between;gap:14px 32px;flex-wrap:wrap}
+footer a{color:#fff;text-underline-offset:3px}
+.foot-links{list-style:none;display:flex;flex-wrap:wrap;gap:6px 20px;margin-top:8px}
+
+/* zwevende WhatsApp-knop (desktop) */
+.wa-float{position:fixed;right:24px;bottom:24px;z-index:25;width:62px;height:62px;border-radius:50%;background:#1f8f4e;display:grid;place-items:center;box-shadow:0 12px 26px -10px rgba(0,0,0,.5);transition:opacity .2s,transform .2s}
+.wa-float:hover{background:#18763f}
+.wa-float svg{width:34px;height:34px}
+.wa-float.hide{opacity:0;pointer-events:none;transform:scale(.8)}
+
+.dock{display:none}
+
+@media (max-width:1000px){
+  nav a:not(.btn){display:none}
+  .items{grid-template-columns:repeat(3,1fr)}
+  .fac{grid-template-columns:1fr 1fr}
+  .spots{grid-template-columns:1fr}
+}
+@media (max-width:900px){
+  .sec{padding-block:64px}
+  .hero{padding:48px 0 56px}
+  .hero-grid{grid-template-columns:1fr;grid-template-areas:"head" "pend" "foot";row-gap:30px}
+  .pendants{--d:64px;gap:14px;padding:0 4px 30px;max-width:560px}
+  .plate{left:0;padding:7px 12px 7px 7px;font-size:.88rem}
+  .since{width:42px;height:42px;font-size:.9rem}
+  .mk,.about,.ask{grid-template-columns:1fr;gap:34px}
+  .mk-photo{max-width:480px}
+  .been{margin-top:52px}
+  .cats{grid-template-columns:1fr 1fr;gap:32px 18px}
+  #contact{padding-top:116px}
+  body{padding-bottom:76px}
+  .wa-float{display:none}
+  .dock{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:30;background:#fff;border-top:1px solid var(--line);padding:9px;gap:9px}
+  .dock .btn{padding:.9em .6em}
+}
+@media (max-width:620px){
+  body{font-size:1.0625rem}
+  .wrap{padding:0 18px}
+  header nav .btn{font-size:.95rem;padding:.75em 1em}
+  .brand{font-size:1.15rem;gap:.45em}
+  .brand svg{width:28px;height:25px}
+  .bar{gap:10px;min-height:64px}
+  .demo{font-size:.88rem}
+  .head-row{margin-bottom:28px}
+  .items{grid-template-columns:1fr 1fr;gap:26px 12px}
+  .ph{border-radius:14px}
+  .price{left:8px;bottom:8px;font-size:.95rem}
+  .item h3{font-size:1.02rem;margin-top:10px}
+  .cats{grid-template-columns:1fr;gap:18px;margin-top:32px}
+  .cat a{grid-template-columns:92px 1fr;justify-items:start;text-align:left;align-items:center;gap:18px}
+  .cat p{max-width:none}
+  .fac{grid-template-columns:1fr}
+  .facts{gap:12px 10px}
+  .facts li{font-size:.95rem;gap:.5em}
+  .facts svg{width:34px;height:34px;padding:7px}
+  .day{width:72px;height:72px}
+  .day b{font-size:1.9rem}
+  .agenda li{gap:14px;padding:12px 14px 12px 12px}
+  .agenda strong{font-size:1.12rem}
+  .spots li{grid-template-columns:1fr auto;gap:8px 12px}
+  .spots i{grid-column:1/-1;grid-row:2}
+  form{padding:20px}
+  .send .btn,.hero-cta .btn,.more .btn{flex:1 1 100%}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<div class="demo"><div class="wrap"><p>Dit is een demo-ontwerp van byXavio voor Beauty With Evy. Bestellen doe je in de echte webshop: <a href="https://www.beautywithevy.nl/" target="_blank" rel="noopener">beautywithevy.nl</a></p></div></div>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#top"><svg aria-hidden="true" viewBox="0 0 34 30"><ellipse cx="17" cy="15" rx="15" ry="12.500" fill="none" stroke="#b28a35" stroke-width="1.6"/><path d="M17 2.500c-2.600-2.400-5.800-2.300-7.600-.6 2.600 1.500 5.200 1.700 7.600.6zm0 0c2.600-2.400 5.800-2.300 7.600-.6-2.600 1.500-5.200 1.700-7.600.6zM17 27.500c-2.600 2.400-5.800 2.300-7.600.6 2.600-1.500 5.200-1.700 7.600-.6zm0 0c2.600 2.400 5.800 2.300 7.600.6-2.600-1.500-5.200-1.700-7.600-.6z" fill="#b28a35"/></svg>Beauty With Evy</a>
+    <nav aria-label="Hoofdmenu">
+      <a href="#nieuw">Nieuw</a>
+      <a href="#collectie">Collectie</a>
+      <a href="#markten">Markten</a>
+      <a href="#evy">Over Evy</a>
+      <a href="#bestellen">Bestellen</a>
+      <a class="btn btn-gold" href="https://www.beautywithevy.nl/sieraden" target="_blank" rel="noopener">Naar de webshop</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-head">
+        <h1><span>Trendy sieraden</span><span>&amp; accessoires</span></h1>
+        <p class="lead">Handgemaakt door Evy, om cadeau te doen of lekker zelf te dragen. Online te bestellen en in het echt te zien op de markt.</p>
+      </div>
+      <div class="pendants">
+        <svg class="chain" aria-hidden="true" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0 0Q50 200 100 0"/></svg>
+        <div class="pend"><div class="oval"><img src="https://primary.jwwb.nl/public/j/z/n/temp-ltpqiltrycdgyreuesuf/img_0450-high.jpg?enable-io=true&amp;fit=bounds&amp;width=500" width="540" height="720" alt="Gouden oorbel met een bloemetje, gedragen in het oor"></div></div>
+        <div class="pend mid"><div class="oval"><img src="https://primary.jwwb.nl/public/j/z/n/temp-ltpqiltrycdgyreuesuf/img_2232-high.jpg?enable-io=true&amp;fit=bounds&amp;width=700" width="540" height="810" alt="Fijne gouden ketting met een hangertje om de hals" fetchpriority="high"></div></div>
+        <div class="pend"><div class="oval"><img src="https://primary.jwwb.nl/public/j/z/n/temp-ltpqiltrycdgyreuesuf/img_0190-high.jpg?enable-io=true&amp;fit=bounds&amp;width=500" width="540" height="720" alt="Oorbellen met een zeester in goud en zilver"></div></div>
+        <div class="plate"><span class="since">2021</span><span>Handgemaakt sinds 2021<br>Sint Odiliënberg, Limburg</span></div>
+      </div>
+      <div class="hero-foot">
+        <ul class="facts">
+          <li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m12 3 1.900 5.100L19 10l-5.100 1.900L12 17l-1.900-5.100L5 10l5.100-1.900zM19 16v4M17 18h4"/></svg>Elke week nieuwe items</li>
+          <li><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="m3.500 7.500 8.500 6 8.500-6"/></svg>Binnen 3 werkdagen op de post</li>
+          <li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m3 8 9-5 9 5v8l-9 5-9-5zM3 8l9 5 9-5M12 13v8"/></svg>Gratis verzending vanaf € 70</li>
+          <li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4.500 11h15v9h-15zM3 7h18v4H3zM12 7v13M12 7C10 3 6.500 3.500 7 6c.3 1 2.500 1 5 1zM12 7c2-4 5.500-3.500 5-1-.3 1-2.500 1-5 1z"/></svg>Verrassing bij je bestelling</li>
+        </ul>
+        <div class="hero-cta">
+          <a class="btn btn-gold" href="#nieuw">Bekijk de nieuwe items</a>
+          <a class="btn btn-line" href="#markten">Waar staat Evy?</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="sec" id="nieuw">
+    <div class="wrap">
+      <div class="head-row">
+        <h2>Nieuw in de shop</h2>
+        <p class="sub">Elke week komen er items bij. Tik op een sieraad om het in de webshop te bekijken en te bestellen.</p>
+      </div>
+      <ul class="items">
+        <li class="item"><a href="https://www.beautywithevy.nl/product/23455461/oorbellen-zeester-rvs" target="_blank" rel="noopener"><span class="ph"><img src="https://primary.jwwb.nl/public/j/z/n/temp-ltpqiltrycdgyreuesuf/img_0190-high.jpg?enable-io=true&amp;fit=bounds&amp;width=600" width="540" height="720" loading="lazy" alt="Oorbellen met een zeester in goud en zilver"><span class="price">€ 9,95</span></span><h3>Oorbellen Zeester RVS</h3><small>In goud of zilver</small></a></li>
+        <li class="item"><a href="https://www.beautywithevy.nl/product/23586602/oorbellen-bloem-rvs" target="_blank" rel="noopener"><span class="ph"><img src="https://primary.jwwb.nl/public/j/z/n/temp-ltpqiltrycdgyreuesuf/img_0450-high.jpg?enable-io=true&amp;fit=bounds&amp;width=600" width="540" height="720" loading="lazy" alt="Gouden oorbel met een bloemetje, gedragen in het oor"><span class="price">€ 16,99</span></span><h3>Oorbellen Bloem RVS</h3></a></li>
+        <li class="item"><a href="https://www.beautywithevy.nl/product/23127637/armband-rvs-zee" target="_blank" rel="noopener"><span class="ph"><img src="https://primary.jwwb.nl/public/j/z/n/temp-ltpqiltrycdgyreuesuf/img_9690-high.jpg?enable-io=true&amp;fit=bounds&amp;width=600" width="540" height="720" loading="lazy" alt="Brede gouden armband in de vorm van een schelp"><span class="price">€ 12,50</span></span><h3>Armband RVS Zee</h3></a></li>
+        <li class="item"><a href="https://www.beautywithevy.nl/product/23605790/oorbellen-bloem-rvs" target="_blank" rel="noopener"><span class="ph"><img src="https://primary.jwwb.nl/public/j/z/n/temp-ltpqiltrycdgyreuesuf/img_0444-high.jpg?enable-io=true&amp;fit=bounds&amp;width=600" width="540" height="720" loading="lazy" alt="Oorbellen met een wit bloemetje op een houten schijf"><span class="price">€ 14,95</span></span><h3>Oorbellen bloem RVS</h3></a></li>
+        <li class="item"><a href="https://www.beautywithevy.nl/product/23121831/armband-strand-rvs" target="_blank" rel="noopener"><span class="ph"><img src="https://primary.jwwb.nl/public/j/z/n/temp-ltpqiltrycdgyreuesuf/img_9688-high.jpg?enable-io=true&amp;fit=bounds&amp;width=700" width="744" height="540" loading="lazy" alt="Gouden armband op een grijs kussentje"><span class="price">€ 12,50</span></span><h3>Armband strand RVS</h3></a></li>
+        <li class="item"><a href="https://www.beautywithevy.nl/product/23127619/armband-schelp-rvs" target="_blank" rel="noopener"><span class="ph"><img src="https://primary.jwwb.nl/public/j/z/n/temp-ltpqiltrycdgyreuesuf/img_9689-high.jpg?enable-io=true&amp;fit=bounds&amp;width=800" width="857" height="540" loading="lazy" alt="Gouden armband met schelpen op een marmeren schaal"><span class="price">€ 12,50</span></span><h3>Armband schelp RVS</h3></a></li>
+        <li class="item"><a href="https://www.beautywithevy.nl/product/23133454/mystery-bag" target="_blank" rel="noopener"><span class="ph"><img src="https://primary.jwwb.nl/public/j/z/n/temp-ltpqiltrycdgyreuesuf/img_9212-high.jpg?enable-io=true&amp;fit=bounds&amp;width=600" width="540" height="720" loading="lazy" alt="Drie bruine papieren zakjes met een verrassing erin"><span class="price">vanaf € 6,00</span></span><h3>Mystery bag</h3><small>Goud of zilver, 2 voor € 10,00</small></a></li>
+        <li class="item"><a href="https://www.beautywithevy.nl/product/23778924/adventskalender-2026" target="_blank" rel="noopener"><span class="ph"><img src="https://primary.jwwb.nl/public/j/z/n/temp-ltpqiltrycdgyreuesuf/7de1fffc-4fbb-4aa8-826c-33b32f235b6e-high.png?enable-io=true&amp;fit=bounds&amp;width=600" width="540" height="764" loading="lazy" alt="Adventskalender 2026 met sieraden"><span class="price">€ 54,99</span></span><h3>Adventskalender 2026</h3><small>In goud of zilver</small></a></li>
+      </ul>
+      <div class="more"><a class="btn btn-line" href="https://www.beautywithevy.nl/sieraden" target="_blank" rel="noopener">Bekijk alles in de webshop</a></div>
+    </div>
+  </section>
+
+  <section class="sec" id="collectie">
+    <div class="wrap">
+      <h2>Kijk rond in de collectie</h2>
+      <p class="sub">Van oorbellen tot enkelbandjes. Veel sieraden zijn van RVS, roestvrij staal dus, en nikkelvrij.</p>
+      <ul class="cats">
+        <li class="cat"><a href="https://www.beautywithevy.nl/sieraden/oorbellen" target="_blank" rel="noopener"><span class="round"><img src="https://primary.jwwb.nl/public/j/z/n/temp-ltpqiltrycdgyreuesuf/img_0214-high.jpg?enable-io=true&amp;fit=bounds&amp;width=400" width="540" height="720" loading="lazy" alt="Oorbellen met hartjes" style="object-position:50% 68%"></span><div><h3>Oorbellen</h3><p>Met bloemen, zeesterren, hartjes en druppels.</p></div></a></li>
+        <li class="cat"><a href="https://www.beautywithevy.nl/sieraden/ringen" target="_blank" rel="noopener"><span class="round"><img src="https://primary.jwwb.nl/public/j/z/n/temp-ltpqiltrycdgyreuesuf/img_0233-high.jpg?enable-io=true&amp;fit=bounds&amp;width=400" width="540" height="720" loading="lazy" alt="Gouden ring op een houten schijf" style="object-position:50% 70%"></span><div><h3>Ringen</h3><p>Met een schelp, zon, bloem of zeepaardje.</p></div></a></li>
+        <li class="cat"><a href="https://www.beautywithevy.nl/sieraden/armbanden" target="_blank" rel="noopener"><span class="round"><img src="https://primary.jwwb.nl/public/j/z/n/temp-ltpqiltrycdgyreuesuf/img_0195-high.jpg?enable-io=true&amp;fit=bounds&amp;width=400" width="540" height="720" loading="lazy" alt="Armband met groene vlinders" style="object-position:50% 52%"></span><div><h3>Armbanden</h3><p>Kleurrijk, met bloemen en vlinders.</p></div></a></li>
+        <li class="cat"><a href="https://www.beautywithevy.nl/sieraden/armbanden-rvs" target="_blank" rel="noopener"><span class="round"><img src="https://primary.jwwb.nl/public/j/z/n/temp-ltpqiltrycdgyreuesuf/img_0198-high.jpg?enable-io=true&amp;fit=bounds&amp;width=400" width="540" height="720" loading="lazy" alt="Gouden bangle met een klaver" style="object-position:50% 46%"></span><div><h3>Bangles RVS</h3><p>Met een klaver, bloemetje of bubbel.</p></div></a></li>
+        <li class="cat"><a href="https://www.beautywithevy.nl/sieraden/kettingen" target="_blank" rel="noopener"><span class="round"><img src="https://primary.jwwb.nl/public/j/z/n/temp-ltpqiltrycdgyreuesuf/img_2232-high.jpg?enable-io=true&amp;fit=bounds&amp;width=400" width="540" height="810" loading="lazy" alt="Fijne gouden ketting om de hals" style="object-position:50% 78%"></span><div><h3>Kettingen</h3><p>Fijn, met een hartje of een vliegtuigje.</p></div></a></li>
+        <li class="cat"><a href="https://www.beautywithevy.nl/sieraden/enkelbandjes" target="_blank" rel="noopener"><span class="round"><img src="https://primary.jwwb.nl/public/j/z/n/temp-ltpqiltrycdgyreuesuf/img_0243-high.jpg?enable-io=true&amp;fit=bounds&amp;width=400" width="540" height="720" loading="lazy" alt="Enkelbandje met rode bloemetjes" style="object-position:50% 50%"></span><div><h3>Enkelbandjes</h3><p>Met bloemetjes, hartjes of een levensboom.</p></div></a></li>
+        <li class="cat"><a href="https://www.beautywithevy.nl/sieraden/festival-armbandjes" target="_blank" rel="noopener"><span class="round"><img src="https://primary.jwwb.nl/public/j/z/n/temp-ltpqiltrycdgyreuesuf/youbloom.jpeg?enable-io=true&amp;fit=bounds&amp;width=400" width="540" height="720" loading="lazy" alt="Oranje geweven festival armbandje" style="object-position:50% 56%"></span><div><h3>Festival armbandjes</h3><p>Geweven bandjes met een tekst, € 1,00 per stuk.</p></div></a></li>
+        <li class="cat"><a href="https://www.beautywithevy.nl/accessoires/parfum-vrouw" target="_blank" rel="noopener"><span class="round"><img src="https://primary.jwwb.nl/public/j/z/n/temp-ltpqiltrycdgyreuesuf/adriana.jpg?enable-io=true&amp;fit=bounds&amp;width=400" width="540" height="540" loading="lazy" alt="Flesje parfum met doosje"></span><div><h3>Parfum</h3><p>Voor haar en voor hem, vanaf € 9,00.</p></div></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" id="markten">
+    <div class="wrap">
+      <div class="mk">
+        <div>
+          <h2>Kom kijken en passen op de markt</h2>
+          <p class="sub">Evy staat regelmatig met haar kraam op markten en vakantieparken. Daar zie je alles in het echt en kun je meteen passen.</p>
+          <div id="agenda">
+            <ul class="agenda">
+              <li><span class="day"><b>11</b><span>okt</span></span><span><strong>Bokkemert, Valkenburg</strong><em>zondag, 10:00 tot 17:00 uur</em></span></li>
+            </ul>
+          </div>
+          <p class="mk-note">Online besteld? Je kunt je bestelling gratis ophalen bij de kraam. Kies bij het bestellen voor ophalen en zet erbij op welke markt je komt.</p>
+        </div>
+        <div class="mk-photo">
+          <div class="mk-big"><img src="https://primary.jwwb.nl/public/j/z/n/temp-ltpqiltrycdgyreuesuf/img_9360-high.jpg?enable-io=true&amp;fit=bounds&amp;width=800" width="600" height="800" loading="lazy" alt="De marktkraam van Beauty With Evy met sieraden op een roze tafelkleed"></div>
+          <div class="mk-small"><img src="https://primary.jwwb.nl/public/j/z/n/temp-ltpqiltrycdgyreuesuf/marktevy.jpg?enable-io=true&amp;fit=bounds&amp;width=500" width="600" height="800" loading="lazy" alt="Evy achter haar kraam op de markt"></div>
+        </div>
+      </div>
+      <div class="been" id="been">
+        <p class="been-cap"><span id="beentitle">Hier stond Evy in 2026 al</span><span>Aantal marktdagen</span></p>
+        <ul class="spots" id="spots" style="--max:6">
+          <li><b>Vakantiepark De Leistert, Roggel</b><i style="--n:6"></i><span>6 keer</span></li>
+          <li><b>Center Parcs Het Meerdal, America</b><i style="--n:5"></i><span>5 keer</span></li>
+          <li><b>Kempervennen, Valkenswaard</b><i style="--n:2"></i><span>2 keer</span></li>
+          <li><b>Zomermarkt Callantsoog</b><i style="--n:1"></i><span>1 keer</span></li>
+          <li><b>Leukermeer, Well</b><i style="--n:1"></i><span>1 keer</span></li>
+          <li><b>Brabantse Kempen</b><i style="--n:1"></i><span>1 keer</span></li>
+          <li><b>Jaarmarkt Heythuizen</b><i style="--n:1"></i><span>1 keer</span></li>
+          <li><b>Markt Geleen</b><i style="--n:1"></i><span>1 keer</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="evy">
+    <div class="wrap about">
+      <div class="about-photo"><img src="https://primary.jwwb.nl/public/j/z/n/temp-ltpqiltrycdgyreuesuf/img_6455-standard.jpg?enable-io=true&amp;fit=bounds&amp;width=900" width="876" height="800" loading="lazy" alt="Twee vrouwen achter de kraam van Beauty With Evy, vol sieraden en tassen"></div>
+      <div>
+        <h2>Hoi, ik ben Evy</h2>
+        <p class="sub">In maart 2021 begon ik met zelf sieraden maken: kettingen, armbanden, oorbellen, brillenkoordjes en telefoonkoordjes. Inmiddels zijn daar sjaals, tassen, haaraccessoires en een hele kindercollectie bijgekomen.</p>
+        <p class="sub">Ik sta regelmatig op markten, en sinds juli 2023 kun je ook online bestellen. Twijfel je over een sieraad of zoek je een cadeau? Stuur me een berichtje, ik help je graag.</p>
+        <p class="sign">Liefs, Evy</p>
+        <ul class="social">
+          <li><a href="https://www.tiktok.com/@beautywithevy" target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M16.500 3c.4 2.300 1.800 3.900 4 4.200v3.100c-1.500 0-2.800-.4-4-1.200v6.300c0 3.300-2.600 5.600-5.700 5.600A5.500 5.500 0 0 1 5.300 15.500c0-3.300 2.900-5.800 6.300-5.300v3.200c-1.600-.4-3.100.6-3.100 2.200 0 1.400 1.100 2.300 2.300 2.300 1.400 0 2.500-1 2.500-2.600V3z"/></svg>TikTok</a></li>
+          <li><a href="https://www.instagram.com/beautywithevy/" target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8 3h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3zm4 2.800a4.200 4.200 0 1 1 0 8.400 4.200 4.200 0 0 1 0-8.400zm0 2a2.200 2.200 0 1 0 0 4.400 2.200 2.200 0 0 0 0-4.400zm4.600-3.400a1.100 1.100 0 1 1 0 2.200 1.100 1.100 0 0 1 0-2.200z"/></svg>Instagram</a></li>
+          <li><a href="https://www.facebook.com/profile.php?id=100075661495752" target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M13.500 21v-7.500h2.600l.4-3h-3V8.600c0-.9.3-1.500 1.600-1.500h1.500V4.400c-.3 0-1.200-.1-2.200-.1-2.300 0-3.900 1.400-3.900 3.900v2.300H8v3h2.500V21z"/></svg>Facebook</a></li>
+        </ul>
+        <p class="live">In haar TikTok lives laat Evy nieuwe items zien. Iets geclaimd tijdens de live? Je bestelling staat daarna op jouw naam klaar. <a href="https://www.beautywithevy.nl/tik-tok-live" target="_blank" rel="noopener">Naar mijn bestelling uit de live</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="bestellen">
+    <div class="wrap">
+      <h2>Bestellen, verzenden en ophalen</h2>
+      <p class="sub">Je bestelling wordt nagekeken en ingepakt als een cadeautje. Er zit altijd een verrassing bij.</p>
+      <ul class="fac">
+        <li><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.500 2"/></svg><b>Snel op de post</b><span>Binnen 1 tot 3 werkdagen, met PostNL. Moet iets nog gemaakt worden, dan hoor je dat van ons.</span></li>
+        <li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m3 8 9-5 9 5v8l-9 5-9-5zM3 8l9 5 9-5M12 13v8"/></svg><b>Verzendkosten</b><span>Door de brievenbus € 1,95. Een groter pakket € 3,95 of € 6,95. Vanaf € 70 verzenden we gratis.</span></li>
+        <li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 21s-6.500-5.600-6.500-10.500a6.500 6.500 0 0 1 13 0C18.500 15.400 12 21 12 21z"/><circle cx="12" cy="10.500" r="2.300"/></svg><b>Gratis ophalen</b><span>Op afspraak in Sint Odiliënberg, of bij de kraam op een markt.</span></li>
+        <li><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M7 14.500h3"/></svg><b>Betalen</b><span>Online met iDEAL of Visa. Bij ophalen en op de markt ook contant of met pin.</span></li>
+        <li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 9h10.500a4.500 4.500 0 0 1 0 9H8M4 9l4-4M4 9l4 4"/></svg><b>Retourneren</b><span>Binnen 14 dagen. Oorbellen kunnen om hygiënische redenen niet terug.</span></li>
+        <li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m12 3 7 3v5c0 4.500-3 8-7 10-4-2-7-5.500-7-10V6z"/><path d="m9 12 2 2 4-4"/></svg><b>1 maand garantie</b><span>Op alle items, bij normaal gebruik.</span></li>
+      </ul>
+      <p class="note">Meer weten? Lees de <a href="https://www.beautywithevy.nl/veelgestelde-vragen" target="_blank" rel="noopener">veelgestelde vragen</a> of kijk hoe <a href="https://www.beautywithevy.nl/retouneren" target="_blank" rel="noopener">retourneren</a> werkt. De verzendkosten gelden binnen Nederland.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="contact">
+    <div class="wrap ask">
+      <div>
+        <h2>Advies nodig? Stuur Evy een berichtje</h2>
+        <p class="sub">Twijfel je over een kleur of zoek je een cadeau? Evy denkt graag met je mee.</p>
+        <ul class="contact">
+          <li><small>WhatsApp</small><a href="https://wa.me/31653688511" target="_blank" rel="noopener">06 - 53 68 85 11</a></li>
+          <li><small>E-mail</small><a class="mail" href="mailto:beautywithevy@gmail.com">beautywithevy@gmail.com</a></li>
+          <li><small>Adres</small><address>Staalstraat 11<br>6077 GJ Sint Odiliënberg</address></li>
+        </ul>
+      </div>
+      <form id="form" novalidate>
+        <div><label for="naam">Naam</label><input id="naam" name="naam" autocomplete="name" required></div>
+        <div><label for="over">Waar gaat je vraag over?</label><select id="over" name="over"><option>Advies bij een sieraad</option><option>Een cadeau uitzoeken</option><option>Mijn bestelling</option><option>Ophalen op de markt</option><option>Iets anders</option></select></div>
+        <div><label for="msg">Je bericht</label><textarea id="msg" name="msg" required></textarea></div>
+        <div class="send">
+          <button class="btn wa" type="button" data-via="wa"><svg aria-hidden="true" viewBox="0 0 32 32" fill="#fff"><path d="M16.040 3C8.860 3 3.030 8.820 3.030 16c0 2.300.6 4.540 1.740 6.520L3 29l6.640-1.740A13 13 0 0 0 16.040 29C23.200 29 29 23.180 29 16S23.200 3 16.040 3Zm0 23.800c-2.020 0-4-.54-5.720-1.570l-.41-.24-3.940 1.030 1.050-3.840-.27-.4A10.780 10.780 0 0 1 5.200 16c0-5.970 4.860-10.830 10.840-10.830 5.970 0 10.820 4.860 10.820 10.830 0 5.980-4.850 10.800-10.820 10.800Zm5.940-8.100c-.33-.16-1.930-.95-2.230-1.060-.3-.11-.52-.16-.73.17-.22.32-.84 1.050-1.030 1.270-.19.22-.38.24-.7.080-.33-.16-1.380-.51-2.620-1.620-.97-.86-1.620-1.930-1.810-2.250-.19-.33-.02-.5.14-.66.15-.15.33-.38.49-.57.16-.19.22-.33.33-.54.11-.22.050-.41-.03-.57-.08-.16-.73-1.760-1-2.410-.26-.63-.53-.55-.73-.56h-.62c-.22 0-.57.080-.87.41-.3.32-1.140 1.110-1.140 2.720 0 1.600 1.170 3.150 1.330 3.370.16.22 2.300 3.500 5.560 4.910.78.34 1.390.54 1.860.69.78.25 1.490.21 2.050.13.63-.09 1.930-.79 2.200-1.550.27-.76.27-1.410.19-1.550-.08-.13-.3-.21-.62-.38Z"/></svg>Stuur via WhatsApp</button>
+          <button class="btn btn-line" type="button" data-via="mail">Stuur via e-mail</button>
+          <p class="hint" id="formhint" role="status">Je bericht opent in WhatsApp of je mailprogramma. Daar druk je zelf op verzenden.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 Beauty With Evy. KvK 90080831, btw NL818754734B01
+      <ul class="foot-links">
+        <li><a href="https://www.beautywithevy.nl/algemene-voorwaarden" target="_blank" rel="noopener">Algemene voorwaarden</a></li>
+        <li><a href="https://www.beautywithevy.nl/privacy-cookies" target="_blank" rel="noopener">Privacy en cookies</a></li>
+      </ul>
+    </div>
+    <div>Demo-ontwerp door <a href="https://byxavio.nl">byXavio</a></div>
+  </div>
+</footer>
+
+<a class="wa-float" id="wafloat" href="https://wa.me/31653688511?text=Hoi%20Evy!%20Ik%20heb%20een%20vraag." target="_blank" rel="noopener" aria-label="Stuur Evy een WhatsApp-bericht"><svg aria-hidden="true" viewBox="0 0 32 32" fill="#fff"><path d="M16.040 3C8.860 3 3.030 8.820 3.030 16c0 2.300.6 4.540 1.740 6.520L3 29l6.640-1.740A13 13 0 0 0 16.040 29C23.200 29 29 23.180 29 16S23.200 3 16.040 3Zm0 23.800c-2.020 0-4-.54-5.720-1.570l-.41-.24-3.940 1.030 1.050-3.840-.27-.4A10.780 10.780 0 0 1 5.200 16c0-5.970 4.860-10.830 10.840-10.830 5.970 0 10.820 4.860 10.820 10.830 0 5.980-4.850 10.800-10.820 10.800Zm5.940-8.100c-.33-.16-1.930-.95-2.230-1.060-.3-.11-.52-.16-.73.17-.22.32-.84 1.050-1.030 1.270-.19.22-.38.24-.7.080-.33-.16-1.380-.51-2.620-1.620-.97-.86-1.620-1.930-1.810-2.250-.19-.33-.02-.5.14-.66.15-.15.33-.38.49-.57.16-.19.22-.33.33-.54.11-.22.050-.41-.03-.57-.08-.16-.73-1.760-1-2.410-.26-.63-.53-.55-.73-.56h-.62c-.22 0-.57.080-.87.41-.3.32-1.140 1.110-1.140 2.720 0 1.600 1.170 3.150 1.330 3.370.16.22 2.300 3.500 5.560 4.910.78.34 1.390.54 1.860.69.78.25 1.490.21 2.050.13.63-.09 1.930-.79 2.200-1.550.27-.76.27-1.410.19-1.550-.08-.13-.3-.21-.62-.38Z"/></svg></a>
+
+<div class="dock">
+  <a class="btn wa" href="https://wa.me/31653688511?text=Hoi%20Evy!%20Ik%20heb%20een%20vraag.">WhatsApp</a>
+  <a class="btn btn-gold" href="https://www.beautywithevy.nl/sieraden" target="_blank" rel="noopener">Naar de webshop</a>
+</div>
+
+<script src="markten.js"></script>
+<script>
+// Marktagenda. De data staan in markten.js
+(function(){
+  const iso=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  const today=iso(new Date()),jaar=today.slice(0,4);
+  const M=(window.MARKTEN||[]).filter(m=>Array.isArray(m)&&/^\d{4}-\d{2}-\d{2}$/.test(m[0])&&m[1]).sort((a,b)=>a[0]<b[0]?-1:1);
+  if(!M.length)return;
+  const el=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
+  const naam=m=>m[1]+(m[2]?', '+m[2]:'');
+  const dt=s=>new Date(s+'T12:00:00');
+  const box=document.getElementById('agenda');box.textContent='';
+  const komend=M.filter(m=>m[0]>=today);
+  if(komend.length){
+    const ul=el('ul','agenda');
+    komend.slice(0,6).forEach(m=>{
+      const d=dt(m[0]),li=el('li'),day=el('span','day'),txt=el('span');
+      day.append(el('b','',d.getDate()),el('span','',d.toLocaleDateString('nl-NL',{month:'short'}).replace('.','')));
+      txt.append(el('strong','',naam(m)),el('em','',d.toLocaleDateString('nl-NL',{weekday:'long'})+(m[3]&&m[4]?', '+m[3]+' tot '+m[4]+' uur':'')));
+      li.append(day,txt);ul.append(li);
+    });
+    box.append(ul);
+  }else{
+    box.append(el('p','agenda-empty','Er staan nu geen markten gepland. Nieuwe data komen hier te staan. Wil je weten waar Evy binnenkort staat? Stuur haar een WhatsApp.'));
+  }
+  // Overzicht van de plekken waar Evy dit jaar al stond
+  const tel={};M.filter(m=>m[0]<today&&m[0].slice(0,4)===jaar).forEach(m=>{tel[naam(m)]=(tel[naam(m)]||0)+1});
+  const rij=Object.entries(tel).sort((a,b)=>b[1]-a[1]);
+  const been=document.getElementById('been'),spots=document.getElementById('spots');
+  if(!rij.length){been.hidden=true;return}
+  document.getElementById('beentitle').textContent='Hier stond Evy in '+jaar+' al';
+  spots.textContent='';spots.style.setProperty('--max',rij[0][1]);
+  rij.forEach(([n,c])=>{const li=el('li'),i=el('i');i.style.setProperty('--n',c);li.append(el('b','',n),i,el('span','',c+' keer'));spots.append(li)});
+})();
+
+// Bericht aan Evy
+const f=document.getElementById('form'),hint=document.getElementById('formhint');
+f.querySelectorAll('[data-via]').forEach(b=>b.addEventListener('click',()=>{
+  const naam=f.naam.value.trim(),msg=f.msg.value.trim();
+  if(!naam){hint.textContent='Vul nog even je naam in.';hint.style.color='#a82b3f';f.naam.focus();return;}
+  if(!msg){hint.textContent='Schrijf nog even je vraag of bericht.';hint.style.color='#a82b3f';f.msg.focus();return;}
+  const t=['Hoi Evy!','','Naam: '+naam,'Onderwerp: '+f.over.value,'',msg].join('\n');
+  hint.style.color='';hint.textContent='Je bericht staat klaar. Druk in WhatsApp of je mailprogramma op verzenden.';
+  if(b.dataset.via==='wa')window.open('https://wa.me/31653688511?text='+encodeURIComponent(t),'_blank','noopener');
+  else location.href='mailto:beautywithevy@gmail.com?subject='+encodeURIComponent('Vraag via de website: '+f.over.value)+'&body='+encodeURIComponent(t);
+}));
+// WhatsApp-knop verbergen bij het contactformulier
+if('IntersectionObserver' in window){new IntersectionObserver(e=>document.getElementById('wafloat').classList.toggle('hide',e[0].isIntersecting),{threshold:.15}).observe(document.getElementById('contact'));}
+</script>
+</body>
+</html>
