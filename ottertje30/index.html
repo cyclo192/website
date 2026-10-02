@@ -193,7 +193,8 @@ nav .btn{padding:.8em 1.2em;font-size:1rem}
 .cal-day:disabled{cursor:default}
 .cal-day.past{background:transparent;color:#a9aebb;font-weight:400}
 .cal-day.bezet{background:repeating-linear-gradient(135deg,#f6d9de 0 5px,#fbecee 5px 10px);color:#9a5560;font-weight:400;text-decoration:line-through}
-.cal-day.in{background:var(--sun-soft);box-shadow:inset 0 0 0 2px var(--sun)}
+.cal-day.in{background:#46557f;color:#fff}
+.cal-day.pre{background:var(--sun-soft);box-shadow:inset 0 0 0 2px var(--sun)}
 .cal-day.sel{background:var(--ink);color:#fff;text-decoration:none;box-shadow:none}
 .cal-status{margin-top:20px;max-width:none;font-weight:700;font-size:1.08rem;padding:.8em 1em;border-radius:14px;background:var(--paper)}
 .cal-status.ok{background:#e3f1e6}
@@ -460,7 +461,7 @@ dialog::backdrop{background:rgba(15,20,36,.95)}
           <ul class="cal-legend" aria-label="Legenda">
             <li><i class="k-vrij"></i>Vrij</li>
             <li><i class="k-bezet"></i>Bezet</li>
-            <li><i class="k-keuze"></i>Jouw keuze</li>
+            <li><i class="k-keuze"></i>Jouw periode</li>
           </ul>
           <button type="button" class="cal-nav" id="calnext" aria-label="Volgende maand"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
         </div>
@@ -561,6 +562,7 @@ const twee=matchMedia('(min-width:901px)');
 const nu=new Date(),eerste=new Date(nu.getFullYear(),nu.getMonth(),1),laatste=new Date(nu.getFullYear(),nu.getMonth()+17,1);
 let view=new Date(eerste),selA='',selB='';
 const kort=d=>new Date(d+'T12:00:00').toLocaleDateString('nl-NL',{weekday:'long',day:'numeric',month:'long'});
+const lang=d=>new Date(d+'T12:00:00').toLocaleDateString('nl-NL',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
 function status(t,k){calS.textContent=t;calS.className='cal-status'+(k?' '+k:'');}
 function teken(){
   const n=twee.matches?2:1;calM.innerHTML='';
@@ -594,16 +596,22 @@ calM.addEventListener('click',e=>{
   const b=e.target.closest('.cal-day');if(!b||b.disabled)return;const s=b.dataset.d;
   if(!selA||selB||s<=selA){
     if(nachtBezet(s))return;
-    selA=s;selB='';status('Aankomst op '+kort(s)+'. Tik nu op de dag dat je weer vertrekt.');
+    selA=s;selB='';status('Aankomst op '+kort(s)+'. Tik nu op de dag dat je weer vertrekt. Alle dagen ertussen horen erbij. Blijf je langer, blader dan met de pijl naar een latere maand.');
   }else if(periodeVrij(selA,s)){
     selB=s;const n=Math.round((new Date(selB+'T12:00:00')-new Date(selA+'T12:00:00'))/864e5);
-    status('Vrij van '+kort(selA)+' tot '+kort(selB)+' ('+n+(n===1?' nacht':' nachten')+'). Vul hieronder je naam in en verstuur je aanvraag.','ok');
+    status('Vrij van '+lang(selA)+' tot '+lang(selB)+' ('+n+(n===1?' nacht':' nachten')+'). Vul hieronder je naam in en verstuur je aanvraag.','ok');
   }else{
     status('Tussen deze dagen is het chalet al bezet. Kies een eerdere vertrekdag of een andere aankomst.','warn');teken();return;
   }
   f.van.value=selA;f.tot.min=selA;f.tot.value=selB;hint.style.color='';teken();
   const nieuw=calM.querySelector('[data-d="'+s+'"]');if(nieuw)nieuw.focus();
 });
+// Voorvertoning van de periode terwijl je met de muis de vertrekdag zoekt
+calM.addEventListener('mouseover',e=>{
+  const b=e.target.closest('.cal-day');if(!b||!selA||selB)return;const s=b.dataset.d,ok=!b.disabled&&s>selA&&periodeVrij(selA,s);
+  calM.querySelectorAll('.cal-day').forEach(x=>x.classList.toggle('pre',ok&&x.dataset.d>selA&&x.dataset.d<=s));
+});
+calM.addEventListener('mouseleave',()=>calM.querySelectorAll('.pre').forEach(x=>x.classList.remove('pre')));
 calPrev.addEventListener('click',()=>{view=new Date(view.getFullYear(),view.getMonth()-1,1);teken();});
 calNext.addEventListener('click',()=>{view=new Date(view.getFullYear(),view.getMonth()+1,1);teken();});
 twee.addEventListener('change',teken);
@@ -611,7 +619,7 @@ twee.addEventListener('change',teken);
 function vanFormulier(){
   selA=f.van.value>=today?f.van.value:'';selB=selA&&f.tot.value>selA?f.tot.value:'';
   if(selA){const d=new Date(selA+'T12:00:00');view=new Date(d.getFullYear(),d.getMonth(),1);}
-  if(selA&&selB)status(periodeVrij(selA,selB)?'Vrij van '+kort(selA)+' tot '+kort(selB)+'.':'In deze periode is het chalet al bezet. Kies andere dagen.',periodeVrij(selA,selB)?'ok':'warn');
+  if(selA&&selB)status(periodeVrij(selA,selB)?'Vrij van '+lang(selA)+' tot '+lang(selB)+'.':'In deze periode is het chalet al bezet. Kies andere dagen.',periodeVrij(selA,selB)?'ok':'warn');
   teken();
 }
 f.van.addEventListener('change',vanFormulier);f.tot.addEventListener('change',vanFormulier);
