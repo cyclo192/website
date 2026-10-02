@@ -160,6 +160,12 @@ nav .btn{padding:.8em 1.2em;font-size:1rem}
 .fac span{color:#d6e5db;font-size:1rem;line-height:1.4;align-self:start}
 .note{margin-top:24px;font-size:.98rem;color:#d6e5db}
 
+.park{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:40px}
+.park figure{margin:0}
+.park img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:16px;background:#244a37}
+.park figcaption{margin-top:10px;font-weight:700;font-size:1rem;line-height:1.3}
+.park+.fac{margin-top:32px}
+
 /* omgeving */
 .env{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start}
 .env a{font-weight:700;text-underline-offset:3px}
@@ -302,7 +308,9 @@ dialog::backdrop{background:rgba(15,20,36,.95)}
   .plate .num{min-width:42px;height:34px;font-size:1.1rem}
   .intro,.out,.env,.ask,.more,.price-foot{grid-template-columns:1fr;gap:30px}
   .more{margin-top:40px;padding-top:34px}
-  .prices{grid-template-columns:1fr 1fr}
+  .prices,.park{grid-template-columns:1fr 1fr}
+  .park figure:first-child{grid-column:1/-1}
+  .park figure:first-child img{aspect-ratio:16/9}
   .cal-months{grid-template-columns:1fr}
   .intro{margin-bottom:38px}
   .out-photos{padding-bottom:40px}
@@ -483,9 +491,10 @@ dialog::backdrop{background:rgba(15,20,36,.95)}
         <button type="button" data-full="img/badkamer-1600.jpg?v=2"><img src="img/badkamer-800.jpg?v=2" width="600" height="800" loading="lazy" alt="Badkamer met wastafel en spiegel"><span>Badkamer</span></button>
         <button type="button" data-full="img/slaapkamer-1b-1600.jpg?v=2"><img src="img/slaapkamer-1b-800.jpg?v=2" width="600" height="800" loading="lazy" alt="Opgemaakt tweepersoonsbed met handdoeken"><span>Slaapkamer 1</span></button>
         <button type="button" data-full="img/badkamer-2-1600.jpg?v=2"><img src="img/badkamer-2-800.jpg?v=2" width="600" height="800" loading="lazy" alt="Badkamer met douchecabine en toilet"><span>Badkamer</span></button>
+        <button type="button" data-full="img/parkeren-1600.jpg"><img src="img/parkeren-800.jpg" width="800" height="600" loading="lazy" alt="Het verlichte chalet in de avond, met een auto geparkeerd naast het huisje"><span>Parkeren bij het chalet</span></button>
         <button type="button" data-full="img/buiten-1600.jpg?v=2"><img src="img/buiten-800.jpg?v=2" width="800" height="600" loading="lazy" alt="Voorkant van het chalet met huisnummer 30"><span>Het chalet</span></button>
       </div>
-      <button class="btn btn-line gal-more" type="button" id="galmore">Toon alle 14 foto's</button>
+      <button class="btn btn-line gal-more" type="button" id="galmore">Toon alle 15 foto's</button>
     </div>
   </section>
 
@@ -493,6 +502,13 @@ dialog::backdrop{background:rgba(15,20,36,.95)}
     <div class="wrap">
       <h2>Op de camping is genoeg te doen</h2>
       <p class="sub">Het chalet staat op Camping De Otterberg, een familiecamping in de bossen bij Wijster. Vanuit het huisje loop je zo naar het zwembad of de speeltuin.</p>
+      <div class="park">
+        <figure><img src="img/park-zwembad.jpg" width="803" height="483" loading="lazy" alt="Overzicht van het buitenzwembad en het speelplein op de camping"><figcaption>Zwembad en speelplein</figcaption></figure>
+        <figure><img src="img/park-baan.jpg" width="823" height="621" loading="lazy" alt="Gekleurde helikopters en auto's op een baan boven het speelplein"><figcaption>Helikopters en auto's op de baan</figcaption></figure>
+        <figure><img src="img/park-speeltuin.jpg" width="799" height="626" loading="lazy" alt="Hoge speeltoren met glijbanen in het zand"><figcaption>Speeltoren met glijbanen</figcaption></figure>
+        <figure><img src="img/park-vijver.jpg" width="793" height="622" loading="lazy" alt="Vijver met waterlelies en groen op de camping"><figcaption>De vijver</figcaption></figure>
+        <figure><img src="img/park-treintje.jpg" width="594" height="436" loading="lazy" alt="Het treintje van de camping met vlaggetjes, met twee vrolijke medewerkers ervoor"><figcaption>Het treintje</figcaption></figure>
+      </div>
       <ul class="fac">
         <li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8 13V6a2 2 0 0 1 4 0M14 13V6a2 2 0 0 1 4 0M8 9.5h6M2 17c1.7 0 1.7-1.3 3.3-1.3S7 17 8.7 17s1.7-1.3 3.3-1.300S13.7 17 15.3 17s1.7-1.3 3.4-1.300S20.3 17 22 17M2 21c1.7 0 1.7-1.3 3.3-1.300S7 21 8.7 21s1.7-1.3 3.3-1.3 1.7 1.3 3.3 1.3 1.7-1.3 3.4-1.300S20.3 21 22 21"/></svg><b>Buitenzwembad</b><span>Vlak bij het chalet, met een zonneweide</span></li>
         <li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 3v18M4.5 3v4.500a2.5 2.5 0 0 0 5 0V3M17 21v-7h-3c0-4 1-8 3-11z"/></svg><b>Paviljoen De Otterberg</b><span>Eetcafé en restaurant vlak bij het chalet</span></li>
