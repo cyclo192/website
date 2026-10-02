@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jouw IT met Mimo – computerhulp voor thuis en voor kleine bedrijven</title>
+<meta name="description" content="Computer traag, wifi die hapert of een nieuwe laptop instellen? Jouw IT met Mimo helpt particulieren en kleine bedrijven met IT-problemen. Uitleg in gewone taal.">
+<link rel="canonical" href="https://jouwitmetmimo.byxavio.nl/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:title" content="Jouw IT met Mimo – computerhulp voor thuis en zakelijk">
+<meta property="og:description" content="Hulp bij computerproblemen, wifi, printers en nieuwe apparaten. Voor particulieren en kleine bedrijven.">
+<meta property="og:url" content="https://jouwitmetmimo.byxavio.nl/">
+<meta name="theme-color" content="#16201a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2316201a'/%3E%3Crect x='12' y='16' width='40' height='26' rx='3' fill='none' stroke='%23fff' stroke-width='4'/%3E%3Cpath d='M6 48h52' stroke='%23fff' stroke-width='4' stroke-linecap='round'/%3E%3Ccircle cx='32' cy='29' r='6' fill='%232f9e44'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LocalBusiness","name":"Jouw IT met Mimo","description":"IT-support en oplossingen voor particulieren en kleine bedrijven.","url":"https://jouwitmetmimo.byxavio.nl/","email":"info@jouwitmetmimo.nl","sameAs":["https://www.facebook.com/profile.php?id=61588710913255"]}
+</script>
+<style>
+:root{
+  --ink:#16201a;       /* het zwart uit het logo, met een zweem groen */
+  --ink-soft:#2c3a31;
+  --green:#2f9e44;     /* het groen van het tandwiel in het logo */
+  --green-deep:#237a34;
+  --mint:#e2f2e4;      /* "opgelost" */
+  --amber:#f0b429;     /* focus en "bezig" */
+  --amber-soft:#fdf2d6;
+  --paper:#f5f6f1;
+  --line:#dde2d8;
+  --muted:#58635c;
+  --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{font-family:var(--body);font-size:1.125rem;line-height:1.6;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--display);font-weight:800;line-height:1.04;letter-spacing:-.02em}
+h2{font-size:clamp(2rem,4.4vw,3.1rem);max-width:18ch}
+h3{font-size:1.28rem;line-height:1.2;font-weight:600;letter-spacing:-.01em}
+p{max-width:60ch}
+a{color:inherit}
+img,svg{display:block}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--amber);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+.sec{padding-block:96px}
+.sub{color:var(--muted);margin-top:16px}
+.eyebrow{display:inline-flex;align-items:center;gap:.55em;font:700 .95rem/1 var(--body);color:var(--green-deep);margin-bottom:16px}
+.eyebrow::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px var(--mint)}
+
+/* knoppen */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55em;font:700 1.05rem/1 var(--body);padding:1em 1.45em;border-radius:999px;border:2px solid transparent;text-decoration:none;cursor:pointer;transition:background-color .15s,color .15s,border-color .15s,transform .15s}
+.btn:active{transform:translateY(1px)}
+.btn-green{background:var(--green);color:#fff}
+.btn-green:hover{background:var(--green-deep)}
+.btn-line{border-color:var(--ink);color:var(--ink);background:transparent}
+.btn-line:hover{background:var(--ink);color:#fff}
+.btn svg{width:1.2em;height:1.2em;flex:none}
+.msgr{background:#0866ff;color:#fff}
+.msgr:hover{background:#0654d4}
+
+/* kop */
+header{position:sticky;top:0;z-index:20;background:rgba(245,246,241,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:72px}
+.brand{display:flex;align-items:center;gap:.65em;text-decoration:none;white-space:nowrap}
+.mark{width:42px;height:42px;flex:none}
+.brand b{font-family:var(--display);font-weight:800;font-size:1.3rem;letter-spacing:-.02em;line-height:1}
+.brand b span{color:var(--green)}
+nav{display:flex;align-items:center;gap:28px}
+nav a{text-decoration:none;font-size:1.02rem}
+nav a:not(.btn):hover{color:var(--green-deep)}
+nav .btn{padding:.8em 1.2em;font-size:1rem}
+
+/* hero */
+.hero{padding:96px 0 88px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:56px;align-items:center}
+.hero h1{font-size:clamp(2.9rem,6.4vw,5.2rem);margin-bottom:.32em}
+.hero h1 em{font-style:normal;color:var(--green);display:block}
+.nw{white-space:nowrap}
+.lead{font-size:1.28rem;line-height:1.5;max-width:34ch;color:var(--ink-soft)}
+.facts{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:14px 20px;margin:30px 0;max-width:500px}
+.facts li{display:flex;align-items:center;gap:.65em;font-weight:700;font-size:1.02rem;line-height:1.25}
+.facts svg{flex:none;width:40px;height:40px;padding:9px;border-radius:50%;background:#fff;border:1px solid var(--line);stroke:var(--green-deep);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px}
+
+/* het "opgelost"-scherm */
+.screen{position:relative}
+.laptop{background:var(--ink);border-radius:22px 22px 10px 10px;padding:14px 14px 18px;box-shadow:0 40px 70px -40px rgba(22,32,26,.7)}
+.laptop-top{display:flex;align-items:center;gap:7px;padding:2px 6px 12px}
+.laptop-top i{width:11px;height:11px;border-radius:50%;background:#3b4a40}
+.laptop-top i:first-child{background:var(--green)}
+.laptop-top span{margin-left:auto;font:600 .82rem/1 var(--mono);color:#9fb1a5}
+.tickets{list-style:none;background:#fff;border-radius:12px;padding:8px}
+.tickets li{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:13px 12px;border-bottom:1px dashed var(--line)}
+.tickets li:last-child{border-bottom:0}
+.tickets b{line-height:1.25;font-size:1.02rem}
+.tickets small{display:block;color:var(--muted);font-size:.88rem;font-weight:400}
+.dot{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--mint)}
+.dot svg{width:16px;height:16px;fill:none;stroke:var(--green-deep);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.tag{font:700 .78rem/1 var(--mono);padding:.45em .7em;border-radius:999px;background:var(--mint);color:var(--green-deep);white-space:nowrap}
+.tickets li.busy .dot{background:var(--amber-soft)}
+.tickets li.busy .dot svg{stroke:#9a6b00}
+.tickets li.busy .tag{background:var(--amber-soft);color:#7a5500}
+.base{height:16px;margin:0 -26px;background:#2c3a31;border-radius:0 0 18px 18px}
+.badge{position:absolute;right:-12px;top:-18px;background:var(--green);color:#fff;border-radius:16px;padding:12px 16px;font-weight:700;line-height:1.2;font-size:.95rem;box-shadow:0 16px 30px -16px rgba(35,122,52,.8);transform:rotate(3deg)}
+.badge big{display:block;font:800 1.6rem/1 var(--display)}
+@media (prefers-reduced-motion:no-preference){
+  .tickets li{animation:in .6s cubic-bezier(.2,.7,.2,1) both}
+  .tickets li:nth-child(2){animation-delay:.12s}
+  .tickets li:nth-child(3){animation-delay:.24s}
+  .tickets li:nth-child(4){animation-delay:.36s}
+  @keyframes in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+}
+
+/* diensten */
+.head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+.head .sub{margin-top:0;max-width:40ch}
+.cards{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px 24px 24px;display:grid;gap:10px;align-content:start;transition:border-color .15s,transform .15s}
+.card:hover{border-color:var(--green);transform:translateY(-2px)}
+.card svg{width:52px;height:52px;padding:12px;border-radius:14px;background:var(--mint);stroke:var(--green-deep);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;margin-bottom:6px}
+.card p{color:var(--muted);font-size:1.02rem;line-height:1.5}
+
+/* zakelijk */
+#zakelijk{background:var(--ink);color:#fff}
+#zakelijk .sub{color:#b9c7bd}
+#zakelijk .eyebrow{color:#8fd49b}
+#zakelijk .eyebrow::before{box-shadow:0 0 0 4px rgba(47,158,68,.3)}
+.biz{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:56px;align-items:start}
+.ticks{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ticks li{padding:18px 20px;border-radius:16px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);line-height:1.35}
+.ticks b{display:block;font-family:var(--display);font-weight:600;font-size:1.15rem;margin-bottom:4px}
+.ticks span{color:#b9c7bd;font-size:1rem}
+#zakelijk .btn-line{border-color:#fff;color:#fff}
+#zakelijk .btn-line:hover{background:#fff;color:var(--ink)}
+
+/* werkwijze */
+.steps{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:28px;counter-reset:s;position:relative}
+.steps::before{content:"";position:absolute;left:28px;right:28px;top:27px;border-top:2px dashed var(--line);z-index:0}
+.steps li{position:relative;z-index:1;counter-increment:s}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--paper);border:2px solid var(--ink);font:800 1.4rem/1 var(--display);margin-bottom:18px}
+.steps li:last-child::before{background:var(--green);border-color:var(--green);color:#fff}
+.steps p{color:var(--muted);margin-top:8px}
+
+/* over */
+#over{background:#fff;border-block:1px solid var(--line)}
+.about{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:56px;align-items:center}
+.card-id{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:28px;display:grid;gap:18px;justify-items:start}
+.avatar{width:96px;height:96px;border-radius:24px;background:var(--ink);display:grid;place-items:center;color:#fff;font:800 2.6rem/1 var(--display);position:relative}
+.avatar::after{content:"";position:absolute;right:-6px;bottom:-6px;width:24px;height:24px;border-radius:50%;background:var(--green);border:4px solid var(--paper)}
+.card-id b{font-family:var(--display);font-size:1.5rem;line-height:1.1}
+.card-id ul{list-style:none;display:grid;gap:8px}
+.card-id li{display:flex;gap:.6em;align-items:center;font-size:1rem}
+.card-id li svg{width:20px;height:20px;flex:none;stroke:var(--green-deep);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* contact */
+#contact{background:var(--ink);color:#fff}
+#contact .sub{color:#b9c7bd}
+#contact .eyebrow{color:#8fd49b}
+.ask{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:56px;align-items:start;margin-top:40px}
+.contact{list-style:none;display:grid;gap:20px}
+.contact small{display:block;color:#b9c7bd;font-size:.95rem}
+.contact a{text-decoration:none;font-family:var(--display);font-weight:600;font-size:1.35rem;overflow-wrap:anywhere}
+.contact a:hover{color:#8fd49b}
+form{background:#fff;color:var(--ink);border-radius:24px;padding:30px;display:grid;grid-template-columns:1fr 1fr;gap:20px;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+form .full{grid-column:1/-1}
+.lbl,label{display:block;font-weight:700;font-size:1rem;margin-bottom:8px}
+.lbl small,label small{font-weight:400;color:var(--muted);font-size:inherit}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1.5px solid #c3cbc4;background:#fff;border-radius:999px;padding:.6em 1em;font-size:1rem;cursor:pointer;display:inline-flex;align-items:center;gap:.45em}
+.chip::before{content:"";width:16px;height:16px;border-radius:50%;border:2px solid #b4bdb6;flex:none}
+.chip[aria-pressed="true"]{border-color:var(--green);background:var(--mint);font-weight:700}
+.chip[aria-pressed="true"]::before{border-color:var(--green);background:var(--green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5.5' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat}
+.chip:hover{border-color:var(--ink)}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:var(--paper);border:1.5px solid #c3cbc4;border-radius:14px;padding:5px}
+.seg button{border:0;background:transparent;border-radius:10px;padding:.7em .5em;font-weight:700;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
+input,textarea{width:100%;font:inherit;color:inherit;padding:.8em .9em;border:1.5px solid #c3cbc4;border-radius:12px;background:#fff;min-height:52px}
+input:focus,textarea:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px rgba(240,180,41,.6)}
+textarea{min-height:110px;resize:vertical}
+.send{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.hint{font-size:.95rem;color:var(--muted);flex-basis:100%}
+.hint.warn{color:#b3261e}
+
+footer{background:#0f1612;color:#b9c7bd;padding:30px 0;font-size:.98rem}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{color:#fff}
+
+.dock{display:none}
+
+@media (max-width:1000px){
+  nav a:not(.btn){display:none}
+  .cards{grid-template-columns:1fr 1fr}
+}
+@media (max-width:900px){
+  .sec{padding-block:64px}
+  .hero{padding:56px 0 64px}
+  .hero-grid,.biz,.about,.ask{grid-template-columns:1fr;gap:36px}
+  .screen{max-width:520px}
+  .steps{grid-template-columns:1fr;gap:26px}
+  .steps::before{left:27px;right:auto;top:28px;bottom:28px;border-top:0;border-left:2px dashed var(--line)}
+  .steps li{display:grid;grid-template-columns:56px 1fr;column-gap:18px}
+  .steps li::before{grid-row:1/3;margin:0}
+  .steps p{margin-top:4px}
+  body{padding-bottom:76px}
+  .dock{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:30;background:#fff;border-top:1px solid var(--line);padding:9px;gap:9px}
+  .dock .btn{padding:.9em .6em}
+}
+@media (max-width:620px){
+  body{font-size:1.0625rem}
+  .wrap{padding:0 18px}
+  header nav .btn{font-size:.95rem;padding:.75em 1em}
+  .brand b{font-size:1.08rem}
+  .mark{width:36px;height:36px}
+  .cards,.ticks{grid-template-columns:1fr}
+  .facts{gap:12px 10px}
+  .facts li{font-size:.95rem;gap:.5em}
+  .facts svg{width:34px;height:34px;padding:7px}
+  .badge{right:-4px;top:-22px;padding:9px 12px;font-size:.85rem}
+  .badge big{font-size:1.3rem}
+  .tickets li{grid-template-columns:auto 1fr;padding:12px 8px}
+  .tag{grid-column:2;justify-self:start}
+  form{grid-template-columns:1fr;padding:20px}
+  .send .btn,.hero-cta .btn{flex:1 1 100%}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important;animation:none!important}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#top" aria-label="Jouw IT met Mimo, naar boven">
+      <svg class="mark" aria-hidden="true" viewBox="0 0 48 48"><rect width="48" height="48" rx="12" fill="#16201a"/><rect x="9" y="12" width="30" height="19" rx="2.5" fill="none" stroke="#fff" stroke-width="3"/><path d="M5 36h38" stroke="#fff" stroke-width="3" stroke-linecap="round"/><g transform="translate(24 21.5)"><circle r="4.2" fill="#2f9e44"/><g stroke="#2f9e44" stroke-width="2.4" stroke-linecap="round"><path d="M0-7v2M0 5v2M-7 0h2M5 0h2M-4.9-4.9l1.4 1.4M3.5 3.5l1.4 1.4M-4.9 4.9l1.4-1.4M3.5-3.5l1.4-1.4"/></g><circle r="1.5" fill="#16201a"/></g></svg>
+      <b>Jouw IT <span>met Mimo</span></b>
+    </a>
+    <nav aria-label="Hoofdmenu">
+      <a href="#hulp">Hulp thuis</a>
+      <a href="#zakelijk">Zakelijk</a>
+      <a href="#werkwijze">Zo werkt het</a>
+      <a href="#over">Over Mimo</a>
+      <a class="btn btn-green" href="#contact">Stel je vraag</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">IT-support voor thuis en voor bedrijven</p>
+        <h1>Computer&shy;problemen? <em>Mimo lost <span class="nw">het op.</span></em></h1>
+        <p class="lead">Een trage laptop, wifi die hapert of een printer die niet wil. Ik zoek uit wat er aan de hand is en leg het uit in gewone taal.</p>
+        <ul class="facts">
+          <li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5M5.5 9.5V20h13V9.5"/><path d="M10 20v-5h4v5"/></svg>Hulp voor thuis</li>
+          <li><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg>Hulp voor bedrijven</li>
+          <li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 5h16v10H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg>Uitleg zonder vaktaal</li>
+          <li><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Snel antwoord</li>
+        </ul>
+        <div class="hero-cta">
+          <a class="btn btn-green" href="#contact">Vertel wat er mis is</a>
+          <a class="btn btn-line" href="#hulp">Waar ik mee help</a>
+        </div>
+      </div>
+
+      <div class="screen" aria-label="Voorbeelden van opgeloste problemen">
+        <div class="badge"><big>Opgelost</big>en uitgelegd</div>
+        <div class="laptop">
+          <div class="laptop-top"><i></i><i></i><i></i><span>mimo.check</span></div>
+          <ul class="tickets">
+            <li><span class="dot"><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span><b>Laptop start traag op<small>Opstartprogramma's opgeschoond</small></b><span class="tag">opgelost</span></li>
+            <li><span class="dot"><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span><b>Geen wifi op zolder<small>Extra toegangspunt geplaatst</small></b><span class="tag">opgelost</span></li>
+            <li><span class="dot"><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M3.5 8.5l3 3L12.5 5"/></svg></span><b>Printer niet gevonden<small>Opnieuw gekoppeld aan het netwerk</small></b><span class="tag">opgelost</span></li>
+            <li class="busy"><span class="dot"><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M8 4v4l2.5 1.5"/></svg></span><b>Jouw probleem<small>Vertel het me hieronder</small></b><span class="tag">volgende</span></li>
+          </ul>
+        </div>
+        <div class="base"></div>
+      </div>
+    </div>
+  </div>
+
+  <section class="sec" id="hulp">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow">Hulp thuis</p>
+          <h2>Waar kan ik je mee helpen?</h2>
+        </div>
+        <p class="sub">Staat jouw probleem er niet tussen? Vraag het gewoon. De kans is groot dat ik je verder kan helpen.</p>
+      </div>
+      <ul class="cards">
+        <li class="card"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M2 20h20M12 7v3l2 1.5"/></svg><h3>Trage of vastlopende computer</h3><p>Opstarten duurt eeuwig of alles hangt. Ik kijk wat hem afremt en maak hem weer vlot.</p></li>
+        <li class="card"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 4.4 3.4 8.2 8 9 4.6-.8 8-4.6 8-9V6z"/><path d="M9 12l2 2 4-4"/></svg><h3>Virus of verdachte mail</h3><p>Rare pop-ups of een mail die niet klopt? Ik maak je apparaat schoon en help je veilig verder.</p></li>
+        <li class="card"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M2 9a15 15 0 0 1 20 0M5.5 12.5a10 10 0 0 1 13 0M9 16a5 5 0 0 1 6 0"/><circle cx="12" cy="19.5" r="1"/></svg><h3>Wifi en internet</h3><p>Slecht bereik op zolder of in de tuin. Ik zoek de oorzaak en zorg voor stabiel internet in huis.</p></li>
+        <li class="card"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 8V3h10v5M7 17H4a1 1 0 0 1-1-1v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6a1 1 0 0 1-1 1h-3"/><rect x="7" y="14" width="10" height="7" rx="1"/></svg><h3>Printer en randapparatuur</h3><p>Printer, scanner of tweede scherm dat niet wil werken. Ik sluit het aan en stel het goed in.</p></li>
+        <li class="card"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2M3 9l2 2-2 2M21 9l-2 2 2 2"/></svg><h3>Nieuwe laptop of telefoon</h3><p>Alles overzetten van je oude apparaat: foto's, mail, wachtwoorden en apps. Klaar om te gebruiken.</p></li>
+        <li class="card"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 18a4.5 4.5 0 0 1-.6-9A6 6 0 0 1 18 8a4 4 0 0 1 0 8"/><path d="M12 12v8M9 17l3 3 3-3"/></svg><h3>Back-up en bestanden terug</h3><p>Ik zet een back-up voor je op, zodat je foto's en documenten veilig zijn. En ik help kwijtgeraakte bestanden terug te vinden.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" id="zakelijk">
+    <div class="wrap biz">
+      <div>
+        <p class="eyebrow">Zakelijk</p>
+        <h2>IT-hulp voor kleine bedrijven</h2>
+        <p class="sub">Geen eigen IT-afdeling? Dan regel ik het. Van een nieuwe werkplek tot een netwerk dat gewoon werkt, zodat jij je met je eigen werk bezig kunt houden.</p>
+        <p class="sub"><a class="btn btn-line" href="#contact" data-type="bedrijf">Vraag hulp voor je bedrijf</a></p>
+      </div>
+      <ul class="ticks">
+        <li><b>Werkplekken inrichten</b><span>Laptops en pc's klaarzetten voor nieuwe medewerkers</span></li>
+        <li><b>Zakelijke e-mail</b><span>Mail op je eigen domein, op al je apparaten</span></li>
+        <li><b>Netwerk en wifi</b><span>Stabiel internet op kantoor of in de winkel</span></li>
+        <li><b>Back-ups en veiligheid</b><span>Bestanden veilig, wachtwoorden op orde</span></li>
+        <li><b>Printers en kassa's</b><span>Apparaten die met elkaar praten</span></li>
+        <li><b>Vaste IT-hulp</b><span>Eén aanspreekpunt als er iets misgaat</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" id="werkwijze">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow">Zo werkt het</p>
+          <h2>In drie stappen weer verder</h2>
+        </div>
+      </div>
+      <ol class="steps">
+        <li><h3>Vertel wat er mis is</h3><p>Stuur een berichtje of mail. Je hoeft geen vaktermen te kennen, beschrijf gewoon wat je ziet.</p></li>
+        <li><h3>We spreken af hoe ik help</h3><p>Ik laat je weten wat ik denk dat het is en hoe ik het aanpak. Zo weet je vooraf waar je aan toe bent.</p></li>
+        <li><h3>Opgelost en uitgelegd</h3><p>Ik los het op en leg uit wat er aan de hand was. Zo weet je de volgende keer ook wat je kunt doen.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec" id="over">
+    <div class="wrap about">
+      <div class="card-id">
+        <div class="avatar" aria-hidden="true">M</div>
+        <b>Mimo</b>
+        <ul>
+          <li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg>Afgestudeerd in IT Systems &amp; Devices</li>
+          <li><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M2 20h20"/></svg>Oprichter van Jouw IT met Mimo</li>
+          <li><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></svg>IT-support en oplossingen</li>
+        </ul>
+      </div>
+      <div>
+        <p class="eyebrow">Over Mimo</p>
+        <h2>Eén vast aanspreekpunt voor al je IT</h2>
+        <p class="sub">Ik ben Mimo. Na mijn opleiding in IT Systems &amp; Devices ben ik Jouw IT met Mimo begonnen, omdat ik zag hoeveel mensen vastlopen op hun computer en niet weten bij wie ze terecht kunnen.</p>
+        <p class="sub">Bij mij krijg je geen callcenter, maar iemand die met je meedenkt, eerlijk zegt wat er nodig is en het uitlegt zodat je het snapt.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="contact">
+    <div class="wrap">
+      <p class="eyebrow">Contact</p>
+      <h2>Wat is er aan de hand?</h2>
+      <p class="sub">Tik aan waar het om gaat en vertel er kort iets over. Je krijgt zo snel mogelijk antwoord.</p>
+      <div class="ask">
+        <div>
+          <ul class="contact">
+            <li><small>E-mail</small><a href="mailto:info@jouwitmetmimo.nl">info@jouwitmetmimo.nl</a></li>
+            <li><small>Facebook Messenger</small><a href="https://m.me/61588710913255" target="_blank" rel="noopener">Stuur een bericht</a></li>
+          </ul>
+        </div>
+        <form id="form" novalidate>
+          <div class="full">
+            <span class="lbl">Het gaat om <small>(kies er één of meer)</small></span>
+            <div class="chips" id="chips">
+              <button type="button" class="chip" aria-pressed="false">Trage computer</button>
+              <button type="button" class="chip" aria-pressed="false">Virus of verdachte mail</button>
+              <button type="button" class="chip" aria-pressed="false">Wifi of internet</button>
+              <button type="button" class="chip" aria-pressed="false">Printer</button>
+              <button type="button" class="chip" aria-pressed="false">Nieuw apparaat instellen</button>
+              <button type="button" class="chip" aria-pressed="false">Back-up of bestanden</button>
+              <button type="button" class="chip" aria-pressed="false">Iets anders</button>
+            </div>
+          </div>
+          <div class="full">
+            <span class="lbl">Voor wie?</span>
+            <div class="seg" id="seg">
+              <button type="button" aria-pressed="true" data-v="thuis">Voor thuis</button>
+              <button type="button" aria-pressed="false" data-v="bedrijf">Voor mijn bedrijf</button>
+            </div>
+          </div>
+          <div><label for="naam">Naam</label><input id="naam" name="naam" autocomplete="name" required></div>
+          <div><label for="tel">Telefoon <small>(mag leeg)</small></label><input id="tel" name="tel" type="tel" autocomplete="tel"></div>
+          <div class="full"><label for="msg">Wat zie je gebeuren? <small>(mag kort)</small></label><textarea id="msg" name="msg" placeholder="Bijvoorbeeld: mijn laptop doet er sinds vorige week 5 minuten over om op te starten."></textarea></div>
+          <div class="full send">
+            <button class="btn btn-green" type="button" id="sendmail">Stuur via e-mail</button>
+            <p class="hint" id="formhint" role="status">Je bericht opent in je mailprogramma. Daar druk je zelf op verzenden.</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 Jouw IT met Mimo</div>
+    <div>Website door <a href="https://byxavio.nl">byXavio</a></div>
+  </div>
+</footer>
+
+<div class="dock">
+  <a class="btn msgr" href="https://m.me/61588710913255" target="_blank" rel="noopener">Messenger</a>
+  <a class="btn btn-green" href="#contact">Stel je vraag</a>
+</div>
+
+<script>
+// Keuzes in het formulier
+const chips=[...document.querySelectorAll('#chips .chip')];
+chips.forEach(c=>c.addEventListener('click',()=>c.setAttribute('aria-pressed',c.getAttribute('aria-pressed')==='true'?'false':'true')));
+const seg=[...document.querySelectorAll('#seg button')];
+function kies(v){seg.forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===v?'true':'false'));}
+seg.forEach(b=>b.addEventListener('click',()=>kies(b.dataset.v)));
+// Knop bij "Zakelijk" zet het formulier meteen op bedrijf
+document.querySelectorAll('[data-type]').forEach(a=>a.addEventListener('click',()=>kies(a.dataset.type)));
+
+// Bericht klaarzetten in het mailprogramma
+const f=document.getElementById('form'),hint=document.getElementById('formhint');
+document.getElementById('sendmail').addEventListener('click',()=>{
+  const naam=f.naam.value.trim();
+  const gekozen=chips.filter(c=>c.getAttribute('aria-pressed')==='true').map(c=>c.textContent);
+  if(!gekozen.length&&!f.msg.value.trim()){hint.textContent='Kies waar het om gaat, of vertel kort wat er mis is.';hint.className='hint warn';document.getElementById('chips').scrollIntoView({block:'center'});return;}
+  if(!naam){hint.textContent='Vul nog even je naam in.';hint.className='hint warn';f.naam.focus();return;}
+  const voor=seg.find(b=>b.getAttribute('aria-pressed')==='true').textContent.toLowerCase();
+  const regels=['Hoi Mimo,','','Ik heb hulp nodig '+voor+'.'];
+  if(gekozen.length)regels.push('Het gaat om: '+gekozen.join(', ')+'.');
+  if(f.msg.value.trim())regels.push('',f.msg.value.trim());
+  regels.push('','Groet, '+naam);
+  if(f.tel.value.trim())regels.push('Telefoon: '+f.tel.value.trim());
+  hint.textContent='Je bericht staat klaar. Druk in je mailprogramma op verzenden.';hint.className='hint';
+  location.href='mailto:info@jouwitmetmimo.nl?subject='+encodeURIComponent('Hulpvraag'+(gekozen.length?': '+gekozen[0].toLowerCase():''))+'&body='+encodeURIComponent(regels.join('\n'));
+});
+</script>
+</body>
+</html>
