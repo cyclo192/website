@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nails by Na – nagelstudio in Purmerend voor BIAB, acryl en gellak</title>
+<meta name="description" content="Nagelstudio aan de Sportlaan in Purmerend. BIAB, acryl, gellak, manicure en spa pedicure. Doordeweeks open tot 21:00 uur. Maak je afspraak via WhatsApp.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:title" content="Nails by Na – nagelstudio in Purmerend">
+<meta property="og:description" content="BIAB, acryl, gellak, manicure en spa pedicure aan de Sportlaan in Purmerend. Afspraak maken gaat via WhatsApp.">
+<meta name="theme-color" content="#3b1522">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%233b1522'/%3E%3Cpath d='M20 54V26a12 12 0 0 1 24 0v28z' fill='%23b5173b'/%3E%3Cpath d='M26 44V28a6 6 0 0 1 3-5' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' opacity='.8'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://static.wixstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400..800&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..800;1,6..96,400..800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"NailSalon","name":"Nails by Na","description":"Nagelstudio in Purmerend voor BIAB, acryl, gellak, manicure en spa pedicure.","telephone":"+31659606787","email":"tinaalyssanails@gmail.com","address":{"@type":"PostalAddress","streetAddress":"Sportlaan 23","postalCode":"1442 EA","addressLocality":"Purmerend","addressCountry":"NL"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"21:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"09:00","closes":"18:30"}]}
+</script>
+<style>
+:root{
+  --ink:#3b1522;        /* diep wijnrood, de donkerste lak in het rek */
+  --ink-soft:#5c3442;
+  --muted:#7a5964;
+  --red:#b5173b;        /* klassiek rode nagellak */
+  --red-deep:#93102e;
+  --milk:#fbe6ea;       /* milky pink, de populairste BIAB-kleur */
+  --nude:#f3ddd3;       /* nude */
+  --nude-deep:#e3b9a8;
+  --paper:#fffaf9;
+  --line:#f0d6db;
+  --haze:#eccdd5;       /* zachte tekst op donker */
+  --display:"Bodoni Moda","Bodoni 72",Didot,Georgia,"Times New Roman",serif;
+  --body:"Albert Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --nail:50% 50% 12% 12% / 36% 36% 6% 6%;   /* de vorm van een ovale nagel */
+  --rack:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='52' viewBox='0 0 220 52'%3E%3Cpath d='M8 52V16a14 14 0 0 1 28 0v36z' fill='%23b5173b'/%3E%3Cpath d='M52 52V22a14 14 0 0 1 28 0v30z' fill='%23e3b9a8'/%3E%3Cpath d='M96 52V14a14 14 0 0 1 28 0v38z' fill='%23e58aa0'/%3E%3Cpath d='M140 52V22a14 14 0 0 1 28 0v30z' fill='%23d8cfe0'/%3E%3Cpath d='M184 52V18a14 14 0 0 1 28 0v34z' fill='%237a1f3d'/%3E%3C/svg%3E");
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{font-family:var(--body);font-size:1.125rem;line-height:1.6;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;font-variant-numeric:lining-nums}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.08;letter-spacing:-.01em}
+h2{font-size:clamp(2rem,4.4vw,3.1rem);max-width:17ch;text-wrap:balance}
+h3{font-size:1.4rem;font-weight:700;line-height:1.2}
+p{max-width:60ch}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--red);outline-offset:3px;border-radius:8px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+.sec{padding-block:96px}
+.sub{color:var(--muted);margin-top:16px}
+
+/* demo-melding */
+.demo{background:var(--ink);color:var(--haze);font-size:.95rem;line-height:1.4;padding:9px 0;text-align:center}
+.demo p{max-width:none}
+.demo a{color:#fff;font-weight:700;text-underline-offset:3px;overflow-wrap:anywhere}
+
+/* knoppen */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55em;font:800 1.05rem/1 var(--body);padding:1em 1.45em;border-radius:999px;border:2px solid transparent;text-decoration:none;cursor:pointer;transition:background-color .15s,color .15s,border-color .15s,transform .15s}
+.btn:active{transform:translateY(1px)}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:var(--red-deep)}
+.btn-line{border-color:var(--ink);color:var(--ink);background:transparent}
+.btn-line:hover{background:var(--ink);color:#fff}
+.btn svg{width:1.2em;height:1.2em;flex:none}
+.wa{background:#1f8f4e;color:#fff}
+.wa:hover{background:#18763f}
+
+/* kop */
+header{position:sticky;top:0;z-index:20;background:rgba(255,250,249,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:72px}
+.brand{font-family:var(--display);font-style:italic;font-weight:600;font-size:1.6rem;text-decoration:none;display:flex;align-items:center;gap:.5em;white-space:nowrap}
+.brand svg{width:34px;height:34px;flex:none}
+nav{display:flex;align-items:center;gap:26px}
+nav a{text-decoration:none;font-size:1.02rem;font-weight:600}
+nav a:not(.btn):hover{color:var(--red)}
+nav .btn{padding:.8em 1.2em;font-size:1rem}
+
+/* hero */
+.hero{position:relative;background:linear-gradient(180deg,var(--milk),var(--paper));padding:64px 0 88px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:56px;align-items:center}
+.hero h1{font-size:clamp(3.4rem,8vw,6.4rem);line-height:.92;font-style:italic;font-weight:500;letter-spacing:-.02em}
+.hero h1 span{display:block;white-space:nowrap}
+.hero h1 span+span{padding-left:.9em}
+.lead{font-size:1.3rem;line-height:1.5;max-width:34ch;color:var(--ink-soft);margin-top:1em}
+.facts{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:14px 20px;margin:30px 0;max-width:520px}
+.facts li{display:flex;align-items:center;gap:.65em;font-weight:800;font-size:1.02rem;line-height:1.25}
+.facts svg{flex:none;width:40px;height:40px;padding:9px;border-radius:50%;background:#fff;border:1px solid var(--line);stroke:var(--red);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.price-line{margin-top:18px;max-width:none;font-size:1rem;color:var(--muted)}
+.price-line a{color:var(--ink);font-weight:800;text-underline-offset:3px;white-space:nowrap}
+.price-line a:hover{color:var(--red)}
+.stage{position:relative;padding:0 9% 30px 13%}
+.gloss{position:relative;overflow:hidden;border-radius:var(--nail);background:var(--line)}
+.gloss img{width:100%;height:100%;object-fit:cover}
+.gloss::after{content:"";position:absolute;left:13%;top:9%;width:11%;height:44%;border-radius:999px;background:linear-gradient(180deg,rgba(255,255,255,.7),rgba(255,255,255,0));transform:rotate(7deg);pointer-events:none}
+.window{aspect-ratio:4/5.4;box-shadow:0 0 0 8px #fff,0 0 0 10px var(--red),0 40px 60px -40px rgba(59,21,34,.55)}
+.medal{position:absolute;width:27%;aspect-ratio:3/4.3;box-shadow:0 0 0 6px #fff,0 0 0 8px var(--red),0 20px 30px -18px rgba(59,21,34,.6)}
+.medal-a{left:1%;bottom:0;rotate:-9deg}
+.medal-b{right:0;top:47%;rotate:8deg}
+.seal{position:absolute;right:1%;top:1%;width:126px;height:126px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-content:center;text-align:center;line-height:1.15;font-weight:800;font-size:.9rem;transform:rotate(9deg);box-shadow:0 0 0 4px var(--paper),0 0 0 6px var(--ink);text-decoration:none}
+.seal b{display:block;font-family:var(--display);font-style:italic;font-weight:600;font-size:2.5rem;line-height:1;color:var(--milk)}
+a.seal:hover{background:var(--red-deep)}
+@media (prefers-reduced-motion:no-preference){
+  .window,.medal,.seal{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+  .medal-a{animation-delay:.14s}.medal-b{animation-delay:.26s}.seal{animation-delay:.4s}
+  @keyframes rise{from{opacity:0;translate:0 26px}to{opacity:1;translate:0 0}}
+}
+
+/* behandelingen */
+#behandelingen{background:#fff;border-block:1px solid var(--line)}
+.care{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:64px;align-items:center}
+.care-photos{position:relative;padding:0 0 52px}
+.care-big{width:82%;aspect-ratio:4/5.2}
+.care-small{position:absolute;right:0;bottom:0;width:42%;border-radius:20px;overflow:hidden;background:var(--line);box-shadow:0 0 0 8px #fff}
+.care-small img{width:100%;aspect-ratio:1;object-fit:cover}
+.acts{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:24px 28px;margin-top:34px}
+.acts li{display:grid;grid-template-columns:auto 1fr;gap:2px 14px;align-items:start}
+.acts svg{grid-row:1/3;width:48px;height:48px;padding:11px;border-radius:50%;background:var(--milk);stroke:var(--red);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.acts b{font-family:var(--display);font-weight:700;font-size:1.3rem;line-height:1.2;padding-top:2px}
+.acts span{color:var(--muted);font-size:1rem;line-height:1.45}
+
+/* prijzen */
+.gal-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:36px}
+.menu{list-style:none;margin-top:8px;border-top:2px solid var(--ink)}
+.menu li{display:grid;grid-template-columns:7.4rem minmax(0,1fr) auto;gap:8px 28px;align-items:center;padding:24px 0;border-bottom:1px solid var(--line)}
+.kind{font-family:var(--display);font-style:italic;font-weight:600;font-size:1.45rem;line-height:1.1;color:var(--red-deep)}
+.menu h3{font-size:1.5rem}
+.menu p{color:var(--ink-soft);margin-top:6px;max-width:58ch}
+.cost{display:flex;align-items:center;gap:22px}
+.cost b{font-family:var(--display);font-weight:700;font-size:2.3rem;line-height:1;white-space:nowrap;min-width:4.6rem;text-align:right}
+.cost b.onreq{font-family:var(--body);font-weight:800;font-size:1.05rem;color:var(--muted)}
+.cost .btn{padding:.75em 1.15em;font-size:.98rem;white-space:nowrap}
+.menu li.star{background:var(--nude);margin-inline:-22px;padding-inline:22px;border-radius:20px;border-bottom-color:transparent}
+.note{margin-top:26px;color:var(--muted);font-size:1rem;max-width:none}
+
+/* foto's */
+#fotos{background:var(--milk)}
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.gallery button{display:block;width:100%;padding:0;border:0;background:var(--line);cursor:zoom-in;border-radius:16px;overflow:hidden;position:relative;aspect-ratio:4/5}
+.gallery button.cut{display:none}
+.gallery img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+.gallery button:hover img{transform:scale(1.04)}
+.gallery span{position:absolute;left:10px;bottom:10px;max-width:calc(100% - 20px);background:rgba(59,21,34,.88);color:#fff;font-size:.9rem;line-height:1.3;padding:.3em .8em;border-radius:999px;text-align:left}
+.gal-more{display:none;margin:26px auto 0}
+.gallery.has-cut+.gal-more{display:flex}
+.insta{color:var(--ink);font-weight:800;text-underline-offset:3px}
+.insta:hover{color:var(--red)}
+
+/* reviews */
+.praise{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:22px;margin-top:40px}
+blockquote{padding:30px 32px;border-radius:24px;background:var(--milk);display:grid;align-content:space-between;gap:18px}
+blockquote p{font-family:var(--display);font-style:italic;font-weight:500;font-size:1.3rem;line-height:1.38;max-width:none}
+blockquote.lead-q{grid-row:1/3;background:var(--ink);color:#fff;padding:40px}
+blockquote.lead-q p{font-size:clamp(1.5rem,2.6vw,2.15rem);line-height:1.28}
+blockquote footer{font-size:1rem;font-weight:700;color:var(--muted)}
+blockquote.lead-q footer{color:var(--haze)}
+.stars{display:block;letter-spacing:.14em;color:var(--red);font-size:1.05rem;margin-bottom:6px}
+.lead-q .stars{color:#ffb9c8}
+.praise-foot{margin-top:24px;display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:space-between;color:var(--muted);font-size:1rem}
+.praise-foot p{max-width:none}
+
+/* langskomen */
+#langskomen{background:#fff;border-block:1px solid var(--line)}
+.visit{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:64px;align-items:start}
+.visit .sub+.sub{margin-top:14px}
+address{font-style:normal;margin-top:28px;font-family:var(--display);font-weight:600;font-size:1.7rem;line-height:1.25}
+.visit .btn{margin-top:22px}
+.area{padding:30px;border-radius:24px;background:var(--nude)}
+.hours{list-style:none;margin-top:16px}
+.hours li{display:flex;justify-content:space-between;gap:16px;padding:.5em .8em;border-radius:10px;line-height:1.35}
+.hours b{font-weight:700;white-space:nowrap}
+.hours li.now{background:#fff;font-weight:800}
+.hours li.now b{font-weight:800}
+.hours .shut{color:var(--muted)}
+
+/* vragen */
+.faq{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:56px;align-items:start}
+details{border-bottom:1px solid var(--line)}
+details:first-of-type{border-top:2px solid var(--ink)}
+summary{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:20px 0;font-weight:800;font-size:1.15rem;line-height:1.35;cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"";flex:none;width:34px;height:34px;border-radius:50%;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233b1522' stroke-width='2.6' stroke-linecap='round'%3E%3Cpath d='M12 6v12M6 12h12'/%3E%3C/svg%3E") center/18px no-repeat;border:1px solid var(--line);transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg);background-color:var(--milk);border-color:var(--milk)}
+summary:hover{color:var(--red)}
+details p{padding:0 54px 22px 0;color:var(--ink-soft);max-width:62ch}
+details a{font-weight:700;text-underline-offset:3px}
+
+/* afspraak */
+#afspraak{background:var(--ink);color:#fff;position:relative;padding-top:120px;border-top:8px solid var(--red)}
+#afspraak::before{content:"";position:absolute;left:0;right:0;top:-60px;height:52px;background:var(--rack) repeat-x center bottom;pointer-events:none}
+.ask{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:56px;align-items:start}
+#afspraak .sub{color:var(--haze)}
+.contact{list-style:none;margin-top:30px;display:grid;gap:20px}
+.contact a{text-decoration:none;font-family:var(--display);font-weight:600;font-size:1.8rem;overflow-wrap:anywhere}
+.contact a.mail{font-size:1.25rem}
+.contact a:hover{color:#ffb9c8}
+.contact small{display:block;color:var(--haze);font-size:.95rem}
+form{background:#fff;color:var(--ink);border-radius:24px;padding:30px;display:grid;grid-template-columns:1fr 1fr;gap:18px;box-shadow:0 30px 60px -30px rgba(0,0,0,.7)}
+form .full{grid-column:1/-1}
+label,.lbl{display:block;font-weight:800;font-size:1rem;margin-bottom:6px}
+label small{font-weight:400;color:var(--muted);font-size:inherit}
+input,select,textarea{width:100%;font:inherit;color:inherit;padding:.8em .9em;border:1.5px solid #dcbcc4;border-radius:12px;background:#fff;min-height:52px}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px rgba(181,23,59,.3)}
+textarea{min-height:96px;resize:vertical}
+.check{display:flex;gap:.7em;align-items:center;font-weight:700;margin:0;cursor:pointer;min-height:52px;padding:.5em .9em;border:1.5px solid #dcbcc4;border-radius:12px;line-height:1.35}
+.check input{flex:none;width:22px;height:22px;min-height:0;padding:0;accent-color:var(--red)}
+.total{padding:18px 20px;border-radius:16px;background:var(--nude);border:1.5px solid var(--nude-deep)}
+.total .row{display:flex;justify-content:space-between;align-items:baseline;gap:16px}
+.total b{font-family:var(--display);font-weight:700;font-size:2rem;line-height:1.1;white-space:nowrap}
+.total span{font-weight:800}
+.total ul{list-style:none;margin-top:8px;color:var(--ink-soft);font-size:1rem;line-height:1.5}
+.send{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.hint{font-size:.95rem;color:var(--muted);flex-basis:100%;max-width:none}
+
+footer.site{background:#2a0d17;color:var(--haze);padding:32px 0;font-size:.98rem}
+footer.site .wrap{display:grid;gap:10px}
+footer.site .row{display:flex;justify-content:space-between;gap:14px 32px;flex-wrap:wrap}
+footer.site a{color:#fff;text-underline-offset:3px}
+footer.site p{max-width:none}
+
+/* zwevende WhatsApp-knop (desktop) */
+.wa-float{position:fixed;right:24px;bottom:24px;z-index:25;width:62px;height:62px;border-radius:50%;background:#1f8f4e;display:grid;place-items:center;box-shadow:0 12px 26px -10px rgba(0,0,0,.5);transition:opacity .2s,transform .2s}
+.wa-float:hover{background:#18763f}
+.wa-float svg{width:34px;height:34px}
+.wa-float.hide{opacity:0;pointer-events:none;transform:scale(.8)}
+
+/* lightbox */
+dialog{border:0;padding:0;background:transparent;max-width:100vw;max-height:100dvh;width:100vw;height:100dvh;color:#fff}
+dialog::backdrop{background:rgba(42,13,23,.96)}
+.lb{width:100%;height:100%;display:grid;grid-template-rows:auto 1fr auto;justify-items:center;align-items:center;padding:14px}
+.lb img{max-width:min(1400px,94vw);max-height:calc(100dvh - 160px);border-radius:12px;object-fit:contain}
+.lb-top{width:100%;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:0 6px 10px}
+.lb button{background:rgba(255,255,255,.16);color:#fff;border:0;border-radius:999px;font:800 1.05rem var(--body);padding:.8em 1.3em;cursor:pointer}
+.lb button:hover{background:rgba(255,255,255,.3)}
+.lb-nav{display:flex;gap:10px;padding-top:12px}
+
+.dock{display:none}
+
+@media (max-width:1080px){
+  nav a:not(.btn){display:none}
+  .gallery{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:900px){
+  .sec{padding-block:64px}
+  .hero{padding:34px 0 60px}
+  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .stage{max-width:460px;margin-inline:auto;width:100%}
+  .care,.visit,.ask,.faq{grid-template-columns:1fr;gap:34px}
+  .care-photos{max-width:460px}
+  .menu li{grid-template-columns:6.4rem minmax(0,1fr);gap:8px 18px;padding:22px 0}
+  .cost{grid-column:1/-1;justify-content:space-between}
+  .cost b{text-align:left}
+  .praise{grid-template-columns:1fr}
+  blockquote.lead-q{grid-row:auto;padding:30px 28px}
+  .gallery{grid-template-columns:1fr 1fr;gap:10px}
+  .gallery button{border-radius:12px}
+  #afspraak{padding-top:96px}
+  body{padding-bottom:76px}
+  .wa-float{display:none}
+  .dock{display:grid;grid-template-columns:1fr 1.25fr;position:fixed;left:0;right:0;bottom:0;z-index:30;background:#fff;border-top:1px solid var(--line);padding:9px;gap:9px}
+  .dock .btn{padding:.9em .6em}
+}
+@media (max-width:620px){
+  body{font-size:1.0625rem}
+  .wrap{padding:0 18px}
+  header nav .btn{font-size:.95rem;padding:.75em 1em}
+  .brand{font-size:1.35rem;gap:.4em}
+  .brand svg{width:28px;height:28px}
+  .bar{gap:10px;min-height:64px}
+  .demo{font-size:.88rem}
+  .lead{font-size:1.2rem}
+  .facts{gap:12px 10px;margin:24px 0}
+  .facts li{font-size:.95rem;gap:.5em}
+  .facts svg{width:34px;height:34px;padding:7px}
+  .hero-cta .btn,.send .btn{flex:1 1 100%}
+  .seal{width:104px;height:104px;font-size:.78rem}
+  .seal b{font-size:2rem}
+  .acts{grid-template-columns:1fr;gap:18px}
+  .menu li{grid-template-columns:1fr;gap:4px}
+  .menu li.star{margin-inline:-18px;padding-inline:18px}
+  .kind{font-size:1.15rem}
+  .cost{margin-top:10px}
+  .cost b{font-size:2rem}
+  address{font-size:1.45rem}
+  .area{padding:22px 18px}
+  blockquote,blockquote.lead-q{padding:24px 22px}
+  blockquote p{font-size:1.2rem}
+  form{grid-template-columns:1fr;padding:20px}
+  summary{font-size:1.08rem;padding:18px 0}
+  details p{padding-right:0}
+  footer.site .row{display:grid}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<div class="demo"><div class="wrap"><p>Dit is een demo-ontwerp van byXavio voor Nails by Na. De huidige website vind je op <a href="https://tinaalyssanails.wixsite.com/website" target="_blank" rel="noopener">tinaalyssanails.wixsite.com</a></p></div></div>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#top"><svg aria-hidden="true" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#3b1522"/><path d="M20 54V26a12 12 0 0 1 24 0v28z" fill="#b5173b"/><path d="M26 44V28a6 6 0 0 1 3-5" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".8"/></svg>Nails by Na</a>
+    <nav aria-label="Hoofdmenu">
+      <a href="#behandelingen">Behandelingen</a>
+      <a href="#prijzen">Prijzen</a>
+      <a href="#fotos">Foto's</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#langskomen">Openingstijden</a>
+      <a class="btn btn-red" href="#afspraak">Maak een afspraak</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1><span>Nails</span><span>by Na</span></h1>
+        <p class="lead">BIAB, acryl, gellak, manicure en pedicure aan de Sportlaan in Purmerend. Doordeweeks kun je tot 21:00 uur terecht.</p>
+        <ul class="facts">
+          <li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8 21V9a4 4 0 0 1 8 0v12z"/></svg>BIAB en acryl</li>
+          <li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 11h6v9a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1zM10.500 11V3h3v8"/></svg>Gellak op handen en voeten</li>
+          <li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 19 16.500 4.500l2.500 2L7.500 21z"/></svg>Manicure en spa pedicure</li>
+          <li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 21s-6.500-5.600-6.500-10.500a6.500 6.500 0 0 1 13 0C18.500 15.400 12 21 12 21z"/><circle cx="12" cy="10.500" r="2.300"/></svg>Sinds 2021 in Purmerend</li>
+          <li><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.500 2"/></svg>Doordeweeks open tot 21:00</li>
+          <li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg>Afspraak via WhatsApp</li>
+        </ul>
+        <div class="hero-cta">
+          <a class="btn btn-red" href="#afspraak">Maak een afspraak</a>
+          <a class="btn btn-line" href="#fotos">Bekijk de nagels</a>
+        </div>
+        <p class="price-line">Gellak voor € 15, een nieuwe set BIAB voor € 35. <a href="#prijzen">Bekijk alle prijzen</a></p>
+      </div>
+      <div class="stage">
+        <div class="gloss window"><img src="https://static.wixstatic.com/media/6e4780_9a57f3324a3c4c28a92a8d92040abdad~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_avif,quality_auto/nails-by-na-15.jpg" width="640" height="800" alt="BIAB-nagels gezet door Nails by Na" fetchpriority="high"></div>
+        <div class="gloss medal medal-a"><img src="https://static.wixstatic.com/media/6e4780_0b1b03e089bf42949bf74ee2eb70d772~mv2.jpg/v1/fill/w_400,h_560,al_c,q_85,enc_avif,quality_auto/nails-by-na-14.jpg" width="400" height="560" alt="BIAB-nagels met french gezet door Nails by Na"></div>
+        <div class="gloss medal medal-b"><img src="https://static.wixstatic.com/media/6e4780_3ba7772b44104d4aac044e6e4f120291~mv2.jpg/v1/fill/w_400,h_560,al_c,q_85,enc_avif,quality_auto/nails-by-na-16.jpg" width="400" height="560" alt="Een nieuwe set BIAB gezet door Nails by Na"></div>
+        <a class="seal" href="#reviews"><span><b>5,0</b>op Google<br>87 reviews</span></a>
+      </div>
+    </div>
+  </div>
+
+  <section class="sec" id="behandelingen">
+    <div class="wrap care">
+      <div class="care-photos">
+        <div class="gloss care-big"><img src="https://static.wixstatic.com/media/6e4780_374162a38a09416488ab15a9da3b71c9~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_avif,quality_auto/nails-by-na-1.jpg" width="640" height="800" loading="lazy" alt="Nagels gezet door Nails by Na"></div>
+        <div class="care-small"><img src="https://static.wixstatic.com/media/6e4780_b206ab43bf3b47aca0d73de477280b4a~mv2.jpg/v1/fill/w_600,h_600,al_c,q_85,enc_avif,quality_auto/nails-by-na-2.jpg" width="600" height="600" loading="lazy" alt="Nagels gezet door Nails by Na"></div>
+      </div>
+      <div>
+        <h2>Waarvoor kun je bij Nails by Na terecht?</h2>
+        <p class="sub">Voor je handen en je voeten. Weet je nog niet wat bij jouw nagels past? Stuur een foto via WhatsApp en je krijgt advies.</p>
+        <ul class="acts">
+          <li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8 21V9a4 4 0 0 1 8 0v12z"/><path d="M10.500 17v-7"/></svg><b>BIAB</b><span>Builder gel op je eigen nagel. Maakt hem steviger, zodat hij kan groeien zonder te breken.</span></li>
+          <li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8 21V7a4 4 0 0 1 8 0v14zM8 14h8"/></svg><b>Acryl</b><span>Ook wel solar nagels. Stevig, en geschikt als je meer lengte wilt.</span></li>
+          <li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 11h6v9a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1zM10.500 11V3h3v8"/></svg><b>Gellak</b><span>Glanzende kleur die lang blijft zitten. Op je handen of je voeten.</span></li>
+          <li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8 21V9a4 4 0 0 1 8 0v12zM8 10.500c2.500 1.600 5.500 1.600 8 0"/></svg><b>French</b><span>De witte rand, op BIAB of acryl.</span></li>
+          <li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 19 16.500 4.500l2.500 2L7.500 21z"/></svg><b>Manicure</b><span>Je nagels gevijld en je nagelriemen verzorgd.</span></li>
+          <li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 13h16a6 6 0 0 1-6 6h-4a6 6 0 0 1-6-6zM8 9.500c0-1.500 1-2 1-3.500M12 9.500c0-1.500 1-2 1-3.500M16 9.500c0-1.500 1-2 1-3.500"/></svg><b>Spa pedicure</b><span>Verzorging voor je voeten en teennagels.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="prijzen">
+    <div class="wrap">
+      <div class="gal-head">
+        <h2>Wat kost het?</h2>
+        <p class="sub">Tik op een behandeling om hem in je afspraak te zetten.</p>
+      </div>
+      <ul class="menu">
+        <li class="star"><p class="kind">BIAB</p><div><h3>Nieuwe set BIAB</h3><p>Builder gel op je eigen nagel, in de kleur die je kiest.</p></div><div class="cost"><b>€ 35</b><a class="btn btn-red" href="#afspraak" data-pak="0">Kies deze</a></div></li>
+        <li><p class="kind">BIAB</p><div><h3>BIAB met french</h3><p>Een set BIAB met een witte french-rand.</p></div><div class="cost"><b>€ 50</b><a class="btn btn-line" href="#afspraak" data-pak="1">Kies deze</a></div></li>
+        <li><p class="kind">Acryl</p><div><h3>Solar nagels</h3><p>Een set acrylnagels.</p></div><div class="cost"><b>€ 30</b><a class="btn btn-line" href="#afspraak" data-pak="2">Kies deze</a></div></li>
+        <li><p class="kind">Acryl</p><div><h3>Solar nagels met gellak</h3><p>Een set acrylnagels, afgewerkt met gellak in jouw kleur.</p></div><div class="cost"><b>€ 40</b><a class="btn btn-line" href="#afspraak" data-pak="3">Kies deze</a></div></li>
+        <li><p class="kind">Gellak</p><div><h3>Gellak op handen of voeten</h3><p>Alleen kleur, op je eigen nagels.</p></div><div class="cost"><b>€ 15</b><a class="btn btn-line" href="#afspraak" data-pak="4">Kies deze</a></div></li>
+        <li><p class="kind">Voeten</p><div><h3>Spa pedicure</h3><p>Verzorging voor je voeten en teennagels.</p></div><div class="cost"><b>€ 25</b><a class="btn btn-line" href="#afspraak" data-pak="5">Kies deze</a></div></li>
+        <li><p class="kind">Handen</p><div><h3>Manicure</h3><p>Je nagels gevijld en je nagelriemen verzorgd.</p></div><div class="cost"><b class="onreq">Op aanvraag</b><a class="btn btn-line" href="#afspraak" data-pak="6">Kies deze</a></div></li>
+      </ul>
+      <p class="note">Prijzen onder voorbehoud. Wil je iets wat er niet bij staat? Vraag het via WhatsApp.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="fotos">
+    <div class="wrap">
+      <div class="gal-head">
+        <h2>Nagels van Nails by Na</h2>
+        <p class="sub">Tik op een foto om hem groot te bekijken. Nieuw werk staat op <a class="insta" href="https://www.instagram.com/tina_alyssa_nails_purmerend/" target="_blank" rel="noopener">Instagram</a>.</p>
+      </div>
+      <div class="gallery" id="gallery">
+        <button type="button" data-full="https://static.wixstatic.com/media/6e4780_9a57f3324a3c4c28a92a8d92040abdad~mv2.jpg"><img src="https://static.wixstatic.com/media/6e4780_9a57f3324a3c4c28a92a8d92040abdad~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_avif,quality_auto/nails-by-na-15.jpg" width="640" height="800" loading="lazy" alt="BIAB-nagels gezet door Nails by Na"><span>BIAB</span></button>
+        <button type="button" data-full="https://static.wixstatic.com/media/6e4780_0b1b03e089bf42949bf74ee2eb70d772~mv2.jpg"><img src="https://static.wixstatic.com/media/6e4780_0b1b03e089bf42949bf74ee2eb70d772~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_avif,quality_auto/nails-by-na-14.jpg" width="640" height="800" loading="lazy" alt="BIAB-nagels met french gezet door Nails by Na"><span>BIAB met french</span></button>
+        <button type="button" data-full="https://static.wixstatic.com/media/6e4780_353b48a6fdcf48cab7f7c58665c3bd25~mv2.jpg"><img src="https://static.wixstatic.com/media/6e4780_353b48a6fdcf48cab7f7c58665c3bd25~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_avif,quality_auto/nails-by-na-3.jpg" width="640" height="800" loading="lazy" alt="Nagels gezet door Nails by Na"></button>
+        <button type="button" data-full="https://static.wixstatic.com/media/6e4780_a2d5d55fb4fb4ebea11a5b45f0ac81db~mv2.jpg"><img src="https://static.wixstatic.com/media/6e4780_a2d5d55fb4fb4ebea11a5b45f0ac81db~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_avif,quality_auto/nails-by-na-4.jpg" width="640" height="800" loading="lazy" alt="Nagels gezet door Nails by Na"></button>
+        <button type="button" data-full="https://static.wixstatic.com/media/6e4780_3ba7772b44104d4aac044e6e4f120291~mv2.jpg"><img src="https://static.wixstatic.com/media/6e4780_3ba7772b44104d4aac044e6e4f120291~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_avif,quality_auto/nails-by-na-16.jpg" width="640" height="800" loading="lazy" alt="Een nieuwe set BIAB gezet door Nails by Na"><span>BIAB</span></button>
+        <button type="button" data-full="https://static.wixstatic.com/media/6e4780_b4c15c27d46a4ae6ab56d8869731773e~mv2.jpg"><img src="https://static.wixstatic.com/media/6e4780_b4c15c27d46a4ae6ab56d8869731773e~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_avif,quality_auto/nails-by-na-5.jpg" width="640" height="800" loading="lazy" alt="Nagels gezet door Nails by Na"></button>
+        <button type="button" data-full="https://static.wixstatic.com/media/6e4780_511c211913ae49358f7f8d22903379a0~mv2.jpg"><img src="https://static.wixstatic.com/media/6e4780_511c211913ae49358f7f8d22903379a0~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_avif,quality_auto/nails-by-na-6.jpg" width="640" height="800" loading="lazy" alt="Nagels gezet door Nails by Na"></button>
+        <button type="button" data-full="https://static.wixstatic.com/media/6e4780_a193f87298584b6683de75c5a32cca87~mv2.jpg"><img src="https://static.wixstatic.com/media/6e4780_a193f87298584b6683de75c5a32cca87~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_avif,quality_auto/nails-by-na-7.jpg" width="640" height="800" loading="lazy" alt="Nagels gezet door Nails by Na"></button>
+        <button type="button" data-full="https://static.wixstatic.com/media/6e4780_f5047523f90942c1b8362e14a352c270~mv2.jpg"><img src="https://static.wixstatic.com/media/6e4780_f5047523f90942c1b8362e14a352c270~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_avif,quality_auto/nails-by-na-8.jpg" width="640" height="800" loading="lazy" alt="Nagels gezet door Nails by Na"></button>
+        <button type="button" data-full="https://static.wixstatic.com/media/6e4780_e40a902eecb3427e8b06efa5e576e4b5~mv2.jpg"><img src="https://static.wixstatic.com/media/6e4780_e40a902eecb3427e8b06efa5e576e4b5~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_avif,quality_auto/nails-by-na-9.jpg" width="640" height="800" loading="lazy" alt="Nagels gezet door Nails by Na"></button>
+        <button type="button" data-full="https://static.wixstatic.com/media/6e4780_691a7f661d304583b5038ccb6b3c49ee~mv2.jpg"><img src="https://static.wixstatic.com/media/6e4780_691a7f661d304583b5038ccb6b3c49ee~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_avif,quality_auto/nails-by-na-10.jpg" width="640" height="800" loading="lazy" alt="Nagels gezet door Nails by Na"></button>
+        <button type="button" data-full="https://static.wixstatic.com/media/6e4780_220376f796c74a62954f3bed09715c55~mv2.jpg"><img src="https://static.wixstatic.com/media/6e4780_220376f796c74a62954f3bed09715c55~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_avif,quality_auto/nails-by-na-11.jpg" width="640" height="800" loading="lazy" alt="Nagels gezet door Nails by Na"></button>
+        <button type="button" data-full="https://static.wixstatic.com/media/6e4780_1ade3e4d644d49209e2d66754141ea91~mv2.jpg"><img src="https://static.wixstatic.com/media/6e4780_1ade3e4d644d49209e2d66754141ea91~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_avif,quality_auto/nails-by-na-12.jpg" width="640" height="800" loading="lazy" alt="Nagels gezet door Nails by Na"></button>
+        <button type="button" data-full="https://static.wixstatic.com/media/6e4780_59d2ae972495443a9b7573eaf5645dd4~mv2.jpg"><img src="https://static.wixstatic.com/media/6e4780_59d2ae972495443a9b7573eaf5645dd4~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_avif,quality_auto/nails-by-na-13.jpg" width="640" height="800" loading="lazy" alt="Nagels gezet door Nails by Na"></button>
+        <button type="button" data-full="https://static.wixstatic.com/media/6e4780_374162a38a09416488ab15a9da3b71c9~mv2.jpg"><img src="https://static.wixstatic.com/media/6e4780_374162a38a09416488ab15a9da3b71c9~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_avif,quality_auto/nails-by-na-1.jpg" width="640" height="800" loading="lazy" alt="Nagels gezet door Nails by Na"></button>
+        <button type="button" data-full="https://static.wixstatic.com/media/6e4780_b206ab43bf3b47aca0d73de477280b4a~mv2.jpg"><img src="https://static.wixstatic.com/media/6e4780_b206ab43bf3b47aca0d73de477280b4a~mv2.jpg/v1/fill/w_640,h_800,al_c,q_85,enc_avif,quality_auto/nails-by-na-2.jpg" width="640" height="800" loading="lazy" alt="Nagels gezet door Nails by Na"></button>
+      </div>
+      <button class="btn btn-line gal-more" type="button" id="galmore">Toon alle foto's</button>
+    </div>
+  </section>
+
+  <section class="sec" id="reviews">
+    <div class="wrap">
+      <h2>5,0 op Google, uit 87 reviews</h2>
+      <div class="praise">
+        <blockquote class="lead-q">
+          <p><span class="stars" aria-label="5 van 5 sterren">★★★★★</span>“Zo blij dat ik haar heb gevonden. Een echte professional, ze werkt snel en geeft altijd goed advies. Mijn nagels blijven perfect zitten, ik ben er nog nooit een kwijtgeraakt.”</p>
+          <footer>Uit een Google-review</footer>
+        </blockquote>
+        <blockquote>
+          <p><span class="stars" aria-label="5 van 5 sterren">★★★★★</span>“Na verschillende salons in Purmerend kwam ik bij haar terecht. Ik kan niet anders dan haar aanraden.”</p>
+          <footer>Uit een Google-review</footer>
+        </blockquote>
+        <blockquote>
+          <p><span class="stars" aria-label="5 van 5 sterren">★★★★★</span>“Een hele fijne manicure met gellak, binnen een uur klaar. Ik kom zeker terug.”</p>
+          <footer>Uit een Google-review</footer>
+        </blockquote>
+      </div>
+      <div class="praise-foot">
+        <p>De reviews zijn vertaald uit het Engels.</p>
+        <a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&amp;query=Nails+by+Na+Sportlaan+23+Purmerend&amp;query_place_id=ChIJ6QIt9SsHxkcR6tyt78ST6sU" target="_blank" rel="noopener">Lees alle reviews op Google</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="langskomen">
+    <div class="wrap visit">
+      <div>
+        <h2>Sinds 2021 aan de Sportlaan</h2>
+        <p class="sub">Nails by Na is een nagelstudio in Purmerend. Je komt hier voor nagels die snel en netjes gezet worden, voor een prijs die meevalt.</p>
+        <p class="sub">Je kent de studio misschien nog als Tina Alyssa Nails. De naam is nieuw, het adres en het telefoonnummer zijn hetzelfde gebleven.</p>
+        <address>Sportlaan 23<br>1442 EA Purmerend</address>
+        <a class="btn btn-line" href="https://www.google.com/maps/dir/?api=1&amp;destination=Sportlaan+23,+1442+EA+Purmerend" target="_blank" rel="noopener">Plan je route</a>
+      </div>
+      <div class="area">
+        <h3>Openingstijden</h3>
+        <ul class="hours" id="hours">
+          <li data-d="1"><span>Maandag</span><b>9:00 – 21:00</b></li>
+          <li data-d="2"><span>Dinsdag</span><b>9:00 – 21:00</b></li>
+          <li data-d="3"><span>Woensdag</span><b>9:00 – 21:00</b></li>
+          <li data-d="4"><span>Donderdag</span><b>9:00 – 21:00</b></li>
+          <li data-d="5"><span>Vrijdag</span><b>9:00 – 21:00</b></li>
+          <li data-d="6"><span>Zaterdag</span><b>9:00 – 18:30</b></li>
+          <li data-d="0" class="shut"><span>Zondag</span><b>Gesloten</b></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="vragen">
+    <div class="wrap faq">
+      <div>
+        <h2>Goed om te weten voor je komt</h2>
+        <p class="sub">De vragen die het vaakst gesteld worden.</p>
+      </div>
+      <div>
+        <details open>
+          <summary>Hoe maak ik een afspraak?</summary>
+          <p>Stuur een WhatsApp-bericht naar <a href="https://wa.me/31659606787" target="_blank" rel="noopener">06 59 60 67 87</a> of vul het formulier onderaan deze pagina in. Je krijgt een bericht terug met de dag en de tijd.</p>
+        </details>
+        <details>
+          <summary>Wat is BIAB?</summary>
+          <p>BIAB staat voor builder in a bottle. Het is een stevige gel die op je eigen nagel wordt gezet. Je nagel breekt minder snel en kan daardoor langer worden.</p>
+        </details>
+        <details>
+          <summary>Wat is het verschil tussen BIAB en acryl?</summary>
+          <p>BIAB versterkt je eigen nagel en blijft een beetje buigzaam. Acryl is harder en past beter als je je nagels langer wilt hebben dan ze nu zijn. Twijfel je? Stuur een foto van je nagels via WhatsApp.</p>
+        </details>
+        <details>
+          <summary>Kan ik ook 's avonds komen?</summary>
+          <p>Ja. Van maandag tot en met vrijdag is de studio open tot 21:00 uur. Op zaterdag tot 18:30 uur. Op zondag is de studio dicht.</p>
+        </details>
+        <details>
+          <summary>Mag ik een voorbeeldfoto meesturen?</summary>
+          <p>Graag. Stuur de foto mee in WhatsApp, dan is vooraf duidelijk wat je wilt en hoeveel tijd het kost.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="afspraak">
+    <div class="wrap ask">
+      <div>
+        <h2>Maak een afspraak</h2>
+        <p class="sub">Kies je behandeling en stuur je aanvraag via WhatsApp. Je krijgt een bericht terug met de dag en de tijd.</p>
+        <ul class="contact">
+          <li><small>WhatsApp of bellen</small><a href="https://wa.me/31659606787" target="_blank" rel="noopener">06 59 60 67 87</a></li>
+          <li><small>E-mail</small><a class="mail" href="mailto:tinaalyssanails@gmail.com">tinaalyssanails@gmail.com</a></li>
+          <li><small>Instagram</small><a class="mail" href="https://www.instagram.com/tina_alyssa_nails_purmerend/" target="_blank" rel="noopener">@tina_alyssa_nails_purmerend</a></li>
+        </ul>
+      </div>
+      <form id="form" novalidate>
+        <div class="full"><label for="pak">Welke behandeling?</label><select id="pak" name="pak">
+          <option value="0" selected>Nieuwe set BIAB, € 35</option>
+          <option value="1">BIAB met french, € 50</option>
+          <option value="2">Solar nagels, € 30</option>
+          <option value="3">Solar nagels met gellak, € 40</option>
+          <option value="4">Gellak op handen of voeten, € 15</option>
+          <option value="5">Spa pedicure, € 25</option>
+          <option value="6">Manicure, prijs op aanvraag</option>
+          <option value="7">Weet ik nog niet</option>
+        </select></div>
+        <div class="full"><label class="check"><input type="checkbox" id="oud" name="oud">Er zit nog gellak, BIAB of acryl op mijn nagels</label></div>
+        <div><label for="datum">Welke dag heeft je voorkeur?</label><input id="datum" name="datum" type="date"></div>
+        <div><label for="tijd">Welk moment?</label><select id="tijd" name="tijd"><option>Maakt niet uit</option><option>Ochtend</option><option>Middag</option><option>Avond</option></select></div>
+        <div class="full"><label for="naam">Je naam</label><input id="naam" name="naam" autocomplete="name" required></div>
+        <div class="full"><label for="msg">Wens of vraag <small>(mag leeg blijven)</small></label><textarea id="msg" name="msg" placeholder="Bijvoorbeeld de kleur of de vorm die je wilt"></textarea></div>
+        <div class="full total" aria-live="polite">
+          <div class="row"><span id="totname">Nieuwe set BIAB</span><b id="totprice">€ 35</b></div>
+          <ul id="totnotes"></ul>
+        </div>
+        <div class="full send">
+          <button class="btn wa" type="button" data-via="wa"><svg aria-hidden="true" viewBox="0 0 32 32" fill="#fff"><path d="M16.04 3C8.86 3 3.03 8.82 3.03 16c0 2.3.6 4.54 1.74 6.52L3 29l6.64-1.74A13 13 0 0 0 16.04 29C23.2 29 29 23.18 29 16S23.2 3 16.04 3Zm0 23.8c-2.02 0-4-.54-5.72-1.57l-.41-.24-3.94 1.03 1.05-3.84-.27-.4A10.78 10.78 0 0 1 5.2 16c0-5.97 4.86-10.83 10.84-10.83 5.97 0 10.82 4.86 10.82 10.83 0 5.98-4.85 10.8-10.82 10.8Zm5.94-8.1c-.33-.16-1.93-.95-2.23-1.06-.3-.11-.52-.16-.73.17-.22.32-.84 1.05-1.03 1.27-.19.22-.38.24-.7.08-.33-.16-1.38-.51-2.62-1.62-.97-.86-1.62-1.93-1.81-2.25-.19-.33-.02-.5.14-.66.15-.15.33-.38.49-.57.16-.19.22-.33.33-.54.11-.22.05-.41-.03-.57-.08-.16-.73-1.76-1-2.41-.26-.63-.53-.55-.73-.56h-.62c-.22 0-.57.08-.87.41-.3.32-1.14 1.11-1.14 2.72 0 1.6 1.17 3.15 1.33 3.37.16.22 2.3 3.5 5.56 4.91.78.34 1.39.54 1.86.69.78.25 1.49.21 2.05.13.63-.09 1.93-.79 2.2-1.55.27-.76.27-1.41.19-1.55-.08-.13-.3-.21-.62-.38Z"/></svg>Stuur via WhatsApp</button>
+          <button class="btn btn-line" type="button" data-via="mail">Stuur via e-mail</button>
+          <p class="hint" id="formhint" role="status">Je bericht opent in WhatsApp of je mailprogramma. Daar druk je zelf op verzenden.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="row">
+      <div>© 2026 Nails by Na, Sportlaan 23, 1442 EA Purmerend.</div>
+      <div>Demo-ontwerp door <a href="https://byxavio.nl">byXavio</a></div>
+    </div>
+    <p>Alle foto's zijn eigendom van Nails by Na.</p>
+  </div>
+</footer>
+
+<a class="wa-float" id="wafloat" href="https://wa.me/31659606787?text=Hoi!%20Ik%20heb%20een%20vraag%20over%20een%20afspraak%20bij%20Nails%20by%20Na." target="_blank" rel="noopener" aria-label="Stuur een WhatsApp-bericht"><svg aria-hidden="true" viewBox="0 0 32 32" fill="#fff"><path d="M16.04 3C8.86 3 3.03 8.82 3.03 16c0 2.3.6 4.54 1.74 6.52L3 29l6.64-1.74A13 13 0 0 0 16.04 29C23.2 29 29 23.18 29 16S23.2 3 16.04 3Zm0 23.8c-2.02 0-4-.54-5.72-1.57l-.41-.24-3.94 1.03 1.05-3.84-.27-.4A10.78 10.78 0 0 1 5.2 16c0-5.97 4.86-10.83 10.84-10.83 5.97 0 10.82 4.86 10.82 10.83 0 5.98-4.85 10.8-10.82 10.8Zm5.94-8.1c-.33-.16-1.93-.95-2.23-1.06-.3-.11-.52-.16-.73.17-.22.32-.84 1.05-1.03 1.27-.19.22-.38.24-.7.08-.33-.16-1.38-.51-2.62-1.62-.97-.86-1.62-1.93-1.81-2.25-.19-.33-.02-.5.14-.66.15-.15.33-.38.49-.57.16-.19.22-.33.33-.54.11-.22.05-.41-.03-.57-.08-.16-.73-1.76-1-2.41-.26-.63-.53-.55-.73-.56h-.62c-.22 0-.57.08-.87.41-.3.32-1.14 1.11-1.14 2.72 0 1.6 1.17 3.15 1.33 3.37.16.22 2.3 3.5 5.56 4.91.78.34 1.39.54 1.86.69.78.25 1.49.21 2.05.13.63-.09 1.93-.79 2.2-1.55.27-.76.27-1.41.19-1.55-.08-.13-.3-.21-.62-.38Z"/></svg></a>
+
+<div class="dock">
+  <a class="btn wa" href="https://wa.me/31659606787?text=Hoi!%20Ik%20heb%20een%20vraag%20over%20een%20afspraak%20bij%20Nails%20by%20Na."><svg aria-hidden="true" viewBox="0 0 32 32" fill="#fff"><path d="M16.04 3C8.86 3 3.03 8.82 3.03 16c0 2.3.6 4.54 1.74 6.52L3 29l6.64-1.74A13 13 0 0 0 16.04 29C23.2 29 29 23.18 29 16S23.2 3 16.04 3Zm0 23.8c-2.02 0-4-.54-5.72-1.57l-.41-.24-3.94 1.03 1.05-3.84-.27-.4A10.78 10.78 0 0 1 5.2 16c0-5.97 4.86-10.83 10.84-10.83 5.97 0 10.82 4.86 10.82 10.83 0 5.98-4.85 10.8-10.82 10.8Zm5.94-8.1c-.33-.16-1.93-.95-2.23-1.06-.3-.11-.52-.16-.73.17-.22.32-.84 1.05-1.03 1.27-.19.22-.38.24-.7.08-.33-.16-1.38-.51-2.62-1.62-.97-.86-1.62-1.93-1.81-2.25-.19-.33-.02-.5.14-.66.15-.15.33-.38.49-.57.16-.19.22-.33.33-.54.11-.22.05-.41-.03-.57-.08-.16-.73-1.76-1-2.41-.26-.63-.53-.55-.73-.56h-.62c-.22 0-.57.08-.87.41-.3.32-1.14 1.11-1.14 2.72 0 1.6 1.17 3.15 1.33 3.37.16.22 2.3 3.5 5.56 4.91.78.34 1.39.54 1.86.69.78.25 1.49.21 2.05.13.63-.09 1.93-.79 2.2-1.55.27-.76.27-1.41.19-1.55-.08-.13-.3-.21-.62-.38Z"/></svg>WhatsApp</a>
+  <a class="btn btn-red" href="#afspraak">Maak een afspraak</a>
+</div>
+
+<dialog id="lb" aria-label="Foto vergroot">
+  <div class="lb">
+    <div class="lb-top"><span id="lbcap"></span><button type="button" id="lbclose">Sluiten</button></div>
+    <img id="lbimg" alt="">
+    <div class="lb-nav"><button type="button" id="lbprev">Vorige</button><button type="button" id="lbnext">Volgende</button></div>
+  </div>
+</dialog>
+
+<script>
+// Lightbox en "toon alles"
+const gal=document.getElementById('gallery'),items=[...gal.querySelectorAll('button')],lb=document.getElementById('lb'),lbimg=document.getElementById('lbimg'),lbcap=document.getElementById('lbcap');
+const more=document.getElementById('galmore'),KORT=8;let cur=0;
+items.slice(KORT).forEach(b=>b.classList.add('cut'));gal.classList.toggle('has-cut',items.length>KORT);more.textContent='Toon alle '+items.length+" foto's";
+more.addEventListener('click',()=>{items.forEach(b=>b.classList.remove('cut'));gal.classList.remove('has-cut');});
+function show(i){cur=(i+items.length)%items.length;const b=items[cur],t=b.querySelector('img'),s=b.querySelector('span');lbimg.src=b.dataset.full;lbimg.alt=t.alt;lbcap.textContent=(s?s.textContent+', ':'')+'foto '+(cur+1)+' van '+items.length;}
+items.forEach((b,i)=>b.addEventListener('click',()=>{show(i);lb.showModal();}));
+document.getElementById('lbclose').addEventListener('click',()=>lb.close());
+document.getElementById('lbprev').addEventListener('click',()=>show(cur-1));
+document.getElementById('lbnext').addEventListener('click',()=>show(cur+1));
+lb.addEventListener('click',e=>{if(e.target===lb||e.target.classList.contains('lb'))lb.close();});
+lb.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')show(cur-1);if(e.key==='ArrowRight')show(cur+1);});
+let sx=null;lb.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});
+lb.addEventListener('touchend',e=>{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)show(cur+(dx<0?1:-1));sx=null});
+
+// Openingstijden: de dag van vandaag markeren
+const vandaag=document.querySelector('#hours [data-d="'+new Date().getDay()+'"]');if(vandaag)vandaag.classList.add('now');
+
+// Afspraak: behandeling kiezen met de prijs erbij.
+// Pas hier en in de prijslijst hierboven de prijzen aan als ze veranderen.
+const PAK=[
+  {n:'Nieuwe set BIAB',p:35},
+  {n:'BIAB met french',p:50},
+  {n:'Solar nagels',p:30},
+  {n:'Solar nagels met gellak',p:40},
+  {n:'Gellak op handen of voeten',p:15},
+  {n:'Spa pedicure',p:25},
+  {n:'Manicure',p:null},
+  {n:'Weet ik nog niet',p:null,open:true}
+];
+const TEL='31659606787',MAIL='tinaalyssanails@gmail.com';
+const f=document.getElementById('form'),hint=document.getElementById('formhint'),$=id=>document.getElementById(id);
+const d=new Date(),today=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+f.datum.min=today;
+const dag=s=>new Date(s+'T12:00:00');
+function reken(){
+  const k=PAK[+f.pak.value],notes=[];
+  if(k.open)notes.push('Stuur een foto van je nagels mee in WhatsApp, dan krijg je advies.');
+  else if(k.p===null)notes.push('Je hoort de prijs als je afspraak wordt bevestigd.');
+  if(f.oud.checked)notes.push('Je oude set moet er eerst af. Dat kost extra tijd.');
+  if(f.datum.value&&dag(f.datum.value).getDay()===6&&f.tijd.value==='Avond')notes.push('Op zaterdag sluit de studio om 18:30 uur.');
+  if(k.p!==null)notes.push('Prijs onder voorbehoud.');
+  $('totname').textContent=k.open?'Nog geen behandeling gekozen':k.n;$('totprice').textContent=k.p===null?'':'€ '+k.p;
+  $('totnotes').innerHTML='';notes.forEach(t=>{const li=document.createElement('li');li.textContent=t;$('totnotes').append(li);});
+  return k;
+}
+['pak','oud','datum','tijd'].forEach(n=>f[n].addEventListener('input',reken));reken();
+// Knoppen in de prijslijst zetten de behandeling alvast in het formulier
+document.querySelectorAll('[data-pak]').forEach(a=>a.addEventListener('click',()=>{f.pak.value=a.dataset.pak;const k=reken();hint.style.color='';hint.textContent=k.n+' staat in je afspraak. Vul de rest in en verstuur.';}));
+const nl=s=>dag(s).toLocaleDateString('nl-NL',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+const fout=(t,el)=>{hint.textContent=t;hint.style.color='#b3261e';el.focus();};
+f.querySelectorAll('[data-via]').forEach(b=>b.addEventListener('click',()=>{
+  const naam=f.naam.value.trim();
+  if(f.datum.value&&f.datum.value<today)return fout('Deze datum is al voorbij. Kies een dag in de toekomst.',f.datum);
+  if(f.datum.value&&dag(f.datum.value).getDay()===0)return fout('Op zondag is de studio dicht. Kies een andere dag.',f.datum);
+  if(!naam)return fout('Vul nog even je naam in.',f.naam);
+  const k=reken(),regels=['Hoi! Ik wil graag een afspraak maken bij Nails by Na.','','Behandeling: '+k.n];
+  if(f.oud.checked)regels.push('Er zit nog gellak, BIAB of acryl op mijn nagels.');
+  if(f.datum.value)regels.push('Voorkeursdag: '+nl(f.datum.value));
+  if(f.tijd.value!=='Maakt niet uit')regels.push('Voorkeursmoment: '+f.tijd.value.toLowerCase());
+  regels.push('Naam: '+naam);
+  if(f.msg.value.trim())regels.push('',f.msg.value.trim());
+  const t=regels.join('\n');
+  hint.style.color='';hint.textContent='Je aanvraag staat klaar. Druk in WhatsApp of je mailprogramma op verzenden.';
+  if(b.dataset.via==='wa')window.open('https://wa.me/'+TEL+'?text='+encodeURIComponent(t),'_blank','noopener');
+  else location.href='mailto:'+MAIL+'?subject='+encodeURIComponent('Afspraak bij Nails by Na'+(f.datum.value?' op '+nl(f.datum.value):''))+'&body='+encodeURIComponent(t);
+}));
+// WhatsApp-knop verbergen bij het formulier
+if('IntersectionObserver' in window){new IntersectionObserver(e=>$('wafloat').classList.toggle('hide',e[0].isIntersecting),{threshold:.15}).observe($('afspraak'));}
+</script>
+</body>
+</html>
