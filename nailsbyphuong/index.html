@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nails by Phuong – nagelstudio aan het Waagplein in Purmerend</title>
+<meta name="description" content="Nails by Phuong aan het Waagplein in Purmerend. Gellak, acryl, BIAB, manicure en pedicure in een massagestoel. Gellak vanaf € 25. Maandag tot en met zaterdag open.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:title" content="Nails by Phuong – nagelstudio in Purmerend">
+<meta property="og:description" content="Gellak, acryl, BIAB, manicure en pedicure aan het Waagplein in het centrum van Purmerend.">
+<meta name="theme-color" content="#1b2545">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%231b2545'/%3E%3Crect x='25' y='10' width='14' height='18' rx='3' fill='%23fff'/%3E%3Crect x='16' y='28' width='32' height='26' rx='8' fill='%23d9480f'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"NailSalon","name":"Nails by Phuong","description":"Nagelstudio in het centrum van Purmerend voor gellak, acryl, BIAB, manicure en pedicure.","telephone":"+31623055119","priceRange":"€ 8 tot € 70","address":{"@type":"PostalAddress","streetAddress":"Waagplein 18","postalCode":"1441 BR","addressLocality":"Purmerend","addressCountry":"NL"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"10:00","closes":"18:00"}]}
+</script>
+<style>
+:root{
+  --ink:#1b2545;        /* nachtblauw */
+  --ink-soft:#3a4468;
+  --muted:#5d6788;
+  --pop:#d9480f;        /* mandarijnrode lak */
+  --pop-deep:#b93a08;
+  --sky:#e3e8fb;
+  --peach:#ffe6d6;
+  --paper:#fafbff;
+  --line:#d7dcf0;
+  --haze:#c9d0ee;       /* zachte tekst op donker */
+  --display:"Bricolage Grotesque","Arial Narrow",system-ui,sans-serif;
+  --body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{font-family:var(--body);font-size:1.125rem;line-height:1.6;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;font-variant-numeric:lining-nums}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.02;letter-spacing:-.025em}
+h2{font-size:clamp(2.1rem,4.6vw,3.3rem);max-width:16ch;text-wrap:balance}
+h3{font-size:1.7rem;line-height:1.1}
+p{max-width:60ch}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--pop);outline-offset:3px;border-radius:8px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+.sec{padding-block:96px}
+.sub{color:var(--muted);margin-top:16px}
+
+/* demo-melding */
+.demo{background:var(--ink);color:var(--haze);font-size:.95rem;line-height:1.4;padding:9px 0;text-align:center}
+.demo p{max-width:none}
+.demo a{color:#fff;font-weight:700;text-underline-offset:3px}
+
+/* knoppen */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55em;font:700 1.05rem/1 var(--body);padding:1em 1.45em;border-radius:14px;border:2px solid transparent;text-decoration:none;cursor:pointer;transition:background-color .15s,color .15s,border-color .15s,transform .15s}
+.btn:active{transform:translateY(1px)}
+.btn-pop{background:var(--pop);color:#fff}
+.btn-pop:hover{background:var(--pop-deep)}
+.btn-line{border-color:var(--ink);color:var(--ink);background:transparent}
+.btn-line:hover{background:var(--ink);color:#fff}
+.btn svg{width:1.2em;height:1.2em;flex:none}
+.wa{background:#1f8f4e;color:#fff}
+.wa:hover{background:#18763f}
+
+/* kop */
+header{position:sticky;top:0;z-index:20;background:rgba(250,251,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:72px}
+.brand{font-family:var(--display);font-weight:700;font-size:1.45rem;letter-spacing:-.02em;text-decoration:none;display:flex;align-items:center;gap:.5em;white-space:nowrap}
+.brand svg{width:34px;height:34px;flex:none}
+nav{display:flex;align-items:center;gap:26px}
+nav a{text-decoration:none;font-size:1.02rem;font-weight:600}
+nav a:not(.btn):hover{color:var(--pop)}
+nav .btn{padding:.8em 1.2em;font-size:1rem}
+
+/* hero */
+.hero{background:var(--sky);padding:64px 0 0;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:56px;align-items:end}
+.hero-text{padding-bottom:80px}
+.hero h1{font-size:clamp(3.2rem,8vw,6.6rem);line-height:.9;font-weight:800;letter-spacing:-.04em}
+.hero h1 span{display:block;white-space:nowrap}
+.lead{font-size:1.3rem;line-height:1.5;max-width:34ch;color:var(--ink-soft);margin-top:1em}
+.facts{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:14px 20px;margin:30px 0;max-width:540px}
+.facts li{display:flex;align-items:center;gap:.65em;font-weight:700;font-size:1.02rem;line-height:1.25}
+.facts svg{flex:none;width:40px;height:40px;padding:9px;border-radius:12px;background:#fff;stroke:var(--pop);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.price-line{margin-top:18px;max-width:none;font-size:1rem;color:var(--muted)}
+.price-line a{color:var(--ink);font-weight:700;text-underline-offset:3px;white-space:nowrap}
+
+/* drie flesjes nagellak op de plank */
+.shelf{position:relative;display:flex;align-items:flex-end;justify-content:center;gap:5%;padding:0 2% 0;border-bottom:10px solid var(--ink);max-width:480px;width:100%;margin-inline:auto}
+.bottle{flex:1;max-width:30%;display:grid;justify-items:center}
+.bottle .cap{width:44%;aspect-ratio:1/1.45;background:var(--ink);border-radius:10px 10px 3px 3px;position:relative}
+.bottle .cap::after{content:"";position:absolute;left:18%;top:10%;width:14%;height:70%;border-radius:99px;background:rgba(255,255,255,.28)}
+.bottle .neck{width:30%;height:10px;background:#fff;opacity:.85}
+.bottle .glass{width:100%;aspect-ratio:1/var(--h,1.05);background:var(--c);border-radius:26% 26% 14% 14% / 22% 22% 12% 12%;position:relative;display:grid;place-items:center;box-shadow:inset -14px 0 22px -12px rgba(0,0,0,.3)}
+.bottle .glass::before{content:"";position:absolute;left:12%;top:10%;width:12%;height:55%;border-radius:99px;background:linear-gradient(180deg,rgba(255,255,255,.75),rgba(255,255,255,0))}
+.bottle b{background:#fff;color:var(--ink);font-family:var(--display);font-weight:700;font-size:clamp(.9rem,1.6vw,1.15rem);letter-spacing:-.01em;padding:.25em .6em;border-radius:6px;position:relative}
+.seal{position:absolute;right:3%;bottom:calc(100% + 14px);width:122px;height:122px;border-radius:50%;background:var(--pop);color:#fff;display:grid;place-content:center;text-align:center;line-height:1.15;font-weight:700;font-size:.88rem;transform:rotate(9deg);text-decoration:none;box-shadow:0 0 0 5px var(--sky)}
+.seal b{display:block;font-family:var(--display);font-weight:800;font-size:2.5rem;line-height:1;letter-spacing:-.03em}
+a.seal:hover{background:var(--pop-deep)}
+@media (prefers-reduced-motion:no-preference){
+  .bottle{animation:drop .7s cubic-bezier(.2,.8,.2,1) both}
+  .bottle:nth-child(2){animation-delay:.1s}.bottle:nth-child(3){animation-delay:.2s}
+  @keyframes drop{from{opacity:0;translate:0 -30px}}
+}
+
+/* prijzen */
+.gal-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}
+.card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:28px 28px 16px}
+.card h3{padding-bottom:14px;border-bottom:3px solid var(--ink)}
+.card ul{list-style:none}
+.card li+li{border-top:1px solid var(--line)}
+.card button{display:flex;justify-content:space-between;align-items:center;gap:16px;width:100%;padding:13px 6px;margin:0 -6px;width:calc(100% + 12px);border:0;background:none;text-align:left;cursor:pointer;border-radius:10px}
+.card button:hover{background:var(--sky)}
+.card button span{font-weight:600;line-height:1.3}
+.card small{display:block;font-weight:400;color:var(--muted);font-size:.95rem}
+.card b{font-family:var(--display);font-weight:700;font-size:1.5rem;letter-spacing:-.02em;white-space:nowrap}
+.note{margin-top:22px;color:var(--muted);font-size:1rem;max-width:none}
+
+/* de stoel */
+#stoel{background:var(--ink);color:#fff}
+.chair{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:64px;align-items:center}
+#stoel .sub{color:var(--haze)}
+.chair ul{list-style:none;margin-top:26px;display:grid;gap:12px}
+.chair li{display:flex;gap:.7em;align-items:baseline;font-weight:600}
+.chair li::before{content:"";flex:none;width:10px;height:10px;border-radius:50%;background:var(--pop);translate:0 -1px}
+.chair figure{border-radius:24px;overflow:hidden;background:var(--ink-soft);aspect-ratio:3/2}
+.chair figure img{width:100%;height:100%;object-fit:cover}
+.chair .todo{padding:26px 28px;border:2px dashed #5b668f;border-radius:22px}
+.todo small{display:inline-block;font-size:.85rem;font-weight:700;padding:.2em .7em;border-radius:999px;background:var(--peach);color:var(--ink);margin-bottom:10px}
+.todo b{display:block;font-family:var(--display);font-size:1.5rem;line-height:1.1;letter-spacing:-.02em}
+.todo span{display:block;color:var(--haze);margin-top:8px;font-size:1rem;line-height:1.45}
+
+/* reviews */
+.praise{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:22px;margin-top:40px}
+blockquote{padding:26px 28px;border-radius:22px;background:#fff;border:1px solid var(--line);display:grid;align-content:space-between;gap:14px}
+blockquote p{font-size:1.15rem;line-height:1.5;font-weight:500;max-width:none}
+blockquote.lead-q{grid-row:1/4;background:var(--peach);border-color:transparent;padding:40px}
+blockquote.lead-q p{font-family:var(--display);font-weight:600;font-size:clamp(1.4rem,2.3vw,1.9rem);line-height:1.22;letter-spacing:-.02em}
+blockquote footer{font-size:1rem;font-weight:600;color:var(--muted)}
+.stars{display:block;letter-spacing:.14em;color:var(--pop);font-family:var(--body);font-size:1.05rem;margin-bottom:6px;font-weight:400}
+.praise-foot{margin-top:24px;display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:space-between;color:var(--muted);font-size:1rem}
+.praise-foot p{max-width:none}
+
+/* langskomen */
+#langskomen{background:var(--sky)}
+.visit{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:64px;align-items:start}
+address{font-style:normal;margin-top:28px;font-family:var(--display);font-weight:700;font-size:1.9rem;line-height:1.15;letter-spacing:-.02em}
+.visit .btn{margin-top:22px}
+.area{padding:30px;border-radius:22px;background:#fff}
+.hours{list-style:none;margin-top:16px}
+.hours li{display:flex;justify-content:space-between;gap:16px;padding:.5em .8em;border-radius:10px;line-height:1.35}
+.hours b{font-weight:600;white-space:nowrap}
+.hours li.now{background:var(--peach);font-weight:700}
+.hours li.now b{font-weight:700}
+.hours .shut{color:var(--muted)}
+
+/* vragen */
+.faq{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:56px;align-items:start}
+details{border-bottom:1px solid var(--line)}
+details:first-of-type{border-top:3px solid var(--ink)}
+summary{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:20px 0;font-weight:700;font-size:1.15rem;line-height:1.35;cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"";flex:none;width:34px;height:34px;border-radius:10px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231b2545' stroke-width='2.6' stroke-linecap='round'%3E%3Cpath d='M12 6v12M6 12h12'/%3E%3C/svg%3E") center/18px no-repeat;border:1px solid var(--line);transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg);background-color:var(--peach);border-color:var(--peach)}
+summary:hover{color:var(--pop)}
+details p{padding:0 54px 22px 0;color:var(--ink-soft);max-width:62ch}
+details a{font-weight:700;text-underline-offset:3px}
+
+/* afspraak */
+#afspraak{background:var(--ink);color:#fff;border-top:8px solid var(--pop)}
+.ask{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:56px;align-items:start}
+#afspraak .sub{color:var(--haze)}
+.contact{list-style:none;margin-top:30px;display:grid;gap:20px}
+.contact a{text-decoration:none;font-family:var(--display);font-weight:700;font-size:1.9rem;letter-spacing:-.02em;overflow-wrap:anywhere}
+.contact a.mail{font-size:1.25rem}
+.contact a:hover{color:var(--peach)}
+.contact small{display:block;color:var(--haze);font-size:.95rem}
+form{background:#fff;color:var(--ink);border-radius:22px;padding:30px;display:grid;grid-template-columns:1fr 1fr;gap:18px;box-shadow:0 30px 60px -30px rgba(0,0,0,.7)}
+form .full{grid-column:1/-1}
+label{display:block;font-weight:700;font-size:1rem;margin-bottom:6px}
+label small{font-weight:400;color:var(--muted);font-size:inherit}
+input,select,textarea{width:100%;font:inherit;color:inherit;padding:.8em .9em;border:1.5px solid #b9c1e2;border-radius:12px;background:#fff;min-height:52px}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px rgba(217,72,15,.3)}
+textarea{min-height:96px;resize:vertical}
+.total{padding:16px 20px;border-radius:14px;background:var(--peach);display:flex;justify-content:space-between;align-items:baseline;gap:16px}
+.total span{font-weight:700}
+.total b{font-family:var(--display);font-weight:700;font-size:1.9rem;letter-spacing:-.02em;line-height:1.1;white-space:nowrap}
+.send{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.hint{font-size:.95rem;color:var(--muted);flex-basis:100%;max-width:none}
+
+footer.site{background:#111935;color:var(--haze);padding:32px 0;font-size:.98rem}
+footer.site .row{display:flex;justify-content:space-between;gap:14px 32px;flex-wrap:wrap}
+footer.site a{color:#fff;text-underline-offset:3px}
+
+.wa-float{position:fixed;right:24px;bottom:24px;z-index:25;width:62px;height:62px;border-radius:50%;background:#1f8f4e;display:grid;place-items:center;box-shadow:0 12px 26px -10px rgba(0,0,0,.5);transition:opacity .2s,transform .2s}
+.wa-float:hover{background:#18763f}
+.wa-float svg{width:34px;height:34px}
+.wa-float.hide{opacity:0;pointer-events:none;transform:scale(.8)}
+.dock{display:none}
+
+@media (max-width:1080px){
+  nav a:not(.btn){display:none}
+}
+@media (max-width:900px){
+  .sec{padding-block:64px}
+  .hero{padding-top:34px}
+  .hero-grid{grid-template-columns:1fr;gap:44px}
+  .hero-text{padding-bottom:0}
+  .shelf{max-width:380px;margin-top:96px}
+  .cards,.chair,.visit,.ask,.faq{grid-template-columns:1fr;gap:28px}
+  .cards{gap:16px}
+  .praise{grid-template-columns:1fr}
+  blockquote.lead-q{grid-row:auto;padding:30px 28px}
+  body{padding-bottom:76px}
+  .wa-float{display:none}
+  .dock{display:grid;grid-template-columns:1fr 1.25fr;position:fixed;left:0;right:0;bottom:0;z-index:30;background:#fff;border-top:1px solid var(--line);padding:9px;gap:9px}
+  .dock .btn{padding:.9em .6em}
+}
+@media (max-width:620px){
+  body{font-size:1.0625rem}
+  .wrap{padding:0 18px}
+  header nav .btn{font-size:.9rem;padding:.7em .8em;white-space:nowrap}
+  .brand{font-size:1.05rem;gap:.35em}
+  .brand svg{width:24px;height:24px}
+  .bar{gap:10px;min-height:64px}
+  .demo{font-size:.88rem}
+  .lead{font-size:1.2rem}
+  .facts{gap:12px 10px;margin:24px 0}
+  .facts li{font-size:.95rem;gap:.5em}
+  .facts svg{width:34px;height:34px;padding:7px}
+  .hero-cta .btn,.send .btn{flex:1 1 100%}
+  .seal{width:100px;height:100px;font-size:.76rem}
+  .seal b{font-size:2rem}
+  .card{padding:22px 20px 10px}
+  .card b{font-size:1.35rem}
+  address{font-size:1.6rem}
+  .area{padding:22px 18px}
+  blockquote,blockquote.lead-q{padding:24px 22px}
+  form{grid-template-columns:1fr;padding:20px}
+  summary{font-size:1.08rem;padding:18px 0}
+  details p{padding-right:0}
+  footer.site .row{display:grid}
+}
+@media (max-width:380px){
+  .brand svg{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<div class="demo"><div class="wrap"><p>Dit is een demo-ontwerp van <a href="https://byxavio.nl">byXavio</a> voor Nails by Phuong.</p></div></div>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#top"><svg aria-hidden="true" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#1b2545"/><rect x="25" y="10" width="14" height="18" rx="3" fill="#fff"/><rect x="16" y="28" width="32" height="26" rx="8" fill="#d9480f"/></svg>Nails by Phuong</a>
+    <nav aria-label="Hoofdmenu">
+      <a href="#prijzen">Prijzen</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#langskomen">Openingstijden</a>
+      <a href="#vragen">Goed om te weten</a>
+      <a class="btn btn-pop" href="#afspraak">Maak een afspraak</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <h1><span>Nails by</span><span>Phuong</span></h1>
+        <p class="lead">Nagelstudio aan het Waagplein, midden in het centrum van Purmerend. Voor gellak, acryl, BIAB, manicure en pedicure.</p>
+        <ul class="facts">
+          <li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 11h6v9a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1zM10.500 11V3h3v8"/></svg>Gellak, acryl en BIAB</li>
+          <li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 20v-5h10l2-9M6 15V9M4 20h14"/></svg>Pedicure in een massagestoel</li>
+          <li><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.300 2.700-6 6-6s6 2.700 6 6"/><circle cx="17" cy="9" r="2.400"/><path d="M16.500 14.100c2.600.5 4.500 2.900 4.500 5.900"/></svg>Voor dames en heren</li>
+          <li><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>Maandag t/m zaterdag open</li>
+        </ul>
+        <div class="hero-cta">
+          <a class="btn btn-pop" href="#afspraak">Maak een afspraak</a>
+          <a class="btn btn-line" href="#prijzen">Bekijk de prijzen</a>
+        </div>
+        <p class="price-line">Gellak vanaf € 25, een pedicure vanaf € 35.</p>
+      </div>
+      <div class="shelf">
+        <div class="bottle" style="--c:#f2a7b8;--h:.95" aria-hidden="true"><i class="cap"></i><i class="neck"></i><div class="glass"><b>gellak</b></div></div>
+        <div class="bottle" style="--c:#d9480f;--h:1.25" aria-hidden="true"><i class="cap"></i><i class="neck"></i><div class="glass"><b>BIAB</b></div></div>
+        <div class="bottle" style="--c:#6d7fd6;--h:1.05" aria-hidden="true"><i class="cap"></i><i class="neck"></i><div class="glass"><b>acryl</b></div></div>
+        <a class="seal" href="#reviews"><span><b>4,8</b>op Google<br>83 reviews</span></a>
+      </div>
+    </div>
+  </div>
+
+  <section class="sec" id="prijzen">
+    <div class="wrap">
+      <div class="gal-head">
+        <h2>Wat kost het?</h2>
+        <p class="sub">Tik op een behandeling om hem in je afspraak te zetten.</p>
+      </div>
+      <div class="cards" id="cards">
+        <div class="card" data-g="Handen">
+          <h3>Handen</h3>
+          <ul>
+            <li><button type="button" data-n="Nagels knippen" data-p="10"><span>Nagels knippen<small>10 min</small></span><b>€ 10</b></button></li>
+            <li><button type="button" data-n="Manicure" data-p="15"><span>Manicure<small>30 min</small></span><b>€ 15</b></button></li>
+            <li><button type="button" data-n="Manicure met nagellak" data-p="25"><span>Manicure met nagellak<small>30 min</small></span><b>€ 25</b></button></li>
+            <li><button type="button" data-n="Manicure met gellak" data-p="35"><span>Manicure met gellak<small>30 min</small></span><b>€ 35</b></button></li>
+            <li><button type="button" data-n="Manicure met french" data-p="45"><span>Manicure met french<small>30 min</small></span><b>€ 45</b></button></li>
+          </ul>
+        </div>
+        <div class="card" data-g="Voeten">
+          <h3>Voeten</h3>
+          <ul>
+            <li><button type="button" data-n="Pedicure" data-p="35"><span>Pedicure<small>30 tot 60 min</small></span><b>€ 35</b></button></li>
+            <li><button type="button" data-n="Pedicure met nagellak" data-p="40"><span>Pedicure met nagellak<small>35 min</small></span><b>€ 40</b></button></li>
+            <li><button type="button" data-n="Pedicure met gellak" data-p="45"><span>Pedicure met gellak<small>35 min</small></span><b>€ 45</b></button></li>
+            <li><button type="button" data-n="Pedicure met french" data-p="50"><span>Pedicure met french<small>40 min</small></span><b>€ 50</b></button></li>
+            <li><button type="button" data-n="Pedicure met BIAB" data-p="60"><span>Pedicure met BIAB<small>1 uur</small></span><b>€ 60</b></button></li>
+            <li><button type="button" data-n="Pedicure met BIAB en kleur" data-p="70"><span>Pedicure met BIAB en kleur<small>1 uur</small></span><b>€ 70</b></button></li>
+          </ul>
+        </div>
+        <div class="card" data-g="Gellak">
+          <h3>Gellak</h3>
+          <ul>
+            <li><button type="button" data-n="Gellak kleur, handen of voeten" data-p="25"><span>Gellak kleur, handen of voeten<small>30 min</small></span><b>€ 25</b></button></li>
+            <li><button type="button" data-n="Gellak french, voeten" data-p="30"><span>Gellak french, voeten<small>40 min</small></span><b>€ 30</b></button></li>
+            <li><button type="button" data-n="Gellak rubber base, voeten" data-p="30"><span>Gellak rubber base, voeten<small>30 min</small></span><b>€ 30</b></button></li>
+            <li><button type="button" data-n="Gellak french, handen" data-p="35"><span>Gellak french, handen<small>40 min</small></span><b>€ 35</b></button></li>
+            <li><button type="button" data-n="Gellak rubber base, handen" data-p="35"><span>Gellak rubber base, handen<small>40 min</small></span><b>€ 35</b></button></li>
+            <li><button type="button" data-n="Gellak verwijderen" data-p="8"><span>Gellak verwijderen<small>15 min</small></span><b>€ 8</b></button></li>
+          </ul>
+        </div>
+        <div class="card" data-g="Acryl">
+          <h3>Acryl</h3>
+          <ul>
+            <li><button type="button" data-n="Acryl clear" data-p="35"><span>Acryl clear<small>45 min</small></span><b>€ 35</b></button></li>
+            <li><button type="button" data-n="Acryl met roze of wit poeder" data-p="40"><span>Acryl met roze of wit poeder<small>30 min</small></span><b>€ 40</b></button></li>
+            <li><button type="button" data-n="Acryl met kleur" data-p="42"><span>Acryl met kleur<small>35 min</small></span><b>€ 42</b></button></li>
+            <li><button type="button" data-n="Acryl french" data-p="48"><span>Acryl french<small>45 min</small></span><b>€ 48</b></button></li>
+          </ul>
+        </div>
+      </div>
+      <p class="note">Prijzen onder voorbehoud. Wil je nail art of iets wat er niet bij staat? Vraag het via WhatsApp.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="stoel">
+    <div class="wrap chair">
+      <div>
+        <h2>Een pedicure in de massagestoel</h2>
+        <p class="sub">Tijdens je pedicure zit je in een stoel die je rug masseert. Er wordt rustig gewerkt en er is tijd voor je.</p>
+        <ul>
+          <li>Manicure en pedicure voor dames en heren</li>
+          <li>Gellak, acryl en BIAB</li>
+          <li>Nail art in veel soorten</li>
+        </ul>
+      </div>
+      <div class="todo">
+        <small>Komt in de echte site</small>
+        <b>Foto's van de studio en van je werk</b>
+        <span>Hier komt een galerij met foto's van de salon, de massagestoelen en de mooiste nagels.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="reviews">
+    <div class="wrap">
+      <h2>4,8 op Google, uit 83 reviews</h2>
+      <div class="praise">
+        <blockquote class="lead-q">
+          <p><span class="stars" aria-label="5 van 5 sterren">★★★★★</span>“Terwijl Phuong professioneel en met alle aandacht mijn voeten aan het verzorgen was met een scrub, pedicure en massage, zorgde de massagestoel voor ontspanning in mijn rug.”</p>
+          <footer>Uit een review</footer>
+        </blockquote>
+        <blockquote>
+          <p><span class="stars" aria-label="5 van 5 sterren">★★★★★</span>“Phuong is heel geduldig en weet wat ze doet. Je krijgt waar voor je geld.”</p>
+          <footer>Uit een Google-review</footer>
+        </blockquote>
+        <blockquote>
+          <p><span class="stars" aria-label="5 van 5 sterren">★★★★★</span>“Ik ben er nu twee keer geweest en ben nog steeds blij met mijn nagels. De prijzen zijn heel redelijk.”</p>
+          <footer>Uit een Google-review</footer>
+        </blockquote>
+        <blockquote>
+          <p><span class="stars" aria-label="5 van 5 sterren">★★★★★</span>“Phuong werkt heel zorgvuldig en is ook nog eens lief. Superschoon.”</p>
+          <footer>Uit een Google-review</footer>
+        </blockquote>
+      </div>
+      <div class="praise-foot">
+        <p>De Google-reviews zijn vertaald uit het Engels.</p>
+        <a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&amp;query=Nails+by+Phuong+Waagplein+18+Purmerend&amp;query_place_id=ChIJxeYYavkHxkcRXmuNcUGjBhg" target="_blank" rel="noopener">Lees alle reviews op Google</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="langskomen">
+    <div class="wrap visit">
+      <div>
+        <h2>Aan het Waagplein, in het centrum</h2>
+        <p class="sub">De studio zit midden in de binnenstad van Purmerend. Met de bus stap je uit bij halte Gedempte Where.</p>
+        <address>Waagplein 18<br>1441 BR Purmerend</address>
+        <a class="btn btn-line" href="https://www.google.com/maps/dir/?api=1&amp;destination=Waagplein+18,+1441+BR+Purmerend" target="_blank" rel="noopener">Plan je route</a>
+      </div>
+      <div class="area">
+        <h3>Openingstijden</h3>
+        <ul class="hours" id="hours">
+          <li data-d="1"><span>Maandag</span><b>10:00 – 18:00</b></li>
+          <li data-d="2"><span>Dinsdag</span><b>10:00 – 18:00</b></li>
+          <li data-d="3"><span>Woensdag</span><b>10:00 – 18:00</b></li>
+          <li data-d="4"><span>Donderdag</span><b>10:00 – 18:00</b></li>
+          <li data-d="5"><span>Vrijdag</span><b>10:00 – 18:00</b></li>
+          <li data-d="6"><span>Zaterdag</span><b>10:00 – 18:00</b></li>
+          <li data-d="0" class="shut"><span>Zondag</span><b>Gesloten</b></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="vragen">
+    <div class="wrap faq">
+      <div>
+        <h2>Goed om te weten voor je komt</h2>
+      </div>
+      <div>
+        <details open>
+          <summary>Hoe maak ik een afspraak?</summary>
+          <p>Stuur een WhatsApp-bericht naar <a href="https://wa.me/31623055119" target="_blank" rel="noopener">06 23 05 51 19</a> of vul het formulier onderaan deze pagina in. Je kunt ook online boeken via <a href="https://www.treatwell.nl/salon/nails-by-phuong/" target="_blank" rel="noopener">Treatwell</a>.</p>
+        </details>
+        <details>
+          <summary>Zijn heren ook welkom?</summary>
+          <p>Ja. Dames en heren kunnen terecht voor een manicure en een pedicure.</p>
+        </details>
+        <details>
+          <summary>Wat is het verschil tussen gellak, BIAB en acryl?</summary>
+          <p>Gellak is alleen kleur op je eigen nagel. BIAB is een stevige gel die je eigen nagel sterker maakt. Acryl is het hardst en past goed als je je nagels langer wilt hebben. Twijfel je? Stuur een foto van je nagels via WhatsApp.</p>
+        </details>
+        <details>
+          <summary>Ik heb nog oude gellak op mijn nagels. Kan die eraf?</summary>
+          <p>Ja. Gellak verwijderen kost € 8 en duurt ongeveer een kwartier. Zet het even in je bericht, dan wordt er tijd voor ingepland.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="afspraak">
+    <div class="wrap ask">
+      <div>
+        <h2>Maak een afspraak</h2>
+        <p class="sub">Kies je behandeling en stuur je aanvraag via WhatsApp. Je krijgt een bericht terug met de dag en de tijd.</p>
+        <ul class="contact">
+          <li><small>WhatsApp of bellen</small><a href="https://wa.me/31623055119" target="_blank" rel="noopener">06 23 05 51 19</a></li>
+          <li><small>Online boeken</small><a class="mail" href="https://www.treatwell.nl/salon/nails-by-phuong/" target="_blank" rel="noopener">Boek via Treatwell</a></li>
+          <li><small>Instagram</small><a class="mail" href="https://www.instagram.com/nailsbyphuongpurmerend" target="_blank" rel="noopener">@nailsbyphuongpurmerend</a></li>
+        </ul>
+      </div>
+      <form id="form" novalidate>
+        <div class="full"><label for="pak">Welke behandeling?</label><select id="pak" name="pak"><option value="">Weet ik nog niet</option></select></div>
+        <div><label for="datum">Welke dag heeft je voorkeur?</label><input id="datum" name="datum" type="date"></div>
+        <div><label for="tijd">Welk moment?</label><select id="tijd" name="tijd"><option>Maakt niet uit</option><option>Ochtend</option><option>Middag</option></select></div>
+        <div class="full"><label for="naam">Je naam</label><input id="naam" name="naam" autocomplete="name" required></div>
+        <div class="full"><label for="msg">Wens of vraag <small>(mag leeg blijven)</small></label><textarea id="msg" name="msg" placeholder="Bijvoorbeeld de kleur of de vorm die je wilt"></textarea></div>
+        <div class="full total" aria-live="polite"><span id="totname">Nog geen behandeling gekozen</span><b id="totprice"></b></div>
+        <div class="full send">
+          <button class="btn wa" type="button" id="stuur"><svg aria-hidden="true" viewBox="0 0 32 32" fill="#fff"><path d="M16.04 3C8.86 3 3.03 8.82 3.03 16c0 2.3.6 4.54 1.74 6.52L3 29l6.64-1.74A13 13 0 0 0 16.04 29C23.2 29 29 23.18 29 16S23.2 3 16.04 3Zm0 23.8c-2.02 0-4-.54-5.72-1.57l-.41-.24-3.94 1.03 1.05-3.84-.27-.4A10.78 10.78 0 0 1 5.2 16c0-5.97 4.86-10.83 10.84-10.83 5.97 0 10.82 4.86 10.82 10.83 0 5.98-4.85 10.8-10.82 10.8Zm5.94-8.1c-.33-.16-1.93-.95-2.23-1.06-.3-.11-.52-.16-.73.17-.22.32-.84 1.05-1.03 1.27-.19.22-.38.24-.7.08-.33-.16-1.38-.51-2.62-1.62-.97-.86-1.62-1.93-1.81-2.25-.19-.33-.02-.5.14-.66.15-.15.33-.38.49-.57.16-.19.22-.33.33-.54.11-.22.05-.41-.03-.57-.08-.16-.73-1.76-1-2.41-.26-.63-.53-.55-.73-.56h-.62c-.22 0-.57.08-.87.41-.3.32-1.14 1.11-1.14 2.72 0 1.6 1.17 3.15 1.33 3.37.16.22 2.3 3.5 5.56 4.91.78.34 1.39.54 1.86.69.78.25 1.49.21 2.05.13.63-.09 1.93-.79 2.2-1.55.27-.76.27-1.41.19-1.55-.08-.13-.3-.21-.62-.38Z"/></svg>Stuur via WhatsApp</button>
+          <p class="hint" id="formhint" role="status">Je bericht opent in WhatsApp. Daar druk je zelf op verzenden.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="row">
+      <div>© 2026 Nails by Phuong, Waagplein 18, 1441 BR Purmerend.</div>
+      <div>Demo-ontwerp door <a href="https://byxavio.nl">byXavio</a></div>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" id="wafloat" href="https://wa.me/31623055119?text=Hoi!%20Ik%20heb%20een%20vraag%20over%20een%20afspraak%20bij%20Nails%20by%20Phuong." target="_blank" rel="noopener" aria-label="Stuur een WhatsApp-bericht"><svg aria-hidden="true" viewBox="0 0 32 32" fill="#fff"><path d="M16.04 3C8.86 3 3.03 8.82 3.03 16c0 2.3.6 4.54 1.74 6.52L3 29l6.64-1.74A13 13 0 0 0 16.04 29C23.2 29 29 23.18 29 16S23.2 3 16.04 3Zm0 23.8c-2.02 0-4-.54-5.72-1.57l-.41-.24-3.94 1.03 1.05-3.84-.27-.4A10.78 10.78 0 0 1 5.2 16c0-5.97 4.86-10.83 10.84-10.83 5.97 0 10.82 4.86 10.82 10.83 0 5.98-4.85 10.8-10.82 10.8Zm5.94-8.1c-.33-.16-1.93-.95-2.23-1.06-.3-.11-.52-.16-.73.17-.22.32-.84 1.05-1.03 1.27-.19.22-.38.24-.7.08-.33-.16-1.38-.51-2.62-1.62-.97-.86-1.62-1.93-1.81-2.25-.19-.33-.02-.5.14-.66.15-.15.33-.38.49-.57.16-.19.22-.33.33-.54.11-.22.05-.41-.03-.57-.08-.16-.73-1.76-1-2.41-.26-.63-.53-.55-.73-.56h-.62c-.22 0-.57.08-.87.41-.3.32-1.14 1.11-1.14 2.72 0 1.6 1.17 3.15 1.33 3.37.16.22 2.3 3.5 5.56 4.91.78.34 1.39.54 1.86.69.78.25 1.49.21 2.05.13.63-.09 1.93-.79 2.2-1.55.27-.76.27-1.41.19-1.55-.08-.13-.3-.21-.62-.38Z"/></svg></a>
+
+<div class="dock">
+  <a class="btn wa" href="https://wa.me/31623055119?text=Hoi!%20Ik%20heb%20een%20vraag%20over%20een%20afspraak%20bij%20Nails%20by%20Phuong."><svg aria-hidden="true" viewBox="0 0 32 32" fill="#fff"><path d="M16.04 3C8.86 3 3.03 8.82 3.03 16c0 2.3.6 4.54 1.74 6.52L3 29l6.64-1.74A13 13 0 0 0 16.04 29C23.2 29 29 23.18 29 16S23.2 3 16.04 3Zm0 23.8c-2.02 0-4-.54-5.72-1.57l-.41-.24-3.94 1.03 1.05-3.84-.27-.4A10.78 10.78 0 0 1 5.2 16c0-5.97 4.86-10.83 10.84-10.83 5.97 0 10.82 4.86 10.82 10.83 0 5.98-4.85 10.8-10.82 10.8Zm5.94-8.1c-.33-.16-1.93-.95-2.23-1.06-.3-.11-.52-.16-.73.17-.22.32-.84 1.05-1.03 1.27-.19.22-.38.24-.7.08-.33-.16-1.38-.51-2.62-1.62-.97-.86-1.62-1.93-1.81-2.25-.19-.33-.02-.5.14-.66.15-.15.33-.38.49-.57.16-.19.22-.33.33-.54.11-.22.05-.41-.03-.57-.08-.16-.73-1.76-1-2.41-.26-.63-.53-.55-.73-.56h-.62c-.22 0-.57.08-.87.41-.3.32-1.14 1.11-1.14 2.72 0 1.6 1.17 3.15 1.33 3.37.16.22 2.3 3.5 5.56 4.91.78.34 1.39.54 1.86.69.78.25 1.49.21 2.05.13.63-.09 1.93-.79 2.2-1.55.27-.76.27-1.41.19-1.55-.08-.13-.3-.21-.62-.38Z"/></svg>WhatsApp</a>
+  <a class="btn btn-pop" href="#afspraak">Maak een afspraak</a>
+</div>
+
+<script>
+// Openingstijden: de dag van vandaag markeren
+const vandaag=document.querySelector('#hours [data-d="'+new Date().getDay()+'"]');if(vandaag)vandaag.classList.add('now');
+
+// De prijslijst hierboven is de enige plek waar de prijzen staan.
+// Het keuzemenu in het formulier wordt daaruit opgebouwd.
+const f=document.getElementById('form'),hint=document.getElementById('formhint'),$=id=>document.getElementById(id);
+document.querySelectorAll('#cards .card').forEach(card=>{
+  const og=document.createElement('optgroup');og.label=card.dataset.g;
+  card.querySelectorAll('button').forEach(b=>{
+    const o=document.createElement('option');o.value=b.dataset.n;o.dataset.p=b.dataset.p;o.textContent=b.dataset.n+', € '+b.dataset.p;og.append(o);
+    b.addEventListener('click',()=>{f.pak.value=b.dataset.n;toon();$('afspraak').scrollIntoView();hint.style.color='';hint.textContent=b.dataset.n+' staat in je afspraak. Vul de rest in en verstuur.';});
+  });
+  f.pak.append(og);
+});
+function toon(){const o=f.pak.selectedOptions[0];$('totname').textContent=o.value||'Nog geen behandeling gekozen';$('totprice').textContent=o.value?'€ '+o.dataset.p:'';}
+f.pak.addEventListener('input',toon);toon();
+
+const TEL='31623055119';
+const d=new Date(),today=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+f.datum.min=today;
+const dag=s=>new Date(s+'T12:00:00');
+const nl=s=>dag(s).toLocaleDateString('nl-NL',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+const fout=(t,el)=>{hint.textContent=t;hint.style.color='#b3261e';el.focus();};
+$('stuur').addEventListener('click',()=>{
+  const naam=f.naam.value.trim();
+  if(f.datum.value&&f.datum.value<today)return fout('Deze datum is al voorbij. Kies een dag in de toekomst.',f.datum);
+  if(f.datum.value&&dag(f.datum.value).getDay()===0)return fout('Op zondag is de studio dicht. Kies een andere dag.',f.datum);
+  if(!naam)return fout('Vul nog even je naam in.',f.naam);
+  const regels=['Hoi! Ik wil graag een afspraak maken bij Nails by Phuong.','','Behandeling: '+(f.pak.value||'weet ik nog niet')];
+  if(f.datum.value)regels.push('Voorkeursdag: '+nl(f.datum.value));
+  if(f.tijd.value!=='Maakt niet uit')regels.push('Voorkeursmoment: '+f.tijd.value.toLowerCase());
+  regels.push('Naam: '+naam);
+  if(f.msg.value.trim())regels.push('',f.msg.value.trim());
+  hint.style.color='';hint.textContent='Je aanvraag staat klaar. Druk in WhatsApp op verzenden.';
+  window.open('https://wa.me/'+TEL+'?text='+encodeURIComponent(regels.join('\n')),'_blank','noopener');
+});
+if('IntersectionObserver' in window){new IntersectionObserver(e=>$('wafloat').classList.toggle('hide',e[0].isIntersecting),{threshold:.15}).observe($('afspraak'));}
+</script>
+</body>
+</html>
