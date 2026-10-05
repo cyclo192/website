@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>De Gouden Hand · Kledingreparatie, stomerij en gordijnen op maat · Purmerend (demo)</title>
+<meta name="description" content="Demo-ontwerp: De Gouden Hand aan de Weerwal in Purmerend. Kledingreparatie, stomerij en gordijnen op maat.">
+<meta name="theme-color" content="#22359a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2322359a'/%3E%3Crect x='7' y='7' width='50' height='50' rx='7' fill='none' stroke='%23e2b343' stroke-width='3' stroke-dasharray='6 5'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='30' font-weight='700' text-anchor='middle' fill='%23fff'%3EG%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#22359a;        /* het blauw van het uithangbord */
+  --blue-deep:#172670;
+  --thread:#c8962a;      /* gouddraad */
+  --thread-hi:#e8c15a;
+  --tape:#f3c623;        /* meetlint */
+  --red:#bf362c;         /* de rode gordijntjes in de etalage */
+  --linen:#f6f2e9;
+  --paper:#fffdf8;
+  --ink:#1b2040;
+  --muted:#555a72;
+  --line:#ddd6c6;
+  --wrap:1140px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--linen);color:var(--ink);font:400 1.0938rem/1.65 "Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+img{height:auto}
+a{color:inherit}
+h1,h2,h3,p,ul,ol,figure{margin:0}
+ul,ol{padding:0;list-style:none}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:4px}
+.onblue :focus-visible{outline-color:#fff}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 22px}
+.skip{position:absolute;left:-999px;top:0;background:var(--blue);color:#fff;padding:10px 16px;z-index:100}
+.skip:focus{left:8px;top:8px}
+
+h1,h2,h3,.serif{font-family:Fraunces,Georgia,"Times New Roman",serif;font-weight:600;line-height:1.08;letter-spacing:-.012em}
+h2{font-size:clamp(2rem,5.4vw,3.1rem);text-wrap:balance}
+h3{font-size:1.5rem;line-height:1.15}
+.eyebrow{font:600 .84rem/1.4 "Instrument Sans",sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--blue)}
+.onblue .eyebrow{color:var(--thread-hi)}
+/* de stiksteek */
+.seam{position:relative}
+.seam::before{content:"";position:absolute;inset:8px;border:2px dashed var(--thread);border-radius:8px;pointer-events:none;opacity:.9}
+
+.demo{background:var(--ink);color:#d8d9e4;font-size:.92rem;line-height:1.4;padding:9px 0;text-align:center}
+.demo a{color:#fff;font-weight:600}
+
+.top{position:sticky;top:0;z-index:40;background:var(--blue);color:#fff;border-bottom:2px dashed var(--thread-hi)}
+.top .wrap{display:flex;align-items:center;gap:24px;height:70px}
+.brand{margin-right:auto;text-decoration:none;display:flex;flex-direction:column;line-height:1}
+.brand b{font:600 1.55rem/1 Fraunces,Georgia,serif;letter-spacing:-.01em;white-space:nowrap}
+.brand small{font:500 .7rem/1 "Instrument Sans",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#cfd5f5;margin-top:6px}
+.nav{display:flex;gap:26px;font-size:.98rem;font-weight:500}
+.nav a{text-decoration:none;padding:6px 0;border-bottom:2px solid transparent}
+.nav a:hover{border-color:var(--thread-hi)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border:2px solid var(--blue);background:var(--blue);color:#fff;font:600 1.02rem/1 "Instrument Sans",sans-serif;text-decoration:none;border-radius:999px;transition:background .15s,color .15s,transform .15s}
+.btn:hover{background:var(--blue-deep);border-color:var(--blue-deep);transform:translateY(-2px)}
+.btn svg{width:18px;height:18px;flex:none}
+.btn.line{background:transparent;color:var(--blue)}
+.btn.line:hover{background:var(--blue);color:#fff}
+.btn.gold{background:var(--tape);border-color:var(--tape);color:var(--ink)}
+.btn.gold:hover{background:#ffd84a;border-color:#ffd84a}
+.onblue .btn.line{border-color:#fff;color:#fff}
+.onblue .btn.line:hover{background:#fff;color:var(--blue)}
+.top .btn{min-height:44px;padding:0 20px;font-size:.96rem}
+
+/* hero */
+.hero{padding:clamp(36px,6vw,80px) 0 clamp(48px,7vw,92px);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,5vw,72px);align-items:center}
+.hero h1{font-size:clamp(2.5rem,8.6vw,4.4rem);margin:16px 0 22px;text-wrap:balance}
+.hero h1 em{font-style:italic;font-weight:500;color:var(--blue);text-decoration:underline dashed var(--thread) 3px;text-underline-offset:.17em}
+.lead{font-size:1.2rem;max-width:31em;color:#2f3452}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.status{display:flex;align-items:baseline;gap:10px;margin-top:24px;font-size:1rem;line-height:1.4}
+.status i{width:10px;height:10px;border-radius:50%;background:#9aa;flex:none}
+.status.open i{background:#1f8a4c;box-shadow:0 0 0 4px rgba(31,138,76,.18)}
+.status.shut i{background:var(--red)}
+.status b{font-weight:600}
+.status .st span{color:var(--muted)}
+.frame{position:relative;background:var(--paper);padding:16px;border-radius:14px;box-shadow:0 24px 50px rgba(27,32,64,.16);transform:rotate(1.4deg)}
+.frame img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:6px;background:var(--line)}
+.frame::before{inset:7px;border-radius:10px}
+/* ingenaaid merklabel */
+.label{position:absolute;left:-26px;bottom:42px;background:var(--paper);color:var(--ink);padding:14px 22px 13px;text-decoration:none;display:flex;align-items:center;gap:14px;box-shadow:0 10px 26px rgba(27,32,64,.2);transform:rotate(-4deg);border-left:6px solid var(--blue);border-right:6px solid var(--blue)}
+.label::before,.label::after{content:"";position:absolute;top:6px;bottom:6px;border-left:2px dashed var(--thread)}
+.label::before{left:5px}.label::after{right:5px}
+.label .num{font:600 2.3rem/.9 Fraunces,Georgia,serif}
+.label small{display:block;font-size:.84rem;color:var(--muted);line-height:1.3}
+.stars{color:var(--thread);letter-spacing:2px;font-size:.98rem;line-height:1}
+
+/* meetlint */
+.tape{height:40px;background:
+  linear-gradient(var(--ink),var(--ink)) 0 0/100% 2px no-repeat,
+  repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 60px) 0 0/100% 24px no-repeat,
+  repeating-linear-gradient(90deg,var(--ink) 0 1px,transparent 1px 12px) 0 0/100% 12px no-repeat,
+  var(--tape)}
+
+section{padding:clamp(60px,9vw,112px) 0}
+.sechead{max-width:38em;margin-bottom:clamp(30px,5vw,52px)}
+.sechead h2{margin:10px 0 14px}
+.sechead p{font-size:1.14rem;color:#2f3452}
+
+/* drie diensten */
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.card{background:var(--paper);border-radius:14px;padding:16px 16px 26px;box-shadow:0 1px 0 var(--line),0 12px 30px rgba(27,32,64,.07)}
+.card img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:6px;background:var(--line)}
+.card h3{margin:22px 10px 8px}
+.card p{margin:0 10px;color:var(--muted)}
+.card::before{inset:7px;border-radius:10px;opacity:.55}
+.fine{font-size:.86rem;color:var(--muted);line-height:1.45;margin-top:18px}
+
+/* zo werkt het */
+.how{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;counter-reset:s}
+.steps li{counter-increment:s;padding-top:70px;position:relative}
+.steps li::before{content:counter(s);position:absolute;top:0;left:0;width:52px;height:52px;border-radius:50%;border:2px dashed var(--thread);display:grid;place-items:center;font:600 1.5rem/1 Fraunces,Georgia,serif;color:var(--blue);background:var(--linen)}
+.steps h3{font-size:1.32rem;margin-bottom:6px}
+.steps p{color:var(--muted)}
+
+/* reviews */
+.praise{background:var(--blue);color:#fff}
+.praise .wrap{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(26px,7vw,90px);align-items:center}
+.score{position:relative;text-align:center;padding:34px 40px 30px}
+.score::before{border-color:var(--thread-hi);inset:0;border-radius:14px}
+.score .num{font:600 clamp(4.6rem,16vw,7rem)/.9 Fraunces,Georgia,serif;display:block}
+.score .stars{color:var(--tape);font-size:1.35rem;letter-spacing:6px;display:block;margin:14px 0 8px}
+.score small{font-size:.96rem;color:#dfe3fa}
+.praise h2{margin:10px 0 14px}
+.praise p{max-width:32em;font-size:1.12rem;color:#e6e9fb}
+.tags{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 28px}
+.tags li{border:2px dashed var(--thread-hi);border-radius:999px;padding:7px 18px;font-weight:500}
+
+/* tijden en adres */
+.visit{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(26px,5vw,64px)}
+.hours{width:100%;border-collapse:collapse;font-size:1.08rem}
+.hours th,.hours td{padding:13px 0;border-bottom:1px solid var(--line);text-align:left;font-weight:400}
+.hours td{text-align:right;font-variant-numeric:tabular-nums}
+.hours tr.shut td{color:var(--muted)}
+.hours tr.today th,.hours tr.today td{font-weight:600}
+.hours tr.today th::after{content:"vandaag";margin-left:10px;background:var(--tape);border-radius:4px;padding:2px 8px;font-size:.76rem;font-weight:600;vertical-align:2px}
+.addr{margin-top:30px;font-style:normal;font-size:1.12rem;line-height:1.55}
+.addr strong{display:block;font:600 1.3rem/1.3 Fraunces,Georgia,serif}
+.map{background:var(--paper);padding:14px;border-radius:14px;min-height:400px;display:grid;box-shadow:0 12px 30px rgba(27,32,64,.08)}
+.map::before{inset:6px;border-radius:10px;z-index:1}
+.map iframe{width:100%;height:100%;min-height:372px;border:0;border-radius:4px}
+
+/* afsluiter */
+.bye{background:var(--ink);color:#fff;text-align:center}
+.bye h2{font-size:clamp(2rem,6vw,3.3rem)}
+.bye h2 em{font-style:italic;font-weight:500;color:var(--thread-hi)}
+.bye p{max-width:30em;margin:16px auto 0;font-size:1.14rem;color:#d8d9e4}
+.tel{display:inline-block;margin-top:26px;font:600 clamp(2.3rem,8.4vw,3.8rem)/1 Fraunces,Georgia,serif;text-decoration:underline dashed var(--thread-hi) 3px;text-underline-offset:.2em;color:#fff}
+.tel:hover{color:var(--thread-hi)}
+.insta{display:block;margin-top:26px;font-size:1rem;color:#d8d9e4}
+.insta a{color:#fff;font-weight:600}
+
+footer{background:#12162e;color:#b9bcd0;padding:44px 0 48px;font-size:.97rem}
+footer .wrap{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:30px}
+footer b{display:block;color:#fff;font:600 1.12rem/1.3 Fraunces,Georgia,serif;margin-bottom:6px}
+footer a{color:#fff}
+.small{grid-column:1/-1;border-top:1px solid #2c3157;padding-top:20px;font-size:.87rem;line-height:1.5}
+
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:50;display:none;gap:10px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(255,253,248,.96);backdrop-filter:blur(8px);border-top:2px dashed var(--thread);transform:translateY(110%);transition:transform .25s}
+.dock.on{transform:none}
+.dock .btn{flex:1;min-height:50px;padding:0 10px}
+
+@media (max-width:900px){
+  .nav{display:none}
+  .hero .wrap,.visit{grid-template-columns:minmax(0,1fr)}
+  .frame{width:min(86%,400px);margin:8px auto 0}
+  .frame img{aspect-ratio:1}
+  .label{left:-18px;bottom:26px}
+  .cards,.steps{grid-template-columns:minmax(0,1fr)}
+  .steps li{padding:4px 0 0 72px;min-height:52px}
+  .praise .wrap{grid-template-columns:minmax(0,1fr)}
+  .score{justify-self:start}
+  footer{padding-bottom:110px}
+  footer .wrap{grid-template-columns:minmax(0,1fr)}
+  .dock{display:flex}
+}
+@media (max-width:560px){
+  body{font-size:1.0625rem}
+  .top .wrap{height:62px;gap:10px}
+  .brand b{font-size:1.3rem}
+  .brand small{font-size:.6rem;letter-spacing:.1em}
+  .cta .btn{width:100%}
+  .demo{font-size:.86rem}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .btn,.dock{transition:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#inhoud">Naar de inhoud</a>
+<div class="demo"><div class="wrap">Dit is een demo-ontwerp van <a href="https://byxavio.nl">byXavio</a> voor De Gouden Hand.</div></div>
+
+<header class="top onblue">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="De Gouden Hand, naar boven"><b>De Gouden Hand</b><small>Kledingreparatie · Purmerend</small></a>
+    <nav class="nav" aria-label="Hoofdmenu">
+      <a href="#diensten">Wat we doen</a>
+      <a href="#zo">Zo werkt het</a>
+      <a href="#tijden">Openingstijden</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn gold" href="tel:+31299474273">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>
+      Bel
+    </a>
+  </div>
+</header>
+
+<main id="inhoud">
+<div class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Kledingreparatie · Stomerij · Gordijnen op maat</p>
+      <h1>Te lang, te wijd of kapot? <em>Breng het langs.</em></h1>
+      <p class="lead">De Gouden Hand aan de Weerwal in Purmerend vermaakt en herstelt je kleding, stoomt wat niet in de wasmachine mag en maakt gordijnen op maat.</p>
+      <div class="cta">
+        <a class="btn" href="tel:+31299474273">Bel 0299 474 273</a>
+        <a class="btn line" href="https://www.google.com/maps/dir/?api=1&destination=Weerwal+1,+1441+AL+Purmerend" target="_blank" rel="noopener">Route naar de winkel</a>
+      </div>
+      <p class="status" data-status aria-live="polite"><i></i><span class="st"><b>Di t/m za open</b> <span>vanaf 9.00 uur</span></span></p>
+    </div>
+    <div class="frame seam">
+      <img src="https://images.unsplash.com/photo-1745847655362-fc86d76584b2?auto=format&fit=crop&w=900&h=1125&q=70" width="900" height="1125" alt="Handen leiden een stuk stof onder de naald van een naaimachine door" fetchpriority="high">
+      <a class="label" href="https://www.google.com/maps/search/?api=1&query=De+Gouden+Hand+Kledingreparatie+Weerwal+1+Purmerend&query_place_id=ChIJ8ynFh9UGxkcRHvF2pTMkcMg" target="_blank" rel="noopener">
+        <span class="num">4,8</span>
+        <span><span class="stars" aria-hidden="true">★★★★★</span><small>20 reviews op Google</small></span>
+      </a>
+    </div>
+  </div>
+</div>
+<div class="tape" aria-hidden="true"></div>
+
+<section id="diensten">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="eyebrow">Wat we doen</p>
+      <h2>Drie dingen waar je voor langskomt</h2>
+      <p>Het staat ook op de gevel: kledingreparatie, stomerij en gordijnen op maat.</p>
+    </div>
+    <div class="cards">
+      <article class="card seam">
+        <img src="https://images.unsplash.com/photo-1649182369902-adc2d56cd6c9?auto=format&fit=crop&w=800&h=600&q=70" width="800" height="600" loading="lazy" alt="Iemand naait een kledingstuk op een naaimachine">
+        <h3>Kledingreparatie</h3>
+        <p>Broek te lang, jas te wijd of een rits die het opgeeft? Kleding die niet goed zit of stuk is, wordt hier vermaakt en hersteld.</p>
+      </article>
+      <article class="card seam">
+        <img src="https://images.unsplash.com/photo-1561053720-76cd73ff22c3?auto=format&fit=crop&w=800&h=600&q=70" width="800" height="600" loading="lazy" alt="Rij gestreken overhemden aan hangers">
+        <h3>Stomerij</h3>
+        <p>Een pak, jurk of winterjas die niet in de wasmachine mag, lever je hier in voor de stomerij.</p>
+      </article>
+      <article class="card seam">
+        <img src="https://images.unsplash.com/photo-1578500467296-441a11d5d55a?auto=format&fit=crop&w=800&h=600&q=70" width="800" height="600" loading="lazy" alt="Lichte gordijnstof die tot op de vloer valt">
+        <h3>Gordijnen op maat</h3>
+        <p>Nieuwe gordijnen laten maken, of gordijnen die te lang zijn laten inkorten.</p>
+      </article>
+    </div>
+    <p class="fine">Voorbeeldfoto’s. In de echte site komen hier foto’s uit de eigen winkel.</p>
+  </div>
+</section>
+
+<section class="how" id="zo">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="eyebrow">Zo werkt het</p>
+      <h2>Gewoon even binnenlopen</h2>
+    </div>
+    <ol class="steps">
+      <li><h3>Breng het langs</h3><p>Neem je kledingstuk of gordijnen mee naar de winkel aan de Weerwal 1.</p></li>
+      <li><h3>Bespreek wat je wilt</h3><p>Samen kijk je wat er moet gebeuren. Vraag meteen wat het kost en wanneer het klaar is.</p></li>
+      <li><h3>Haal het weer op</h3><p>Is het klaar, dan haal je het weer op in de winkel.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="praise onblue" id="reviews">
+  <div class="wrap">
+    <div class="score seam">
+      <span class="num">4,8</span>
+      <span class="stars" aria-hidden="true">★★★★★</span>
+      <small>uit 20 reviews op Google</small>
+    </div>
+    <div>
+      <p class="eyebrow">Reviews</p>
+      <h2>Wat klanten erover zeggen</h2>
+      <p>In de reviews op Google komen steeds dezelfde dingen terug:</p>
+      <ul class="tags">
+        <li>Vriendelijke man</li>
+        <li>Snel geholpen</li>
+        <li>Netjes werk</li>
+        <li>Betaalbaar</li>
+      </ul>
+      <a class="btn gold" href="https://www.google.com/maps/search/?api=1&query=De+Gouden+Hand+Kledingreparatie+Weerwal+1+Purmerend&query_place_id=ChIJ8ynFh9UGxkcRHvF2pTMkcMg" target="_blank" rel="noopener">Lees de reviews op Google</a>
+    </div>
+  </div>
+</section>
+
+<section id="tijden">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="eyebrow">Openingstijden</p>
+      <h2>De winkel aan de Weerwal</h2>
+    </div>
+    <div class="visit">
+      <div>
+        <table class="hours">
+          <caption class="skip">Openingstijden</caption>
+          <tbody>
+            <tr data-d="1" class="shut"><th scope="row">Maandag</th><td>gesloten</td></tr>
+            <tr data-d="2"><th scope="row">Dinsdag</th><td>9.00 – 18.00</td></tr>
+            <tr data-d="3"><th scope="row">Woensdag</th><td>9.00 – 18.00</td></tr>
+            <tr data-d="4"><th scope="row">Donderdag</th><td>9.00 – 18.00</td></tr>
+            <tr data-d="5"><th scope="row">Vrijdag</th><td>9.00 – 18.00</td></tr>
+            <tr data-d="6"><th scope="row">Zaterdag</th><td>9.00 – 17.00</td></tr>
+            <tr data-d="0" class="shut"><th scope="row">Zondag</th><td>gesloten</td></tr>
+          </tbody>
+        </table>
+        <address class="addr">
+          <strong>De Gouden Hand</strong>
+          Weerwal 1<br>1441 AL Purmerend
+        </address>
+        <div class="cta">
+          <a class="btn line" href="https://www.google.com/maps/dir/?api=1&destination=Weerwal+1,+1441+AL+Purmerend" target="_blank" rel="noopener">Route plannen</a>
+        </div>
+      </div>
+      <div class="map seam">
+        <iframe title="Kaart: Weerwal 1, Purmerend" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=4.9412%2C52.5080%2C4.9532%2C52.5134&amp;layer=mapnik&amp;marker=52.51077%2C4.94720"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="tape" aria-hidden="true"></div>
+<section class="bye" id="contact">
+  <div class="wrap">
+    <h2>Twijfel je of het kan? <em>Bel even.</em></h2>
+    <p>Of loop binnen met het kledingstuk, dan zie je het meteen.</p>
+    <a class="tel" href="tel:+31299474273">0299 474 273</a>
+    <span class="insta">Ook op Instagram: <a href="https://www.instagram.com/kledingreparatie.degoudenhand/" target="_blank" rel="noopener">@kledingreparatie.degoudenhand</a></span>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><b>De Gouden Hand</b>Kledingreparatie, stomerij en gordijnen op maat<br>Weerwal 1, 1441 AL Purmerend</div>
+    <div><b>Bellen</b><a href="tel:+31299474273">0299 474 273</a></div>
+    <div><b>Open</b>Di t/m vr 9.00 – 18.00<br>Za 9.00 – 17.00<br>Zo en ma gesloten</div>
+    <p class="small">Demo-ontwerp, nog niet de officiële website van De Gouden Hand. Adres, telefoonnummer, openingstijden en de Google-score (stand oktober 2026) komen van het openbare Google-profiel; de drie diensten staan op de gevel van de winkel. De foto’s zijn voorbeeldfoto’s van Unsplash. Concept door <a href="https://byxavio.nl">byXavio</a>.</p>
+  </div>
+</footer>
+
+<div class="dock" data-dock>
+  <a class="btn line" href="https://www.google.com/maps/dir/?api=1&destination=Weerwal+1,+1441+AL+Purmerend" target="_blank" rel="noopener">Route</a>
+  <a class="btn" href="tel:+31299474273">Bel de winkel</a>
+</div>
+
+<script>
+(function(){
+  // openingstijden: 0 = zondag
+  var H={0:null,1:null,2:[9,18],3:[9,18],4:[9,18],5:[9,18],6:[9,17]};
+  var N=['zondag','maandag','dinsdag','woensdag','donderdag','vrijdag','zaterdag'];
+  function fmt(h){var m=Math.round((h%1)*60);return Math.floor(h)+'.'+(m<10?'0':'')+m;}
+  var now;
+  try{now=new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/Amsterdam'}));}catch(e){now=new Date();}
+  var d=now.getDay(), t=now.getHours()+now.getMinutes()/60, el=document.querySelector('[data-status]');
+  var row=document.querySelector('.hours tr[data-d="'+d+'"]'); if(row) row.classList.add('today');
+  if(el){
+    var h=H[d], b=el.querySelector('b'), s=el.querySelector('.st span');
+    if(h && t>=h[0] && t<h[1]){el.classList.add('open');b.textContent='Nu open';s.textContent='tot '+fmt(h[1])+' uur';}
+    else{
+      el.classList.add('shut');b.textContent='Nu gesloten';
+      if(h && t<h[0]){s.textContent='vandaag open vanaf '+fmt(h[0])+' uur';}
+      else{for(var i=1;i<=7;i++){var n=(d+i)%7;if(H[n]){s.textContent=(i===1?'morgen':N[n])+' weer open vanaf '+fmt(H[n][0])+' uur';break;}}}
+    }
+  }
+  // balk onderin pas tonen als de knoppen in de hero uit beeld zijn
+  var dock=document.querySelector('[data-dock]'), cta=document.querySelector('.hero .cta'), end=document.getElementById('contact');
+  if(dock && cta && 'IntersectionObserver' in window){
+    var a=true,f=false;
+    function upd(){dock.classList.toggle('on',!a&&!f);}
+    new IntersectionObserver(function(es){a=es[0].isIntersecting;upd();}).observe(cta);
+    new IntersectionObserver(function(es){f=es[0].isIntersecting;upd();},{threshold:.3}).observe(end);
+  }
+})();
+</script>
+</body>
+</html>
