@@ -2,697 +2,301 @@
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Slijperij — kapperszaak</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Slijperij — kapper &amp; scheersalon</title>
+<meta name="description" content="Slijperij is een fictieve kapper en scheersalon, gemaakt als websitevoorbeeld door byXavio. Vaste prijzen, heet scheren en online een afspraak maken.">
+<meta name="theme-color" content="#131417">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Karla:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;700&family=Rokkitt:wght@600;700;800&display=swap">
 <style>
   :root{
-    --ink:#1c2128;
-    --ink-soft:#2a313b;
-    --paper:#ece6d8;
-    --paper-dim:#d9d1bd;
-    --brass:#a9782f;
-    --brass-light:#c99a4d;
-    --rust:#8a4230;
-    --steel:#8a94a0;
-    --line: rgba(236,230,216,0.18);
-    --max: 1080px;
-    --radius: 3px;
+    --coal:#131417;
+    --iron:#1b1d22;
+    --steel:#272a31;
+    --bone:#f2eadc;
+    --brass:#d0a04a;
+    --ash:#a8a39a;
+    --line:rgba(242,234,220,.14);
+    --display:'Rokkitt','Rockwell','Georgia',serif;
+    --body:'Karla','Helvetica Neue',Arial,sans-serif;
+    --wrap:1180px;
+    --gut:clamp(20px,5vw,48px);
   }
-
   *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto;}
-    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
-  }
-
-  body{
-    margin:0;
-    background:var(--ink);
-    color:var(--paper);
-    font-family:'Karla', sans-serif;
-    font-size:16px;
-    line-height:1.55;
-  }
-
-  h1,h2,h3, .display{
-    font-family:'Arvo', serif;
-    font-weight:700;
-    line-height:1.15;
-    margin:0;
-  }
-
+  html{scroll-behavior:smooth; scroll-padding-top:80px;}
+  body{margin:0; background:var(--coal); color:var(--bone); font-family:var(--body); font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:var(--display); margin:0; font-weight:800; line-height:.95; letter-spacing:-.01em; text-wrap:balance;}
+  h2{font-size:clamp(2.4rem,7vw,4.4rem);}
+  h3{font-size:1.5rem; font-weight:700; line-height:1.1;}
+  p{margin:0;}
   a{color:inherit;}
-  img{max-width:100%; display:block;}
+  img{display:block; max-width:100%; height:auto;}
+  :focus-visible{outline:3px solid var(--brass); outline-offset:3px;}
+  .wrap{max-width:var(--wrap); margin:0 auto; padding-inline:var(--gut);}
+  .sub{color:var(--ash); max-width:52ch; margin-top:14px;}
 
-  .wrap{
-    max-width:var(--max);
-    margin:0 auto;
-    padding:0 24px;
-  }
+  .btn{display:inline-flex; align-items:center; justify-content:center; gap:10px; font-family:var(--body); font-weight:700; font-size:1rem; padding:15px 26px; border:2px solid transparent; border-radius:2px; text-decoration:none; cursor:pointer; transition:background .15s ease, color .15s ease, border-color .15s ease;}
+  .btn-brass{background:var(--brass); color:var(--coal);}
+  .btn-brass:hover{background:#e3b961;}
+  .btn-line{border-color:rgba(242,234,220,.4); color:var(--bone);}
+  .btn-line:hover{border-color:var(--bone);}
 
-  :focus-visible{
-    outline:2px solid var(--brass-light);
-    outline-offset:3px;
-  }
+  /* header */
+  header{position:sticky; top:0; z-index:40; background:rgba(19,20,23,.9); -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
+  .bar{display:flex; align-items:center; gap:24px; min-height:68px;}
+  .logo{font-family:var(--display); font-weight:800; font-size:1.75rem; line-height:1; text-decoration:none; display:flex; align-items:baseline; gap:10px;}
+  .logo small{font-family:var(--body); font-weight:500; font-size:.78rem; color:var(--ash);}
+  .links{margin-left:auto; display:flex; gap:28px;}
+  .links a{text-decoration:none; color:var(--ash); font-weight:500; font-size:.96rem;}
+  .links a:hover{color:var(--bone);}
+  .bar .btn{padding:10px 20px; font-size:.94rem;}
+  .menu{display:none; margin-left:auto; background:none; border:1.5px solid rgba(242,234,220,.35); color:var(--bone); font-family:var(--body); font-weight:700; font-size:.92rem; padding:9px 16px; border-radius:2px; cursor:pointer;}
 
-  /* ---------- header ---------- */
-  header{
-    position:sticky;
-    top:0;
-    z-index:40;
-    background:rgba(28,33,40,0.92);
-    backdrop-filter:blur(6px);
-    border-bottom:1px solid var(--line);
-  }
-  .nav-row{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:16px 0;
-  }
-  .logo{
-    font-family:'Arvo', serif;
-    font-weight:700;
-    font-size:1.3rem;
-    letter-spacing:0.02em;
-    display:flex;
-    align-items:baseline;
-    gap:8px;
-  }
-  .logo small{
-    font-family:'Karla', sans-serif;
-    font-weight:500;
-    font-size:0.62rem;
-    color:var(--steel);
-    letter-spacing:0.12em;
-  }
-  nav.links{
-    display:flex;
-    gap:28px;
-    font-size:0.95rem;
-  }
-  nav.links a{
-    text-decoration:none;
-    color:var(--paper);
-    position:relative;
-    padding:4px 0;
-  }
-  nav.links a:hover{color:var(--brass-light);}
+  /* hero */
+  .hero{position:relative; min-height:min(88svh,820px); display:flex; align-items:flex-end; isolation:isolate; overflow:hidden; background:#22201d;}
+  .hero img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:60% 35%; z-index:-2;}
+  .hero::after{content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(180deg, rgba(19,20,23,.35) 0%, rgba(19,20,23,.2) 30%, rgba(19,20,23,.88) 78%, var(--coal) 100%);}
+  .hero-in{width:100%; padding-block:clamp(40px,8vw,84px);}
+  .status{display:inline-flex; align-items:center; gap:10px; background:rgba(19,20,23,.72); border:1px solid var(--line); padding:8px 14px 8px 12px; font-weight:700; font-size:.92rem; border-radius:2px;}
+  .status i{width:9px; height:9px; border-radius:50%; background:#6fd08c; flex:0 0 auto;}
+  .status.closed i{background:#e0705a;}
+  .status span{color:var(--ash); font-weight:500;}
+  h1{font-size:clamp(3.9rem,17.5vw,9rem); margin-top:20px;}
+  .hero p.lead{max-width:44ch; margin-top:18px; font-size:1.1rem; color:#ddd5c8;}
+  .cta{display:flex; flex-wrap:wrap; gap:12px; margin-top:28px;}
 
-  .btn{
-    display:inline-block;
-    font-family:'Karla', sans-serif;
-    font-weight:600;
-    font-size:0.92rem;
-    padding:12px 22px;
-    border-radius:var(--radius);
-    border:1px solid var(--brass);
-    background:var(--brass);
-    color:var(--ink);
-    text-decoration:none;
-    cursor:pointer;
-    transition:background .15s ease, color .15s ease, transform .15s ease;
-  }
-  .btn:hover{background:var(--brass-light); transform:translateY(-1px);}
-  .btn.ghost{
-    background:transparent;
-    color:var(--paper);
-    border:1px solid var(--line);
-  }
-  .btn.ghost:hover{border-color:var(--brass-light); color:var(--brass-light);}
+  /* facts */
+  .facts{border-block:1px solid var(--line); background:var(--iron);}
+  .facts ul{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(3,1fr);}
+  .facts li{padding:22px clamp(14px,3vw,32px); border-left:1px solid var(--line);}
+  .facts li:first-child{border-left:0; padding-left:0;}
+  .facts b{display:block; font-family:var(--display); font-weight:700; font-size:1.55rem; line-height:1.05; color:var(--brass);}
+  .facts span{color:var(--ash); font-size:.93rem;}
 
-  .menu-toggle{
-    display:none;
-    background:none;
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    color:var(--paper);
-    padding:8px 10px;
-    font-size:1rem;
-  }
+  section{padding-block:clamp(64px,10vw,128px);}
 
-  /* ---------- hero ---------- */
-  .hero{
-    padding:76px 0 84px;
-    position:relative;
-    border-bottom:1px dashed var(--line);
-  }
-  .hero-grid{
-    display:grid;
-    grid-template-columns:1.2fr 0.8fr;
-    gap:48px;
-    align-items:start;
-  }
-  .kicker{
-    font-family:'Karla', sans-serif;
-    color:var(--brass-light);
-    font-size:0.95rem;
-    font-weight:600;
-    margin-bottom:14px;
-  }
-  h1.display{
-    font-size:clamp(2.4rem, 5vw, 4rem);
-    max-width:12ch;
-  }
-  .hero p.lede{
-    max-width:46ch;
-    margin-top:20px;
-    color:var(--paper-dim);
-    font-size:1.08rem;
-  }
-  .hero-actions{
-    display:flex;
-    gap:14px;
-    margin-top:32px;
-    flex-wrap:wrap;
-  }
+  /* prijzen */
+  .board{display:grid; grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr); gap:clamp(28px,6vw,88px); align-items:start;}
+  .board-side{position:sticky; top:104px;}
+  .board-side img{margin-top:32px; width:100%; aspect-ratio:4/3; object-fit:cover; background:var(--steel);}
+  .group + .group{margin-top:40px;}
+  .group h3{color:var(--brass); padding-bottom:10px; border-bottom:2px solid var(--brass);}
+  .row{display:grid; grid-template-columns:minmax(0,1fr) auto; gap:4px 20px; padding:16px 0; border-bottom:1px solid var(--line);}
+  .row b{font-size:1.08rem; font-weight:700;}
+  .row small{grid-column:1; color:var(--ash); font-size:.93rem;}
+  .row .p{grid-row:1 / span 2; grid-column:2; align-self:center; font-family:var(--display); font-weight:700; font-size:1.7rem; line-height:1;}
 
-  .ticket{
-    background:var(--ink-soft);
-    border:1px dashed var(--brass);
-    border-radius:var(--radius);
-    padding:26px 24px;
-    position:relative;
-  }
-  .ticket::before, .ticket::after{
-    content:"";
-    position:absolute;
-    width:18px; height:18px;
-    background:var(--ink);
-    border-radius:50%;
-    top:50%;
-    transform:translateY(-50%);
-  }
-  .ticket::before{ left:-9px; }
-  .ticket::after{ right:-9px; }
-  .ticket h3{font-size:1.05rem; margin-bottom:14px;}
-  .ticket dl{margin:0;}
-  .ticket .row{
-    display:flex;
-    justify-content:space-between;
-    padding:7px 0;
-    border-bottom:1px solid var(--line);
-    font-size:0.94rem;
-  }
-  .ticket .row:last-child{border-bottom:none;}
-  .ticket .row .day{color:var(--paper-dim);}
-  .ticket .row.today .day, .ticket .row.today .time{color:var(--brass-light); font-weight:600;}
+  /* verhaal */
+  .story{background:var(--iron); border-block:1px solid var(--line);}
+  .story-in{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:clamp(28px,6vw,88px); align-items:center;}
+  .story-in > img{width:100%; aspect-ratio:4/5; object-fit:cover; background:var(--steel);}
+  .story p{color:#cfc8bc; margin-top:18px; max-width:54ch;}
+  .trio{display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(10px,2vw,22px); margin-top:clamp(40px,7vw,80px);}
+  .trio figure{margin:0;}
+  .trio img{width:100%; aspect-ratio:1; object-fit:cover; background:var(--steel);}
+  .trio figcaption{margin-top:10px; font-family:var(--display); font-weight:700; font-size:1.25rem; line-height:1.1;}
+  .trio figcaption span{display:block; font-family:var(--body); font-weight:400; font-size:.9rem; color:var(--ash); margin-top:2px;}
 
+  /* stappen */
+  .steps{list-style:none; margin:clamp(32px,5vw,56px) 0 0; padding:0; counter-reset:s; display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(18px,4vw,48px);}
+  .steps li{counter-increment:s; border-top:2px solid var(--brass); padding-top:18px;}
+  .steps li::before{content:counter(s); display:block; font-family:var(--display); font-weight:800; font-size:4rem; line-height:.9; color:var(--brass); margin-bottom:10px;}
+  .steps p{color:var(--ash); margin-top:8px; font-size:.98rem;}
 
-  section{padding:74px 0;}
-  .section-head{
-    margin-bottom:38px;
-    max-width:56ch;
-  }
-  .section-head h2{font-size:clamp(1.7rem, 3vw, 2.3rem);}
-  .section-head p{color:var(--paper-dim); margin-top:12px;}
+  /* reacties */
+  .quotes{display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(16px,3vw,36px); margin-top:clamp(32px,5vw,56px);}
+  .quotes blockquote{margin:0; font-family:var(--display); font-weight:600; font-size:1.5rem; line-height:1.18;}
+  .quotes blockquote::before{content:"\201C"; display:block; font-size:4.4rem; line-height:.6; color:var(--brass); margin-bottom:6px;}
+  .quotes cite{display:block; margin-top:16px; font-family:var(--body); font-style:normal; font-size:.92rem; color:var(--ash);}
 
-  .divider{
-    border:none;
-    border-top:1px dashed var(--line);
-    margin:0;
-  }
+  /* afspraak */
+  .book{background:var(--iron); border-top:1px solid var(--line);}
+  .book-in{display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); gap:clamp(28px,6vw,88px); align-items:start;}
+  .hours{list-style:none; margin:28px 0 0; padding:0;}
+  .hours li{display:flex; justify-content:space-between; gap:16px; padding:12px 0; border-bottom:1px solid var(--line);}
+  .hours li span:last-child{color:var(--ash);}
+  .hours li.today{color:var(--brass); font-weight:700;}
+  .hours li.today span:last-child{color:var(--brass);}
+  .where{margin-top:22px; color:var(--ash); font-size:.95rem;}
+  .where a{color:var(--bone);}
+  form{background:var(--coal); border:1px solid var(--line); padding:clamp(22px,4vw,36px);}
+  form h3{font-size:2rem;}
+  .f{margin-top:16px;}
+  .f2{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  label{display:block; font-weight:700; font-size:.9rem; margin-bottom:6px;}
+  input,select{width:100%; font-family:var(--body); font-size:1rem; color:var(--bone); background:var(--steel); border:1.5px solid transparent; border-radius:2px; padding:13px 14px; color-scheme:dark;}
+  input:focus,select:focus{outline:none; border-color:var(--brass);}
+  form .btn{width:100%; margin-top:22px;}
+  .note{font-size:.86rem; color:var(--ash); margin-top:12px;}
+  .ok{display:none; margin-top:16px; padding:14px 16px; border-left:3px solid var(--brass); background:var(--steel); font-size:.96rem;}
+  .ok.show{display:block;}
 
-  /* ---------- verhaal ---------- */
-  .story{
-    display:grid;
-    grid-template-columns:0.9fr 1.1fr;
-    gap:56px;
-    align-items:center;
-  }
-  .story-mark{
-    aspect-ratio:1/1;
-    border:1px solid var(--line);
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-  }
-  .story p{color:var(--paper-dim); margin-top:16px;}
-  .story p:first-of-type{margin-top:0;}
+  footer{padding-block:32px 40px; border-top:1px solid var(--line); color:var(--ash); font-size:.92rem;}
+  .foot{display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px 24px;}
+  footer a{color:var(--bone);}
 
-  /* ---------- diensten (receipt) ---------- */
-  .receipt{
-    background:var(--ink-soft);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:8px 0;
-  }
-  .receipt-group{
-    padding:22px 32px;
-  }
-  .receipt-group + .receipt-group{
-    border-top:1px dashed var(--line);
-  }
-  .receipt-group h3{
-    font-size:0.82rem;
-    letter-spacing:0.04em;
-    color:var(--brass-light);
-    margin-bottom:14px;
-    font-family:'Karla', sans-serif;
-    font-weight:600;
-  }
-  .receipt-line{
-    display:flex;
-    align-items:baseline;
-    gap:8px;
-    padding:9px 0;
-  }
-  .receipt-line .name{white-space:nowrap;}
-  .receipt-line .fill{
-    flex:1;
-    border-bottom:1px dotted var(--steel);
-    transform:translateY(-4px);
-    min-width:20px;
-  }
-  .receipt-line .price{
-    white-space:nowrap;
-    font-family:'Arvo', serif;
-    font-weight:700;
-  }
-  .receipt-line .desc{
-    display:block;
-    width:100%;
-    color:var(--paper-dim);
-    font-size:0.86rem;
-    margin-top:2px;
-  }
-  .receipt-line-wrap{width:100%;}
+  /* mobiele actiebalk */
+  .dock{display:none; transform:translateY(110%); transition:transform .25s ease;}
+  .dock.show{transform:none;}
 
-  /* ---------- werkwijze ---------- */
-  .steps{
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:28px;
+  @media (max-width:900px){
+    .links{display:none; position:absolute; left:0; right:0; top:100%; background:var(--coal); border-bottom:1px solid var(--line); flex-direction:column; gap:0; padding:6px var(--gut) 16px;}
+    .links.open{display:flex;}
+    .links a{padding:13px 0; border-bottom:1px solid var(--line); color:var(--bone); font-weight:700;}
+    .bar > .btn{display:none;}
+    .menu{display:block;}
+    .board, .story-in, .book-in{grid-template-columns:1fr;}
+    .board-side{position:static;}
+    .board-side img{display:none;}
+    .story-in > img{aspect-ratio:4/3;}
+    .steps{grid-template-columns:1fr; gap:28px;}
+    .quotes{grid-template-columns:1fr; gap:36px;}
+    .dock{display:flex; align-items:center; gap:14px; position:fixed; left:0; right:0; bottom:0; z-index:45; background:rgba(19,20,23,.96); border-top:1px solid var(--line); padding:10px var(--gut) calc(10px + env(safe-area-inset-bottom,0px));}
+    .dock .status{flex:1 1 auto; min-width:0; display:block; position:relative; background:none; border:0; padding:0 0 0 19px; font-size:.88rem; line-height:1.3;}
+    .dock .status i{position:absolute; left:0; top:.42em;}
+    .dock .status span{display:block;}
+    .dock .btn{flex:0 0 auto; padding:12px 20px; font-size:.95rem;}
+    body{padding-bottom:70px;}
   }
-  .step{
-    border-top:2px solid var(--brass);
-    padding-top:18px;
+  @media (max-width:560px){
+    .facts ul{grid-template-columns:1fr;}
+    .facts li{border-left:0; border-top:1px solid var(--line); padding:14px 0;}
+    .facts li:first-child{border-top:0;}
+    .trio{grid-template-columns:1fr 1fr;}
+    .trio figure:last-child{display:none;}
+    .f2{grid-template-columns:1fr;}
+    .cta .btn{flex:1 1 100%;}
   }
-  .step .num{
-    font-family:'Arvo', serif;
-    font-size:1.6rem;
-    color:var(--brass-light);
-    display:block;
-    margin-bottom:8px;
-  }
-  .step p{color:var(--paper-dim); margin-top:8px; font-size:0.95rem;}
-
-  /* ---------- sfeer / iconen ---------- */
-  .tools{
-    display:grid;
-    grid-template-columns:repeat(4, 1fr);
-    gap:20px;
-  }
-  .tool{
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:26px 18px;
-    text-align:center;
-  }
-  .tool svg{ width:40px; height:40px; margin:0 auto 14px; stroke:var(--brass-light); fill:none; stroke-width:1.4; }
-  .tool span{font-size:0.85rem; color:var(--paper-dim);}
-
-  /* ---------- reacties ---------- */
-  .quotes{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:24px;
-  }
-  .quote{
-    background:var(--ink-soft);
-    border-radius:var(--radius);
-    padding:26px 24px;
-    border-left:3px solid var(--rust);
-  }
-  .quote p{font-size:0.98rem; margin:0 0 14px;}
-  .quote cite{
-    font-style:normal;
-    color:var(--steel);
-    font-size:0.85rem;
-  }
-
-  /* ---------- openingstijden + contact ---------- */
-  .contact-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:56px;
-  }
-  table.hours{
-    width:100%;
-    border-collapse:collapse;
-  }
-  table.hours td{
-    padding:10px 0;
-    border-bottom:1px solid var(--line);
-    font-size:0.96rem;
-  }
-  table.hours td:last-child{text-align:right; color:var(--paper-dim);}
-  .info-line{
-    display:flex;
-    gap:10px;
-    margin-top:12px;
-    color:var(--paper-dim);
-    font-size:0.95rem;
-  }
-  .info-line svg{width:18px; height:18px; flex-shrink:0; stroke:var(--brass-light); fill:none; stroke-width:1.6; margin-top:2px;}
-
-  form.book{
-    display:grid;
-    gap:16px;
-  }
-  .field{
-    display:grid;
-    gap:6px;
-  }
-  .field label{font-size:0.86rem; color:var(--paper-dim);}
-  .field input, .field select{
-    background:var(--ink-soft);
-    border:1px solid var(--line);
-    color:var(--paper);
-    border-radius:var(--radius);
-    padding:11px 12px;
-    font-family:'Karla', sans-serif;
-    font-size:0.96rem;
-  }
-  .field input:focus, .field select:focus{border-color:var(--brass-light);}
-  .field-row{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
-  .form-note{
-    font-size:0.85rem;
-    color:var(--steel);
-    margin-top:2px;
-  }
-  #confirm{
-    display:none;
-    background:var(--ink-soft);
-    border:1px solid var(--brass);
-    border-radius:var(--radius);
-    padding:16px 18px;
-    font-size:0.92rem;
-  }
-
-  /* ---------- footer ---------- */
-  footer{
-    border-top:1px solid var(--line);
-    padding:36px 0;
-  }
-  .foot-row{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:12px;
-    font-size:0.85rem;
-    color:var(--steel);
-  }
-
-  /* ---------- responsive ---------- */
-  @media (max-width: 860px){
-    nav.links{
-      position:absolute;
-      top:100%; left:0; right:0;
-      background:var(--ink);
-      border-bottom:1px solid var(--line);
-      flex-direction:column;
-      gap:0;
-      display:none;
-      padding:8px 24px 18px;
-    }
-    nav.links.open{display:flex;}
-    nav.links a{padding:12px 0; border-bottom:1px solid var(--line);}
-    .menu-toggle{display:inline-block;}
-    .hero-grid{grid-template-columns:1fr;}
-    .story{grid-template-columns:1fr;}
-    .story-mark{max-width:180px; margin:0 auto;}
-    .steps{grid-template-columns:1fr;}
-    .tools{grid-template-columns:repeat(2,1fr);}
-    .quotes{grid-template-columns:1fr;}
-    .contact-grid{grid-template-columns:1fr;}
-    .field-row{grid-template-columns:1fr;}
-  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;} *{transition:none !important;}}
 </style>
 </head>
 <body>
 
 <header>
-  <div class="wrap nav-row">
-    <div class="logo">Slijperij <small>KAPPER &amp; SCHEERSALON</small></div>
-    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
-    <nav class="links" id="navLinks">
-      <a href="#verhaal">Verhaal</a>
-      <a href="#diensten">Diensten</a>
+  <div class="wrap bar">
+    <a class="logo" href="#top">Slijperij <small>kapper &amp; scheersalon</small></a>
+    <nav class="links" id="navLinks" aria-label="Hoofdmenu">
+      <a href="#diensten">Diensten &amp; prijzen</a>
+      <a href="#verhaal">Het verhaal</a>
       <a href="#werkwijze">Werkwijze</a>
-      <a href="#openingstijden">Openingstijden</a>
-      <a href="#afspraak" class="btn" style="padding:8px 16px;">Afspraak maken</a>
+      <a href="#afspraak">Openingstijden</a>
     </nav>
+    <a class="btn btn-brass" href="#afspraak">Afspraak maken</a>
+    <button class="menu" id="menuBtn" type="button" aria-expanded="false" aria-controls="navLinks">Menu</button>
   </div>
 </header>
 
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <div class="kicker">Buurtkapper sinds de oprichting</div>
-      <h1 class="display">Scherp mes,<br>rustige hand.</h1>
-      <p class="lede">Slijperij is een kapperszaak waar traditioneel handwerk leidend is: een goed geslepen mes, een gerichte knipbeurt en geen haast. Binnenlopen kan, een afspraak werkt sneller.</p>
-      <div class="hero-actions">
-        <a href="#afspraak" class="btn">Afspraak maken</a>
-        <a href="#diensten" class="btn ghost">Bekijk diensten</a>
-      </div>
-    </div>
-    <div class="ticket">
-      <h3>Vandaag geopend</h3>
-      <dl>
-        <div class="row today"><span class="day">Vandaag</span><span class="time">09:00 – 18:00</span></div>
-        <div class="row"><span class="day">Gemiddelde wachttijd</span><span class="time">± 10 min</span></div>
-        <div class="row"><span class="day">Binnenlopen</span><span class="time">mogelijk</span></div>
-      </dl>
-    </div>
-  </div>
-</section>
-
-<section id="verhaal">
-  <div class="wrap story">
-    <div class="story-mark">
-      <svg viewBox="0 0 120 120" width="72%" height="72%" fill="none">
-        <circle cx="60" cy="60" r="52" stroke="var(--line)" stroke-width="1" stroke-dasharray="2 5"/>
-        <g stroke="var(--paper-dim)" stroke-width="1.4" opacity="0.6" stroke-linecap="round">
-          <rect x="28" y="80" width="52" height="9" rx="2"/>
-          <line x1="34" y1="89" x2="34" y2="100"/>
-          <line x1="42" y1="89" x2="42" y2="100"/>
-          <line x1="50" y1="89" x2="50" y2="100"/>
-          <line x1="58" y1="89" x2="58" y2="100"/>
-          <line x1="66" y1="89" x2="66" y2="100"/>
-          <line x1="74" y1="89" x2="74" y2="100"/>
-        </g>
-        <g stroke="var(--brass-light)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M26 54 L64 24"/>
-          <path d="M64 24 L80 15 L87 22 L71 31 Z"/>
-        </g>
-        <g stroke="var(--paper)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M50 38 L92 78"/>
-          <path d="M92 38 L50 78"/>
-          <circle cx="50" cy="38" r="6.5"/>
-          <circle cx="50" cy="78" r="6.5"/>
-        </g>
-      </svg>
-    </div>
-    <div>
-      <div class="kicker">Het verhaal</div>
-      <h2>Een werkplaats, geen keten.</h2>
-      <p>Slijperij begon als kleine hoekzaak met twee stoelen, een wetsteen en de overtuiging dat een knipbeurt tijd mag kosten. Dat is niet veranderd. Elk mes wordt hier nog met de hand geslepen, elke klant krijgt de volledige aandacht van de stoel tot de deur.</p>
-      <p>Geen wachtrij van tien man, geen productenschap vol beloftes. Wel gereedschap dat langer meegaat dan een trend, en een salon waar je precies krijgt waar je om vraagt — of je nu al jaren komt of voor het eerst binnenloopt.</p>
-    </div>
-  </div>
-</section>
-
-<hr class="divider">
-
-<section id="diensten">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>Diensten &amp; prijzen</h2>
-      <p>Vaste prijzen, geen verrassingen achteraf. Onderstaande tarieven gelden voor alle stoelen in de zaak.</p>
-    </div>
-    <div class="receipt">
-      <div class="receipt-group">
-        <h3>Knippen</h3>
-        <div class="receipt-line">
-          <div class="receipt-line-wrap">
-            <span class="name">Knippen, kort</span>
-            <span class="desc">Wassen, knippen, stylen</span>
-          </div>
-          <span class="fill"></span><span class="price">€ 24</span>
-        </div>
-        <div class="receipt-line">
-          <div class="receipt-line-wrap">
-            <span class="name">Knippen, lang haar</span>
-            <span class="desc">Wassen, knippen, föhnen</span>
-          </div>
-          <span class="fill"></span><span class="price">€ 29</span>
-        </div>
-        <div class="receipt-line">
-          <div class="receipt-line-wrap">
-            <span class="name">Kinderen tot 12 jaar</span>
-          </div>
-          <span class="fill"></span><span class="price">€ 16</span>
-        </div>
-      </div>
-      <div class="receipt-group">
-        <h3>Baard &amp; scheren</h3>
-        <div class="receipt-line">
-          <div class="receipt-line-wrap">
-            <span class="name">Baard bijwerken</span>
-            <span class="desc">In model knippen en lijnen zetten</span>
-          </div>
-          <span class="fill"></span><span class="price">€ 15</span>
-        </div>
-        <div class="receipt-line">
-          <div class="receipt-line-wrap">
-            <span class="name">Heet scheren</span>
-            <span class="desc">Warme handdoek, mes, aftershave</span>
-          </div>
-          <span class="fill"></span><span class="price">€ 28</span>
-        </div>
-      </div>
-      <div class="receipt-group">
-        <h3>Combinaties</h3>
-        <div class="receipt-line">
-          <div class="receipt-line-wrap">
-            <span class="name">Knippen + baard</span>
-          </div>
-          <span class="fill"></span><span class="price">€ 36</span>
-        </div>
-        <div class="receipt-line">
-          <div class="receipt-line-wrap">
-            <span class="name">Knippen + heet scheren</span>
-          </div>
-          <span class="fill"></span><span class="price">€ 46</span>
-        </div>
+<main id="top">
+  <div class="hero">
+    <img src="https://images.unsplash.com/photo-1647140655214-e4a2d914971f?auto=format&fit=crop&w=1400&q=70"
+         srcset="https://images.unsplash.com/photo-1647140655214-e4a2d914971f?auto=format&fit=crop&w=800&q=70 800w, https://images.unsplash.com/photo-1647140655214-e4a2d914971f?auto=format&fit=crop&w=1400&q=70 1400w, https://images.unsplash.com/photo-1647140655214-e4a2d914971f?auto=format&fit=crop&w=2000&q=70 2000w"
+         sizes="100vw" alt="Kapper knipt met schaar en kam" fetchpriority="high">
+    <div class="wrap hero-in">
+      <p class="status" data-status><i></i><b>Vandaag open</b> <span>09:00 – 18:00</span></p>
+      <h1>Scherp mes, rustige hand.</h1>
+      <p class="lead">Een kapperszaak waar handwerk leidend is: een goed geslepen mes, een gerichte knipbeurt en geen haast. Binnenlopen kan, een afspraak werkt sneller.</p>
+      <div class="cta">
+        <a class="btn btn-brass" href="#afspraak">Afspraak maken</a>
+        <a class="btn btn-line" href="#diensten">Bekijk prijzen</a>
       </div>
     </div>
   </div>
-</section>
 
-<hr class="divider">
+  <div class="facts">
+    <div class="wrap">
+      <ul>
+        <li><b>Binnenlopen kan</b><span>Zonder afspraak ben je ook welkom</span></li>
+        <li><b>± 10 minuten</b><span>Gemiddelde wachttijd</span></li>
+        <li><b>Vaste prijzen</b><span>Voor elke stoel in de zaak</span></li>
+      </ul>
+    </div>
+  </div>
 
-<section id="werkwijze">
-  <div class="wrap">
-    <div class="section-head">
+  <section id="diensten">
+    <div class="wrap board">
+      <div class="board-side">
+        <h2>Diensten &amp; prijzen</h2>
+        <p class="sub">Vaste prijzen, geen verrassingen achteraf. De tarieven gelden voor alle stoelen in de zaak.</p>
+        <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=900&q=70" alt="Tondeuse, schaar en kam op een leisteen" loading="lazy" width="900" height="675">
+      </div>
+      <div>
+        <div class="group">
+          <h3>Knippen</h3>
+          <div class="row"><b>Knippen, kort</b><small>Wassen, knippen, stylen</small><span class="p">&euro; 24</span></div>
+          <div class="row"><b>Knippen, lang haar</b><small>Wassen, knippen, f&ouml;hnen</small><span class="p">&euro; 29</span></div>
+          <div class="row"><b>Kinderen tot 12 jaar</b><small>Knippen en stylen</small><span class="p">&euro; 16</span></div>
+        </div>
+        <div class="group">
+          <h3>Baard &amp; scheren</h3>
+          <div class="row"><b>Baard bijwerken</b><small>In model knippen en lijnen zetten</small><span class="p">&euro; 15</span></div>
+          <div class="row"><b>Heet scheren</b><small>Warme handdoek, mes, aftershave</small><span class="p">&euro; 28</span></div>
+        </div>
+        <div class="group">
+          <h3>Combinaties</h3>
+          <div class="row"><b>Knippen + baard</b><small>Samen voordeliger</small><span class="p">&euro; 36</span></div>
+          <div class="row"><b>Knippen + heet scheren</b><small>De volledige behandeling</small><span class="p">&euro; 46</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="story" id="verhaal">
+    <div class="wrap">
+      <div class="story-in">
+        <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=1000&q=70" alt="De kapperszaak met bakstenen muur en kappersstoel" loading="lazy" width="1000" height="1250">
+        <div>
+          <h2>Een werkplaats, geen keten.</h2>
+          <p>Slijperij begon als kleine hoekzaak met twee stoelen, een wetsteen en de overtuiging dat een knipbeurt tijd mag kosten. Dat is niet veranderd. Elk mes wordt hier nog met de hand geslepen, elke klant krijgt de volledige aandacht van de stoel tot de deur.</p>
+          <p>Geen wachtrij van tien man, geen productenschap vol beloftes. Wel gereedschap dat langer meegaat dan een trend, en een salon waar je precies krijgt waar je om vraagt.</p>
+        </div>
+      </div>
+      <div class="trio">
+        <figure><img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=700&h=700&q=70" alt="Klant wordt geschoren met een open mes" loading="lazy" width="700" height="700"><figcaption>Open mes<span>Met de hand geslepen</span></figcaption></figure>
+        <figure><img src="https://images.unsplash.com/photo-1657105052497-f996284ffff8?auto=format&fit=crop&w=700&h=700&q=70" alt="Kapper werkt met schaar en kam" loading="lazy" width="700" height="700"><figcaption>Schaar &amp; kam<span>Geen tondeuse waar het niet hoeft</span></figcaption></figure>
+        <figure><img src="https://images.unsplash.com/photo-1592647420148-bfcc177e2117?auto=format&fit=crop&w=700&h=700&q=70" alt="Klassieke rode kappersstoel" loading="lazy" width="700" height="700"><figcaption>De stoel<span>Ga zitten, wij doen de rest</span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="werkwijze">
+    <div class="wrap">
       <h2>Zo werkt een afspraak</h2>
-      <p>Drie stappen tussen boeken en plaatsnemen in de stoel.</p>
-    </div>
-    <div class="steps">
-      <div class="step">
-        <span class="num">1</span>
-        <h3>Kies een dienst</h3>
-        <p>Selecteer wat je wilt laten doen, van een korte knipbeurt tot de volledige combinatie.</p>
-      </div>
-      <div class="step">
-        <span class="num">2</span>
-        <h3>Kies een tijd</h3>
-        <p>Geef een gewenste dag en tijd door via het formulier hieronder.</p>
-      </div>
-      <div class="step">
-        <span class="num">3</span>
-        <h3>Loop binnen</h3>
-        <p>Je krijgt een bevestiging terug. Op de afgesproken tijd sta je zo in de stoel.</p>
+      <p class="sub">Drie stappen tussen boeken en plaatsnemen in de stoel.</p>
+      <ol class="steps">
+        <li><h3>Kies een dienst</h3><p>Selecteer wat je wilt laten doen, van een korte knipbeurt tot de volledige combinatie.</p></li>
+        <li><h3>Kies een tijd</h3><p>Geef een gewenste dag en tijd door via het formulier onderaan deze pagina.</p></li>
+        <li><h3>Loop binnen</h3><p>Je krijgt een bevestiging terug. Op de afgesproken tijd sta je zo in de stoel.</p></li>
+      </ol>
+
+      <div class="quotes" id="reacties">
+        <blockquote>Eindelijk een kapper die niet na acht minuten al klaar is. Rustig werk, netjes resultaat.<cite>Vaste klant, sinds twee jaar</cite></blockquote>
+        <blockquote>Liep binnen voor een baardlijn, kwam een half uur later stukken tevredener naar buiten.<cite>Klant uit de buurt</cite></blockquote>
+        <blockquote>Het heet scheren is echt iets anders dan een scheerapparaat thuis. Zou het iedereen aanraden.<cite>Nieuwe klant</cite></blockquote>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<hr class="divider">
+  <section class="book" id="afspraak">
+    <div class="wrap book-in">
+      <div>
+        <h2>Openings&shy;tijden</h2>
+        <ul class="hours" id="hours">
+          <li data-d="1"><span>Maandag</span><span>Gesloten</span></li>
+          <li data-d="2"><span>Dinsdag</span><span>09:00 – 18:00</span></li>
+          <li data-d="3"><span>Woensdag</span><span>09:00 – 18:00</span></li>
+          <li data-d="4"><span>Donderdag</span><span>09:00 – 20:00</span></li>
+          <li data-d="5"><span>Vrijdag</span><span>09:00 – 20:00</span></li>
+          <li data-d="6"><span>Zaterdag</span><span>08:30 – 17:00</span></li>
+          <li data-d="0"><span>Zondag</span><span>Gesloten</span></li>
+        </ul>
+        <p class="where">Korte Scheerstraat 7 (fictief adres, alleen voor dit voorbeeld)<br><a href="mailto:info@slijperij-voorbeeld.nl">info@slijperij-voorbeeld.nl</a></p>
+      </div>
 
-<section id="sfeer">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>Het gereedschap</h2>
-      <p>Wat er standaard op de werkbank ligt, bij elke stoel.</p>
-    </div>
-    <div class="tools">
-      <div class="tool">
-        <svg viewBox="0 0 48 48"><circle cx="14" cy="34" r="6"/><circle cx="34" cy="34" r="6"/><path d="M18 30 L40 8 M18.5 34 L8 8"/></svg>
-        <span>Schaar</span>
-      </div>
-      <div class="tool">
-        <svg viewBox="0 0 48 48"><rect x="10" y="10" width="10" height="30" rx="2"/><path d="M20 14 L38 14 L38 34 L20 34"/></svg>
-        <span>Open mes</span>
-      </div>
-      <div class="tool">
-        <svg viewBox="0 0 48 48"><rect x="8" y="20" width="32" height="8" rx="2"/><path d="M12 20 V14 M16 20 V14 M20 20 V14 M24 20 V14 M28 20 V14 M32 20 V14 M36 20 V14"/></svg>
-        <span>Kam</span>
-      </div>
-      <div class="tool">
-        <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="16"/><path d="M24 16 V24 L30 28"/></svg>
-        <span>Geen haast</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="divider">
-
-<section id="reacties">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>Wat klanten zeggen</h2>
-    </div>
-    <div class="quotes">
-      <div class="quote">
-        <p>Eindelijk een kapper die niet na acht minuten al klaar is. Rustig werk, netjes resultaat.</p>
-        <cite>Vaste klant, sinds twee jaar</cite>
-      </div>
-      <div class="quote">
-        <p>Liep binnen voor een baardlijn, kwam een half uur later stukken tevredener naar buiten.</p>
-        <cite>Klant uit de buurt</cite>
-      </div>
-      <div class="quote">
-        <p>Het heet scheren is echt iets anders dan een scheerapparaat thuis. Zou het iedereen aanraden.</p>
-        <cite>Nieuwe klant</cite>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="divider">
-
-<section id="openingstijden">
-  <div class="wrap contact-grid">
-    <div>
-      <div class="section-head">
-        <h2>Openingstijden</h2>
-      </div>
-      <table class="hours">
-        <tr><td>Maandag</td><td>Gesloten</td></tr>
-        <tr><td>Dinsdag</td><td>09:00 – 18:00</td></tr>
-        <tr><td>Woensdag</td><td>09:00 – 18:00</td></tr>
-        <tr><td>Donderdag</td><td>09:00 – 20:00</td></tr>
-        <tr><td>Vrijdag</td><td>09:00 – 20:00</td></tr>
-        <tr><td>Zaterdag</td><td>08:30 – 17:00</td></tr>
-        <tr><td>Zondag</td><td>Gesloten</td></tr>
-      </table>
-      <div class="info-line">
-        <svg viewBox="0 0 24 24"><path d="M4 6 L12 13 L20 6"/><rect x="4" y="5" width="16" height="14" rx="2"/></svg>
-        <span>info@slijperij-voorbeeld.nl</span>
-      </div>
-      <div class="info-line">
-        <svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
-        <span>Korte Scheerstraat 7 — fictief adres, alleen voor dit voorbeeld</span>
-      </div>
-    </div>
-
-    <div id="afspraak">
-      <div class="section-head">
-        <h2>Afspraak maken</h2>
-        <p>Vul het formulier in, je krijgt hieronder direct een bevestiging van je aanvraag.</p>
-      </div>
-      <form class="book" id="bookForm">
-        <div class="field">
+      <form id="bookForm">
+        <h3>Afspraak maken</h3>
+        <div class="f">
           <label for="dienst">Dienst</label>
           <select id="dienst" required>
             <option value="">Kies een dienst</option>
@@ -704,63 +308,68 @@
             <option>Knippen + heet scheren — € 46</option>
           </select>
         </div>
-        <div class="field-row">
-          <div class="field">
-            <label for="datum">Gewenste dag</label>
-            <input type="date" id="datum" required>
-          </div>
-          <div class="field">
-            <label for="tijd">Gewenste tijd</label>
-            <input type="time" id="tijd" required>
-          </div>
+        <div class="f f2">
+          <div><label for="dag">Gewenste dag</label><input id="dag" type="date" required></div>
+          <div><label for="tijd">Gewenste tijd</label><input id="tijd" type="time" required></div>
         </div>
-        <div class="field">
-          <label for="naam">Naam</label>
-          <input type="text" id="naam" placeholder="Voor- en achternaam" required>
-        </div>
-        <div class="field">
-          <label for="mail">E-mailadres</label>
-          <input type="email" id="mail" placeholder="naam@voorbeeld.nl" required>
-        </div>
-        <button type="submit" class="btn">Aanvraag versturen</button>
-        <p class="form-note">Dit is een demo-formulier; er wordt niets daadwerkelijk verstuurd.</p>
-        <div id="confirm"></div>
+        <div class="f"><label for="naam">Naam</label><input id="naam" type="text" autocomplete="name" placeholder="Voor- en achternaam" required></div>
+        <div class="f"><label for="mail">E-mailadres</label><input id="mail" type="email" autocomplete="email" placeholder="naam@voorbeeld.nl" required></div>
+        <button class="btn btn-brass" type="submit">Aanvraag versturen</button>
+        <p class="ok" id="ok" role="status"></p>
+        <p class="note">Dit is een demo-formulier; er wordt niets daadwerkelijk verstuurd.</p>
       </form>
     </div>
-  </div>
-</section>
+  </section>
+</main>
 
 <footer>
-  <div class="wrap foot-row">
-    <span>Slijperij — kapper &amp; scheersalon</span>
-    <span>Fictieve zaak, gemaakt als websitevoorbeeld</span>
+  <div class="wrap foot">
+    <span>Slijperij, kapper &amp; scheersalon. Fictieve zaak, gemaakt als websitevoorbeeld.</span>
+    <span>Voorbeeldsite door <a href="https://byxavio.nl/">byXavio</a></span>
   </div>
 </footer>
 
+<div class="dock">
+  <p class="status" data-status><i></i><b>Vandaag open</b> <span>09:00 – 18:00</span></p>
+  <a class="btn btn-brass" href="#afspraak">Afspraak maken</a>
+</div>
+
 <script>
-  const toggle = document.getElementById('menuToggle');
-  const links = document.getElementById('navLinks');
-  toggle.addEventListener('click', () => {
-    const isOpen = links.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-  });
-  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    links.classList.remove('open');
-    toggle.setAttribute('aria-expanded', 'false');
-  }));
+(function(){
+  var btn=document.getElementById('menuBtn'), nav=document.getElementById('navLinks');
+  btn.addEventListener('click',function(){var o=nav.classList.toggle('open'); btn.setAttribute('aria-expanded',o?'true':'false');});
+  nav.addEventListener('click',function(e){if(e.target.tagName==='A'){nav.classList.remove('open'); btn.setAttribute('aria-expanded','false');}});
 
-  const form = document.getElementById('bookForm');
-  const confirm = document.getElementById('confirm');
-  form.addEventListener('submit', (e) => {
+  // openingstijden: 0 = zondag
+  var H={0:null,1:null,2:['09:00','18:00'],3:['09:00','18:00'],4:['09:00','20:00'],5:['09:00','20:00'],6:['08:30','17:00']};
+  var D=['zondag','maandag','dinsdag','woensdag','donderdag','vrijdag','zaterdag'];
+  function mins(t){var p=t.split(':'); return +p[0]*60 + +p[1];}
+  var now=new Date(), d=now.getDay(), m=now.getHours()*60+now.getMinutes(), h=H[d], open=false, a, b;
+  if(h && m>=mins(h[0]) && m<mins(h[1])){open=true; a='Nu open'; b='tot '+h[1];}
+  else if(h && m<mins(h[0])){a='Nu gesloten'; b='vandaag open vanaf '+h[0];}
+  else{for(var i=1;i<=7;i++){var n=(d+i)%7; if(H[n]){a='Nu gesloten'; b=(i===1?'morgen':D[n])+' open vanaf '+H[n][0]; break;}}}
+  document.querySelectorAll('[data-status]').forEach(function(el){
+    el.classList.toggle('closed',!open);
+    el.querySelector('b').textContent=a; el.querySelector('span').textContent=b;
+  });
+  var li=document.querySelector('#hours li[data-d="'+d+'"]'); if(li) li.classList.add('today');
+
+  // actiebalk pas tonen als de knoppen bovenaan uit beeld zijn
+  var dock=document.querySelector('.dock'), cta=document.querySelector('.cta');
+  if(dock && cta && 'IntersectionObserver' in window){
+    new IntersectionObserver(function(e){
+      dock.classList.toggle('show', !e[0].isIntersecting && e[0].boundingClientRect.top < 0);
+    }).observe(cta);
+  } else if(dock){ dock.classList.add('show'); }
+
+  var f=document.getElementById('bookForm'), ok=document.getElementById('ok');
+  f.addEventListener('submit',function(e){
     e.preventDefault();
-    const dienst = document.getElementById('dienst').value;
-    const datum = document.getElementById('datum').value;
-    const tijd = document.getElementById('tijd').value;
-    const naam = document.getElementById('naam').value;
-    confirm.style.display = 'block';
-    confirm.textContent = `Bedankt, ${naam}. Je aanvraag voor "${dienst}" op ${datum} om ${tijd} is genoteerd (demo).`;
+    var naam=document.getElementById('naam').value.trim().split(' ')[0];
+    ok.textContent='Bedankt'+(naam?', '+naam:'')+'! Op een echte site ontvang je nu een bevestiging per e-mail.';
+    ok.classList.add('show'); f.reset();
   });
+})();
 </script>
-
 </body>
 </html>

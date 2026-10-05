@@ -6,26 +6,29 @@
 <title>Privacyverklaring &mdash; byXavio</title>
 <meta name="description" content="Privacyverklaring van byXavio: welke gegevens worden verzameld via het contactformulier, waarom, en hoe je je rechten kunt uitoefenen.">
 <meta name="robots" content="noindex">
+<meta name="theme-color" content="#101128">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Poppins:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
 <style>
   :root{
     --ink:#1a1b3a;
     --ink-2:#2a2c57;
-    --paper:#fdf9f5;
+    --paper:#ffffff;
+    --night:#101128;
+    --dim:#b9bcdd;
     --panel:#ffffff;
     --cyan:#00d2df;
-    --cyan-ink:#00707a;
+    --cyan-ink:#006b75;
     --amber:#ffb23f;
-    --muted:#5a5c7a;
-    --line:#efe4da;
+    --muted:#585b7c;
+    --line:#e1e4ef;
     --white:#ffffff;
-    --display:'Outfit','Trebuchet MS',system-ui,sans-serif;
+    --display:'Poppins','Trebuchet MS',system-ui,sans-serif;
     --body:'Plus Jakarta Sans','Helvetica Neue',Arial,sans-serif;
     --wrap:1120px;
     --gut:clamp(16px,4vw,40px);
@@ -34,29 +37,28 @@
   html{scroll-behavior:smooth;}
   @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{animation-duration:.001ms !important; transition-duration:.001ms !important;} }
   body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--body); font-size:16.5px; line-height:1.68; -webkit-font-smoothing:antialiased;}
-  h1,h2{font-family:var(--display); margin:0; letter-spacing:-.025em; line-height:1.15;}
+  h1,h2{font-family:var(--display); margin:0; letter-spacing:-.03em; line-height:1.12;}
   a{color:inherit;}
-  :focus-visible{outline:2px solid var(--cyan); outline-offset:2px;}
+  :focus-visible{outline:3px solid var(--cyan); outline-offset:3px; border-radius:6px;}
   .wrap{max-width:var(--wrap); margin:0 auto; padding-inline:var(--gut);}
 
   .logo{display:flex; align-items:center; text-decoration:none; flex:0 0 auto;}
-  .wm{font-family:'Poppins','Outfit',sans-serif; font-weight:800; font-size:1.6rem; line-height:1; letter-spacing:-.018em; color:#0a0a0e; position:relative; padding-top:.44em; padding-left:.04em; white-space:nowrap; display:inline-block;}
-  .wm .by{position:absolute; top:.02em; left:-.03em; font-size:.43em; font-weight:800; letter-spacing:-.025em; transform:rotate(-13deg); transform-origin:left bottom; color:#0a0a0e;}
+  .wm{font-family:'Poppins','Outfit',sans-serif; font-weight:800; font-size:1.6rem; line-height:1; letter-spacing:-.018em; color:#fff; position:relative; padding-top:.44em; padding-left:.04em; white-space:nowrap; display:inline-block;}
+  .wm .by{position:absolute; top:.02em; left:-.03em; font-size:.43em; font-weight:800; letter-spacing:-.025em; transform:rotate(-13deg); transform-origin:left bottom;}
   .wm .x{color:var(--cyan);}
 
-  header.site{position:sticky; top:0; z-index:50; background:rgba(253,249,245,.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
-  .bar{display:flex; align-items:center; gap:22px; padding:15px 0;}
-  .back-link{margin-left:auto; display:inline-flex; align-items:center; gap:6px; font-weight:600; font-size:.92rem; color:var(--muted); text-decoration:none;}
-  .back-link:hover{color:var(--ink);}
+  header.site{position:sticky; top:0; z-index:50; background:rgba(16,17,40,.92); -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px); border-bottom:1px solid rgba(255,255,255,.08);}
+  .bar{display:flex; align-items:center; gap:22px; min-height:72px;}
+  .back-link{margin-left:auto; display:inline-flex; align-items:center; gap:6px; font-weight:600; font-size:.92rem; color:var(--dim); text-decoration:none;}
+  .back-link:hover{color:#fff;}
 
-  .hero-band{border-bottom:1px solid var(--line); padding-block:clamp(38px,6vw,64px);}
-  .eyebrow{display:inline-flex; align-items:center; gap:8px; font-size:.78rem; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--cyan-ink); margin:0 0 14px;}
-  .eyebrow::before{content:""; width:20px; height:3px; background:var(--cyan); border-radius:2px;}
-  h1{font-size:clamp(1.9rem,4.5vw,2.7rem); font-weight:800;}
-  .sub{color:var(--muted); font-size:1.03rem; margin-top:14px; max-width:60ch;}
+  .hero-band{background:var(--night); color:#fff; padding-block:clamp(40px,6vw,72px); background-image:radial-gradient(58% 120% at 10% 0%, rgba(62,66,160,.72) 0%, rgba(62,66,160,0) 70%), radial-gradient(52% 110% at 100% 100%, rgba(14,104,124,.8) 0%, rgba(14,104,124,0) 70%);}
+  .eyebrow{font-size:.95rem; font-weight:600; color:var(--cyan); margin:0 0 10px;}
+  h1{font-size:clamp(2rem,4.8vw,3rem); font-weight:700;}
+  .sub{color:var(--dim); font-size:1.06rem; margin-top:14px; max-width:60ch;}
 
   .body-band{padding-block:clamp(40px,6vw,72px);}
-  .doc{max-width:70ch;}
+  .doc > *{max-width:70ch;}
   .meta{font-size:.88rem; color:var(--muted); margin:0 0 34px;}
   .doc h2{font-size:1.28rem; font-weight:700; margin-top:44px; margin-bottom:14px;}
   .doc h2:first-of-type{margin-top:0;}
@@ -66,10 +68,10 @@
   .doc strong{color:var(--ink); font-weight:700;}
   .doc a{color:var(--cyan-ink); font-weight:600; text-decoration:underline;}
 
-  footer.site{background:var(--panel); border-top:1px solid var(--line); padding-block:28px;}
-  .foot-row{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px 20px; font-size:.85rem; color:var(--muted);}
-  .foot-row a{color:var(--muted); text-decoration:none; font-weight:500;}
-  .foot-row a:hover{color:var(--ink);}
+  footer.site{background:var(--night); padding-block:28px;}
+  .foot-row{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px 20px; font-size:.86rem; color:var(--dim);}
+  .foot-row a{color:var(--dim); text-decoration:none; font-weight:500;}
+  .foot-row a:hover{color:#fff;}
   .foot-row .legal{display:flex; gap:18px;}
 </style>
 </head>
