@@ -76,15 +76,16 @@ h3{font:600 1.22rem/1.25 Barlow,sans-serif}
 /* hero */
 .hero{padding:clamp(34px,6vw,72px) 0 clamp(44px,7vw,88px);overflow:hidden}
 .hero .wrap{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(28px,5vw,70px);align-items:center}
-.hero h1{font-size:clamp(3.3rem,15vw,5.7rem);margin:14px 0 22px}
+.hero h1{font-size:clamp(3.3rem,15vw,6.2rem);margin:14px 0 22px}
 .hero h1 span{display:block}
 .lead{font-size:1.2rem;line-height:1.55;max-width:33em;color:#2d3236}
 .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
-.status{display:inline-flex;align-items:center;gap:9px;margin-top:22px;font-weight:500;font-size:1rem}
-.status i{width:11px;height:11px;border-radius:50%;background:var(--steel);flex:none}
+.status{display:flex;align-items:baseline;gap:10px;margin-top:22px;font-size:1rem;line-height:1.4}
+.status i{width:11px;height:11px;border-radius:50%;background:var(--steel);flex:none;position:relative;top:1px}
 .status.open i{background:var(--ok);box-shadow:0 0 0 4px rgba(31,122,69,.18)}
 .status.shut i{background:var(--shut)}
-.status span{color:var(--muted)}
+.status b{font-weight:600}
+.status .st span{color:var(--muted)}
 
 /* de foto zit in een fietswiel */
 .wheel{position:relative;aspect-ratio:1;width:min(100%,520px);margin-left:auto}
@@ -186,7 +187,7 @@ form .btn{grid-column:1/-1;width:100%}
 .sent[hidden]{display:none}
 form .fine{margin-top:-4px}
 
-footer{background:var(--asphalt);color:#c6cbce;padding:44px 0 110px;font-size:.98rem}
+footer{background:var(--asphalt);color:#c6cbce;padding:44px 0 48px;font-size:.98rem}
 footer .wrap{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:30px}
 footer b{color:#fff;display:block;margin-bottom:6px;font-weight:600}
 footer a{color:#fff}
@@ -204,17 +205,19 @@ footer a{color:#fff}
   .wheel{margin:6px auto 0;width:min(88%,440px)}
   .plate{left:-6%}
   .facts ul{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .facts .num{font-size:1.85rem}
+  .facts .num{font-size:1.62rem}
   .facts li{padding:18px 14px 20px 18px}
   .facts li:nth-child(odd){border-left:0;padding-left:0}
   .facts li:nth-child(n+3){border-top:1px solid var(--line)}
   .route{grid-template-columns:1fr;gap:30px}
-  .route::before{left:27px;right:auto;top:0;bottom:0;border-top:0;border-left:3px dashed var(--ochre)}
+  .route::before{display:none}
+  .route li:not(:last-child)::after{content:"";position:absolute;left:27px;top:62px;bottom:-26px;border-left:3px dashed var(--ochre);opacity:.75}
   .route li{padding:6px 0 0 82px;min-height:56px}
   .rider{display:none}
   .routenote .btn{margin-left:0}
   .shots{position:static}
   .praise .wrap{grid-template-columns:1fr}
+  footer{padding-bottom:110px}
   footer .wrap{grid-template-columns:1fr}
   .dock{display:flex}
 }
@@ -262,14 +265,14 @@ footer a{color:#fff}
 <div class="hero" id="top">
   <div class="wrap">
     <div>
-      <p class="eyebrow">Fietsenmaker in Purmerend · met haal- en brengservice</p>
+      <p class="eyebrow">Fietsenmaker in Purmerend</p>
       <h1><span>Fiets kapot?</span> <span>Wij halen</span> <span><em class="mark" style="font-style:normal">hem op.</em></span></h1>
       <p class="lead">Pannonia repareert alle soorten en merken fietsen, ook e-bikes. Bij een reparatie vanaf € 25 halen we je fiets gratis op en brengen we hem weer thuis.</p>
       <div class="cta">
         <a class="btn ochre" href="#aanvraag">Fiets laten ophalen</a>
         <a class="btn line" href="tel:+31299450391">Bel 0299 450 391</a>
       </div>
-      <p class="status" data-status aria-live="polite"><i></i><b>Di t/m za open</b> <span>vanaf 9.30 uur</span></p>
+      <p class="status" data-status aria-live="polite"><i></i><span class="st"><b>Di t/m za open</b> <span>vanaf 9.30 uur</span></span></p>
     </div>
     <div class="wheel">
       <img src="https://images.unsplash.com/photo-1675798227643-da319f8ee8f7?auto=format&fit=crop&w=900&h=900&q=70" width="900" height="900" alt="Handen sleutelen aan de trapas van een fiets in een werkplaats" fetchpriority="high">
@@ -486,7 +489,7 @@ footer a{color:#fff}
   var d=now.getDay(), t=now.getHours()+now.getMinutes()/60, el=document.querySelector('[data-status]');
   var row=document.querySelector('.hours tr[data-d="'+d+'"]'); if(row) row.classList.add('today');
   if(el){
-    var h=H[d], b=el.querySelector('b'), s=el.querySelector('span');
+    var h=H[d], b=el.querySelector('b'), s=el.querySelector('.st span');
     if(h && t>=h[0] && t<h[1]){el.classList.add('open');b.textContent='Nu open';s.textContent='tot '+fmt(h[1])+' uur';}
     else{
       el.classList.add('shut');b.textContent='Nu gesloten';
