@@ -27,7 +27,7 @@
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth; scroll-padding-top:84px;}
   body{margin:0; background:var(--plaster); color:var(--ink); font-family:var(--font); font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased;}
-  h1,h2,h3{margin:0; font-weight:900; line-height:.98; letter-spacing:-.03em; text-wrap:balance;}
+  h1,h2,h3{margin:0; font-weight:900; line-height:.98; letter-spacing:-.025em; word-spacing:.06em; text-wrap:balance;}
   h2{font-size:clamp(2.1rem,6vw,3.7rem);}
   h3{font-size:1.22rem; font-weight:800; line-height:1.2; letter-spacing:-.015em;}
   p{margin:0;}
@@ -69,11 +69,11 @@
   .menu{display:none; margin-left:auto; background:none; border:2px solid var(--ink); color:var(--ink); font-family:var(--font); font-weight:800; font-size:.95rem; padding:8px 16px; cursor:pointer;}
 
   /* hero */
-  .hero-in{display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr); align-items:stretch;}
+  .hero-in{display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr); align-items:stretch;}
   .hero-txt{padding:clamp(36px,6vw,92px) clamp(0px,4vw,56px) clamp(40px,6vw,92px) 0; display:flex; flex-direction:column; justify-content:center;}
   .since{font-weight:600; color:var(--pine); display:flex; align-items:center; gap:10px;}
   .since::before{content:""; width:28px; height:10px; background:var(--pine);}
-  h1{font-size:clamp(2.9rem,9.6vw,5.9rem); margin-top:18px;}
+  h1{font-size:clamp(2.6rem,10.5vw,4.6rem); margin-top:18px;}
   .hero .lead{color:var(--muted); font-size:1.12rem; max-width:46ch; margin-top:22px;}
   .cta{display:flex; flex-wrap:wrap; gap:12px; margin-top:30px;}
   .hero-pic{position:relative; min-height:420px; background:var(--sand);}
@@ -146,7 +146,8 @@
   .foot{display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px 24px;}
   footer a{color:#fff;}
 
-  .dock{display:none;}
+  .dock{display:none; transform:translateY(110%); transition:transform .25s ease;}
+  .dock.show{transform:none;}
 
   @media (max-width:960px){
     .links{display:none; position:absolute; left:0; right:0; top:100%; background:var(--plaster); border-bottom:1px solid var(--line); flex-direction:column; gap:0; padding:4px var(--gut) 16px;}
@@ -365,6 +366,14 @@
   var btn=document.getElementById('menuBtn'), nav=document.getElementById('navLinks');
   btn.addEventListener('click',function(){var o=nav.classList.toggle('open'); btn.setAttribute('aria-expanded',o?'true':'false');});
   nav.addEventListener('click',function(e){if(e.target.tagName==='A'){nav.classList.remove('open'); btn.setAttribute('aria-expanded','false');}});
+
+  // actiebalk pas tonen als de knoppen bovenaan uit beeld zijn
+  var dock=document.querySelector('.dock'), cta=document.querySelector('.cta');
+  if(dock && cta && 'IntersectionObserver' in window){
+    new IntersectionObserver(function(e){
+      dock.classList.toggle('show', !e[0].isIntersecting && e[0].boundingClientRect.top < 0);
+    }).observe(cta);
+  } else if(dock){ dock.classList.add('show'); }
 
   var f=document.getElementById('bookForm'), ok=document.getElementById('ok');
   f.addEventListener('submit',function(e){

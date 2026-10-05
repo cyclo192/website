@@ -68,7 +68,7 @@
   .status.closed i{background:#e08a6a;}
   .status b{font-weight:600;}
   .status span{color:var(--fawn);}
-  h1{font-size:clamp(3.5rem,14vw,8rem); font-style:italic; line-height:.92; margin-top:22px;}
+  h1{font-size:clamp(3.6rem,15.5vw,8rem); font-style:italic; line-height:.92; margin-top:22px;}
   .hero .lead{max-width:46ch; margin:20px auto 0; font-size:1.12rem; color:#e6dccd;}
   .cta{display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-top:30px;}
 
@@ -138,7 +138,8 @@
   .foot{display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px 24px;}
   footer a{color:var(--cream);}
 
-  .dock{display:none;}
+  .dock{display:none; transform:translateY(110%); transition:transform .25s ease;}
+  .dock.show{transform:none;}
 
   @media (max-width:900px){
     .links{display:none; position:absolute; left:0; right:0; top:100%; background:var(--bark); border-bottom:1px solid var(--rule-d); flex-direction:column; gap:0; padding:6px var(--gut) 16px;}
@@ -351,6 +352,14 @@
     el.querySelector('b').textContent=a; el.querySelector('span').textContent=b;
   });
   var li=document.querySelector('#hours li[data-d="'+d+'"]'); if(li) li.classList.add('today');
+
+  // actiebalk pas tonen als de knoppen bovenaan uit beeld zijn
+  var dock=document.querySelector('.dock'), cta=document.querySelector('.cta');
+  if(dock && cta && 'IntersectionObserver' in window){
+    new IntersectionObserver(function(e){
+      dock.classList.toggle('show', !e[0].isIntersecting && e[0].boundingClientRect.top < 0);
+    }).observe(cta);
+  } else if(dock){ dock.classList.add('show'); }
 
   var f=document.getElementById('bookForm'), ok=document.getElementById('ok');
   f.addEventListener('submit',function(e){

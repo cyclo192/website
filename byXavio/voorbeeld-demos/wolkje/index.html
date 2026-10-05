@@ -143,7 +143,8 @@
   .foot{display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px 24px;}
   footer a{color:#fff;}
 
-  .dock{display:none;}
+  .dock{display:none; transform:translateY(110%); transition:transform .25s ease;}
+  .dock.show{transform:none;}
 
   @media (max-width:900px){
     .links{display:none; position:absolute; left:0; right:0; top:100%; background:var(--sky); flex-direction:column; gap:4px; padding:6px var(--gut) 18px;}
@@ -368,6 +369,14 @@
   nav.addEventListener('click',function(e){if(e.target.tagName==='A'){nav.classList.remove('open'); btn.setAttribute('aria-expanded','false');}});
 
   var li=document.querySelector('#hours li[data-d="'+new Date().getDay()+'"]'); if(li) li.classList.add('today');
+
+  // actiebalk pas tonen als de knoppen bovenaan uit beeld zijn
+  var dock=document.querySelector('.dock'), cta=document.querySelector('.cta');
+  if(dock && cta && 'IntersectionObserver' in window){
+    new IntersectionObserver(function(e){
+      dock.classList.toggle('show', !e[0].isIntersecting && e[0].boundingClientRect.top < 0);
+    }).observe(cta);
+  } else if(dock){ dock.classList.add('show'); }
 
   var f=document.getElementById('bookForm'), ok=document.getElementById('ok');
   f.addEventListener('submit',function(e){
