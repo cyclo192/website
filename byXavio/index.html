@@ -12,96 +12,98 @@
 <meta property="og:title" content="byXavio &mdash; Websites voor ondernemers in Purmerend en omgeving">
 <meta property="og:description" content="Een website die klopt, zonder poespas. Vaste prijs vooraf, eigen ontwerp, live binnen een week.">
 <meta property="og:locale" content="nl_NL">
+<meta property="og:image" content="https://byxavio.nl/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://byxavio.nl/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#16172e">
+<meta name="theme-color" content="#101128">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Poppins:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
 </head>
 <body>
 <style>
   :root{
-    --ink:#1a1b3a;
-    --ink-2:#2a2c57;
-    --paper:#fdf9f5;
-    --panel:#ffffff;
-    --cream:#fff2e9;
-    --cream-2:#ffe8db;
+    --night:#101128;
+    --navy:#1a1b3a;
     --cyan:#00d2df;
-    --cyan-btn:#00707a;
-    --cyan-ink:#00707a;
+    --cyan-ink:#006b75;
     --amber:#ffb23f;
-    --amber-soft:#ffe6bd;
-    --mint:#d6f6f9;
-    --muted:#5a5c7a;
-    --line:#efe4da;
-    --white:#ffffff;
+    --paper:#ffffff;
+    --mist:#f3f5fb;
+    --line:#e1e4ef;
+    --muted:#585b7c;
+    --dim:#b9bcdd;
+    --hair:rgba(255,255,255,.12);
 
-    --display:'Outfit','Trebuchet MS',system-ui,sans-serif;
+    --display:'Poppins','Trebuchet MS',system-ui,sans-serif;
     --body:'Plus Jakarta Sans','Helvetica Neue',Arial,sans-serif;
 
-    --wrap:1120px;
-    --gut:clamp(16px,4vw,40px);
+    --wrap:1160px;
+    --gut:clamp(18px,4vw,40px);
+    --r-m:16px;
+    --r-l:28px;
   }
 
   *{box-sizing:border-box;}
+  html{scroll-behavior:smooth; scroll-padding-top:88px;}
 
   body{
     margin:0;
     background:var(--paper);
-    color:var(--ink);
+    color:var(--navy);
     font-family:var(--body);
-    font-size:16.5px;
-    line-height:1.68;
+    font-size:17px;
+    line-height:1.65;
     -webkit-font-smoothing:antialiased;
   }
 
-  h1,h2,h3,h4{font-family:var(--display); margin:0; letter-spacing:-.025em; text-wrap:balance; line-height:1.1;}
-  h1{font-size:clamp(2.1rem,5.2vw,3.55rem); font-weight:800;}
-  h2{font-size:clamp(1.7rem,3.8vw,2.5rem); font-weight:700;}
-  h3{font-size:1.15rem; font-weight:700; line-height:1.3;}
+  h1,h2,h3{font-family:var(--display); margin:0; text-wrap:balance;}
+  h1{font-size:clamp(2.45rem,6.2vw,4.6rem); font-weight:700; line-height:1.04; letter-spacing:-.035em;}
+  h2{font-size:clamp(1.8rem,3.9vw,2.85rem); font-weight:700; line-height:1.1; letter-spacing:-.03em;}
+  h3{font-size:1.16rem; font-weight:600; line-height:1.3; letter-spacing:-.015em;}
   p{margin:0;}
   a{color:inherit;}
+  img,video{max-width:100%;}
 
+  :focus-visible{outline:3px solid var(--cyan); outline-offset:3px; border-radius:6px;}
+
+  .sr{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap;}
   .wrap{max-width:var(--wrap); margin:0 auto; padding-inline:var(--gut);}
-
-  .eyebrow{
-    display:inline-flex; align-items:center; gap:8px;
-    font-size:.78rem; font-weight:700; letter-spacing:.09em; text-transform:uppercase;
-    color:var(--cyan-ink); margin:0 0 16px;
-  }
-  .eyebrow::before{content:""; width:20px; height:3px; background:var(--cyan); border-radius:2px;}
-
-  .lead{color:var(--muted); font-size:1.06rem;}
+  .lead{color:var(--muted); font-size:1.08rem; max-width:54ch;}
+  .tick{width:18px; height:18px; flex:0 0 auto;}
 
   /* ---------- buttons ---------- */
 
   .btn{
     display:inline-flex; align-items:center; justify-content:center; gap:9px;
-    font-family:var(--body); font-weight:600; font-size:.97rem;
-    padding:14px 24px; border-radius:11px; border:2px solid transparent;
-    cursor:pointer; text-decoration:none; white-space:nowrap;
-    transition:transform .14s ease, background .14s ease, box-shadow .14s ease;
+    font-family:var(--body); font-weight:700; font-size:1rem; line-height:1.25; text-align:center;
+    padding:15px 26px; border-radius:999px; border:2px solid transparent;
+    cursor:pointer; text-decoration:none;
+    transition:background .15s ease, border-color .15s ease, color .15s ease;
   }
-  .btn-primary{background:var(--ink); color:var(--white); box-shadow:0 10px 22px -14px rgba(26,27,58,.75);}
-  .btn-primary:hover{background:var(--ink-2); transform:translateY(-2px);}
-  .btn-outline{background:var(--white); color:var(--ink); border-color:var(--line);}
-  .btn-outline:hover{border-color:var(--ink); transform:translateY(-2px);}
-  .btn-cyan{background:var(--cyan); color:var(--ink); box-shadow:0 10px 22px -14px rgba(0,210,223,.95);}
-  .btn-cyan:hover{background:#00bcc8; transform:translateY(-2px);}
-  .btn-sm{padding:10px 18px; font-size:.9rem; border-radius:9px;}
+  .btn-cyan{background:var(--cyan); color:var(--night);}
+  .btn-cyan:hover{background:#6fe8f0;}
+  .btn-ghost{color:#fff; border-color:rgba(255,255,255,.3);}
+  .btn-ghost:hover{border-color:#fff;}
+  .btn-outline{background:var(--paper); color:var(--navy); border-color:var(--line);}
+  .btn-outline:hover{border-color:var(--navy);}
+  .btn-primary{background:var(--navy); color:#fff;}
+  .btn-primary:hover{background:#2b2d5c;}
+  .btn-sm{padding:10px 20px; font-size:.92rem;}
 
   /* ---------- logo ---------- */
 
   .logo{display:flex; align-items:center; text-decoration:none; flex:0 0 auto;}
   .wm{
-    font-family:'Poppins','Outfit',sans-serif;
+    font-family:'Poppins',sans-serif;
     font-weight:800; font-size:1.6rem; line-height:1;
-    letter-spacing:-.018em; color:#0a0a0e;
+    letter-spacing:-.018em; color:#fff;
     position:relative; padding-top:.44em; padding-left:.04em;
     white-space:nowrap; display:inline-block;
   }
@@ -109,7 +111,6 @@
     position:absolute; top:.02em; left:-.03em;
     font-size:.43em; font-weight:800; letter-spacing:-.025em;
     transform:rotate(-13deg); transform-origin:left bottom;
-    color:#0a0a0e;
   }
   .wm .x{color:var(--cyan);}
 
@@ -117,371 +118,400 @@
 
   header.site{
     position:sticky; top:env(safe-area-inset-top,0px); z-index:50;
-    background:rgba(253,249,245,.92);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--line);
+    background:rgba(16,17,40,.9);
+    -webkit-backdrop-filter:saturate(140%) blur(12px);
+    backdrop-filter:saturate(140%) blur(12px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+    color:#fff;
   }
-  .bar{display:flex; align-items:center; gap:22px; padding:15px 0;}
+  .bar{display:flex; align-items:center; gap:20px; min-height:72px;}
   nav.main{margin-left:auto;}
-  nav.main ul{list-style:none; display:flex; gap:26px; margin:0; padding:0;}
-  nav.main a{
-    text-decoration:none; font-weight:500; font-size:.96rem; color:var(--muted);
-    padding-bottom:3px; border-bottom:2px solid transparent;
-  }
-  nav.main a:hover{color:var(--ink); border-bottom-color:var(--cyan);}
+  nav.main ul{list-style:none; display:flex; gap:28px; margin:0; padding:0;}
+  nav.main a{text-decoration:none; font-weight:500; font-size:.95rem; color:var(--dim); transition:color .15s ease;}
+  nav.main a:hover{color:#fff;}
 
   .menu-btn{
-    display:none; margin-left:auto; background:var(--white); border:2px solid var(--line);
-    border-radius:10px; padding:9px 12px; cursor:pointer; font-family:var(--body);
-    font-weight:600; font-size:.9rem; color:var(--ink);
+    display:none; margin-left:auto; background:transparent; border:1.5px solid rgba(255,255,255,.25);
+    border-radius:999px; padding:9px 18px; cursor:pointer; font-family:var(--body);
+    font-weight:600; font-size:.9rem; color:#fff;
   }
 
-  .langsw{margin-left:12px; flex:0 0 auto; position:relative; display:inline-flex; align-items:center;}
+  .langsw{flex:0 0 auto; position:relative; display:inline-flex; align-items:center;}
   .langsw::after{
-    content:""; position:absolute; right:11px; top:50%; width:7px; height:7px;
-    border-right:2px solid var(--muted); border-bottom:2px solid var(--muted);
-    transform:translateY(-65%) rotate(45deg); pointer-events:none;
+    content:""; position:absolute; right:13px; top:50%; width:6px; height:6px;
+    border-right:2px solid var(--dim); border-bottom:2px solid var(--dim);
+    transform:translateY(-70%) rotate(45deg); pointer-events:none;
   }
   .langsw select{
     -webkit-appearance:none; appearance:none;
-    font-family:var(--body); font-weight:600; font-size:.86rem; color:var(--ink);
-    background:var(--white); border:1.5px solid var(--line); border-radius:9px;
-    padding:8px 26px 8px 12px; cursor:pointer; line-height:1;
+    font-family:var(--body); font-weight:600; font-size:.86rem; color:#fff;
+    background:rgba(255,255,255,.07); border:1.5px solid rgba(255,255,255,.14); border-radius:999px;
+    padding:8px 30px 8px 14px; cursor:pointer; line-height:1.2;
   }
-  .langsw select:hover{border-color:var(--ink);}
-  .langsw select:focus{outline:2px solid var(--cyan); outline-offset:1px; border-color:var(--cyan);}
-  #mobnav{display:none; border-top:1px solid var(--line); padding:10px 0 18px;}
-  #mobnav ul{list-style:none; margin:0; padding:0; display:grid; gap:2px;}
-  #mobnav a{display:block; text-decoration:none; font-weight:600; padding:11px 0; border-bottom:1px solid var(--line); color:var(--ink);}
-  #mobnav .btn{margin-top:14px; width:100%;}
+  .langsw select:hover{border-color:rgba(255,255,255,.4);}
+  .langsw option{color:var(--navy); background:#fff;}
+
+  #mobnav{display:none; border-top:1px solid var(--hair); padding:6px 0 20px;}
+  #mobnav ul{list-style:none; margin:0; padding:0;}
+  #mobnav li a{display:block; text-decoration:none; font-weight:600; padding:13px 0; border-bottom:1px solid var(--hair); color:#fff;}
+  #mobnav .btn{margin-top:18px; width:100%;}
+
+  /* ---------- dark surfaces (hero, contact) ---------- */
+
+  .dark{position:relative; isolation:isolate; overflow:hidden; background:var(--night); color:#fff;}
+  .dark::before{
+    content:""; position:absolute; inset:0; z-index:-2;
+    background:
+      radial-gradient(58% 72% at 10% 0%, rgba(62,66,160,.72) 0%, rgba(62,66,160,0) 70%),
+      radial-gradient(52% 64% at 100% 100%, rgba(14,104,124,.8) 0%, rgba(14,104,124,0) 70%);
+  }
+  .dark::after{
+    content:""; position:absolute; inset:0; z-index:-1;
+    background-image:
+      linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+    background-size:76px 76px;
+    -webkit-mask-image:radial-gradient(ellipse at 50% 30%, #000 20%, transparent 78%);
+    mask-image:radial-gradient(ellipse at 50% 30%, #000 20%, transparent 78%);
+  }
+  .dark .lead{color:var(--dim);}
 
   /* ---------- hero ---------- */
 
-  .hero{
-    position:relative; overflow:hidden;
-    background:
-      radial-gradient(760px 420px at 88% -12%, var(--cream-2) 0%, rgba(255,232,219,0) 62%),
-      radial-gradient(620px 380px at 4% 108%, var(--mint) 0%, rgba(214,246,249,0) 60%);
-  }
   .hero-in{
-    display:grid; grid-template-columns:1.06fr .94fr; gap:clamp(24px,4.5vw,56px);
-    align-items:center; padding-block:clamp(40px,6.5vw,84px);
+    display:grid; grid-template-columns:minmax(0,1.22fr) minmax(0,.78fr);
+    gap:clamp(28px,5vw,72px); align-items:center;
+    padding-block:clamp(44px,6.5vw,88px) clamp(52px,7.5vw,100px);
   }
-  .hero h1 .hl{
-    background:linear-gradient(transparent 62%, var(--amber-soft) 62%);
-    padding-inline:2px;
+  .hero .lead{margin-top:24px; font-size:1.14rem; max-width:48ch;}
+  .hero .cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:34px;}
+  .facts{
+    list-style:none; display:flex; flex-wrap:wrap; gap:10px 28px;
+    margin:36px 0 0; padding:24px 0 0; border-top:1px solid var(--hair);
+    font-weight:600; font-size:.96rem;
   }
-  .hero .lead{margin-top:20px; max-width:47ch;}
-  .hero .cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:30px;}
-  .hero .under{
-    display:flex; gap:8px 20px; flex-wrap:wrap; margin-top:26px;
-    font-size:.9rem; font-weight:600; color:var(--muted);
+  .facts li{display:inline-flex; align-items:center; gap:9px;}
+
+  .reel{position:relative; width:min(100%,304px); justify-self:end;}
+  .reel::before{
+    content:""; position:absolute; inset:-10% -26%; z-index:-1;
+    background:radial-gradient(closest-side, rgba(0,210,223,.3), rgba(0,210,223,0));
   }
-  .hero .under span{display:inline-flex; align-items:center; gap:7px;}
-  .tick{width:17px; height:17px; flex:0 0 auto;}
-
-  .hero-art{width:100%; height:auto; display:block; filter:drop-shadow(0 26px 44px rgba(26,27,58,.14));}
-  .mock{position:relative; padding:4% 10% 12% 0;}
-  .mock-blob{position:absolute; right:2%; top:0; width:38%; aspect-ratio:1; border-radius:50%; background:#ffe6bd; z-index:0;}
-  .laptop{position:relative; z-index:1; background:#1a1b3a; border-radius:14px; padding:0 8px 8px; box-shadow:0 30px 60px -18px rgba(26,27,58,.35);}
-  .laptop-bar{display:flex; align-items:center; gap:6px; height:28px; padding-left:6px;}
-  .laptop-bar i{width:8px; height:8px; border-radius:50%; background:#00d2df;}
-  .laptop-bar i:nth-child(2){background:#ffb23f;} .laptop-bar i:nth-child(3){background:#66e4ec;}
-  .laptop-bar span{margin-left:10px; font-size:.68rem; color:#b9b8d6; background:rgba(255,255,255,.08); padding:2px 10px; border-radius:6px;}
-  .laptop .screen{aspect-ratio:16/10; border-radius:4px;}
-  .laptop-base{position:absolute; left:-6%; right:-6%; bottom:-14px; height:14px; background:#26284f; border-radius:0 0 14px 14px;}
-  .screen{position:relative; overflow:hidden; background:#fff;}
-  .screen iframe{position:absolute; left:0; top:0; border:0; transform-origin:0 0; pointer-events:none;}
-  .phone{position:absolute; z-index:2; right:0; bottom:0; width:28%; background:#1a1b3a; border-radius:22px; padding:8px; box-shadow:0 24px 44px -12px rgba(26,27,58,.45);}
-  .phone .screen{aspect-ratio:1/2; border-radius:15px;}
-  .phone-notch{position:absolute; z-index:3; top:12px; left:50%; transform:translateX(-50%); width:34%; height:10px; border-radius:6px; background:#1a1b3a;}
-  .mock-tag{position:absolute; z-index:3; left:4%; bottom:2%; background:#fff; color:#1a1b3a; font-weight:700; font-size:.82rem; padding:8px 14px; border-radius:999px; box-shadow:0 10px 24px -8px rgba(26,27,58,.3); text-decoration:none;}
-  .mock-tag:hover{background:#00d2df;}
-
-  /* ---------- strip ---------- */
-
-  .strip{background:var(--ink); color:var(--white);}
-  .strip-in{
-    display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(18px,3vw,40px);
-    padding-block:30px;
+  .reel-frame{
+    border-radius:42px; padding:9px; background:#07081a;
+    box-shadow:0 0 0 1px rgba(255,255,255,.18), 0 44px 80px -34px rgba(0,0,0,.8);
   }
-  .strip h3{font-size:1.04rem; color:var(--white);}
-  .strip p{font-size:.92rem; color:#b9bad6; margin-top:5px;}
-  .strip .n{
-    font-family:var(--display); font-weight:800; font-size:.8rem; letter-spacing:.1em;
-    color:var(--amber); display:block; margin-bottom:7px;
+  .reel video{display:block; width:100%; height:auto; aspect-ratio:9/16; object-fit:cover; border-radius:33px; background:var(--navy);}
+  .reel-btn{
+    position:absolute; right:22px; bottom:22px; width:42px; height:42px; border-radius:50%;
+    border:1px solid rgba(255,255,255,.25); background:rgba(7,8,26,.62); color:#fff; cursor:pointer;
+    display:grid; place-items:center; padding:0;
+    -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px);
   }
+  .reel-btn:hover{background:rgba(7,8,26,.85);}
+  .reel-btn svg{width:16px; height:16px; fill:currentColor;}
+  .reel-btn .i-play, .reel-btn .t-play{display:none;}
+  .reel-btn.paused .i-play{display:block;}
+  .reel-btn.paused .i-pause, .reel-btn.paused .t-pause{display:none;}
+  .reel-btn.paused .t-play{display:block;}
 
-  /* ---------- generic section ---------- */
+  /* ---------- usps ---------- */
 
-  section.band{padding-block:clamp(48px,7vw,96px);}
-  .band.alt{background:var(--panel); border-block:1px solid var(--line);}
+  .usps{padding-block:clamp(44px,6vw,76px);}
+  .usps-in{display:grid; grid-template-columns:repeat(3,minmax(0,1fr));}
+  .usp{padding:2px clamp(18px,3vw,40px); border-left:1px solid var(--line);}
+  .usp:first-child{padding-left:0; border-left:0;}
+  .usp:last-child{padding-right:0;}
+  .usp p{color:var(--muted); font-size:.98rem; margin-top:8px;}
 
-  .head{display:grid; grid-template-columns:1fr 1fr; gap:clamp(18px,4vw,48px); align-items:end; margin-bottom:clamp(28px,4vw,48px);}
-  .head .lead{margin-bottom:4px;}
+  /* ---------- sections ---------- */
 
-  /* ---------- steps ---------- */
-
-  .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(14px,2.4vw,26px);}
-  .step{position:relative; padding-top:26px; border-top:3px solid var(--line);}
-  .step:nth-child(1){border-top-color:var(--cyan);}
-  .step:nth-child(2){border-top-color:var(--amber);}
-  .step:nth-child(3){border-top-color:#66e4ec;}
-  .step:nth-child(4){border-top-color:var(--ink);}
-  .step .num{
-    font-family:var(--display); font-weight:800; font-size:.82rem; letter-spacing:.12em;
-    color:var(--muted); display:block; margin-bottom:9px;
+  section.band{padding-block:clamp(64px,9vw,120px);}
+  .band.mist{background:var(--mist);}
+  .head{
+    display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    gap:clamp(16px,4vw,56px); align-items:end; margin-bottom:clamp(32px,5vw,58px);
   }
-  .step p{color:var(--muted); font-size:.95rem; margin-top:8px;}
-
-  /* ---------- demos ---------- */
-
-  .notice{
-    display:flex; gap:12px; align-items:flex-start;
-    background:var(--amber-soft); border-radius:12px; padding:14px 18px;
-    font-size:.93rem; margin-bottom:26px; max-width:74ch;
-  }
-  .notice b{font-weight:700;}
-
-  .demos{display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(14px,2.2vw,22px);}
-  .demo{
-    background:var(--panel); border:1px solid var(--line); border-radius:16px;
-    overflow:hidden; display:flex; flex-direction:column;
-    transition:transform .16s ease, box-shadow .16s ease;
-  }
-  .demo:hover{transform:translateY(-4px); box-shadow:0 18px 34px -24px rgba(26,27,58,.4);}
-  .demo .art{aspect-ratio:4/3; display:block; width:100%;}
-  .demo .body{padding:17px 18px 20px; display:flex; flex-direction:column; flex:1;}
-  .demo .kind{font-size:.74rem; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--cyan-ink);}
-  .demo h3{margin-top:5px;}
-  .demo p{font-size:.9rem; color:var(--muted); margin-top:7px;}
-  .demo .go{
-    margin-top:auto; padding-top:14px; display:inline-flex; align-items:center; gap:7px;
-    font-weight:700; font-size:.9rem; color:var(--ink); text-decoration:none;
-  }
-  .demo .go:hover{color:var(--cyan-ink);}
 
   /* ---------- klantproject ---------- */
 
+  .screen{position:relative; overflow:hidden; background:#fff;}
+  .screen iframe{position:absolute; left:0; top:0; border:0; transform-origin:0 0; pointer-events:none;}
+
   .case{
-    display:grid; grid-template-columns:1.08fr .92fr; gap:clamp(20px,3.6vw,46px); align-items:center;
-    background:var(--paper); border:1px solid var(--line); border-radius:20px;
-    padding:clamp(14px,2.6vw,28px); margin-bottom:clamp(26px,3.6vw,40px);
-  }
-  .case-win{
-    position:relative; background:#1a1b3a; border-radius:14px; padding:0 8px 8px;
-    box-shadow:0 26px 48px -22px rgba(26,27,58,.45);
-    transition:transform .16s ease;
-  }
-  .case-win:hover{transform:translateY(-4px);}
-  .case-win .screen{aspect-ratio:16/10; border-radius:4px;}
-  .case-cover{position:absolute; inset:0; z-index:2; border-radius:14px;}
-  .case-body{display:flex; flex-direction:column; align-items:flex-start; padding:4px clamp(0px,1vw,10px) 6px;}
-  .case-meta{display:flex; flex-wrap:wrap; align-items:center; gap:8px 12px;}
-  .case-badge{
-    background:var(--amber-soft); color:var(--ink); border-radius:999px; padding:4px 12px;
-    font-size:.74rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase;
-  }
-  .case .kind{font-size:.74rem; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--cyan-ink);}
-  .case h3{font-size:clamp(1.45rem,2.7vw,1.9rem); line-height:1.15; margin-top:14px;}
-  .case p{color:var(--muted); font-size:.98rem; margin-top:10px; max-width:46ch;}
-  .case-tags{list-style:none; margin:16px 0 0; padding:0; display:flex; flex-wrap:wrap; gap:8px;}
-  .case-tags li{
-    background:var(--panel); border:1px solid var(--line); border-radius:999px;
-    padding:5px 13px; font-size:.84rem; font-weight:600;
-  }
-  .case .btn{margin-top:22px;}
-
-  /* ---------- packages ---------- */
-
-  .packs{display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(12px,2vw,20px); align-items:start;}
-  .pack{
-    background:var(--panel); border:1px solid var(--line); border-radius:16px;
-    padding:24px 22px 26px; display:flex; flex-direction:column; height:100%;
-  }
-  .pack.best{
-    border:2px solid var(--ink); box-shadow:0 22px 42px -28px rgba(26,27,58,.45);
     position:relative;
+    display:grid; grid-template-columns:minmax(0,1.14fr) minmax(0,.86fr);
+    gap:clamp(22px,4vw,58px); align-items:center;
+    background:var(--paper); border-radius:var(--r-l);
+    padding:clamp(14px,2.6vw,32px);
+    box-shadow:0 0 0 1px var(--line), 0 34px 60px -44px rgba(26,27,58,.45);
   }
-  .pack .ribbon{
-    position:absolute; top:-13px; left:22px;
-    background:var(--amber); color:var(--ink);
-    font-size:.74rem; font-weight:700; letter-spacing:.06em;
-    padding:4px 12px; border-radius:20px;
+  .win{background:var(--night); border-radius:16px; padding:0 8px 8px;}
+  .win-bar{display:flex; align-items:center; gap:6px; height:32px; padding-left:8px;}
+  .win-bar i{width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,.24);}
+  .win-bar span{margin-left:10px; font-size:.7rem; color:var(--dim); background:rgba(255,255,255,.08); padding:2px 12px; border-radius:999px;}
+  .win .screen{aspect-ratio:16/10; border-radius:6px;}
+  .case-body{display:flex; flex-direction:column; align-items:flex-start; padding:6px clamp(0px,1vw,12px) 8px;}
+  .case-meta{display:flex; flex-wrap:wrap; align-items:center; gap:8px 12px; font-size:.88rem; font-weight:600;}
+  .case-badge{background:var(--amber); color:var(--night); border-radius:999px; padding:3px 12px;}
+  .case-meta .kind{color:var(--cyan-ink);}
+  .case h3{font-size:clamp(1.5rem,2.8vw,2.05rem); font-weight:700; line-height:1.12; letter-spacing:-.03em; margin-top:16px;}
+  .case p{color:var(--muted); margin-top:12px; max-width:46ch;}
+  .case-tags{list-style:none; margin:18px 0 0; padding:0; display:flex; flex-wrap:wrap; gap:8px;}
+  .case-tags li{background:var(--mist); border-radius:999px; padding:5px 14px; font-size:.86rem; font-weight:600;}
+  .case .btn{margin-top:26px;}
+  .case .btn::after{content:""; position:absolute; inset:0; border-radius:var(--r-l);}
+  .arr{width:16px; height:16px; flex:0 0 auto; fill:none; stroke:currentColor; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; transition:transform .15s ease;}
+  a:hover > .arr, .pd:hover .arr{transform:translateX(3px);}
+
+  /* ---------- demo's ---------- */
+
+  .notice{
+    display:flex; gap:10px; align-items:flex-start;
+    color:var(--muted); font-size:.95rem; max-width:72ch;
+    margin:clamp(40px,6vw,64px) 0 26px;
   }
-  .pack .for{font-size:.9rem; color:var(--muted); margin-top:7px; min-height:3.4em;}
-  .pack .prijs{display:flex; align-items:baseline; gap:7px; margin-top:16px;}
-  .pack .prijs .v{font-family:var(--display); font-weight:800; font-size:2.15rem; letter-spacing:-.035em;}
-  .pack .prijs .v.txt{font-size:1.4rem; letter-spacing:-.02em;}
-  .pack .prijs .u{font-size:.84rem; color:var(--muted); font-weight:500;}
-  .pack ul{list-style:none; margin:16px 0 22px; padding:0; display:grid; gap:9px;}
-  .pack li{display:grid; grid-template-columns:auto 1fr; gap:9px; font-size:.92rem; color:var(--muted);}
-  .pack .btn{margin-top:auto; width:100%;}
+  .notice svg{width:18px; height:18px; flex:0 0 auto; margin-top:4px; fill:none; stroke:var(--cyan-ink); stroke-width:2; stroke-linecap:round;}
+  .notice b{font-weight:700; color:var(--navy);}
+
+  .phones{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:clamp(16px,2.6vw,32px);}
+  .pd{position:relative;}
+  .pd-phone{
+    border-radius:32px; padding:7px; background:var(--night);
+    box-shadow:0 30px 50px -34px rgba(26,27,58,.6);
+    transition:transform .2s ease;
+  }
+  .pd:hover .pd-phone{transform:translateY(-6px);}
+  .pd-phone .screen{aspect-ratio:390/800; border-radius:25px;}
+  .pd .kind{display:block; margin-top:20px; font-size:.88rem; font-weight:600; color:var(--cyan-ink);}
+  .pd h3{margin-top:2px; font-size:1.25rem;}
+  .pd h3 a{text-decoration:none;}
+  .pd h3 a::after{content:""; position:absolute; inset:0; z-index:2;}
+  .pd p{font-size:.94rem; color:var(--muted); margin-top:6px;}
+  .pd .go{display:inline-flex; align-items:center; gap:7px; margin-top:12px; font-weight:700; font-size:.92rem;}
+
+  /* ---------- steps ---------- */
+
+  .steps{
+    list-style:none; margin:0; padding:0; counter-reset:stap;
+    display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:clamp(18px,3vw,40px);
+  }
+  .step{counter-increment:stap; border-top:3px solid var(--cyan); padding-top:20px;}
+  .step::before{
+    content:counter(stap); display:block;
+    font-family:var(--display); font-weight:700; font-size:2.7rem; line-height:1; letter-spacing:-.04em;
+    color:var(--navy); margin-bottom:16px;
+  }
+  .step p{color:var(--muted); font-size:.97rem; margin-top:8px;}
+
+  /* ---------- pakketten ---------- */
+
+  .packs{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(14px,2vw,22px); align-items:stretch;}
+  .pack{
+    position:relative; display:flex; flex-direction:column;
+    background:var(--paper); border-radius:var(--r-l); padding:32px 28px 28px;
+    box-shadow:0 0 0 1px var(--line);
+  }
+  .pack h3{font-size:1.3rem;}
+  .pack .for{color:var(--muted); font-size:.95rem; margin-top:8px; min-height:5em;}
+  .prijs{display:flex; flex-direction:column; align-items:flex-start; gap:8px; margin-top:20px;}
+  .prijs .v{font-family:var(--display); font-weight:700; font-size:3.1rem; line-height:1; letter-spacing:-.045em;}
+  .prijs .u{font-size:.86rem; color:var(--muted);}
+  .pack ul{
+    list-style:none; margin:24px 0 28px; padding:24px 0 0; border-top:1px solid var(--line);
+    display:grid; gap:11px; font-size:.95rem;
+  }
+  .pack li{display:flex; gap:10px; align-items:flex-start;}
+  .pack li .tick{margin-top:4px;}
+  .pack .btn{margin-top:auto;}
+  .pack.best{
+    background:var(--night); color:#fff; box-shadow:0 36px 60px -40px rgba(16,17,40,.9);
+    background-image:
+      radial-gradient(90% 60% at 0% 0%, rgba(62,66,160,.7) 0%, rgba(62,66,160,0) 70%),
+      radial-gradient(80% 55% at 100% 100%, rgba(14,104,124,.75) 0%, rgba(14,104,124,0) 70%);
+  }
+  .pack.best .for, .pack.best .prijs .u{color:var(--dim);}
+  .pack.best ul{border-top-color:var(--hair);}
+  .ribbon{
+    position:absolute; top:30px; right:24px;
+    background:var(--amber); color:var(--night); font-size:.8rem; font-weight:700;
+    padding:3px 12px; border-radius:999px;
+  }
 
   .onderhoud{
-    margin-top:clamp(14px,2vw,20px);
-    background:var(--cream); border:1px solid var(--cream-2); border-radius:16px;
-    padding:24px clamp(20px,3vw,30px);
-    display:grid; grid-template-columns:1fr auto; gap:20px; align-items:center;
+    display:grid; grid-template-columns:minmax(0,1fr) auto; gap:20px 32px; align-items:center;
+    margin-top:clamp(14px,2vw,22px);
+    background:var(--paper); border-radius:var(--r-l); padding:28px;
+    box-shadow:0 0 0 1px var(--line);
   }
-  .onderhoud ul{list-style:none; margin:10px 0 0; padding:0; display:flex; flex-wrap:wrap; gap:6px 20px; font-size:.92rem; color:var(--muted);}
-  .onderhoud li{display:inline-flex; align-items:center; gap:8px;}
-  .onderhoud .right{text-align:right;}
-  .onderhoud .right .v{font-family:var(--display); font-weight:800; font-size:1.2rem;}
-  .onderhoud .right .u{font-size:.82rem; color:var(--muted); display:block;}
-
-  .fineprint{margin-top:18px; font-size:.88rem; color:var(--muted); max-width:78ch;}
+  .onderhoud h3{font-size:1.3rem;}
+  .onderhoud .sub{color:var(--muted); font-size:.97rem; margin-top:6px; max-width:60ch;}
+  .onderhoud ul{list-style:none; margin:16px 0 0; padding:0; display:flex; flex-wrap:wrap; gap:8px 24px; font-size:.94rem; font-weight:500;}
+  .onderhoud li{display:inline-flex; align-items:center; gap:9px;}
+  .onderhoud .right{text-align:right; display:flex; flex-direction:column; align-items:flex-end;}
+  .onderhoud .v{font-family:var(--display); font-weight:700; font-size:2.2rem; line-height:1; letter-spacing:-.04em;}
+  .onderhoud .u{font-size:.86rem; color:var(--muted); margin-top:6px;}
+  .onderhoud .btn{margin-top:16px;}
+  .fineprint{font-size:.88rem; color:var(--muted); max-width:78ch; margin-top:26px;}
 
   /* ---------- faq ---------- */
 
-  .faq{display:grid; gap:10px; max-width:860px;}
-  .faq details{
-    background:var(--panel); border:1px solid var(--line); border-radius:13px;
-    padding:2px 20px;
-  }
-  .faq details[open]{border-color:var(--ink);}
+  .faq-grid{display:grid; grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr); gap:clamp(24px,5vw,80px); align-items:start;}
+  .faq-grid .lead{margin-top:18px;}
+  .faq-intro{position:sticky; top:104px;}
+  .faq details{border-top:1px solid var(--line);}
+  .faq details:last-child{border-bottom:1px solid var(--line);}
   .faq summary{
-    cursor:pointer; list-style:none; display:flex; align-items:center; gap:14px;
-    font-family:var(--display); font-weight:700; font-size:1.04rem;
-    padding:17px 0; color:var(--ink);
+    list-style:none; cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:18px;
+    padding:21px 0; font-family:var(--display); font-weight:600; font-size:1.07rem; line-height:1.35; letter-spacing:-.012em;
   }
   .faq summary::-webkit-details-marker{display:none;}
-  .faq .ic{
-    margin-left:auto; flex:0 0 auto; position:relative; width:20px; height:20px;
-    border-radius:50%; background:var(--cyan);
+  .faq .ic{position:relative; width:14px; height:14px; flex:0 0 auto;}
+  .faq .ic::before, .faq .ic::after{
+    content:""; position:absolute; left:0; top:6px; width:14px; height:2px; border-radius:2px; background:var(--cyan-ink);
+    transition:transform .2s ease;
   }
-  .faq .ic::before,.faq .ic::after{
-    content:""; position:absolute; background:var(--ink); border-radius:2px;
-    top:50%; left:50%; transform:translate(-50%,-50%);
-  }
-  .faq .ic::before{width:10px; height:2px;}
-  .faq .ic::after{width:2px; height:10px; transition:opacity .15s ease;}
-  .faq details[open] .ic::after{opacity:0;}
-  .faq details p{padding:0 0 19px; color:var(--muted); font-size:.97rem; max-width:66ch;}
-  .faq details p a{color:var(--cyan-ink); font-weight:600;}
+  .faq .ic::after{transform:rotate(90deg);}
+  .faq details[open] .ic::after{transform:rotate(0deg);}
+  .faq details p{color:var(--muted); padding:0 34px 24px 0; max-width:62ch;}
+  .faq details a{color:var(--cyan-ink); font-weight:600;}
 
   /* ---------- over mij ---------- */
 
-  .over{display:grid; grid-template-columns:1.15fr .85fr; gap:clamp(24px,4.5vw,56px); align-items:start;}
-  .over .prose p{color:var(--muted);}
-  .over .prose p + p{margin-top:1em;}
-  .waarom{
-    background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:26px 24px;
-  }
-  .waarom h3{margin-bottom:14px;}
-  .waarom ul{list-style:none; margin:0; padding:0; display:grid; gap:12px;}
-  .waarom li{display:grid; grid-template-columns:auto 1fr; gap:11px; font-size:.95rem; color:var(--muted);}
+  .over{display:grid; grid-template-columns:auto minmax(0,1fr); gap:clamp(24px,5vw,72px); align-items:center;}
+  .over img{display:block; width:clamp(150px,22vw,264px); height:auto; aspect-ratio:1; object-fit:cover; border-radius:var(--r-l);}
+  .over p{color:var(--muted); margin-top:18px; max-width:60ch;}
 
   /* ---------- contact ---------- */
 
   .contact{
-    background:var(--ink); color:var(--white); border-radius:20px;
-    padding:clamp(28px,4.5vw,52px);
-    display:grid; grid-template-columns:1fr 1fr; gap:clamp(24px,4vw,52px);
+    display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    gap:clamp(28px,5vw,76px); align-items:start;
   }
-  .contact h2{color:var(--white);}
-  .contact .lead{color:#b9bad6; margin-top:14px;}
-  .contact .rows{display:grid; gap:2px; margin-top:26px;}
-  .contact .row{
-    display:grid; grid-template-columns:120px 1fr; gap:14px;
-    padding:13px 0; border-bottom:1px solid #35375f; font-size:.96rem;
-  }
-  .contact .row .k{color:#9092b8; font-weight:500;}
-  .contact .row .v{font-weight:600;}
-  .contact .row .v a,.foot-links a,.foot-bot .legal a{display:inline-block; padding-block:10px; margin-block:-10px;}
-  .wa{transition:opacity .25s, transform .25s;}
-  .wa.wa-hide{opacity:0; transform:scale(.6); pointer-events:none;}
-  .contact .row a{text-decoration:none;}
-  .contact .row a:hover{color:var(--amber);}
+  .contact .lead{margin-top:18px;}
+  .rows{margin-top:32px; border-top:1px solid var(--hair);}
+  .row{display:grid; grid-template-columns:118px minmax(0,1fr); gap:12px; padding:15px 0; border-bottom:1px solid var(--hair);}
+  .row .k{color:var(--dim); font-size:.94rem;}
+  .row .v{font-weight:600; overflow-wrap:anywhere;}
+  .row a{text-decoration:none;}
+  .row a:hover{text-decoration:underline; text-decoration-color:var(--cyan); text-underline-offset:4px;}
+  .wa-btn{margin-top:28px;}
+  .wa-btn svg{width:20px; height:20px; flex:0 0 auto;}
 
-  .form{background:var(--panel); border-radius:16px; padding:24px 22px; color:var(--ink);}
-  .form h3{margin-bottom:16px;}
-  .field{display:grid; gap:6px; margin-bottom:14px;}
-  .field label{font-size:.85rem; font-weight:600;}
-  .field input,.field textarea,.field select{
-    font-family:var(--body); font-size:.95rem; padding:11px 13px;
-    border:1.5px solid var(--line); border-radius:10px; background:var(--paper); color:var(--ink);
-    min-width:0; width:100%; max-width:100%;
+  .form{background:var(--paper); color:var(--navy); border-radius:var(--r-l); padding:clamp(22px,3vw,36px);}
+  .form h3{font-size:1.35rem;}
+  .field{margin-top:16px;}
+  .field label{display:block; font-weight:600; font-size:.9rem; margin-bottom:6px;}
+  .field input, .field select, .field textarea{
+    width:100%; font-family:var(--body); font-size:1rem; color:var(--navy);
+    background:var(--mist); border:1.5px solid transparent; border-radius:12px; padding:12px 14px;
   }
-  .field input:focus,.field textarea:focus,.field select:focus{outline:2px solid var(--cyan); outline-offset:1px; border-color:var(--cyan);}
-  .form .btn{width:100%; margin-top:4px;}
-  .form .mini{font-size:.82rem; color:var(--muted); margin-top:11px; text-align:center;}
+  .field textarea{resize:vertical; min-height:92px;}
+  .field select{
+    -webkit-appearance:none; appearance:none; cursor:pointer; padding-right:42px;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%231a1b3a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4 6 4 4 4-4'/%3E%3C/svg%3E");
+    background-repeat:no-repeat; background-position:right 14px center; background-size:16px;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus{outline:none; border-color:var(--cyan-ink); background:#fff;}
+  .field ::placeholder{color:#8a8da8;}
+  .form .btn{width:100%; margin-top:22px;}
+  .mini{font-size:.85rem; color:var(--muted); margin-top:12px;}
+  .mini a{color:var(--cyan-ink); font-weight:700;}
 
   /* ---------- footer ---------- */
 
-  footer.site{background:var(--panel); border-top:1px solid var(--line); padding-block:34px 28px;}
-  .foot-top{display:flex; gap:20px; flex-wrap:wrap; align-items:center; padding-bottom:22px; border-bottom:1px solid var(--line);}
-  .foot-top .tagline{color:var(--muted); font-size:.93rem;}
-  .foot-links{margin-left:auto; display:flex; gap:20px; flex-wrap:wrap; font-size:.9rem;}
-  .foot-links a{color:var(--muted); text-decoration:none; font-weight:500;}
-  .foot-links a:hover{color:var(--ink);}
-  .foot-bot{display:flex; justify-content:space-between; align-items:center; gap:10px 22px; flex-wrap:wrap; padding-top:18px; font-size:.85rem; color:var(--muted);}
-  .foot-bot .legal{display:flex; gap:18px;}
-  .foot-bot .legal a{color:var(--muted); text-decoration:none; font-weight:500;}
-  .foot-bot .legal a:hover{color:var(--ink); text-decoration:underline;}
+  footer.site{background:var(--night); color:var(--dim); border-top:1px solid rgba(255,255,255,.1); padding-block:34px 40px; font-size:.93rem;}
+  .foot-top{display:flex; align-items:center; gap:14px 28px; flex-wrap:wrap;}
+  .foot-links{margin-left:auto; display:flex; gap:10px 24px; flex-wrap:wrap;}
+  footer.site a{text-decoration:none;}
+  footer.site a:hover{color:#fff;}
+  .foot-bot{
+    display:flex; justify-content:space-between; gap:10px 24px; flex-wrap:wrap;
+    margin-top:24px; padding-top:20px; border-top:1px solid rgba(255,255,255,.08); font-size:.86rem;
+  }
+  .legal{display:flex; gap:10px 22px; flex-wrap:wrap;}
 
   /* ---------- whatsapp ---------- */
 
   .wa{
-    position:fixed; right:18px; bottom:calc(18px + env(safe-area-inset-bottom,0px)); z-index:60;
+    position:fixed; right:18px; bottom:18px; z-index:60;
     width:56px; height:56px; border-radius:50%; background:#25d366;
-    display:flex; align-items:center; justify-content:center;
-    box-shadow:0 12px 26px -10px rgba(0,0,0,.4); text-decoration:none;
-    border:none; cursor:pointer;
+    display:grid; place-items:center;
+    box-shadow:0 14px 28px -12px rgba(0,0,0,.55);
+    transition:opacity .2s ease, transform .2s ease;
   }
   .wa svg{width:30px; height:30px;}
+  .wa.wa-hide{opacity:0; pointer-events:none; transform:scale(.85);}
   .wa-bubble{
-    position:fixed; right:84px; bottom:calc(30px + env(safe-area-inset-bottom,0px)); z-index:60;
-    background:var(--ink); color:var(--white); font-size:.88rem; font-weight:500;
-    padding:10px 15px; border-radius:11px; box-shadow:0 12px 26px -14px rgba(0,0,0,.5);
+    position:fixed; right:86px; bottom:25px; z-index:60;
+    background:var(--navy); color:#fff; font-size:.88rem; font-weight:600; line-height:1.4;
+    padding:10px 15px; border-radius:14px; box-shadow:0 12px 26px -14px rgba(0,0,0,.5);
     max-width:210px;
   }
-
-  /* ---------- preview banner ---------- */
-
 
   /* ---------- responsive ---------- */
 
   @media (max-width:980px){
-    .hero-in{grid-template-columns:1fr;}
-    .steps{grid-template-columns:repeat(2,1fr);}
-    .demos{grid-template-columns:repeat(2,1fr);}
-    .case{grid-template-columns:1fr;}
-    .packs{grid-template-columns:repeat(2,1fr);}
-    .over{grid-template-columns:1fr;}
-    .contact{grid-template-columns:1fr;}
-    .head{grid-template-columns:1fr;}
     nav.main{display:none;}
     .bar > .btn{display:none;}
     .menu-btn{display:block;}
-    .strip-in{grid-template-columns:1fr; gap:20px;}
+    .langsw{margin-left:auto;}
+    .menu-btn{margin-left:0;}
+
+    .hero-in{grid-template-columns:1fr; gap:44px;}
+    .reel{justify-self:center; width:min(74vw,290px);}
+    .head{grid-template-columns:1fr;}
+    .case{grid-template-columns:1fr;}
+    .phones{
+      display:flex; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;
+      margin-inline:calc(var(--gut) * -1); padding:8px var(--gut) 18px; scroll-padding-inline:var(--gut);
+    }
+    .pd{flex:0 0 min(64vw,236px); scroll-snap-align:start;}
+    .steps{grid-template-columns:repeat(2,minmax(0,1fr)); row-gap:36px;}
+    .packs{grid-template-columns:1fr; max-width:520px;}
+    .pack .for{min-height:0;}
+    .onderhoud{max-width:520px;}
+    .faq-grid{grid-template-columns:1fr;}
+    .faq-intro{position:static;}
+    .contact{grid-template-columns:1fr;}
   }
-  @media (max-width:620px){
+  @media (max-width:680px){
+    body{font-size:16.5px;}
+    .usps-in{grid-template-columns:1fr;}
+    .usp{padding:20px 0; border-left:0; border-top:1px solid var(--line);}
+    .usp:first-child{border-top:0; padding-top:0;}
+    .usp:last-child{padding-bottom:0;}
+    .hero .cta .btn{width:100%;}
     .steps{grid-template-columns:1fr;}
-    .demos{grid-template-columns:1fr;}
-    .packs{grid-template-columns:1fr;}
     .onderhoud{grid-template-columns:1fr;}
-    .onderhoud .right{text-align:left;}
-    .contact .row{grid-template-columns:1fr; gap:2px;}
+    .onderhoud .right{text-align:left; align-items:flex-start;}
+    .over{grid-template-columns:1fr;}
+    .row{grid-template-columns:96px minmax(0,1fr);}
     .wa-bubble{display:none;}
-    .foot-links{margin-left:0;}
+    .foot-links{margin-left:0; width:100%;}
+    footer.site{padding-bottom:92px;}
   }
   @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
     *{transition:none !important;}
   }
 </style>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="tick" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#101128" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="arr" viewBox="0 0 16 16"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></symbol>
+</svg>
 
 <header class="site">
   <div class="wrap">
     <div class="bar">
-      <a class="logo" href="#top">
+      <a class="logo" href="#top" aria-label="byXavio">
         <span class="wm"><span class="by">by</span><span class="x">X</span>avio</span>
       </a>
       <nav class="main" aria-label="Hoofdmenu">
         <ul>
-          <li><a href="#hoe" data-i18n="nav.hoe">Hoe werkt het</a></li>
           <li><a href="#voorbeelden" data-i18n="nav.voorbeelden">Voorbeelden</a></li>
+          <li><a href="#hoe" data-i18n="nav.hoe">Hoe werkt het</a></li>
           <li><a href="#pakketten" data-i18n="nav.pakketten">Pakketten</a></li>
           <li><a href="#overmij" data-i18n="nav.overmij">Over mij</a></li>
         </ul>
@@ -500,8 +530,8 @@
     </div>
     <div id="mobnav">
       <ul>
-        <li><a href="#hoe" data-i18n="nav.hoe">Hoe werkt het</a></li>
         <li><a href="#voorbeelden" data-i18n="nav.voorbeelden">Voorbeelden</a></li>
+        <li><a href="#hoe" data-i18n="nav.hoe">Hoe werkt het</a></li>
         <li><a href="#pakketten" data-i18n="nav.pakketten">Pakketten</a></li>
         <li><a href="#overmij" data-i18n="nav.overmij">Over mij</a></li>
         <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
@@ -511,106 +541,67 @@
   </div>
 </header>
 
+<main>
+
 <!-- ============ HERO ============ -->
-<div class="hero" id="top">
+<div class="hero dark" id="top">
   <div class="wrap">
     <div class="hero-in">
       <div>
-        <p class="eyebrow" data-i18n="hero.eyebrow">Webdesign uit Purmerend &middot; voor kleine bedrijven en zzp&rsquo;ers</p>
-        <h1 data-i18n-html="hero.h1">Een website die <span class="hl">klopt</span>, zonder poespas.</h1>
+        <h1 data-i18n="hero.h1">Je website live binnen een week.</h1>
         <p class="lead" data-i18n="hero.lead">Ik bouw duidelijke, snelle websites voor kleine ondernemers in Purmerend en omgeving, van eerste ontwerp tot een pagina die klanten daadwerkelijk kunnen vinden en gebruiken.</p>
         <div class="cta">
           <a class="btn btn-cyan" href="#contact" data-i18n="hero.cta1">Vraag een gratis kennismaking aan</a>
-          <a class="btn btn-outline" href="#voorbeelden" data-i18n="hero.cta2">Bekijk voorbeelden</a>
+          <a class="btn btn-ghost" href="#voorbeelden" data-i18n="hero.cta2">Bekijk voorbeelden</a>
         </div>
-        <div class="under">
-          <span><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="hero.under1">Vanaf &euro;195</span></span>
-          <span><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="hero.under2">Live binnen een week</span></span>
-          <span><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="hero.under3">Geen abonnement</span></span>
-        </div>
+        <ul class="facts">
+          <li><svg class="tick" aria-hidden="true"><use href="#tick"/></svg><span data-i18n="hero.under1">Vanaf &euro;195</span></li>
+          <li><svg class="tick" aria-hidden="true"><use href="#tick"/></svg><span data-i18n="hero.under2">Live binnen een week</span></li>
+          <li><svg class="tick" aria-hidden="true"><use href="#tick"/></svg><span data-i18n="hero.under3">Geen abonnement</span></li>
+        </ul>
       </div>
 
-      <div>
-        <div class="mock" aria-label="Live voorbeeld van een website door byXavio, op laptop en telefoon">
-          <div class="mock-blob"></div>
-          <div class="laptop">
-            <div class="laptop-bar"><i></i><i></i><i></i><span>winkelaar.byxavio.nl</span></div>
-            <div class="screen" data-w="1280" data-h="800"><iframe src="https://winkelaar.byxavio.nl/" title="Voorbeeldsite Bouwbedrijf Winkelaar" loading="lazy" tabindex="-1" scrolling="no"></iframe></div>
-            <div class="laptop-base"></div>
-          </div>
-          <div class="phone">
-            <div class="phone-notch"></div>
-            <div class="screen" data-w="390" data-h="780"><iframe src="https://demo1.byxavio.nl/" title="Voorbeeldsite kapperszaak Slijperij" loading="lazy" tabindex="-1" scrolling="no"></iframe></div>
-          </div>
-          <a class="mock-tag" href="#voorbeelden">Live voorbeeld &rarr;</a>
+      <div class="reel">
+        <div class="reel-frame">
+          <video id="reel" muted loop playsinline preload="none" poster="reel-poster.jpg" width="720" height="1280" aria-label="Korte video: je klant zoekt je op, vindt geen website en belt je concurrent. byXavio zet je zaak binnen een week online, vanaf &euro;195." data-i18n-attr-aria-label="video.aria">
+            <source src="reel.mp4" type="video/mp4">
+          </video>
         </div>
+        <button class="reel-btn paused" id="reelBtn" type="button">
+          <svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="2" width="3.6" height="12" rx="1"/><rect x="9.4" y="2" width="3.6" height="12" rx="1"/></svg>
+          <svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 2.3v11.4a.6.6 0 0 0 .9.5l9-5.7a.6.6 0 0 0 0-1L5.4 1.8a.6.6 0 0 0-.9.5Z"/></svg>
+          <span class="sr t-pause" data-i18n="video.pause">Video pauzeren</span>
+          <span class="sr t-play" data-i18n="video.play">Video afspelen</span>
+        </button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ============ STRIP ============ -->
-<div class="strip">
+<!-- ============ WAAROM ============ -->
+<section class="usps" aria-labelledby="waaromTitel">
   <div class="wrap">
-    <div class="strip-in">
-      <div><span class="n">01</span><h3 data-i18n="strip.1.title">Vaste prijs vooraf</h3><p data-i18n="strip.1.desc">Je weet wat het kost voordat ik begin. Geen verrassingen achteraf.</p></div>
-      <div><span class="n">02</span><h3 data-i18n="strip.2.title">Eigen ontwerp</h3><p data-i18n="strip.2.desc">Volledig op jouw bedrijf gemaakt, geen sjabloon van de plank.</p></div>
-      <div><span class="n">03</span><h3 data-i18n="strip.3.title">Persoonlijk contact</h3><p data-i18n="strip.3.desc">Je hebt mij, van start tot livegang. Geen wisselende accountmanagers.</p></div>
-    </div>
-  </div>
-</div>
-
-<!-- ============ HOE WERKT HET ============ -->
-<section class="band" id="hoe">
-  <div class="wrap">
-    <div class="head">
-      <div>
-        <p class="eyebrow" data-i18n="nav.hoe">Hoe werkt het</p>
-        <h2 data-i18n="hoe.h2">Van eerste bericht tot live site.</h2>
-      </div>
-      <p class="lead" data-i18n="hoe.lead">Geen ingewikkeld traject: vier duidelijke stappen, met mij als vast aanspreekpunt.</p>
-    </div>
-    <div class="steps">
-      <div class="step">
-        <span class="num" data-i18n="step1.num">STAP 01</span>
-        <h3 data-i18n="step1.title">Kennismaking</h3>
-        <p data-i18n="step1.desc">Je stuurt een bericht of vult het formulier in. We bespreken kort wat je nodig hebt, helemaal vrijblijvend.</p>
-      </div>
-      <div class="step">
-        <span class="num" data-i18n="step2.num">STAP 02</span>
-        <h3 data-i18n="step2.title">Ontwerp</h3>
-        <p data-i18n="step2.desc">Ik maak een ontwerp op maat dat past bij jouw bedrijf. Geen kant-en-klaar sjabloon.</p>
-      </div>
-      <div class="step">
-        <span class="num" data-i18n="step3.num">STAP 03</span>
-        <h3 data-i18n="step3.title">Feedback</h3>
-        <p data-i18n="step3.desc">Je geeft feedback en ik verwerk de aanpassingen, tot de site precies klopt.</p>
-      </div>
-      <div class="step">
-        <span class="num" data-i18n="step4.num">STAP 04</span>
-        <h3 data-i18n="step4.title">Livegang</h3>
-        <p data-i18n="step4.desc">Je site gaat live en is vindbaar. Ook daarna blijf ik gewoon bereikbaar voor vragen.</p>
-      </div>
+    <h2 class="sr" id="waaromTitel" data-i18n="waarom.title">Waarom bedrijven voor mij kiezen</h2>
+    <div class="usps-in">
+      <div class="usp"><h3 data-i18n="strip.1.title">Vaste prijs vooraf</h3><p data-i18n="strip.1.desc">Je weet wat het kost voordat ik begin. Geen verrassingen achteraf.</p></div>
+      <div class="usp"><h3 data-i18n="strip.2.title">Eigen ontwerp</h3><p data-i18n="strip.2.desc">Volledig op jouw bedrijf gemaakt, geen sjabloon van de plank.</p></div>
+      <div class="usp"><h3 data-i18n="strip.3.title">Persoonlijk contact</h3><p data-i18n="strip.3.desc">Je hebt mij, van start tot livegang. Geen wisselende accountmanagers.</p></div>
     </div>
   </div>
 </section>
 
 <!-- ============ VOORBEELDEN ============ -->
-<section class="band alt" id="voorbeelden">
+<section class="band mist" id="voorbeelden">
   <div class="wrap">
     <div class="head">
-      <div>
-        <p class="eyebrow" data-i18n="nav.voorbeelden">Voorbeelden</p>
-        <h2 data-i18n="voorb.h2">Zo kan jouw site eruitzien.</h2>
-      </div>
+      <h2 data-i18n="voorb.h2">Zo kan jouw site eruitzien.</h2>
       <p class="lead" data-i18n="voorb.lead">Een site voor een echte klant, en vier voorbeelden uit verschillende branches, elk met een eigen kleur, opbouw en formulier.</p>
     </div>
 
     <article class="case">
-      <div class="case-win">
-        <div class="laptop-bar"><i></i><i></i><i></i><span>slingerottertje30.com</span></div>
+      <div class="win">
+        <div class="win-bar"><i></i><i></i><i></i><span>slingerottertje30.com</span></div>
         <div class="screen" data-w="1280" data-h="800"><iframe src="https://slingerottertje30.com/" title="Website van Slinger Ottertje 30" loading="lazy" tabindex="-1" scrolling="no"></iframe></div>
-        <a class="case-cover" href="https://slingerottertje30.com/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"></a>
       </div>
       <div class="case-body">
         <div class="case-meta">
@@ -624,92 +615,84 @@
           <li data-i18n="case.tag2">Beschikbaarheidskalender</li>
           <li data-i18n="case.tag3">Eigen domeinnaam</li>
         </ul>
-        <a class="btn btn-primary" href="https://slingerottertje30.com/" target="_blank" rel="noopener" data-i18n="case.go">Bekijk de website &rarr;</a>
+        <a class="btn btn-primary" href="https://slingerottertje30.com/" target="_blank" rel="noopener"><span data-i18n="case.go">Bekijk de website</span><svg class="arr" aria-hidden="true"><use href="#arr"/></svg></a>
       </div>
     </article>
 
-    <div class="notice">
-      <span aria-hidden="true">&#9432;</span>
+    <p class="notice">
+      <svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="7.5"/><path d="M9 8.2v4.4M9 5.4v.2"/></svg>
       <span data-i18n-html="notice.html"><b>Goed om te weten:</b> de vier sites hieronder zijn voorbeeldsites voor verzonnen bedrijven, gemaakt om te laten zien wat er kan. Je eigen site maak ik volledig op maat, of we gebruiken een van deze als basis.</span>
-    </div>
+    </p>
 
-    <div class="demos">
-      <article class="demo">
-        <svg class="art" viewBox="0 0 200 150" aria-hidden="true">
-          <rect width="200" height="150" fill="#fff2e9"/>
-          <circle cx="72" cy="58" r="13" fill="none" stroke="#1a1b3a" stroke-width="3.4"/>
-          <circle cx="72" cy="96" r="13" fill="none" stroke="#1a1b3a" stroke-width="3.4"/>
-          <path d="M82 50l52 52M82 104l52-52" stroke="#00d2df" stroke-width="3.8" stroke-linecap="round"/>
-          <rect x="140" y="66" width="34" height="6" rx="3" fill="#1a1b3a"/>
-          <rect x="140" y="80" width="24" height="6" rx="3" fill="#ffb23f"/>
-        </svg>
-        <div class="body">
-          <span class="kind" data-i18n="demo1.kind">Kapperszaak</span>
-          <h3>Slijperij</h3>
-          <p data-i18n="demo1.desc">Diensten, openingstijden en een afsprakenformulier.</p>
-          <a class="go" href="https://demo1.byxavio.nl" target="_blank" rel="noopener" data-i18n="demo.go">Bekijk demo &rarr;</a>
-        </div>
+    <div class="phones">
+      <article class="pd">
+        <div class="pd-phone"><div class="screen" data-w="390" data-h="800"><iframe src="https://demo1.byxavio.nl/" title="Voorbeeldsite kapperszaak Slijperij" loading="lazy" tabindex="-1" scrolling="no"></iframe></div></div>
+        <span class="kind" data-i18n="demo1.kind">Kapperszaak</span>
+        <h3><a href="https://demo1.byxavio.nl" target="_blank" rel="noopener">Slijperij</a></h3>
+        <p data-i18n="demo1.desc">Diensten, openingstijden en een afsprakenformulier.</p>
+        <span class="go" aria-hidden="true"><span data-i18n="demo.go">Bekijk demo</span><svg class="arr"><use href="#arr"/></svg></span>
       </article>
 
-      <article class="demo">
-        <svg class="art" viewBox="0 0 200 150" aria-hidden="true">
-          <rect width="200" height="150" fill="#d6f6f9"/>
-          <circle cx="100" cy="75" r="36" fill="#ffffff" stroke="#1a1b3a" stroke-width="3.4"/>
-          <circle cx="100" cy="75" r="18" fill="#ffe6bd"/>
-          <path d="M46 48v34M46 48c-5 0-8 4-8 9s3 9 8 9M46 48c5 0 8 4 8 9s-3 9-8 9M46 90v14" stroke="#1a1b3a" stroke-width="3" stroke-linecap="round" fill="none"/>
-          <path d="M156 48v56M148 48v18a8 8 0 0 0 16 0V48" stroke="#00d2df" stroke-width="3" stroke-linecap="round" fill="none"/>
-        </svg>
-        <div class="body">
-          <span class="kind" data-i18n="demo2.kind">Bistro &amp; keuken</span>
-          <h3>Kastanje</h3>
-          <p data-i18n="demo2.desc">Menukaart, openingstijden en een reserveringsformulier.</p>
-          <a class="go" href="https://demo2.byxavio.nl" target="_blank" rel="noopener" data-i18n="demo.go">Bekijk demo &rarr;</a>
-        </div>
+      <article class="pd">
+        <div class="pd-phone"><div class="screen" data-w="390" data-h="800"><iframe src="https://demo2.byxavio.nl/" title="Voorbeeldsite bistro Kastanje" loading="lazy" tabindex="-1" scrolling="no"></iframe></div></div>
+        <span class="kind" data-i18n="demo2.kind">Bistro &amp; keuken</span>
+        <h3><a href="https://demo2.byxavio.nl" target="_blank" rel="noopener">Kastanje</a></h3>
+        <p data-i18n="demo2.desc">Menukaart, openingstijden en een reserveringsformulier.</p>
+        <span class="go" aria-hidden="true"><span data-i18n="demo.go">Bekijk demo</span><svg class="arr"><use href="#arr"/></svg></span>
       </article>
 
-      <article class="demo">
-        <svg class="art" viewBox="0 0 200 150" aria-hidden="true">
-          <rect width="200" height="150" fill="#ffe8db"/>
-          <path d="M78 44h44l22 16-12 14-8-6v40H76v-40l-8 6-12-14 22-16Z" fill="#ffffff" stroke="#1a1b3a" stroke-width="3.4" stroke-linejoin="round"/>
-          <path d="M88 44a12 12 0 0 0 24 0" fill="none" stroke="#00d2df" stroke-width="3.2"/>
-          <circle cx="100" cy="88" r="7" fill="#ffb23f"/>
-        </svg>
-        <div class="body">
-          <span class="kind" data-i18n="demo3.kind">Kinderkleding</span>
-          <h3>Wolkje</h3>
-          <p data-i18n="demo3.desc">Collectie, maten en een pasafspraak-formulier.</p>
-          <a class="go" href="https://wolkje.byxavio.nl" target="_blank" rel="noopener" data-i18n="demo.go">Bekijk demo &rarr;</a>
-        </div>
+      <article class="pd">
+        <div class="pd-phone"><div class="screen" data-w="390" data-h="800"><iframe src="https://wolkje.byxavio.nl/" title="Voorbeeldsite kinderkleding Wolkje" loading="lazy" tabindex="-1" scrolling="no"></iframe></div></div>
+        <span class="kind" data-i18n="demo3.kind">Kinderkleding</span>
+        <h3><a href="https://wolkje.byxavio.nl" target="_blank" rel="noopener">Wolkje</a></h3>
+        <p data-i18n="demo3.desc">Collectie, maten en een pasafspraak-formulier.</p>
+        <span class="go" aria-hidden="true"><span data-i18n="demo.go">Bekijk demo</span><svg class="arr"><use href="#arr"/></svg></span>
       </article>
 
-      <article class="demo">
-        <svg class="art" viewBox="0 0 200 150" aria-hidden="true">
-          <rect width="200" height="150" fill="#eceaf6"/>
-          <path d="M44 104V66l32-24 32 24v38Z" fill="#ffffff" stroke="#1a1b3a" stroke-width="3.4" stroke-linejoin="round"/>
-          <rect x="64" y="80" width="24" height="24" fill="#ffb23f"/>
-          <rect x="120" y="70" width="38" height="34" fill="#00d2df"/>
-          <rect x="120" y="58" width="38" height="8" fill="#1a1b3a"/>
-          <rect x="40" y="106" width="122" height="7" rx="3.5" fill="#1a1b3a"/>
-        </svg>
-        <div class="body">
-          <span class="kind" data-i18n="demo4.kind">Bouwbedrijf</span>
-          <h3>Winkelaar</h3>
-          <p data-i18n="demo4.desc">Specialismen, werkwijze en een projectenoverzicht.</p>
-          <a class="go" href="https://winkelaar.byxavio.nl" target="_blank" rel="noopener" data-i18n="demo.go">Bekijk demo &rarr;</a>
-        </div>
+      <article class="pd">
+        <div class="pd-phone"><div class="screen" data-w="390" data-h="800"><iframe src="https://winkelaar.byxavio.nl/" title="Voorbeeldsite Bouwbedrijf Winkelaar" loading="lazy" tabindex="-1" scrolling="no"></iframe></div></div>
+        <span class="kind" data-i18n="demo4.kind">Bouwbedrijf</span>
+        <h3><a href="https://winkelaar.byxavio.nl" target="_blank" rel="noopener">Winkelaar</a></h3>
+        <p data-i18n="demo4.desc">Specialismen, werkwijze en een projectenoverzicht.</p>
+        <span class="go" aria-hidden="true"><span data-i18n="demo.go">Bekijk demo</span><svg class="arr"><use href="#arr"/></svg></span>
       </article>
     </div>
   </div>
 </section>
 
-<!-- ============ PAKKETTEN ============ -->
-<section class="band" id="pakketten">
+<!-- ============ HOE WERKT HET ============ -->
+<section class="band" id="hoe">
   <div class="wrap">
     <div class="head">
-      <div>
-        <p class="eyebrow" data-i18n="nav.pakketten">Pakketten</p>
-        <h2 data-i18n="pak.h2">Kies wat bij je bedrijf past.</h2>
-      </div>
+      <h2 data-i18n="hoe.h2">Van eerste bericht tot live site.</h2>
+      <p class="lead" data-i18n="hoe.lead">Geen ingewikkeld traject: vier duidelijke stappen, met mij als vast aanspreekpunt.</p>
+    </div>
+    <ol class="steps">
+      <li class="step">
+        <h3 data-i18n="step1.title">Kennismaking</h3>
+        <p data-i18n="step1.desc">Je stuurt een bericht of vult het formulier in. We bespreken kort wat je nodig hebt, helemaal vrijblijvend.</p>
+      </li>
+      <li class="step">
+        <h3 data-i18n="step2.title">Ontwerp</h3>
+        <p data-i18n="step2.desc">Ik maak een ontwerp op maat dat past bij jouw bedrijf. Geen kant-en-klaar sjabloon.</p>
+      </li>
+      <li class="step">
+        <h3 data-i18n="step3.title">Feedback</h3>
+        <p data-i18n="step3.desc">Je geeft feedback en ik verwerk de aanpassingen, tot de site precies klopt.</p>
+      </li>
+      <li class="step">
+        <h3 data-i18n="step4.title">Livegang</h3>
+        <p data-i18n="step4.desc">Je site gaat live en is vindbaar. Ook daarna blijf ik gewoon bereikbaar voor vragen.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ PAKKETTEN ============ -->
+<section class="band mist" id="pakketten">
+  <div class="wrap">
+    <div class="head">
+      <h2 data-i18n="pak.h2">Kies wat bij je bedrijf past.</h2>
       <p class="lead" data-i18n="pak.lead">Drie opties, zodat je vooraf weet wat je krijgt en wat het kost. Past er geen precies? Dan stel ik in een kort gesprek iets op maat samen.</p>
     </div>
 
@@ -719,11 +702,11 @@
         <p class="for" data-i18n="pack.basis.for">Een volwaardige site om snel en overzichtelijk online te staan &mdash; geen halfbakken instapversie.</p>
         <div class="prijs"><span class="v">&euro;195</span><span class="u" data-i18n="pack.basis.unit">eenmalig, excl. btw</span></div>
         <ul>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pack.basis.li1">E&eacute;n ronde feedback op het ontwerp inbegrepen</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pack.basis.li2">Een pagina met de belangrijkste info</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pack.basis.li3">Duidelijke contactgegevens en openingstijden</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pack.basis.li4">Werkt goed op telefoon en tablet</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pack.basis.li5">Oplevering binnen een week</span></li>
+          <li><svg class="tick" aria-hidden="true"><use href="#tick"/></svg><span data-i18n="pack.basis.li1">E&eacute;n ronde feedback op het ontwerp inbegrepen</span></li>
+          <li><svg class="tick" aria-hidden="true"><use href="#tick"/></svg><span data-i18n="pack.basis.li2">Een pagina met de belangrijkste info</span></li>
+          <li><svg class="tick" aria-hidden="true"><use href="#tick"/></svg><span data-i18n="pack.basis.li3">Duidelijke contactgegevens en openingstijden</span></li>
+          <li><svg class="tick" aria-hidden="true"><use href="#tick"/></svg><span data-i18n="pack.basis.li4">Werkt goed op telefoon en tablet</span></li>
+          <li><svg class="tick" aria-hidden="true"><use href="#tick"/></svg><span data-i18n="pack.basis.li5">Oplevering binnen een week</span></li>
         </ul>
         <a class="btn btn-outline" href="#contact" data-i18n="pack.basis.btn">Bekijk Basis</a>
       </div>
@@ -734,11 +717,11 @@
         <p class="for" data-i18n="pack.compleet.for">Voor bedrijven die klanten willen laten reageren, niet alleen lezen.</p>
         <div class="prijs"><span class="v">&euro;300</span><span class="u" data-i18n="pack.basis.unit">eenmalig, excl. btw</span></div>
         <ul>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pack.compleet.li1">Alles uit Basis</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pack.compleet.li2">Meerdere pagina&rsquo;s of secties</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pack.compleet.li3">Eigen contact- of afsprakenformulier</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pack.compleet.li4">Volledig eigen ontwerp, geen sjabloon</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pack.compleet.li5">Basis zoekmachine-optimalisatie</span></li>
+          <li><svg class="tick" aria-hidden="true"><use href="#tick"/></svg><span data-i18n="pack.compleet.li1">Alles uit Basis</span></li>
+          <li><svg class="tick" aria-hidden="true"><use href="#tick"/></svg><span data-i18n="pack.compleet.li2">Meerdere pagina&rsquo;s of secties</span></li>
+          <li><svg class="tick" aria-hidden="true"><use href="#tick"/></svg><span data-i18n="pack.compleet.li3">Eigen contact- of afsprakenformulier</span></li>
+          <li><svg class="tick" aria-hidden="true"><use href="#tick"/></svg><span data-i18n="pack.compleet.li4">Volledig eigen ontwerp, geen sjabloon</span></li>
+          <li><svg class="tick" aria-hidden="true"><use href="#tick"/></svg><span data-i18n="pack.compleet.li5">Basis zoekmachine-optimalisatie</span></li>
         </ul>
         <a class="btn btn-cyan" href="#contact" data-i18n="pack.compleet.btn">Kies dit pakket</a>
       </div>
@@ -748,10 +731,10 @@
         <p class="for" data-i18n="pack.opmaat.for">Voor bedrijven met extra functionaliteit en doorlopende wensen.</p>
         <div class="prijs"><span class="v">&euro;450</span><span class="u" data-i18n="pack.opmaat.unit">vanaf, eenmalig, excl. btw</span></div>
         <ul>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pack.opmaat.li1">Alles uit Compleet</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pack.opmaat.li2">Formulier op maat, zoals reserveringen of aanvragen</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pack.opmaat.li3">Uitbreidbaar met webshop of agenda</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="pack.opmaat.li4">Drie maanden ondersteuning inbegrepen</span></li>
+          <li><svg class="tick" aria-hidden="true"><use href="#tick"/></svg><span data-i18n="pack.opmaat.li1">Alles uit Compleet</span></li>
+          <li><svg class="tick" aria-hidden="true"><use href="#tick"/></svg><span data-i18n="pack.opmaat.li2">Formulier op maat, zoals reserveringen of aanvragen</span></li>
+          <li><svg class="tick" aria-hidden="true"><use href="#tick"/></svg><span data-i18n="pack.opmaat.li3">Uitbreidbaar met webshop of agenda</span></li>
+          <li><svg class="tick" aria-hidden="true"><use href="#tick"/></svg><span data-i18n="pack.opmaat.li4">Drie maanden ondersteuning inbegrepen</span></li>
         </ul>
         <a class="btn btn-outline" href="#contact" data-i18n="pack.opmaat.btn">Bekijk Op maat</a>
       </div>
@@ -760,17 +743,17 @@
     <div class="onderhoud">
       <div>
         <h3 data-i18n="onderhoud.title">Jaarlijks onderhoud</h3>
-        <p class="lead" style="font-size:.95rem; margin-top:5px;" data-i18n="onderhoud.lead">Voor wie na oplevering niet meer naar de site hoeft om te kijken &mdash; ik houd &rsquo;m actueel en online.</p>
+        <p class="sub" data-i18n="onderhoud.lead">Voor wie na oplevering niet meer naar de site hoeft om te kijken &mdash; ik houd &rsquo;m actueel en online.</p>
         <ul>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="onderhoud.li1">Site bijwerken met nieuwe info en foto&rsquo;s</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="onderhoud.li2">Hosting inbegrepen</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="onderhoud.li3">Domeinnaam inbegrepen</span></li>
+          <li><svg class="tick" aria-hidden="true"><use href="#tick"/></svg><span data-i18n="onderhoud.li1">Site bijwerken met nieuwe info en foto&rsquo;s</span></li>
+          <li><svg class="tick" aria-hidden="true"><use href="#tick"/></svg><span data-i18n="onderhoud.li2">Hosting inbegrepen</span></li>
+          <li><svg class="tick" aria-hidden="true"><use href="#tick"/></svg><span data-i18n="onderhoud.li3">Domeinnaam inbegrepen</span></li>
         </ul>
       </div>
       <div class="right">
         <span class="v">&euro;149</span>
         <span class="u" data-i18n="onderhoud.unit">per jaar, excl. btw</span>
-        <a class="btn btn-primary btn-sm" href="#contact" style="margin-top:12px;" data-i18n="onderhoud.btn">Vraag aan</a>
+        <a class="btn btn-primary btn-sm" href="#contact" data-i18n="onderhoud.btn">Vraag aan</a>
       </div>
     </div>
 
@@ -779,77 +762,63 @@
 </section>
 
 <!-- ============ FAQ ============ -->
-<section class="band alt">
+<section class="band" id="faq">
   <div class="wrap">
-    <div class="head">
-      <div>
-        <p class="eyebrow" data-i18n="faq.eyebrow">Veelgestelde vragen</p>
+    <div class="faq-grid">
+      <div class="faq-intro">
         <h2 data-i18n="faq.h2">Nog vragen? Hier alvast antwoord.</h2>
+        <p class="lead" data-i18n="faq.lead">Staat je vraag er niet bij? Stuur een berichtje, dan krijg je meestal dezelfde dag antwoord.</p>
       </div>
-      <p class="lead" data-i18n="faq.lead">Staat je vraag er niet bij? Stuur een berichtje, dan krijg je meestal dezelfde dag antwoord.</p>
-    </div>
 
-    <div class="faq">
-      <details open>
-        <summary><span data-i18n="faq1.q">Hoe lang duurt het voordat mijn site live staat?</span><span class="ic" aria-hidden="true"></span></summary>
-        <p data-i18n="faq1.a">Meestal binnen een week na akkoord, afhankelijk van hoe snel je teksten en foto&rsquo;s aanlevert en hoeveel feedbackrondes er nodig zijn.</p>
-      </details>
-      <details>
-        <summary><span data-i18n="faq2.q">Wat moet ik zelf aanleveren?</span><span class="ic" aria-hidden="true"></span></summary>
-        <p data-i18n="faq2.a">Teksten en foto&rsquo;s van je bedrijf werken het snelst. Heb je dat liever niet zelf, dan denk ik graag mee over de inhoud.</p>
-      </details>
-      <details>
-        <summary><span data-i18n="faq3.q">Kan ik mijn site later zelf aanpassen?</span><span class="ic" aria-hidden="true"></span></summary>
-        <p data-i18n="faq3.a">Kleine aanpassingen zijn na oplevering altijd bespreekbaar. Voor grotere wijzigingen kun je me gewoon benaderen.</p>
-      </details>
-      <details>
-        <summary><span data-i18n="faq4.q">Regel jij ook hosting en een domeinnaam?</span><span class="ic" aria-hidden="true"></span></summary>
-        <p data-i18n-html="faq4.a">Hosting en domeinnaam zitten niet inbegrepen bij de vaste prijs, maar dat kan ik wel voor je regelen: bekijk het <a href="#pakketten">jaarlijks onderhoud</a>-pakket, waarin hosting en domeinnaam gewoon inbegrepen zijn.</p>
-      </details>
-      <details>
-        <summary><span data-i18n="faq5.q">Wat kost het precies?</span><span class="ic" aria-hidden="true"></span></summary>
-        <p data-i18n-html="faq5.a">Vanaf &euro;195, afhankelijk van wat je nodig hebt. Bekijk de <a href="#pakketten">pakketten</a> voor een overzicht, of vraag een offerte op maat aan.</p>
-      </details>
-      <details>
-        <summary><span data-i18n="faq6.q">Wat als ik niet tevreden ben met het ontwerp?</span><span class="ic" aria-hidden="true"></span></summary>
-        <p data-i18n="faq6.a">Dan passen we het samen aan tot het klopt. Pas als je tevreden bent, gaat de site live.</p>
-      </details>
+      <div class="faq">
+        <details open>
+          <summary><span data-i18n="faq1.q">Hoe lang duurt het voordat mijn site live staat?</span><span class="ic" aria-hidden="true"></span></summary>
+          <p data-i18n="faq1.a">Meestal binnen een week na akkoord, afhankelijk van hoe snel je teksten en foto&rsquo;s aanlevert en hoeveel feedbackrondes er nodig zijn.</p>
+        </details>
+        <details>
+          <summary><span data-i18n="faq2.q">Wat moet ik zelf aanleveren?</span><span class="ic" aria-hidden="true"></span></summary>
+          <p data-i18n="faq2.a">Teksten en foto&rsquo;s van je bedrijf werken het snelst. Heb je dat liever niet zelf, dan denk ik graag mee over de inhoud.</p>
+        </details>
+        <details>
+          <summary><span data-i18n="faq3.q">Kan ik mijn site later zelf aanpassen?</span><span class="ic" aria-hidden="true"></span></summary>
+          <p data-i18n="faq3.a">Kleine aanpassingen zijn na oplevering altijd bespreekbaar. Voor grotere wijzigingen kun je me gewoon benaderen.</p>
+        </details>
+        <details>
+          <summary><span data-i18n="faq4.q">Regel jij ook hosting en een domeinnaam?</span><span class="ic" aria-hidden="true"></span></summary>
+          <p data-i18n-html="faq4.a">Hosting en domeinnaam zitten niet inbegrepen bij de vaste prijs, maar dat kan ik wel voor je regelen: bekijk het <a href="#pakketten">jaarlijks onderhoud</a>-pakket, waarin hosting en domeinnaam gewoon inbegrepen zijn.</p>
+        </details>
+        <details>
+          <summary><span data-i18n="faq5.q">Wat kost het precies?</span><span class="ic" aria-hidden="true"></span></summary>
+          <p data-i18n-html="faq5.a">Vanaf &euro;195, afhankelijk van wat je nodig hebt. Bekijk de <a href="#pakketten">pakketten</a> voor een overzicht, of vraag een offerte op maat aan.</p>
+        </details>
+        <details>
+          <summary><span data-i18n="faq6.q">Wat als ik niet tevreden ben met het ontwerp?</span><span class="ic" aria-hidden="true"></span></summary>
+          <p data-i18n="faq6.a">Dan passen we het samen aan tot het klopt. Pas als je tevreden bent, gaat de site live.</p>
+        </details>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ============ OVER MIJ ============ -->
-<section class="band" id="overmij">
+<section class="band mist" id="overmij">
   <div class="wrap">
-    <p class="eyebrow" data-i18n="nav.overmij">Over mij</p>
     <div class="over">
-      <div class="prose">
-        <div style="display:flex; align-items:center; gap:18px; margin-bottom:4px;">
-          <img src="djego.jpg" alt="Djego, oprichter van byXavio" data-i18n-attr-alt="over.img.alt" width="88" height="88" style="width:88px; height:88px; border-radius:50%; object-fit:cover; border:3px solid var(--white); box-shadow:0 10px 22px -12px rgba(26,27,58,.4); flex:0 0 auto;">
-          <h2 data-i18n="over.h2">Hoi, ik ben Djego.</h2>
-        </div>
-        <p style="margin-top:18px;" data-i18n="over.p1">Ik ben de persoon achter byXavio. Ik bouw websites voor kleine bedrijven en zzp&rsquo;ers omdat ik het leuk vind om iets tastbaars neer te zetten waar ondernemers echt iets aan hebben. Een site die klopt, snel laadt, en precies laat zien wie je bent.</p>
+      <img src="djego.jpg" alt="Djego, oprichter van byXavio" data-i18n-attr-alt="over.img.alt" width="600" height="600" loading="lazy">
+      <div>
+        <h2 data-i18n="over.h2">Hoi, ik ben Djego.</h2>
+        <p data-i18n="over.p1">Ik ben de persoon achter byXavio. Ik bouw websites voor kleine bedrijven en zzp&rsquo;ers omdat ik het leuk vind om iets tastbaars neer te zetten waar ondernemers echt iets aan hebben. Een site die klopt, snel laadt, en precies laat zien wie je bent.</p>
         <p data-i18n="over.p2">Geen overbodige poespas of ingewikkelde systemen: ik werk het liefst persoonlijk, zonder tussenpersonen of wisselende contactpersonen. Je hebt gewoon mij, van het eerste idee tot de dag dat je site live staat.</p>
-      </div>
-      <div class="waarom">
-        <h3 data-i18n="waarom.title">Waarom bedrijven voor mij kiezen</h3>
-        <ul>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="waarom.li1">Persoonlijk contact met mij, geen wisselende accountmanagers</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="waarom.li2">Vaste prijs vooraf, geen verrassingen achteraf</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="waarom.li3">Volledig eigen ontwerp, geen sjabloon van de plank</span></li>
-          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#00d2df"/><path d="M5.6 10.4l2.7 2.7 6-6.2" fill="none" stroke="#1a1b3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="waarom.li4">Bereikbaar na oplevering, ook voor kleine vragen</span></li>
-        </ul>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ============ CONTACT ============ -->
-<section class="band alt" id="contact">
+<section class="band dark" id="contact">
   <div class="wrap">
     <div class="contact">
       <div>
-        <p class="eyebrow" style="color:var(--amber);" data-i18n="contact.eyebrow">Contact</p>
         <h2 data-i18n="contact.h2">Even kennismaken?</h2>
         <p class="lead" data-i18n="contact.lead">Vertel kort wat je bedrijf doet en wat je zoekt. Je krijgt van mij een vrijblijvende offerte op maat, meestal dezelfde dag nog.</p>
         <div class="rows">
@@ -858,6 +827,7 @@
           <div class="row"><span class="k">KVK</span><span class="v">42165581</span></div>
           <div class="row"><span class="k" data-i18n="contact.row.btw">Btw-id</span><span class="v">NL005549301B15</span></div>
         </div>
+        <a class="btn btn-ghost wa-btn" href="https://wa.me/31626683986?text=Hoi%20Djego%2C%20ik%20heb%20een%20vraag%20over%20een%20website" target="_blank" rel="noopener"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C8.8 3 3 8.8 3 16c0 2.3.6 4.4 1.7 6.3L3 29l6.9-1.6c1.8 1 3.9 1.6 6.1 1.6 7.2 0 13-5.8 13-13S23.2 3 16 3Zm0 23.6c-2 0-3.9-.5-5.5-1.5l-.4-.2-4.1 1 1-4-.3-.4A10.5 10.5 0 0 1 5.4 16c0-5.8 4.8-10.6 10.6-10.6S26.6 10.2 26.6 16 21.8 26.6 16 26.6Zm6-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.1-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.5-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.1c-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.6s1.1 3 1.3 3.2c.1.2 2 3.2 5 4.4 1.8.7 2.5.8 3.4.7.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.5-.3Z"/></svg><span data-i18n="wa.aria">Stuur een WhatsApp-bericht</span></a>
       </div>
 
       <form class="form" id="offerteForm" action="https://formspree.io/f/mgavkkev" method="POST">
@@ -892,23 +862,24 @@
         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
         <button class="btn btn-cyan" type="submit" data-i18n="form.submit">Verstuur aanvraag</button>
         <p class="mini" id="formMini" data-i18n="form.mini1">Je gegevens worden alleen gebruikt om je aanvraag te beantwoorden.</p>
-        <p class="mini" style="margin-top:10px; text-align:center;" data-i18n-html="form.mini2">Liever appen? <a href="https://wa.me/31626683986?text=Hoi%20Djego%2C%20ik%20heb%20een%20vraag%20over%20een%20website" target="_blank" rel="noopener" style="color:var(--cyan-ink); font-weight:700; text-decoration:underline;">Stuur een WhatsApp-bericht</a></p>
       </form>
     </div>
   </div>
 </section>
 
+</main>
+
 <!-- ============ FOOTER ============ -->
 <footer class="site">
   <div class="wrap">
     <div class="foot-top">
-      <a class="logo" href="#top">
+      <a class="logo" href="#top" aria-label="byXavio">
         <span class="wm"><span class="by">by</span><span class="x">X</span>avio</span>
       </a>
       <span class="tagline" data-i18n="footer.tagline">Websites voor kleine bedrijven en zzp&rsquo;ers.</span>
       <div class="foot-links">
-        <a href="#pakketten" data-i18n="nav.pakketten">Pakketten</a>
         <a href="#voorbeelden" data-i18n="nav.voorbeelden">Voorbeelden</a>
+        <a href="#pakketten" data-i18n="nav.pakketten">Pakketten</a>
         <a href="#overmij" data-i18n="nav.overmij">Over mij</a>
         <a href="#contact" data-i18n="nav.contact">Contact</a>
       </div>
@@ -956,7 +927,7 @@
   var I18N = {
     nl: {
       "nav.hoe":"Hoe werkt het","nav.voorbeelden":"Voorbeelden","nav.pakketten":"Pakketten","nav.overmij":"Over mij","nav.contact":"Contact","nav.cta":"Offerte aanvragen","nav.menu":"Menu",
-      "hero.eyebrow":"Webdesign uit Purmerend · voor kleine bedrijven en zzp’ers","hero.h1":"Een website die <span class=\"hl\">klopt</span>, zonder poespas.","hero.lead":"Ik bouw duidelijke, snelle websites voor kleine ondernemers in Purmerend en omgeving, van eerste ontwerp tot een pagina die klanten daadwerkelijk kunnen vinden en gebruiken.","hero.cta1":"Vraag een gratis kennismaking aan","hero.cta2":"Bekijk voorbeelden","hero.under1":"Vanaf €195","hero.under2":"Live binnen een week","hero.under3":"Geen abonnement",
+      "hero.eyebrow":"Webdesign uit Purmerend · voor kleine bedrijven en zzp’ers","hero.h1":"Je website live binnen een week.","hero.lead":"Ik bouw duidelijke, snelle websites voor kleine ondernemers in Purmerend en omgeving, van eerste ontwerp tot een pagina die klanten daadwerkelijk kunnen vinden en gebruiken.","hero.cta1":"Vraag een gratis kennismaking aan","hero.cta2":"Bekijk voorbeelden","hero.under1":"Vanaf €195","hero.under2":"Live binnen een week","hero.under3":"Geen abonnement",
       "strip.1.title":"Vaste prijs vooraf","strip.1.desc":"Je weet wat het kost voordat ik begin. Geen verrassingen achteraf.","strip.2.title":"Eigen ontwerp","strip.2.desc":"Volledig op jouw bedrijf gemaakt, geen sjabloon van de plank.","strip.3.title":"Persoonlijk contact","strip.3.desc":"Je hebt mij, van start tot livegang. Geen wisselende accountmanagers.",
       "hoe.h2":"Van eerste bericht tot live site.","hoe.lead":"Geen ingewikkeld traject: vier duidelijke stappen, met mij als vast aanspreekpunt.",
       "step1.num":"STAP 01","step1.title":"Kennismaking","step1.desc":"Je stuurt een bericht of vult het formulier in. We bespreken kort wat je nodig hebt, helemaal vrijblijvend.",
@@ -969,8 +940,8 @@
       "demo2.kind":"Bistro & keuken","demo2.desc":"Menukaart, openingstijden en een reserveringsformulier.",
       "demo3.kind":"Kinderkleding","demo3.desc":"Collectie, maten en een pasafspraak-formulier.",
       "demo4.kind":"Bouwbedrijf","demo4.desc":"Specialismen, werkwijze en een projectenoverzicht.",
-      "demo.go":"Bekijk demo →",
-      "case.badge":"Klantproject","case.kind":"Vakantiechalet in Drenthe","case.desc":"Website voor een chalet op een camping in Wijster. Gasten bekijken de foto’s, zien meteen welke dagen vrij zijn en vragen hun verblijf aan via WhatsApp of e-mail.","case.tag1":"Fotogalerij","case.tag2":"Beschikbaarheidskalender","case.tag3":"Eigen domeinnaam","case.go":"Bekijk de website →",
+      "demo.go":"Bekijk demo",
+      "case.badge":"Klantproject","case.kind":"Vakantiechalet in Drenthe","case.desc":"Website voor een chalet op een camping in Wijster. Gasten bekijken de foto’s, zien meteen welke dagen vrij zijn en vragen hun verblijf aan via WhatsApp of e-mail.","case.tag1":"Fotogalerij","case.tag2":"Beschikbaarheidskalender","case.tag3":"Eigen domeinnaam","case.go":"Bekijk de website",
       "pak.h2":"Kies wat bij je bedrijf past.","pak.lead":"Drie opties, zodat je vooraf weet wat je krijgt en wat het kost. Past er geen precies? Dan stel ik in een kort gesprek iets op maat samen.",
       "pack.basis.title":"Basis","pack.basis.for":"Een volwaardige site om snel en overzichtelijk online te staan — geen halfbakken instapversie.","pack.basis.unit":"eenmalig, excl. btw","pack.basis.li1":"Eén ronde feedback op het ontwerp inbegrepen","pack.basis.li2":"Een pagina met de belangrijkste info","pack.basis.li3":"Duidelijke contactgegevens en openingstijden","pack.basis.li4":"Werkt goed op telefoon en tablet","pack.basis.li5":"Oplevering binnen een week","pack.basis.btn":"Bekijk Basis",
       "pack.ribbon":"Meest gekozen","pack.compleet.title":"Compleet","pack.compleet.for":"Voor bedrijven die klanten willen laten reageren, niet alleen lezen.","pack.compleet.li1":"Alles uit Basis","pack.compleet.li2":"Meerdere pagina’s of secties","pack.compleet.li3":"Eigen contact- of afsprakenformulier","pack.compleet.li4":"Volledig eigen ontwerp, geen sjabloon","pack.compleet.li5":"Basis zoekmachine-optimalisatie","pack.compleet.btn":"Kies dit pakket",
@@ -994,11 +965,12 @@
       "form.sending":"Versturen...","form.sent":"Verstuurd ✓","form.thanks":"Bedankt! Je aanvraag is verstuurd, ik reageer zo snel mogelijk.","form.error":"Er ging iets mis. Probeer het nogmaals of mail infobyxavio@gmail.com.",
       "footer.tagline":"Websites voor kleine bedrijven en zzp’ers.","footer.privacy":"Privacyverklaring","footer.terms":"Algemene voorwaarden",
       "wa.bubble":"Vragen? Stuur me even een berichtje.","wa.aria":"Stuur een WhatsApp-bericht",
+      "video.aria":"Korte video: je klant zoekt je op, vindt geen website en belt je concurrent. byXavio zet je zaak binnen een week online, vanaf €195.","video.pause":"Video pauzeren","video.play":"Video afspelen",
       "meta.title":"byXavio — Websites voor ondernemers in Purmerend en omgeving"
     },
     en: {
       "nav.hoe":"How it works","nav.voorbeelden":"Examples","nav.pakketten":"Packages","nav.overmij":"About me","nav.contact":"Contact","nav.cta":"Request a quote","nav.menu":"Menu",
-      "hero.eyebrow":"Web design from Purmerend · for small businesses and freelancers","hero.h1":"A website that <span class=\"hl\">works</span>, without the fuss.","hero.lead":"I build clear, fast websites for small business owners in and around Purmerend — from first design to a page customers can actually find and use.","hero.cta1":"Book a free introduction","hero.cta2":"View examples","hero.under1":"From €195","hero.under2":"Live within a week","hero.under3":"No subscription",
+      "hero.eyebrow":"Web design from Purmerend · for small businesses and freelancers","hero.h1":"Your website live within a week.","hero.lead":"I build clear, fast websites for small business owners in and around Purmerend — from first design to a page customers can actually find and use.","hero.cta1":"Book a free introduction","hero.cta2":"View examples","hero.under1":"From €195","hero.under2":"Live within a week","hero.under3":"No subscription",
       "strip.1.title":"Fixed price upfront","strip.1.desc":"You know the cost before I start. No surprises afterwards.","strip.2.title":"Custom design","strip.2.desc":"Made entirely around your business, no off-the-shelf template.","strip.3.title":"Personal contact","strip.3.desc":"You have me, from start to launch. No rotating account managers.",
       "hoe.h2":"From first message to live site.","hoe.lead":"No complicated process: four clear steps, with me as your single point of contact.",
       "step1.num":"STEP 01","step1.title":"Introduction","step1.desc":"You send a message or fill in the form. We briefly discuss what you need, completely without obligation.",
@@ -1011,8 +983,8 @@
       "demo2.kind":"Bistro & kitchen","demo2.desc":"Menu, opening hours and a reservation form.",
       "demo3.kind":"Children's clothing","demo3.desc":"Collection, sizes and a fitting appointment form.",
       "demo4.kind":"Construction company","demo4.desc":"Specialties, working method and a project overview.",
-      "demo.go":"View demo →",
-      "case.badge":"Client project","case.kind":"Holiday chalet in Drenthe","case.desc":"Website for a chalet on a campsite in Wijster. Guests browse the photos, see at a glance which days are free and request their stay via WhatsApp or email.","case.tag1":"Photo gallery","case.tag2":"Availability calendar","case.tag3":"Own domain name","case.go":"Visit the website →",
+      "demo.go":"View demo",
+      "case.badge":"Client project","case.kind":"Holiday chalet in Drenthe","case.desc":"Website for a chalet on a campsite in Wijster. Guests browse the photos, see at a glance which days are free and request their stay via WhatsApp or email.","case.tag1":"Photo gallery","case.tag2":"Availability calendar","case.tag3":"Own domain name","case.go":"Visit the website",
       "pak.h2":"Choose what fits your business.","pak.lead":"Three options, so you know upfront what you get and what it costs. Nothing quite fit? I'll put together something custom in a short conversation.",
       "pack.basis.title":"Basic","pack.basis.for":"A fully-fledged site to get online quickly and clearly — no half-baked starter version.","pack.basis.unit":"one-time, excl. VAT","pack.basis.li1":"One round of design feedback included","pack.basis.li2":"One page with the key information","pack.basis.li3":"Clear contact details and opening hours","pack.basis.li4":"Works well on phone and tablet","pack.basis.li5":"Delivered within a week","pack.basis.btn":"View Basic",
       "pack.ribbon":"Most chosen","pack.compleet.title":"Complete","pack.compleet.for":"For businesses that want customers to respond, not just read.","pack.compleet.li1":"Everything from Basic","pack.compleet.li2":"Multiple pages or sections","pack.compleet.li3":"Custom contact or booking form","pack.compleet.li4":"Fully custom design, no template","pack.compleet.li5":"Basic search engine optimisation","pack.compleet.btn":"Choose this package",
@@ -1036,11 +1008,12 @@
       "form.sending":"Sending...","form.sent":"Sent ✓","form.thanks":"Thanks! Your request has been sent, I'll respond as soon as possible.","form.error":"Something went wrong. Please try again or email infobyxavio@gmail.com.",
       "footer.tagline":"Websites for small businesses and freelancers.","footer.privacy":"Privacy policy","footer.terms":"Terms and conditions",
       "wa.bubble":"Questions? Send me a quick message.","wa.aria":"Send a WhatsApp message",
+      "video.aria":"Short video: your customer looks you up, finds no website and calls your competitor. byXavio gets your business online within a week, from €195.","video.pause":"Pause video","video.play":"Play video",
       "meta.title":"byXavio — Websites for businesses in and around Purmerend"
     },
     de: {
       "nav.hoe":"So funktioniert's","nav.voorbeelden":"Beispiele","nav.pakketten":"Pakete","nav.overmij":"Über mich","nav.contact":"Kontakt","nav.cta":"Angebot anfragen","nav.menu":"Menü",
-      "hero.eyebrow":"Webdesign aus Purmerend · für kleine Unternehmen und Selbstständige","hero.h1":"Eine Website, die <span class=\"hl\">passt</span>, ganz ohne Schnickschnack.","hero.lead":"Ich baue klare, schnelle Websites für kleine Unternehmer in und um Purmerend — vom ersten Entwurf bis zu einer Seite, die Kunden wirklich finden und nutzen können.","hero.cta1":"Kostenloses Kennenlernen anfragen","hero.cta2":"Beispiele ansehen","hero.under1":"Ab €195","hero.under2":"Live innerhalb einer Woche","hero.under3":"Kein Abo",
+      "hero.eyebrow":"Webdesign aus Purmerend · für kleine Unternehmen und Selbstständige","hero.h1":"Deine Website live in einer Woche.","hero.lead":"Ich baue klare, schnelle Websites für kleine Unternehmer in und um Purmerend — vom ersten Entwurf bis zu einer Seite, die Kunden wirklich finden und nutzen können.","hero.cta1":"Kostenloses Kennenlernen anfragen","hero.cta2":"Beispiele ansehen","hero.under1":"Ab €195","hero.under2":"Live innerhalb einer Woche","hero.under3":"Kein Abo",
       "strip.1.title":"Festpreis im Voraus","strip.1.desc":"Du weißt, was es kostet, bevor ich anfange. Keine Überraschungen hinterher.","strip.2.title":"Individuelles Design","strip.2.desc":"Ganz auf dein Unternehmen zugeschnitten, keine Vorlage von der Stange.","strip.3.title":"Persönlicher Kontakt","strip.3.desc":"Du hast mich, vom Start bis zum Livegang. Keine wechselnden Ansprechpartner.",
       "hoe.h2":"Von der ersten Nachricht bis zur Live-Website.","hoe.lead":"Kein komplizierter Prozess: vier klare Schritte, mit mir als festem Ansprechpartner.",
       "step1.num":"SCHRITT 01","step1.title":"Kennenlernen","step1.desc":"Du schickst eine Nachricht oder füllst das Formular aus. Wir besprechen kurz, was du brauchst — völlig unverbindlich.",
@@ -1053,8 +1026,8 @@
       "demo2.kind":"Bistro & Küche","demo2.desc":"Speisekarte, Öffnungszeiten und ein Reservierungsformular.",
       "demo3.kind":"Kinderkleidung","demo3.desc":"Kollektion, Größen und ein Formular für Anprobetermine.",
       "demo4.kind":"Bauunternehmen","demo4.desc":"Spezialgebiete, Arbeitsweise und eine Projektübersicht.",
-      "demo.go":"Demo ansehen →",
-      "case.badge":"Kundenprojekt","case.kind":"Ferienchalet in Drenthe","case.desc":"Website für ein Chalet auf einem Campingplatz in Wijster. Gäste sehen sich die Fotos an, erkennen sofort, welche Tage frei sind, und fragen ihren Aufenthalt per WhatsApp oder E-Mail an.","case.tag1":"Fotogalerie","case.tag2":"Verfügbarkeitskalender","case.tag3":"Eigene Domain","case.go":"Website ansehen →",
+      "demo.go":"Demo ansehen",
+      "case.badge":"Kundenprojekt","case.kind":"Ferienchalet in Drenthe","case.desc":"Website für ein Chalet auf einem Campingplatz in Wijster. Gäste sehen sich die Fotos an, erkennen sofort, welche Tage frei sind, und fragen ihren Aufenthalt per WhatsApp oder E-Mail an.","case.tag1":"Fotogalerie","case.tag2":"Verfügbarkeitskalender","case.tag3":"Eigene Domain","case.go":"Website ansehen",
       "pak.h2":"Wähle, was zu deinem Unternehmen passt.","pak.lead":"Drei Optionen, damit du vorab weißt, was du bekommst und was es kostet. Passt nichts genau? Dann stellen wir in einem kurzen Gespräch etwas Individuelles zusammen.",
       "pack.basis.title":"Basis","pack.basis.for":"Eine vollwertige Website, um schnell und übersichtlich online zu sein — keine halbgare Einstiegsversion.","pack.basis.unit":"einmalig, zzgl. MwSt.","pack.basis.li1":"Eine Feedbackrunde zum Design inbegriffen","pack.basis.li2":"Eine Seite mit den wichtigsten Infos","pack.basis.li3":"Klare Kontaktdaten und Öffnungszeiten","pack.basis.li4":"Funktioniert gut auf Handy und Tablet","pack.basis.li5":"Lieferung innerhalb einer Woche","pack.basis.btn":"Basis ansehen",
       "pack.ribbon":"Meistgewählt","pack.compleet.title":"Komplett","pack.compleet.for":"Für Unternehmen, die Kunden zur Reaktion bewegen wollen, nicht nur zum Lesen.","pack.compleet.li1":"Alles aus Basis","pack.compleet.li2":"Mehrere Seiten oder Bereiche","pack.compleet.li3":"Eigenes Kontakt- oder Terminformular","pack.compleet.li4":"Vollständig individuelles Design, kein Template","pack.compleet.li5":"Grundlegende Suchmaschinenoptimierung","pack.compleet.btn":"Dieses Paket wählen",
@@ -1078,11 +1051,12 @@
       "form.sending":"Wird gesendet...","form.sent":"Gesendet ✓","form.thanks":"Danke! Deine Anfrage wurde gesendet, ich melde mich so schnell wie möglich.","form.error":"Etwas ist schiefgelaufen. Bitte versuche es erneut oder schreibe an infobyxavio@gmail.com.",
       "footer.tagline":"Websites für kleine Unternehmen und Selbstständige.","footer.privacy":"Datenschutzerklärung","footer.terms":"Allgemeine Geschäftsbedingungen",
       "wa.bubble":"Fragen? Schick mir kurz eine Nachricht.","wa.aria":"WhatsApp-Nachricht senden",
+      "video.aria":"Kurzes Video: Dein Kunde sucht dich, findet keine Website und ruft die Konkurrenz an. byXavio bringt deinen Betrieb in einer Woche online, ab €195.","video.pause":"Video pausieren","video.play":"Video abspielen",
       "meta.title":"byXavio — Websites für Unternehmen in und um Purmerend"
     },
     fr: {
       "nav.hoe":"Comment ça marche","nav.voorbeelden":"Exemples","nav.pakketten":"Forfaits","nav.overmij":"À propos","nav.contact":"Contact","nav.cta":"Demander un devis","nav.menu":"Menu",
-      "hero.eyebrow":"Web design depuis Purmerend · pour petites entreprises et indépendants","hero.h1":"Un site web qui <span class=\"hl\">fonctionne</span>, sans fioritures.","hero.lead":"Je crée des sites web clairs et rapides pour les petits entrepreneurs de Purmerend et ses environs, du premier design à une page que vos clients peuvent réellement trouver et utiliser.","hero.cta1":"Demandez une prise de contact gratuite","hero.cta2":"Voir des exemples","hero.under1":"À partir de 195 €","hero.under2":"En ligne en une semaine","hero.under3":"Sans abonnement",
+      "hero.eyebrow":"Web design depuis Purmerend · pour petites entreprises et indépendants","hero.h1":"Votre site web en ligne en une semaine.","hero.lead":"Je crée des sites web clairs et rapides pour les petits entrepreneurs de Purmerend et ses environs, du premier design à une page que vos clients peuvent réellement trouver et utiliser.","hero.cta1":"Demandez une prise de contact gratuite","hero.cta2":"Voir des exemples","hero.under1":"À partir de 195 €","hero.under2":"En ligne en une semaine","hero.under3":"Sans abonnement",
       "strip.1.title":"Prix fixe à l'avance","strip.1.desc":"Vous savez ce que cela coûte avant que je commence. Aucune surprise après coup.","strip.2.title":"Design sur mesure","strip.2.desc":"Entièrement conçu pour votre entreprise, pas de modèle standard.","strip.3.title":"Contact personnel","strip.3.desc":"Vous m'avez moi, du début à la mise en ligne. Pas de chargés de compte qui changent.",
       "hoe.h2":"Du premier message au site en ligne.","hoe.lead":"Aucun parcours compliqué : quatre étapes claires, avec moi comme interlocuteur unique.",
       "step1.num":"ÉTAPE 01","step1.title":"Prise de contact","step1.desc":"Vous envoyez un message ou remplissez le formulaire. Nous discutons brièvement de vos besoins, sans engagement.",
@@ -1095,8 +1069,8 @@
       "demo2.kind":"Bistro & cuisine","demo2.desc":"Carte, horaires d'ouverture et un formulaire de réservation.",
       "demo3.kind":"Vêtements pour enfants","demo3.desc":"Collection, tailles et un formulaire de rendez-vous d'essayage.",
       "demo4.kind":"Entreprise de construction","demo4.desc":"Spécialités, méthode de travail et un aperçu des projets.",
-      "demo.go":"Voir la démo →",
-      "case.badge":"Projet client","case.kind":"Chalet de vacances en Drenthe","case.desc":"Site web pour un chalet dans un camping à Wijster. Les visiteurs regardent les photos, voient tout de suite quels jours sont libres et demandent leur séjour par WhatsApp ou e-mail.","case.tag1":"Galerie photo","case.tag2":"Calendrier des disponibilités","case.tag3":"Nom de domaine propre","case.go":"Voir le site →",
+      "demo.go":"Voir la démo",
+      "case.badge":"Projet client","case.kind":"Chalet de vacances en Drenthe","case.desc":"Site web pour un chalet dans un camping à Wijster. Les visiteurs regardent les photos, voient tout de suite quels jours sont libres et demandent leur séjour par WhatsApp ou e-mail.","case.tag1":"Galerie photo","case.tag2":"Calendrier des disponibilités","case.tag3":"Nom de domaine propre","case.go":"Voir le site",
       "pak.h2":"Choisissez ce qui convient à votre entreprise.","pak.lead":"Trois options, pour que vous sachiez à l'avance ce que vous obtenez et ce que cela coûte. Rien ne vous convient exactement ? Je compose une offre sur mesure lors d'un court échange.",
       "pack.basis.title":"Basique","pack.basis.for":"Un site complet pour être en ligne rapidement et clairement — pas une version d'entrée de gamme bâclée.","pack.basis.unit":"unique, hors TVA","pack.basis.li1":"Une série de retours sur le design incluse","pack.basis.li2":"Une page avec les informations essentielles","pack.basis.li3":"Coordonnées et horaires clairs","pack.basis.li4":"Fonctionne bien sur mobile et tablette","pack.basis.li5":"Livraison en une semaine","pack.basis.btn":"Voir Basique",
       "pack.ribbon":"Le plus choisi","pack.compleet.title":"Complet","pack.compleet.for":"Pour les entreprises qui veulent que les clients réagissent, pas seulement qu'ils lisent.","pack.compleet.li1":"Tout ce qui est dans Basique","pack.compleet.li2":"Plusieurs pages ou sections","pack.compleet.li3":"Formulaire de contact ou de rendez-vous personnalisé","pack.compleet.li4":"Design entièrement sur mesure, pas de modèle","pack.compleet.li5":"Optimisation SEO de base","pack.compleet.btn":"Choisir ce forfait",
@@ -1120,11 +1094,12 @@
       "form.sending":"Envoi...","form.sent":"Envoyé ✓","form.thanks":"Merci ! Votre demande a été envoyée, je vous répondrai dès que possible.","form.error":"Une erreur s'est produite. Réessayez ou envoyez un e-mail à infobyxavio@gmail.com.",
       "footer.tagline":"Sites web pour petites entreprises et indépendants.","footer.privacy":"Politique de confidentialité","footer.terms":"Conditions générales",
       "wa.bubble":"Des questions ? Envoyez-moi un message.","wa.aria":"Envoyer un message WhatsApp",
+      "video.aria":"Courte vidéo : votre client vous cherche, ne trouve pas de site et appelle votre concurrent. byXavio met votre entreprise en ligne en une semaine, à partir de 195 €.","video.pause":"Mettre la vidéo en pause","video.play":"Lire la vidéo",
       "meta.title":"byXavio — Sites web pour entreprises à Purmerend et environs"
     },
     es: {
       "nav.hoe":"Cómo funciona","nav.voorbeelden":"Ejemplos","nav.pakketten":"Paquetes","nav.overmij":"Sobre mí","nav.contact":"Contacto","nav.cta":"Solicitar presupuesto","nav.menu":"Menú",
-      "hero.eyebrow":"Diseño web desde Purmerend · para pequeñas empresas y autónomos","hero.h1":"Una web que <span class=\"hl\">funciona</span>, sin complicaciones.","hero.lead":"Construyo sitios web claros y rápidos para pequeños empresarios de Purmerend y alrededores, desde el primer diseño hasta una página que los clientes realmente puedan encontrar y usar.","hero.cta1":"Solicita una toma de contacto gratuita","hero.cta2":"Ver ejemplos","hero.under1":"Desde 195 €","hero.under2":"En línea en una semana","hero.under3":"Sin suscripción",
+      "hero.eyebrow":"Diseño web desde Purmerend · para pequeñas empresas y autónomos","hero.h1":"Tu web online en una semana.","hero.lead":"Construyo sitios web claros y rápidos para pequeños empresarios de Purmerend y alrededores, desde el primer diseño hasta una página que los clientes realmente puedan encontrar y usar.","hero.cta1":"Solicita una toma de contacto gratuita","hero.cta2":"Ver ejemplos","hero.under1":"Desde 195 €","hero.under2":"En línea en una semana","hero.under3":"Sin suscripción",
       "strip.1.title":"Precio fijo por adelantado","strip.1.desc":"Sabes el coste antes de que empiece. Sin sorpresas después.","strip.2.title":"Diseño propio","strip.2.desc":"Hecho totalmente a medida de tu negocio, sin plantillas genéricas.","strip.3.title":"Contacto personal","strip.3.desc":"Me tienes a mí, desde el inicio hasta el lanzamiento. Sin gestores de cuenta que cambian.",
       "hoe.h2":"Del primer mensaje al sitio en línea.","hoe.lead":"Sin procesos complicados: cuatro pasos claros, conmigo como único punto de contacto.",
       "step1.num":"PASO 01","step1.title":"Toma de contacto","step1.desc":"Envías un mensaje o rellenas el formulario. Hablamos brevemente sobre lo que necesitas, sin ningún compromiso.",
@@ -1137,8 +1112,8 @@
       "demo2.kind":"Bistró y cocina","demo2.desc":"Carta, horarios y un formulario de reservas.",
       "demo3.kind":"Ropa infantil","demo3.desc":"Colección, tallas y un formulario de cita para pruebas.",
       "demo4.kind":"Empresa de construcción","demo4.desc":"Especialidades, forma de trabajo y una visión general de proyectos.",
-      "demo.go":"Ver demo →",
-      "case.badge":"Proyecto de cliente","case.kind":"Chalet de vacaciones en Drenthe","case.desc":"Sitio web para un chalet en un camping de Wijster. Los huéspedes ven las fotos, comprueban al instante qué días están libres y solicitan su estancia por WhatsApp o correo electrónico.","case.tag1":"Galería de fotos","case.tag2":"Calendario de disponibilidad","case.tag3":"Dominio propio","case.go":"Ver el sitio web →",
+      "demo.go":"Ver demo",
+      "case.badge":"Proyecto de cliente","case.kind":"Chalet de vacaciones en Drenthe","case.desc":"Sitio web para un chalet en un camping de Wijster. Los huéspedes ven las fotos, comprueban al instante qué días están libres y solicitan su estancia por WhatsApp o correo electrónico.","case.tag1":"Galería de fotos","case.tag2":"Calendario de disponibilidad","case.tag3":"Dominio propio","case.go":"Ver el sitio web",
       "pak.h2":"Elige lo que encaje con tu negocio.","pak.lead":"Tres opciones, para que sepas de antemano qué obtienes y cuánto cuesta. ¿Ninguna encaja del todo? En una breve charla preparamos algo a medida.",
       "pack.basis.title":"Básico","pack.basis.for":"Un sitio completo para estar en línea rápido y con claridad — nada de versión inicial a medias.","pack.basis.unit":"único, sin IVA","pack.basis.li1":"Una ronda de comentarios sobre el diseño incluida","pack.basis.li2":"Una página con la información esencial","pack.basis.li3":"Datos de contacto y horarios claros","pack.basis.li4":"Funciona bien en móvil y tablet","pack.basis.li5":"Entrega en una semana","pack.basis.btn":"Ver Básico",
       "pack.ribbon":"El más elegido","pack.compleet.title":"Completo","pack.compleet.for":"Para negocios que quieren que los clientes respondan, no solo lean.","pack.compleet.li1":"Todo lo del plan Básico","pack.compleet.li2":"Varias páginas o secciones","pack.compleet.li3":"Formulario de contacto o citas propio","pack.compleet.li4":"Diseño totalmente propio, sin plantilla","pack.compleet.li5":"Optimización SEO básica","pack.compleet.btn":"Elegir este paquete",
@@ -1162,6 +1137,7 @@
       "form.sending":"Enviando...","form.sent":"Enviado ✓","form.thanks":"¡Gracias! Tu solicitud ha sido enviada, te responderé lo antes posible.","form.error":"Algo salió mal. Inténtalo de nuevo o escribe a infobyxavio@gmail.com.",
       "footer.tagline":"Sitios web para pequeñas empresas y autónomos.","footer.privacy":"Política de privacidad","footer.terms":"Términos y condiciones",
       "wa.bubble":"¿Preguntas? Envíame un mensaje rápido.","wa.aria":"Enviar un mensaje de WhatsApp",
+      "video.aria":"Vídeo corto: tu cliente te busca, no encuentra tu web y llama a la competencia. byXavio pone tu negocio online en una semana, desde 195 €.","video.pause":"Pausar el vídeo","video.play":"Reproducir el vídeo",
       "meta.title":"byXavio — Sitios web para empresas en Purmerend y alrededores"
     }
   };
@@ -1255,6 +1231,26 @@
   var wa=document.getElementById('waBtn'),bub=document.getElementById('waBubble'),c=document.getElementById('contact');
   if(!wa||!c||!('IntersectionObserver' in window))return;
   new IntersectionObserver(function(e){var on=e[0].isIntersecting;wa.classList.toggle('wa-hide',on);if(bub&&on)bub.style.display='none';},{threshold:0.15}).observe(c);
+})();
+</script>
+<script>
+(function(){
+  var v=document.getElementById('reel'), b=document.getElementById('reelBtn');
+  if(!v||!b) return;
+  var userPaused=false;
+  var reduce=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function sync(){ b.classList.toggle('paused', v.paused); }
+  function go(){ var p=v.play(); if(p && p.catch) p.catch(function(){}); }
+  v.addEventListener('play',sync); v.addEventListener('pause',sync);
+  b.addEventListener('click',function(){
+    if(v.paused){ userPaused=false; go(); } else { userPaused=true; v.pause(); }
+  });
+  if(reduce){ userPaused=true; return; }
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(e){
+      if(e[0].isIntersecting){ if(!userPaused) go(); } else { v.pause(); }
+    },{threshold:0.35}).observe(v);
+  } else { go(); }
 })();
 </script>
 </body>
