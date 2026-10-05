@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pannonia Fietsreparatie- en Ophaaldienst · Purmerend (demo)</title>
+<meta name="description" content="Demo-ontwerp: Pannonia repareert alle soorten en merken fietsen in Purmerend, ook e-bikes. Gratis halen en brengen bij reparaties vanaf € 25.">
+<meta name="theme-color" content="#16181b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='25' fill='%23f3f2ee' stroke='%2316181b' stroke-width='9'/%3E%3Ccircle cx='32' cy='32' r='7' fill='%23e9ac17'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --rubber:#16181b;      /* band */
+  --asphalt:#23272b;
+  --ochre:#e9ac17;       /* de gele fiets voor de werkplaats */
+  --ochre-deep:#c98f00;
+  --paper:#f3f2ee;       /* werkplaatsvloer */
+  --card:#ffffff;
+  --line:#dbd9d1;
+  --muted:#565b60;
+  --steel:#aab1b6;
+  --ok:#1f7a45;
+  --shut:#a3371f;
+  --wrap:1160px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--rubber);font:400 1.0625rem/1.6 Barlow,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+img{height:auto}
+a{color:inherit}
+h1,h2,h3,p,ul,ol,dl,dd,figure{margin:0}
+ul,ol{padding:0;list-style:none}
+:focus-visible{outline:3px solid var(--ochre);outline-offset:3px;border-radius:4px}
+.dark :focus-visible{outline-color:#fff}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 22px}
+.skip{position:absolute;left:-999px;top:0;background:var(--rubber);color:#fff;padding:10px 16px;z-index:100}
+.skip:focus{left:8px;top:8px}
+
+/* koppen: smal en stevig, zoals een stuurbordje */
+h1,h2,.num,.brand b{font-family:"Barlow Condensed",Barlow,Impact,sans-serif;font-weight:800;text-transform:uppercase;line-height:.94;letter-spacing:.005em}
+h2{font-size:clamp(2.3rem,6.2vw,3.9rem);text-wrap:balance}
+h3{font:600 1.22rem/1.25 Barlow,sans-serif}
+.eyebrow{font:600 .86rem/1.3 Barlow,sans-serif;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.dark .eyebrow{color:var(--steel)}
+.mark{background:linear-gradient(transparent 56%,var(--ochre) 56%,var(--ochre) 92%,transparent 92%);padding:0 .08em;margin:0 -.08em}
+
+.demo{background:var(--rubber);color:#d6d9db;font-size:.92rem;line-height:1.4;padding:9px 0;text-align:center}
+.demo a{color:#fff;font-weight:600}
+
+/* kop van de site */
+.top{position:sticky;top:0;z-index:40;background:rgba(243,242,238,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:22px;height:68px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;margin-right:auto}
+.brand svg{width:34px;height:34px;flex:none}
+.brand b{display:block;font-style:italic;font-size:1.72rem;line-height:.9;letter-spacing:.01em}
+.brand small{display:block;font:500 .74rem/1.2 Barlow,sans-serif;color:var(--muted);letter-spacing:.02em;margin-top:3px}
+.nav{display:flex;gap:26px;font-weight:500;font-size:.98rem}
+.nav a{text-decoration:none;padding:6px 0;border-bottom:2px solid transparent}
+.nav a:hover{border-color:var(--ochre)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:52px;padding:0 24px;border-radius:6px;border:2px solid var(--rubber);background:var(--rubber);color:#fff;font:600 1.04rem/1 Barlow,sans-serif;text-decoration:none;cursor:pointer;transition:transform .15s,background .15s,color .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn svg{width:19px;height:19px;flex:none}
+.btn.ochre{background:var(--ochre);border-color:var(--ochre);color:var(--rubber)}
+.btn.ochre:hover{background:#f4bb2e;border-color:#f4bb2e}
+.btn.line{background:transparent;color:var(--rubber)}
+.btn.line:hover{background:var(--rubber);color:#fff}
+.dark .btn.line{border-color:#fff;color:#fff}
+.dark .btn.line:hover{background:#fff;color:var(--rubber)}
+.top .btn{min-height:44px;padding:0 18px;font-size:.98rem}
+
+/* hero */
+.hero{padding:clamp(34px,6vw,72px) 0 clamp(44px,7vw,88px);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(28px,5vw,70px);align-items:center}
+.hero h1{font-size:clamp(3.3rem,15vw,5.7rem);margin:14px 0 22px}
+.hero h1 span{display:block}
+.lead{font-size:1.2rem;line-height:1.55;max-width:33em;color:#2d3236}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.status{display:inline-flex;align-items:center;gap:9px;margin-top:22px;font-weight:500;font-size:1rem}
+.status i{width:11px;height:11px;border-radius:50%;background:var(--steel);flex:none}
+.status.open i{background:var(--ok);box-shadow:0 0 0 4px rgba(31,122,69,.18)}
+.status.shut i{background:var(--shut)}
+.status span{color:var(--muted)}
+
+/* de foto zit in een fietswiel */
+.wheel{position:relative;aspect-ratio:1;width:min(100%,520px);margin-left:auto}
+.wheel img{position:absolute;inset:9.5%;width:81%;height:81%;border-radius:50%;object-fit:cover;background:var(--asphalt)}
+.wheel svg{position:absolute;inset:0;width:100%;height:100%}
+.wheel .tread{transform-origin:50% 50%;animation:roll 60s linear infinite}
+@keyframes roll{to{transform:rotate(360deg)}}
+.plate{position:absolute;left:-4%;bottom:7%;background:var(--card);border:2px solid var(--rubber);border-radius:6px;padding:11px 16px 12px;display:flex;align-items:center;gap:13px;text-decoration:none;box-shadow:6px 6px 0 var(--ochre)}
+.plate .num{font-size:2.5rem;line-height:.8}
+.plate small{display:block;font-size:.86rem;line-height:1.3;color:var(--muted)}
+.stars{color:var(--ochre-deep);letter-spacing:2px;font-size:.98rem;line-height:1}
+
+/* feiten onder de hero */
+.facts{border-top:2px solid var(--rubber);border-bottom:2px solid var(--rubber);background:var(--card)}
+.facts ul{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.facts li{padding:22px 22px 24px;border-left:1px solid var(--line)}
+.facts li:first-child{border-left:0;padding-left:0}
+.facts .num{font-size:2.15rem;display:block;margin-bottom:5px}
+.facts span{color:var(--muted);font-size:.98rem;line-height:1.35;display:block}
+
+section{padding:clamp(58px,9vw,112px) 0}
+.sechead{max-width:40em;margin-bottom:clamp(30px,5vw,54px)}
+.sechead h2{margin:10px 0 16px}
+.sechead p{font-size:1.14rem;color:#2d3236}
+.dark{background:var(--rubber);color:#eef0f0}
+.dark .sechead p{color:#c6cbce}
+
+/* de route: thuis - werkplaats - thuis */
+.routebox{position:relative}
+.route{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:26px;counter-reset:stop}
+.route::before{content:"";position:absolute;left:0;right:0;top:27px;border-top:3px dashed var(--ochre);opacity:.75}
+.route li{position:relative;counter-increment:stop;padding-top:76px}
+.route li::before{content:counter(stop);position:absolute;top:0;left:0;width:56px;height:56px;border-radius:50%;background:var(--ochre);color:var(--rubber);display:grid;place-items:center;font:800 1.75rem/1 "Barlow Condensed",sans-serif;box-shadow:0 0 0 8px var(--rubber)}
+.route h3{color:#fff;margin-bottom:7px}
+.route p{color:#c6cbce;font-size:1.02rem}
+.rider{position:absolute;top:-6px;left:0;width:62px;color:#fff;z-index:2;pointer-events:none;opacity:0}
+.routebox.go .rider{animation:ride 5.5s cubic-bezier(.45,.05,.3,1) .3s forwards}
+@keyframes ride{0%{left:0;opacity:0}6%{opacity:1}92%{opacity:1}100%{left:calc(100% - 62px);opacity:0}}
+.routenote{display:flex;flex-wrap:wrap;align-items:center;gap:14px 30px;margin-top:clamp(34px,5vw,54px);padding-top:28px;border-top:1px solid #3a3f44}
+.routenote p{color:#c6cbce;max-width:34em}
+.routenote strong{color:#fff}
+.routenote .btn{margin-left:auto}
+
+/* diensten */
+.work{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(26px,4vw,56px);align-items:start}
+.jobs li{display:grid;grid-template-columns:54px 1fr;gap:4px 16px;padding:22px 0;border-top:1px solid var(--line)}
+.jobs li:first-child{border-top:2px solid var(--rubber)}
+.jobs li:last-child{border-bottom:2px solid var(--rubber)}
+.jobs svg{width:40px;height:40px;grid-row:span 2;color:var(--rubber);margin-top:2px}
+.jobs p{color:var(--muted);grid-column:2}
+.shots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;position:sticky;top:92px}
+.shots img{width:100%;height:100%;object-fit:cover;border-radius:6px;background:var(--line)}
+.shots .tall{grid-row:span 2;aspect-ratio:3/5}
+.shots .wide{aspect-ratio:1}
+.shots figcaption,.fine{grid-column:1/-1;font-size:.86rem;color:var(--muted);line-height:1.4}
+
+/* reviews */
+.praise{background:var(--ochre)}
+.praise .wrap{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,6vw,80px);align-items:center}
+.score .num{font-size:clamp(6rem,22vw,11rem);line-height:.78;display:block}
+.score .stars{color:var(--rubber);font-size:1.5rem;letter-spacing:5px;margin-top:14px;display:block}
+.score small{display:block;margin-top:10px;font-weight:500;font-size:1rem}
+.praise h2{margin-bottom:18px}
+.praise p{max-width:32em;font-size:1.12rem}
+.tags{display:flex;flex-wrap:wrap;gap:9px;margin:22px 0 26px}
+.tags li{background:var(--rubber);color:#fff;border-radius:99px;padding:8px 16px;font-weight:500;font-size:.98rem}
+
+/* langskomen */
+.visit{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(26px,4vw,56px)}
+.hours{width:100%;border-collapse:collapse;font-size:1.06rem;margin-top:6px}
+.hours th,.hours td{padding:13px 0;border-bottom:1px solid var(--line);text-align:left;font-weight:400}
+.hours td{text-align:right;font-variant-numeric:tabular-nums}
+.hours tr.shut td{color:var(--muted)}
+.hours tr.today th,.hours tr.today td{font-weight:600}
+.hours tr.today th::after{content:"vandaag";margin-left:10px;background:var(--ochre);border-radius:4px;padding:2px 8px;font-size:.78rem;font-weight:600;vertical-align:2px}
+.addr{margin-top:30px;font-style:normal;font-size:1.1rem;line-height:1.5}
+.addr strong{display:block}
+.perks{margin-top:22px;display:grid;gap:9px}
+.perks li{display:flex;gap:11px;align-items:flex-start;color:#2d3236}
+.perks li::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--ochre);margin-top:.55em;flex:none;box-shadow:0 0 0 2px var(--rubber)}
+.map{border:2px solid var(--rubber);border-radius:6px;overflow:hidden;background:var(--line);min-height:380px;display:grid}
+.map iframe{width:100%;height:100%;min-height:380px;border:0;filter:grayscale(.35) contrast(1.03)}
+
+/* aanvraag */
+.ask .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(26px,5vw,70px);align-items:start}
+.ask h2{margin:10px 0 16px}
+.ask .intro p{color:#c6cbce;font-size:1.12rem;max-width:26em}
+.tel{display:block;margin-top:28px;font:800 clamp(2.6rem,7vw,3.6rem)/1 "Barlow Condensed",sans-serif;color:var(--ochre);text-decoration:none;letter-spacing:.01em}
+.tel:hover{color:#fff}
+.tel+small{display:block;color:#c6cbce;margin-top:8px;font-size:.98rem}
+form{background:var(--card);color:var(--rubber);border-radius:8px;padding:clamp(20px,3.4vw,34px);display:grid;grid-template-columns:1fr 1fr;gap:16px}
+label{display:grid;gap:6px;font-weight:600;font-size:.98rem}
+label.full{grid-column:1/-1}
+input,select,textarea{font:400 1.0625rem/1.3 Barlow,sans-serif;color:var(--rubber);background:#fff;border:2px solid #b9bdc0;border-radius:6px;padding:12px 13px;width:100%;min-height:50px}
+textarea{min-height:104px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--rubber);box-shadow:0 0 0 3px var(--ochre)}
+form .btn{grid-column:1/-1;width:100%}
+.sent{grid-column:1/-1;background:#eaf5ee;border:2px solid var(--ok);border-radius:6px;padding:14px 16px;font-size:1rem}
+.sent[hidden]{display:none}
+form .fine{margin-top:-4px}
+
+footer{background:var(--asphalt);color:#c6cbce;padding:44px 0 110px;font-size:.98rem}
+footer .wrap{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:30px}
+footer b{color:#fff;display:block;margin-bottom:6px;font-weight:600}
+footer a{color:#fff}
+.small{grid-column:1/-1;border-top:1px solid #3a3f44;padding-top:20px;font-size:.88rem;color:#aab1b6;line-height:1.5}
+
+/* balk onderin op de telefoon */
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:50;display:none;gap:10px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(22,24,27,.96);backdrop-filter:blur(8px);transform:translateY(110%);transition:transform .25s}
+.dock.on{transform:none}
+.dock .btn{flex:1;min-height:50px;padding:0 10px}
+.dock .btn.line{border-color:#fff;color:#fff}
+
+@media (max-width:940px){
+  .nav{display:none}
+  .hero .wrap,.work,.visit,.ask .wrap{grid-template-columns:minmax(0,1fr)}
+  .wheel{margin:6px auto 0;width:min(88%,440px)}
+  .plate{left:-6%}
+  .facts ul{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .facts .num{font-size:1.85rem}
+  .facts li{padding:18px 14px 20px 18px}
+  .facts li:nth-child(odd){border-left:0;padding-left:0}
+  .facts li:nth-child(n+3){border-top:1px solid var(--line)}
+  .route{grid-template-columns:1fr;gap:30px}
+  .route::before{left:27px;right:auto;top:0;bottom:0;border-top:0;border-left:3px dashed var(--ochre)}
+  .route li{padding:6px 0 0 82px;min-height:56px}
+  .rider{display:none}
+  .routenote .btn{margin-left:0}
+  .shots{position:static}
+  .praise .wrap{grid-template-columns:1fr}
+  footer .wrap{grid-template-columns:1fr}
+  .dock{display:flex}
+}
+@media (max-width:560px){
+  body{font-size:1.04rem}
+  .top .wrap{height:62px;gap:10px}
+  .brand small{display:none}
+  .brand b{font-size:1.6rem}
+  .cta .btn{width:100%}
+  form{grid-template-columns:1fr}
+  .demo{font-size:.86rem}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .wheel .tread{animation:none}
+  .routebox.go .rider{animation:none;opacity:0}
+  .btn,.dock{transition:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#inhoud">Naar de inhoud</a>
+<div class="demo"><div class="wrap">Dit is een demo-ontwerp van <a href="https://byxavio.nl">byXavio</a> voor Pannonia Fietsreparatie- en Ophaaldienst.</div></div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Pannonia, naar boven">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="25" fill="none" stroke="#16181b" stroke-width="8"/><circle cx="32" cy="32" r="6.5" fill="#e9ac17"/><path d="M32 13v12M32 39v12M13 32h12M39 32h12" stroke="#16181b" stroke-width="2"/></svg>
+      <span><b>Pannonia</b><small>Fietsreparatie- en ophaaldienst</small></span>
+    </a>
+    <nav class="nav" aria-label="Hoofdmenu">
+      <a href="#ophalen">Ophaaldienst</a>
+      <a href="#werk">Reparatie</a>
+      <a href="#tijden">Openingstijden</a>
+      <a href="#aanvraag">Contact</a>
+    </nav>
+    <a class="btn ochre" href="tel:+31299450391">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>
+      Bel ons
+    </a>
+  </div>
+</header>
+
+<main id="inhoud">
+<div class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Fietsenmaker in Purmerend · met haal- en brengservice</p>
+      <h1><span>Fiets kapot?</span> <span>Wij halen</span> <span><em class="mark" style="font-style:normal">hem op.</em></span></h1>
+      <p class="lead">Pannonia repareert alle soorten en merken fietsen, ook e-bikes. Bij een reparatie vanaf € 25 halen we je fiets gratis op en brengen we hem weer thuis.</p>
+      <div class="cta">
+        <a class="btn ochre" href="#aanvraag">Fiets laten ophalen</a>
+        <a class="btn line" href="tel:+31299450391">Bel 0299 450 391</a>
+      </div>
+      <p class="status" data-status aria-live="polite"><i></i><b>Di t/m za open</b> <span>vanaf 9.30 uur</span></p>
+    </div>
+    <div class="wheel">
+      <img src="https://images.unsplash.com/photo-1675798227643-da319f8ee8f7?auto=format&fit=crop&w=900&h=900&q=70" width="900" height="900" alt="Handen sleutelen aan de trapas van een fiets in een werkplaats" fetchpriority="high">
+      <svg viewBox="0 0 400 400" aria-hidden="true">
+        <circle cx="200" cy="200" r="184" fill="none" stroke="#16181b" stroke-width="30"/>
+        <circle class="tread" cx="200" cy="200" r="193" fill="none" stroke="#3b4147" stroke-width="10" stroke-dasharray="3 9"/>
+        <circle cx="200" cy="200" r="166" fill="none" stroke="#c7cdd1" stroke-width="7"/>
+        <circle cx="200" cy="200" r="161" fill="none" stroke="#e9ac17" stroke-width="2.5"/>
+        <rect x="196" y="352" width="8" height="22" rx="2" fill="#16181b"/>
+      </svg>
+      <a class="plate" href="https://www.google.com/maps/search/?api=1&query=Pannonia+Fietsreparatie-+en+Ophaaldienst+Purmerend&query_place_id=ChIJ43j9WTMBxkcRLk_U5KYDIMk" target="_blank" rel="noopener">
+        <span class="num">4,9</span>
+        <span><span class="stars" aria-hidden="true">★★★★★</span><small>127 reviews op Google</small></span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="facts">
+  <div class="wrap">
+    <ul>
+      <li><b class="num">Gratis</b><span>halen en brengen bij reparaties vanaf € 25</span></li>
+      <li><b class="num">Alle merken</b><span>van stadsfiets tot e-bike</span></li>
+      <li><b class="num">Leenfiets</b><span>vraag ernaar als je niet zonder kunt</span></li>
+      <li><b class="num">Di t/m za</b><span>open vanaf 9.30 uur</span></li>
+    </ul>
+  </div>
+</div>
+
+<section class="dark" id="ophalen">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="eyebrow">De ophaaldienst</p>
+      <h2>Je hoeft er de deur niet voor uit</h2>
+      <p>Geen gesjouw met een fiets die niet meer rijdt. Pannonia komt hem halen, maakt hem in de werkplaats en zet hem weer bij je neer.</p>
+    </div>
+    <div class="routebox" data-route>
+    <ol class="route">
+      <li><h3>Bel of stuur een aanvraag</h3><p>Vertel wat er met je fiets is en waar hij staat.</p></li>
+      <li><h3>We halen hem op</h3><p>Je spreekt samen een moment af waarop de fiets wordt opgehaald.</p></li>
+      <li><h3>Reparatie in de werkplaats</h3><p>Aan de Van IJsendijkstraat wordt je fiets nagekeken en gemaakt.</p></li>
+      <li><h3>Terug voor je deur</h3><p>Klaar? Dan wordt hij weer bij je thuis afgeleverd.</p></li>
+    </ol>
+    <svg class="rider" viewBox="0 0 64 40" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="28" r="10"/><circle cx="52" cy="28" r="10"/><path d="M12 28l12-17h18l10 17M24 11l8 17h20M21 7h8M42 11l-2-6h6"/></svg>
+    </div>
+    <div class="routenote">
+      <p><strong>Gratis bij reparaties vanaf € 25.</strong> Liever zelf langskomen? Dat kan ook: de werkplaats is open van dinsdag tot en met zaterdag.</p>
+      <a class="btn ochre" href="#aanvraag">Ophalen aanvragen</a>
+    </div>
+  </div>
+</section>
+
+<section id="werk">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="eyebrow">Reparatie en meer</p>
+      <h2>Wat Pannonia voor je fiets doet</h2>
+      <p>Van een lekke band tot een complete beurt. Twijfel je of het de moeite waard is? Bel even, dan krijg je eerlijk advies.</p>
+    </div>
+    <div class="work">
+      <ul class="jobs">
+        <li>
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M26 6a8 8 0 0 0-7.6 10.5L6 29l5 5 12.5-12.4A8 8 0 0 0 34 14l-5 5-4-4 5-5a8 8 0 0 0-4-4z"/></svg>
+          <h3>Reparatie en onderhoud</h3>
+          <p>Remmen, versnellingen, ketting, verlichting of een complete onderhoudsbeurt. Voor alle soorten en merken fietsen.</p>
+        </li>
+        <li>
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 4L9 22h10l-2 14 14-19H21z"/></svg>
+          <h3>E-bikes</h3>
+          <p>Ook met je elektrische fiets kun je bij Pannonia terecht voor onderhoud en reparatie.</p>
+        </li>
+        <li>
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="20" cy="20" r="15"/><circle cx="20" cy="20" r="3"/><path d="M20 5v12M20 23v12M5 20h12M23 20h12"/></svg>
+          <h3>Snelle bandenservice</h3>
+          <p>Lekke band of versleten buitenband? Als de tijd het toelaat is het dezelfde dag nog klaar.</p>
+        </li>
+        <li>
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="27" r="6"/><circle cx="31" cy="27" r="6"/><path d="M9 27l7-11h11l4 11M16 16l5 11h10M14 12h6"/></svg>
+          <h3>Leenfiets</h3>
+          <p>Kun je niet zonder? Vraag naar een leenfiets voor de tijd dat die van jou in de werkplaats staat.</p>
+        </li>
+        <li>
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20V7h13l17 17-13 13z"/><circle cx="13" cy="15" r="2.5"/></svg>
+          <h3>Fietsen te koop en te huur</h3>
+          <p>Op zoek naar een goede tweedehands fiets, of wil je er een dag op uit? Kom kijken wat er staat.</p>
+        </li>
+      </ul>
+      <figure class="shots">
+        <img class="tall" src="https://images.unsplash.com/photo-1643294776920-609934c8e4da?auto=format&fit=crop&w=700&h=1160&q=70" width="700" height="1160" loading="lazy" alt="Spaken en naaf van een fietswiel van dichtbij">
+        <img class="wide" src="https://images.unsplash.com/photo-1674006597292-c598b811a8d7?auto=format&fit=crop&w=700&h=700&q=70" width="700" height="700" loading="lazy" alt="Hand stelt de achterderailleur van een fiets af">
+        <img class="wide" src="https://images.unsplash.com/photo-1588766919876-f2ad05ff92f5?auto=format&fit=crop&w=700&h=700&q=70" width="700" height="700" loading="lazy" alt="Gele damesfiets met mandje voor een bakstenen muur">
+        <figcaption>Voorbeeldfoto’s. In de echte site komen hier foto’s van de eigen werkplaats en fietsen.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="praise" id="reviews">
+  <div class="wrap">
+    <div class="score">
+      <span class="num">4,9</span>
+      <span class="stars" aria-hidden="true">★★★★★</span>
+      <small>gemiddeld uit 127 reviews op Google</small>
+    </div>
+    <div>
+      <h2>Klanten zijn er duidelijk over</h2>
+      <p>In de reviews op Google komen steeds dezelfde dingen terug:</p>
+      <ul class="tags">
+        <li>Vriendelijk geholpen</li>
+        <li>Vakkundig</li>
+        <li>Snel klaar</li>
+        <li>Eerlijke prijs</li>
+        <li>Fiets thuisgebracht</li>
+      </ul>
+      <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Pannonia+Fietsreparatie-+en+Ophaaldienst+Purmerend&query_place_id=ChIJ43j9WTMBxkcRLk_U5KYDIMk" target="_blank" rel="noopener">Lees de reviews op Google</a>
+    </div>
+  </div>
+</section>
+
+<section id="tijden">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="eyebrow">Langskomen</p>
+      <h2>De werkplaats in Purmerend</h2>
+    </div>
+    <div class="visit">
+      <div>
+        <table class="hours">
+          <caption class="skip">Openingstijden</caption>
+          <tbody>
+            <tr data-d="1" class="shut"><th scope="row">Maandag</th><td>gesloten</td></tr>
+            <tr data-d="2"><th scope="row">Dinsdag</th><td>9.30 – 18.00</td></tr>
+            <tr data-d="3"><th scope="row">Woensdag</th><td>9.30 – 18.00</td></tr>
+            <tr data-d="4"><th scope="row">Donderdag</th><td>9.30 – 18.00</td></tr>
+            <tr data-d="5"><th scope="row">Vrijdag</th><td>9.30 – 18.00</td></tr>
+            <tr data-d="6"><th scope="row">Zaterdag</th><td>9.30 – 17.00</td></tr>
+            <tr data-d="0" class="shut"><th scope="row">Zondag</th><td>gesloten</td></tr>
+          </tbody>
+        </table>
+        <address class="addr">
+          <strong>Pannonia Fietsreparatie- en Ophaaldienst</strong>
+          Van IJsendijkstraat 144-P<br>1442 CS Purmerend
+        </address>
+        <ul class="perks">
+          <li>Werkplaats op de begane grond</li>
+          <li>Parkeren kan voor de deur</li>
+          <li>Je hond mag mee naar binnen</li>
+        </ul>
+        <div class="cta">
+          <a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=Van+IJsendijkstraat+144-P,+1442+CS+Purmerend" target="_blank" rel="noopener">Route plannen</a>
+        </div>
+      </div>
+      <div class="map">
+        <iframe title="Kaart: Van IJsendijkstraat 144-P, Purmerend" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=4.9668%2C52.5105%2C4.9868%2C52.5177&amp;layer=mapnik&amp;marker=52.51406%2C4.97677"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark ask" id="aanvraag">
+  <div class="wrap">
+    <div class="intro">
+      <p class="eyebrow">Afspraak maken</p>
+      <h2>Fiets laten ophalen</h2>
+      <p>Vul in wat er aan de hand is en waar de fiets staat. Pannonia neemt daarna contact op om een moment af te spreken. Sneller? Bel gewoon even.</p>
+      <a class="tel" href="tel:+31299450391">0299 450 391</a>
+      <small>Mobiel: <a href="tel:+31623759643">06 2375 9643</a> · di t/m vr tot 18.00, za tot 17.00 uur</small>
+    </div>
+    <form id="ophaalform" novalidate>
+      <label>Naam<input name="naam" autocomplete="name" required></label>
+      <label>Telefoonnummer<input name="tel" type="tel" inputmode="tel" autocomplete="tel" required></label>
+      <label class="full">Adres waar de fiets staat<input name="adres" autocomplete="street-address" placeholder="Straat, huisnummer en plaats" required></label>
+      <label>Soort fiets
+        <select name="fiets">
+          <option>Stadsfiets</option><option>E-bike</option><option>Kinderfiets</option><option>Sportieve fiets</option><option>Anders</option>
+        </select>
+      </label>
+      <label>Wat is er aan de hand?
+        <select name="klacht">
+          <option>Lekke band</option><option>Remmen</option><option>Versnellingen of ketting</option><option>Verlichting</option><option>Onderhoudsbeurt</option><option>Iets anders</option>
+        </select>
+      </label>
+      <label class="full">Toelichting (mag je leeg laten)<textarea name="toelichting" placeholder="Bijvoorbeeld: achterband loopt steeds leeg"></textarea></label>
+      <button class="btn ochre" type="submit">Aanvraag versturen</button>
+      <p class="sent" role="status" hidden><strong>Zo ziet de bevestiging eruit.</strong> Dit is een demo, er is niets verstuurd. In de echte site komt de aanvraag direct bij Pannonia binnen, via WhatsApp of e-mail.</p>
+      <p class="fine">Ophalen en terugbrengen is gratis bij reparaties vanaf € 25.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><b>Pannonia Fietsreparatie- en Ophaaldienst</b>Van IJsendijkstraat 144-P<br>1442 CS Purmerend</div>
+    <div><b>Bellen</b><a href="tel:+31299450391">0299 450 391</a><br><a href="tel:+31623759643">06 2375 9643</a></div>
+    <div><b>Open</b>Di t/m vr 9.30 – 18.00<br>Za 9.30 – 17.00<br>Zo en ma gesloten</div>
+    <p class="small">Demo-ontwerp, nog niet de officiële website van Pannonia. Adres, telefoonnummers, openingstijden en de Google-score (stand oktober 2026) komen uit openbare bedrijfsvermeldingen. De foto’s zijn voorbeeldfoto’s van Unsplash. Concept door <a href="https://byxavio.nl">byXavio</a>.</p>
+  </div>
+</footer>
+
+<div class="dock" data-dock>
+  <a class="btn line" href="tel:+31299450391">Bel</a>
+  <a class="btn ochre" href="#aanvraag">Fiets laten ophalen</a>
+</div>
+
+<script>
+(function(){
+  // openingstijden: 0 = zondag
+  var H={0:null,1:null,2:[9.5,18],3:[9.5,18],4:[9.5,18],5:[9.5,18],6:[9.5,17]};
+  var N=['zondag','maandag','dinsdag','woensdag','donderdag','vrijdag','zaterdag'];
+  function fmt(h){var m=Math.round((h%1)*60);return Math.floor(h)+'.'+(m<10?'0':'')+m;}
+  var now;
+  try{now=new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/Amsterdam'}));}catch(e){now=new Date();}
+  var d=now.getDay(), t=now.getHours()+now.getMinutes()/60, el=document.querySelector('[data-status]');
+  var row=document.querySelector('.hours tr[data-d="'+d+'"]'); if(row) row.classList.add('today');
+  if(el){
+    var h=H[d], b=el.querySelector('b'), s=el.querySelector('span');
+    if(h && t>=h[0] && t<h[1]){el.classList.add('open');b.textContent='Nu open';s.textContent='tot '+fmt(h[1])+' uur';}
+    else{
+      el.classList.add('shut');b.textContent='Nu gesloten';
+      if(h && t<h[0]){s.textContent='vandaag open vanaf '+fmt(h[0])+' uur';}
+      else{for(var i=1;i<=7;i++){var n=(d+i)%7;if(H[n]){s.textContent=(i===1?'morgen':N[n])+' weer open vanaf '+fmt(H[n][0])+' uur';break;}}}
+    }
+  }
+  // fietsje rijdt de route één keer
+  var route=document.querySelector('[data-route]');
+  if(route && 'IntersectionObserver' in window){
+    new IntersectionObserver(function(es,o){es.forEach(function(e){if(e.isIntersecting){route.classList.add('go');o.disconnect();}});},{threshold:.5}).observe(route);
+  }
+  // balk onderin pas tonen als de knoppen in de hero uit beeld zijn
+  var dock=document.querySelector('[data-dock]'), cta=document.querySelector('.hero .cta'), ask=document.getElementById('aanvraag');
+  if(dock && cta && 'IntersectionObserver' in window){
+    var a=true,f=false;
+    function upd(){dock.classList.toggle('on',!a&&!f);}
+    new IntersectionObserver(function(es){a=es[0].isIntersecting;upd();}).observe(cta);
+    new IntersectionObserver(function(es){f=es[0].isIntersecting;upd();},{threshold:.15}).observe(ask);
+  }
+  // demoformulier
+  var form=document.getElementById('ophaalform');
+  if(form) form.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!form.checkValidity()){form.reportValidity();return;}
+    var s=form.querySelector('.sent');s.hidden=false;s.scrollIntoView({block:'nearest'});
+  });
+})();
+</script>
+</body>
+</html>
