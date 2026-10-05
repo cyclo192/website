@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Asef Kapsalon · Breedstraat 21, Purmerend (demo)</title>
+<meta name="description" content="Demo-ontwerp: Asef Kapsalon in de binnenstad van Purmerend. Heren knippen € 15, zeven dagen per week open.">
+<meta name="theme-color" content="#0d0c0a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230d0c0a'/%3E%3Cpath d='M32 12 14 52h8l3.6-9h12.8l3.6 9h8zm0 15 3.8 9.5h-7.6z' fill='%23c9a24a'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* zwart en goud, zoals de gevel en het prijsbord van de zaak */
+  --black:#0d0c0a;
+  --coal:#17150f;
+  --edge:#2e2a1f;
+  --gold:#c9a24a;
+  --gold-hi:#e9d08e;
+  --gold-ink:#7a5a12;
+  --cream:#f3ecdd;
+  --text:#ede6d6;
+  --soft:#aaa291;
+  --ink:#16130d;
+  --wrap:1140px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--black);color:var(--text);font:400 1.0625rem/1.65 Manrope,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+img{height:auto}
+a{color:inherit}
+h1,h2,h3,p,ul,dl,dd,dt,figure{margin:0}
+ul{padding:0;list-style:none}
+:focus-visible{outline:3px solid var(--gold-hi);outline-offset:3px;border-radius:3px}
+.light :focus-visible{outline-color:var(--ink)}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 22px}
+.skip{position:absolute;left:-999px;top:0;background:var(--gold);color:var(--ink);padding:10px 16px;z-index:100}
+.skip:focus{left:8px;top:8px}
+
+h1,h2,.caps{font-family:Cinzel,"Trajan Pro",Georgia,serif;font-weight:600;text-transform:uppercase;letter-spacing:.05em;line-height:1.12}
+h2{font-size:clamp(1.75rem,4.6vw,2.7rem);text-wrap:balance}
+h3{font:600 1.3rem/1.2 Cinzel,Georgia,serif;text-transform:uppercase;letter-spacing:.07em}
+.eyebrow{font:700 .8rem/1.3 Manrope,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.light .eyebrow{color:var(--gold-ink)}
+
+.demo{background:#000;color:#cfc8b8;font-size:.92rem;line-height:1.4;padding:9px 0;text-align:center}
+.demo a{color:#fff;font-weight:700}
+/* de kapperspaal */
+.pole{height:6px;background:repeating-linear-gradient(135deg,#b3282d 0 12px,#f3ecdd 12px 24px,#2a4390 24px 36px,#f3ecdd 36px 48px)}
+
+.top{position:sticky;top:0;z-index:40;background:rgba(13,12,10,.93);backdrop-filter:blur(10px);border-bottom:1px solid var(--edge)}
+.top .wrap{display:flex;align-items:center;gap:24px;height:70px}
+.brand{margin-right:auto;text-decoration:none;display:flex;flex-direction:column;line-height:1}
+.brand b{font:700 1.28rem/1 Cinzel,Georgia,serif;letter-spacing:.14em;color:var(--gold-hi);text-transform:uppercase;white-space:nowrap}
+.brand small{font:500 .66rem/1 Manrope,sans-serif;letter-spacing:.34em;color:var(--soft);text-transform:uppercase;margin-top:7px}
+.nav{display:flex;gap:28px;font-size:.96rem;font-weight:500}
+.nav a{text-decoration:none;padding:6px 0;border-bottom:1px solid transparent}
+.nav a:hover{border-color:var(--gold)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border:1px solid var(--gold);background:var(--gold);color:var(--ink);font:700 1rem/1 Manrope,sans-serif;letter-spacing:.02em;text-decoration:none;border-radius:2px;transition:background .15s,color .15s,transform .15s}
+.btn:hover{background:var(--gold-hi);transform:translateY(-2px)}
+.btn svg{width:18px;height:18px;flex:none}
+.btn.line{background:transparent;color:var(--gold-hi)}
+.btn.line:hover{background:var(--gold);color:var(--ink)}
+.btn.ink{background:var(--ink);border-color:var(--ink);color:var(--cream)}
+.btn.ink:hover{background:#000}
+.top .btn{min-height:44px;padding:0 18px;font-size:.95rem}
+
+/* hero */
+.hero{position:relative;padding:clamp(38px,6vw,84px) 0 clamp(48px,7vw,96px);background:radial-gradient(90% 70% at 85% 20%,#2a2415 0,rgba(13,12,10,0) 62%),var(--black);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,460px);gap:clamp(30px,6vw,84px);align-items:center}
+.hero h1{font-size:clamp(2.35rem,8.4vw,4.3rem);margin:18px 0 22px;color:#fff}
+.hero h1 em{font-style:normal;color:var(--gold-hi);display:block}
+.lead{font-size:1.18rem;max-width:30em;color:#d8d1c1}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.status{display:flex;align-items:baseline;gap:10px;margin-top:24px;font-size:1rem;line-height:1.4}
+.status i{width:10px;height:10px;border-radius:50%;background:var(--soft);flex:none;position:relative;top:0}
+.status.open i{background:#55c07a;box-shadow:0 0 0 4px rgba(85,192,122,.2)}
+.status.shut i{background:#d0563f}
+.status b{font-weight:700}
+.status .st span{color:var(--soft)}
+
+/* het prijsbord */
+.board{position:relative;background:linear-gradient(180deg,#1b1810,#100e09);border:1px solid var(--gold);padding:clamp(26px,4vw,40px) clamp(20px,3.4vw,36px) clamp(22px,3vw,30px);box-shadow:0 30px 70px rgba(0,0,0,.55)}
+.board::before{content:"";position:absolute;inset:7px;border:1px solid rgba(201,162,74,.45);pointer-events:none}
+.board::after{content:"◆";position:absolute;left:50%;top:-11px;transform:translateX(-50%);background:var(--black);color:var(--gold);padding:0 10px;font-size:.9rem;line-height:1.4}
+.board h2{font-size:clamp(1.5rem,5vw,1.95rem);text-align:center;color:var(--gold-hi);letter-spacing:.12em}
+.board .estd{text-align:center;font:500 .7rem/1 Manrope,sans-serif;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin:10px 0 26px;display:flex;align-items:center;gap:12px}
+.board .estd::before,.board .estd::after{content:"";flex:1;height:1px;background:rgba(201,162,74,.5)}
+.prices>div{display:flex;align-items:baseline;gap:10px;padding:11px 0}
+.prices dt{font-size:1.1rem;font-weight:500;color:#fff}
+.prices dt::before{content:"◆";color:var(--gold);font-size:.62rem;margin-right:11px;position:relative;top:-3px}
+.prices .dots{flex:1;border-bottom:2px dotted rgba(201,162,74,.55);transform:translateY(-5px);min-width:18px}
+.prices dd{font:600 1.5rem/1 Cinzel,Georgia,serif;color:var(--gold-hi);white-space:nowrap}
+.board .fine{margin-top:18px;text-align:center}
+.fine{font-size:.84rem;color:var(--soft);line-height:1.45}
+.light .fine{color:#5d5646}
+
+section{padding:clamp(60px,9vw,112px) 0}
+.sechead{max-width:38em;margin-bottom:clamp(30px,5vw,52px)}
+.sechead h2{margin:12px 0 14px;color:#fff}
+.sechead p{font-size:1.12rem;color:#d8d1c1}
+.light{background:var(--cream);color:var(--ink)}
+.light .sechead h2,.light h2{color:var(--ink)}
+
+/* voor wie */
+.who{background:var(--coal)}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.card{background:var(--black);border:1px solid var(--edge);display:flex;flex-direction:column}
+.card img{width:100%;aspect-ratio:4/3;object-fit:cover;background:var(--edge);filter:saturate(.85) contrast(1.04)}
+.card div{padding:22px 22px 24px}
+.card h3{color:var(--gold-hi);margin-bottom:12px}
+.card li{display:flex;justify-content:space-between;gap:14px;padding:7px 0;border-top:1px solid var(--edge)}
+.card li:first-child{border-top:0}
+.card li b{font-weight:700;color:#fff;white-space:nowrap}
+.who .fine{margin-top:18px}
+
+/* reviews */
+.praise .wrap{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(26px,7vw,90px);align-items:center}
+.score{text-align:center;border:1px solid var(--ink);padding:26px 34px 24px;position:relative}
+.score::before{content:"";position:absolute;inset:6px;border:1px solid rgba(22,19,13,.35)}
+.score .num{font:700 clamp(4.4rem,15vw,6.6rem)/.9 Cinzel,Georgia,serif;display:block}
+.score .stars{color:var(--gold-ink);letter-spacing:6px;font-size:1.3rem;display:block;margin:12px 0 8px}
+.score small{font-size:.94rem;font-weight:500}
+.praise h2{margin:12px 0 14px}
+.praise p{max-width:32em;font-size:1.1rem}
+.tags{display:flex;flex-wrap:wrap;gap:9px;margin:22px 0 28px}
+.tags li{border:1px solid var(--ink);padding:8px 16px;font-weight:500;font-size:.96rem}
+
+/* tijden en adres */
+.visit{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(26px,5vw,64px)}
+.hours{width:100%;border-collapse:collapse;font-size:1.06rem}
+.hours th,.hours td{padding:13px 0;border-bottom:1px solid var(--edge);text-align:left;font-weight:400}
+.hours td{text-align:right;font-variant-numeric:tabular-nums}
+.hours tr.today th,.hours tr.today td{font-weight:700;color:var(--gold-hi)}
+.hours tr.today th::after{content:"vandaag";margin-left:10px;border:1px solid var(--gold);padding:2px 8px;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;vertical-align:2px}
+.addr{margin-top:30px;font-style:normal;font-size:1.1rem;line-height:1.55}
+.addr strong{display:block;font:600 1.1rem/1.3 Cinzel,Georgia,serif;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-hi);margin-bottom:4px}
+.map{border:1px solid var(--gold);padding:6px;min-height:400px;display:grid;background:var(--coal)}
+.map iframe{width:100%;height:100%;min-height:386px;border:0;filter:grayscale(.5) contrast(1.05)}
+
+/* afsluiter */
+.walkin{background:var(--gold);color:var(--ink);text-align:center;padding:clamp(52px,8vw,92px) 0}
+.walkin h2{font-size:clamp(1.8rem,5.4vw,3rem);color:var(--ink)}
+.walkin p{max-width:30em;margin:16px auto 0;font-size:1.14rem;font-weight:500}
+.tel{display:inline-block;margin-top:26px;font:700 clamp(2.1rem,8vw,3.5rem)/1 Cinzel,Georgia,serif;letter-spacing:.04em;text-decoration:none;border-bottom:2px solid var(--ink);padding-bottom:6px}
+.tel:hover{border-color:transparent}
+
+footer{background:#000;color:var(--soft);padding:44px 0 48px;font-size:.96rem}
+footer .wrap{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:30px}
+footer b{display:block;color:var(--gold-hi);font:600 .92rem/1.3 Cinzel,Georgia,serif;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+footer a{color:var(--text)}
+.small{grid-column:1/-1;border-top:1px solid var(--edge);padding-top:20px;font-size:.86rem;line-height:1.5}
+
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:50;display:none;gap:10px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(0,0,0,.94);backdrop-filter:blur(8px);border-top:1px solid var(--edge);transform:translateY(110%);transition:transform .25s}
+.dock.on{transform:none}
+.dock .btn{flex:1;min-height:50px;padding:0 10px}
+
+@media (max-width:900px){
+  .nav{display:none}
+  .hero .wrap,.visit{grid-template-columns:minmax(0,1fr)}
+  .cards{grid-template-columns:minmax(0,1fr)}
+  .card{flex-direction:row}
+  .card img{width:38%;aspect-ratio:auto;min-height:100%}
+  .card div{flex:1;padding:18px}
+  .praise .wrap{grid-template-columns:minmax(0,1fr)}
+  .score{justify-self:start}
+  footer{padding-bottom:110px}
+  footer .wrap{grid-template-columns:minmax(0,1fr)}
+  .dock{display:flex}
+}
+@media (max-width:560px){
+  body{font-size:1.04rem}
+  .top .wrap{height:62px;gap:10px}
+  .brand b{font-size:1.02rem;letter-spacing:.1em}
+  .brand small{font-size:.58rem;letter-spacing:.28em}
+  .cta .btn{width:100%}
+  .card{flex-direction:column}
+  .card img{width:100%;aspect-ratio:16/9;min-height:0}
+  .score{justify-self:stretch}
+  .demo{font-size:.86rem}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .btn,.dock{transition:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#inhoud">Naar de inhoud</a>
+<div class="demo"><div class="wrap">Dit is een demo-ontwerp van <a href="https://byxavio.nl">byXavio</a> voor Asef Kapsalon.</div></div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Asef Kapsalon, naar boven"><b>Asef Kapsalon</b><small>Estd. 2000 · Purmerend</small></a>
+    <nav class="nav" aria-label="Hoofdmenu">
+      <a href="#prijzen">Prijzen</a>
+      <a href="#voorwie">Heren, dames, kinderen</a>
+      <a href="#tijden">Openingstijden</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn" href="tel:+31657032239">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>
+      Bel
+    </a>
+  </div>
+</header>
+
+<main id="inhoud">
+<div class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Kapper in de binnenstad van Purmerend</p>
+      <h1>Strak geknipt, <em>eerlijke prijs.</em></h1>
+      <p class="lead">Heren knippen voor € 15, zeven dagen per week. Je vindt Asef Kapsalon aan de Breedstraat 21, midden in het centrum.</p>
+      <div class="cta">
+        <a class="btn" href="tel:+31657032239">Bel 06 5703 2239</a>
+        <a class="btn line" href="https://www.google.com/maps/dir/?api=1&destination=Breedstraat+21,+1441+CB+Purmerend" target="_blank" rel="noopener">Route naar de zaak</a>
+      </div>
+      <p class="status" data-status aria-live="polite"><i></i><span class="st"><b>Elke dag open</b> <span>ook op zondag</span></span></p>
+    </div>
+
+    <div class="board" id="prijzen">
+      <h2>Prijslijst</h2>
+      <p class="estd">Asef Kapsalon</p>
+      <dl class="prices">
+        <div><dt>Heren knippen</dt><span class="dots"></span><dd>€ 15</dd></div>
+        <div><dt>Alleen baard</dt><span class="dots"></span><dd>€ 15</dd></div>
+        <div><dt>Knippen + baard</dt><span class="dots"></span><dd>€ 25</dd></div>
+        <div><dt>Kinderen onder 10 jaar</dt><span class="dots"></span><dd>€ 13</dd></div>
+        <div><dt>Dames, alleen knippen</dt><span class="dots"></span><dd>€ 25</dd></div>
+      </dl>
+      <p class="fine">Prijzen zoals op het bord voor de deur.</p>
+    </div>
+  </div>
+</div>
+<div class="pole" aria-hidden="true"></div>
+
+<section class="who" id="voorwie">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="eyebrow">Voor wie</p>
+      <h2>Heren, dames en kinderen</h2>
+      <p>Een vaste prijs per behandeling. Je weet vooraf wat je betaalt.</p>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1672642150228-3fcd5826ec26?auto=format&fit=crop&w=800&h=600&q=70" width="800" height="600" loading="lazy" alt="Kapper werkt een herenkapsel bij met de tondeuse">
+        <div>
+          <h3>Heren</h3>
+          <ul>
+            <li>Knippen <b>€ 15</b></li>
+            <li>Alleen baard <b>€ 15</b></li>
+            <li>Knippen + baard <b>€ 25</b></li>
+          </ul>
+        </div>
+      </article>
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1700760934268-8aa0ef52ce0a?auto=format&fit=crop&w=800&h=600&q=70" width="800" height="600" loading="lazy" alt="Lang donker haar wordt met de schaar geknipt">
+        <div>
+          <h3>Dames</h3>
+          <ul>
+            <li>Alleen knippen <b>€ 25</b></li>
+          </ul>
+        </div>
+      </article>
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1514336937476-a5b961020a5c?auto=format&fit=crop&w=800&h=600&q=70" width="800" height="600" loading="lazy" alt="Jongen wordt geknipt bij de kapper, van achteren gezien">
+        <div>
+          <h3>Kinderen</h3>
+          <ul>
+            <li>Onder 10 jaar <b>€ 13</b></li>
+          </ul>
+        </div>
+      </article>
+    </div>
+    <p class="fine">Voorbeeldfoto’s. In de echte site komen hier foto’s uit de eigen zaak.</p>
+  </div>
+</section>
+
+<section class="light praise" id="reviews">
+  <div class="wrap">
+    <div class="score">
+      <span class="num">4,9</span>
+      <span class="stars" aria-hidden="true">★★★★★</span>
+      <small>uit 120 reviews op Google</small>
+    </div>
+    <div>
+      <p class="eyebrow">Reviews</p>
+      <h2>Wat klanten erover zeggen</h2>
+      <p>In de reviews op Google komen steeds dezelfde dingen terug:</p>
+      <ul class="tags">
+        <li>Vriendelijke kapper</li>
+        <li>Oog voor detail</li>
+        <li>Neemt de tijd</li>
+        <li>Goede prijs</li>
+        <li>Koffie of thee erbij</li>
+      </ul>
+      <a class="btn ink" href="https://www.google.com/maps/search/?api=1&query=Asef+Kapsalon+15%E2%82%AC+Breedstraat+21+Purmerend" target="_blank" rel="noopener">Lees de reviews op Google</a>
+    </div>
+  </div>
+</section>
+
+<section id="tijden">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="eyebrow">Openingstijden</p>
+      <h2>Zeven dagen per week open</h2>
+    </div>
+    <div class="visit">
+      <div>
+        <table class="hours">
+          <caption class="skip">Openingstijden</caption>
+          <tbody>
+            <tr data-d="1"><th scope="row">Maandag</th><td>9.00 – 19.00</td></tr>
+            <tr data-d="2"><th scope="row">Dinsdag</th><td>9.00 – 19.00</td></tr>
+            <tr data-d="3"><th scope="row">Woensdag</th><td>9.00 – 19.00</td></tr>
+            <tr data-d="4"><th scope="row">Donderdag</th><td>9.00 – 19.00</td></tr>
+            <tr data-d="5"><th scope="row">Vrijdag</th><td>9.00 – 19.00</td></tr>
+            <tr data-d="6"><th scope="row">Zaterdag</th><td>9.00 – 20.00</td></tr>
+            <tr data-d="0"><th scope="row">Zondag</th><td>11.00 – 19.00</td></tr>
+          </tbody>
+        </table>
+        <address class="addr">
+          <strong>Asef Kapsalon</strong>
+          Breedstraat 21<br>1441 CB Purmerend
+        </address>
+        <div class="cta">
+          <a class="btn line" href="https://www.google.com/maps/dir/?api=1&destination=Breedstraat+21,+1441+CB+Purmerend" target="_blank" rel="noopener">Route plannen</a>
+        </div>
+      </div>
+      <div class="map">
+        <iframe title="Kaart: Breedstraat 21, Purmerend" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=4.9412%2C52.5068%2C4.9532%2C52.5122&amp;layer=mapnik&amp;marker=52.50956%2C4.94726"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="pole" aria-hidden="true"></div>
+<section class="walkin" id="contact">
+  <div class="wrap">
+    <h2>Loop gewoon binnen</h2>
+    <p>Je bent welkom aan de Breedstraat 21. Liever eerst even bellen? Dat kan ook.</p>
+    <a class="tel" href="tel:+31657032239">06 5703 2239</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><b>Asef Kapsalon</b>Breedstraat 21<br>1441 CB Purmerend<br><a href="tel:+31657032239">06 5703 2239</a></div>
+    <div><b>Open</b>Ma t/m vr 9.00 – 19.00<br>Za 9.00 – 20.00<br>Zo 11.00 – 19.00</div>
+    <div><b>Prijzen</b>Heren knippen € 15<br>Knippen + baard € 25<br>Dames knippen € 25</div>
+    <p class="small">Demo-ontwerp, nog niet de officiële website van Asef Kapsalon. Adres, telefoonnummer, openingstijden en de Google-score (stand oktober 2026) komen van het openbare Google-profiel; de prijzen van het prijsbord bij de zaak (foto van februari 2026). De foto’s zijn voorbeeldfoto’s van Unsplash. Concept door <a href="https://byxavio.nl">byXavio</a>.</p>
+  </div>
+</footer>
+
+<div class="dock" data-dock>
+  <a class="btn line" href="https://www.google.com/maps/dir/?api=1&destination=Breedstraat+21,+1441+CB+Purmerend" target="_blank" rel="noopener">Route</a>
+  <a class="btn" href="tel:+31657032239">Bel de zaak</a>
+</div>
+
+<script>
+(function(){
+  // openingstijden: 0 = zondag
+  var H={0:[11,19],1:[9,19],2:[9,19],3:[9,19],4:[9,19],5:[9,19],6:[9,20]};
+  var N=['zondag','maandag','dinsdag','woensdag','donderdag','vrijdag','zaterdag'];
+  function fmt(h){var m=Math.round((h%1)*60);return Math.floor(h)+'.'+(m<10?'0':'')+m;}
+  var now;
+  try{now=new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/Amsterdam'}));}catch(e){now=new Date();}
+  var d=now.getDay(), t=now.getHours()+now.getMinutes()/60, el=document.querySelector('[data-status]');
+  var row=document.querySelector('.hours tr[data-d="'+d+'"]'); if(row) row.classList.add('today');
+  if(el){
+    var h=H[d], b=el.querySelector('b'), s=el.querySelector('.st span');
+    if(h && t>=h[0] && t<h[1]){el.classList.add('open');b.textContent='Nu open';s.textContent='tot '+fmt(h[1])+' uur';}
+    else{
+      el.classList.add('shut');b.textContent='Nu gesloten';
+      if(h && t<h[0]){s.textContent='vandaag open vanaf '+fmt(h[0])+' uur';}
+      else{for(var i=1;i<=7;i++){var n=(d+i)%7;if(H[n]){s.textContent=(i===1?'morgen':N[n])+' weer open vanaf '+fmt(H[n][0])+' uur';break;}}}
+    }
+  }
+  // balk onderin pas tonen als de knoppen in de hero uit beeld zijn
+  var dock=document.querySelector('[data-dock]'), cta=document.querySelector('.hero .cta'), end=document.getElementById('contact');
+  if(dock && cta && 'IntersectionObserver' in window){
+    var a=true,f=false;
+    function upd(){dock.classList.toggle('on',!a&&!f);}
+    new IntersectionObserver(function(es){a=es[0].isIntersecting;upd();}).observe(cta);
+    new IntersectionObserver(function(es){f=es[0].isIntersecting;upd();},{threshold:.3}).observe(end);
+  }
+})();
+</script>
+</body>
+</html>
