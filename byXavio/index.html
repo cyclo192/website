@@ -261,6 +261,37 @@
   }
   .demo .go:hover{color:var(--cyan-ink);}
 
+  /* ---------- klantproject ---------- */
+
+  .case{
+    display:grid; grid-template-columns:1.08fr .92fr; gap:clamp(20px,3.6vw,46px); align-items:center;
+    background:var(--paper); border:1px solid var(--line); border-radius:20px;
+    padding:clamp(14px,2.6vw,28px); margin-bottom:clamp(26px,3.6vw,40px);
+  }
+  .case-win{
+    position:relative; background:#1a1b3a; border-radius:14px; padding:0 8px 8px;
+    box-shadow:0 26px 48px -22px rgba(26,27,58,.45);
+    transition:transform .16s ease;
+  }
+  .case-win:hover{transform:translateY(-4px);}
+  .case-win .screen{aspect-ratio:16/10; border-radius:4px;}
+  .case-cover{position:absolute; inset:0; z-index:2; border-radius:14px;}
+  .case-body{display:flex; flex-direction:column; align-items:flex-start; padding:4px clamp(0px,1vw,10px) 6px;}
+  .case-meta{display:flex; flex-wrap:wrap; align-items:center; gap:8px 12px;}
+  .case-badge{
+    background:var(--amber-soft); color:var(--ink); border-radius:999px; padding:4px 12px;
+    font-size:.74rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase;
+  }
+  .case .kind{font-size:.74rem; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--cyan-ink);}
+  .case h3{font-size:clamp(1.45rem,2.7vw,1.9rem); line-height:1.15; margin-top:14px;}
+  .case p{color:var(--muted); font-size:.98rem; margin-top:10px; max-width:46ch;}
+  .case-tags{list-style:none; margin:16px 0 0; padding:0; display:flex; flex-wrap:wrap; gap:8px;}
+  .case-tags li{
+    background:var(--panel); border:1px solid var(--line); border-radius:999px;
+    padding:5px 13px; font-size:.84rem; font-weight:600;
+  }
+  .case .btn{margin-top:22px;}
+
   /* ---------- packages ---------- */
 
   .packs{display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(12px,2vw,20px); align-items:start;}
@@ -415,6 +446,7 @@
     .hero-in{grid-template-columns:1fr;}
     .steps{grid-template-columns:repeat(2,1fr);}
     .demos{grid-template-columns:repeat(2,1fr);}
+    .case{grid-template-columns:1fr;}
     .packs{grid-template-columns:repeat(2,1fr);}
     .over{grid-template-columns:1fr;}
     .contact{grid-template-columns:1fr;}
@@ -571,12 +603,34 @@
         <p class="eyebrow" data-i18n="nav.voorbeelden">Voorbeelden</p>
         <h2 data-i18n="voorb.h2">Zo kan jouw site eruitzien.</h2>
       </div>
-      <p class="lead" data-i18n="voorb.lead">Vier voorbeelden uit verschillende branches, elk met een eigen kleur, opbouw en formulier.</p>
+      <p class="lead" data-i18n="voorb.lead">Een site voor een echte klant, en vier voorbeelden uit verschillende branches, elk met een eigen kleur, opbouw en formulier.</p>
     </div>
+
+    <article class="case">
+      <div class="case-win">
+        <div class="laptop-bar"><i></i><i></i><i></i><span>slingerottertje30.com</span></div>
+        <div class="screen" data-w="1280" data-h="800"><iframe src="https://slingerottertje30.com/" title="Website van Slinger Ottertje 30" loading="lazy" tabindex="-1" scrolling="no"></iframe></div>
+        <a class="case-cover" href="https://slingerottertje30.com/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"></a>
+      </div>
+      <div class="case-body">
+        <div class="case-meta">
+          <span class="case-badge" data-i18n="case.badge">Klantproject</span>
+          <span class="kind" data-i18n="case.kind">Vakantiechalet in Drenthe</span>
+        </div>
+        <h3>Slinger Ottertje 30</h3>
+        <p data-i18n="case.desc">Website voor een chalet op een camping in Wijster. Gasten bekijken de foto&rsquo;s, zien meteen welke dagen vrij zijn en vragen hun verblijf aan via WhatsApp of e-mail.</p>
+        <ul class="case-tags">
+          <li data-i18n="case.tag1">Fotogalerij</li>
+          <li data-i18n="case.tag2">Beschikbaarheidskalender</li>
+          <li data-i18n="case.tag3">Eigen domeinnaam</li>
+        </ul>
+        <a class="btn btn-primary" href="https://slingerottertje30.com/" target="_blank" rel="noopener" data-i18n="case.go">Bekijk de website &rarr;</a>
+      </div>
+    </article>
 
     <div class="notice">
       <span aria-hidden="true">&#9432;</span>
-      <span data-i18n-html="notice.html"><b>Goed om te weten:</b> dit zijn voorbeeldsites voor verzonnen bedrijven, gemaakt om te laten zien wat er kan. Je eigen site maak ik volledig op maat, of we gebruiken een van deze als basis.</span>
+      <span data-i18n-html="notice.html"><b>Goed om te weten:</b> de vier sites hieronder zijn voorbeeldsites voor verzonnen bedrijven, gemaakt om te laten zien wat er kan. Je eigen site maak ik volledig op maat, of we gebruiken een van deze als basis.</span>
     </div>
 
     <div class="demos">
@@ -909,13 +963,14 @@
       "step2.num":"STAP 02","step2.title":"Ontwerp","step2.desc":"Ik maak een ontwerp op maat dat past bij jouw bedrijf. Geen kant-en-klaar sjabloon.",
       "step3.num":"STAP 03","step3.title":"Feedback","step3.desc":"Je geeft feedback en ik verwerk de aanpassingen, tot de site precies klopt.",
       "step4.num":"STAP 04","step4.title":"Livegang","step4.desc":"Je site gaat live en is vindbaar. Ook daarna blijf ik gewoon bereikbaar voor vragen.",
-      "voorb.h2":"Zo kan jouw site eruitzien.","voorb.lead":"Vier voorbeelden uit verschillende branches, elk met een eigen kleur, opbouw en formulier.",
-      "notice.html":"<b>Goed om te weten:</b> dit zijn voorbeeldsites voor verzonnen bedrijven, gemaakt om te laten zien wat er kan. Je eigen site maak ik volledig op maat, of we gebruiken een van deze als basis.",
+      "voorb.h2":"Zo kan jouw site eruitzien.","voorb.lead":"Een site voor een echte klant, en vier voorbeelden uit verschillende branches, elk met een eigen kleur, opbouw en formulier.",
+      "notice.html":"<b>Goed om te weten:</b> de vier sites hieronder zijn voorbeeldsites voor verzonnen bedrijven, gemaakt om te laten zien wat er kan. Je eigen site maak ik volledig op maat, of we gebruiken een van deze als basis.",
       "demo1.kind":"Kapperszaak","demo1.desc":"Diensten, openingstijden en een afsprakenformulier.",
       "demo2.kind":"Bistro & keuken","demo2.desc":"Menukaart, openingstijden en een reserveringsformulier.",
       "demo3.kind":"Kinderkleding","demo3.desc":"Collectie, maten en een pasafspraak-formulier.",
       "demo4.kind":"Bouwbedrijf","demo4.desc":"Specialismen, werkwijze en een projectenoverzicht.",
       "demo.go":"Bekijk demo →",
+      "case.badge":"Klantproject","case.kind":"Vakantiechalet in Drenthe","case.desc":"Website voor een chalet op een camping in Wijster. Gasten bekijken de foto’s, zien meteen welke dagen vrij zijn en vragen hun verblijf aan via WhatsApp of e-mail.","case.tag1":"Fotogalerij","case.tag2":"Beschikbaarheidskalender","case.tag3":"Eigen domeinnaam","case.go":"Bekijk de website →",
       "pak.h2":"Kies wat bij je bedrijf past.","pak.lead":"Drie opties, zodat je vooraf weet wat je krijgt en wat het kost. Past er geen precies? Dan stel ik in een kort gesprek iets op maat samen.",
       "pack.basis.title":"Basis","pack.basis.for":"Een volwaardige site om snel en overzichtelijk online te staan — geen halfbakken instapversie.","pack.basis.unit":"eenmalig, excl. btw","pack.basis.li1":"Eén ronde feedback op het ontwerp inbegrepen","pack.basis.li2":"Een pagina met de belangrijkste info","pack.basis.li3":"Duidelijke contactgegevens en openingstijden","pack.basis.li4":"Werkt goed op telefoon en tablet","pack.basis.li5":"Oplevering binnen een week","pack.basis.btn":"Bekijk Basis",
       "pack.ribbon":"Meest gekozen","pack.compleet.title":"Compleet","pack.compleet.for":"Voor bedrijven die klanten willen laten reageren, niet alleen lezen.","pack.compleet.li1":"Alles uit Basis","pack.compleet.li2":"Meerdere pagina’s of secties","pack.compleet.li3":"Eigen contact- of afsprakenformulier","pack.compleet.li4":"Volledig eigen ontwerp, geen sjabloon","pack.compleet.li5":"Basis zoekmachine-optimalisatie","pack.compleet.btn":"Kies dit pakket",
@@ -950,13 +1005,14 @@
       "step2.num":"STEP 02","step2.title":"Design","step2.desc":"I create a custom design that fits your business. No ready-made template.",
       "step3.num":"STEP 03","step3.title":"Feedback","step3.desc":"You give feedback and I process the changes, until the site is exactly right.",
       "step4.num":"STEP 04","step4.title":"Launch","step4.desc":"Your site goes live and is findable. I stay reachable for questions afterwards too.",
-      "voorb.h2":"This is what your site could look like.","voorb.lead":"Four examples from different industries, each with its own colour, layout and form.",
-      "notice.html":"<b>Good to know:</b> these are example sites for made-up businesses, built to show what's possible. Your own site is fully custom-made, or we can use one of these as a starting point.",
+      "voorb.h2":"This is what your site could look like.","voorb.lead":"A site for a real client, plus four examples from different industries, each with its own colour, layout and form.",
+      "notice.html":"<b>Good to know:</b> the four sites below are example sites for made-up businesses, built to show what's possible. Your own site is fully custom-made, or we can use one of these as a starting point.",
       "demo1.kind":"Hair salon","demo1.desc":"Services, opening hours and an appointment form.",
       "demo2.kind":"Bistro & kitchen","demo2.desc":"Menu, opening hours and a reservation form.",
       "demo3.kind":"Children's clothing","demo3.desc":"Collection, sizes and a fitting appointment form.",
       "demo4.kind":"Construction company","demo4.desc":"Specialties, working method and a project overview.",
       "demo.go":"View demo →",
+      "case.badge":"Client project","case.kind":"Holiday chalet in Drenthe","case.desc":"Website for a chalet on a campsite in Wijster. Guests browse the photos, see at a glance which days are free and request their stay via WhatsApp or email.","case.tag1":"Photo gallery","case.tag2":"Availability calendar","case.tag3":"Own domain name","case.go":"Visit the website →",
       "pak.h2":"Choose what fits your business.","pak.lead":"Three options, so you know upfront what you get and what it costs. Nothing quite fit? I'll put together something custom in a short conversation.",
       "pack.basis.title":"Basic","pack.basis.for":"A fully-fledged site to get online quickly and clearly — no half-baked starter version.","pack.basis.unit":"one-time, excl. VAT","pack.basis.li1":"One round of design feedback included","pack.basis.li2":"One page with the key information","pack.basis.li3":"Clear contact details and opening hours","pack.basis.li4":"Works well on phone and tablet","pack.basis.li5":"Delivered within a week","pack.basis.btn":"View Basic",
       "pack.ribbon":"Most chosen","pack.compleet.title":"Complete","pack.compleet.for":"For businesses that want customers to respond, not just read.","pack.compleet.li1":"Everything from Basic","pack.compleet.li2":"Multiple pages or sections","pack.compleet.li3":"Custom contact or booking form","pack.compleet.li4":"Fully custom design, no template","pack.compleet.li5":"Basic search engine optimisation","pack.compleet.btn":"Choose this package",
@@ -991,13 +1047,14 @@
       "step2.num":"SCHRITT 02","step2.title":"Design","step2.desc":"Ich erstelle ein maßgeschneidertes Design, das zu deinem Unternehmen passt. Keine Fertigvorlage.",
       "step3.num":"SCHRITT 03","step3.title":"Feedback","step3.desc":"Du gibst Feedback und ich setze die Anpassungen um, bis die Website genau passt.",
       "step4.num":"SCHRITT 04","step4.title":"Livegang","step4.desc":"Deine Website geht live und ist auffindbar. Auch danach bleibe ich für Fragen erreichbar.",
-      "voorb.h2":"So könnte deine Website aussehen.","voorb.lead":"Vier Beispiele aus verschiedenen Branchen, jedes mit eigener Farbe, Aufbau und Formular.",
-      "notice.html":"<b>Gut zu wissen:</b> Das sind Beispielseiten für erfundene Unternehmen, die zeigen, was möglich ist. Deine eigene Seite baue ich komplett nach Maß, oder wir nehmen eine davon als Basis.",
+      "voorb.h2":"So könnte deine Website aussehen.","voorb.lead":"Eine Website für einen echten Kunden und vier Beispiele aus verschiedenen Branchen, jedes mit eigener Farbe, Aufbau und Formular.",
+      "notice.html":"<b>Gut zu wissen:</b> Die vier Seiten unten sind Beispielseiten für erfundene Unternehmen, die zeigen, was möglich ist. Deine eigene Seite baue ich komplett nach Maß, oder wir nehmen eine davon als Basis.",
       "demo1.kind":"Friseursalon","demo1.desc":"Dienstleistungen, Öffnungszeiten und ein Terminformular.",
       "demo2.kind":"Bistro & Küche","demo2.desc":"Speisekarte, Öffnungszeiten und ein Reservierungsformular.",
       "demo3.kind":"Kinderkleidung","demo3.desc":"Kollektion, Größen und ein Formular für Anprobetermine.",
       "demo4.kind":"Bauunternehmen","demo4.desc":"Spezialgebiete, Arbeitsweise und eine Projektübersicht.",
       "demo.go":"Demo ansehen →",
+      "case.badge":"Kundenprojekt","case.kind":"Ferienchalet in Drenthe","case.desc":"Website für ein Chalet auf einem Campingplatz in Wijster. Gäste sehen sich die Fotos an, erkennen sofort, welche Tage frei sind, und fragen ihren Aufenthalt per WhatsApp oder E-Mail an.","case.tag1":"Fotogalerie","case.tag2":"Verfügbarkeitskalender","case.tag3":"Eigene Domain","case.go":"Website ansehen →",
       "pak.h2":"Wähle, was zu deinem Unternehmen passt.","pak.lead":"Drei Optionen, damit du vorab weißt, was du bekommst und was es kostet. Passt nichts genau? Dann stellen wir in einem kurzen Gespräch etwas Individuelles zusammen.",
       "pack.basis.title":"Basis","pack.basis.for":"Eine vollwertige Website, um schnell und übersichtlich online zu sein — keine halbgare Einstiegsversion.","pack.basis.unit":"einmalig, zzgl. MwSt.","pack.basis.li1":"Eine Feedbackrunde zum Design inbegriffen","pack.basis.li2":"Eine Seite mit den wichtigsten Infos","pack.basis.li3":"Klare Kontaktdaten und Öffnungszeiten","pack.basis.li4":"Funktioniert gut auf Handy und Tablet","pack.basis.li5":"Lieferung innerhalb einer Woche","pack.basis.btn":"Basis ansehen",
       "pack.ribbon":"Meistgewählt","pack.compleet.title":"Komplett","pack.compleet.for":"Für Unternehmen, die Kunden zur Reaktion bewegen wollen, nicht nur zum Lesen.","pack.compleet.li1":"Alles aus Basis","pack.compleet.li2":"Mehrere Seiten oder Bereiche","pack.compleet.li3":"Eigenes Kontakt- oder Terminformular","pack.compleet.li4":"Vollständig individuelles Design, kein Template","pack.compleet.li5":"Grundlegende Suchmaschinenoptimierung","pack.compleet.btn":"Dieses Paket wählen",
@@ -1032,13 +1089,14 @@
       "step2.num":"ÉTAPE 02","step2.title":"Conception","step2.desc":"Je crée un design sur mesure adapté à votre entreprise. Pas de modèle tout fait.",
       "step3.num":"ÉTAPE 03","step3.title":"Retours","step3.desc":"Vous donnez votre avis et j'apporte les modifications, jusqu'à ce que le site soit parfait.",
       "step4.num":"ÉTAPE 04","step4.title":"Mise en ligne","step4.desc":"Votre site est mis en ligne et devient visible. Je reste joignable pour toute question par la suite.",
-      "voorb.h2":"Voici à quoi pourrait ressembler votre site.","voorb.lead":"Quatre exemples de secteurs différents, chacun avec sa propre couleur, structure et formulaire.",
-      "notice.html":"<b>Bon à savoir :</b> ce sont des sites d'exemple pour des entreprises inventées, créés pour montrer ce qui est possible. Votre site est entièrement sur mesure, ou nous partons de l'un d'eux.",
+      "voorb.h2":"Voici à quoi pourrait ressembler votre site.","voorb.lead":"Un site pour un vrai client, et quatre exemples de secteurs différents, chacun avec sa propre couleur, structure et formulaire.",
+      "notice.html":"<b>Bon à savoir :</b> les quatre sites ci-dessous sont des sites d'exemple pour des entreprises inventées, créés pour montrer ce qui est possible. Votre site est entièrement sur mesure, ou nous partons de l'un d'eux.",
       "demo1.kind":"Salon de coiffure","demo1.desc":"Services, horaires d'ouverture et un formulaire de rendez-vous.",
       "demo2.kind":"Bistro & cuisine","demo2.desc":"Carte, horaires d'ouverture et un formulaire de réservation.",
       "demo3.kind":"Vêtements pour enfants","demo3.desc":"Collection, tailles et un formulaire de rendez-vous d'essayage.",
       "demo4.kind":"Entreprise de construction","demo4.desc":"Spécialités, méthode de travail et un aperçu des projets.",
       "demo.go":"Voir la démo →",
+      "case.badge":"Projet client","case.kind":"Chalet de vacances en Drenthe","case.desc":"Site web pour un chalet dans un camping à Wijster. Les visiteurs regardent les photos, voient tout de suite quels jours sont libres et demandent leur séjour par WhatsApp ou e-mail.","case.tag1":"Galerie photo","case.tag2":"Calendrier des disponibilités","case.tag3":"Nom de domaine propre","case.go":"Voir le site →",
       "pak.h2":"Choisissez ce qui convient à votre entreprise.","pak.lead":"Trois options, pour que vous sachiez à l'avance ce que vous obtenez et ce que cela coûte. Rien ne vous convient exactement ? Je compose une offre sur mesure lors d'un court échange.",
       "pack.basis.title":"Basique","pack.basis.for":"Un site complet pour être en ligne rapidement et clairement — pas une version d'entrée de gamme bâclée.","pack.basis.unit":"unique, hors TVA","pack.basis.li1":"Une série de retours sur le design incluse","pack.basis.li2":"Une page avec les informations essentielles","pack.basis.li3":"Coordonnées et horaires clairs","pack.basis.li4":"Fonctionne bien sur mobile et tablette","pack.basis.li5":"Livraison en une semaine","pack.basis.btn":"Voir Basique",
       "pack.ribbon":"Le plus choisi","pack.compleet.title":"Complet","pack.compleet.for":"Pour les entreprises qui veulent que les clients réagissent, pas seulement qu'ils lisent.","pack.compleet.li1":"Tout ce qui est dans Basique","pack.compleet.li2":"Plusieurs pages ou sections","pack.compleet.li3":"Formulaire de contact ou de rendez-vous personnalisé","pack.compleet.li4":"Design entièrement sur mesure, pas de modèle","pack.compleet.li5":"Optimisation SEO de base","pack.compleet.btn":"Choisir ce forfait",
@@ -1073,13 +1131,14 @@
       "step2.num":"PASO 02","step2.title":"Diseño","step2.desc":"Creo un diseño a medida que encaja con tu negocio. Sin plantillas prefabricadas.",
       "step3.num":"PASO 03","step3.title":"Comentarios","step3.desc":"Das tu opinión y aplico los cambios, hasta que el sitio quede perfecto.",
       "step4.num":"PASO 04","step4.title":"Lanzamiento","step4.desc":"Tu sitio se publica y es fácil de encontrar. Sigo disponible para preguntas después también.",
-      "voorb.h2":"Así podría verse tu sitio.","voorb.lead":"Cuatro ejemplos de diferentes sectores, cada uno con su propio color, estructura y formulario.",
-      "notice.html":"<b>Bueno saber:</b> son sitios de ejemplo para empresas inventadas, creados para mostrar lo que es posible. Tu propio sitio se hace totalmente a medida, o usamos uno de estos como base.",
+      "voorb.h2":"Así podría verse tu sitio.","voorb.lead":"Un sitio para un cliente real y cuatro ejemplos de diferentes sectores, cada uno con su propio color, estructura y formulario.",
+      "notice.html":"<b>Bueno saber:</b> los cuatro sitios de abajo son sitios de ejemplo para empresas inventadas, creados para mostrar lo que es posible. Tu propio sitio se hace totalmente a medida, o usamos uno de estos como base.",
       "demo1.kind":"Peluquería","demo1.desc":"Servicios, horarios y un formulario de citas.",
       "demo2.kind":"Bistró y cocina","demo2.desc":"Carta, horarios y un formulario de reservas.",
       "demo3.kind":"Ropa infantil","demo3.desc":"Colección, tallas y un formulario de cita para pruebas.",
       "demo4.kind":"Empresa de construcción","demo4.desc":"Especialidades, forma de trabajo y una visión general de proyectos.",
       "demo.go":"Ver demo →",
+      "case.badge":"Proyecto de cliente","case.kind":"Chalet de vacaciones en Drenthe","case.desc":"Sitio web para un chalet en un camping de Wijster. Los huéspedes ven las fotos, comprueban al instante qué días están libres y solicitan su estancia por WhatsApp o correo electrónico.","case.tag1":"Galería de fotos","case.tag2":"Calendario de disponibilidad","case.tag3":"Dominio propio","case.go":"Ver el sitio web →",
       "pak.h2":"Elige lo que encaje con tu negocio.","pak.lead":"Tres opciones, para que sepas de antemano qué obtienes y cuánto cuesta. ¿Ninguna encaja del todo? En una breve charla preparamos algo a medida.",
       "pack.basis.title":"Básico","pack.basis.for":"Un sitio completo para estar en línea rápido y con claridad — nada de versión inicial a medias.","pack.basis.unit":"único, sin IVA","pack.basis.li1":"Una ronda de comentarios sobre el diseño incluida","pack.basis.li2":"Una página con la información esencial","pack.basis.li3":"Datos de contacto y horarios claros","pack.basis.li4":"Funciona bien en móvil y tablet","pack.basis.li5":"Entrega en una semana","pack.basis.btn":"Ver Básico",
       "pack.ribbon":"El más elegido","pack.compleet.title":"Completo","pack.compleet.for":"Para negocios que quieren que los clientes respondan, no solo lean.","pack.compleet.li1":"Todo lo del plan Básico","pack.compleet.li2":"Varias páginas o secciones","pack.compleet.li3":"Formulario de contacto o citas propio","pack.compleet.li4":"Diseño totalmente propio, sin plantilla","pack.compleet.li5":"Optimización SEO básica","pack.compleet.btn":"Elegir este paquete",
@@ -1185,7 +1244,7 @@
 
 <script>
 (function(){
-  function fit(){document.querySelectorAll('.mock .screen').forEach(function(sc){
+  function fit(){document.querySelectorAll('.screen[data-w]').forEach(function(sc){
     var w=+sc.dataset.w,h=+sc.dataset.h,f=sc.querySelector('iframe');
     f.style.width=w+'px';f.style.height=h+'px';f.style.transform='scale('+(sc.clientWidth/w)+')';});}
   fit();window.addEventListener('resize',fit);
