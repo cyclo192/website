@@ -17,9 +17,11 @@ const PRODUCTEN = {
     prijs: 2795,
     url: "kattenhangmat.html",
     kleuren: {
-      zwart: { naam: "Zwart", hex: "#2b2f33" },
-      grijs: { naam: "Grijs", hex: "#9aa6a8" },
-      beige: { naam: "Beige", hex: "#d8c19b" },
+      beige: { naam: "Beige", foto: "img/hangmat-beige.jpg" },
+      zwart: { naam: "Zwart", foto: "img/hangmat-zwart.jpg" },
+      blauw: { naam: "Lichtblauw", foto: "img/hangmat-blauw.jpg" },
+      roze: { naam: "Roze", foto: "img/hangmat-roze.jpg" },
+      lila: { naam: "Lila", foto: "img/hangmat-lila.jpg" },
     },
   },
 };
@@ -84,15 +86,30 @@ function startProduct() {
   if (!form) return;
   const id = form.dataset.product;
   const product = PRODUCTEN[id];
-  const tekening = document.querySelector(".galerij .raam");
+  const hoofdfoto = document.querySelector("[data-hoofdfoto]");
+  const duimen = Array.from(document.querySelectorAll("[data-duim]"));
   const gekozen = document.querySelector("[data-gekozen-kleur]");
   const klaar = document.querySelector("[data-toegevoegd]");
 
   const kleurNu = () => form.querySelector("input[name=kleur]:checked").value;
+  const toonFoto = (knop) => {
+    duimen.forEach((d) => d.setAttribute("aria-pressed", d === knop ? "true" : "false"));
+    if (knop.dataset.duim === "kleur") {
+      const k = product.kleuren[kleurNu()];
+      hoofdfoto.src = k.foto;
+      hoofdfoto.alt = "Witte kat op de kattenhangmat aan het raam, kleur " + k.naam.toLowerCase();
+    } else {
+      hoofdfoto.src = knop.dataset.src;
+      hoofdfoto.alt = knop.dataset.alt;
+    }
+  };
+  duimen.forEach((d) => d.addEventListener("click", () => toonFoto(d)));
   const toonKleur = () => {
     const k = product.kleuren[kleurNu()];
-    if (tekening) tekening.style.setProperty("--hm", k.hex);
     if (gekozen) gekozen.textContent = k.naam;
+    const duimfoto = document.querySelector("[data-duimfoto]");
+    if (duimfoto) duimfoto.src = k.foto;
+    if (duimen.length) toonFoto(duimen[0]);
   };
   form.querySelectorAll("input[name=kleur]").forEach((el) => el.addEventListener("change", toonKleur));
   toonKleur();
@@ -130,6 +147,7 @@ function startBestellen() {
       const li = document.createElement("li");
       li.className = "regel";
       li.innerHTML =
+        '<img class="mini" alt="" width="64" height="48">' +
         '<div><div class="naam"></div><div class="zacht klein"></div></div>' +
         '<div class="prijsregel"></div>' +
         '<div class="onder"><div class="teller">' +
@@ -137,6 +155,7 @@ function startBestellen() {
         '<input type="number" inputmode="numeric" min="1" max="' + MAX_PER_REGEL + '" aria-label="Aantal">' +
         '<button type="button" data-plus aria-label="Eén meer">+</button></div>' +
         '<button type="button" class="weg">Verwijderen</button></div>';
+      li.querySelector(".mini").src = p.kleuren[r.kleur].foto;
       li.querySelector(".naam").textContent = p.naam;
       li.querySelector(".zacht").textContent = "Kleur: " + p.kleuren[r.kleur].naam;
       li.querySelector(".prijsregel").textContent = euro(p.prijs * r.aantal);

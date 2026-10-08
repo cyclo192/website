@@ -19,6 +19,10 @@ POSTCODE = "1446 DA"
 PLAATS = "Purmerend"
 PRIJS = "27,95"
 LEVERTIJD = "2 tot 3 weken"
+# sleutel, naam, kleur van het knopje. De foto heet img/hangmat-<sleutel>.jpg. Zelfde lijst staat in js/shop.js.
+KLEUREN = [("beige", "Beige", "#cdb893"), ("zwart", "Zwart", "#1f2226"), ("blauw", "Lichtblauw", "#a9c0dc"),
+           ("roze", "Roze", "#eba3b3"), ("lila", "Lila", "#b59ad4")]
+KLEURNAMEN = ", ".join(n.lower() for _, n, _ in KLEUREN[:-1]) + " en " + KLEUREN[-1][1].lower()
 
 WA_VRAAG = f"https://wa.me/{WA}?text=Hoi%20Nestig%2C%20ik%20heb%20een%20vraag."
 WA_ICON = '<svg aria-hidden="true" viewBox="0 0 32 32"><path d="M16.04 3C8.86 3 3.03 8.82 3.03 16c0 2.3.6 4.54 1.74 6.52L3 29l6.64-1.74A13 13 0 0 0 16.04 29C23.2 29 29 23.18 29 16S23.2 3 16.04 3Zm0 23.8c-2.02 0-4-.54-5.72-1.57l-.41-.24-3.94 1.03 1.05-3.84-.27-.4A10.78 10.78 0 0 1 5.2 16c0-5.97 4.86-10.83 10.84-10.83 5.97 0 10.82 4.86 10.82 10.83 0 5.98-4.85 10.8-10.82 10.8Zm5.94-8.1c-.33-.16-1.93-.95-2.23-1.06-.3-.11-.52-.16-.73.17-.22.32-.84 1.05-1.03 1.27-.19.22-.38.24-.7.08-.33-.16-1.38-.51-2.62-1.62-.97-.86-1.62-1.93-1.81-2.25-.19-.33-.02-.5.14-.66.15-.15.33-.38.49-.57.16-.19.22-.33.33-.54.11-.22.05-.41-.03-.57-.08-.16-.73-1.76-1-2.41-.26-.63-.53-.55-.73-.56h-.62c-.22 0-.57.08-.87.41-.3.32-1.14 1.11-1.14 2.72 0 1.6 1.17 3.15 1.33 3.37.16.22 2.3 3.5 5.56 4.91.78.34 1.39.54 1.86.69.78.25 1.49.21 2.05.13.63-.09 1.93-.79 2.2-1.55.27-.76.27-1.41.19-1.55-.08-.13-.3-.21-.62-.38Z"/></svg>'
@@ -189,9 +193,9 @@ STAPPEN = '''<ol class="stappen">
 
 def kaart_hangmat(uid):
     return f'''<a class="kaart" href="kattenhangmat.html">
-<div class="beeld">{raam(uid, label=False)}</div>
+<div class="beeld"><img src="img/hangmat-beige.jpg" width="800" height="600" alt="Witte kat op de beige kattenhangmat aan het raam" loading="lazy"></div>
 <div class="tekst"><h3>Kattenhangmat voor het raam</h3>
-<p class="zacht klein">Met zuignappen. In drie kleuren.</p>
+<p class="zacht klein">Met zuignappen. In vijf kleuren.</p>
 <p class="prijs">€ {PRIJS}</p></div></a>'''
 
 
@@ -227,6 +231,16 @@ home = f'''<section class="hero"><div class="wrap">
 <span class="label">Binnenkort</span>
 <h3>Kamer</h3><p>Decoratie die je kamer gezelliger maakt.</p><span class="ga">Kijk wat eraan komt</span></a>
 </div>
+</div></section>
+
+<section class="sec" style="padding-top:0"><div class="wrap">
+<h2>Zo ligt je kat erbij</h2>
+<p class="sub">De hangmat zit met zuignappen tegen het glas. Je kat ligt hoog, in de zon en met uitzicht.</p>
+<div class="fotos">
+<figure><img src="img/hangmat-blauw.jpg" width="800" height="600" alt="Witte kat op de lichtblauwe kattenhangmat aan het raam" loading="lazy"></figure>
+<figure><img src="img/hangmat-twee-katten.jpg" width="564" height="423" alt="Twee katten slapen samen in de hangmat aan het raam" loading="lazy"></figure>
+</div>
+<p style="margin-top:26px"><a class="btn btn-zon" href="kattenhangmat.html">Bekijk de kattenhangmat</a></p>
 </div></section>
 
 <section class="sec band"><div class="wrap">
@@ -296,20 +310,26 @@ page("kamer.html", "Kamer – decoratie voor je kamer | Nestig",
      "Decoratie die je kamer gezelliger maakt. Binnenkort bij Nestig.", kamer, current="kamer", noindex=True)
 
 # ---------------------------------------------------------------- product
+SWATCHES = "\n".join(f'<label style="--k:{h}"><input type="radio" name="kleur" value="{k}"{" checked" if i == 0 else ""}><i></i>{n}</label>'
+                     for i, (k, n, h) in enumerate(KLEUREN))
 product = f'''<div class="wrap">
 <p class="kruimel"><a href="./">Home</a> / <a href="dieren.html">Dieren</a> / Kattenhangmat</p>
 <div class="product">
-<div class="galerij">{raam("p")}</div>
+<div class="galerij">
+<div class="groot"><img data-hoofdfoto src="img/hangmat-beige.jpg" width="800" height="600" alt="Witte kat op de beige kattenhangmat aan het raam"></div>
+<div class="duimen" role="group" aria-label="Kies een foto">
+<button type="button" class="duim" data-duim="kleur" aria-pressed="true" aria-label="Foto van de gekozen kleur"><img data-duimfoto src="img/hangmat-beige.jpg" width="800" height="600" alt=""></button>
+<button type="button" class="duim" data-duim="foto" data-src="img/hangmat-twee-katten.jpg" data-alt="Twee katten slapen samen in de hangmat aan het raam" aria-pressed="false" aria-label="Foto van twee katten in de hangmat"><img src="img/hangmat-twee-katten.jpg" width="564" height="423" alt=""></button>
+</div>
+</div>
 <div class="koop">
 <h1>Kattenhangmat voor het raam</h1>
 <p class="sub">Een eigen plek in de zon, hoog en droog aan het raam. Je kat ligt zacht en houdt alles in de gaten.</p>
 <p class="prijs">€ {PRIJS}<small>Inclusief btw en gratis verzending</small></p>
 <form data-product="kattenhangmat">
-<fieldset class="veld"><legend>Kleur: <span data-gekozen-kleur>Zwart</span></legend>
+<fieldset class="veld"><legend>Kleur: <span data-gekozen-kleur>{KLEUREN[0][1]}</span></legend>
 <div class="kleuren">
-<label style="--k:#2b2f33"><input type="radio" name="kleur" value="zwart" checked><i></i>Zwart</label>
-<label style="--k:#9aa6a8"><input type="radio" name="kleur" value="grijs"><i></i>Grijs</label>
-<label style="--k:#d8c19b"><input type="radio" name="kleur" value="beige"><i></i>Beige</label>
+{SWATCHES}
 </div></fieldset>
 <div class="veld"><span class="veldkop" id="aantal-kop">Aantal</span>
 <div class="teller" role="group" aria-labelledby="aantal-kop">
@@ -341,16 +361,21 @@ product = f'''<div class="wrap">
 <table class="specs">
 <tr><th scope="row">In de doos</th><td>Kattenhangmat met zuignappen</td></tr>
 <tr><th scope="row">Bevestiging</th><td>Zuignappen op het raam, zonder boren</td></tr>
-<tr><th scope="row">Kleuren</th><td>Zwart, grijs en beige</td></tr>
+<tr><th scope="row">Kleuren</th><td>{KLEURNAMEN.capitalize()}</td></tr>
 <tr><th scope="row">Levertijd</th><td>{LEVERTIJD}</td></tr>
 <tr><th scope="row">Verzending</th><td>Gratis in Nederland</td></tr>
 </table>
 </div>
 </div></section>
 
-<section class="sec"><div class="wrap">
+<section class="sec"><div class="wrap ophangen">
+<div>
 <h2>Zo hangt hij in een paar minuten</h2>
+<p class="sub">In het filmpje zie je hoe het gaat. Geen boor en geen schroeven.</p>
 {STAPPEN}
+</div>
+<video controls muted playsinline preload="none" poster="img/hangmat-video.jpg" width="540" height="720" aria-label="Filmpje: de hangmat wordt met zuignappen aan het raam gehangen, daarna speelt er een kat op">
+<source src="img/hangmat-video.mp4" type="video/mp4"></video>
 </div></section>
 
 <section class="sec band" id="vragen"><div class="wrap">
@@ -358,11 +383,11 @@ product = f'''<div class="wrap">
 {vragen()}
 </div></section>'''
 page("kattenhangmat.html", f"Kattenhangmat voor het raam – € {PRIJS}, gratis verzending | Nestig",
-     f"Kattenhangmat met zuignappen voor het raam. Zonder boren op te hangen, in drie kleuren. € {PRIJS} met gratis verzending en 14 dagen bedenktijd.",
+     f"Kattenhangmat met zuignappen voor het raam. Zonder boren op te hangen, in vijf kleuren. € {PRIJS} met gratis verzending en 14 dagen bedenktijd.",
      product, current="dieren", ld={
          "@context": "https://schema.org", "@type": "Product", "name": "Kattenhangmat voor het raam",
          "description": "Kattenhangmat met zuignappen voor het raam. Zonder boren op te hangen.",
-         "image": SITE + "img/og.jpg", "brand": {"@type": "Brand", "name": "Nestig"},
+         "image": [SITE + f"img/hangmat-{k}.jpg" for k, _, _ in KLEUREN], "brand": {"@type": "Brand", "name": "Nestig"},
          "offers": {"@type": "Offer", "url": SITE + "kattenhangmat", "priceCurrency": "EUR", "price": "27.95",
                     "availability": "https://schema.org/InStock",
                     "shippingDetails": {"@type": "OfferShippingDetails",
