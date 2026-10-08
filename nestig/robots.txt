@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /bestellen.html
+Disallow: /bestellen
 Sitemap: https://nestig.nl/sitemap.xml
