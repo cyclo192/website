@@ -3,8 +3,11 @@
    PRODUCTEN: alles wat je verkoopt. Prijs in centen.
    Een product toevoegen = hier een blok bijzetten en een pagina maken.
 
-   Betalen: zolang Mollie nog niet gekoppeld is, gaat een bestelling als
-   bericht naar WhatsApp of e-mail en stuur je zelf een betaalverzoek. */
+   Bestellen en herroepen gaan naar de server-kant in _worker.js, die een
+   bevestigingsmail stuurt. Lukt dat niet, dan valt de site terug op een
+   bericht via WhatsApp. Betalen gaat nog met een betaalverzoek dat je zelf
+   stuurt, tot Mollie gekoppeld is. Prijzen staan ook in _worker.js: houd
+   beide lijsten gelijk. */
 
 const NESTIG = {
   whatsapp: "31626683986",
@@ -27,6 +30,22 @@ const PRODUCTEN = {
 };
 
 const MAX_PER_REGEL = 10;
+const GELADEN = Date.now();
+
+/* Stuurt een formulier naar de server-kant (_worker.js). Geeft { status, data } terug, of null als het niet lukte. */
+async function stuurNaarServer(pad, gegevens) {
+  try {
+    const r = await fetch(pad, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ...gegevens, t: Date.now() - GELADEN }),
+    });
+    const data = await r.json().catch(() => ({}));
+    return { status: r.status, data };
+  } catch (e) {
+    return null;
+  }
+}
 
 /* ---------- winkelmand (in de browser van de klant) ---------- */
 
@@ -154,9 +173,11 @@ function startHerroepen() {
   const form = document.querySelector("[data-herroepform]");
   if (!form) return;
   const melding = form.querySelector("[data-melding]");
-  function verstuur(via) {
-    if (!form.reportValidity()) return;
-    const v = (naam) => (form.elements[naam].value || "").trim();
+  const klaar = document.querySelector("[data-herroepen-klaar]");
+  const knop = form.querySelector("button[type=submit]");
+  const v = (naam) => (form.elements[naam].value || "").trim();
+
+  function verklaring() {
     const regels = [
       "Ik deel u hierbij mee dat ik onze overeenkomst over de verkoop van het volgende product herroep:",
       "",
@@ -164,18 +185,53 @@ function startHerroepen() {
     ];
     if (v("datum")) regels.push("Besteld of ontvangen: " + v("datum"));
     regels.push("Naam: " + v("naam"), "E-mail: " + v("email"), "Datum van dit bericht: " + new Date().toLocaleDateString("nl-NL"));
-    const tekst = regels.join("\n");
-    const adres = via === "whatsapp"
-      ? "https://wa.me/" + NESTIG.whatsapp + "?text=" + encodeURIComponent(tekst)
-      : "mailto:" + NESTIG.email + "?subject=" + encodeURIComponent("Herroeping Nestig") + "&body=" + encodeURIComponent(tekst);
-    melding.hidden = false;
-    melding.querySelector("[data-melding-tekst]").textContent =
-      "Je herroeping staat klaar. Druk op verzenden. Je krijgt van ons een bevestiging per e-mail.";
-    if (via === "whatsapp") window.open(adres, "_blank", "noopener");
-    else window.location.href = adres;
+    return regels.join("\n");
   }
-  form.addEventListener("submit", (e) => { e.preventDefault(); verstuur("mail"); });
-  form.querySelector("[data-via-wa]").addEventListener("click", () => verstuur("whatsapp"));
+  function meld(tekst, fout) {
+    melding.hidden = false;
+    melding.classList.toggle("fout", !!fout);
+    melding.querySelector("[data-melding-tekst]").textContent = tekst;
+  }
+  /* Terugval: de herroeping als bericht klaarzetten in WhatsApp of het mailprogramma. */
+  function alsBericht(via) {
+    if (!form.reportValidity()) return;
+    const tekst = verklaring();
+    meld("Je herroeping staat klaar. Druk op verzenden. Je krijgt van ons een bevestiging per e-mail.");
+    if (via === "whatsapp") window.open("https://wa.me/" + NESTIG.whatsapp + "?text=" + encodeURIComponent(tekst), "_blank", "noopener");
+    else window.location.href = "mailto:" + NESTIG.email + "?subject=" + encodeURIComponent("Herroeping Nestig") + "&body=" + encodeURIComponent(tekst);
+  }
+
+  async function herroep() {
+    if (!form.reportValidity()) return;
+    const tekst = knop.textContent;
+    knop.disabled = true;
+    knop.textContent = "Bezig met versturen…";
+    const uit = await stuurNaarServer("/api/herroeping", {
+      naam: v("naam"), email: v("email"), wat: v("wat"), datum: v("datum"), website: v("website"),
+    });
+    knop.disabled = false;
+    knop.textContent = tekst;
+
+    if (uit && uit.status === 200 && uit.data.ok) {
+      form.hidden = true;
+      klaar.hidden = false;
+      klaar.querySelector("[data-herroepen-tekst]").textContent =
+        "We hebben je herroeping ontvangen op " + uit.data.ontvangen + ". Je kenmerk is " + uit.data.nummer + ". " +
+        (uit.data.bevestigd ? "De bevestiging met het retouradres staat in je mail." : "De bevestiging per e-mail volgt zo snel mogelijk.");
+      klaar.focus();
+      return;
+    }
+    if (uit && uit.status === 400 && uit.data.fout) {
+      meld(uit.data.fout, true);
+      const veld = uit.data.veld && form.elements[uit.data.veld];
+      if (veld && veld.focus) veld.focus();
+      return;
+    }
+    alsBericht("mail");
+  }
+
+  form.addEventListener("submit", (e) => { e.preventDefault(); herroep(); });
+  form.querySelector("[data-via-wa]").addEventListener("click", () => alsBericht("whatsapp"));
 }
 
 /* ---------- bestelpagina ---------- */
@@ -244,23 +300,68 @@ function startBestellen() {
     return tekst.join("\n");
   }
 
-  function verstuur(via) {
-    if (leesMand().length === 0) { teken(); return; }
-    if (!form.reportValidity()) return;
-    const tekst = bericht();
-    const adres = via === "whatsapp"
-      ? "https://wa.me/" + NESTIG.whatsapp + "?text=" + encodeURIComponent(tekst)
-      : "mailto:" + NESTIG.email + "?subject=" + encodeURIComponent("Bestelling Nestig") + "&body=" + encodeURIComponent(tekst);
+  const bedankt = document.querySelector("[data-bedankt]");
+  const knop = form.querySelector("button[type=submit]");
+  const v = (naam) => (form.elements[naam].value || "").trim();
+
+  function meld(tekst, fout) {
     melding.hidden = false;
-    melding.querySelector("[data-melding-tekst]").textContent = via === "whatsapp"
-      ? "Je bestelling staat klaar in WhatsApp. Druk daar op verzenden. Daarna krijg je een bevestiging en een betaalverzoek."
-      : "Je bestelling staat klaar in je mailprogramma. Druk daar op verzenden. Daarna krijg je een bevestiging en een betaalverzoek.";
-    if (via === "whatsapp") window.open(adres, "_blank", "noopener");
-    else window.location.href = adres;
+    melding.classList.toggle("fout", !!fout);
+    melding.querySelector("[data-melding-tekst]").textContent = tekst;
     melding.scrollIntoView({ block: "nearest" });
   }
-  form.addEventListener("submit", (e) => { e.preventDefault(); verstuur("whatsapp"); });
-  form.querySelector("[data-via-mail]").addEventListener("click", () => verstuur("mail"));
+
+  /* Terugval: de bestelling als bericht in WhatsApp klaarzetten. */
+  function viaWhatsApp(zelfdeTab) {
+    if (leesMand().length === 0) { teken(); return; }
+    if (!form.reportValidity()) return;
+    const adres = "https://wa.me/" + NESTIG.whatsapp + "?text=" + encodeURIComponent(bericht());
+    meld("Je bestelling staat klaar in WhatsApp. Druk daar op verzenden. Daarna krijg je een bevestiging en een betaalverzoek.");
+    if (zelfdeTab) window.location.href = adres;
+    else window.open(adres, "_blank", "noopener");
+  }
+
+  async function bestel() {
+    if (leesMand().length === 0) { teken(); return; }
+    if (!form.reportValidity()) return;
+    const tekst = knop.textContent;
+    knop.disabled = true;
+    knop.textContent = "Bezig met bestellen…";
+    const uit = await stuurNaarServer("/api/bestelling", {
+      regels: leesMand(),
+      naam: v("naam"), straat: v("straat"), postcode: v("postcode"), plaats: v("plaats"),
+      email: v("email"), telefoon: v("telefoon"), opmerking: v("opmerking"),
+      akkoord: form.elements.akkoord.checked, website: v("website"),
+    });
+    knop.disabled = false;
+    knop.textContent = tekst;
+
+    if (uit && uit.status === 200 && uit.data.ok) {
+      const mail = v("email");
+      bewaarMand([]);
+      vol.hidden = true;
+      leeg.hidden = true;
+      bedankt.hidden = false;
+      bedankt.querySelector("[data-bedankt-nummer]").textContent = uit.data.nummer;
+      bedankt.querySelector("[data-bedankt-mail]").textContent = uit.data.bevestigd
+        ? "We hebben een bevestiging gestuurd naar " + mail + "."
+        : "De bevestiging per e-mail volgt zo snel mogelijk.";
+      window.scrollTo({ top: 0, behavior: "instant" });
+      bedankt.focus({ preventScroll: true });
+      return;
+    }
+    if (uit && uit.status === 400 && uit.data.fout) {
+      meld(uit.data.fout, true);
+      const veld = uit.data.veld && form.elements[uit.data.veld];
+      if (veld && veld.focus) veld.focus();
+      return;
+    }
+    /* Server niet bereikbaar of nog niet ingesteld: bestellen blijft mogelijk via WhatsApp. */
+    viaWhatsApp(true);
+  }
+
+  form.addEventListener("submit", (e) => { e.preventDefault(); bestel(); });
+  form.querySelector("[data-via-wa]").addEventListener("click", () => viaWhatsApp(false));
 }
 
 document.addEventListener("DOMContentLoaded", () => {

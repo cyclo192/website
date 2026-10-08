@@ -56,6 +56,8 @@ p{max-width:62ch}
 .btn-wa{background:var(--wa);border-color:var(--wa);color:#fff}
 .btn-wa:hover{background:#18763f;border-color:#18763f}
 .btn-wa svg{width:22px;height:22px;fill:#fff}
+.btn-lijn svg{width:22px;height:22px;fill:var(--ink)}
+.btn:disabled{opacity:.6;cursor:progress}
 .btn-breed{width:100%}
 .link{font-weight:600;text-underline-offset:4px;text-decoration-thickness:2px}
 .link:hover{text-decoration-color:var(--zon-diep)}

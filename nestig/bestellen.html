@@ -37,6 +37,13 @@
 <p class="kruimel"><a href="./">Home</a> / Bestellen</p>
 <div class="paginakop"><h1>Bestellen</h1></div>
 
+<div class="leeg" data-bedankt hidden tabindex="-1">
+<h2>Bedankt, je bestelling is binnen</h2>
+<p class="sub">Je bestelnummer is <strong data-bedankt-nummer></strong>. <span data-bedankt-mail></span></p>
+<p>Je krijgt van ons een betaalverzoek voor iDEAL, meestal dezelfde dag. Zodra je betaling binnen is, gaat je bestelling de deur uit. De levertijd is 2 tot 3 weken.</p>
+<a class="btn btn-lijn" href="./">Terug naar de homepage</a>
+</div>
+
 <div class="leeg" data-mand-leeg hidden>
 <p class="sub">Je winkelmand is leeg.</p>
 <a class="btn btn-zon" href="kattenhangmat.html">Bekijk de kattenhangmat</a>
@@ -58,10 +65,11 @@
 <label for="akkoord">Ik ga akkoord met de <a class="link" href="algemene-voorwaarden.html" target="_blank">algemene voorwaarden</a> en heb gelezen hoe <a class="link" href="retourneren.html" target="_blank">retourneren</a> werkt.</label></div>
 
 <h2>Bestelling plaatsen</h2>
-<p class="zacht">Je bestelling opent als bericht in WhatsApp of in je mailprogramma. Daar druk je zelf op verzenden. Daarna krijg je van ons een bevestiging per e-mail en een betaalverzoek voor iDEAL. Met het versturen plaats je een bestelling met betaalverplichting.</p>
+<p class="zacht">Je krijgt direct een bevestiging per e-mail en daarna een betaalverzoek voor iDEAL. Met de knop hieronder plaats je een bestelling met betaalverplichting.</p>
+<div class="vh" aria-hidden="true"><label>Laat dit veld leeg <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
 <div class="verstuur">
-<button class="btn btn-wa" type="submit"><svg aria-hidden="true" viewBox="0 0 32 32"><path d="M16.04 3C8.86 3 3.03 8.82 3.03 16c0 2.3.6 4.54 1.74 6.52L3 29l6.64-1.74A13 13 0 0 0 16.04 29C23.2 29 29 23.18 29 16S23.2 3 16.04 3Zm0 23.8c-2.02 0-4-.54-5.72-1.57l-.41-.24-3.94 1.03 1.05-3.84-.27-.4A10.78 10.78 0 0 1 5.2 16c0-5.97 4.86-10.83 10.84-10.83 5.97 0 10.82 4.86 10.82 10.83 0 5.98-4.85 10.8-10.82 10.8Zm5.94-8.1c-.33-.16-1.93-.95-2.23-1.06-.3-.11-.52-.16-.73.17-.22.32-.84 1.05-1.03 1.27-.19.22-.38.24-.7.08-.33-.16-1.38-.51-2.62-1.62-.97-.86-1.62-1.93-1.81-2.25-.19-.33-.02-.5.14-.66.15-.15.33-.38.49-.57.16-.19.22-.33.33-.54.11-.22.05-.41-.03-.57-.08-.16-.73-1.76-1-2.41-.26-.63-.53-.55-.73-.56h-.62c-.22 0-.57.08-.87.41-.3.32-1.14 1.11-1.14 2.72 0 1.6 1.17 3.15 1.33 3.37.16.22 2.3 3.5 5.56 4.91.78.34 1.39.54 1.86.69.78.25 1.49.21 2.05.13.63-.09 1.93-.79 2.2-1.55.27-.76.27-1.41.19-1.55-.08-.13-.3-.21-.62-.38Z"/></svg>Bestellen en betalen via WhatsApp</button>
-<button class="btn btn-lijn" type="button" data-via-mail>Bestellen en betalen via e-mail</button>
+<button class="btn btn-zon" type="submit">Bestellen en betalen</button>
+<button class="btn btn-lijn" type="button" data-via-wa><svg aria-hidden="true" viewBox="0 0 32 32"><path d="M16.04 3C8.86 3 3.03 8.82 3.03 16c0 2.3.6 4.54 1.74 6.52L3 29l6.64-1.74A13 13 0 0 0 16.04 29C23.2 29 29 23.18 29 16S23.2 3 16.04 3Zm0 23.8c-2.02 0-4-.54-5.72-1.57l-.41-.24-3.94 1.03 1.05-3.84-.27-.4A10.78 10.78 0 0 1 5.2 16c0-5.97 4.86-10.83 10.84-10.83 5.97 0 10.82 4.86 10.82 10.83 0 5.98-4.85 10.8-10.82 10.8Zm5.94-8.1c-.33-.16-1.93-.95-2.23-1.06-.3-.11-.52-.16-.73.17-.22.32-.84 1.05-1.03 1.27-.19.22-.38.24-.7.08-.33-.16-1.38-.51-2.62-1.62-.97-.86-1.62-1.93-1.81-2.25-.19-.33-.02-.5.14-.66.15-.15.33-.38.49-.57.16-.19.22-.33.33-.54.11-.22.05-.41-.03-.57-.08-.16-.73-1.76-1-2.41-.26-.63-.53-.55-.73-.56h-.62c-.22 0-.57.08-.87.41-.3.32-1.14 1.11-1.14 2.72 0 1.6 1.17 3.15 1.33 3.37.16.22 2.3 3.5 5.56 4.91.78.34 1.39.54 1.86.69.78.25 1.49.21 2.05.13.63-.09 1.93-.79 2.2-1.55.27-.76.27-1.41.19-1.55-.08-.13-.3-.21-.62-.38Z"/></svg>Liever bestellen via WhatsApp</button>
 </div>
 <div class="melding" data-melding hidden role="status"><span data-melding-tekst></span></div>
 </form>

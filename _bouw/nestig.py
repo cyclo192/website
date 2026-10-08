@@ -454,6 +454,13 @@ bestellen = f'''<div class="wrap">
 <p class="kruimel"><a href="./">Home</a> / Bestellen</p>
 <div class="paginakop"><h1>Bestellen</h1></div>
 
+<div class="leeg" data-bedankt hidden tabindex="-1">
+<h2>Bedankt, je bestelling is binnen</h2>
+<p class="sub">Je bestelnummer is <strong data-bedankt-nummer></strong>. <span data-bedankt-mail></span></p>
+<p>Je krijgt van ons een betaalverzoek voor iDEAL, meestal dezelfde dag. Zodra je betaling binnen is, gaat je bestelling de deur uit. De levertijd is {LEVERTIJD}.</p>
+<a class="btn btn-lijn" href="./">Terug naar de homepage</a>
+</div>
+
 <div class="leeg" data-mand-leeg hidden>
 <p class="sub">Je winkelmand is leeg.</p>
 <a class="btn btn-zon" href="kattenhangmat.html">Bekijk de kattenhangmat</a>
@@ -475,10 +482,11 @@ bestellen = f'''<div class="wrap">
 <label for="akkoord">Ik ga akkoord met de <a class="link" href="algemene-voorwaarden.html" target="_blank">algemene voorwaarden</a> en heb gelezen hoe <a class="link" href="retourneren.html" target="_blank">retourneren</a> werkt.</label></div>
 
 <h2>Bestelling plaatsen</h2>
-<p class="zacht">Je bestelling opent als bericht in WhatsApp of in je mailprogramma. Daar druk je zelf op verzenden. Daarna krijg je van ons een bevestiging per e-mail en een betaalverzoek voor iDEAL. Met het versturen plaats je een bestelling met betaalverplichting.</p>
+<p class="zacht">Je krijgt direct een bevestiging per e-mail en daarna een betaalverzoek voor iDEAL. Met de knop hieronder plaats je een bestelling met betaalverplichting.</p>
+<div class="vh" aria-hidden="true"><label>Laat dit veld leeg <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
 <div class="verstuur">
-<button class="btn btn-wa" type="submit">{WA_ICON}Bestellen en betalen via WhatsApp</button>
-<button class="btn btn-lijn" type="button" data-via-mail>Bestellen en betalen via e-mail</button>
+<button class="btn btn-zon" type="submit">Bestellen en betalen</button>
+<button class="btn btn-lijn" type="button" data-via-wa>{WA_ICON}Liever bestellen via WhatsApp</button>
 </div>
 <div class="melding" data-melding hidden role="status"><span data-melding-tekst></span></div>
 </form>
@@ -547,13 +555,15 @@ herroepen = f'''<div class="wrap tekst">
 <div class="heel"><label for="h-wat">Wat wil je ongedaan maken?</label><input type="text" id="h-wat" name="wat" required placeholder="Bijvoorbeeld: 1 kattenhangmat, beige"></div>
 <div class="heel"><label for="h-datum">Besteld of ontvangen op <span>(mag leeg blijven)</span></label><input type="text" id="h-datum" name="datum" placeholder="Bijvoorbeeld: ontvangen op 20 oktober"></div>
 </div>
+<div class="vh" aria-hidden="true"><label>Laat dit veld leeg <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
 <div class="verstuur">
 <button class="btn btn-zon" type="submit">Herroeping bevestigen</button>
-<button class="btn btn-lijn" type="button" data-via-wa>Liever via WhatsApp</button>
+<button class="btn btn-lijn" type="button" data-via-wa>{WA_ICON}Liever via WhatsApp</button>
 </div>
-<p class="zacht klein" style="margin-top:14px">Je herroeping opent als bericht in je mailprogramma of in WhatsApp. Daar druk je zelf op verzenden. Je krijgt van ons een bevestiging per e-mail met de datum van ontvangst en het retouradres.</p>
+<p class="zacht klein" style="margin-top:14px">Je krijgt direct een bevestiging per e-mail met de datum van ontvangst en het retouradres.</p>
 <div class="melding" data-melding hidden role="status"><span data-melding-tekst></span></div>
 </form>
+<div class="kader" data-herroepen-klaar hidden tabindex="-1" role="status"><h2 style="margin-top:0">Je herroeping is ontvangen</h2><p data-herroepen-tekst></p></div>
 
 <h2>Wat gebeurt er daarna?</h2>
 <ol>
@@ -582,7 +592,7 @@ av = f'''<div class="wrap tekst">
 <p>Alle prijzen op de site zijn in euro en inclusief btw en verzendkosten. Een duidelijke vergissing in een prijs of beschrijving bindt ons niet. Afbeeldingen geven een zo goed mogelijk beeld van het product. Kleuren kunnen op je scherm iets afwijken.</p>
 
 <h2>4. Bestellen en betalen</h2>
-<p>Je plaatst een bestelling door ons je bestelling te sturen via het bestelformulier. Daarna ontvang je van ons een betaalverzoek. De overeenkomst komt tot stand zodra wij je bestelling hebben bevestigd. We versturen je bestelling nadat je betaling binnen is.</p>
+<p>Je plaatst een bestelling via het bestelformulier op de site. Je ontvangt direct een bevestiging per e-mail en daarna een betaalverzoek. De overeenkomst komt tot stand zodra wij je bestelling hebben bevestigd. We versturen je bestelling nadat je betaling binnen is.</p>
 
 <h2>5. Levering</h2>
 <p>We bezorgen in Nederland. De verwachte levertijd is {LEVERTIJD} na ontvangst van je betaling. Je bestelling wordt rechtstreeks door onze leverancier verstuurd. Je krijgt een track-en-tracecode zodra het pakket onderweg is.</p>
@@ -633,7 +643,8 @@ privacy = f'''<div class="wrap tekst">
 <h2>Met wie we gegevens delen</h2>
 <ul>
 <li><strong>Onze leverancier en de bezorgdienst.</strong> Zij krijgen je naam en adres om het pakket te bezorgen. Onze leverancier is gevestigd buiten de Europese Unie, in China. We geven alleen door wat voor de bezorging nodig is.</li>
-<li><strong>WhatsApp.</strong> Bestel je of stel je een vraag via WhatsApp, dan loopt je bericht via WhatsApp, een dienst van Meta. Bestel je liever zonder WhatsApp, kies dan voor e-mail.</li>
+<li><strong>WhatsApp.</strong> Bestel je of stel je een vraag via WhatsApp, dan loopt je bericht via WhatsApp, een dienst van Meta. Dat gebeurt alleen als je daar zelf voor kiest.</li>
+<li><strong>Onze e-maildienst.</strong> De bevestiging van je bestelling of herroeping versturen we via Resend, een dienst uit de Verenigde Staten. Die verwerkt daarvoor je naam, je e-mailadres en de inhoud van de mail.</li>
 <li><strong>De hostingpartij van deze website.</strong> Die verwerkt technische gegevens zoals je IP-adres om de site te tonen en te beveiligen.</li>
 </ul>
 
@@ -658,6 +669,7 @@ nf = f'''<div class="wrap leeg" style="padding-top:60px">
 page("404.html", "Pagina niet gevonden | Nestig", "Deze pagina bestaat niet.", nf, noindex=True)
 
 # ---------------------------------------------------------------- overig
+(OUT / "_routes.json").write_text('{"version":1,"include":["/api/*"],"exclude":[]}\n')
 (OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nDisallow: /bestellen\nSitemap: {SITE}sitemap.xml\n")
 urls = ["", "kattenhangmat", "dieren", "retourneren", "herroepen", "algemene-voorwaarden", "privacy"]
 (OUT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
