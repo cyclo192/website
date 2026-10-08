@@ -17,7 +17,8 @@ window.BEZET = [
   ["2027-06-04", "2027-06-07"],
   ["2027-06-11", "2027-06-25"],
   ["2027-07-16", "2027-08-13"],
+  ["2027-12-31", "2028-01-03"],
 ];
 
 /* Datum waarop deze lijst voor het laatst is bijgewerkt. */
-window.BEZET_BIJGEWERKT = "2026-10-02";
+window.BEZET_BIJGEWERKT = "2026-10-08";
