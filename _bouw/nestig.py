@@ -14,6 +14,8 @@ WA = "31626683986"
 MAIL = "infobyxavio@gmail.com"
 KVK = "42165581"
 BTW = "NL005549301B15"
+STRAAT = "Speltstraat 16"
+POSTCODE = "1446 DA"
 PLAATS = "Purmerend"
 PRIJS = "27,95"
 LEVERTIJD = "2 tot 3 weken"
@@ -108,7 +110,7 @@ VOET = f'''<footer class="voet"><div class="wrap">
 <li><a href="{WA_VRAAG}" target="_blank" rel="noopener">WhatsApp: {TEL_TOON}</a></li>
 <li><a href="tel:{TEL}">Bellen: {TEL_TOON}</a></li>
 <li><a href="mailto:{MAIL}">{MAIL}</a></li>
-<li>{PLAATS}</li></ul></div>
+<li>{STRAAT}<br>{POSTCODE} {PLAATS}</li></ul></div>
 </div>
 <div class="onder"><span>© 2026 Nestig, onderdeel van byXavio</span><span>KVK {KVK}</span><span>Btw-id {BTW}</span><span>Website door <a href="https://byxavio.nl" style="text-decoration:underline">byXavio</a></span></div>
 </div></footer>
@@ -261,7 +263,7 @@ page("index.html",
      home, ld={
          "@context": "https://schema.org", "@type": "OnlineStore", "name": "Nestig", "url": SITE,
          "logo": SITE + "apple-touch-icon.png", "telephone": TEL, "email": MAIL,
-         "address": {"@type": "PostalAddress", "addressLocality": PLAATS, "addressCountry": "NL"},
+         "address": {"@type": "PostalAddress", "streetAddress": STRAAT, "postalCode": POSTCODE, "addressLocality": PLAATS, "addressCountry": "NL"},
          "vatID": BTW, "parentOrganization": {"@type": "Organization", "name": "byXavio", "url": "https://byxavio.nl/"},
      })
 
@@ -421,7 +423,7 @@ bestellen = f'''<div class="wrap">
 page("bestellen.html", "Bestellen | Nestig", "Rond je bestelling bij Nestig af.", bestellen, noindex=True)
 
 # ---------------------------------------------------------------- retourneren
-WIE = f'''<address>Nestig, onderdeel van byXavio<br>{PLAATS}<br>
+WIE = f'''<address>Nestig, onderdeel van byXavio<br>{STRAAT}<br>{POSTCODE} {PLAATS}<br>
 WhatsApp en telefoon: <a class="link" href="tel:{TEL}">{TEL_TOON}</a><br>
 E-mail: <a class="link" href="mailto:{MAIL}">{MAIL}</a><br>
 KVK {KVK}, btw-id {BTW}</address>'''
@@ -451,7 +453,7 @@ retour = f'''<div class="wrap tekst">
 <h2>Formulier voor herroeping</h2>
 <div class="kader">
 <p>Je hoeft dit formulier alleen in te vullen en op te sturen als je de bestelling wilt herroepen. Kopieer de tekst en mail hem naar <a class="link" href="mailto:{MAIL}?subject=Herroeping%20Nestig">{MAIL}</a>.</p>
-<p>Aan: Nestig, onderdeel van byXavio, {PLAATS}, {MAIL}</p>
+<p>Aan: Nestig, onderdeel van byXavio, {STRAAT}, {POSTCODE} {PLAATS}, {MAIL}</p>
 <p>Ik deel u hierbij mee dat ik onze overeenkomst over de verkoop van het volgende product herroep:</p>
 <p>Product:<br>Besteld op / ontvangen op:<br>Naam:<br>Adres:<br>Datum:</p>
 </div>
