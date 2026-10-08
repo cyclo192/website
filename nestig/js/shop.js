@@ -116,15 +116,66 @@ function startProduct() {
 
   koppelTeller(form.querySelector(".teller"));
 
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
+  const balk = document.querySelector("[data-koopbalk]");
+  const inMand = () => {
     const aantal = parseInt(form.querySelector(".teller input").value, 10) || 1;
     voegToe(id, kleurNu(), aantal);
+    const tekst = aantal + "× " + product.kleuren[kleurNu()].naam.toLowerCase() + " ligt in je winkelmand.";
     klaar.hidden = false;
-    klaar.querySelector("[data-toegevoegd-tekst]").textContent =
-      aantal + "× " + product.kleuren[kleurNu()].naam.toLowerCase() + " ligt in je winkelmand.";
+    klaar.querySelector("[data-toegevoegd-tekst]").textContent = tekst;
+    if (balk) {
+      balk.querySelector("[data-koopbalk-tekst]").textContent = "Toegevoegd";
+      balk.querySelector("[data-koopbalk-knop]").hidden = true;
+      balk.querySelector("[data-koopbalk-verder]").hidden = false;
+    }
+    return tekst;
+  };
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    inMand();
     klaar.querySelector("a").focus();
   });
+
+  /* Koopbalk onderaan (telefoon): verschijnt zodra de gewone knop uit beeld is. */
+  if (balk && "IntersectionObserver" in window) {
+    const knop = form.querySelector("button[type=submit]");
+    new IntersectionObserver(([e]) => {
+      const voorbij = !e.isIntersecting && e.boundingClientRect.top < 0;
+      balk.hidden = !voorbij;
+      document.body.classList.toggle("met-balk", voorbij);
+    }).observe(knop);
+    balk.querySelector("[data-koopbalk-knop]").addEventListener("click", inMand);
+  }
+}
+
+/* ---------- aankoop ongedaan maken ---------- */
+
+function startHerroepen() {
+  const form = document.querySelector("[data-herroepform]");
+  if (!form) return;
+  const melding = form.querySelector("[data-melding]");
+  function verstuur(via) {
+    if (!form.reportValidity()) return;
+    const v = (naam) => (form.elements[naam].value || "").trim();
+    const regels = [
+      "Ik deel u hierbij mee dat ik onze overeenkomst over de verkoop van het volgende product herroep:",
+      "",
+      "Product: " + v("wat"),
+    ];
+    if (v("datum")) regels.push("Besteld of ontvangen: " + v("datum"));
+    regels.push("Naam: " + v("naam"), "E-mail: " + v("email"), "Datum van dit bericht: " + new Date().toLocaleDateString("nl-NL"));
+    const tekst = regels.join("\n");
+    const adres = via === "whatsapp"
+      ? "https://wa.me/" + NESTIG.whatsapp + "?text=" + encodeURIComponent(tekst)
+      : "mailto:" + NESTIG.email + "?subject=" + encodeURIComponent("Herroeping Nestig") + "&body=" + encodeURIComponent(tekst);
+    melding.hidden = false;
+    melding.querySelector("[data-melding-tekst]").textContent =
+      "Je herroeping staat klaar. Druk op verzenden. Je krijgt van ons een bevestiging per e-mail.";
+    if (via === "whatsapp") window.open(adres, "_blank", "noopener");
+    else window.location.href = adres;
+  }
+  form.addEventListener("submit", (e) => { e.preventDefault(); verstuur("mail"); });
+  form.querySelector("[data-via-wa]").addEventListener("click", () => verstuur("whatsapp"));
 }
 
 /* ---------- bestelpagina ---------- */
@@ -202,8 +253,8 @@ function startBestellen() {
       : "mailto:" + NESTIG.email + "?subject=" + encodeURIComponent("Bestelling Nestig") + "&body=" + encodeURIComponent(tekst);
     melding.hidden = false;
     melding.querySelector("[data-melding-tekst]").textContent = via === "whatsapp"
-      ? "Je bestelling staat klaar in WhatsApp. Druk daar op verzenden. Daarna sturen we je een betaalverzoek."
-      : "Je bestelling staat klaar in je mailprogramma. Druk daar op verzenden. Daarna sturen we je een betaalverzoek.";
+      ? "Je bestelling staat klaar in WhatsApp. Druk daar op verzenden. Daarna krijg je een bevestiging en een betaalverzoek."
+      : "Je bestelling staat klaar in je mailprogramma. Druk daar op verzenden. Daarna krijg je een bevestiging en een betaalverzoek.";
     if (via === "whatsapp") window.open(adres, "_blank", "noopener");
     else window.location.href = adres;
     melding.scrollIntoView({ block: "nearest" });
@@ -216,4 +267,5 @@ document.addEventListener("DOMContentLoaded", () => {
   toonAantal();
   startProduct();
   startBestellen();
+  startHerroepen();
 });

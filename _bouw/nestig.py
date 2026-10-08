@@ -19,6 +19,7 @@ POSTCODE = "1446 DA"
 PLAATS = "Purmerend"
 PRIJS = "27,95"
 LEVERTIJD = "2 tot 3 weken"
+DRAAGT = "17,5 kg"   # opgave van de leverancier bij CJ: "within 35 jin" (1 jin = 0,5 kg)
 # sleutel, naam, kleur van het knopje. De foto heet img/hangmat-<sleutel>.jpg. Zelfde lijst staat in js/shop.js.
 KLEUREN = [("beige", "Beige", "#cdb893"), ("zwart", "Zwart", "#1f2226"), ("blauw", "Lichtblauw", "#a9c0dc"),
            ("roze", "Roze", "#eba3b3"), ("lila", "Lila", "#b59ad4")]
@@ -108,6 +109,7 @@ VOET = f'''<footer class="voet"><div class="wrap">
 <div><h2>Klantenservice</h2><ul>
 <li><a href="./#vragen">Verzending en levertijd</a></li>
 <li><a href="retourneren.html">Retourneren</a></li>
+<li><a href="herroepen.html">Aankoop ongedaan maken</a></li>
 <li><a href="algemene-voorwaarden.html">Algemene voorwaarden</a></li>
 <li><a href="privacy.html">Privacy</a></li></ul></div>
 <div><h2>Contact</h2><ul>
@@ -171,11 +173,15 @@ def vragen():
         ("Hoe betaal ik?",
          "Na je bestelling sturen we je een betaalverzoek. Je betaalt met iDEAL via je eigen bank. Zodra je betaling binnen is, gaat je bestelling de deur uit."),
         ("Kan ik terugsturen?",
-         'Ja. Je hebt 14 dagen bedenktijd vanaf de dag dat je je pakket ontvangt. De kosten voor het terugsturen betaal je zelf. Hoe het werkt, lees je bij <a class="link" href="retourneren.html">retourneren</a>.'),
+         'Ja. Je hebt 14 dagen bedenktijd vanaf de dag dat je je pakket ontvangt. De kosten voor het terugsturen betaal je zelf. Hoe het werkt, lees je bij <a class="link" href="retourneren.html">retourneren</a>. Je aankoop direct ongedaan maken kan <a class="link" href="herroepen.html">hier</a>.'),
+        ("Hoeveel gewicht kan de hangmat dragen?",
+         f"Volgens de fabrikant tot {DRAAGT}. Dat is ruim genoeg voor een volwassen kat. Hoe goed de zuignappen houden, hangt wel af van je raam: het glas moet glad, schoon en droog zijn."),
+        ("Heb ik garantie?",
+         'Ja. Je hebt wettelijke garantie: het product moet doen wat je ervan mag verwachten. Is dat niet zo, dan zorgen wij kosteloos voor herstel of een nieuw product, of je krijgt je geld terug. Stuur ons een foto via WhatsApp of e-mail.'),
         ("Blijft de hangmat goed hangen?",
          "Zuignappen houden het best op glad, schoon en droog glas. Maak het raam eerst schoon, druk de zuignappen stevig aan en trek er even aan met je hand voordat je kat erop gaat. Controleer de zuignappen daarna af en toe."),
-        ("Ik heb een andere vraag",
-         f'Stuur een appje naar <a class="link" href="{WA_VRAAG}" target="_blank" rel="noopener">{TEL_TOON}</a>. Je krijgt meestal dezelfde dag antwoord.'),
+        ("Ik heb een klacht of een andere vraag",
+         f'Je klacht nemen we serieus: je krijgt binnen 14 dagen een inhoudelijk antwoord. Stuur een appje naar <a class="link" href="{WA_VRAAG}" target="_blank" rel="noopener">{TEL_TOON}</a>. Je krijgt meestal dezelfde dag antwoord.'),
     ]
     out = ['<div class="vragen">']
     for q, a in items:
@@ -199,6 +205,11 @@ def kaart_hangmat(uid):
 <p class="prijs">€ {PRIJS}</p></div></a>'''
 
 
+WIE = f'''<address>Nestig, onderdeel van byXavio<br>{STRAAT}<br>{POSTCODE} {PLAATS}<br>
+WhatsApp en telefoon: <a class="link" href="tel:{TEL}">{TEL_TOON}</a><br>
+E-mail: <a class="link" href="mailto:{MAIL}">{MAIL}</a><br>
+KVK {KVK}, btw-id {BTW}</address>'''
+
 # ---------------------------------------------------------------- home
 home = f'''<section class="hero"><div class="wrap">
 <div>
@@ -209,7 +220,7 @@ home = f'''<section class="hero"><div class="wrap">
 <p class="prijs">€ {PRIJS}<small>Gratis verzending</small></p>
 </div>
 </div>
-{raam("hero")}
+<figure class="hero-foto"><img src="img/hangmat-blauw.jpg" width="800" height="600" alt="Witte kat ligt op de lichtblauwe kattenhangmat aan het raam" fetchpriority="high"></figure>
 </div></section>
 
 <section class="feiten" aria-label="Goed om te weten"><div class="wrap"><ul>
@@ -237,16 +248,20 @@ home = f'''<section class="hero"><div class="wrap">
 <h2>Zo ligt je kat erbij</h2>
 <p class="sub">De hangmat zit met zuignappen tegen het glas. Je kat ligt hoog, in de zon en met uitzicht.</p>
 <div class="fotos">
-<figure><img src="img/hangmat-blauw.jpg" width="800" height="600" alt="Witte kat op de lichtblauwe kattenhangmat aan het raam" loading="lazy"></figure>
+<figure><img src="img/hangmat-beige.jpg" width="800" height="600" alt="Witte kat op de beige kattenhangmat aan het raam" loading="lazy"></figure>
 <figure><img src="img/hangmat-twee-katten.jpg" width="564" height="423" alt="Twee katten slapen samen in de hangmat aan het raam" loading="lazy"></figure>
 </div>
 <p style="margin-top:26px"><a class="btn btn-zon" href="kattenhangmat.html">Bekijk de kattenhangmat</a></p>
 </div></section>
 
-<section class="sec band"><div class="wrap">
+<section class="sec band"><div class="wrap ophangen">
+<div>
 <h2>Zo hangt hij in een paar minuten</h2>
-<p class="sub">Geen boor en geen schroeven. De hangmat blijft met zuignappen aan het glas zitten.</p>
+<p class="sub">Geen boor en geen schroeven. In het filmpje zie je hoe het gaat.</p>
 {STAPPEN}
+</div>
+<video controls muted playsinline preload="none" poster="img/hangmat-video.jpg" width="540" height="720" aria-label="Filmpje: de hangmat wordt met zuignappen aan het raam gehangen, daarna speelt er een kat op">
+<source src="img/hangmat-video.mp4" type="video/mp4"></video>
 </div></section>
 
 <section class="sec eerlijk"><div class="wrap">
@@ -343,7 +358,8 @@ product = f'''<div class="wrap">
 <ul class="zeker">
 <li>Levertijd {LEVERTIJD}, met track-en-trace</li>
 <li>Gratis verzending in Nederland</li>
-<li>14 dagen bedenktijd</li>
+<li>14 dagen bedenktijd en wettelijke garantie</li>
+<li>Betalen met iDEAL</li>
 <li>Vragen? <a class="link" href="{WA_VRAAG}" target="_blank" rel="noopener">App {TEL_TOON}</a></li>
 </ul>
 </div>
@@ -362,6 +378,7 @@ product = f'''<div class="wrap">
 <tr><th scope="row">In de doos</th><td>1 kattenhangmat met zuignappen en ophangkabels</td></tr>
 <tr><th scope="row">Ligvlak</th><td>55 × 35 cm, 2,5 cm dik</td></tr>
 <tr><th scope="row">Ophangkabels</th><td>56 cm lang</td></tr>
+<tr><th scope="row">Draagvermogen</th><td>Tot {DRAAGT}, volgens de fabrikant</td></tr>
 <tr><th scope="row">Materiaal</th><td>Oxford-stof, kunststof en staaldraad</td></tr>
 <tr><th scope="row">Bevestiging</th><td>Zuignappen op het raam, zonder boren</td></tr>
 <tr><th scope="row">Kleuren</th><td>{KLEURNAMEN.capitalize()}</td></tr>
@@ -381,10 +398,36 @@ product = f'''<div class="wrap">
 <source src="img/hangmat-video.mp4" type="video/mp4"></video>
 </div></section>
 
-<section class="sec band" id="vragen"><div class="wrap">
+<section class="sec band"><div class="wrap uitleg">
+<div>
+<h2>Veilig gebruiken</h2>
+<ul class="punten">
+<li>Belast de hangmat met maximaal {DRAAGT}.</li>
+<li>Bevestig hem alleen op glad, schoon en droog glas. Niet op gebarsten glas, folie of ruw glas.</li>
+<li>Trek er stevig aan met je hand voordat je kat erop gaat.</li>
+<li>Controleer de zuignappen elke week en druk ze opnieuw aan. Bij grote temperatuurwisselingen kunnen ze loslaten.</li>
+<li>Hang de hangmat niet hoger dan nodig en niet boven harde of scherpe voorwerpen.</li>
+<li>Dit is geen speelgoed. Laat kinderen er niet op zitten of aan hangen.</li>
+<li>Houd het verpakkingsmateriaal uit de buurt van kinderen en dieren.</li>
+</ul>
+</div>
+<div>
+<h2>Wie staat achter dit product?</h2>
+<p>Nestig verkoopt dit product in Nederland en is je aanspreekpunt bij vragen, klachten of een probleem met de veiligheid.</p>
+{WIE}
+</div>
+</div></section>
+
+<section class="sec" id="vragen"><div class="wrap">
 <h2>Veelgestelde vragen</h2>
 {vragen()}
-</div></section>'''
+</div></section>
+
+<div class="koopbalk" data-koopbalk hidden>
+<div><strong>€ {PRIJS}</strong><span data-koopbalk-tekst>Gratis verzending</span></div>
+<button class="btn btn-zon" type="button" data-koopbalk-knop>In winkelmand</button>
+<a class="btn btn-zon" href="bestellen.html" data-koopbalk-verder hidden>Naar bestellen</a>
+</div>'''
 page("kattenhangmat.html", f"Kattenhangmat voor het raam – € {PRIJS}, gratis verzending | Nestig",
      f"Kattenhangmat met zuignappen voor het raam. Zonder boren op te hangen, in vijf kleuren. € {PRIJS} met gratis verzending en 14 dagen bedenktijd.",
      product, current="dieren", ld={
@@ -432,10 +475,10 @@ bestellen = f'''<div class="wrap">
 <label for="akkoord">Ik ga akkoord met de <a class="link" href="algemene-voorwaarden.html" target="_blank">algemene voorwaarden</a> en heb gelezen hoe <a class="link" href="retourneren.html" target="_blank">retourneren</a> werkt.</label></div>
 
 <h2>Bestelling plaatsen</h2>
-<p class="zacht">Je bestelling opent als bericht in WhatsApp of in je mailprogramma. Daar druk je zelf op verzenden. Daarna sturen we je een betaalverzoek voor iDEAL. Met het versturen plaats je een bestelling met betaalverplichting.</p>
+<p class="zacht">Je bestelling opent als bericht in WhatsApp of in je mailprogramma. Daar druk je zelf op verzenden. Daarna krijg je van ons een bevestiging per e-mail en een betaalverzoek voor iDEAL. Met het versturen plaats je een bestelling met betaalverplichting.</p>
 <div class="verstuur">
-<button class="btn btn-wa" type="submit">{WA_ICON}Bestel via WhatsApp</button>
-<button class="btn btn-lijn" type="button" data-via-mail>Bestel via e-mail</button>
+<button class="btn btn-wa" type="submit">{WA_ICON}Bestellen en betalen via WhatsApp</button>
+<button class="btn btn-lijn" type="button" data-via-mail>Bestellen en betalen via e-mail</button>
 </div>
 <div class="melding" data-melding hidden role="status"><span data-melding-tekst></span></div>
 </form>
@@ -452,10 +495,7 @@ bestellen = f'''<div class="wrap">
 page("bestellen.html", "Bestellen | Nestig", "Rond je bestelling bij Nestig af.", bestellen, noindex=True)
 
 # ---------------------------------------------------------------- retourneren
-WIE = f'''<address>Nestig, onderdeel van byXavio<br>{STRAAT}<br>{POSTCODE} {PLAATS}<br>
-WhatsApp en telefoon: <a class="link" href="tel:{TEL}">{TEL_TOON}</a><br>
-E-mail: <a class="link" href="mailto:{MAIL}">{MAIL}</a><br>
-KVK {KVK}, btw-id {BTW}</address>'''
+
 
 retour = f'''<div class="wrap tekst">
 <p class="kruimel"><a href="./">Home</a> / Retourneren</p>
@@ -464,11 +504,12 @@ retour = f'''<div class="wrap tekst">
 
 <h2>Zo werkt het</h2>
 <ol>
-<li>Meld je retour binnen 14 dagen nadat je je pakket hebt ontvangen. Dat kan via <a class="link" href="{WA_VRAAG}" target="_blank" rel="noopener">WhatsApp</a>, per <a class="link" href="mailto:{MAIL}?subject=Retour%20Nestig">e-mail</a> of met het formulier onderaan deze pagina.</li>
+<li>Meld je retour binnen 14 dagen nadat je je pakket hebt ontvangen. Het snelst gaat dat met de knop hieronder. Het mag ook via <a class="link" href="{WA_VRAAG}" target="_blank" rel="noopener">WhatsApp</a>, per <a class="link" href="mailto:{MAIL}?subject=Retour%20Nestig">e-mail</a> of met het formulier onderaan deze pagina.</li>
 <li>Je krijgt van ons het retouradres.</li>
 <li>Stuur het product binnen 14 dagen na je melding terug. Bewaar je verzendbewijs.</li>
 <li>Wij betalen het aankoopbedrag terug binnen 14 dagen na je melding, op dezelfde manier als waarop je betaald hebt. We mogen daarmee wachten tot het product binnen is of tot je ons het verzendbewijs stuurt.</li>
 </ol>
+<p style="margin-top:22px"><a class="btn btn-zon" href="herroepen.html">Mijn aankoop ongedaan maken</a></p>
 
 <h2>Wat kost het?</h2>
 <p>De kosten voor het terugsturen betaal je zelf. Het aankoopbedrag krijg je volledig terug.</p>
@@ -493,6 +534,38 @@ retour = f'''<div class="wrap tekst">
 page("retourneren.html", "Retourneren – 14 dagen bedenktijd | Nestig",
      "Bij Nestig heb je 14 dagen bedenktijd. Lees hoe je een product terugstuurt en wanneer je je geld terugkrijgt.", retour)
 
+# ---------------------------------------------------------------- herroepen
+herroepen = f'''<div class="wrap tekst">
+<p class="kruimel"><a href="./">Home</a> / Aankoop ongedaan maken</p>
+<div class="paginakop"><h1>Mijn aankoop ongedaan maken</h1></div>
+<p class="sub">Binnen 14 dagen na ontvangst mag je je aankoop ongedaan maken. Een reden hoef je niet te geven en je hebt er geen account voor nodig.</p>
+
+<form class="form" data-herroepform style="margin-top:28px">
+<div class="velden">
+<div class="heel"><label for="h-naam">Voor- en achternaam</label><input type="text" id="h-naam" name="naam" autocomplete="name" required></div>
+<div class="heel"><label for="h-email">E-mailadres <span>(hier sturen we de bevestiging heen)</span></label><input type="email" id="h-email" name="email" autocomplete="email" required></div>
+<div class="heel"><label for="h-wat">Wat wil je ongedaan maken?</label><input type="text" id="h-wat" name="wat" required placeholder="Bijvoorbeeld: 1 kattenhangmat, beige"></div>
+<div class="heel"><label for="h-datum">Besteld of ontvangen op <span>(mag leeg blijven)</span></label><input type="text" id="h-datum" name="datum" placeholder="Bijvoorbeeld: ontvangen op 20 oktober"></div>
+</div>
+<div class="verstuur">
+<button class="btn btn-zon" type="submit">Herroeping bevestigen</button>
+<button class="btn btn-lijn" type="button" data-via-wa>Liever via WhatsApp</button>
+</div>
+<p class="zacht klein" style="margin-top:14px">Je herroeping opent als bericht in je mailprogramma of in WhatsApp. Daar druk je zelf op verzenden. Je krijgt van ons een bevestiging per e-mail met de datum van ontvangst en het retouradres.</p>
+<div class="melding" data-melding hidden role="status"><span data-melding-tekst></span></div>
+</form>
+
+<h2>Wat gebeurt er daarna?</h2>
+<ol>
+<li>Je krijgt van ons een bevestiging en het retouradres.</li>
+<li>Je stuurt het product binnen 14 dagen terug. De kosten daarvan betaal je zelf.</li>
+<li>Wij betalen het aankoopbedrag terug binnen 14 dagen na je herroeping.</li>
+</ol>
+<p>Alle regels staan op de pagina <a class="link" href="retourneren.html">retourneren</a>.</p>
+</div>'''
+page("herroepen.html", "Mijn aankoop ongedaan maken | Nestig",
+     "Maak je aankoop bij Nestig binnen 14 dagen ongedaan. Zonder account en zonder opgaaf van reden.", herroepen)
+
 # ---------------------------------------------------------------- voorwaarden
 av = f'''<div class="wrap tekst">
 <p class="kruimel"><a href="./">Home</a> / Algemene voorwaarden</p>
@@ -516,15 +589,15 @@ av = f'''<div class="wrap tekst">
 <p>Is je bestelling 30 dagen na je betaling nog niet geleverd, dan mag je de bestelling kosteloos annuleren en betalen wij het bedrag binnen 14 dagen terug. Het risico van beschadiging of verlies ligt bij ons tot je het pakket hebt ontvangen.</p>
 
 <h2>6. Bedenktijd en retourneren</h2>
-<p>Je hebt 14 dagen bedenktijd vanaf de dag dat je het product ontvangt. In die tijd mag je de koop zonder opgaaf van reden ongedaan maken. Hoe dat werkt en wat het kost, lees je op de pagina <a class="link" href="retourneren.html">retourneren</a>. Die pagina hoort bij deze voorwaarden.</p>
+<p>Je hebt 14 dagen bedenktijd vanaf de dag dat je het product ontvangt. In die tijd mag je de koop zonder opgaaf van reden ongedaan maken. Dat doe je met de knop <a class="link" href="herroepen.html">mijn aankoop ongedaan maken</a>. Hoe het werkt en wat het kost, lees je op de pagina <a class="link" href="retourneren.html">retourneren</a>. Die pagina hoort bij deze voorwaarden.</p>
 
 <h2>7. Garantie</h2>
 <p>Je hebt recht op een goed product. Voldoet het niet aan wat je ervan mag verwachten, dan zorgen wij kosteloos voor herstel of vervanging. Lukt dat niet, dan krijg je je geld terug. Dit is de wettelijke garantie. Die blijft altijd gelden.</p>
 
 <h2>8. Veilig gebruik</h2>
-<p>Volg de aanwijzingen bij het product. Hang de kattenhangmat op glad, schoon en droog glas, test hem met je hand voordat je kat erop gaat en controleer de zuignappen regelmatig.</p>
+<p>Volg de aanwijzingen onder “Veilig gebruiken” op de productpagina. Belast de kattenhangmat met maximaal {DRAAGT}, hang hem op glad, schoon en droog glas, test hem met je hand voordat je kat erop gaat en controleer de zuignappen regelmatig.</p>
 
-<h2>9. Klachten</h2>
+<h2 id="klachten">9. Klachten</h2>
 <p>Niet tevreden? Laat het ons zo snel mogelijk weten via WhatsApp, telefoon of e-mail. Je krijgt binnen 14 dagen een inhoudelijk antwoord.</p>
 
 <h2>10. Toepasselijk recht</h2>
@@ -586,7 +659,7 @@ page("404.html", "Pagina niet gevonden | Nestig", "Deze pagina bestaat niet.", n
 
 # ---------------------------------------------------------------- overig
 (OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nDisallow: /bestellen\nSitemap: {SITE}sitemap.xml\n")
-urls = ["", "kattenhangmat", "dieren", "retourneren", "algemene-voorwaarden", "privacy"]
+urls = ["", "kattenhangmat", "dieren", "retourneren", "herroepen", "algemene-voorwaarden", "privacy"]
 (OUT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                  + "".join(f"  <url><loc>{SITE}{u}</loc></url>\n" for u in urls) + "</urlset>\n")
 (OUT / "favicon.svg").write_text(f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect x="4" y="4" width="56" height="56" rx="14" fill="#fff" stroke="{INK}" stroke-width="5"/><rect x="12" y="12" width="40" height="40" rx="6" fill="#dcecf1"/><circle cx="38" cy="27" r="10" fill="#ffc83d" stroke="{INK}" stroke-width="3.5"/><rect x="12" y="41" width="40" height="7" rx="3.5" fill="{INK}"/></svg>''')

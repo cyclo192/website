@@ -81,6 +81,16 @@ p{max-width:62ch}
 .prijs{font:600 1.5rem/1.1 var(--display);font-variant-numeric:lining-nums}
 .prijs small{display:block;font:400 .9375rem/1.4 var(--body);color:var(--ink-soft);margin-top:4px}
 .raam{width:100%;max-width:470px;margin-inline:auto;height:auto}
+.hero-foto{border:2px solid var(--ink);border-radius:28px;overflow:hidden;background:var(--wit);aspect-ratio:4/3;box-shadow:0 8px 0 var(--ink)}
+.hero-foto img{width:100%;height:100%;object-fit:cover}
+.punten{list-style:none;margin-top:6px}
+.punten li{padding:10px 0 10px 26px;border-bottom:1px solid var(--lijn);position:relative}
+.punten li::before{content:"";position:absolute;left:4px;top:19px;width:8px;height:8px;border-radius:50%;background:var(--zon);border:2px solid var(--ink)}
+.uitleg address{font-style:normal;margin-top:14px}
+.koopbalk{position:fixed;left:0;right:0;bottom:0;z-index:36;display:none;align-items:center;justify-content:space-between;gap:14px;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:var(--wit);border-top:2px solid var(--ink)}
+.koopbalk strong{display:block;font:600 1.25rem/1.1 var(--display)}
+.koopbalk span{font-size:.875rem;color:var(--ink-soft)}
+.koopbalk .btn{min-height:48px;padding:.8em 1.2em}
 .raam .mat{fill:var(--hm);transition:fill .25s}
 @media (prefers-reduced-motion:no-preference){
   .hero .raam .straal{animation:straal 1.6s ease-out both}
@@ -271,6 +281,9 @@ fieldset{border:0}
   .galerij,.overzicht{position:static}
   .voet .kolommen{grid-template-columns:1fr 1fr}
   .bestel .overzicht{order:-1}
+  .koopbalk:not([hidden]){display:flex}
+  body.met-balk .wa-zweef{bottom:86px}
+  body.met-balk .voet{padding-bottom:170px}
 }
 @media (max-width:560px){
   body{font-size:1rem}
