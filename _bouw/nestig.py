@@ -195,7 +195,7 @@ def kaart_hangmat(uid):
     return f'''<a class="kaart" href="kattenhangmat.html">
 <div class="beeld"><img src="img/hangmat-beige.jpg" width="800" height="600" alt="Witte kat op de beige kattenhangmat aan het raam" loading="lazy"></div>
 <div class="tekst"><h3>Kattenhangmat voor het raam</h3>
-<p class="zacht klein">Met zuignappen. In vijf kleuren.</p>
+<p class="zacht klein">55 × 35 cm, met zuignappen. In vijf kleuren.</p>
 <p class="prijs">€ {PRIJS}</p></div></a>'''
 
 
@@ -324,7 +324,7 @@ product = f'''<div class="wrap">
 </div>
 <div class="koop">
 <h1>Kattenhangmat voor het raam</h1>
-<p class="sub">Een eigen plek in de zon, hoog en droog aan het raam. Je kat ligt zacht en houdt alles in de gaten.</p>
+<p class="sub">Een eigen plek in de zon, hoog en droog aan het raam. Het ligvlak is 55 bij 35 cm, dus je kat kan er languit op.</p>
 <p class="prijs">€ {PRIJS}<small>Inclusief btw en gratis verzending</small></p>
 <form data-product="kattenhangmat">
 <fieldset class="veld"><legend>Kleur: <span data-gekozen-kleur>{KLEUREN[0][1]}</span></legend>
@@ -359,7 +359,10 @@ product = f'''<div class="wrap">
 <div>
 <h2>Wat je krijgt</h2>
 <table class="specs">
-<tr><th scope="row">In de doos</th><td>Kattenhangmat met zuignappen</td></tr>
+<tr><th scope="row">In de doos</th><td>1 kattenhangmat met zuignappen en ophangkabels</td></tr>
+<tr><th scope="row">Ligvlak</th><td>55 × 35 cm, 2,5 cm dik</td></tr>
+<tr><th scope="row">Ophangkabels</th><td>56 cm lang</td></tr>
+<tr><th scope="row">Materiaal</th><td>Oxford-stof, kunststof en staaldraad</td></tr>
 <tr><th scope="row">Bevestiging</th><td>Zuignappen op het raam, zonder boren</td></tr>
 <tr><th scope="row">Kleuren</th><td>{KLEURNAMEN.capitalize()}</td></tr>
 <tr><th scope="row">Levertijd</th><td>{LEVERTIJD}</td></tr>
@@ -386,7 +389,8 @@ page("kattenhangmat.html", f"Kattenhangmat voor het raam – € {PRIJS}, gratis
      f"Kattenhangmat met zuignappen voor het raam. Zonder boren op te hangen, in vijf kleuren. € {PRIJS} met gratis verzending en 14 dagen bedenktijd.",
      product, current="dieren", ld={
          "@context": "https://schema.org", "@type": "Product", "name": "Kattenhangmat voor het raam",
-         "description": "Kattenhangmat met zuignappen voor het raam. Zonder boren op te hangen.",
+         "description": "Kattenhangmat met zuignappen voor het raam. Ligvlak 55 x 35 cm, zonder boren op te hangen.",
+         "material": "Oxford-stof, kunststof en staaldraad",
          "image": [SITE + f"img/hangmat-{k}.jpg" for k, _, _ in KLEUREN], "brand": {"@type": "Brand", "name": "Nestig"},
          "offers": {"@type": "Offer", "url": SITE + "kattenhangmat", "priceCurrency": "EUR", "price": "27.95",
                     "availability": "https://schema.org/InStock",
