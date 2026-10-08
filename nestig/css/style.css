@@ -259,6 +259,8 @@ fieldset{border:0}
 .fout{border-color:var(--bes);background:#fbe6ec;color:#7d1a35}
 .leeg{padding-block:30px 90px}
 .leeg p{margin:14px 0 26px}
+.leeg .knoppen{display:flex;flex-wrap:wrap;gap:12px}
+.leeg:focus{outline:none}
 
 /* tekstpagina's */
 .tekst{max-width:760px;padding-block:14px clamp(56px,8vw,96px)}
@@ -303,6 +305,7 @@ fieldset{border:0}
   .velden{grid-template-columns:1fr}
   .voet .kolommen{grid-template-columns:1fr}
   .contact .knoppen,.contact .knoppen .btn{width:100%}
+  .leeg .knoppen,.leeg .knoppen .btn{width:100%}
   .wa-zweef{right:14px;bottom:14px;width:56px;height:56px}
 }
 @media (prefers-reduced-motion:reduce){

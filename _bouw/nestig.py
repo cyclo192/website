@@ -19,6 +19,10 @@ POSTCODE = "1446 DA"
 PLAATS = "Purmerend"
 PRIJS = "27,95"
 LEVERTIJD = "2 tot 3 weken"
+# Betalen via Mollie. Zet op True zodra MOLLIE_API_KEY in Cloudflare staat en draai het script opnieuw:
+# de teksten over betalen (veelgestelde vragen, bestellen, voorwaarden, privacy) gaan dan over direct online betalen.
+# Op False gaan ze over een betaalverzoek achteraf. De koppeling zelf luistert alleen naar de sleutel, niet naar deze schakelaar.
+MOLLIE = False
 DRAAGT = "17,5 kg"   # opgave van de leverancier bij CJ: "within 35 jin" (1 jin = 0,5 kg)
 # sleutel, naam, kleur van het knopje. De foto heet img/hangmat-<sleutel>.jpg. Zelfde lijst staat in js/shop.js.
 KLEUREN = [("beige", "Beige", "#cdb893"), ("zwart", "Zwart", "#1f2226"), ("blauw", "Lichtblauw", "#a9c0dc"),
@@ -171,6 +175,8 @@ def vragen():
         ("Wat kost verzending?",
          "Niets. Verzending is gratis. We bezorgen op dit moment alleen in Nederland."),
         ("Hoe betaal ik?",
+         "Je betaalt direct bij het bestellen met iDEAL, via je eigen bank. De betaling loopt veilig via Mollie. Zodra je betaald hebt, krijg je een bevestiging per e-mail en gaat je bestelling de deur uit."
+         if MOLLIE else
          "Na je bestelling sturen we je een betaalverzoek. Je betaalt met iDEAL via je eigen bank. Zodra je betaling binnen is, gaat je bestelling de deur uit."),
         ("Kan ik terugsturen?",
          'Ja. Je hebt 14 dagen bedenktijd vanaf de dag dat je je pakket ontvangt. De kosten voor het terugsturen betaal je zelf. Hoe het werkt, lees je bij <a class="link" href="retourneren.html">retourneren</a>. Je aankoop direct ongedaan maken kan <a class="link" href="herroepen.html">hier</a>.'),
@@ -476,13 +482,13 @@ bestellen = f'''<div class="wrap">
 <div><label for="plaats">Plaats</label><input type="text" id="plaats" name="plaats" autocomplete="address-level2" required></div>
 <div><label for="email">E-mailadres</label><input type="email" id="email" name="email" autocomplete="email" required></div>
 <div><label for="telefoon">Telefoon <span>(mag leeg blijven)</span></label><input type="tel" id="telefoon" name="telefoon" autocomplete="tel"></div>
-<div class="heel"><label for="opmerking">Opmerking <span>(mag leeg blijven)</span></label><textarea id="opmerking" name="opmerking"></textarea></div>
+<div class="heel"><label for="opmerking">Opmerking <span>(mag leeg blijven)</span></label><textarea id="opmerking" name="opmerking" maxlength="300"></textarea></div>
 </div>
 <div class="akkoord"><input type="checkbox" id="akkoord" name="akkoord" required>
 <label for="akkoord">Ik ga akkoord met de <a class="link" href="algemene-voorwaarden.html" target="_blank">algemene voorwaarden</a> en heb gelezen hoe <a class="link" href="retourneren.html" target="_blank">retourneren</a> werkt.</label></div>
 
 <h2>Bestelling plaatsen</h2>
-<p class="zacht">Je krijgt direct een bevestiging per e-mail en daarna een betaalverzoek voor iDEAL. Met de knop hieronder plaats je een bestelling met betaalverplichting.</p>
+<p class="zacht">{"Met de knop hieronder plaats je een bestelling met betaalverplichting. Je gaat daarna naar de betaalpagina van Mollie en betaalt met iDEAL. Na je betaling krijg je direct een bevestiging per e-mail." if MOLLIE else "Je krijgt direct een bevestiging per e-mail en daarna een betaalverzoek voor iDEAL. Met de knop hieronder plaats je een bestelling met betaalverplichting."}</p>
 <div class="vh" aria-hidden="true"><label>Laat dit veld leeg <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
 <div class="verstuur">
 <button class="btn btn-zon" type="submit">Bestellen en betalen</button>
@@ -501,6 +507,51 @@ bestellen = f'''<div class="wrap">
 </div>
 </div>'''.replace(" novalidate-off", "")
 page("bestellen.html", "Bestellen | Nestig", "Rond je bestelling bij Nestig af.", bestellen, noindex=True)
+
+# ---------------------------------------------------------------- terug van de betaalpagina
+# Hier komt de klant terug na het betalen bij Mollie. js/shop.js vraagt de status op en toont het juiste blok.
+bedankt = f'''<div class="wrap">
+<p class="kruimel"><a href="./">Home</a> / Bestellen</p>
+<div class="paginakop"><h1>Even geduld</h1></div>
+<div data-betaalstatus aria-live="polite">
+
+<div class="leeg" data-stand="laden" data-kop="Even geduld">
+<p class="sub">We kijken of je betaling binnen is.</p>
+<noscript><p>Deze pagina heeft JavaScript nodig. Heb je betaald, dan staat de bevestiging in je mail.</p></noscript>
+</div>
+
+<div class="leeg" data-stand="betaald" data-kop="Bedankt, je betaling is binnen" hidden tabindex="-1">
+<p class="sub"><span data-met-nummer>Je bestelnummer is <strong data-nummer></strong>. </span>De bevestiging staat in je mail.</p>
+<p data-test hidden><strong>Dit was een testbetaling.</strong> Er is niets afgeschreven en er wordt niets geleverd.</p>
+<p>Je bestelling gaat de deur uit. De levertijd is {LEVERTIJD}. Je krijgt een track-en-tracecode zodra je pakket onderweg is.</p>
+<p class="zacht klein">Geen mail gekregen? Kijk bij je ongewenste mail of stuur ons een bericht.</p>
+<a class="btn btn-lijn" href="./">Terug naar de homepage</a>
+</div>
+
+<div class="leeg" data-stand="wacht" data-kop="Je betaling is nog niet binnen" hidden tabindex="-1">
+<p class="sub">We hebben nog geen betaling ontvangen<span data-met-nummer> voor bestelling <strong data-nummer></strong></span>. Deze pagina kijkt vanzelf opnieuw.</p>
+<p>Heb je al betaald? Dan komt het goed. Zodra je betaling binnen is, krijg je de bevestiging per e-mail. Je kunt deze pagina dan sluiten.</p>
+<div class="knoppen"><a class="btn btn-zon" data-verder hidden href="bestellen.html">Verder met betalen</a>
+<a class="btn btn-wa" href="{WA_VRAAG}" target="_blank" rel="noopener">{WA_ICON}Stuur een WhatsApp</a></div>
+</div>
+
+<div class="leeg" data-stand="mislukt" data-kop="De betaling is niet gelukt" hidden tabindex="-1">
+<p class="sub">Je betaling is afgebroken of niet gelukt. Je bestelling is daarom niet geplaatst.</p>
+<p>Je winkelmand en je gegevens staan nog voor je klaar. Je kunt het direct opnieuw proberen.</p>
+<div class="knoppen"><a class="btn btn-zon" href="bestellen.html">Opnieuw proberen</a>
+<a class="btn btn-wa" href="{WA_VRAAG}" target="_blank" rel="noopener">{WA_ICON}Stuur een WhatsApp</a></div>
+</div>
+
+<div class="leeg" data-stand="onbekend" data-kop="We kunnen je betaling niet vinden" hidden tabindex="-1">
+<p class="sub">Heb je betaald? Dan krijg je binnen een paar minuten een bevestiging per e-mail.</p>
+<p>Krijg je die niet, stuur ons dan een bericht. We zoeken het voor je uit.</p>
+<div class="knoppen"><a class="btn btn-lijn" href="bestellen.html">Naar je winkelmand</a>
+<a class="btn btn-wa" href="{WA_VRAAG}" target="_blank" rel="noopener">{WA_ICON}Stuur een WhatsApp</a></div>
+</div>
+
+</div>
+</div>'''
+page("bedankt.html", "Je betaling | Nestig", "De status van je betaling bij Nestig.", bedankt, noindex=True)
 
 # ---------------------------------------------------------------- retourneren
 
@@ -592,7 +643,7 @@ av = f'''<div class="wrap tekst">
 <p>Alle prijzen op de site zijn in euro en inclusief btw en verzendkosten. Een duidelijke vergissing in een prijs of beschrijving bindt ons niet. Afbeeldingen geven een zo goed mogelijk beeld van het product. Kleuren kunnen op je scherm iets afwijken.</p>
 
 <h2>4. Bestellen en betalen</h2>
-<p>Je plaatst een bestelling via het bestelformulier op de site. Je ontvangt direct een bevestiging per e-mail en daarna een betaalverzoek. De overeenkomst komt tot stand zodra wij je bestelling hebben bevestigd. We versturen je bestelling nadat je betaling binnen is.</p>
+<p>{"Je plaatst een bestelling via het bestelformulier op de site en betaalt direct online via onze betaaldienst Mollie. Na je betaling ontvang je een bevestiging per e-mail. De overeenkomst komt tot stand zodra wij je bestelling hebben bevestigd. Lukt online betalen door een storing niet, dan sturen we je een betaalverzoek. We versturen je bestelling nadat je betaling binnen is." if MOLLIE else "Je plaatst een bestelling via het bestelformulier op de site. Je ontvangt direct een bevestiging per e-mail en daarna een betaalverzoek. De overeenkomst komt tot stand zodra wij je bestelling hebben bevestigd. We versturen je bestelling nadat je betaling binnen is."}</p>
 
 <h2>5. Levering</h2>
 <p>We bezorgen in Nederland. De verwachte levertijd is {LEVERTIJD} na ontvangst van je betaling. Je bestelling wordt rechtstreeks door onze leverancier verstuurd. Je krijgt een track-en-tracecode zodra het pakket onderweg is.</p>
@@ -629,7 +680,7 @@ privacy = f'''<div class="wrap tekst">
 <ul>
 <li><strong>Bij een bestelling:</strong> je naam, adres, e-mailadres, wat je bestelt en, als je het invult, je telefoonnummer en je opmerking.</li>
 <li><strong>Bij een vraag:</strong> wat je ons via WhatsApp, e-mail of telefoon stuurt of vertelt.</li>
-<li><strong>Bij een betaling:</strong> dat je betaald hebt en het bedrag. Je bankgegevens zien wij alleen voor zover ze op het bankafschrift staan.</li>
+<li><strong>Bij een betaling:</strong> {"dat je betaald hebt, het bedrag en de betaalwijze. Je bankgegevens zien wij alleen voor zover onze betaaldienst of het bankafschrift ze toont." if MOLLIE else "dat je betaald hebt en het bedrag. Je bankgegevens zien wij alleen voor zover ze op het bankafschrift staan."}</li>
 </ul>
 
 <h2>Waarvoor en op welke grond</h2>
@@ -644,7 +695,7 @@ privacy = f'''<div class="wrap tekst">
 <ul>
 <li><strong>Onze leverancier en de bezorgdienst.</strong> Zij krijgen je naam en adres om het pakket te bezorgen. Onze leverancier is gevestigd buiten de Europese Unie, in China. We geven alleen door wat voor de bezorging nodig is.</li>
 <li><strong>WhatsApp.</strong> Bestel je of stel je een vraag via WhatsApp, dan loopt je bericht via WhatsApp, een dienst van Meta. Dat gebeurt alleen als je daar zelf voor kiest.</li>
-<li><strong>Onze e-maildienst.</strong> De bevestiging van je bestelling of herroeping versturen we via Resend, een dienst uit de Verenigde Staten. Die verwerkt daarvoor je naam, je e-mailadres en de inhoud van de mail.</li>
+{"<li><strong>Onze betaaldienst.</strong> Betalingen lopen via Mollie B.V. in Amsterdam. Mollie verwerkt je betaalgegevens en krijgt van ons het bedrag en de gegevens van je bestelling: je naam, adres, e-mailadres, wat je bestelt en, als je die invult, je telefoonnummer en je opmerking.</li>" + chr(10) if MOLLIE else ""}<li><strong>Onze e-maildienst.</strong> De bevestiging van je bestelling of herroeping versturen we via Resend, een dienst uit de Verenigde Staten. Die verwerkt daarvoor je naam, je e-mailadres en de inhoud van de mail.</li>
 <li><strong>De hostingpartij van deze website.</strong> Die verwerkt technische gegevens zoals je IP-adres om de site te tonen en te beveiligen.</li>
 </ul>
 
@@ -652,7 +703,7 @@ privacy = f'''<div class="wrap tekst">
 <p>Gegevens van een bestelling bewaren we 7 jaar, omdat de Belastingdienst dat van ons vraagt. Berichten zonder bestelling verwijderen we binnen een jaar.</p>
 
 <h2>Cookies</h2>
-<p>Deze site plaatst geen volgcookies en gebruikt geen advertentie- of statistiekdiensten. Je winkelmand wordt in je eigen browser bewaard, zodat hij blijft staan als je verder kijkt. Die informatie wordt niet naar ons gestuurd totdat je zelf je bestelling verstuurt. De lettertypen staan op onze eigen server.</p>
+<p>Deze site plaatst geen volgcookies en gebruikt geen advertentie- of statistiekdiensten. Je winkelmand wordt in je eigen browser bewaard, zodat hij blijft staan als je verder kijkt. Die informatie wordt niet naar ons gestuurd totdat je zelf je bestelling verstuurt. {"Ga je betalen, dan onthoudt je browser ook wat je in het bestelformulier invulde en om welke betaling het gaat. Zo kom je na het betalen op de juiste pagina terug en hoef je bij een mislukte betaling niets opnieuw te typen. " if MOLLIE else ""}De lettertypen staan op onze eigen server.</p>
 
 <h2>Jouw rechten</h2>
 <p>Je mag ons vragen welke gegevens we van je hebben, en vragen om ze te verbeteren of te verwijderen. Je mag ook bezwaar maken tegen het gebruik. Stuur daarvoor een bericht naar <a class="link" href="mailto:{MAIL}">{MAIL}</a>. Je krijgt binnen een maand antwoord. Ben je het niet met ons eens, dan kun je een klacht indienen bij de Autoriteit Persoonsgegevens.</p>
@@ -670,7 +721,7 @@ page("404.html", "Pagina niet gevonden | Nestig", "Deze pagina bestaat niet.", n
 
 # ---------------------------------------------------------------- overig
 (OUT / "_routes.json").write_text('{"version":1,"include":["/api/*"],"exclude":[]}\n')
-(OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nDisallow: /bestellen\nSitemap: {SITE}sitemap.xml\n")
+(OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nDisallow: /bestellen\nDisallow: /bedankt\nSitemap: {SITE}sitemap.xml\n")
 urls = ["", "kattenhangmat", "dieren", "retourneren", "herroepen", "algemene-voorwaarden", "privacy"]
 (OUT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                  + "".join(f"  <url><loc>{SITE}{u}</loc></url>\n" for u in urls) + "</urlset>\n")

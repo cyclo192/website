@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Je betaling | Nestig</title>
+<meta name="description" content="De status van je betaling bij Nestig.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://nestig.nl/bedankt">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:site_name" content="Nestig">
+<meta property="og:title" content="Je betaling | Nestig">
+<meta property="og:description" content="De status van je betaling bij Nestig.">
+<meta property="og:image" content="https://nestig.nl/img/og.jpg">
+<meta property="og:url" content="https://nestig.nl/bedankt">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#dcecf1">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preload" href="fonts/lora.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="fonts/inter-400.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#inhoud">Naar de inhoud</a>
+<header class="top"><div class="wrap">
+<a class="logo" href="./" aria-label="Nestig, naar de homepage">nestig<span class="zon" aria-hidden="true"></span></a>
+<nav class="nav" aria-label="Hoofdmenu">
+<a href="dieren.html">Dieren</a>
+<a href="kamer.html">Kamer</a>
+<a class="mand" href="bestellen.html" data-mand-link aria-label="Winkelmand"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 9h18l-1.6 10.2a2 2 0 0 1-2 1.8H6.6a2 2 0 0 1-2-1.8L3 9Z"/><path d="M8 9l3-6M16 9l-3-6"/></svg><span>Winkelmand</span><b data-mand-aantal>0</b></a>
+</nav></div></header>
+<main id="inhoud">
+<div class="wrap">
+<p class="kruimel"><a href="./">Home</a> / Bestellen</p>
+<div class="paginakop"><h1>Even geduld</h1></div>
+<div data-betaalstatus aria-live="polite">
+
+<div class="leeg" data-stand="laden" data-kop="Even geduld">
+<p class="sub">We kijken of je betaling binnen is.</p>
+<noscript><p>Deze pagina heeft JavaScript nodig. Heb je betaald, dan staat de bevestiging in je mail.</p></noscript>
+</div>
+
+<div class="leeg" data-stand="betaald" data-kop="Bedankt, je betaling is binnen" hidden tabindex="-1">
+<p class="sub"><span data-met-nummer>Je bestelnummer is <strong data-nummer></strong>. </span>De bevestiging staat in je mail.</p>
+<p data-test hidden><strong>Dit was een testbetaling.</strong> Er is niets afgeschreven en er wordt niets geleverd.</p>
+<p>Je bestelling gaat de deur uit. De levertijd is 2 tot 3 weken. Je krijgt een track-en-tracecode zodra je pakket onderweg is.</p>
+<p class="zacht klein">Geen mail gekregen? Kijk bij je ongewenste mail of stuur ons een bericht.</p>
+<a class="btn btn-lijn" href="./">Terug naar de homepage</a>
+</div>
+
+<div class="leeg" data-stand="wacht" data-kop="Je betaling is nog niet binnen" hidden tabindex="-1">
+<p class="sub">We hebben nog geen betaling ontvangen<span data-met-nummer> voor bestelling <strong data-nummer></strong></span>. Deze pagina kijkt vanzelf opnieuw.</p>
+<p>Heb je al betaald? Dan komt het goed. Zodra je betaling binnen is, krijg je de bevestiging per e-mail. Je kunt deze pagina dan sluiten.</p>
+<div class="knoppen"><a class="btn btn-zon" data-verder hidden href="bestellen.html">Verder met betalen</a>
+<a class="btn btn-wa" href="https://wa.me/31626683986?text=Hoi%20Nestig%2C%20ik%20heb%20een%20vraag." target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 32 32"><path d="M16.04 3C8.86 3 3.03 8.82 3.03 16c0 2.3.6 4.54 1.74 6.52L3 29l6.64-1.74A13 13 0 0 0 16.04 29C23.2 29 29 23.18 29 16S23.2 3 16.04 3Zm0 23.8c-2.02 0-4-.54-5.72-1.57l-.41-.24-3.94 1.03 1.05-3.84-.27-.4A10.78 10.78 0 0 1 5.2 16c0-5.97 4.86-10.83 10.84-10.83 5.97 0 10.82 4.86 10.82 10.83 0 5.98-4.85 10.8-10.82 10.8Zm5.94-8.1c-.33-.16-1.93-.95-2.23-1.06-.3-.11-.52-.16-.73.17-.22.32-.84 1.05-1.03 1.27-.19.22-.38.24-.7.08-.33-.16-1.38-.51-2.62-1.62-.97-.86-1.62-1.93-1.81-2.25-.19-.33-.02-.5.14-.66.15-.15.33-.38.49-.57.16-.19.22-.33.33-.54.11-.22.05-.41-.03-.57-.08-.16-.73-1.76-1-2.41-.26-.63-.53-.55-.73-.56h-.62c-.22 0-.57.08-.87.41-.3.32-1.14 1.11-1.14 2.72 0 1.6 1.17 3.15 1.33 3.37.16.22 2.3 3.5 5.56 4.91.78.34 1.39.54 1.86.69.78.25 1.49.21 2.05.13.63-.09 1.93-.79 2.2-1.55.27-.76.27-1.41.19-1.55-.08-.13-.3-.21-.62-.38Z"/></svg>Stuur een WhatsApp</a></div>
+</div>
+
+<div class="leeg" data-stand="mislukt" data-kop="De betaling is niet gelukt" hidden tabindex="-1">
+<p class="sub">Je betaling is afgebroken of niet gelukt. Je bestelling is daarom niet geplaatst.</p>
+<p>Je winkelmand en je gegevens staan nog voor je klaar. Je kunt het direct opnieuw proberen.</p>
+<div class="knoppen"><a class="btn btn-zon" href="bestellen.html">Opnieuw proberen</a>
+<a class="btn btn-wa" href="https://wa.me/31626683986?text=Hoi%20Nestig%2C%20ik%20heb%20een%20vraag." target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 32 32"><path d="M16.04 3C8.86 3 3.03 8.82 3.03 16c0 2.3.6 4.54 1.74 6.52L3 29l6.64-1.74A13 13 0 0 0 16.04 29C23.2 29 29 23.18 29 16S23.2 3 16.04 3Zm0 23.8c-2.02 0-4-.54-5.72-1.57l-.41-.24-3.94 1.03 1.05-3.84-.27-.4A10.78 10.78 0 0 1 5.2 16c0-5.97 4.86-10.83 10.84-10.83 5.97 0 10.82 4.86 10.82 10.83 0 5.98-4.85 10.8-10.82 10.8Zm5.94-8.1c-.33-.16-1.93-.95-2.23-1.06-.3-.11-.52-.16-.73.17-.22.32-.84 1.05-1.03 1.27-.19.22-.38.24-.7.08-.33-.16-1.38-.51-2.62-1.62-.97-.86-1.62-1.93-1.81-2.25-.19-.33-.02-.5.14-.66.15-.15.33-.38.49-.57.16-.19.22-.33.33-.54.11-.22.05-.41-.03-.57-.08-.16-.73-1.76-1-2.41-.26-.63-.53-.55-.73-.56h-.62c-.22 0-.57.08-.87.41-.3.32-1.14 1.11-1.14 2.72 0 1.6 1.17 3.15 1.33 3.37.16.22 2.3 3.5 5.56 4.91.78.34 1.39.54 1.86.69.78.25 1.49.21 2.05.13.63-.09 1.93-.79 2.2-1.55.27-.76.27-1.41.19-1.55-.08-.13-.3-.21-.62-.38Z"/></svg>Stuur een WhatsApp</a></div>
+</div>
+
+<div class="leeg" data-stand="onbekend" data-kop="We kunnen je betaling niet vinden" hidden tabindex="-1">
+<p class="sub">Heb je betaald? Dan krijg je binnen een paar minuten een bevestiging per e-mail.</p>
+<p>Krijg je die niet, stuur ons dan een bericht. We zoeken het voor je uit.</p>
+<div class="knoppen"><a class="btn btn-lijn" href="bestellen.html">Naar je winkelmand</a>
+<a class="btn btn-wa" href="https://wa.me/31626683986?text=Hoi%20Nestig%2C%20ik%20heb%20een%20vraag." target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 32 32"><path d="M16.04 3C8.86 3 3.03 8.82 3.03 16c0 2.3.6 4.54 1.74 6.52L3 29l6.64-1.74A13 13 0 0 0 16.04 29C23.2 29 29 23.18 29 16S23.2 3 16.04 3Zm0 23.8c-2.02 0-4-.54-5.72-1.57l-.41-.24-3.94 1.03 1.05-3.84-.27-.4A10.78 10.78 0 0 1 5.2 16c0-5.97 4.86-10.83 10.84-10.83 5.97 0 10.82 4.86 10.82 10.83 0 5.98-4.85 10.8-10.82 10.8Zm5.94-8.1c-.33-.16-1.93-.95-2.23-1.06-.3-.11-.52-.16-.73.17-.22.32-.84 1.05-1.03 1.27-.19.22-.38.24-.7.08-.33-.16-1.38-.51-2.62-1.62-.97-.86-1.62-1.93-1.81-2.25-.19-.33-.02-.5.14-.66.15-.15.33-.38.49-.57.16-.19.22-.33.33-.54.11-.22.05-.41-.03-.57-.08-.16-.73-1.76-1-2.41-.26-.63-.53-.55-.73-.56h-.62c-.22 0-.57.08-.87.41-.3.32-1.14 1.11-1.14 2.72 0 1.6 1.17 3.15 1.33 3.37.16.22 2.3 3.5 5.56 4.91.78.34 1.39.54 1.86.69.78.25 1.49.21 2.05.13.63-.09 1.93-.79 2.2-1.55.27-.76.27-1.41.19-1.55-.08-.13-.3-.21-.62-.38Z"/></svg>Stuur een WhatsApp</a></div>
+</div>
+
+</div>
+</div>
+</main>
+<footer class="voet"><div class="wrap">
+<div class="kolommen">
+<div><a class="logo" href="./" aria-label="Nestig, naar de homepage">nestig<span class="zon" aria-hidden="true"></span></a>
+<p class="zacht" style="margin-top:10px;max-width:30ch">Fijne spullen voor je dier en voor je kamer.</p></div>
+<div><h2>Winkel</h2><ul>
+<li><a href="dieren.html">Dieren</a></li>
+<li><a href="kamer.html">Kamer</a></li>
+<li><a href="bestellen.html">Winkelmand</a></li></ul></div>
+<div><h2>Klantenservice</h2><ul>
+<li><a href="./#vragen">Verzending en levertijd</a></li>
+<li><a href="retourneren.html">Retourneren</a></li>
+<li><a href="herroepen.html">Aankoop ongedaan maken</a></li>
+<li><a href="algemene-voorwaarden.html">Algemene voorwaarden</a></li>
+<li><a href="privacy.html">Privacy</a></li></ul></div>
+<div><h2>Contact</h2><ul>
+<li><a href="https://wa.me/31626683986?text=Hoi%20Nestig%2C%20ik%20heb%20een%20vraag." target="_blank" rel="noopener">WhatsApp: 06 26 68 39 86</a></li>
+<li><a href="tel:+31626683986">Bellen: 06 26 68 39 86</a></li>
+<li><a href="mailto:infobyxavio@gmail.com">infobyxavio@gmail.com</a></li>
+<li>Speltstraat 16<br>1446 DA Purmerend</li></ul></div>
+</div>
+<div class="onder"><span>© 2026 Nestig, onderdeel van byXavio</span><span>KVK 42165581</span><span>Btw-id NL005549301B15</span><span>Website door <a href="https://byxavio.nl" style="text-decoration:underline">byXavio</a></span></div>
+</div></footer>
+<a class="wa-zweef" href="https://wa.me/31626683986?text=Hoi%20Nestig%2C%20ik%20heb%20een%20vraag." target="_blank" rel="noopener" aria-label="Stel je vraag via WhatsApp"><svg aria-hidden="true" viewBox="0 0 32 32"><path d="M16.04 3C8.86 3 3.03 8.82 3.03 16c0 2.3.6 4.54 1.74 6.52L3 29l6.64-1.74A13 13 0 0 0 16.04 29C23.2 29 29 23.18 29 16S23.2 3 16.04 3Zm0 23.8c-2.02 0-4-.54-5.72-1.57l-.41-.24-3.94 1.03 1.05-3.84-.27-.4A10.78 10.78 0 0 1 5.2 16c0-5.97 4.86-10.83 10.84-10.83 5.97 0 10.82 4.86 10.82 10.83 0 5.98-4.85 10.8-10.82 10.8Zm5.94-8.1c-.33-.16-1.93-.95-2.23-1.06-.3-.11-.52-.16-.73.17-.22.32-.84 1.05-1.03 1.27-.19.22-.38.24-.7.08-.33-.16-1.38-.51-2.62-1.62-.97-.86-1.62-1.93-1.81-2.25-.19-.33-.02-.5.14-.66.15-.15.33-.38.49-.57.16-.19.22-.33.33-.54.11-.22.05-.41-.03-.57-.08-.16-.73-1.76-1-2.41-.26-.63-.53-.55-.73-.56h-.62c-.22 0-.57.08-.87.41-.3.32-1.14 1.11-1.14 2.72 0 1.6 1.17 3.15 1.33 3.37.16.22 2.3 3.5 5.56 4.91.78.34 1.39.54 1.86.69.78.25 1.49.21 2.05.13.63-.09 1.93-.79 2.2-1.55.27-.76.27-1.41.19-1.55-.08-.13-.3-.21-.62-.38Z"/></svg></a>
+<script src="js/shop.js" defer></script>
+</body>
+</html>

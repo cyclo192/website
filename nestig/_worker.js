@@ -3,14 +3,24 @@
    Draait alleen voor /api/* (zie _routes.json). Alle andere pagina's worden
    rechtstreeks als bestand geserveerd.
 
-   /api/bestelling   bestelling aannemen, mail naar de klant en naar Nestig
+   /api/bestelling   bestelling aannemen. Met Mollie: betaling aanmaken en de klant
+                     naar de betaalpagina sturen. Zonder Mollie: mail naar de klant
+                     en naar Nestig, betalen gaat dan met een betaalverzoek.
+   /api/mollie       hier meldt Mollie dat de status van een betaling is veranderd.
+                     Is er betaald, dan gaan de bevestigingsmails de deur uit.
+   /api/betaling     status van een betaling, voor de bedankpagina
    /api/herroeping   herroeping aannemen, ontvangstbevestiging naar de klant
 
    Instellingen (Cloudflare > Pages > nestig > Settings > Variables and secrets):
      RESEND_API_KEY   geheim, sleutel van resend.com. Zonder sleutel geeft de API
                       503 terug en valt de site terug op bestellen via WhatsApp.
+     MOLLIE_API_KEY   geheim, sleutel van mollie.com (test_... of live_...). Zonder
+                      sleutel blijft betalen met een betaalverzoek werken.
      MAIL_VAN         optioneel, standaard "Nestig <bestelling@nestig.nl>"
      MAIL_NAAR        optioneel, waar bestellingen binnenkomen
+
+   Er is geen database. Tussen bestellen en betalen bewaart Mollie de bestelling
+   als "metadata" bij de betaling. Die is maximaal ongeveer 1 kB groot.
 
    De prijzen hieronder zijn leidend. Wat de browser meestuurt aan prijzen
    wordt genegeerd. Houd deze lijst gelijk aan js/shop.js. */
@@ -46,9 +56,11 @@ export default {
     const url = new URL(request.url);
     if (url.pathname.startsWith("/api/")) {
       try {
+        if (url.pathname === "/api/betaling" && request.method === "GET") return await betaling(url, env);
         if (request.method !== "POST") return json({ fout: "Alleen POST" }, 405);
         if (url.pathname === "/api/bestelling") return await bestelling(request, env);
         if (url.pathname === "/api/herroeping") return await herroeping(request, env);
+        if (url.pathname === "/api/mollie") return await mollieMelding(request, env);
         return json({ fout: "Niet gevonden" }, 404);
       } catch (e) {
         if (e instanceof Ongeldig) return json({ fout: e.message, veld: e.veld }, 400);
@@ -110,8 +122,9 @@ function esc(s) {
   return String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 }
 
-function nu() {
-  return new Intl.DateTimeFormat("nl-NL", { timeZone: "Europe/Amsterdam", dateStyle: "long", timeStyle: "short" }).format(new Date());
+function nu(moment) {
+  const d = moment ? new Date(moment) : new Date();
+  return new Intl.DateTimeFormat("nl-NL", { timeZone: "Europe/Amsterdam", dateStyle: "long", timeStyle: "short" }).format(isNaN(d) ? new Date() : d);
 }
 
 function nummer(voorvoegsel) {
@@ -130,10 +143,13 @@ function alsHtml(tekst) {
   return '<div style="font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.55;color:#12302b;max-width:560px">' + body + "</div>";
 }
 
-async function stuurMail(env, { aan, onderwerp, tekst, antwoordNaar }) {
+/* "eenmalig" is een sleutel waarmee Resend dezelfde mail binnen 24 uur maar één keer verstuurt. */
+async function stuurMail(env, { aan, onderwerp, tekst, antwoordNaar, eenmalig }) {
+  const headers = { Authorization: "Bearer " + env.RESEND_API_KEY, "Content-Type": "application/json" };
+  if (eenmalig) headers["Idempotency-Key"] = eenmalig;
   const r = await fetch("https://api.resend.com/emails", {
     method: "POST",
-    headers: { Authorization: "Bearer " + env.RESEND_API_KEY, "Content-Type": "application/json" },
+    headers,
     body: JSON.stringify({
       from: env.MAIL_VAN || "Nestig <bestelling@nestig.nl>",
       to: [aan],
@@ -143,6 +159,7 @@ async function stuurMail(env, { aan, onderwerp, tekst, antwoordNaar }) {
       html: alsHtml(tekst),
     }),
   });
+  if (r.status === 409 && eenmalig) return; /* deze mail is al verstuurd of onderweg */
   if (!r.ok) throw new Error("mail " + r.status);
 }
 
@@ -158,19 +175,15 @@ const VOET = [
 
 /* ---------- bestelling ---------- */
 
-async function bestelling(request, env) {
-  const d = await leesInvoer(request);
-  if (!env.RESEND_API_KEY) return json({ fout: "niet-ingesteld" }, 503);
-
+/* Controleert wat de browser stuurt en maakt er een nette bestelling van. Prijzen komen uit PRODUCTEN. */
+function leesBestelling(d) {
   if (!Array.isArray(d.regels) || d.regels.length < 1 || d.regels.length > MAX_REGELS) throw new Ongeldig("Je winkelmand is leeg.", "regels");
-  let totaal = 0;
   const regels = d.regels.map((r) => {
     const p = r && Object.prototype.hasOwnProperty.call(PRODUCTEN, r.id) ? PRODUCTEN[r.id] : null;
     if (!p || !Object.prototype.hasOwnProperty.call(p.kleuren, r.kleur)) throw new Ongeldig("Een product in je winkelmand bestaat niet meer.", "regels");
     const aantal = Number(r.aantal);
     if (!Number.isInteger(aantal) || aantal < 1 || aantal > MAX_PER_REGEL) throw new Ongeldig("Het aantal klopt niet.", "regels");
-    totaal += p.prijs * aantal;
-    return "- " + aantal + "× " + p.naam + " (" + p.kleuren[r.kleur] + ") " + euro(p.prijs * aantal);
+    return { id: r.id, kleur: r.kleur, aantal, prijs: p.prijs };
   });
 
   const naam = regel(d.naam, "naam", { min: 2, max: 80 });
@@ -180,73 +193,108 @@ async function bestelling(request, env) {
   const plaats = regel(d.plaats, "plaats", { min: 2, max: 60 });
   const mail = email(d.email, "email");
   const telefoon = regel(d.telefoon, "telefoon", { max: 20, verplicht: false });
-  const opmerking = regel(d.opmerking, "opmerking", { max: 500, verplicht: false });
+  const opmerking = regel(d.opmerking, "opmerking", { max: 300, verplicht: false });
   if (d.akkoord !== true) throw new Ongeldig("Ga akkoord met de voorwaarden om te bestellen.", "akkoord");
+  return { regels, naam, straat, postcode, plaats, mail, telefoon, opmerking };
+}
 
-  const nr = nummer("N");
-  const wanneer = nu();
-  const overzicht = [
+function totaalVan(o) {
+  return o.regels.reduce((som, r) => som + r.prijs * r.aantal, 0);
+}
+
+function overzichtVan(o, nr, besteldOp) {
+  return [
     "Bestelnummer: " + nr,
-    "Besteld op: " + wanneer,
+    "Besteld op: " + besteldOp,
     "",
     "Je bestelling",
-    ...regels,
+    ...o.regels.map((r) => {
+      const p = Object.prototype.hasOwnProperty.call(PRODUCTEN, r.id) ? PRODUCTEN[r.id] : null;
+      const naam = p ? p.naam : r.id;
+      const kleur = p && Object.prototype.hasOwnProperty.call(p.kleuren, r.kleur) ? p.kleuren[r.kleur] : r.kleur;
+      return "- " + r.aantal + "× " + naam + " (" + kleur + ") " + euro(r.prijs * r.aantal);
+    }),
     "Verzending: gratis",
-    "Totaal, inclusief btw: " + euro(totaal),
+    "Totaal, inclusief btw: " + euro(totaalVan(o)),
     "",
     "Bezorgadres",
-    naam,
-    straat,
-    postcode + " " + plaats,
+    o.naam,
+    o.straat,
+    o.postcode + " " + o.plaats,
   ];
+}
+
+/* De vaste, wettelijk verplichte informatie in de bevestiging aan de klant. */
+function klantMail(o, overzicht, betalen, test) {
+  return [
+    "Hoi " + o.naam.split(" ")[0] + ",",
+    "",
+    "Bedankt voor je bestelling bij Nestig. Hieronder staat alles op een rij. Bewaar deze mail.",
+    test ? "\nLet op: dit was een testbetaling. Er is niets afgeschreven en er wordt niets geleverd." : null,
+    "",
+    ...overzicht,
+    "",
+    "Betalen",
+    betalen,
+    "",
+    "Levering",
+    "De levertijd is " + ZAAK.levertijd + " na je betaling. Je krijgt een track-en-tracecode zodra je pakket onderweg is. We bezorgen in Nederland.",
+    "",
+    "Bedenktijd en retourneren",
+    "Je hebt 14 dagen bedenktijd vanaf de dag dat je je pakket ontvangt. Je aankoop ongedaan maken doe je hier: " + ZAAK.site + "/herroepen",
+    "De kosten voor het terugsturen betaal je zelf. Het aankoopbedrag krijg je binnen 14 dagen na je herroeping terug. Alle regels en het formulier voor herroeping staan op " + ZAAK.site + "/retourneren",
+    "",
+    "Garantie",
+    "Je hebt wettelijke garantie. Is het product niet goed, dan zorgen wij kosteloos voor herstel, een nieuw product of je geld terug.",
+    "",
+    "Op je bestelling zijn onze algemene voorwaarden van toepassing: " + ZAAK.site + "/algemene-voorwaarden",
+    VOET,
+  ].filter((x) => x !== null).join("\n");
+}
+
+async function bestelling(request, env) {
+  const d = await leesInvoer(request);
+  if (!env.RESEND_API_KEY) return json({ fout: "niet-ingesteld" }, 503);
+
+  const o = leesBestelling(d);
+  const totaal = totaalVan(o);
+  const nr = nummer("N");
+
+  /* Met Mollie: eerst betalen. De mails gaan pas weg als Mollie meldt dat er betaald is. */
+  if (env.MOLLIE_API_KEY) {
+    const b = await maakBetaling(env, new URL(request.url).origin, nr, o);
+    if (b) return json({ ok: true, nummer: nr, totaal: euro(totaal), betaalUrl: b.url, betaling: b.id });
+    /* Mollie is niet bereikbaar of weigert: de bestelling gaat niet verloren, betalen gaat dan met een betaalverzoek. */
+  }
+
+  const overzicht = overzichtVan(o, nr, nu());
 
   /* Eerst naar Nestig: lukt dat niet, dan is de bestelling niet aangekomen en zeggen we dat eerlijk. */
   await stuurMail(env, {
     aan: env.MAIL_NAAR || ZAAK.email,
-    antwoordNaar: mail,
+    antwoordNaar: o.mail,
     onderwerp: "Nieuwe bestelling " + nr + " (" + euro(totaal) + ")",
     tekst: [
       "Nieuwe bestelling via nestig.nl.",
       "",
       ...overzicht,
       "",
-      "E-mail: " + mail,
-      telefoon ? "Telefoon: " + telefoon : null,
-      opmerking ? "Opmerking: " + opmerking : null,
+      "E-mail: " + o.mail,
+      o.telefoon ? "Telefoon: " + o.telefoon : null,
+      o.opmerking ? "Opmerking: " + o.opmerking : null,
       "",
-      "Te doen: stuur een betaalverzoek van " + euro(totaal) + " naar " + mail + " en bestel daarna bij de leverancier.",
+      "Te doen: stuur een betaalverzoek van " + euro(totaal) + " naar " + o.mail + " en bestel daarna bij de leverancier.",
+      env.MOLLIE_API_KEY ? "Let op: betalen via Mollie lukte niet bij deze bestelling. Kijk in je Mollie-dashboard of er een storing is." : null,
     ].filter((x) => x !== null).join("\n"),
   });
 
   let bevestigd = true;
   try {
     await stuurMail(env, {
-      aan: mail,
+      aan: o.mail,
       antwoordNaar: ZAAK.email,
       onderwerp: "Je bestelling bij Nestig (" + nr + ")",
-      tekst: [
-        "Hoi " + naam.split(" ")[0] + ",",
-        "",
-        "Bedankt voor je bestelling bij Nestig. Hieronder staat alles op een rij. Bewaar deze mail.",
-        "",
-        ...overzicht,
-        "",
-        "Betalen",
-        "Je krijgt van ons een betaalverzoek voor iDEAL op dit e-mailadres, meestal dezelfde dag. Zodra je betaling binnen is, gaat je bestelling de deur uit.",
-        "",
-        "Levering",
-        "De levertijd is " + ZAAK.levertijd + " na je betaling. Je krijgt een track-en-tracecode zodra je pakket onderweg is. We bezorgen in Nederland.",
-        "",
-        "Bedenktijd en retourneren",
-        "Je hebt 14 dagen bedenktijd vanaf de dag dat je je pakket ontvangt. Je aankoop ongedaan maken doe je hier: " + ZAAK.site + "/herroepen",
-        "De kosten voor het terugsturen betaal je zelf. Het aankoopbedrag krijg je binnen 14 dagen na je herroeping terug. Alle regels en het formulier voor herroeping staan op " + ZAAK.site + "/retourneren",
-        "",
-        "Garantie",
-        "Je hebt wettelijke garantie. Is het product niet goed, dan zorgen wij kosteloos voor herstel, een nieuw product of je geld terug.",
-        "",
-        "Op je bestelling zijn onze algemene voorwaarden van toepassing: " + ZAAK.site + "/algemene-voorwaarden",
-        VOET,
-      ].join("\n"),
+      tekst: klantMail(o, overzicht, "Je krijgt van ons een betaalverzoek voor iDEAL op dit e-mailadres, meestal dezelfde dag. Zodra je betaling binnen is, gaat je bestelling de deur uit."),
     });
   } catch (e) {
     bevestigd = false;
@@ -254,6 +302,200 @@ async function bestelling(request, env) {
   }
 
   return json({ ok: true, nummer: nr, totaal: euro(totaal), bevestigd });
+}
+
+/* ---------- betalen via Mollie ---------- */
+
+const MOLLIE_ID = /^tr_[A-Za-z0-9]{6,40}$/;
+const METHODEN = { ideal: "iDEAL", creditcard: "creditcard", bancontact: "Bancontact", applepay: "Apple Pay", googlepay: "Google Pay", paypal: "PayPal", banktransfer: "een overboeking", klarna: "Klarna", in3: "in3", riverty: "Riverty" };
+const MAX_METADATA = 900; /* bytes; Mollie bewaart ongeveer 1 kB */
+const DAG = 24 * 60 * 60 * 1000;
+
+async function mollie(env, methode, pad, body) {
+  const r = await fetch("https://api.mollie.com/v2/" + pad, {
+    method: methode,
+    headers: { Authorization: "Bearer " + env.MOLLIE_API_KEY, "Content-Type": "application/json" },
+    body: body ? JSON.stringify(body) : undefined,
+  });
+  let data = null;
+  try { data = await r.json(); } catch (e) { /* geen json: data blijft leeg */ }
+  return { ok: r.ok, status: r.status, data };
+}
+
+/* De bestelling zo klein mogelijk opgeschreven, zodat hij als metadata bij de betaling past. */
+function inpakken(nr, o) {
+  const m = {
+    nr,
+    r: o.regels.map((r) => [r.id, r.kleur, r.aantal, r.prijs].join(":")),
+    n: o.naam, s: o.straat, pc: o.postcode, pl: o.plaats, e: o.mail,
+  };
+  if (o.telefoon) m.t = o.telefoon;
+  if (o.opmerking) {
+    const grootte = () => new TextEncoder().encode(JSON.stringify(m)).length;
+    let tekst = o.opmerking;
+    m.o = tekst;
+    while (tekst && grootte() > MAX_METADATA) {
+      tekst = tekst.slice(0, -10);
+      m.o = tekst ? tekst.trimEnd() + " [ingekort]" : undefined;
+    }
+    if (!m.o) delete m.o;
+  }
+  return m;
+}
+
+function uitpakken(m) {
+  const tekst = (x) => String(x == null ? "" : x);
+  const regels = (Array.isArray(m.r) ? m.r : []).map((x) => {
+    const [id, kleur, aantal, prijs] = tekst(x).split(":");
+    return { id, kleur, aantal: Number(aantal) || 0, prijs: Number(prijs) || 0 };
+  }).filter((r) => r.id && r.aantal > 0);
+  return {
+    regels, naam: tekst(m.n), straat: tekst(m.s), postcode: tekst(m.pc), plaats: tekst(m.pl),
+    mail: tekst(m.e), telefoon: tekst(m.t), opmerking: tekst(m.o),
+  };
+}
+
+function centen(bedrag) {
+  return bedrag && bedrag.value ? Math.round(parseFloat(bedrag.value) * 100) : 0;
+}
+
+/* Maakt de betaling aan. Geeft { id, url } terug, of null als het niet lukte. */
+async function maakBetaling(env, herkomst, nr, o) {
+  const basis = TOEGESTANE_HERKOMST.test(herkomst) ? herkomst : ZAAK.site;
+  try {
+    const r = await mollie(env, "POST", "payments", {
+      amount: { currency: "EUR", value: (totaalVan(o) / 100).toFixed(2) },
+      description: "Nestig bestelling " + nr,
+      redirectUrl: basis + "/bedankt",
+      webhookUrl: basis + "/api/mollie",
+      locale: "nl_NL",
+      metadata: inpakken(nr, o),
+    });
+    const p = r.data;
+    const url = p && p._links && p._links.checkout && p._links.checkout.href;
+    if (!r.ok || !p || !MOLLIE_ID.test(p.id || "") || !/^https:\/\//.test(url || "")) {
+      console.error("mollie: betaling aanmaken mislukt", nr, r.status, p && p.detail);
+      return null;
+    }
+    /* Na het betalen komt de klant terug op de bedankpagina. Die moet weten om welke betaling het gaat,
+       ook als de bank de klant in een andere browser terugzet. Lukt dit niet, dan onthoudt de browser het. */
+    try {
+      const bij = await mollie(env, "PATCH", "payments/" + p.id, { redirectUrl: basis + "/bedankt?id=" + p.id });
+      if (!bij.ok) console.error("mollie: terugkeeradres niet bijgewerkt", nr, bij.status);
+    } catch (e) {
+      console.error("mollie: terugkeeradres niet bijgewerkt", nr, e && e.message);
+    }
+    return { id: p.id, url };
+  } catch (e) {
+    console.error("mollie: niet bereikbaar", nr, e && e.message);
+    return null;
+  }
+}
+
+/* Is er betaald, dan gaan hier de mails weg: één keer per betaling.
+   Drie dingen zorgen dat het bij één keer blijft: een vlag in de metadata van de betaling,
+   een sleutel bij Resend, en we doen niets meer bij een oude of terugbetaalde betaling
+   (Mollie meldt zich ook bij een terugbetaling). */
+async function verwerkBetaling(env, p) {
+  const m = p && p.metadata;
+  if (!p || p.status !== "paid" || !m || typeof m !== "object" || !m.nr) return "niets";
+  if (m.m) return "al-gedaan";
+  if (centen(p.amountRefunded) > 0 || centen(p.amountChargedBack) > 0) return "niets";
+  if (p.paidAt && Date.now() - Date.parse(p.paidAt) > 3 * DAG) return "niets";
+
+  const o = uitpakken(m);
+  const nr = String(m.nr);
+  const test = p.mode === "test";
+  const betaald = centen(p.amount);
+  const overzicht = overzichtVan(o, nr, nu(p.createdAt));
+  const hoe = METHODEN[p.method] || p.method || "een online betaling";
+  const merk = test ? "[TEST] " : "";
+
+  let bevestigd = true;
+  try {
+    email(o.mail, "email");
+    await stuurMail(env, {
+      aan: o.mail,
+      antwoordNaar: ZAAK.email,
+      eenmalig: "klant-" + p.id,
+      onderwerp: merk + "Je bestelling bij Nestig (" + nr + ")",
+      tekst: klantMail(o, overzicht, "Je hebt " + euro(betaald) + " betaald met " + hoe + " op " + nu(p.paidAt) + ". Je betaling is binnen, dus je bestelling gaat de deur uit.", test),
+    });
+  } catch (e) {
+    bevestigd = false;
+    console.error("bevestiging niet verstuurd", nr, e && e.message);
+  }
+
+  /* Lukt de mail naar Nestig niet, dan geven we een fout terug en probeert Mollie het later opnieuw. */
+  await stuurMail(env, {
+    aan: env.MAIL_NAAR || ZAAK.email,
+    antwoordNaar: o.mail,
+    eenmalig: "zaak-" + p.id,
+    onderwerp: merk + "Betaalde bestelling " + nr + " (" + euro(betaald) + ")",
+    tekst: [
+      test ? "TESTBETALING. Er is geen echt geld betaald. Bestel niets bij de leverancier.\n" : null,
+      "Nieuwe bestelling via nestig.nl. De klant heeft betaald.",
+      "",
+      ...overzicht,
+      "",
+      "Betaald: " + euro(betaald) + " met " + hoe + " op " + nu(p.paidAt),
+      "Betaling bij Mollie: " + p.id,
+      betaald !== totaalVan(o) ? "LET OP: het betaalde bedrag is anders dan het totaal van de bestelling (" + euro(totaalVan(o)) + "). Kijk dit na voordat je bestelt." : null,
+      "",
+      "E-mail: " + o.mail,
+      o.telefoon ? "Telefoon: " + o.telefoon : null,
+      o.opmerking ? "Opmerking: " + o.opmerking : null,
+      "",
+      bevestigd ? "De klant heeft een bevestiging per e-mail gekregen." : "LET OP: de bevestiging naar de klant is niet aangekomen. Stuur de klant zelf een bevestiging.",
+      test ? null : "Te doen: bestel bij de leverancier en stuur de klant de track-en-tracecode.",
+    ].filter((x) => x !== null).join("\n"),
+  });
+
+  try {
+    const bij = await mollie(env, "PATCH", "payments/" + p.id, { metadata: { ...m, m: 1 } });
+    if (!bij.ok) console.error("mollie: vlag niet gezet", nr, bij.status);
+  } catch (e) {
+    console.error("mollie: vlag niet gezet", nr, e && e.message);
+  }
+  return "verstuurd";
+}
+
+/* Mollie roept dit adres aan als de status van een betaling verandert. Er komt alleen een id mee:
+   de echte status halen we zelf bij Mollie op, dus een nagemaakte melding kan niets in gang zetten. */
+async function mollieMelding(request, env) {
+  if (!env.MOLLIE_API_KEY || !env.RESEND_API_KEY) return new Response("niet ingesteld", { status: 503 });
+  const ruw = await request.text();
+  const id = ruw.length <= 500 ? new URLSearchParams(ruw).get("id") || "" : "";
+  if (!MOLLIE_ID.test(id)) return new Response("ok");
+  const r = await mollie(env, "GET", "payments/" + id);
+  if (r.status === 404) return new Response("ok");
+  if (!r.ok || !r.data) throw new Error("mollie " + r.status);
+  await verwerkBetaling(env, r.data);
+  return new Response("ok");
+}
+
+/* Voor de bedankpagina: hoe staat het met deze betaling? Geeft geen gegevens van de klant terug. */
+async function betaling(url, env) {
+  const id = url.searchParams.get("id") || "";
+  if (!MOLLIE_ID.test(id) || !env.MOLLIE_API_KEY) return json({ status: "onbekend" }, 404);
+  const r = await mollie(env, "GET", "payments/" + id);
+  if (r.status === 404) return json({ status: "onbekend" }, 404);
+  if (!r.ok || !r.data) throw new Error("mollie " + r.status);
+  const p = r.data;
+  const m = p.metadata && typeof p.metadata === "object" ? p.metadata : {};
+
+  /* Vangnet: is er al een minuut betaald en is de melding van Mollie niet verwerkt, dan doen we het hier. */
+  if (p.status === "paid" && !m.m && env.RESEND_API_KEY && p.paidAt && Date.now() - Date.parse(p.paidAt) > 60000) {
+    try { await verwerkBetaling(env, p); } catch (e) { console.error("vangnet mislukt", id, e && e.message); }
+  }
+
+  const verder = p.status === "open" && p._links && p._links.checkout && p._links.checkout.href;
+  return json({
+    status: String(p.status || "onbekend"),
+    nummer: m.nr ? String(m.nr) : null,
+    test: p.mode === "test",
+    verder: /^https:\/\//.test(verder || "") ? verder : null,
+  });
 }
 
 /* ---------- herroeping ---------- */

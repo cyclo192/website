@@ -3,11 +3,12 @@
    PRODUCTEN: alles wat je verkoopt. Prijs in centen.
    Een product toevoegen = hier een blok bijzetten en een pagina maken.
 
-   Bestellen en herroepen gaan naar de server-kant in _worker.js, die een
-   bevestigingsmail stuurt. Lukt dat niet, dan valt de site terug op een
-   bericht via WhatsApp. Betalen gaat nog met een betaalverzoek dat je zelf
-   stuurt, tot Mollie gekoppeld is. Prijzen staan ook in _worker.js: houd
-   beide lijsten gelijk. */
+   Bestellen en herroepen gaan naar de server-kant in _worker.js. Is Mollie
+   gekoppeld, dan stuurt de server een betaaladres terug en gaat de klant
+   daarheen; na het betalen komt hij terug op bedankt.html. Zonder Mollie
+   stuurt de server een bevestigingsmail en betaal je met een betaalverzoek.
+   Lukt de server niet, dan valt de site terug op een bericht via WhatsApp.
+   Prijzen staan ook in _worker.js: houd beide lijsten gelijk. */
 
 const NESTIG = {
   whatsapp: "31626683986",
@@ -82,6 +83,43 @@ function toonAantal() {
   document.querySelectorAll("[data-mand-link]").forEach((el) => {
     el.setAttribute("aria-label", n === 1 ? "Winkelmand, 1 product" : "Winkelmand, " + n + " producten");
   });
+}
+
+/* ---------- onthouden tussen bestellen en betalen ---------- */
+
+/* Wat de klant invulde blijft in dit tabblad bewaard, zodat hij na een mislukte betaling niet opnieuw hoeft te typen. */
+const FORMVELDEN = ["naam", "straat", "postcode", "plaats", "email", "telefoon", "opmerking"];
+function bewaarFormulier(form) {
+  try {
+    const wat = {};
+    FORMVELDEN.forEach((n) => { wat[n] = form.elements[n].value; });
+    sessionStorage.setItem("nestig-form", JSON.stringify(wat));
+  } catch (e) { /* opslag geblokkeerd: dan typt de klant het opnieuw */ }
+}
+function herstelFormulier(form) {
+  try {
+    const wat = JSON.parse(sessionStorage.getItem("nestig-form") || "{}");
+    FORMVELDEN.forEach((n) => { if (typeof wat[n] === "string" && !form.elements[n].value) form.elements[n].value = wat[n]; });
+  } catch (e) { /* zie boven */ }
+}
+function wisFormulier() {
+  try { sessionStorage.removeItem("nestig-form"); } catch (e) { /* zie boven */ }
+}
+
+/* De lopende betaling: het id van Mollie, voor als de bank de klant zonder id terugstuurt. */
+const BETAAL_ID = /^tr_[A-Za-z0-9]{6,40}$/;
+function bewaarBetaling(id) {
+  try { localStorage.setItem("nestig-betaling", JSON.stringify({ id, op: Date.now() })); } catch (e) { /* zie boven */ }
+}
+function leesBetaling() {
+  try {
+    const b = JSON.parse(localStorage.getItem("nestig-betaling") || "null");
+    if (b && BETAAL_ID.test(b.id) && Date.now() - b.op < 24 * 60 * 60 * 1000) return b.id;
+  } catch (e) { /* zie boven */ }
+  return null;
+}
+function wisBetaling() {
+  try { localStorage.removeItem("nestig-betaling"); } catch (e) { /* zie boven */ }
 }
 
 /* ---------- tellers (− 1 +) ---------- */
@@ -278,6 +316,7 @@ function startBestellen() {
     document.querySelectorAll("[data-totaal]").forEach((el) => { el.textContent = euro(totaal(mand)); });
   }
   teken();
+  herstelFormulier(form);
 
   function bericht() {
     const mand = leesMand();
@@ -333,11 +372,20 @@ function startBestellen() {
       email: v("email"), telefoon: v("telefoon"), opmerking: v("opmerking"),
       akkoord: form.elements.akkoord.checked, website: v("website"),
     });
+    /* Met Mollie: door naar de betaalpagina. De winkelmand blijft staan tot er betaald is. */
+    if (uit && uit.status === 200 && uit.data.ok && /^https:\/\//.test(uit.data.betaalUrl || "")) {
+      bewaarFormulier(form);
+      if (BETAAL_ID.test(uit.data.betaling || "")) bewaarBetaling(uit.data.betaling);
+      knop.textContent = "Je gaat naar de betaalpagina…";
+      window.location.href = uit.data.betaalUrl;
+      return;
+    }
     knop.disabled = false;
     knop.textContent = tekst;
 
     if (uit && uit.status === 200 && uit.data.ok) {
       const mail = v("email");
+      wisFormulier();
       bewaarMand([]);
       vol.hidden = true;
       leeg.hidden = true;
@@ -364,9 +412,64 @@ function startBestellen() {
   form.querySelector("[data-via-wa]").addEventListener("click", () => viaWhatsApp(false));
 }
 
+/* ---------- terug van de betaalpagina ---------- */
+
+function startBedankt() {
+  const wortel = document.querySelector("[data-betaalstatus]");
+  if (!wortel) return;
+  const uitAdres = new URLSearchParams(window.location.search).get("id") || "";
+  const id = BETAAL_ID.test(uitAdres) ? uitAdres : leesBetaling();
+  const kop = document.querySelector("h1");
+  let nu = null;
+
+  function toon(naam, gegevens) {
+    wortel.querySelectorAll("[data-stand]").forEach((el) => { el.hidden = el.dataset.stand !== naam; });
+    const paneel = wortel.querySelector('[data-stand="' + naam + '"]');
+    const d = gegevens || {};
+    paneel.querySelectorAll("[data-nummer]").forEach((el) => { el.textContent = d.nummer || ""; });
+    paneel.querySelectorAll("[data-met-nummer]").forEach((el) => { el.hidden = !d.nummer; });
+    paneel.querySelectorAll("[data-test]").forEach((el) => { el.hidden = !d.test; });
+    paneel.querySelectorAll("[data-verder]").forEach((el) => { el.hidden = !d.verder; if (d.verder) el.href = d.verder; });
+    if (kop && paneel.dataset.kop) kop.textContent = paneel.dataset.kop;
+    if (naam !== nu && naam !== "laden") paneel.focus({ preventScroll: true });
+    nu = naam;
+  }
+
+  if (!id) { toon("onbekend"); return; }
+
+  const KLAAR = { paid: "betaald", canceled: "mislukt", failed: "mislukt", expired: "mislukt" };
+  let pogingen = 0;
+  async function kijk() {
+    pogingen++;
+    let d = null, status = 0;
+    try {
+      const r = await fetch("/api/betaling?id=" + encodeURIComponent(id), { cache: "no-store" });
+      status = r.status;
+      d = await r.json();
+    } catch (e) { /* geen verbinding: we proberen het zo opnieuw */ }
+
+    if (status === 404) { toon("onbekend"); return; }
+    const stand = d && KLAAR[d.status];
+    if (stand === "betaald") {
+      bewaarMand([]);
+      wisFormulier();
+      wisBetaling();
+      toon("betaald", d);
+      return;
+    }
+    if (stand === "mislukt") { wisBetaling(); toon("mislukt", d); return; }
+    /* Nog open of in behandeling: even blijven kijken, eerst vaak en daarna rustiger. */
+    if (d) toon("wacht", d);
+    if (pogingen < 40) setTimeout(kijk, pogingen < 10 ? 2000 : 6000);
+    else if (!d) toon("onbekend");
+  }
+  kijk();
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   toonAantal();
   startProduct();
   startBestellen();
   startHerroepen();
+  startBedankt();
 });
