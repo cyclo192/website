@@ -4,7 +4,7 @@
 Gebruik vanuit de map van de repo:  python3 _bouw/nestig.py nestig
 Pas teksten, prijs en gegevens hier aan en draai het script opnieuw.
 CSS staat in nestig/css/style.css, de winkelmand in nestig/js/shop.js."""
-import sys, json, pathlib
+import sys, json, pathlib, hashlib
 
 OUT = pathlib.Path(sys.argv[1])
 SITE = "https://nestig.nl/"
@@ -127,6 +127,12 @@ VOET = f'''<footer class="voet"><div class="wrap">
 <a class="wa-zweef" href="{WA_VRAAG}" target="_blank" rel="noopener" aria-label="Stel je vraag via WhatsApp">{WA_ICON}</a>'''
 
 
+def versie(pad):
+    """Kort kenmerk van de inhoud van een bestand. Browsers bewaren css en js vier uur;
+    met dit kenmerk in het adres halen ze na een wijziging meteen de nieuwe versie op."""
+    return hashlib.md5((OUT / pad).read_bytes()).hexdigest()[:8]
+
+
 def page(slug, title, desc, body, current=None, noindex=False, ld=None, geheim=False):
     url = SITE + ("" if slug == "index.html" else slug.removesuffix(".html"))
     robots = '<meta name="robots" content="noindex">\n' if noindex else ''
@@ -156,7 +162,7 @@ def page(slug, title, desc, body, current=None, noindex=False, ld=None, geheim=F
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preload" href="fonts/lora.woff" as="font" type="font/woff" crossorigin>
 <link rel="preload" href="fonts/inter-400.woff" as="font" type="font/woff" crossorigin>
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css?v={versie("css/style.css")}">
 {ldtag}</head>
 <body>
 {kop(current)}
@@ -164,7 +170,7 @@ def page(slug, title, desc, body, current=None, noindex=False, ld=None, geheim=F
 {body}
 </main>
 {VOET}
-<script src="js/shop.js" defer></script>
+<script src="js/shop.js?v={versie("js/shop.js")}" defer></script>
 </body>
 </html>
 '''
