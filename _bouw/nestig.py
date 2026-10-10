@@ -22,7 +22,7 @@ LEVERTIJD = "2 tot 3 weken"
 # Betalen via Mollie. Zet op True zodra MOLLIE_API_KEY in Cloudflare staat en draai het script opnieuw:
 # de teksten over betalen (veelgestelde vragen, bestellen, voorwaarden, privacy) gaan dan over direct online betalen.
 # Op False gaan ze over een betaalverzoek achteraf. De koppeling zelf luistert alleen naar de sleutel, niet naar deze schakelaar.
-MOLLIE = False
+MOLLIE = True
 DRAAGT = "17,5 kg"   # opgave van de leverancier bij CJ: "within 35 jin" (1 jin = 0,5 kg)
 # sleutel, naam, kleur van het knopje. De foto heet img/hangmat-<sleutel>.jpg. Zelfde lijst staat in js/shop.js.
 KLEUREN = [("beige", "Beige", "#cdb893"), ("zwart", "Zwart", "#1f2226"), ("blauw", "Lichtblauw", "#a9c0dc"),
