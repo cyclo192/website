@@ -220,6 +220,9 @@ fieldset{border:0}
 .koop .btn-breed{margin-top:26px}
 .toegevoegd{margin-top:16px;padding:16px 18px;border:2px solid var(--ink);border-radius:16px;background:#fff3cf;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px}
 .toegevoegd[hidden]{display:none}
+.seintje{margin-top:24px;padding:22px;border:2px solid var(--ink);border-radius:18px;background:#fff3cf}
+.seintje p{margin:4px 0 18px}
+.seintje .btn-breed{margin-top:0}
 .zeker{list-style:none;margin-top:26px;border-top:1px solid var(--lijn)}
 .zeker li{padding:13px 0 13px 34px;border-bottom:1px solid var(--lijn);position:relative}
 .zeker li::before{content:"";position:absolute;left:4px;top:19px;width:14px;height:8px;border-left:2.5px solid var(--ink);border-bottom:2.5px solid var(--ink);transform:rotate(-45deg)}

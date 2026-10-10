@@ -23,6 +23,11 @@ LEVERTIJD = "2 tot 3 weken"
 # de teksten over betalen (veelgestelde vragen, bestellen, voorwaarden, privacy) gaan dan over direct online betalen.
 # Op False gaan ze over een betaalverzoek achteraf. De koppeling zelf luistert alleen naar de sleutel, niet naar deze schakelaar.
 MOLLIE = True
+# Is de winkel open? Op False staat er op de productpagina geen bestelknop maar "Geef me een seintje" (WhatsApp).
+# Zet pas op True als (1) de live-sleutel van Mollie in Cloudflare staat en (2) naam en adres van de fabrikant
+# op de productpagina staan. Testen terwijl de winkel dicht is: open de productpagina met ?test=1 erachter.
+OPEN = False
+SEINTJE = f"https://wa.me/{WA}?text=" + "Hoi%20Nestig%2C%20geef%20me%20een%20seintje%20als%20de%20kattenhangmat%20te%20koop%20is."
 ARTIKEL = "NES-KH-01"   # ons eigen artikelnummer, staat op de productpagina (verplicht: het product moet te herkennen zijn)
 DRAAGT = "17,5 kg"   # opgave van de leverancier bij CJ: "within 35 jin" (1 jin = 0,5 kg)
 # sleutel, naam, kleur van het knopje. De foto heet img/hangmat-<sleutel>.jpg. Zelfde lijst staat in js/shop.js.
@@ -152,7 +157,7 @@ def page(slug, title, desc, body, current=None, noindex=False, ld=None, geheim=F
 <link rel="preload" href="fonts/inter-400.woff" as="font" type="font/woff" crossorigin>
 <link rel="stylesheet" href="css/style.css?v={versie("css/style.css")}">
 {ldtag}</head>
-<body{"" if zweef else ' class="geen-zweef"'}>
+<body{"" if zweef else ' class="geen-zweef"'}{"" if OPEN else ' data-winkel="dicht"'}>
 {kop(current)}
 <main id="inhoud">
 {body}
@@ -166,7 +171,10 @@ def page(slug, title, desc, body, current=None, noindex=False, ld=None, geheim=F
 
 
 def vragen():
-    items = [
+    items = ([] if OPEN else [
+        ("Kan ik nu al bestellen?",
+         f'Nog niet. We gaan binnenkort open. Laat een seintje achter via <a class="link" href="{SEINTJE}" target="_blank" rel="noopener">WhatsApp</a>, dan hoor je het als eerste. Je zit nergens aan vast.'),
+    ]) + [
         ("Hoe lang duurt de levering?",
          f"Reken op {LEVERTIJD}. Je bestelling komt rechtstreeks van onze leverancier buiten Europa. Zodra je pakket onderweg is, krijg je van ons een track-en-tracecode."),
         ("Wat kost verzending?",
@@ -204,7 +212,7 @@ def kaart_hangmat(uid, kop="h3"):
     return f'''<a class="kaart" href="kattenhangmat.html">
 <div class="beeld"><img src="img/hangmat-beige.jpg" width="800" height="600" alt="Witte kat op de beige kattenhangmat aan het raam" loading="lazy"></div>
 <div class="tekst"><{kop}>Kattenhangmat voor het raam</{kop}>
-<p class="zacht klein">55 × 35 cm, met zuignappen. In vijf kleuren.</p>
+<p class="zacht klein">55 × 35 cm, met zuignappen. In vijf kleuren.{"" if OPEN else " Binnenkort te koop."}</p>
 <p class="prijs">€ {PRIJS}</p></div></a>'''
 
 
@@ -220,7 +228,7 @@ home = f'''<section class="hero"><div class="wrap">
 <p class="sub">Een hangmat met zuignappen, voor katten die graag in de zon liggen en de straat in de gaten houden.</p>
 <div class="hero-koop">
 <a class="btn btn-zon" href="kattenhangmat.html">Bekijk de kattenhangmat</a>
-<p class="prijs">€ {PRIJS}<small>Gratis verzending</small></p>
+<p class="prijs">€ {PRIJS}<small>{"Gratis verzending" if OPEN else "Binnenkort te koop"}</small></p>
 </div>
 </div>
 <figure class="hero-foto"><img src="img/hangmat-blauw.jpg" width="800" height="600" alt="Witte kat ligt op de lichtblauwe kattenhangmat aan het raam" fetchpriority="high"></figure>
@@ -334,6 +342,7 @@ product = f'''<div class="wrap">
 <div class="kleuren">
 {SWATCHES}
 </div></fieldset>
+<div data-koop{"" if OPEN else " hidden"}>
 <div class="veld"><span class="veldkop" id="aantal-kop">Aantal</span>
 <div class="teller" role="group" aria-labelledby="aantal-kop">
 <button type="button" data-min aria-label="Eén minder">−</button>
@@ -341,6 +350,12 @@ product = f'''<div class="wrap">
 <button type="button" data-plus aria-label="Eén meer">+</button>
 </div></div>
 <button class="btn btn-zon btn-breed" type="submit">In winkelmand</button>
+</div>
+{"" if OPEN else f'''<div class="seintje" data-seintje>
+<span class="label">Binnenkort te koop</span>
+<p>We gaan binnenkort open. Laat een seintje achter, dan appen we je zodra je kunt bestellen. Je zit nergens aan vast.</p>
+<a class="btn btn-wa btn-breed" data-seintje-knop href="{SEINTJE}" target="_blank" rel="noopener">{WA_ICON}Geef me een seintje</a>
+</div>'''}
 </form>
 <div class="toegevoegd" data-toegevoegd hidden role="status"><span data-toegevoegd-tekst></span><a class="link" href="bestellen.html">Verder naar bestellen</a></div>
 <ul class="zeker">
@@ -413,9 +428,10 @@ product = f'''<div class="wrap">
 </div></section>
 
 <div class="koopbalk" data-koopbalk hidden>
-<div><strong>€ {PRIJS}</strong><span data-koopbalk-tekst>Gratis verzending</span></div>
-<button class="btn btn-zon" type="button" data-koopbalk-knop>In winkelmand</button>
+<div><strong>€ {PRIJS}</strong><span data-koopbalk-tekst>{"Gratis verzending" if OPEN else "Binnenkort te koop"}</span></div>
+<button class="btn btn-zon" type="button" data-koopbalk-knop{"" if OPEN else " hidden"}>In winkelmand</button>
 <a class="btn btn-zon" href="bestellen.html" data-koopbalk-verder hidden>Naar bestellen</a>
+{"" if OPEN else f'<a class="btn btn-wa" data-seintje-knop data-koopbalk-seintje href="{SEINTJE}" target="_blank" rel="noopener">Geef me een seintje</a>'}
 </div>'''
 page("kattenhangmat.html", f"Kattenhangmat voor het raam – € {PRIJS}, gratis verzending | Nestig",
      f"Kattenhangmat met zuignappen voor het raam. Zonder boren op te hangen, in vijf kleuren. € {PRIJS} met gratis verzending en 14 dagen bedenktijd.",
@@ -425,7 +441,7 @@ page("kattenhangmat.html", f"Kattenhangmat voor het raam – € {PRIJS}, gratis
          "material": "Oxford-stof, kunststof en staaldraad",
          "image": [SITE + f"img/hangmat-{k}.jpg" for k, _, _ in KLEUREN], "sku": ARTIKEL,
          "offers": {"@type": "Offer", "url": SITE + "kattenhangmat", "priceCurrency": "EUR", "price": "27.95",
-                    "availability": "https://schema.org/InStock",
+                    "availability": "https://schema.org/InStock" if OPEN else "https://schema.org/OutOfStock",
                     "shippingDetails": {"@type": "OfferShippingDetails",
                                         "shippingRate": {"@type": "MonetaryAmount", "value": "0", "currency": "EUR"},
                                         "shippingDestination": {"@type": "DefinedRegion", "addressCountry": "NL"},
@@ -455,7 +471,7 @@ bestellen = f'''<div class="wrap">
 <a class="btn btn-zon" href="kattenhangmat.html">Bekijk de kattenhangmat</a>
 </div>
 
-<div class="melding" data-testmodus hidden role="status" style="margin:0 0 24px"><strong>De winkel is nog niet open.</strong> Betalen staat in testmodus. Als je nu bestelt, wordt er niets afgeschreven en niets geleverd. Vragen? <a class="link" href="{WA_VRAAG}" target="_blank" rel="noopener">App ons</a>.</div>
+<div class="melding" data-testmodus hidden role="status" style="margin:0 0 24px"><strong>De winkel is nog niet open.</strong> {"Betalen staat in testmodus. Als je nu bestelt, wordt er niets afgeschreven en niets geleverd." if OPEN else "Dit formulier is alleen om te testen. Als je nu bestelt, wordt er niets geleverd."} Vragen? <a class="link" href="{WA_VRAAG}" target="_blank" rel="noopener">App ons</a>.</div>
 
 <div class="bestel" data-mand-vol>
 <form class="form" data-bestelform novalidate-off>
@@ -708,7 +724,7 @@ privacy = f'''<div class="wrap tekst">
 <h2>Met wie we gegevens delen</h2>
 <ul>
 <li><strong>Onze leverancier en de bezorgdienst.</strong> Zij krijgen je naam en adres om het pakket te bezorgen. Onze leverancier is gevestigd buiten de Europese Unie, in China. We geven alleen door wat voor de bezorging nodig is.</li>
-<li><strong>WhatsApp.</strong> Bestel je of stel je een vraag via WhatsApp, dan loopt je bericht via WhatsApp, een dienst van Meta. Dat gebeurt alleen als je daar zelf voor kiest.</li>
+<li><strong>WhatsApp.</strong> Bestel je, stel je een vraag of laat je een seintje achter via WhatsApp, dan loopt je bericht via WhatsApp, een dienst van Meta. Dat gebeurt alleen als je daar zelf voor kiest. Vraag je om een seintje, dan gebruiken we je nummer alleen om je dat ene bericht te sturen.</li>
 {"<li><strong>Onze betaaldienst.</strong> Betalingen lopen via Mollie B.V. in Amsterdam. Mollie verwerkt je betaalgegevens en krijgt van ons het bedrag en de gegevens van je bestelling: je naam, adres, e-mailadres, wat je bestelt en, als je die invult, je telefoonnummer en je opmerking.</li>" + chr(10) if MOLLIE else ""}<li><strong>Onze e-maildienst.</strong> De bevestiging van je bestelling of herroeping en het bericht dat je pakket onderweg is versturen we via Resend, een dienst uit de Verenigde Staten. Die verwerkt daarvoor je naam, je e-mailadres en de inhoud van de mail.</li>
 <li><strong>De hostingpartij van deze website.</strong> De site draait bij Cloudflare. Cloudflare verwerkt technische gegevens zoals je IP-adres om de site te tonen en te beveiligen.</li>
 <li><strong>Onze mailbox.</strong> Mails van en aan ons staan in Gmail, een dienst van Google. Daar komt ook de melding van je bestelling binnen.</li>

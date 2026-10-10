@@ -148,6 +148,19 @@ function startProduct() {
   const gekozen = document.querySelector("[data-gekozen-kleur]");
   const klaar = document.querySelector("[data-toegevoegd]");
 
+  /* Winkel nog dicht: geen bestelknop maar "Geef me een seintje". Met ?test=1 achter het adres kun je toch bestellen om te testen. */
+  let test = false;
+  try {
+    if (new URLSearchParams(window.location.search).has("test")) sessionStorage.setItem("nestig-test", "1");
+    test = sessionStorage.getItem("nestig-test") === "1";
+  } catch (e) { /* opslag geblokkeerd: dan blijft de winkel gewoon dicht */ }
+  const gesloten = document.body.dataset.winkel === "dicht" && !test;
+  const seintjes = Array.from(document.querySelectorAll("[data-seintje-knop]"));
+  if (!gesloten) {
+    form.querySelector("[data-koop]").hidden = false;
+    document.querySelectorAll("[data-seintje], [data-koopbalk-seintje]").forEach((el) => { el.hidden = true; });
+  }
+
   const kleurNu = () => form.querySelector("input[name=kleur]:checked").value;
   const toonFoto = (knop) => {
     duimen.forEach((d) => d.setAttribute("aria-pressed", d === knop ? "true" : "false"));
@@ -167,6 +180,8 @@ function startProduct() {
     const duimfoto = document.querySelector("[data-duimfoto]");
     if (duimfoto) duimfoto.src = k.foto;
     if (duimen.length) toonFoto(duimen[0]);
+    const vraag = "Hoi Nestig, geef me een seintje als de kattenhangmat te koop is. Kleur: " + k.naam.toLowerCase() + ".";
+    seintjes.forEach((a) => { a.href = "https://wa.me/" + NESTIG.whatsapp + "?text=" + encodeURIComponent(vraag); });
   };
   form.querySelectorAll("input[name=kleur]").forEach((el) => el.addEventListener("change", toonKleur));
   toonKleur();
@@ -189,18 +204,31 @@ function startProduct() {
   };
   form.addEventListener("submit", (e) => {
     e.preventDefault();
+    if (gesloten) return;
     inMand();
     klaar.querySelector("a").focus();
   });
 
-  /* Koopbalk onderaan (telefoon): verschijnt zodra de gewone knop uit beeld is. */
-  if (balk && "IntersectionObserver" in window) {
-    const knop = form.querySelector("button[type=submit]");
-    new IntersectionObserver(([e]) => {
-      const voorbij = !e.isIntersecting && e.boundingClientRect.top < 0;
-      balk.hidden = !voorbij;
-      document.body.classList.toggle("met-balk", voorbij);
-    }).observe(knop);
+  /* Koopbalk onderaan (telefoon): verschijnt zodra de gewone knop boven uit beeld is geschoven. */
+  if (balk) {
+    if (!gesloten) {
+      balk.querySelector("[data-koopbalk-knop]").hidden = false;
+      if (document.body.dataset.winkel === "dicht") balk.querySelector("[data-koopbalk-tekst]").textContent = "Gratis verzending";
+    }
+    const knop = gesloten ? form.querySelector("[data-seintje-knop]") : form.querySelector("button[type=submit]");
+    let wacht = false;
+    const kijk = () => {
+      wacht = false;
+      const voorbij = knop.getBoundingClientRect().bottom < 0;
+      if (balk.hidden !== !voorbij) {
+        balk.hidden = !voorbij;
+        document.body.classList.toggle("met-balk", voorbij);
+      }
+    };
+    const plan = () => { if (!wacht) { wacht = true; requestAnimationFrame(kijk); } };
+    window.addEventListener("scroll", plan, { passive: true });
+    window.addEventListener("resize", plan);
+    kijk();
     balk.querySelector("[data-koopbalk-knop]").addEventListener("click", inMand);
   }
 }
@@ -282,8 +310,12 @@ function startBestellen() {
   const form = document.querySelector("[data-bestelform]");
   const melding = document.querySelector("[data-melding]");
 
+  const testmelding = document.querySelector("[data-testmodus]");
+  let nietOpen = false;
+
   function teken() {
     const mand = leesMand();
+    if (testmelding) testmelding.hidden = !(nietOpen && mand.length);
     vol.hidden = mand.length === 0;
     leeg.hidden = mand.length !== 0;
     lijst.textContent = "";
@@ -318,11 +350,9 @@ function startBestellen() {
   teken();
   herstelFormulier(form);
 
-  /* Zolang betalen in testmodus staat, zeggen we dat eerlijk tegen wie hier terechtkomt. */
-  const testmelding = document.querySelector("[data-testmodus]");
-  if (testmelding) {
-    fetch("/api/stand", { cache: "no-store" }).then((r) => r.json()).then((d) => { testmelding.hidden = d.betalen !== "test"; }).catch(() => {});
-  }
+  /* Is de winkel nog dicht of staat betalen in testmodus, dan zeggen we dat eerlijk boven het formulier. */
+  if (document.body.dataset.winkel === "dicht") { nietOpen = true; teken(); }
+  else fetch("/api/stand", { cache: "no-store" }).then((r) => r.json()).then((d) => { nietOpen = d.betalen === "test"; teken(); }).catch(() => {});
 
   function bericht() {
     const mand = leesMand();
