@@ -9,6 +9,9 @@
    /api/mollie       hier meldt Mollie dat de status van een betaling is veranderd.
                      Is er betaald, dan gaan de bevestigingsmails de deur uit.
    /api/betaling     status van een betaling, voor de bedankpagina
+   /api/verzonden    alleen voor Nestig zelf: track-en-tracecode naar de klant mailen.
+                     De link ernaartoe staat in de mail "Betaalde bestelling" en is
+                     ondertekend, dus alleen wie die mail heeft kan dit gebruiken.
    /api/herroeping   herroeping aannemen, ontvangstbevestiging naar de klant
 
    Instellingen (Cloudflare > Pages > nestig > Settings > Variables and secrets):
@@ -57,6 +60,8 @@ export default {
     if (url.pathname.startsWith("/api/")) {
       try {
         if (url.pathname === "/api/betaling" && request.method === "GET") return await betaling(url, env);
+        if (url.pathname === "/api/verzonden" && request.method === "GET") return await verzondenInfo(url, env);
+        if (url.pathname === "/api/verzonden" && request.method === "POST") return await verzonden(request, env);
         if (request.method !== "POST") return json({ fout: "Alleen POST" }, 405);
         if (url.pathname === "/api/bestelling") return await bestelling(request, env);
         if (url.pathname === "/api/herroeping") return await herroeping(request, env);
@@ -447,7 +452,11 @@ async function verwerkBetaling(env, p) {
       o.opmerking ? "Opmerking: " + o.opmerking : null,
       "",
       bevestigd ? "De klant heeft een bevestiging per e-mail gekregen." : "LET OP: de bevestiging naar de klant is niet aangekomen. Stuur de klant zelf een bevestiging.",
-      test ? null : "Te doen: bestel bij de leverancier en stuur de klant de track-en-tracecode.",
+      test ? null : "Te doen: bestel bij de leverancier.",
+      "",
+      "Is het pakket verzonden? Mail de klant de track-en-tracecode via deze link:",
+      ZAAK.site + "/verzonden?id=" + p.id + "&h=" + await handtekening(env, p.id),
+      "Stuur deze link niet door: wie hem heeft, kan de verzendmail versturen.",
     ].filter((x) => x !== null).join("\n"),
   });
 
@@ -496,6 +505,97 @@ async function betaling(url, env) {
     test: p.mode === "test",
     verder: /^https:\/\//.test(verder || "") ? verder : null,
   });
+}
+
+/* ---------- verzonden: track-en-trace naar de klant ---------- */
+
+/* Ondertekent het id van een betaling met de Mollie-sleutel. Alleen de server kan dit maken en nakijken. */
+async function handtekening(env, id) {
+  const enc = new TextEncoder();
+  const sleutel = await crypto.subtle.importKey("raw", enc.encode(env.MOLLIE_API_KEY), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
+  const uit = new Uint8Array(await crypto.subtle.sign("HMAC", sleutel, enc.encode("verzonden:" + id)));
+  return Array.from(uit.slice(0, 20), (b) => b.toString(16).padStart(2, "0")).join("");
+}
+
+/* Haalt de betaalde bestelling op als id en handtekening kloppen. Anders een fout zonder uitleg. */
+async function bestellingBijLink(env, id, h) {
+  if (!env.MOLLIE_API_KEY || !env.RESEND_API_KEY) throw new Ongeldig("Dit is nog niet ingesteld.");
+  const goed = MOLLIE_ID.test(id || "") ? await handtekening(env, id) : "";
+  const kreeg = String(h || "");
+  let verschil = goed.length === kreeg.length && goed ? 0 : 1;
+  for (let i = 0; i < goed.length && i < kreeg.length; i++) verschil |= goed.charCodeAt(i) ^ kreeg.charCodeAt(i);
+  if (verschil) throw new Ongeldig("Deze link klopt niet. Gebruik de link uit de mail \"Betaalde bestelling\".");
+  const r = await mollie(env, "GET", "payments/" + id);
+  if (r.status === 404) throw new Ongeldig("Deze bestelling bestaat niet meer.");
+  if (!r.ok || !r.data) throw new Error("mollie " + r.status);
+  const p = r.data;
+  const m = p.metadata;
+  if (p.status !== "paid" || !m || typeof m !== "object" || !m.nr) throw new Ongeldig("Deze bestelling is niet betaald.");
+  return { p, m, o: uitpakken(m) };
+}
+
+async function verzondenInfo(url, env) {
+  const { p, m, o } = await bestellingBijLink(env, url.searchParams.get("id"), url.searchParams.get("h"));
+  return json({
+    nummer: String(m.nr),
+    naam: o.naam,
+    adres: o.straat + ", " + o.postcode + " " + o.plaats,
+    email: o.mail,
+    regels: overzichtVan(o, String(m.nr), "").filter((x) => x.startsWith("- ")),
+    al: m.v ? String(m.v) : null,
+    test: p.mode === "test",
+  });
+}
+
+async function verzonden(request, env) {
+  if (!TOEGESTANE_HERKOMST.test(request.headers.get("Origin") || "")) throw new Ongeldig("Deze aanvraag komt niet van nestig.nl.");
+  const ruw = await request.text();
+  if (ruw.length > 2000) throw new Ongeldig("De aanvraag is te groot.");
+  let d;
+  try { d = JSON.parse(ruw); } catch (e) { throw new Ongeldig("De aanvraag is niet leesbaar."); }
+  if (!d || typeof d !== "object") throw new Ongeldig("De aanvraag is niet leesbaar.");
+
+  const { p, m, o } = await bestellingBijLink(env, d.id, d.h);
+  const code = regel(d.code, "code", { min: 6, max: 40 }).replace(/\s+/g, "").toUpperCase();
+  if (!/^[A-Z0-9-]{6,40}$/.test(code)) throw new Ongeldig("Vul de track-en-tracecode in, alleen letters en cijfers.", "code");
+  let link = regel(d.link, "link", { max: 300, verplicht: false });
+  if (link && !/^https:\/\/[^\s<>"']{4,}$/.test(link)) throw new Ongeldig("De volglink moet met https:// beginnen.", "link");
+  if (!link) link = "https://t.17track.net/nl#nums=" + encodeURIComponent(code);
+  if (m.v && d.opnieuw !== true) return json({ fout: "al-verstuurd", al: String(m.v) }, 409);
+
+  const nr = String(m.nr);
+  const test = p.mode === "test";
+  email(o.mail, "email");
+  await stuurMail(env, {
+    aan: o.mail,
+    antwoordNaar: ZAAK.email,
+    eenmalig: d.opnieuw === true ? undefined : "verzonden-" + p.id + "-" + code,
+    onderwerp: (test ? "[TEST] " : "") + "Je bestelling is onderweg (" + nr + ")",
+    tekst: [
+      "Hoi " + o.naam.split(" ")[0] + ",",
+      "",
+      "Goed nieuws: je bestelling " + nr + " is verzonden.",
+      test ? "\nLet op: dit is een test. Er is niets verzonden." : null,
+      "",
+      "Track-en-tracecode: " + code,
+      "Volg je pakket: " + link,
+      "",
+      "Je pakket komt van onze leverancier buiten Europa. Het kan een paar dagen duren voordat de code beweging laat zien. De verwachte levertijd is " + ZAAK.levertijd + " na je betaling.",
+      "",
+      ...overzichtVan(o, nr, nu(p.createdAt)).slice(3),
+      "",
+      "Je hebt 14 dagen bedenktijd vanaf de dag dat je je pakket ontvangt. Je aankoop ongedaan maken doe je hier: " + ZAAK.site + "/herroepen",
+      VOET,
+    ].filter((x) => x !== null).join("\n"),
+  });
+
+  try {
+    const bij = await mollie(env, "PATCH", "payments/" + p.id, { metadata: { ...m, v: code } });
+    if (!bij.ok) console.error("mollie: verzonden niet genoteerd", nr, bij.status);
+  } catch (e) {
+    console.error("mollie: verzonden niet genoteerd", nr, e && e.message);
+  }
+  return json({ ok: true, nummer: nr, email: o.mail });
 }
 
 /* ---------- herroeping ---------- */

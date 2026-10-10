@@ -127,9 +127,11 @@ VOET = f'''<footer class="voet"><div class="wrap">
 <a class="wa-zweef" href="{WA_VRAAG}" target="_blank" rel="noopener" aria-label="Stel je vraag via WhatsApp">{WA_ICON}</a>'''
 
 
-def page(slug, title, desc, body, current=None, noindex=False, ld=None):
+def page(slug, title, desc, body, current=None, noindex=False, ld=None, geheim=False):
     url = SITE + ("" if slug == "index.html" else slug.removesuffix(".html"))
     robots = '<meta name="robots" content="noindex">\n' if noindex else ''
+    if geheim:  # het adres van deze pagina bevat een kenmerk: niet meesturen als iemand doorklikt naar een andere site
+        robots += '<meta name="referrer" content="no-referrer">\n'
     ldtag = f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>\n' if ld else ''
     html = f'''<!DOCTYPE html>
 <html lang="nl">
@@ -147,6 +149,7 @@ def page(slug, title, desc, body, current=None, noindex=False, ld=None):
 <meta property="og:image" content="{SITE}img/og.jpg">
 <meta property="og:url" content="{url}">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="google-site-verification" content="yYVPYaU_5Sv7lGXDazb0hBcOVrw0B91MIJe2hJMEwtE">
 <meta name="theme-color" content="#dcecf1">
 <link rel="icon" href="favicon.ico" sizes="48x48">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -551,7 +554,36 @@ bedankt = f'''<div class="wrap">
 
 </div>
 </div>'''
-page("bedankt.html", "Je betaling | Nestig", "De status van je betaling bij Nestig.", bedankt, noindex=True)
+page("bedankt.html", "Je betaling | Nestig", "De status van je betaling bij Nestig.", bedankt, noindex=True, geheim=True)
+
+# ---------------------------------------------------------------- verzendmail (alleen voor Nestig zelf)
+# De link naar deze pagina staat in de mail "Betaalde bestelling". Zonder geldige link toont de pagina een foutmelding.
+verzonden = f'''<div class="wrap tekst" data-verzonden>
+<p class="kruimel"><a href="./">Home</a> / Beheer</p>
+<div class="paginakop"><h1>Verzendmail sturen</h1></div>
+
+<div data-stand="laden"><p class="sub">Bestelling ophalen.</p></div>
+
+<div data-stand="fout" hidden><p class="sub" data-fout-tekst></p></div>
+
+<div data-stand="formulier" hidden>
+<p class="sub">Bestelling <strong data-v-nummer></strong></p>
+<p data-v-test hidden><strong>Dit is een testbestelling.</strong> De mail krijgt [TEST] in het onderwerp.</p>
+<ul data-v-regels></ul>
+<p><span data-v-klant></span><br>Mail gaat naar <strong data-v-email></strong></p>
+<form class="form" style="margin-top:28px">
+<div class="velden">
+<div class="heel"><label for="v-code">Track-en-tracecode</label><input type="text" id="v-code" name="code" required minlength="6" maxlength="40" autocomplete="off" placeholder="Bijvoorbeeld: CJ1234567890NL"></div>
+<div class="heel"><label for="v-link">Volglink <span>(mag leeg blijven, dan maken we een link naar 17TRACK)</span></label><input type="text" id="v-link" name="link" maxlength="300" autocomplete="off" placeholder="https://"></div>
+</div>
+<div class="verstuur"><button class="btn btn-zon" type="submit">Verzendmail sturen</button></div>
+<div class="melding" data-melding hidden role="status"><span data-melding-tekst></span></div>
+</form>
+</div>
+
+<div class="kader" data-stand="klaar" hidden role="status"><h2 style="margin-top:0">Verstuurd</h2><p data-klaar-tekst></p></div>
+</div>'''
+page("verzonden.html", "Verzendmail sturen | Nestig", "Beheerpagina van Nestig.", verzonden, noindex=True, geheim=True)
 
 # ---------------------------------------------------------------- retourneren
 
@@ -695,7 +727,7 @@ privacy = f'''<div class="wrap tekst">
 <ul>
 <li><strong>Onze leverancier en de bezorgdienst.</strong> Zij krijgen je naam en adres om het pakket te bezorgen. Onze leverancier is gevestigd buiten de Europese Unie, in China. We geven alleen door wat voor de bezorging nodig is.</li>
 <li><strong>WhatsApp.</strong> Bestel je of stel je een vraag via WhatsApp, dan loopt je bericht via WhatsApp, een dienst van Meta. Dat gebeurt alleen als je daar zelf voor kiest.</li>
-{"<li><strong>Onze betaaldienst.</strong> Betalingen lopen via Mollie B.V. in Amsterdam. Mollie verwerkt je betaalgegevens en krijgt van ons het bedrag en de gegevens van je bestelling: je naam, adres, e-mailadres, wat je bestelt en, als je die invult, je telefoonnummer en je opmerking.</li>" + chr(10) if MOLLIE else ""}<li><strong>Onze e-maildienst.</strong> De bevestiging van je bestelling of herroeping versturen we via Resend, een dienst uit de Verenigde Staten. Die verwerkt daarvoor je naam, je e-mailadres en de inhoud van de mail.</li>
+{"<li><strong>Onze betaaldienst.</strong> Betalingen lopen via Mollie B.V. in Amsterdam. Mollie verwerkt je betaalgegevens en krijgt van ons het bedrag en de gegevens van je bestelling: je naam, adres, e-mailadres, wat je bestelt en, als je die invult, je telefoonnummer en je opmerking.</li>" + chr(10) if MOLLIE else ""}<li><strong>Onze e-maildienst.</strong> De bevestiging van je bestelling of herroeping en het bericht dat je pakket onderweg is versturen we via Resend, een dienst uit de Verenigde Staten. Die verwerkt daarvoor je naam, je e-mailadres en de inhoud van de mail.</li>
 <li><strong>De hostingpartij van deze website.</strong> Die verwerkt technische gegevens zoals je IP-adres om de site te tonen en te beveiligen.</li>
 </ul>
 
@@ -720,8 +752,10 @@ nf = f'''<div class="wrap leeg" style="padding-top:60px">
 page("404.html", "Pagina niet gevonden | Nestig", "Deze pagina bestaat niet.", nf, noindex=True)
 
 # ---------------------------------------------------------------- overig
+# Bewijs voor Google Search Console dat deze site van ons is. Niet weghalen.
+(OUT / "googlec12132538463473d.html").write_text("google-site-verification: googlec12132538463473d.html")
 (OUT / "_routes.json").write_text('{"version":1,"include":["/api/*"],"exclude":[]}\n')
-(OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nDisallow: /bestellen\nDisallow: /bedankt\nSitemap: {SITE}sitemap.xml\n")
+(OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nDisallow: /bestellen\nDisallow: /bedankt\nDisallow: /verzonden\nSitemap: {SITE}sitemap.xml\n")
 urls = ["", "kattenhangmat", "dieren", "retourneren", "herroepen", "algemene-voorwaarden", "privacy"]
 (OUT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                  + "".join(f"  <url><loc>{SITE}{u}</loc></url>\n" for u in urls) + "</urlset>\n")

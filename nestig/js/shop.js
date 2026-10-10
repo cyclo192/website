@@ -466,10 +466,82 @@ function startBedankt() {
   kijk();
 }
 
+/* ---------- alleen voor Nestig zelf: verzendmail sturen ---------- */
+
+function startVerzonden() {
+  const wortel = document.querySelector("[data-verzonden]");
+  if (!wortel) return;
+  const q = new URLSearchParams(window.location.search);
+  const id = q.get("id") || "", h = q.get("h") || "";
+  const form = wortel.querySelector("form");
+  const melding = wortel.querySelector("[data-melding]");
+  const knop = form.querySelector("button[type=submit]");
+  const toon = (naam) => wortel.querySelectorAll("[data-stand]").forEach((el) => { el.hidden = el.dataset.stand !== naam; });
+  const fout = (tekst) => { toon("fout"); wortel.querySelector("[data-fout-tekst]").textContent = tekst; };
+  let opnieuw = false;
+
+  function meld(tekst, isFout) {
+    melding.hidden = false;
+    melding.classList.toggle("fout", !!isFout);
+    melding.querySelector("[data-melding-tekst]").textContent = tekst;
+  }
+  function alVerstuurd(code) {
+    opnieuw = true;
+    knop.textContent = "Opnieuw versturen";
+    meld("Voor deze bestelling is al een verzendmail verstuurd, met code " + code + ". Klik op Opnieuw versturen als je de klant een nieuwe mail wilt sturen.");
+  }
+
+  (async () => {
+    let r = null, d = {};
+    try {
+      r = await fetch("/api/verzonden?id=" + encodeURIComponent(id) + "&h=" + encodeURIComponent(h), { cache: "no-store" });
+      d = await r.json();
+    } catch (e) { /* geen verbinding */ }
+    if (!r || r.status !== 200) { fout(d.fout || "Het lukt nu niet om de bestelling op te halen. Probeer het zo opnieuw."); return; }
+    wortel.querySelector("[data-v-nummer]").textContent = d.nummer;
+    wortel.querySelector("[data-v-klant]").textContent = d.naam + ", " + d.adres;
+    wortel.querySelector("[data-v-email]").textContent = d.email;
+    const lijst = wortel.querySelector("[data-v-regels]");
+    d.regels.forEach((t) => { const li = document.createElement("li"); li.textContent = t.replace(/^- /, ""); lijst.appendChild(li); });
+    wortel.querySelector("[data-v-test]").hidden = !d.test;
+    toon("formulier");
+    if (d.al) { form.elements.code.value = d.al; alVerstuurd(d.al); }
+  })();
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+    const tekst = knop.textContent;
+    knop.disabled = true;
+    knop.textContent = "Bezig met versturen…";
+    let r = null, d = {};
+    try {
+      r = await fetch("/api/verzonden", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id, h, code: form.elements.code.value.trim(), link: form.elements.link.value.trim(), opnieuw }),
+      });
+      d = await r.json();
+    } catch (err) { /* geen verbinding */ }
+    knop.disabled = false;
+    knop.textContent = tekst;
+    if (r && r.status === 200 && d.ok) {
+      toon("klaar");
+      wortel.querySelector("[data-klaar-tekst]").textContent = "De klant van bestelling " + d.nummer + " heeft de track-en-tracecode gekregen op " + d.email + ".";
+      return;
+    }
+    if (r && r.status === 409 && d.al) { alVerstuurd(d.al); return; }
+    meld((d && d.fout) || "Het versturen lukte niet. Probeer het zo opnieuw.", true);
+    const veld = d && d.veld && form.elements[d.veld];
+    if (veld && veld.focus) veld.focus();
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   toonAantal();
   startProduct();
   startBestellen();
   startHerroepen();
   startBedankt();
+  startVerzonden();
 });

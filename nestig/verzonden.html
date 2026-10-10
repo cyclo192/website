@@ -3,16 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dieren – spullen voor kat en hond | Nestig</title>
-<meta name="description" content="Spullen waar je kat of hond blij van wordt. Nu bij Nestig: de kattenhangmat voor het raam, met gratis verzending.">
-<link rel="canonical" href="https://nestig.nl/dieren">
+<title>Verzendmail sturen | Nestig</title>
+<meta name="description" content="Beheerpagina van Nestig.">
+<meta name="robots" content="noindex">
+<meta name="referrer" content="no-referrer">
+<link rel="canonical" href="https://nestig.nl/verzonden">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="nl_NL">
 <meta property="og:site_name" content="Nestig">
-<meta property="og:title" content="Dieren – spullen voor kat en hond | Nestig">
-<meta property="og:description" content="Spullen waar je kat of hond blij van wordt. Nu bij Nestig: de kattenhangmat voor het raam, met gratis verzending.">
+<meta property="og:title" content="Verzendmail sturen | Nestig">
+<meta property="og:description" content="Beheerpagina van Nestig.">
 <meta property="og:image" content="https://nestig.nl/img/og.jpg">
-<meta property="og:url" content="https://nestig.nl/dieren">
+<meta property="og:url" content="https://nestig.nl/verzonden">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="google-site-verification" content="yYVPYaU_5Sv7lGXDazb0hBcOVrw0B91MIJe2hJMEwtE">
 <meta name="theme-color" content="#dcecf1">
@@ -28,23 +30,35 @@
 <header class="top"><div class="wrap">
 <a class="logo" href="./" aria-label="Nestig, naar de homepage">nestig<span class="zon" aria-hidden="true"></span></a>
 <nav class="nav" aria-label="Hoofdmenu">
-<a href="dieren.html" aria-current="page">Dieren</a>
+<a href="dieren.html">Dieren</a>
 <a href="kamer.html">Kamer</a>
 <a class="mand" href="bestellen.html" data-mand-link aria-label="Winkelmand"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 9h18l-1.6 10.2a2 2 0 0 1-2 1.8H6.6a2 2 0 0 1-2-1.8L3 9Z"/><path d="M8 9l3-6M16 9l-3-6"/></svg><span>Winkelmand</span><b data-mand-aantal>0</b></a>
 </nav></div></header>
 <main id="inhoud">
-<div class="wrap">
-<p class="kruimel"><a href="./">Home</a> / Dieren</p>
-<div class="paginakop"><h1>Voor je dier</h1><p class="sub">Spullen waar je kat of hond blij van wordt.</p></div>
-<div class="kaarten" style="margin-bottom:clamp(56px,8vw,96px)">
-<a class="kaart" href="kattenhangmat.html">
-<div class="beeld"><img src="img/hangmat-beige.jpg" width="800" height="600" alt="Witte kat op de beige kattenhangmat aan het raam" loading="lazy"></div>
-<div class="tekst"><h3>Kattenhangmat voor het raam</h3>
-<p class="zacht klein">55 × 35 cm, met zuignappen. In vijf kleuren.</p>
-<p class="prijs">€ 27,95</p></div></a>
-<div class="kaart kaart-leeg"><span class="label">Binnenkort</span><h3>Meer voor kat en hond</h3>
-<p class="zacht">We zoeken het volgende product uit. Tip voor ons? <a class="link" href="https://wa.me/31626683986?text=Hoi%20Nestig%2C%20ik%20heb%20een%20vraag." target="_blank" rel="noopener">App ons</a>.</p></div>
+<div class="wrap tekst" data-verzonden>
+<p class="kruimel"><a href="./">Home</a> / Beheer</p>
+<div class="paginakop"><h1>Verzendmail sturen</h1></div>
+
+<div data-stand="laden"><p class="sub">Bestelling ophalen.</p></div>
+
+<div data-stand="fout" hidden><p class="sub" data-fout-tekst></p></div>
+
+<div data-stand="formulier" hidden>
+<p class="sub">Bestelling <strong data-v-nummer></strong></p>
+<p data-v-test hidden><strong>Dit is een testbestelling.</strong> De mail krijgt [TEST] in het onderwerp.</p>
+<ul data-v-regels></ul>
+<p><span data-v-klant></span><br>Mail gaat naar <strong data-v-email></strong></p>
+<form class="form" style="margin-top:28px">
+<div class="velden">
+<div class="heel"><label for="v-code">Track-en-tracecode</label><input type="text" id="v-code" name="code" required minlength="6" maxlength="40" autocomplete="off" placeholder="Bijvoorbeeld: CJ1234567890NL"></div>
+<div class="heel"><label for="v-link">Volglink <span>(mag leeg blijven, dan maken we een link naar 17TRACK)</span></label><input type="text" id="v-link" name="link" maxlength="300" autocomplete="off" placeholder="https://"></div>
 </div>
+<div class="verstuur"><button class="btn btn-zon" type="submit">Verzendmail sturen</button></div>
+<div class="melding" data-melding hidden role="status"><span data-melding-tekst></span></div>
+</form>
+</div>
+
+<div class="kader" data-stand="klaar" hidden role="status"><h2 style="margin-top:0">Verstuurd</h2><p data-klaar-tekst></p></div>
 </div>
 </main>
 <footer class="voet"><div class="wrap">
