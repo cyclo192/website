@@ -8,6 +8,8 @@
                      en naar Nestig, betalen gaat dan met een betaalverzoek.
    /api/mollie       hier meldt Mollie dat de status van een betaling is veranderd.
                      Is er betaald, dan gaan de bevestigingsmails de deur uit.
+   /api/stand        hoe er nu betaald wordt: "live", "test" of "verzoek". De bestelpagina
+                     toont een melding zolang Mollie in testmodus staat.
    /api/betaling     status van een betaling, voor de bedankpagina
    /api/verzonden    alleen voor Nestig zelf: track-en-tracecode naar de klant mailen.
                      De link ernaartoe staat in de mail "Betaalde bestelling" en is
@@ -59,6 +61,7 @@ export default {
     const url = new URL(request.url);
     if (url.pathname.startsWith("/api/")) {
       try {
+        if (url.pathname === "/api/stand" && request.method === "GET") return stand(env);
         if (url.pathname === "/api/betaling" && request.method === "GET") return await betaling(url, env);
         if (url.pathname === "/api/verzonden" && request.method === "GET") return await verzondenInfo(url, env);
         if (url.pathname === "/api/verzonden" && request.method === "POST") return await verzonden(request, env);
@@ -481,6 +484,12 @@ async function mollieMelding(request, env) {
   if (!r.ok || !r.data) throw new Error("mollie " + r.status);
   await verwerkBetaling(env, r.data);
   return new Response("ok");
+}
+
+/* Hoe wordt er nu betaald? Verklapt niets over de sleutel zelf, alleen de soort. */
+function stand(env) {
+  const sleutel = String(env.MOLLIE_API_KEY || "");
+  return json({ betalen: !sleutel || !env.RESEND_API_KEY ? "verzoek" : sleutel.startsWith("live_") ? "live" : "test" });
 }
 
 /* Voor de bedankpagina: hoe staat het met deze betaling? Geeft geen gegevens van de klant terug. */

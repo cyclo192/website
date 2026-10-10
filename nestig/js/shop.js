@@ -318,6 +318,12 @@ function startBestellen() {
   teken();
   herstelFormulier(form);
 
+  /* Zolang betalen in testmodus staat, zeggen we dat eerlijk tegen wie hier terechtkomt. */
+  const testmelding = document.querySelector("[data-testmodus]");
+  if (testmelding) {
+    fetch("/api/stand", { cache: "no-store" }).then((r) => r.json()).then((d) => { testmelding.hidden = d.betalen !== "test"; }).catch(() => {});
+  }
+
   function bericht() {
     const mand = leesMand();
     const v = (naam) => (form.elements[naam].value || "").trim();

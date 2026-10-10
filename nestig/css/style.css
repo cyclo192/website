@@ -17,7 +17,7 @@
   --wit:#fff;
   --lijn:#d6e0dc;
   --bes:#b3294e;        /* foutmeldingen */
-  --wa:#1f8f4e;
+  --wa:#1a7f45;
   --display:"Nestig Serif",Georgia,"Times New Roman",serif;
   --body:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --hm:#2b2f33;         /* kleur van de hangmat in de tekening */
@@ -54,7 +54,7 @@ p{max-width:62ch}
 .btn-lijn{background:transparent;color:var(--ink)}
 .btn-lijn:hover{background:var(--glas)}
 .btn-wa{background:var(--wa);border-color:var(--wa);color:#fff}
-.btn-wa:hover{background:#18763f;border-color:#18763f}
+.btn-wa:hover{background:#156a39;border-color:#156a39}
 .btn-wa svg{width:22px;height:22px;fill:#fff}
 .btn-lijn svg{width:22px;height:22px;fill:var(--ink)}
 .btn:disabled{opacity:.6;cursor:progress}
@@ -65,7 +65,7 @@ p{max-width:62ch}
 /* kop */
 .top{position:sticky;top:0;z-index:40;background:rgba(251,251,247,.94);backdrop-filter:saturate(1.2) blur(8px);border-bottom:1px solid var(--lijn)}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px}
-.logo{font:italic 600 1.9rem/1 var(--display);letter-spacing:-.02em;text-decoration:none;display:inline-flex;align-items:baseline;padding:6px 0}
+.logo{font:italic 600 1.9rem/1 var(--display);letter-spacing:-.02em;text-decoration:none;display:inline-flex;align-items:baseline;padding:9px 0}
 .logo .zon{display:inline-block;width:.34em;height:.34em;border-radius:50%;background:var(--zon);border:2px solid var(--ink);margin-left:.12em;transform:translateY(-.02em)}
 .nav{display:flex;align-items:center;gap:clamp(4px,2vw,22px)}
 .nav a{text-decoration:none;font-weight:600;padding:10px 8px;border-radius:10px}
@@ -116,8 +116,10 @@ p{max-width:62ch}
 .cat p{margin-top:8px;max-width:30ch}
 .cat .ga{margin-top:18px;font-weight:600;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px}
 .cat-dier .teken{position:absolute;right:-18px;top:-10px;width:min(58%,300px);pointer-events:none}
-.cat-kamer{background:#fff3cf}
-.cat-kamer .teken{position:absolute;right:14px;top:18px;width:min(46%,190px);pointer-events:none}
+.cat-over{background:#fff3cf;justify-content:center;gap:10px}
+.cat-over h3{font-size:clamp(1.4rem,2.4vw,1.75rem)}
+.cat-over .ga{align-self:flex-start}
+div.cat:hover{transform:none;box-shadow:none}
 .cat:hover{box-shadow:0 6px 0 var(--ink);transform:translateY(-3px)}
 .cat{transition:transform .15s,box-shadow .15s}
 .label{display:inline-block;align-self:flex-start;font-size:.875rem;font-weight:600;padding:5px 12px;border-radius:999px;border:2px solid var(--ink);background:var(--wit);margin-bottom:12px}
@@ -130,6 +132,8 @@ p{max-width:62ch}
 .kaart .beeld img{width:100%;height:100%;object-fit:cover}
 .kaart .tekst{padding:20px 22px 22px;display:flex;flex-direction:column;gap:6px;flex:1}
 .kaart .tekst .prijs{font-size:1.3rem;margin-top:auto;padding-top:10px}
+.kaart h2{font-size:1.25rem;line-height:1.25;letter-spacing:-.005em}
+.geen-zweef .wa-zweef{display:none}
 .kaart-leeg{border-style:dashed;background:transparent;align-items:flex-start;justify-content:center;padding:28px;gap:10px;min-height:240px}
 
 /* stappen */
@@ -298,8 +302,7 @@ fieldset{border:0}
   .hero-koop .btn{width:100%}
   .cat{min-height:0;padding:150px 22px 22px}
   .cat-dier .teken{width:176px;right:-14px;top:-14px}
-  .cat-kamer{padding-top:128px}
-  .cat-kamer .teken{width:118px;right:16px;top:14px}
+  .cat-over{padding-top:24px}
   .fotos{grid-template-columns:1fr;gap:14px}
   .duim{width:76px}
   .velden{grid-template-columns:1fr}

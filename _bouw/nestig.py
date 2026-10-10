@@ -23,6 +23,7 @@ LEVERTIJD = "2 tot 3 weken"
 # de teksten over betalen (veelgestelde vragen, bestellen, voorwaarden, privacy) gaan dan over direct online betalen.
 # Op False gaan ze over een betaalverzoek achteraf. De koppeling zelf luistert alleen naar de sleutel, niet naar deze schakelaar.
 MOLLIE = True
+ARTIKEL = "NES-KH-01"   # ons eigen artikelnummer, staat op de productpagina (verplicht: het product moet te herkennen zijn)
 DRAAGT = "17,5 kg"   # opgave van de leverancier bij CJ: "within 35 jin" (1 jin = 0,5 kg)
 # sleutel, naam, kleur van het knopje. De foto heet img/hangmat-<sleutel>.jpg. Zelfde lijst staat in js/shop.js.
 KLEUREN = [("beige", "Beige", "#cdb893"), ("zwart", "Zwart", "#1f2226"), ("blauw", "Lichtblauw", "#a9c0dc"),
@@ -77,17 +78,6 @@ def raam(uid, label=True):
 </svg>'''
 
 
-KAMER_SVG = f'''<svg class="teken" viewBox="0 0 200 190" aria-hidden="true">
-<g stroke="{INK}" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round">
-<path d="M150 0v52" fill="none"/>
-<path d="M116 96c0-24 15-44 34-44s34 20 34 44Z" fill="#ffc83d"/>
-<path d="M142 96a8 8 0 0 0 16 0" fill="#fff"/>
-<rect x="14" y="56" width="78" height="96" rx="6" fill="#fff"/>
-<path d="M22 134c12-22 24-22 34-8 8-12 18-12 28 8v10H22Z" fill="#9cc3bd"/>
-<circle cx="66" cy="84" r="10" fill="#ffc83d"/>
-</g></svg>'''
-
-
 def kop(current):
     def link(href, tekst, key):
         cur = ' aria-current="page"' if current == key else ''
@@ -97,7 +87,6 @@ def kop(current):
 <a class="logo" href="./" aria-label="Nestig, naar de homepage">nestig<span class="zon" aria-hidden="true"></span></a>
 <nav class="nav" aria-label="Hoofdmenu">
 {link("dieren.html", "Dieren", "dieren")}
-{link("kamer.html", "Kamer", "kamer")}
 <a class="mand" href="bestellen.html" data-mand-link aria-label="Winkelmand">{MAND_ICON}<span>Winkelmand</span><b data-mand-aantal>0</b></a>
 </nav></div></header>'''
 
@@ -105,10 +94,9 @@ def kop(current):
 VOET = f'''<footer class="voet"><div class="wrap">
 <div class="kolommen">
 <div><a class="logo" href="./" aria-label="Nestig, naar de homepage">nestig<span class="zon" aria-hidden="true"></span></a>
-<p class="zacht" style="margin-top:10px;max-width:30ch">Fijne spullen voor je dier en voor je kamer.</p></div>
+<p class="zacht" style="margin-top:10px;max-width:30ch">Fijne spullen voor je dier en je huis.</p></div>
 <div><h2>Winkel</h2><ul>
 <li><a href="dieren.html">Dieren</a></li>
-<li><a href="kamer.html">Kamer</a></li>
 <li><a href="bestellen.html">Winkelmand</a></li></ul></div>
 <div><h2>Klantenservice</h2><ul>
 <li><a href="./#vragen">Verzending en levertijd</a></li>
@@ -133,7 +121,7 @@ def versie(pad):
     return hashlib.md5((OUT / pad).read_bytes()).hexdigest()[:8]
 
 
-def page(slug, title, desc, body, current=None, noindex=False, ld=None, geheim=False):
+def page(slug, title, desc, body, current=None, noindex=False, ld=None, geheim=False, zweef=True):
     url = SITE + ("" if slug == "index.html" else slug.removesuffix(".html"))
     robots = '<meta name="robots" content="noindex">\n' if noindex else ''
     if geheim:  # het adres van deze pagina bevat een kenmerk: niet meesturen als iemand doorklikt naar een andere site
@@ -164,7 +152,7 @@ def page(slug, title, desc, body, current=None, noindex=False, ld=None, geheim=F
 <link rel="preload" href="fonts/inter-400.woff" as="font" type="font/woff" crossorigin>
 <link rel="stylesheet" href="css/style.css?v={versie("css/style.css")}">
 {ldtag}</head>
-<body>
+<body{"" if zweef else ' class="geen-zweef"'}>
 {kop(current)}
 <main id="inhoud">
 {body}
@@ -212,10 +200,10 @@ STAPPEN = '''<ol class="stappen">
 </ol>'''
 
 
-def kaart_hangmat(uid):
+def kaart_hangmat(uid, kop="h3"):
     return f'''<a class="kaart" href="kattenhangmat.html">
 <div class="beeld"><img src="img/hangmat-beige.jpg" width="800" height="600" alt="Witte kat op de beige kattenhangmat aan het raam" loading="lazy"></div>
-<div class="tekst"><h3>Kattenhangmat voor het raam</h3>
+<div class="tekst"><{kop}>Kattenhangmat voor het raam</{kop}>
 <p class="zacht klein">55 × 35 cm, met zuignappen. In vijf kleuren.</p>
 <p class="prijs">€ {PRIJS}</p></div></a>'''
 
@@ -246,16 +234,15 @@ home = f'''<section class="hero"><div class="wrap">
 </ul></div></section>
 
 <section class="sec"><div class="wrap">
-<h2>Voor je dier en voor je kamer</h2>
-<p class="sub">Nestig begint klein. Eerst één ding dat goed is, daarna meer.</p>
+<h2>Nestig begint klein</h2>
+<p class="sub">Eerst één ding dat goed is, daarna meer.</p>
 <div class="cats">
 <a class="cat cat-dier" href="dieren.html">
 <div class="teken">{raam("cat", label=False)}</div>
 <h3>Dieren</h3><p>Spullen waar je kat of hond blij van wordt.</p><span class="ga">Bekijk dieren</span></a>
-<a class="cat cat-kamer" href="kamer.html">
-{KAMER_SVG}
-<span class="label">Binnenkort</span>
-<h3>Kamer</h3><p>Decoratie die je kamer gezelliger maakt.</p><span class="ga">Kijk wat eraan komt</span></a>
+<div class="cat cat-over">
+<h3>Kleine winkel uit {PLAATS}</h3><p>Nestig is een webwinkel van byXavio. We beginnen met één product en breiden rustig uit. Heb je een vraag, dan krijg je antwoord van een mens.</p>
+<a class="ga" href="{WA_VRAAG}" target="_blank" rel="noopener">Stel je vraag via WhatsApp</a></div>
 </div>
 </div></section>
 
@@ -303,7 +290,7 @@ home = f'''<section class="hero"><div class="wrap">
 
 page("index.html",
      "Nestig – kattenhangmat voor het raam en fijne spullen voor thuis",
-     f"Nestig verkoopt fijne spullen voor je dier en je kamer. Nu: de kattenhangmat voor het raam voor € {PRIJS}, met gratis verzending en 14 dagen bedenktijd.",
+     f"Nestig verkoopt fijne spullen voor je dier en je huis. Nu: de kattenhangmat voor het raam voor € {PRIJS}, met gratis verzending en 14 dagen bedenktijd.",
      home, ld={
          "@context": "https://schema.org", "@type": "OnlineStore", "name": "Nestig", "url": SITE,
          "logo": SITE + "apple-touch-icon.png", "telephone": TEL, "email": MAIL,
@@ -316,28 +303,14 @@ dieren = f'''<div class="wrap">
 <p class="kruimel"><a href="./">Home</a> / Dieren</p>
 <div class="paginakop"><h1>Voor je dier</h1><p class="sub">Spullen waar je kat of hond blij van wordt.</p></div>
 <div class="kaarten" style="margin-bottom:clamp(56px,8vw,96px)">
-{kaart_hangmat("k1")}
-<div class="kaart kaart-leeg"><span class="label">Binnenkort</span><h3>Meer voor kat en hond</h3>
+{kaart_hangmat("k1", kop="h2")}
+<div class="kaart kaart-leeg"><span class="label">Binnenkort</span><h2>Meer voor kat en hond</h2>
 <p class="zacht">We zoeken het volgende product uit. Tip voor ons? <a class="link" href="{WA_VRAAG}" target="_blank" rel="noopener">App ons</a>.</p></div>
 </div>
 </div>'''
 page("dieren.html", "Dieren – spullen voor kat en hond | Nestig",
      "Spullen waar je kat of hond blij van wordt. Nu bij Nestig: de kattenhangmat voor het raam, met gratis verzending.",
      dieren, current="dieren")
-
-# ---------------------------------------------------------------- kamer
-kamer = f'''<div class="wrap">
-<p class="kruimel"><a href="./">Home</a> / Kamer</p>
-<div class="paginakop"><span class="label">Binnenkort</span><h1>Voor je kamer</h1>
-<p class="sub">Decoratie die je kamer gezelliger maakt. We zoeken op dit moment de eerste spullen uit.</p></div>
-<div class="leeg">
-<p>Wil je weten wanneer ze er zijn? Stuur een appje, dan laten we het je weten.</p>
-<p><a class="btn btn-wa" href="https://wa.me/{WA}?text=Hoi%20Nestig%2C%20laat%20me%20weten%20wanneer%20de%20kamerspullen%20er%20zijn." target="_blank" rel="noopener">{WA_ICON}Hou me op de hoogte</a>
-<a class="btn btn-lijn" href="dieren.html" style="margin-left:8px">Bekijk dieren</a></p>
-</div>
-</div>'''
-page("kamer.html", "Kamer – decoratie voor je kamer | Nestig",
-     "Decoratie die je kamer gezelliger maakt. Binnenkort bij Nestig.", kamer, current="kamer", noindex=True)
 
 # ---------------------------------------------------------------- product
 SWATCHES = "\n".join(f'<label style="--k:{h}"><input type="radio" name="kleur" value="{k}"{" checked" if i == 0 else ""}><i></i>{n}</label>'
@@ -390,7 +363,8 @@ product = f'''<div class="wrap">
 <div>
 <h2>Wat je krijgt</h2>
 <table class="specs">
-<tr><th scope="row">In de doos</th><td>1 kattenhangmat met zuignappen en ophangkabels</td></tr>
+<tr><th scope="row">In het pakket</th><td>1 kattenhangmat met zuignappen en ophangkabels</td></tr>
+<tr><th scope="row">Artikelnummer</th><td>{ARTIKEL}</td></tr>
 <tr><th scope="row">Ligvlak</th><td>55 × 35 cm, 2,5 cm dik</td></tr>
 <tr><th scope="row">Ophangkabels</th><td>56 cm lang</td></tr>
 <tr><th scope="row">Draagvermogen</th><td>Tot {DRAAGT}, volgens de fabrikant</td></tr>
@@ -449,7 +423,7 @@ page("kattenhangmat.html", f"Kattenhangmat voor het raam – € {PRIJS}, gratis
          "@context": "https://schema.org", "@type": "Product", "name": "Kattenhangmat voor het raam",
          "description": "Kattenhangmat met zuignappen voor het raam. Ligvlak 55 x 35 cm, zonder boren op te hangen.",
          "material": "Oxford-stof, kunststof en staaldraad",
-         "image": [SITE + f"img/hangmat-{k}.jpg" for k, _, _ in KLEUREN], "brand": {"@type": "Brand", "name": "Nestig"},
+         "image": [SITE + f"img/hangmat-{k}.jpg" for k, _, _ in KLEUREN], "sku": ARTIKEL,
          "offers": {"@type": "Offer", "url": SITE + "kattenhangmat", "priceCurrency": "EUR", "price": "27.95",
                     "availability": "https://schema.org/InStock",
                     "shippingDetails": {"@type": "OfferShippingDetails",
@@ -481,6 +455,8 @@ bestellen = f'''<div class="wrap">
 <a class="btn btn-zon" href="kattenhangmat.html">Bekijk de kattenhangmat</a>
 </div>
 
+<div class="melding" data-testmodus hidden role="status" style="margin:0 0 24px"><strong>De winkel is nog niet open.</strong> Betalen staat in testmodus. Als je nu bestelt, wordt er niets afgeschreven en niets geleverd. Vragen? <a class="link" href="{WA_VRAAG}" target="_blank" rel="noopener">App ons</a>.</div>
+
 <div class="bestel" data-mand-vol>
 <form class="form" data-bestelform novalidate-off>
 <h2>Waar mag het heen?</h2>
@@ -494,7 +470,7 @@ bestellen = f'''<div class="wrap">
 <div class="heel"><label for="opmerking">Opmerking <span>(mag leeg blijven)</span></label><textarea id="opmerking" name="opmerking" maxlength="300"></textarea></div>
 </div>
 <div class="akkoord"><input type="checkbox" id="akkoord" name="akkoord" required>
-<label for="akkoord">Ik ga akkoord met de <a class="link" href="algemene-voorwaarden.html" target="_blank">algemene voorwaarden</a> en heb gelezen hoe <a class="link" href="retourneren.html" target="_blank">retourneren</a> werkt.</label></div>
+<label for="akkoord">Ik ga akkoord met de <a class="link" href="algemene-voorwaarden.html" target="_blank" rel="noopener">algemene voorwaarden</a> en heb gelezen hoe <a class="link" href="retourneren.html" target="_blank" rel="noopener">retourneren</a> werkt.</label></div>
 
 <h2>Bestelling plaatsen</h2>
 <p class="zacht">{"Met de knop hieronder plaats je een bestelling met betaalverplichting. Je gaat daarna naar de betaalpagina van Mollie en betaalt met iDEAL. Na je betaling krijg je direct een bevestiging per e-mail." if MOLLIE else "Je krijgt direct een bevestiging per e-mail en daarna een betaalverzoek voor iDEAL. Met de knop hieronder plaats je een bestelling met betaalverplichting."}</p>
@@ -515,7 +491,7 @@ bestellen = f'''<div class="wrap">
 </aside>
 </div>
 </div>'''.replace(" novalidate-off", "")
-page("bestellen.html", "Bestellen | Nestig", "Rond je bestelling bij Nestig af.", bestellen, noindex=True)
+page("bestellen.html", "Bestellen | Nestig", "Rond je bestelling bij Nestig af.", bestellen, noindex=True, zweef=False)
 
 # ---------------------------------------------------------------- terug van de betaalpagina
 # Hier komt de klant terug na het betalen bij Mollie. js/shop.js vraagt de status op en toont het juiste blok.
@@ -560,7 +536,7 @@ bedankt = f'''<div class="wrap">
 
 </div>
 </div>'''
-page("bedankt.html", "Je betaling | Nestig", "De status van je betaling bij Nestig.", bedankt, noindex=True, geheim=True)
+page("bedankt.html", "Je betaling | Nestig", "De status van je betaling bij Nestig.", bedankt, noindex=True, geheim=True, zweef=False)
 
 # ---------------------------------------------------------------- verzendmail (alleen voor Nestig zelf)
 # De link naar deze pagina staat in de mail "Betaalde bestelling". Zonder geldige link toont de pagina een foutmelding.
@@ -589,7 +565,7 @@ verzonden = f'''<div class="wrap tekst" data-verzonden>
 
 <div class="kader" data-stand="klaar" hidden role="status"><h2 style="margin-top:0">Verstuurd</h2><p data-klaar-tekst></p></div>
 </div>'''
-page("verzonden.html", "Verzendmail sturen | Nestig", "Beheerpagina van Nestig.", verzonden, noindex=True, geheim=True)
+page("verzonden.html", "Verzendmail sturen | Nestig", "Beheerpagina van Nestig.", verzonden, noindex=True, geheim=True, zweef=False)
 
 # ---------------------------------------------------------------- retourneren
 
@@ -669,7 +645,7 @@ page("herroepen.html", "Mijn aankoop ongedaan maken | Nestig",
 av = f'''<div class="wrap tekst">
 <p class="kruimel"><a href="./">Home</a> / Algemene voorwaarden</p>
 <div class="paginakop"><h1>Algemene voorwaarden</h1></div>
-<p class="sub">Versie van 8 oktober 2026.</p>
+<p class="sub">Versie van 10 oktober 2026. Je kunt deze pagina opslaan of afdrukken via het menu van je browser.</p>
 
 <h2>1. Wie we zijn</h2>
 {WIE}
@@ -699,8 +675,8 @@ av = f'''<div class="wrap tekst">
 <h2 id="klachten">9. Klachten</h2>
 <p>Niet tevreden? Laat het ons zo snel mogelijk weten via WhatsApp, telefoon of e-mail. Je krijgt binnen 14 dagen een inhoudelijk antwoord.</p>
 
-<h2>10. Toepasselijk recht</h2>
-<p>Op elke bestelling is Nederlands recht van toepassing.</p>
+<h2>10. Toepasselijk recht en geschillen</h2>
+<p>Op elke bestelling is Nederlands recht van toepassing. Komen we er samen niet uit, dan kun je het geschil voorleggen aan de bevoegde Nederlandse rechter. De rechten die je als consument volgens de wet hebt, blijven altijd gelden, ook als hier iets anders zou staan.</p>
 </div>'''
 page("algemene-voorwaarden.html", "Algemene voorwaarden | Nestig",
      "De algemene voorwaarden van Nestig: bestellen, betalen, levering, bedenktijd en garantie.", av)
@@ -709,7 +685,7 @@ page("algemene-voorwaarden.html", "Algemene voorwaarden | Nestig",
 privacy = f'''<div class="wrap tekst">
 <p class="kruimel"><a href="./">Home</a> / Privacy</p>
 <div class="paginakop"><h1>Privacyverklaring</h1></div>
-<p class="sub">Versie van 8 oktober 2026. Hier lees je welke gegevens Nestig gebruikt en waarom.</p>
+<p class="sub">Versie van 10 oktober 2026. Hier lees je welke gegevens Nestig gebruikt en waarom.</p>
 
 <h2>Wie is verantwoordelijk?</h2>
 {WIE}
@@ -734,8 +710,15 @@ privacy = f'''<div class="wrap tekst">
 <li><strong>Onze leverancier en de bezorgdienst.</strong> Zij krijgen je naam en adres om het pakket te bezorgen. Onze leverancier is gevestigd buiten de Europese Unie, in China. We geven alleen door wat voor de bezorging nodig is.</li>
 <li><strong>WhatsApp.</strong> Bestel je of stel je een vraag via WhatsApp, dan loopt je bericht via WhatsApp, een dienst van Meta. Dat gebeurt alleen als je daar zelf voor kiest.</li>
 {"<li><strong>Onze betaaldienst.</strong> Betalingen lopen via Mollie B.V. in Amsterdam. Mollie verwerkt je betaalgegevens en krijgt van ons het bedrag en de gegevens van je bestelling: je naam, adres, e-mailadres, wat je bestelt en, als je die invult, je telefoonnummer en je opmerking.</li>" + chr(10) if MOLLIE else ""}<li><strong>Onze e-maildienst.</strong> De bevestiging van je bestelling of herroeping en het bericht dat je pakket onderweg is versturen we via Resend, een dienst uit de Verenigde Staten. Die verwerkt daarvoor je naam, je e-mailadres en de inhoud van de mail.</li>
-<li><strong>De hostingpartij van deze website.</strong> Die verwerkt technische gegevens zoals je IP-adres om de site te tonen en te beveiligen.</li>
+<li><strong>De hostingpartij van deze website.</strong> De site draait bij Cloudflare. Cloudflare verwerkt technische gegevens zoals je IP-adres om de site te tonen en te beveiligen.</li>
+<li><strong>Onze mailbox.</strong> Mails van en aan ons staan in Gmail, een dienst van Google. Daar komt ook de melding van je bestelling binnen.</li>
 </ul>
+
+<h2>Gegevens buiten Europa</h2>
+<p>Onze leverancier zit in China. Zonder je naam en adres kan je pakket niet bezorgd worden, dus die doorgifte is nodig om de koop uit te voeren. Resend, Cloudflare, Google en Meta zijn Amerikaanse bedrijven. Met hen gelden de afspraken die de Europese privacyregels voor zulke diensten eisen.</p>
+
+<h2>Beveiliging</h2>
+<p>De site werkt alleen via een versleutelde verbinding. Bestelgegevens zijn alleen in te zien door Nestig en door de partijen die hierboven staan, voor zover zij ze nodig hebben.</p>
 
 <h2>Hoe lang we gegevens bewaren</h2>
 <p>Gegevens van een bestelling bewaren we 7 jaar, omdat de Belastingdienst dat van ons vraagt. Berichten zonder bestelling verwijderen we binnen een jaar.</p>
@@ -760,6 +743,23 @@ page("404.html", "Pagina niet gevonden | Nestig", "Deze pagina bestaat niet.", n
 # ---------------------------------------------------------------- overig
 # Bewijs voor Google Search Console dat deze site van ons is. Niet weghalen.
 (OUT / "googlec12132538463473d.html").write_text("google-site-verification: googlec12132538463473d.html")
+# Kopregels die Cloudflare meestuurt. De eerste groep beveiligt de site, de rest laat browsers css, js en
+# lettertypen lang bewaren (dat kan omdat het adres een versiekenmerk heeft).
+(OUT / "_headers").write_text("""/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+  Strict-Transport-Security: max-age=31536000
+/css/*
+  Cache-Control: public, max-age=31536000, immutable
+/js/*
+  Cache-Control: public, max-age=31536000, immutable
+/fonts/*
+  Cache-Control: public, max-age=31536000
+""")
+# Oude adressen die niet meer bestaan.
+(OUT / "_redirects").write_text("/kamer / 302\n/kamer.html / 302\n")
 (OUT / "_routes.json").write_text('{"version":1,"include":["/api/*"],"exclude":[]}\n')
 (OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nDisallow: /bestellen\nDisallow: /bedankt\nDisallow: /verzonden\nSitemap: {SITE}sitemap.xml\n")
 urls = ["", "kattenhangmat", "dieren", "retourneren", "herroepen", "algemene-voorwaarden", "privacy"]
