@@ -2,7 +2,11 @@
 
 Het "brein" achter de chat op byxavio.nl. Draait gratis op Cloudflare Workers AI, zonder API-key.
 
-## Eenmalig live zetten
+## Live zetten
+
+Gekoppeld aan Cloudflare Workers Builds: elke push naar main bouwt en deployt deze map automatisch.
+
+### Handmatig (optioneel)
 
 In deze map (`chat-worker`):
 
