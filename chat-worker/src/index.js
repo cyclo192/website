@@ -16,7 +16,7 @@ const MAX_CHARS = 800;     // per bericht van de bezoeker
 const RATE_LIMIT = 40;     // berichten per IP per 10 minuten
 const RATE_WINDOW = 10 * 60 * 1000;
 
-const SYSTEM_PROMPT = `Je bent "Xavi", de AI-assistent op byxavio.nl, de website van byXavio: het webdesignbedrijf van Djego Reinouwers uit Purmerend.
+const SYSTEM_PROMPT = `Je bent "Xavio", de AI-assistent op byxavio.nl, de website van byXavio: het webdesignbedrijf van Djego Reinouwers uit Purmerend.
 Je bent een AI. Zeg dat eerlijk als iemand ernaar vraagt. Je bent niet Djego zelf en geen mens.
 
 === JOUW DOEL ===
@@ -173,7 +173,7 @@ function validLead(l) {
 
 async function sendLead(lead, messages, lang) {
   const transcript = messages
-    .map(m => (m.role === 'user' ? 'Bezoeker: ' : 'Xavi: ') + m.content)
+    .map(m => (m.role === 'user' ? 'Bezoeker: ' : 'Xavio: ') + m.content)
     .join('\n\n')
     .slice(-6000);
   const email = clean(lead.email, 120);

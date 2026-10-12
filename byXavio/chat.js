@@ -7,8 +7,8 @@
 
   var T = {
     nl: {
-      title: 'Xavi', sub: 'AI-assistent van byXavio · antwoordt direct',
-      hello: 'Hoi! Ik ben Xavi, de AI-assistent van byXavio. Ik beantwoord je vragen, help je het juiste pakket kiezen en kan je aanvraag direct naar Djego sturen.',
+      title: 'Xavio', sub: 'AI-assistent van byXavio · antwoordt direct',
+      hello: 'Hoi! Ik ben Xavio, de AI-assistent van byXavio. Ik beantwoord je vragen, help je het juiste pakket kiezen en kan je aanvraag direct naar Djego sturen.',
       ph: 'Typ je vraag…', send: 'Verstuur', open: 'Open de chat', close: 'Sluit de chat', reset: 'Nieuw gesprek',
       chips: ['Help me een pakket kiezen', 'Wat kost een website?', 'Offerte aanvragen'],
       cta: 'Offerteformulier', wa: 'WhatsApp Djego',
@@ -16,12 +16,12 @@
       rate: 'Je stuurt wel heel veel berichten achter elkaar. Probeer het over een paar minuten opnieuw, of stuur Djego een WhatsApp.',
       sent: 'Aanvraag verstuurd naar Djego',
       failed: 'Doorsturen lukte niet. Stuur je aanvraag even via WhatsApp of het offerteformulier.',
-      nudge: 'Vraag het Xavi! Ik help je in 1 minuut het juiste pakket kiezen.',
-      note: 'Xavi is een AI en kan fouten maken. Gegevens die je deelt worden alleen gebruikt om je aanvraag te beantwoorden.'
+      nudge: 'Vraag het Xavio! Ik help je in 1 minuut het juiste pakket kiezen.',
+      note: 'Xavio is een AI en kan fouten maken. Gegevens die je deelt worden alleen gebruikt om je aanvraag te beantwoorden.'
     },
     en: {
-      title: 'Xavi', sub: 'byXavio AI assistant · replies instantly',
-      hello: 'Hi! I\'m Xavi, the byXavio AI assistant. I can answer your questions, help you pick the right package and send your request straight to Djego.',
+      title: 'Xavio', sub: 'byXavio AI assistant · replies instantly',
+      hello: 'Hi! I\'m Xavio, the byXavio AI assistant. I can answer your questions, help you pick the right package and send your request straight to Djego.',
       ph: 'Type your question…', send: 'Send', open: 'Open chat', close: 'Close chat', reset: 'New chat',
       chips: ['Help me choose a package', 'How much is a website?', 'Request a quote'],
       cta: 'Quote form', wa: 'WhatsApp Djego',
@@ -29,12 +29,12 @@
       rate: 'That\'s a lot of messages in a row. Please try again in a few minutes, or WhatsApp Djego.',
       sent: 'Request sent to Djego',
       failed: 'Sending didn\'t work. Please use WhatsApp or the quote form.',
-      nudge: 'Ask Xavi! I\'ll help you pick the right package in a minute.',
-      note: 'Xavi is an AI and can make mistakes. Details you share are only used to reply to your request.'
+      nudge: 'Ask Xavio! I\'ll help you pick the right package in a minute.',
+      note: 'Xavio is an AI and can make mistakes. Details you share are only used to reply to your request.'
     },
     de: {
-      title: 'Xavi', sub: 'KI-Assistent von byXavio · antwortet sofort',
-      hello: 'Hallo! Ich bin Xavi, der KI-Assistent von byXavio. Ich beantworte deine Fragen, helfe dir beim passenden Paket und schicke deine Anfrage direkt an Djego.',
+      title: 'Xavio', sub: 'KI-Assistent von byXavio · antwortet sofort',
+      hello: 'Hallo! Ich bin Xavio, der KI-Assistent von byXavio. Ich beantworte deine Fragen, helfe dir beim passenden Paket und schicke deine Anfrage direkt an Djego.',
       ph: 'Deine Frage…', send: 'Senden', open: 'Chat öffnen', close: 'Chat schließen', reset: 'Neuer Chat',
       chips: ['Hilf mir beim Paket', 'Was kostet eine Website?', 'Angebot anfragen'],
       cta: 'Angebotsformular', wa: 'WhatsApp an Djego',
@@ -42,12 +42,12 @@
       rate: 'Das sind viele Nachrichten hintereinander. Versuch es in ein paar Minuten erneut oder schreib Djego per WhatsApp.',
       sent: 'Anfrage an Djego gesendet',
       failed: 'Senden hat nicht geklappt. Bitte nutze WhatsApp oder das Angebotsformular.',
-      nudge: 'Frag Xavi! Ich helfe dir in einer Minute beim passenden Paket.',
-      note: 'Xavi ist eine KI und kann Fehler machen. Deine Angaben werden nur für deine Anfrage verwendet.'
+      nudge: 'Frag Xavio! Ich helfe dir in einer Minute beim passenden Paket.',
+      note: 'Xavio ist eine KI und kann Fehler machen. Deine Angaben werden nur für deine Anfrage verwendet.'
     },
     fr: {
-      title: 'Xavi', sub: 'Assistant IA de byXavio · répond tout de suite',
-      hello: 'Bonjour ! Je suis Xavi, l\'assistant IA de byXavio. Je réponds à vos questions, vous aide à choisir la bonne formule et peux transmettre votre demande directement à Djego.',
+      title: 'Xavio', sub: 'Assistant IA de byXavio · répond tout de suite',
+      hello: 'Bonjour ! Je suis Xavio, l\'assistant IA de byXavio. Je réponds à vos questions, vous aide à choisir la bonne formule et peux transmettre votre demande directement à Djego.',
       ph: 'Votre question…', send: 'Envoyer', open: 'Ouvrir le chat', close: 'Fermer le chat', reset: 'Nouvelle discussion',
       chips: ['Aidez-moi à choisir', 'Combien coûte un site ?', 'Demander un devis'],
       cta: 'Formulaire de devis', wa: 'WhatsApp Djego',
@@ -55,12 +55,12 @@
       rate: 'Beaucoup de messages d\'affilée. Réessayez dans quelques minutes, ou écrivez à Djego sur WhatsApp.',
       sent: 'Demande envoyée à Djego',
       failed: 'L\'envoi a échoué. Utilisez WhatsApp ou le formulaire de devis.',
-      nudge: 'Demandez à Xavi ! Je vous aide à choisir la bonne formule en une minute.',
-      note: 'Xavi est une IA et peut se tromper. Vos données servent uniquement à répondre à votre demande.'
+      nudge: 'Demandez à Xavio ! Je vous aide à choisir la bonne formule en une minute.',
+      note: 'Xavio est une IA et peut se tromper. Vos données servent uniquement à répondre à votre demande.'
     },
     es: {
-      title: 'Xavi', sub: 'Asistente IA de byXavio · responde al instante',
-      hello: '¡Hola! Soy Xavi, el asistente IA de byXavio. Respondo tus preguntas, te ayudo a elegir el paquete adecuado y puedo enviar tu solicitud directamente a Djego.',
+      title: 'Xavio', sub: 'Asistente IA de byXavio · responde al instante',
+      hello: '¡Hola! Soy Xavio, el asistente IA de byXavio. Respondo tus preguntas, te ayudo a elegir el paquete adecuado y puedo enviar tu solicitud directamente a Djego.',
       ph: 'Escribe tu pregunta…', send: 'Enviar', open: 'Abrir chat', close: 'Cerrar chat', reset: 'Nueva conversación',
       chips: ['Ayúdame a elegir', '¿Cuánto cuesta una web?', 'Pedir presupuesto'],
       cta: 'Formulario de presupuesto', wa: 'WhatsApp a Djego',
@@ -68,8 +68,8 @@
       rate: 'Son muchos mensajes seguidos. Inténtalo de nuevo en unos minutos o escribe a Djego por WhatsApp.',
       sent: 'Solicitud enviada a Djego',
       failed: 'No se pudo enviar. Usa WhatsApp o el formulario de presupuesto.',
-      nudge: '¡Pregúntale a Xavi! Te ayudo a elegir el paquete adecuado en un minuto.',
-      note: 'Xavi es una IA y puede equivocarse. Tus datos solo se usan para responder a tu solicitud.'
+      nudge: '¡Pregúntale a Xavio! Te ayudo a elegir el paquete adecuado en un minuto.',
+      note: 'Xavio es una IA y puede equivocarse. Tus datos solo se usan para responder a tu solicitud.'
     }
   };
 
