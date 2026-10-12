@@ -3,9 +3,9 @@
    PRODUCTEN: alles wat je verkoopt. Prijs in centen.
    Een product toevoegen = hier een blok bijzetten en een pagina maken.
 
-   Bestellen en herroepen gaan naar de server-kant in _worker.js. Is Mollie
+   Bestellen en herroepen gaan naar de server-kant in _worker.js. Is Stripe
    gekoppeld, dan stuurt de server een betaaladres terug en gaat de klant
-   daarheen; na het betalen komt hij terug op bedankt.html. Zonder Mollie
+   daarheen; na het betalen komt hij terug op bedankt.html. Zonder Stripe
    stuurt de server een bevestigingsmail en betaal je met een betaalverzoek.
    Lukt de server niet, dan valt de site terug op een bericht via WhatsApp.
    Prijzen staan ook in _worker.js: houd beide lijsten gelijk. */
@@ -118,8 +118,8 @@ function wisFormulier() {
   try { sessionStorage.removeItem("nestig-form"); } catch (e) { /* zie boven */ }
 }
 
-/* De lopende betaling: het id van Mollie, voor als de bank de klant zonder id terugstuurt. */
-const BETAAL_ID = /^tr_[A-Za-z0-9]{6,40}$/;
+/* De lopende betaling: het id van Stripe, voor als de bank de klant zonder id terugstuurt. */
+const BETAAL_ID = /^cs_(test|live)_[A-Za-z0-9]{10,120}$/;
 function bewaarBetaling(id) {
   try { localStorage.setItem("nestig-betaling", JSON.stringify({ id, op: Date.now() })); } catch (e) { /* zie boven */ }
 }
@@ -421,7 +421,7 @@ function startBestellen() {
       email: v("email"), telefoon: v("telefoon"), opmerking: v("opmerking"),
       akkoord: form.elements.akkoord.checked, website: v("website"),
     });
-    /* Met Mollie: door naar de betaalpagina. De winkelmand blijft staan tot er betaald is. */
+    /* Met Stripe: door naar de betaalpagina. De winkelmand blijft staan tot er betaald is. */
     if (uit && uit.status === 200 && uit.data.ok && /^https:\/\//.test(uit.data.betaalUrl || "")) {
       bewaarFormulier(form);
       if (BETAAL_ID.test(uit.data.betaling || "")) bewaarBetaling(uit.data.betaling);

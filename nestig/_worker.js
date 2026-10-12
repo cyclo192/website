@@ -3,13 +3,13 @@
    Draait alleen voor /api/* (zie _routes.json). Alle andere pagina's worden
    rechtstreeks als bestand geserveerd.
 
-   /api/bestelling   bestelling aannemen. Met Mollie: betaling aanmaken en de klant
-                     naar de betaalpagina sturen. Zonder Mollie: mail naar de klant
+   /api/bestelling   bestelling aannemen. Met Stripe: betaalpagina (Stripe Checkout) aanmaken
+                     en de klant daarheen sturen. Zonder Stripe: mail naar de klant
                      en naar Nestig, betalen gaat dan met een betaalverzoek.
-   /api/mollie       hier meldt Mollie dat de status van een betaling is veranderd.
+   /api/stripe       webhook: hier meldt Stripe dat er betaald is.
                      Is er betaald, dan gaan de bevestigingsmails de deur uit.
    /api/stand        hoe er nu betaald wordt: "live", "test" of "verzoek". De bestelpagina
-                     toont een melding zolang Mollie in testmodus staat.
+                     toont een melding zolang Stripe in testmodus staat.
    /api/betaling     status van een betaling, voor de bedankpagina
    /api/verzonden    alleen voor Nestig zelf: track-en-tracecode naar de klant mailen.
                      De link ernaartoe staat in de mail "Betaalde bestelling" en is
@@ -19,13 +19,16 @@
    Instellingen (Cloudflare > Pages > nestig > Settings > Variables and secrets):
      RESEND_API_KEY   geheim, sleutel van resend.com. Zonder sleutel geeft de API
                       503 terug en valt de site terug op bestellen via WhatsApp.
-     MOLLIE_API_KEY   geheim, sleutel van mollie.com (test_... of live_...). Zonder
-                      sleutel blijft betalen met een betaalverzoek werken.
+     STRIPE_SECRET_KEY      geheim, "Secret key" van stripe.com (sk_test_... of sk_live_...).
+                            Zonder sleutel blijft betalen met een betaalverzoek werken.
+     STRIPE_WEBHOOK_SECRET  geheim, "Signing secret" (whsec_...) van de webhook naar
+                            https://nestig.nl/api/stripe met de events
+                            checkout.session.completed en checkout.session.async_payment_succeeded.
      MAIL_VAN         optioneel, standaard "Nestig <bestelling@nestig.nl>"
      MAIL_NAAR        optioneel, waar bestellingen binnenkomen
 
-   Er is geen database. Tussen bestellen en betalen bewaart Mollie de bestelling
-   als "metadata" bij de betaling. Die is maximaal ongeveer 1 kB groot.
+   Er is geen database. Tussen bestellen en betalen bewaart Stripe de bestelling
+   als "metadata" bij de betaling (max. 500 tekens per veld).
 
    De prijzen hieronder zijn leidend. Wat de browser meestuurt aan prijzen
    wordt genegeerd. Houd deze lijst gelijk aan js/shop.js. */
@@ -73,7 +76,7 @@ export default {
         if (request.method !== "POST") return json({ fout: "Alleen POST" }, 405);
         if (url.pathname === "/api/bestelling") return await bestelling(request, env);
         if (url.pathname === "/api/herroeping") return await herroeping(request, env);
-        if (url.pathname === "/api/mollie") return await mollieMelding(request, env);
+        if (url.pathname === "/api/stripe") return await stripeMelding(request, env);
         return json({ fout: "Niet gevonden" }, 404);
       } catch (e) {
         if (e instanceof Ongeldig) return json({ fout: e.message, veld: e.veld }, 400);
@@ -273,11 +276,11 @@ async function bestelling(request, env) {
   const totaal = totaalVan(o);
   const nr = nummer("N");
 
-  /* Met Mollie: eerst betalen. De mails gaan pas weg als Mollie meldt dat er betaald is. */
-  if (env.MOLLIE_API_KEY) {
+  /* Met Stripe: eerst betalen. De mails gaan pas weg als Stripe meldt dat er betaald is. */
+  if (sleutelVan(env)) {
     const b = await maakBetaling(env, new URL(request.url).origin, nr, o);
     if (b) return json({ ok: true, nummer: nr, totaal: euro(totaal), betaalUrl: b.url, betaling: b.id });
-    /* Mollie is niet bereikbaar of weigert: de bestelling gaat niet verloren, betalen gaat dan met een betaalverzoek. */
+    /* Stripe is niet bereikbaar of weigert: de bestelling gaat niet verloren, betalen gaat dan met een betaalverzoek. */
   }
 
   const overzicht = overzichtVan(o, nr, nu());
@@ -297,7 +300,7 @@ async function bestelling(request, env) {
       o.opmerking ? "Opmerking: " + o.opmerking : null,
       "",
       "Te doen: stuur een betaalverzoek van " + euro(totaal) + " naar " + o.mail + " en bestel daarna bij de leverancier.",
-      env.MOLLIE_API_KEY ? "Let op: betalen via Mollie lukte niet bij deze bestelling. Kijk in je Mollie-dashboard of er een storing is." : null,
+      sleutelVan(env) ? "Let op: betalen via Stripe lukte niet bij deze bestelling. Kijk in je Stripe-dashboard of er een storing is." : null,
     ].filter((x) => x !== null).join("\n"),
   });
 
@@ -317,49 +320,56 @@ async function bestelling(request, env) {
   return json({ ok: true, nummer: nr, totaal: euro(totaal), bevestigd });
 }
 
-/* ---------- betalen via Mollie ---------- */
+/* ---------- betalen via Stripe ---------- */
 
-const MOLLIE_ID = /^tr_[A-Za-z0-9]{6,40}$/;
-const METHODEN = { ideal: "iDEAL", creditcard: "creditcard", bancontact: "Bancontact", applepay: "Apple Pay", googlepay: "Google Pay", paypal: "PayPal", banktransfer: "een overboeking", klarna: "Klarna", in3: "in3", riverty: "Riverty" };
-const MAX_METADATA = 900; /* bytes; Mollie bewaart ongeveer 1 kB */
+const BETAAL_ID = /^cs_(test|live)_[A-Za-z0-9]{10,120}$/;
+const METHODEN = { ideal: "iDEAL", card: "een betaalkaart", bancontact: "Bancontact", paypal: "PayPal", klarna: "Klarna", link: "Link", sepa_debit: "SEPA-incasso", eps: "EPS", giropay: "giropay", sofort: "Sofort", amazon_pay: "Amazon Pay", revolut_pay: "Revolut Pay" };
+const MAX_WAARDE = 480; /* Stripe bewaart per metadata-veld maximaal 500 tekens */
 const DAG = 24 * 60 * 60 * 1000;
 
-async function mollie(env, methode, pad, body) {
-  const r = await fetch("https://api.mollie.com/v2/" + pad, {
+function sleutelVan(env) { return String(env.STRIPE_SECRET_KEY || ""); }
+
+/* Stripe wil formuliervelden, geneste velden als a[b][0][c]. */
+function formulier(obj, voor, uit) {
+  uit = uit || new URLSearchParams();
+  for (const [k, v] of Object.entries(obj || {})) {
+    if (v === undefined || v === null) continue;
+    const naam = voor ? voor + "[" + k + "]" : k;
+    if (Array.isArray(v)) v.forEach((x, i) => (x !== null && typeof x === "object") ? formulier(x, naam + "[" + i + "]", uit) : uit.append(naam + "[" + i + "]", String(x)));
+    else if (typeof v === "object") formulier(v, naam, uit);
+    else uit.append(naam, String(v));
+  }
+  return uit;
+}
+
+async function stripe(env, methode, pad, velden) {
+  const r = await fetch("https://api.stripe.com/v1/" + pad, {
     method: methode,
-    headers: { Authorization: "Bearer " + env.MOLLIE_API_KEY, "Content-Type": "application/json" },
-    body: body ? JSON.stringify(body) : undefined,
+    headers: { Authorization: "Bearer " + sleutelVan(env), "Content-Type": "application/x-www-form-urlencoded", "Stripe-Version": "2024-06-20" },
+    body: velden ? formulier(velden).toString() : undefined,
   });
   let data = null;
   try { data = await r.json(); } catch (e) { /* geen json: data blijft leeg */ }
   return { ok: r.ok, status: r.status, data };
 }
 
-/* De bestelling zo klein mogelijk opgeschreven, zodat hij als metadata bij de betaling past. */
+/* De bestelling klein opgeschreven, zodat hij als metadata bij de betaling past. */
 function inpakken(nr, o) {
   const m = {
     nr,
-    r: o.regels.map((r) => [r.id, r.kleur, r.aantal, r.prijs].join(":")),
+    r: o.regels.map((r) => [r.id, r.kleur, r.aantal, r.prijs].join(":")).join(","),
     n: o.naam, s: o.straat, pc: o.postcode, pl: o.plaats, e: o.mail,
   };
   if (o.telefoon) m.t = o.telefoon;
-  if (o.opmerking) {
-    const grootte = () => new TextEncoder().encode(JSON.stringify(m)).length;
-    let tekst = o.opmerking;
-    m.o = tekst;
-    while (tekst && grootte() > MAX_METADATA) {
-      tekst = tekst.slice(0, -10);
-      m.o = tekst ? tekst.trimEnd() + " [ingekort]" : undefined;
-    }
-    if (!m.o) delete m.o;
-  }
+  if (o.opmerking) m.o = o.opmerking.length > MAX_WAARDE ? o.opmerking.slice(0, MAX_WAARDE - 12).trimEnd() + " [ingekort]" : o.opmerking;
+  for (const k of Object.keys(m)) m[k] = String(m[k]).slice(0, MAX_WAARDE);
   return m;
 }
 
 function uitpakken(m) {
   const tekst = (x) => String(x == null ? "" : x);
-  const regels = (Array.isArray(m.r) ? m.r : []).map((x) => {
-    const [id, kleur, aantal, prijs] = tekst(x).split(":");
+  const regels = tekst(m.r).split(",").map((x) => {
+    const [id, kleur, aantal, prijs] = x.split(":");
     return { id, kleur, aantal: Number(aantal) || 0, prijs: Number(prijs) || 0 };
   }).filter((r) => r.id && r.aantal > 0);
   return {
@@ -368,60 +378,93 @@ function uitpakken(m) {
   };
 }
 
-function centen(bedrag) {
-  return bedrag && bedrag.value ? Math.round(parseFloat(bedrag.value) * 100) : 0;
+/* Haalt een betaling op bij Stripe en zet hem om naar één vaste vorm:
+   { id, status: "paid" | "open" | "pending" | "expired", test, bedrag, terug, aangemaakt, betaaldOp,
+     methode, metadata, verder, pi } — of null als hij niet bestaat. */
+async function haalBetaling(env, id) {
+  const r = await stripe(env, "GET", "checkout/sessions/" + encodeURIComponent(id) + "?expand[]=payment_intent.latest_charge");
+  if (r.status === 404) return null;
+  if (!r.ok || !r.data) throw new Error("stripe " + r.status);
+  const s = r.data;
+  const pi = s.payment_intent && typeof s.payment_intent === "object" ? s.payment_intent : null;
+  const ch = pi && pi.latest_charge && typeof pi.latest_charge === "object" ? pi.latest_charge : null;
+  let status = "open";
+  if (s.status === "complete") status = s.payment_status === "paid" ? "paid" : "pending";
+  else if (s.status === "expired") status = "expired";
+  return {
+    id: s.id,
+    status,
+    test: s.livemode === false,
+    bedrag: Number(s.amount_total) || 0,
+    terug: ch ? (Number(ch.amount_refunded) || 0) + (ch.disputed ? 1 : 0) : 0,
+    aangemaakt: s.created ? new Date(s.created * 1000).toISOString() : undefined,
+    betaaldOp: ch && ch.created ? new Date(ch.created * 1000).toISOString() : undefined,
+    methode: ch && ch.payment_method_details ? ch.payment_method_details.type : null,
+    metadata: { ...(s.metadata || {}), ...((pi && pi.metadata) || {}) },
+    verder: s.status === "open" && /^https:\/\//.test(s.url || "") ? s.url : null,
+    pi: pi ? pi.id : null,
+  };
 }
 
-/* Maakt de betaling aan. Geeft { id, url } terug, of null als het niet lukte. */
+/* Onthoudt iets bij de betaling (m = mails verstuurd, v = track-en-trace). */
+async function noteer(env, p, velden) {
+  if (!p.pi) return false;
+  const r = await stripe(env, "POST", "payment_intents/" + encodeURIComponent(p.pi), { metadata: velden });
+  return r.ok;
+}
+
+/* Maakt de betaalpagina aan. Geeft { id, url } terug, of null als het niet lukte. */
 async function maakBetaling(env, herkomst, nr, o) {
   const basis = TOEGESTANE_HERKOMST.test(herkomst) ? herkomst : ZAAK.site;
+  const meta = inpakken(nr, o);
   try {
-    const r = await mollie(env, "POST", "payments", {
-      amount: { currency: "EUR", value: (totaalVan(o) / 100).toFixed(2) },
-      description: "Nestig bestelling " + nr,
-      redirectUrl: basis + "/bedankt",
-      webhookUrl: basis + "/api/mollie",
-      locale: "nl_NL",
-      metadata: inpakken(nr, o),
+    const r = await stripe(env, "POST", "checkout/sessions", {
+      mode: "payment",
+      locale: "nl",
+      customer_email: o.mail,
+      client_reference_id: nr,
+      success_url: basis + "/bedankt?id={CHECKOUT_SESSION_ID}",
+      cancel_url: basis + "/bestellen",
+      line_items: o.regels.map((r) => ({
+        quantity: r.aantal,
+        price_data: {
+          currency: "eur",
+          unit_amount: r.prijs,
+          product_data: { name: (PRODUCTEN[r.id] ? PRODUCTEN[r.id].naam : r.id) + (PRODUCTEN[r.id] && PRODUCTEN[r.id].kleuren[r.kleur] ? " (" + PRODUCTEN[r.id].kleuren[r.kleur] + ")" : "") },
+        },
+      })),
+      metadata: { nr },
+      payment_intent_data: { description: "Nestig bestelling " + nr, metadata: meta },
     });
-    const p = r.data;
-    const url = p && p._links && p._links.checkout && p._links.checkout.href;
-    if (!r.ok || !p || !MOLLIE_ID.test(p.id || "") || !/^https:\/\//.test(url || "")) {
-      console.error("mollie: betaling aanmaken mislukt", nr, r.status, p && p.detail);
+    const s = r.data;
+    if (!r.ok || !s || !BETAAL_ID.test(s.id || "") || !/^https:\/\//.test(s.url || "")) {
+      console.error("stripe: betaling aanmaken mislukt", nr, r.status, s && s.error && s.error.message);
       return null;
     }
-    /* Na het betalen komt de klant terug op de bedankpagina. Die moet weten om welke betaling het gaat,
-       ook als de bank de klant in een andere browser terugzet. Lukt dit niet, dan onthoudt de browser het. */
-    try {
-      const bij = await mollie(env, "PATCH", "payments/" + p.id, { redirectUrl: basis + "/bedankt?id=" + p.id });
-      if (!bij.ok) console.error("mollie: terugkeeradres niet bijgewerkt", nr, bij.status);
-    } catch (e) {
-      console.error("mollie: terugkeeradres niet bijgewerkt", nr, e && e.message);
-    }
-    return { id: p.id, url };
+    if (s.amount_total !== totaalVan(o)) console.error("stripe: bedrag wijkt af", nr, s.amount_total, totaalVan(o));
+    return { id: s.id, url: s.url };
   } catch (e) {
-    console.error("mollie: niet bereikbaar", nr, e && e.message);
+    console.error("stripe: niet bereikbaar", nr, e && e.message);
     return null;
   }
 }
 
 /* Is er betaald, dan gaan hier de mails weg: één keer per betaling.
    Drie dingen zorgen dat het bij één keer blijft: een vlag in de metadata van de betaling,
-   een sleutel bij Resend, en we doen niets meer bij een oude of terugbetaalde betaling
-   (Mollie meldt zich ook bij een terugbetaling). */
+   een sleutel bij Resend, en we doen niets meer bij een oude of terugbetaalde betaling. */
 async function verwerkBetaling(env, p) {
   const m = p && p.metadata;
-  if (!p || p.status !== "paid" || !m || typeof m !== "object" || !m.nr) return "niets";
+  if (!p || p.status !== "paid" || !m || !m.nr) return "niets";
   if (m.m) return "al-gedaan";
-  if (centen(p.amountRefunded) > 0 || centen(p.amountChargedBack) > 0) return "niets";
-  if (p.paidAt && Date.now() - Date.parse(p.paidAt) > 3 * DAG) return "niets";
+  if (p.terug > 0) return "niets";
+  if (p.betaaldOp && Date.now() - Date.parse(p.betaaldOp) > 3 * DAG) return "niets";
 
   const o = uitpakken(m);
   const nr = String(m.nr);
-  const test = p.mode === "test";
-  const betaald = centen(p.amount);
-  const overzicht = overzichtVan(o, nr, nu(p.createdAt));
-  const hoe = METHODEN[p.method] || p.method || "een online betaling";
+  const test = p.test;
+  const betaald = p.bedrag;
+  const overzicht = overzichtVan(o, nr, nu(p.aangemaakt));
+  const hoe = METHODEN[p.methode] || "een online betaling";
   const merk = test ? "[TEST] " : "";
 
   let bevestigd = true;
@@ -432,14 +475,14 @@ async function verwerkBetaling(env, p) {
       antwoordNaar: ZAAK.email,
       eenmalig: "klant-" + p.id,
       onderwerp: merk + "Je bestelling bij Nestig (" + nr + ")",
-      tekst: klantMail(o, overzicht, "Je hebt " + euro(betaald) + " betaald met " + hoe + " op " + nu(p.paidAt) + ". Je betaling is binnen, dus je bestelling gaat de deur uit.", test),
+      tekst: klantMail(o, overzicht, "Je hebt " + euro(betaald) + " betaald met " + hoe + " op " + nu(p.betaaldOp) + ". Je betaling is binnen, dus je bestelling gaat de deur uit.", test),
     });
   } catch (e) {
     bevestigd = false;
     console.error("bevestiging niet verstuurd", nr, e && e.message);
   }
 
-  /* Lukt de mail naar Nestig niet, dan geven we een fout terug en probeert Mollie het later opnieuw. */
+  /* Lukt de mail naar Nestig niet, dan geven we een fout terug en probeert Stripe het later opnieuw. */
   await stuurMail(env, {
     aan: env.MAIL_NAAR || ZAAK.email,
     antwoordNaar: o.mail,
@@ -451,8 +494,8 @@ async function verwerkBetaling(env, p) {
       "",
       ...overzicht,
       "",
-      "Betaald: " + euro(betaald) + " met " + hoe + " op " + nu(p.paidAt),
-      "Betaling bij Mollie: " + p.id,
+      "Betaald: " + euro(betaald) + " met " + hoe + " op " + nu(p.betaaldOp),
+      "Betaling bij Stripe: " + (p.pi || p.id),
       betaald !== totaalVan(o) ? "LET OP: het betaalde bedrag is anders dan het totaal van de bestelling (" + euro(totaalVan(o)) + "). Kijk dit na voordat je bestelt." : null,
       "",
       "E-mail: " + o.mail,
@@ -469,82 +512,99 @@ async function verwerkBetaling(env, p) {
   });
 
   try {
-    const bij = await mollie(env, "PATCH", "payments/" + p.id, { metadata: { ...m, m: 1 } });
-    if (!bij.ok) console.error("mollie: vlag niet gezet", nr, bij.status);
+    if (!(await noteer(env, p, { m: "1" }))) console.error("stripe: vlag niet gezet", nr);
   } catch (e) {
-    console.error("mollie: vlag niet gezet", nr, e && e.message);
+    console.error("stripe: vlag niet gezet", nr, e && e.message);
   }
   return "verstuurd";
 }
 
-/* Mollie roept dit adres aan als de status van een betaling verandert. Er komt alleen een id mee:
-   de echte status halen we zelf bij Mollie op, dus een nagemaakte melding kan niets in gang zetten. */
-async function mollieMelding(request, env) {
-  if (!env.MOLLIE_API_KEY || !env.RESEND_API_KEY) return new Response("niet ingesteld", { status: 503 });
+/* Controleert de handtekening die Stripe meestuurt (alleen als STRIPE_WEBHOOK_SECRET is ingesteld). */
+async function echtVanStripe(env, ruw, kop) {
+  const geheim = String(env.STRIPE_WEBHOOK_SECRET || "");
+  if (!geheim) return true; /* zonder geheim: we vertrouwen alleen het id en halen de rest zelf op */
+  const delen = Object.fromEntries(String(kop || "").split(",").map((x) => x.split("=")).filter((x) => x.length === 2).map(([k, v]) => [k.trim(), v.trim()]));
+  const t = Number(delen.t);
+  if (!t || Math.abs(Date.now() / 1000 - t) > 600) return false;
+  const handtekeningen = String(kop || "").split(",").filter((x) => x.trim().startsWith("v1=")).map((x) => x.trim().slice(3));
+  const enc = new TextEncoder();
+  const k = await crypto.subtle.importKey("raw", enc.encode(geheim), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
+  const uit = Array.from(new Uint8Array(await crypto.subtle.sign("HMAC", k, enc.encode(t + "." + ruw))), (b) => b.toString(16).padStart(2, "0")).join("");
+  return handtekeningen.some((h) => gelijk(h, uit));
+}
+
+function gelijk(a, b) {
+  a = String(a); b = String(b);
+  let verschil = a.length === b.length && a ? 0 : 1;
+  for (let i = 0; i < a.length && i < b.length; i++) verschil |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  return !verschil;
+}
+
+/* Stripe roept dit adres aan als er iets met een betaling gebeurt. We gebruiken alleen het id
+   uit de melding: de echte status halen we zelf bij Stripe op, dus een nagemaakte melding kan niets in gang zetten. */
+async function stripeMelding(request, env) {
+  if (!sleutelVan(env) || !env.RESEND_API_KEY) return new Response("niet ingesteld", { status: 503 });
   const ruw = await request.text();
-  const id = ruw.length <= 500 ? new URLSearchParams(ruw).get("id") || "" : "";
-  if (!MOLLIE_ID.test(id)) return new Response("ok");
-  const r = await mollie(env, "GET", "payments/" + id);
-  if (r.status === 404) return new Response("ok");
-  if (!r.ok || !r.data) throw new Error("mollie " + r.status);
-  await verwerkBetaling(env, r.data);
+  if (ruw.length > 200000) return new Response("te groot", { status: 400 });
+  if (!(await echtVanStripe(env, ruw, request.headers.get("Stripe-Signature")))) return new Response("handtekening klopt niet", { status: 400 });
+  let ev;
+  try { ev = JSON.parse(ruw); } catch (e) { return new Response("ok"); }
+  const soort = ev && ev.type;
+  if (soort !== "checkout.session.completed" && soort !== "checkout.session.async_payment_succeeded") return new Response("ok");
+  const id = ev.data && ev.data.object && ev.data.object.id;
+  if (!BETAAL_ID.test(id || "")) return new Response("ok");
+  const p = await haalBetaling(env, id);
+  if (!p) return new Response("ok");
+  await verwerkBetaling(env, p);
   return new Response("ok");
 }
 
 /* Hoe wordt er nu betaald? Verklapt niets over de sleutel zelf, alleen de soort. */
 function stand(env) {
-  const sleutel = String(env.MOLLIE_API_KEY || "");
-  return json({ betalen: !sleutel || !env.RESEND_API_KEY ? "verzoek" : sleutel.startsWith("live_") ? "live" : "test" });
+  const sleutel = sleutelVan(env);
+  return json({ betalen: !sleutel || !env.RESEND_API_KEY ? "verzoek" : sleutel.includes("_live_") ? "live" : "test" });
 }
 
 /* Voor de bedankpagina: hoe staat het met deze betaling? Geeft geen gegevens van de klant terug. */
 async function betaling(url, env) {
   const id = url.searchParams.get("id") || "";
-  if (!MOLLIE_ID.test(id) || !env.MOLLIE_API_KEY) return json({ status: "onbekend" }, 404);
-  const r = await mollie(env, "GET", "payments/" + id);
-  if (r.status === 404) return json({ status: "onbekend" }, 404);
-  if (!r.ok || !r.data) throw new Error("mollie " + r.status);
-  const p = r.data;
-  const m = p.metadata && typeof p.metadata === "object" ? p.metadata : {};
+  if (!BETAAL_ID.test(id) || !sleutelVan(env)) return json({ status: "onbekend" }, 404);
+  const p = await haalBetaling(env, id);
+  if (!p) return json({ status: "onbekend" }, 404);
+  const m = p.metadata || {};
 
-  /* Vangnet: is er al een minuut betaald en is de melding van Mollie niet verwerkt, dan doen we het hier. */
-  if (p.status === "paid" && !m.m && env.RESEND_API_KEY && p.paidAt && Date.now() - Date.parse(p.paidAt) > 60000) {
+  /* Vangnet: is er betaald en is de melding van Stripe (nog) niet verwerkt, dan doen we het hier. */
+  if (p.status === "paid" && !m.m && env.RESEND_API_KEY) {
     try { await verwerkBetaling(env, p); } catch (e) { console.error("vangnet mislukt", id, e && e.message); }
   }
 
-  const verder = p.status === "open" && p._links && p._links.checkout && p._links.checkout.href;
   return json({
-    status: String(p.status || "onbekend"),
+    status: p.status,
     nummer: m.nr ? String(m.nr) : null,
-    test: p.mode === "test",
-    verder: /^https:\/\//.test(verder || "") ? verder : null,
+    test: p.test,
+    verder: p.verder,
   });
 }
 
 /* ---------- verzonden: track-en-trace naar de klant ---------- */
 
-/* Ondertekent het id van een betaling met de Mollie-sleutel. Alleen de server kan dit maken en nakijken. */
+/* Ondertekent het id van een betaling met de Stripe-sleutel. Alleen de server kan dit maken en nakijken. */
 async function handtekening(env, id) {
   const enc = new TextEncoder();
-  const sleutel = await crypto.subtle.importKey("raw", enc.encode(env.MOLLIE_API_KEY), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
+  const sleutel = await crypto.subtle.importKey("raw", enc.encode(sleutelVan(env)), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
   const uit = new Uint8Array(await crypto.subtle.sign("HMAC", sleutel, enc.encode("verzonden:" + id)));
   return Array.from(uit.slice(0, 20), (b) => b.toString(16).padStart(2, "0")).join("");
 }
 
 /* Haalt de betaalde bestelling op als id en handtekening kloppen. Anders een fout zonder uitleg. */
 async function bestellingBijLink(env, id, h) {
-  if (!env.MOLLIE_API_KEY || !env.RESEND_API_KEY) throw new Ongeldig("Dit is nog niet ingesteld.");
-  const goed = MOLLIE_ID.test(id || "") ? await handtekening(env, id) : "";
-  const kreeg = String(h || "");
-  let verschil = goed.length === kreeg.length && goed ? 0 : 1;
-  for (let i = 0; i < goed.length && i < kreeg.length; i++) verschil |= goed.charCodeAt(i) ^ kreeg.charCodeAt(i);
-  if (verschil) throw new Ongeldig("Deze link klopt niet. Gebruik de link uit de mail \"Betaalde bestelling\".");
-  const r = await mollie(env, "GET", "payments/" + id);
-  if (r.status === 404) throw new Ongeldig("Deze bestelling bestaat niet meer.");
-  if (!r.ok || !r.data) throw new Error("mollie " + r.status);
-  const p = r.data;
+  if (!sleutelVan(env) || !env.RESEND_API_KEY) throw new Ongeldig("Dit is nog niet ingesteld.");
+  const goed = BETAAL_ID.test(id || "") ? await handtekening(env, id) : "";
+  if (!goed || !gelijk(goed, h || "")) throw new Ongeldig("Deze link klopt niet. Gebruik de link uit de mail \"Betaalde bestelling\".");
+  const p = await haalBetaling(env, id);
+  if (!p) throw new Ongeldig("Deze bestelling bestaat niet meer.");
   const m = p.metadata;
-  if (p.status !== "paid" || !m || typeof m !== "object" || !m.nr) throw new Ongeldig("Deze bestelling is niet betaald.");
+  if (p.status !== "paid" || !m || !m.nr) throw new Ongeldig("Deze bestelling is niet betaald.");
   return { p, m, o: uitpakken(m) };
 }
 
@@ -557,7 +617,7 @@ async function verzondenInfo(url, env) {
     email: o.mail,
     regels: overzichtVan(o, String(m.nr), "").filter((x) => x.startsWith("- ")),
     al: m.v ? String(m.v) : null,
-    test: p.mode === "test",
+    test: p.test,
   });
 }
 
@@ -578,7 +638,7 @@ async function verzonden(request, env) {
   if (m.v && d.opnieuw !== true) return json({ fout: "al-verstuurd", al: String(m.v) }, 409);
 
   const nr = String(m.nr);
-  const test = p.mode === "test";
+  const test = p.test;
   email(o.mail, "email");
   await stuurMail(env, {
     aan: o.mail,
@@ -596,7 +656,7 @@ async function verzonden(request, env) {
       "",
       "Je pakket komt van onze leverancier buiten Europa. Het kan een paar dagen duren voordat de code beweging laat zien. De verwachte levertijd is " + ZAAK.levertijd + " na je betaling.",
       "",
-      ...overzichtVan(o, nr, nu(p.createdAt)).slice(3),
+      ...overzichtVan(o, nr, nu(p.aangemaakt)).slice(3),
       "",
       "Je hebt 14 dagen bedenktijd vanaf de dag dat je je pakket ontvangt. Je aankoop ongedaan maken doe je hier: " + ZAAK.site + "/herroepen",
       VOET,
@@ -604,10 +664,9 @@ async function verzonden(request, env) {
   });
 
   try {
-    const bij = await mollie(env, "PATCH", "payments/" + p.id, { metadata: { ...m, v: code } });
-    if (!bij.ok) console.error("mollie: verzonden niet genoteerd", nr, bij.status);
+    if (!(await noteer(env, p, { v: code }))) console.error("stripe: verzonden niet genoteerd", nr);
   } catch (e) {
-    console.error("mollie: verzonden niet genoteerd", nr, e && e.message);
+    console.error("stripe: verzonden niet genoteerd", nr, e && e.message);
   }
   return json({ ok: true, nummer: nr, email: o.mail });
 }
