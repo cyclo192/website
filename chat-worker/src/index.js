@@ -58,9 +58,16 @@ Zet de LEAD-regel nooit zonder duidelijke toestemming, nooit met verzonnen gegev
 Wil iemand het liever zelf regelen? Verwijs dan naar WhatsApp (06-26683986) of het offerteformulier onderaan de site.
 
 === SUGGESTIEKNOPPEN ===
-Zet aan het eind van je antwoord, als dat de bezoeker helpt, op een eigen regel 2 of 3 korte antwoordopties (max 5 woorden per optie), gescheiden door |, zo:
+Zet aan het eind van ELK antwoord waarin je de bezoeker iets vraagt, op een eigen regel 2 of 3 korte antwoordopties (max 5 woorden per optie), gescheiden door |, zo:
 <<CHIPS>>Optie een|Optie twee|Optie drie
-Gebruik ze vooral bij je vragen in het adviesgesprek (bijvoorbeeld "Nog geen website|Wel, maar verouderd") en na een antwoord (bijvoorbeeld "Welk pakket past bij mij?|Offerte aanvragen"). Geen chips als je om naam, e-mail of telefoon vraagt. Bij toestemming vragen: "Ja, stuur maar door|Nee, nog niet".
+De opties moeten passen bij precies de vraag die je net stelde. Voorbeelden:
+- "Wat voor bedrijf heb je?" -> <<CHIPS>>Kapper of beauty|Bouw of klussen|Horeca of winkel
+- "Heb je al een website?" -> <<CHIPS>>Nog geen website|Ja, maar verouderd
+- "Wat moeten klanten op de site kunnen?" -> <<CHIPS>>Alleen info lezen|Afspraak of contact|Reserveren of kopen
+- "Zal ik een offerteaanvraag voor je klaarzetten?" -> <<CHIPS>>Ja, graag|Eerst nog een vraag
+- Na een gewoon antwoord zonder vraag -> <<CHIPS>>Welk pakket past bij mij?|Offerte aanvragen
+"Ja, stuur maar door|Nee, nog niet" gebruik je ALLEEN direct nadat je de samenvatting gaf en vroeg "Zal ik dit naar Djego sturen?".
+Geen chips als je om naam, e-mail of telefoon vraagt.
 
 === OVER BYXAVIO ===
 - byXavio bouwt websites voor kleine bedrijven en zzp'ers, vanuit Purmerend, voor klanten in heel Nederland. Eigenaar en enige aanspreekpunt: Djego.
@@ -161,6 +168,25 @@ function parseReply(raw) {
   return { text, lead, chips };
 }
 
+/* Vangnet voor de knoppen: het model vergeet ze soms of kiest de verkeerde. */
+function bepaalChips(text, chips) {
+  const t = text.toLowerCase();
+  const laatste = (t.split(/(?<=[.!?])\s+/).filter((x) => x.includes('?')).pop() || '');
+  const vraagtGegevens = /(naam|e-?mail|telefoon|nummer|mailadres|bereiken)/.test(laatste) && !/stur(en|e) naar djego/.test(laatste);
+  if (vraagtGegevens) return [];
+  const toestemming = /(naar djego sturen|naar djego doorsturen|zal ik (dit|het|je aanvraag) (door)?sturen|mag ik (dit|het) (door)?sturen)/.test(t);
+  chips = (chips || []).filter((c) => toestemming || !/stuur (maar )?door|nee, nog niet/i.test(c));
+  if (toestemming) return ['Ja, stuur maar door', 'Nee, nog niet'];
+  if (chips.length) return chips;
+  if (!laatste) return text.length > 40 ? ['Welk pakket past bij mij?', 'Offerte aanvragen'] : [];
+  if (/(wat voor|welk soort|welke branche).*(bedrijf|zaak|branche)|wat doe je/.test(laatste)) return ['Kapper of beauty', 'Bouw of klussen', 'Horeca of winkel'];
+  if (/al een (website|site)/.test(laatste)) return ['Nog geen website', 'Ja, maar verouderd'];
+  if (/(kunnen doen|moeten kunnen|afspraak|reserver|kopen|webshop)/.test(laatste)) return ['Alleen info lezen', 'Afspraak of contact', 'Reserveren of kopen'];
+  if (/(haast|deadline|wanneer|hoe snel)/.test(laatste)) return ['Zo snel mogelijk', 'Geen haast'];
+  if (/(offerte|aanvraag).*(klaar|maken|zetten|regelen)|zal ik.*offerte/.test(laatste)) return ['Ja, graag', 'Eerst nog een vraag'];
+  return [];
+}
+
 function validLead(l) {
   if (!l || typeof l !== 'object') return false;
   const naam = clean(l.naam, 100);
@@ -247,7 +273,9 @@ export default {
       return json({ error: 'ai_unavailable' }, 503, origin);
     }
 
-    const { text, lead, chips } = parseReply(raw);
+    const parsed = parseReply(raw);
+    const { text, lead } = parsed;
+    const chips = lead ? [] : bepaalChips(text, parsed.chips);
     if (!text) return json({ error: 'empty' }, 502, origin);
 
     let leadStatus = null;
