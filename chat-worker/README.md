@@ -15,7 +15,7 @@ npx wrangler login
 npx wrangler deploy
 ```
 
-Daarna draait de bot op **https://chat.byxavio.nl** en praat de chat op byxavio.nl ermee.
+Daarna draait de bot op **https://byxavio-chat.goeijdjego.workers.dev** en praat de chat op byxavio.nl ermee.
 
 ## Wat de bot weet aanpassen
 

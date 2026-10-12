@@ -6,7 +6,5 @@ compatibility_date = "2026-10-01"
 [ai]
 binding = "AI"
 
-# Draait op chat.byxavio.nl (byxavio.nl staat al in je Cloudflare-account)
-routes = [
-  { pattern = "chat.byxavio.nl", custom_domain = true }
-]
+# Draait op https://byxavio-chat.goeijdjego.workers.dev (workers.dev staat standaard aan)
+workers_dev = true
