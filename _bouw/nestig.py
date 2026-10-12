@@ -18,6 +18,7 @@ STRAAT = "Speltstraat 16"
 POSTCODE = "1446 DA"
 PLAATS = "Purmerend"
 PRIJS = "27,95"
+PRIJS_BOEKET = "27,95"
 LEVERTIJD = "2 tot 3 weken"
 # Betalen via Mollie. Zet op True zodra MOLLIE_API_KEY in Cloudflare staat en draai het script opnieuw:
 # de teksten over betalen (veelgestelde vragen, bestellen, voorwaarden, privacy) gaan dan over direct online betalen.
@@ -28,6 +29,8 @@ MOLLIE = True
 # op de productpagina staan. Testen terwijl de winkel dicht is: open de productpagina met ?test=1 erachter.
 OPEN = False
 SEINTJE = f"https://wa.me/{WA}?text=" + "Hoi%20Nestig%2C%20geef%20me%20een%20seintje%20als%20de%20kattenhangmat%20te%20koop%20is."
+SEINTJE_BOEKET = f"https://wa.me/{WA}?text=" + "Hoi%20Nestig%2C%20geef%20me%20een%20seintje%20als%20het%20gehaakte%20boeket%20te%20koop%20is."
+ARTIKEL_BOEKET = "NES-BQ-01"
 ARTIKEL = "NES-KH-01"   # ons eigen artikelnummer, staat op de productpagina (verplicht: het product moet te herkennen zijn)
 DRAAGT = "17,5 kg"   # opgave van de leverancier bij CJ: "within 35 jin" (1 jin = 0,5 kg)
 # sleutel, naam, kleur van het knopje. De foto heet img/hangmat-<sleutel>.jpg. Zelfde lijst staat in js/shop.js.
@@ -92,6 +95,7 @@ def kop(current):
 <a class="logo" href="./" aria-label="Nestig, naar de homepage">nestig<span class="zon" aria-hidden="true"></span></a>
 <nav class="nav" aria-label="Hoofdmenu">
 {link("dieren.html", "Dieren", "dieren")}
+{link("cadeaus.html", "Cadeaus", "cadeaus")}
 <a class="mand" href="bestellen.html" data-mand-link aria-label="Winkelmand">{MAND_ICON}<span>Winkelmand</span><b data-mand-aantal>0</b></a>
 </nav></div></header>'''
 
@@ -102,6 +106,7 @@ VOET = f'''<footer class="voet"><div class="wrap">
 <p class="zacht" style="margin-top:10px;max-width:30ch">Fijne spullen voor je dier en je huis.</p></div>
 <div><h2>Winkel</h2><ul>
 <li><a href="dieren.html">Dieren</a></li>
+<li><a href="cadeaus.html">Cadeaus</a></li>
 <li><a href="bestellen.html">Winkelmand</a></li></ul></div>
 <div><h2>Klantenservice</h2><ul>
 <li><a href="./#vragen">Verzending en levertijd</a></li>
@@ -194,6 +199,10 @@ def vragen():
         ("Ik heb een klacht of een andere vraag",
          f'Je klacht nemen we serieus: je krijgt binnen 14 dagen een inhoudelijk antwoord. Stuur een appje naar <a class="link" href="{WA_VRAAG}" target="_blank" rel="noopener">{TEL_TOON}</a>. Je krijgt meestal dezelfde dag antwoord.'),
     ]
+    return faq(items)
+
+
+def faq(items):
     out = ['<div class="vragen">']
     for q, a in items:
         out.append(f'<details><summary>{q}</summary><p>{a}</p></details>')
@@ -206,6 +215,14 @@ STAPPEN = '''<ol class="stappen">
 <li><h3>Druk de zuignappen aan</h3><p>Stevig tegen het glas, tot er geen lucht meer achter zit.</p></li>
 <li><h3>Test met je hand</h3><p>Trek er even aan. Zit hij vast? Dan mag je kat erop.</p></li>
 </ol>'''
+
+
+def kaart_boeket(uid, kop="h3"):
+    return f'''<a class="kaart" href="boeket.html">
+<div class="beeld"><img src="img/boeket-2.jpg" width="800" height="800" alt="Gehaakt boeket met bordeauxrode rozen en witte madeliefjes op een nachtkastje" loading="lazy" style="aspect-ratio:4/3;object-fit:cover"></div>
+<div class="tekst"><{kop}>Gehaakt boeket, bordeauxrood</{kop}>
+<p class="zacht klein">Rozen en madeliefjes die nooit verwelken. Ongeveer 35 cm hoog.{"" if OPEN else " Binnenkort te koop."}</p>
+<p class="prijs">€ {PRIJS_BOEKET}</p></div></a>'''
 
 
 def kaart_hangmat(uid, kop="h3"):
@@ -242,6 +259,14 @@ home = f'''<section class="hero"><div class="wrap">
 </ul></div></section>
 
 <section class="sec"><div class="wrap">
+<h2>Onze producten</h2>
+<div class="kaarten" style="margin-top:28px">
+{kaart_hangmat("p1")}
+{kaart_boeket("p2")}
+</div>
+</div></section>
+
+<section class="sec" style="padding-top:0"><div class="wrap">
 <h2>Nestig begint klein</h2>
 <p class="sub">Eerst één ding dat goed is, daarna meer.</p>
 <div class="cats">
@@ -298,7 +323,7 @@ home = f'''<section class="hero"><div class="wrap">
 
 page("index.html",
      "Nestig – kattenhangmat voor het raam en fijne spullen voor thuis",
-     f"Nestig verkoopt fijne spullen voor je dier en je huis. Nu: de kattenhangmat voor het raam voor € {PRIJS}, met gratis verzending en 14 dagen bedenktijd.",
+     f"Nestig verkoopt fijne spullen voor je dier en je huis: een kattenhangmat voor het raam en een gehaakt boeket dat nooit verwelkt. Gratis verzending en 14 dagen bedenktijd.",
      home, ld={
          "@context": "https://schema.org", "@type": "OnlineStore", "name": "Nestig", "url": SITE,
          "logo": SITE + "apple-touch-icon.png", "telephone": TEL, "email": MAIL,
@@ -453,6 +478,173 @@ page("kattenhangmat.html", f"Kattenhangmat voor het raam – € {PRIJS}, gratis
                                                 "merchantReturnDays": 14, "returnMethod": "https://schema.org/ReturnByMail",
                                                 "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility"}},
      })
+
+# ---------------------------------------------------------------- boeket
+VRAGEN_BOEKET = ([] if OPEN else [
+    ("Kan ik nu al bestellen?",
+     f'Nog niet. We gaan binnenkort open. Laat een seintje achter via <a class="link" href="{SEINTJE_BOEKET}" target="_blank" rel="noopener">WhatsApp</a>, dan hoor je het als eerste. Je zit nergens aan vast.'),
+]) + [
+    ("Is het op tijd voor Sinterklaas of kerst?",
+     f"Reken op {LEVERTIJD} levertijd, want het boeket komt rechtstreeks van onze leverancier buiten Europa. Bestel dus ruim op tijd. Zodra je pakket onderweg is, krijg je een track-en-tracecode."),
+    ("Kan ik het naar iemand anders laten sturen?",
+     "Ja. Vul bij het bestellen het adres van de ontvanger in. Jouw e-mailadres gebruiken we voor de bevestiging en de track-en-tracecode."),
+    ("Hoe houd ik het mooi?",
+     "Zet het boeket op een droge plek, uit de volle zon. Stof het af met een zachte borstel of een föhn op de koude stand. Niet in de wasmachine."),
+    ("Wat kost verzending?",
+     "Niets. Verzending is gratis. We bezorgen op dit moment alleen in Nederland."),
+    ("Kan ik terugsturen?",
+     'Ja. Je hebt 14 dagen bedenktijd vanaf de dag dat je je pakket ontvangt. De kosten voor het terugsturen betaal je zelf. Hoe het werkt, lees je bij <a class="link" href="retourneren.html">retourneren</a>.'),
+    ("Heb ik garantie?",
+     'Ja. Je hebt wettelijke garantie. Is het boeket beschadigd of niet wat je mocht verwachten, stuur ons dan een foto via WhatsApp of e-mail. Dan zorgen wij kosteloos voor een nieuw boeket of je geld terug.'),
+    ("Ik heb een klacht of een andere vraag",
+     f'Je klacht nemen we serieus: je krijgt binnen 14 dagen een inhoudelijk antwoord. Stuur een appje naar <a class="link" href="{WA_VRAAG}" target="_blank" rel="noopener">{TEL_TOON}</a>. Je krijgt meestal dezelfde dag antwoord.'),
+]
+
+BOEKET_FOTOS = [
+    ("img/boeket-1.jpg", "Gehaakt boeket met bordeauxrode rozen en witte madeliefjes in rood papier met een gouden strik"),
+    ("img/boeket-2.jpg", "Het gehaakte boeket op een nachtkastje naast het bed"),
+    ("img/boeket-3.jpg", "Een man geeft een vrouw het gehaakte boeket"),
+    ("img/boeket-4.jpg", "Het boeket is ongeveer 35 cm hoog en komt in een doos van 31 bij 15 bij 10 cm"),
+]
+BOEKET_DUIMEN = "\n".join(
+    (f'<button type="button" class="duim" data-duim="kleur" aria-pressed="true" aria-label="Foto 1"><img data-duimfoto src="{f}" width="800" height="800" alt=""></button>' if i == 0 else
+     f'<button type="button" class="duim" data-duim="foto" data-src="{f}" data-alt="{a}" aria-pressed="false" aria-label="Foto {i + 1}"><img src="{f}" width="800" height="800" alt="" loading="lazy"></button>')
+    for i, (f, a) in enumerate(BOEKET_FOTOS))
+
+boeket = f'''<div class="wrap">
+<p class="kruimel"><a href="./">Home</a> / <a href="cadeaus.html">Cadeaus</a> / Gehaakt boeket</p>
+<div class="product">
+<div class="galerij vierkant">
+<div class="groot"><img data-hoofdfoto src="{BOEKET_FOTOS[0][0]}" width="800" height="800" alt="{BOEKET_FOTOS[0][1]}"></div>
+<div class="duimen" role="group" aria-label="Kies een foto">
+{BOEKET_DUIMEN}
+</div>
+</div>
+<div class="koop">
+<h1>Gehaakt boeket, bordeauxrood</h1>
+<p class="sub">Rozen en madeliefjes die nooit verwelken. Ongeveer 35 cm hoog, in rood papier met een gouden strik.</p>
+<p class="prijs">€ {PRIJS_BOEKET}<small>Inclusief btw en gratis verzending</small></p>
+<form data-product="boeket">
+<input type="radio" name="kleur" value="rood" checked hidden>
+<div data-koop{"" if OPEN else " hidden"}>
+<div class="veld"><span class="veldkop" id="aantal-kop">Aantal</span>
+<div class="teller" role="group" aria-labelledby="aantal-kop">
+<button type="button" data-min aria-label="Eén minder">−</button>
+<input type="number" inputmode="numeric" min="1" max="10" value="1" aria-label="Aantal">
+<button type="button" data-plus aria-label="Eén meer">+</button>
+</div></div>
+<button class="btn btn-zon btn-breed" type="submit">In winkelmand</button>
+</div>
+{"" if OPEN else f"""<div class="seintje" data-seintje>
+<span class="label">Binnenkort te koop</span>
+<p>We gaan binnenkort open. Laat een seintje achter, dan appen we je zodra je kunt bestellen. Je zit nergens aan vast.</p>
+<a class="btn btn-wa btn-breed" data-seintje-knop href="{SEINTJE_BOEKET}" target="_blank" rel="noopener">{WA_ICON}Geef me een seintje</a>
+</div>"""}
+</form>
+<div class="toegevoegd" data-toegevoegd hidden role="status"><span data-toegevoegd-tekst></span><a class="link" href="bestellen.html">Verder naar bestellen</a></div>
+<ul class="zeker">
+<li>Levertijd {LEVERTIJD}, met track-en-trace</li>
+<li>Gratis verzending in Nederland</li>
+<li>14 dagen bedenktijd en wettelijke garantie</li>
+<li>Betalen met iDEAL</li>
+<li>Vragen? <a class="link" href="{WA_VRAAG}" target="_blank" rel="noopener">App {TEL_TOON}</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+<section class="sec band"><div class="wrap uitleg">
+<div>
+<h2>Bloemen die blijven</h2>
+<p>Een bos echte bloemen is na een week op. Dit boeket blijft staan: geen water, geen afgevallen blaadjes en geen vaas nodig.</p>
+<p>Een cadeau voor Sinterklaas, kerst of Valentijn. Of gewoon voor jezelf, op je nachtkastje of in de vensterbank.</p>
+</div>
+<div>
+<h2>Wat je krijgt</h2>
+<table class="specs">
+<tr><th scope="row">In het pakket</th><td>1 boeket in een doos van 31 × 15 × 10 cm</td></tr>
+<tr><th scope="row">Artikelnummer</th><td>{ARTIKEL_BOEKET}</td></tr>
+<tr><th scope="row">Hoogte</th><td>Ongeveer 35 cm</td></tr>
+<tr><th scope="row">Bloemen</th><td>Bordeauxrode rozen en witte madeliefjes, met groene kunstblaadjes</td></tr>
+<tr><th scope="row">Materiaal</th><td>Gehaakt garen, kunstblaadjes, cadeaupapier en lint</td></tr>
+<tr><th scope="row">Gewicht</th><td>Ongeveer 400 gram, met doos</td></tr>
+<tr><th scope="row">Levertijd</th><td>{LEVERTIJD}</td></tr>
+<tr><th scope="row">Verzending</th><td>Gratis in Nederland</td></tr>
+</table>
+</div>
+</div></section>
+
+<section class="sec"><div class="wrap ophangen">
+<div>
+<h2>Zo ziet het er in het echt uit</h2>
+<p class="sub">Het boeket komt in een doos. Trek na het uitpakken het papier en de bloemen even in model.</p>
+</div>
+<video controls muted playsinline preload="none" poster="img/boeket-video.jpg" width="720" height="720" aria-label="Filmpje: het gehaakte boeket van dichtbij, in iemands hand en op een bureau">
+<source src="img/boeket-video.mp4" type="video/mp4"></video>
+</div></section>
+
+<section class="sec band"><div class="wrap uitleg">
+<div>
+<h2>Veilig gebruiken</h2>
+<ul class="punten">
+<li>Dit is decoratie, geen speelgoed. Er zitten kleine onderdelen aan die los kunnen raken. Houd het uit de buurt van kinderen onder 3 jaar.</li>
+<li>Houd het uit de buurt van huisdieren die op garen of blaadjes kauwen.</li>
+<li>Houd het uit de buurt van kaarsen, open vuur en andere warmtebronnen.</li>
+<li>Bewaar het op een droge plek. Vocht kan schimmel geven.</li>
+<li>Houd het verpakkingsmateriaal uit de buurt van kinderen en dieren.</li>
+</ul>
+</div>
+<div>
+<h2>Wie staat achter dit product?</h2>
+<p>Nestig verkoopt dit product in Nederland en is je aanspreekpunt bij vragen, klachten of een probleem met de veiligheid.</p>
+{WIE}
+</div>
+</div></section>
+
+<section class="sec" id="vragen"><div class="wrap">
+<h2>Veelgestelde vragen</h2>
+{faq(VRAGEN_BOEKET)}
+</div></section>
+
+<div class="koopbalk" data-koopbalk hidden>
+<div><strong>€ {PRIJS_BOEKET}</strong><span data-koopbalk-tekst>{"Gratis verzending" if OPEN else "Binnenkort te koop"}</span></div>
+<button class="btn btn-zon" type="button" data-koopbalk-knop{"" if OPEN else " hidden"}>In winkelmand</button>
+<a class="btn btn-zon" href="bestellen.html" data-koopbalk-verder hidden>Naar bestellen</a>
+{"" if OPEN else f'<a class="btn btn-wa" data-seintje-knop data-koopbalk-seintje href="{SEINTJE_BOEKET}" target="_blank" rel="noopener">Geef me een seintje</a>'}
+</div>'''
+page("boeket.html", f"Gehaakt boeket, bordeauxrood – € {PRIJS_BOEKET}, gratis verzending | Nestig",
+     f"Gehaakt boeket met bordeauxrode rozen en witte madeliefjes dat nooit verwelkt. Ongeveer 35 cm hoog. € {PRIJS_BOEKET} met gratis verzending en 14 dagen bedenktijd.",
+     boeket, current="cadeaus", ld={
+         "@context": "https://schema.org", "@type": "Product", "name": "Gehaakt boeket, bordeauxrood",
+         "description": "Gehaakt boeket met bordeauxrode rozen en witte madeliefjes, ongeveer 35 cm hoog, in rood cadeaupapier met een gouden strik.",
+         "material": "Garen", "image": [SITE + f[0] for f in BOEKET_FOTOS], "sku": ARTIKEL_BOEKET,
+         "offers": {"@type": "Offer", "url": SITE + "boeket", "priceCurrency": "EUR", "price": PRIJS_BOEKET.replace(",", "."),
+                    "availability": "https://schema.org/InStock" if OPEN else "https://schema.org/OutOfStock",
+                    "shippingDetails": {"@type": "OfferShippingDetails",
+                                        "shippingRate": {"@type": "MonetaryAmount", "value": "0", "currency": "EUR"},
+                                        "shippingDestination": {"@type": "DefinedRegion", "addressCountry": "NL"},
+                                        "deliveryTime": {"@type": "ShippingDeliveryTime",
+                                                         "handlingTime": {"@type": "QuantitativeValue", "minValue": 1, "maxValue": 3, "unitCode": "DAY"},
+                                                         "transitTime": {"@type": "QuantitativeValue", "minValue": 8, "maxValue": 18, "unitCode": "DAY"}}},
+                    "hasMerchantReturnPolicy": {"@type": "MerchantReturnPolicy", "applicableCountry": "NL",
+                                                "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                                                "merchantReturnDays": 14, "returnMethod": "https://schema.org/ReturnByMail",
+                                                "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility"}},
+     })
+
+# ---------------------------------------------------------------- cadeaus
+cadeaus = f'''<div class="wrap">
+<p class="kruimel"><a href="./">Home</a> / Cadeaus</p>
+<div class="paginakop"><h1>Cadeaus</h1><p class="sub">Iets moois om te geven, of om zelf te houden.</p></div>
+<div class="kaarten" style="margin-bottom:clamp(56px,8vw,96px)">
+{kaart_boeket("c1", kop="h2")}
+<div class="kaart kaart-leeg"><span class="label">Binnenkort</span><h2>Meer cadeaus</h2>
+<p class="zacht">We zoeken het volgende cadeau uit. Tip voor ons? <a class="link" href="{WA_VRAAG}" target="_blank" rel="noopener">App ons</a>.</p></div>
+</div>
+</div>'''
+page("cadeaus.html", "Cadeaus – iets moois om te geven | Nestig",
+     "Cadeaus van Nestig: een gehaakt boeket dat nooit verwelkt, met gratis verzending en 14 dagen bedenktijd.",
+     cadeaus, current="cadeaus")
 
 # ---------------------------------------------------------------- bestellen
 bestellen = f'''<div class="wrap">
@@ -686,7 +878,7 @@ av = f'''<div class="wrap tekst">
 <p>Je hebt recht op een goed product. Voldoet het niet aan wat je ervan mag verwachten, dan zorgen wij kosteloos voor herstel of vervanging. Lukt dat niet, dan krijg je je geld terug. Dit is de wettelijke garantie. Die blijft altijd gelden.</p>
 
 <h2>8. Veilig gebruik</h2>
-<p>Volg de aanwijzingen onder “Veilig gebruiken” op de productpagina. Belast de kattenhangmat met maximaal {DRAAGT}, hang hem op glad, schoon en droog glas, test hem met je hand voordat je kat erop gaat en controleer de zuignappen regelmatig.</p>
+<p>Volg de aanwijzingen onder “Veilig gebruiken” op de productpagina van je product.</p>
 
 <h2 id="klachten">9. Klachten</h2>
 <p>Niet tevreden? Laat het ons zo snel mogelijk weten via WhatsApp, telefoon of e-mail. Je krijgt binnen 14 dagen een inhoudelijk antwoord.</p>
@@ -778,7 +970,7 @@ page("404.html", "Pagina niet gevonden | Nestig", "Deze pagina bestaat niet.", n
 (OUT / "_redirects").write_text("/kamer / 302\n/kamer.html / 302\n")
 (OUT / "_routes.json").write_text('{"version":1,"include":["/api/*"],"exclude":[]}\n')
 (OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nDisallow: /bestellen\nDisallow: /bedankt\nDisallow: /verzonden\nSitemap: {SITE}sitemap.xml\n")
-urls = ["", "kattenhangmat", "dieren", "retourneren", "herroepen", "algemene-voorwaarden", "privacy"]
+urls = ["", "kattenhangmat", "dieren", "boeket", "cadeaus", "retourneren", "herroepen", "algemene-voorwaarden", "privacy"]
 (OUT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                  + "".join(f"  <url><loc>{SITE}{u}</loc></url>\n" for u in urls) + "</urlset>\n")
 (OUT / "favicon.svg").write_text(f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect x="4" y="4" width="56" height="56" rx="14" fill="#fff" stroke="{INK}" stroke-width="5"/><rect x="12" y="12" width="40" height="40" rx="6" fill="#dcecf1"/><circle cx="38" cy="27" r="10" fill="#ffc83d" stroke="{INK}" stroke-width="3.5"/><rect x="12" y="41" width="40" height="7" rx="3.5" fill="{INK}"/></svg>''')

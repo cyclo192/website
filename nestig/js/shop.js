@@ -27,6 +27,18 @@ const PRODUCTEN = {
       roze: { naam: "Roze", foto: "img/hangmat-roze.jpg" },
       lila: { naam: "Lila", foto: "img/hangmat-lila.jpg" },
     },
+    seintje: "de kattenhangmat",
+    alt: (kleur) => "Witte kat op de kattenhangmat aan het raam, kleur " + kleur.toLowerCase(),
+  },
+  boeket: {
+    naam: "Gehaakt boeket",
+    prijs: 2795,
+    url: "boeket.html",
+    kleuren: {
+      rood: { naam: "Bordeauxrood", foto: "img/boeket-1.jpg" },
+    },
+    seintje: "het gehaakte boeket",
+    alt: () => "Gehaakt boeket met bordeauxrode rozen en witte madeliefjes in rood papier met een gouden strik",
   },
 };
 
@@ -162,12 +174,13 @@ function startProduct() {
   }
 
   const kleurNu = () => form.querySelector("input[name=kleur]:checked").value;
+  const meerdereKleuren = Object.keys(product.kleuren).length > 1;
   const toonFoto = (knop) => {
     duimen.forEach((d) => d.setAttribute("aria-pressed", d === knop ? "true" : "false"));
     if (knop.dataset.duim === "kleur") {
       const k = product.kleuren[kleurNu()];
       hoofdfoto.src = k.foto;
-      hoofdfoto.alt = "Witte kat op de kattenhangmat aan het raam, kleur " + k.naam.toLowerCase();
+      hoofdfoto.alt = product.alt(k.naam);
     } else {
       hoofdfoto.src = knop.dataset.src;
       hoofdfoto.alt = knop.dataset.alt;
@@ -180,7 +193,7 @@ function startProduct() {
     const duimfoto = document.querySelector("[data-duimfoto]");
     if (duimfoto) duimfoto.src = k.foto;
     if (duimen.length) toonFoto(duimen[0]);
-    const vraag = "Hoi Nestig, geef me een seintje als de kattenhangmat te koop is. Kleur: " + k.naam.toLowerCase() + ".";
+    const vraag = "Hoi Nestig, geef me een seintje als " + product.seintje + " te koop is." + (meerdereKleuren ? " Kleur: " + k.naam.toLowerCase() + "." : "");
     seintjes.forEach((a) => { a.href = "https://wa.me/" + NESTIG.whatsapp + "?text=" + encodeURIComponent(vraag); });
   };
   form.querySelectorAll("input[name=kleur]").forEach((el) => el.addEventListener("change", toonKleur));
@@ -192,7 +205,7 @@ function startProduct() {
   const inMand = () => {
     const aantal = parseInt(form.querySelector(".teller input").value, 10) || 1;
     voegToe(id, kleurNu(), aantal);
-    const tekst = aantal + "× " + product.kleuren[kleurNu()].naam.toLowerCase() + " ligt in je winkelmand.";
+    const tekst = aantal + "× " + (meerdereKleuren ? product.kleuren[kleurNu()].naam : product.naam).toLowerCase() + " ligt in je winkelmand.";
     klaar.hidden = false;
     klaar.querySelector("[data-toegevoegd-tekst]").textContent = tekst;
     if (balk) {

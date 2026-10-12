@@ -36,6 +36,11 @@ const PRODUCTEN = {
     prijs: 2795,
     kleuren: { beige: "Beige", zwart: "Zwart", blauw: "Lichtblauw", roze: "Roze", lila: "Lila" },
   },
+  boeket: {
+    naam: "Gehaakt boeket",
+    prijs: 2795,
+    kleuren: { rood: "Bordeauxrood" },
+  },
 };
 
 const ZAAK = {
