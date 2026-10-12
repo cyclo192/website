@@ -1,0 +1,12 @@
+name = "byxavio-chat"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+
+# Workers AI (gratis dagtegoed, geen API-key nodig)
+[ai]
+binding = "AI"
+
+# Draait op chat.byxavio.nl (byxavio.nl staat al in je Cloudflare-account)
+routes = [
+  { pattern = "chat.byxavio.nl", custom_domain = true }
+]
