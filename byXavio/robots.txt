@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
-Sitemap: https://byxavio.nl/sitemap.xml
-
 Disallow: /boekhouding/
+
+Sitemap: https://byxavio.nl/sitemap.xml
