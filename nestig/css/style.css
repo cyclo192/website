@@ -320,3 +320,14 @@ fieldset{border:0}
   *{transition:none!important;animation:none!important}
 }
 .hero-foto.vierkant,.fotos.vierkant figure{aspect-ratio:1}
+.hero-duo{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.hero-duo .hero-foto:nth-child(2){margin-top:40px}
+.kaarten.producten .beeld,.kaarten.categorie .beeld{aspect-ratio:1}
+.kaarten.categorie{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+@media (max-width:640px){
+  .kaarten.producten,.kaarten.categorie{grid-template-columns:1fr 1fr;gap:12px}
+  .kaarten.producten .kaart,.kaarten.categorie .kaart{border-radius:16px}
+  .kaarten.producten .tekst,.kaarten.categorie .tekst{padding:12px}
+  .kaarten.producten h2,.kaarten.producten h3,.kaarten.categorie h3{font-size:1rem}
+  .kaarten.producten .zacht{display:none}
+}

@@ -215,7 +215,7 @@ def faq(items):
 
 def kaart_boeket(uid, kop="h3"):
     return f'''<a class="kaart" href="boeket.html">
-<div class="beeld"><img src="img/boeket-2.jpg" width="800" height="800" alt="Gehaakt boeket met bordeauxrode rozen en witte madeliefjes op een nachtkastje" loading="lazy" style="aspect-ratio:4/3;object-fit:cover"></div>
+<div class="beeld"><img src="img/boeket-2.jpg" width="800" height="800" alt="Gehaakt boeket met bordeauxrode rozen en witte madeliefjes op een nachtkastje" loading="lazy"></div>
 <div class="tekst"><{kop}>Gehaakt boeket, bordeauxrood</{kop}>
 <p class="zacht klein">Rozen en madeliefjes die nooit verwelken. Ongeveer 35 cm hoog.{"" if OPEN else " Binnenkort te koop."}</p>
 <p class="prijs">€ {PRIJS_BOEKET}</p></div></a>'''
@@ -261,7 +261,7 @@ KERSTBOOM_DUIMEN = "\n".join(
 
 def kaart_kerstboom(uid, kop="h3"):
     return f'''<a class="kaart" href="kattenhuisje-kerstboom.html">
-<div class="beeld"><img src="img/kerstboom-2.jpg" width="800" height="800" alt="Groen kattenhuisje in de vorm van een kerstboom met een kat ervoor" loading="lazy" style="aspect-ratio:4/3;object-fit:cover"></div>
+<div class="beeld"><img src="img/kerstboom-2.jpg" width="800" height="800" alt="Groen kattenhuisje in de vorm van een kerstboom met een kat ervoor" loading="lazy"></div>
 <div class="tekst"><{kop}>Kattenhuisje kerstboom</{kop}>
 <p class="zacht klein">Een warm holletje voor je kat, ongeveer 60 cm hoog.{"" if KERSTBOOM_TE_KOOP else " Binnenkort te koop."}</p>
 <p class="prijs">€ {PRIJS_KERSTBOOM}</p></div></a>'''
@@ -270,14 +270,16 @@ def kaart_kerstboom(uid, kop="h3"):
 # ---------------------------------------------------------------- home
 home = f'''<section class="hero"><div class="wrap">
 <div>
-<h1>Bloemen die nooit verwelken.</h1>
-<p class="sub">Een gehaakt boeket met bordeauxrode rozen en witte madeliefjes. Een cadeau dat blijft staan.</p>
+<h1>Fijne spullen voor thuis, je dier en om te geven.</h1>
+<p class="sub">Een kleine webwinkel met zorgvuldig uitgekozen producten. Gratis verzonden in heel Nederland.</p>
 <div class="hero-koop">
-<a class="btn btn-zon" href="boeket.html">Bekijk het boeket</a>
-<p class="prijs">€ {PRIJS_BOEKET}<small>{"Gratis verzending" if OPEN else "Binnenkort te koop"}</small></p>
+<a class="btn btn-zon" href="#producten">Bekijk alle producten</a>
 </div>
 </div>
-<figure class="hero-foto vierkant"><img src="img/boeket-1.jpg" width="800" height="800" alt="Gehaakt boeket met bordeauxrode rozen en witte madeliefjes in rood papier met een gouden strik" fetchpriority="high"></figure>
+<div class="hero-duo">
+<figure class="hero-foto vierkant"><img src="img/boeket-2.jpg" width="800" height="800" alt="Gehaakt boeket op een nachtkastje" fetchpriority="high"></figure>
+<figure class="hero-foto vierkant"><img src="img/kerstboom-2.jpg" width="800" height="800" alt="Kattenhuisje in de vorm van een kerstboom met een kat ervoor"></figure>
+</div>
 </div></section>
 
 <section class="feiten" aria-label="Goed om te weten"><div class="wrap"><ul>
@@ -288,38 +290,27 @@ home = f'''<section class="hero"><div class="wrap">
 </ul></div></section>
 
 <section class="sec"><div class="wrap">
-<h2>Onze producten</h2>
-<div class="kaarten" style="margin-top:28px">
+<h2>Shop per categorie</h2>
+<div class="kaarten categorie">
+<a class="kaart" href="cadeaus.html"><div class="beeld"><img src="img/boeket-3.jpg" width="800" height="800" alt="Iemand geeft een gehaakt boeket cadeau" loading="lazy"></div>
+<div class="tekst"><h3>Cadeaus</h3><p class="zacht klein">Iets moois om te geven, of om zelf te houden.</p></div></a>
+<a class="kaart" href="dieren.html"><div class="beeld"><img src="img/kerstboom-1.jpg" width="800" height="800" alt="Kat stapt uit een kattenhuisje" loading="lazy"></div>
+<div class="tekst"><h3>Dieren</h3><p class="zacht klein">Spullen waar je kat of hond blij van wordt.</p></div></a>
+</div>
+</div></section>
+
+<section class="sec" id="producten" style="padding-top:0"><div class="wrap">
+<h2>Alle producten</h2>
+<div class="kaarten producten">
 {kaart_boeket("p1")}
 {kaart_kerstboom("p2")}
-<div class="kaart kaart-leeg"><span class="label">Binnenkort</span><h3>Meer producten</h3>
-<p class="zacht">Nestig is een kleine webwinkel van byXavio uit {PLAATS}. We breiden rustig uit. Tip voor ons? <a class="link" href="{WA_VRAAG}" target="_blank" rel="noopener">App ons</a>.</p></div>
 </div>
-</div></section>
-
-<section class="sec" style="padding-top:0"><div class="wrap">
-<h2>Een cadeau dat blijft</h2>
-<p class="sub">Geen water, geen vaas en geen afgevallen blaadjes. Voor Sinterklaas, kerst, Valentijn of gewoon voor jezelf.</p>
-<div class="fotos vierkant">
-<figure><img src="img/boeket-2.jpg" width="800" height="800" alt="Het gehaakte boeket op een nachtkastje naast het bed" loading="lazy"></figure>
-<figure><img src="img/boeket-3.jpg" width="800" height="800" alt="Een man geeft een vrouw het gehaakte boeket" loading="lazy"></figure>
-</div>
-<p style="margin-top:26px"><a class="btn btn-zon" href="boeket.html">Bekijk het boeket</a></p>
-</div></section>
-
-<section class="sec band"><div class="wrap ophangen">
-<div>
-<h2>Zo ziet het er in het echt uit</h2>
-<p class="sub">Ongeveer 35 cm hoog, in rood cadeaupapier met een gouden strik. Het boeket komt in een doos, klaar om te geven.</p>
-</div>
-<video controls muted playsinline preload="none" poster="img/boeket-video.jpg" width="720" height="720" aria-label="Filmpje: het gehaakte boeket van dichtbij, in iemands hand en op een bureau">
-<source src="img/boeket-video.mp4" type="video/mp4"></video>
 </div></section>
 
 <section class="sec eerlijk"><div class="wrap">
 <h2>Eerlijk over de levertijd</h2>
 <div>
-<p>Je bestelling komt rechtstreeks van onze leverancier buiten Europa. Daardoor is je pakket {LEVERTIJD} onderweg. Dat is langer dan je misschien gewend bent, en dat zeggen we liever vooraf. Geef je het als cadeau, bestel dan ruim op tijd.</p>
+<p>Nestig is een kleine webwinkel van byXavio uit {PLAATS}. Je bestelling komt rechtstreeks van onze leverancier buiten Europa. Daardoor is je pakket {LEVERTIJD} onderweg. Dat is langer dan je misschien gewend bent, en dat zeggen we liever vooraf. Geef je iets cadeau, bestel dan ruim op tijd.</p>
 <p>De prijs die je ziet is de prijs die je betaalt, inclusief btw en verzending. Zodra je pakket onderweg is, krijg je een track-en-tracecode.</p>
 <p>Valt het toch tegen? Dan heb je 14 dagen bedenktijd. <a class="link" href="retourneren.html">Lees hoe retourneren werkt</a>.</p>
 </div>
@@ -339,8 +330,8 @@ home = f'''<section class="hero"><div class="wrap">
 </div></section>'''
 
 page("index.html",
-     "Nestig – gehaakt boeket dat nooit verwelkt",
-     f"Nestig verkoopt cadeaus die blijven, zoals een gehaakt boeket met rozen en madeliefjes. € {PRIJS_BOEKET} met gratis verzending en 14 dagen bedenktijd.",
+     "Nestig – fijne spullen voor thuis, je dier en om te geven",
+     "Nestig is een kleine webwinkel met cadeaus en spullen voor thuis en je dier. Gratis verzending in Nederland en 14 dagen bedenktijd.",
      home, ld={
          "@context": "https://schema.org", "@type": "OnlineStore", "name": "Nestig", "url": SITE,
          "logo": SITE + "apple-touch-icon.png", "telephone": TEL, "email": MAIL,
@@ -611,7 +602,7 @@ page("kattenhuisje-kerstboom.html", f"Kattenhuisje kerstboom – € {PRIJS_KERS
 dieren = f'''<div class="wrap">
 <p class="kruimel"><a href="./">Home</a> / Dieren</p>
 <div class="paginakop"><h1>Voor je dier</h1><p class="sub">Spullen waar je kat of hond blij van wordt.</p></div>
-<div class="kaarten" style="margin-bottom:clamp(56px,8vw,96px)">
+<div class="kaarten producten" style="margin-bottom:clamp(56px,8vw,96px)">
 {kaart_kerstboom("d1", kop="h2")}
 <div class="kaart kaart-leeg"><span class="label">Binnenkort</span><h2>Meer voor kat en hond</h2>
 <p class="zacht">We zoeken het volgende product uit. Tip voor ons? <a class="link" href="{WA_VRAAG}" target="_blank" rel="noopener">App ons</a>.</p></div>
@@ -625,7 +616,7 @@ page("dieren.html", "Dieren – spullen voor kat en hond | Nestig",
 cadeaus = f'''<div class="wrap">
 <p class="kruimel"><a href="./">Home</a> / Cadeaus</p>
 <div class="paginakop"><h1>Cadeaus</h1><p class="sub">Iets moois om te geven, of om zelf te houden.</p></div>
-<div class="kaarten" style="margin-bottom:clamp(56px,8vw,96px)">
+<div class="kaarten producten" style="margin-bottom:clamp(56px,8vw,96px)">
 {kaart_boeket("c1", kop="h2")}
 <div class="kaart kaart-leeg"><span class="label">Binnenkort</span><h2>Meer cadeaus</h2>
 <p class="zacht">We zoeken het volgende cadeau uit. Tip voor ons? <a class="link" href="{WA_VRAAG}" target="_blank" rel="noopener">App ons</a>.</p></div>
@@ -967,6 +958,6 @@ if "--og" in sys.argv:
   (OUT / "_og.html").write_text(f'''<!doctype html><html lang="nl"><head><meta charset="utf-8"><link rel="stylesheet" href="css/style.css"><style>
 body{{width:1200px;height:630px;background:var(--glas);display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:40px;padding:0 70px;overflow:hidden}}
 .l{{font:italic 600 64px/1 var(--display);display:flex;align-items:baseline}}.l i{{width:22px;height:22px;border-radius:50%;background:var(--zon);border:3px solid var(--ink);margin-left:8px}}
-h1{{font-size:68px;margin-top:34px}}p{{font-size:30px;margin-top:26px}}.f{{width:440px;height:440px;object-fit:cover;border:3px solid var(--ink);border-radius:28px;box-shadow:0 8px 0 var(--ink)}}</style></head><body>
-<div><div class="l">nestig<i></i></div><h1>Bloemen die nooit verwelken.</h1><p>Gehaakt boeket, € {PRIJS_BOEKET}</p></div><img class="f" src="img/boeket-1.jpg"></body></html>''')
+h1{{font-size:68px;margin-top:34px}}p{{font-size:30px;margin-top:26px}}.f{{width:250px;height:250px;object-fit:cover;border:3px solid var(--ink);border-radius:28px;box-shadow:0 8px 0 var(--ink)}}</style></head><body>
+<div><div class="l">nestig<i></i></div><h1>Fijne spullen voor thuis en je dier.</h1><p>Gratis verzending in Nederland</p></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:16px"><img class="f" src="img/boeket-2.jpg"><img class="f" src="img/kerstboom-2.jpg"></div></body></html>''')
 print("klaar:", sorted(p.name for p in OUT.iterdir()))
