@@ -132,7 +132,10 @@ def versie(pad):
     return hashlib.md5((OUT / pad).read_bytes()).hexdigest()[:8]
 
 
-def page(slug, title, desc, body, current=None, noindex=False, ld=None, geheim=False, zweef=True):
+def page(slug, title, desc, body, current=None, noindex=False, ld=None, geheim=False, zweef=True, dicht=None):
+    """dicht: True = op deze pagina geen bestelknop maar "Geef me een seintje" (product nog niet te koop)."""
+    if dicht is None:
+        dicht = not OPEN
     url = SITE + ("" if slug == "index.html" else slug.removesuffix(".html"))
     robots = '<meta name="robots" content="noindex">\n' if noindex else ''
     if geheim:  # het adres van deze pagina bevat een kenmerk: niet meesturen als iemand doorklikt naar een andere site
@@ -163,7 +166,7 @@ def page(slug, title, desc, body, current=None, noindex=False, ld=None, geheim=F
 <link rel="preload" href="fonts/inter-400.woff" as="font" type="font/woff" crossorigin>
 <link rel="stylesheet" href="css/style.css?v={versie("css/style.css")}">
 {ldtag}</head>
-<body{"" if zweef else ' class="geen-zweef"'}{"" if OPEN else ' data-winkel="dicht"'}>
+<body{"" if zweef else ' class="geen-zweef"'}{' data-winkel="dicht"' if dicht else ""}>
 {kop(current)}
 <main id="inhoud">
 {body}
