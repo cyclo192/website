@@ -16,20 +16,6 @@ const NESTIG = {
 };
 
 const PRODUCTEN = {
-  kattenhangmat: {
-    naam: "Kattenhangmat voor het raam",
-    prijs: 2795,
-    url: "kattenhangmat.html",
-    kleuren: {
-      beige: { naam: "Beige", foto: "img/hangmat-beige.jpg" },
-      zwart: { naam: "Zwart", foto: "img/hangmat-zwart.jpg" },
-      blauw: { naam: "Lichtblauw", foto: "img/hangmat-blauw.jpg" },
-      roze: { naam: "Roze", foto: "img/hangmat-roze.jpg" },
-      lila: { naam: "Lila", foto: "img/hangmat-lila.jpg" },
-    },
-    seintje: "de kattenhangmat",
-    alt: (kleur) => "Witte kat op de kattenhangmat aan het raam, kleur " + kleur.toLowerCase(),
-  },
   boeket: {
     naam: "Gehaakt boeket",
     prijs: 2795,
@@ -365,7 +351,7 @@ function startBestellen() {
 
   /* Is de winkel nog dicht of staat betalen in testmodus, dan zeggen we dat eerlijk boven het formulier. */
   if (document.body.dataset.winkel === "dicht") { nietOpen = true; teken(); }
-  else fetch("/api/stand", { cache: "no-store" }).then((r) => r.json()).then((d) => { nietOpen = d.betalen === "test"; teken(); }).catch(() => {});
+  else fetch("/api/stand", { cache: "no-store" }).then((r) => r.json()).then((d) => { nietOpen = d.betalen !== "live"; teken(); }).catch(() => {});
 
   function bericht() {
     const mand = leesMand();

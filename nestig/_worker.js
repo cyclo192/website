@@ -34,11 +34,6 @@
    wordt genegeerd. Houd deze lijst gelijk aan js/shop.js. */
 
 const PRODUCTEN = {
-  kattenhangmat: {
-    naam: "Kattenhangmat voor het raam",
-    prijs: 2795,
-    kleuren: { beige: "Beige", zwart: "Zwart", blauw: "Lichtblauw", roze: "Roze", lila: "Lila" },
-  },
   boeket: {
     naam: "Gehaakt boeket",
     prijs: 2795,

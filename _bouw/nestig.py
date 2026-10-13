@@ -20,14 +20,15 @@ PLAATS = "Purmerend"
 PRIJS = "27,95"
 PRIJS_BOEKET = "27,95"
 LEVERTIJD = "2 tot 3 weken"
-# Betalen via Mollie. Zet op True zodra MOLLIE_API_KEY in Cloudflare staat en draai het script opnieuw:
+# Online betalen (nu via Stripe, zie _worker.js). Zet op True zodra STRIPE_SECRET_KEY in Cloudflare staat en draai het script opnieuw:
 # de teksten over betalen (veelgestelde vragen, bestellen, voorwaarden, privacy) gaan dan over direct online betalen.
 # Op False gaan ze over een betaalverzoek achteraf. De koppeling zelf luistert alleen naar de sleutel, niet naar deze schakelaar.
 MOLLIE = True
 # Is de winkel open? Op False staat er op de productpagina geen bestelknop maar "Geef me een seintje" (WhatsApp).
-# Zet pas op True als (1) de live-sleutel van Mollie in Cloudflare staat en (2) naam en adres van de fabrikant
-# op de productpagina staan. Testen terwijl de winkel dicht is: open de productpagina met ?test=1 erachter.
-OPEN = False
+# Op True zonder live-sleutel van Stripe: klanten zien de bestelknop, en bij bestellen staat er eerlijk dat betalen
+# in testmodus staat. Zodra de live-sleutel in Cloudflare staat, verdwijnt die melding vanzelf.
+# Elk product op de site moet naam en adres van de fabrikant op de productpagina hebben.
+OPEN = True
 SEINTJE = f"https://wa.me/{WA}?text=" + "Hoi%20Nestig%2C%20geef%20me%20een%20seintje%20als%20de%20kattenhangmat%20te%20koop%20is."
 SEINTJE_BOEKET = f"https://wa.me/{WA}?text=" + "Hoi%20Nestig%2C%20geef%20me%20een%20seintje%20als%20het%20gehaakte%20boeket%20te%20koop%20is."
 ARTIKEL_BOEKET = "NES-BQ-01"
@@ -96,7 +97,6 @@ def kop(current):
 <header class="top"><div class="wrap">
 <a class="logo" href="./" aria-label="Nestig, naar de homepage">nestig<span class="zon" aria-hidden="true"></span></a>
 <nav class="nav" aria-label="Hoofdmenu">
-{link("dieren.html", "Dieren", "dieren")}
 {link("cadeaus.html", "Cadeaus", "cadeaus")}
 <a class="mand" href="bestellen.html" data-mand-link aria-label="Winkelmand">{MAND_ICON}<span>Winkelmand</span><b data-mand-aantal>0</b></a>
 </nav></div></header>'''
@@ -105,9 +105,8 @@ def kop(current):
 VOET = f'''<footer class="voet"><div class="wrap">
 <div class="kolommen">
 <div><a class="logo" href="./" aria-label="Nestig, naar de homepage">nestig<span class="zon" aria-hidden="true"></span></a>
-<p class="zacht" style="margin-top:10px;max-width:30ch">Fijne spullen voor je dier en je huis.</p></div>
+<p class="zacht" style="margin-top:10px;max-width:30ch">Cadeaus die blijven.</p></div>
 <div><h2>Winkel</h2><ul>
-<li><a href="dieren.html">Dieren</a></li>
 <li><a href="cadeaus.html">Cadeaus</a></li>
 <li><a href="bestellen.html">Winkelmand</a></li></ul></div>
 <div><h2>Klantenservice</h2><ul>
@@ -178,30 +177,22 @@ def page(slug, title, desc, body, current=None, noindex=False, ld=None, geheim=F
 
 
 def vragen():
-    items = ([] if OPEN else [
-        ("Kan ik nu al bestellen?",
-         f'Nog niet. We gaan binnenkort open. Laat een seintje achter via <a class="link" href="{SEINTJE}" target="_blank" rel="noopener">WhatsApp</a>, dan hoor je het als eerste. Je zit nergens aan vast.'),
-    ]) + [
+    return faq([
         ("Hoe lang duurt de levering?",
          f"Reken op {LEVERTIJD}. Je bestelling komt rechtstreeks van onze leverancier buiten Europa. Zodra je pakket onderweg is, krijg je van ons een track-en-tracecode."),
         ("Wat kost verzending?",
          "Niets. Verzending is gratis. We bezorgen op dit moment alleen in Nederland."),
         ("Hoe betaal ik?",
-         "Je betaalt direct bij het bestellen met iDEAL, via je eigen bank. De betaling loopt veilig via Mollie. Zodra je betaald hebt, krijg je een bevestiging per e-mail en gaat je bestelling de deur uit."
+         "Je betaalt direct bij het bestellen met iDEAL, via je eigen bank. De betaling loopt veilig via Stripe. Je kunt ook met een betaalkaart betalen. Zodra je betaald hebt, krijg je een bevestiging per e-mail en gaat je bestelling de deur uit."
          if MOLLIE else
          "Na je bestelling sturen we je een betaalverzoek. Je betaalt met iDEAL via je eigen bank. Zodra je betaling binnen is, gaat je bestelling de deur uit."),
         ("Kan ik terugsturen?",
          'Ja. Je hebt 14 dagen bedenktijd vanaf de dag dat je je pakket ontvangt. De kosten voor het terugsturen betaal je zelf. Hoe het werkt, lees je bij <a class="link" href="retourneren.html">retourneren</a>. Je aankoop direct ongedaan maken kan <a class="link" href="herroepen.html">hier</a>.'),
-        ("Hoeveel gewicht kan de hangmat dragen?",
-         f"Volgens de fabrikant tot {DRAAGT}. Dat is ruim genoeg voor een volwassen kat. Hoe goed de zuignappen houden, hangt wel af van je raam: het glas moet glad, schoon en droog zijn."),
         ("Heb ik garantie?",
          'Ja. Je hebt wettelijke garantie: het product moet doen wat je ervan mag verwachten. Is dat niet zo, dan zorgen wij kosteloos voor herstel of een nieuw product, of je krijgt je geld terug. Stuur ons een foto via WhatsApp of e-mail.'),
-        ("Blijft de hangmat goed hangen?",
-         "Zuignappen houden het best op glad, schoon en droog glas. Maak het raam eerst schoon, druk de zuignappen stevig aan en trek er even aan met je hand voordat je kat erop gaat. Controleer de zuignappen daarna af en toe."),
         ("Ik heb een klacht of een andere vraag",
          f'Je klacht nemen we serieus: je krijgt binnen 14 dagen een inhoudelijk antwoord. Stuur een appje naar <a class="link" href="{WA_VRAAG}" target="_blank" rel="noopener">{TEL_TOON}</a>. Je krijgt meestal dezelfde dag antwoord.'),
-    ]
-    return faq(items)
+    ])
 
 
 def faq(items):
@@ -212,27 +203,12 @@ def faq(items):
     return "\n".join(out)
 
 
-STAPPEN = '''<ol class="stappen">
-<li><h3>Maak het raam schoon</h3><p>Glad, schoon en droog glas houdt de zuignappen het best vast.</p></li>
-<li><h3>Druk de zuignappen aan</h3><p>Stevig tegen het glas, tot er geen lucht meer achter zit.</p></li>
-<li><h3>Test met je hand</h3><p>Trek er even aan. Zit hij vast? Dan mag je kat erop.</p></li>
-</ol>'''
-
-
 def kaart_boeket(uid, kop="h3"):
     return f'''<a class="kaart" href="boeket.html">
 <div class="beeld"><img src="img/boeket-2.jpg" width="800" height="800" alt="Gehaakt boeket met bordeauxrode rozen en witte madeliefjes op een nachtkastje" loading="lazy" style="aspect-ratio:4/3;object-fit:cover"></div>
 <div class="tekst"><{kop}>Gehaakt boeket, bordeauxrood</{kop}>
 <p class="zacht klein">Rozen en madeliefjes die nooit verwelken. Ongeveer 35 cm hoog.{"" if OPEN else " Binnenkort te koop."}</p>
 <p class="prijs">€ {PRIJS_BOEKET}</p></div></a>'''
-
-
-def kaart_hangmat(uid, kop="h3"):
-    return f'''<a class="kaart" href="kattenhangmat.html">
-<div class="beeld"><img src="img/hangmat-beige.jpg" width="800" height="600" alt="Witte kat op de beige kattenhangmat aan het raam" loading="lazy"></div>
-<div class="tekst"><{kop}>Kattenhangmat voor het raam</{kop}>
-<p class="zacht klein">55 × 35 cm, met zuignappen. In vijf kleuren.{"" if OPEN else " Binnenkort te koop."}</p>
-<p class="prijs">€ {PRIJS}</p></div></a>'''
 
 
 WIE = f'''<address>Nestig, onderdeel van byXavio<br>{STRAAT}<br>{POSTCODE} {PLAATS}<br>
@@ -243,14 +219,14 @@ KVK {KVK}, btw-id {BTW}</address>'''
 # ---------------------------------------------------------------- home
 home = f'''<section class="hero"><div class="wrap">
 <div>
-<h1>Het beste plekje in huis hangt aan het raam.</h1>
-<p class="sub">Een hangmat met zuignappen, voor katten die graag in de zon liggen en de straat in de gaten houden.</p>
+<h1>Bloemen die nooit verwelken.</h1>
+<p class="sub">Een gehaakt boeket met bordeauxrode rozen en witte madeliefjes. Een cadeau dat blijft staan.</p>
 <div class="hero-koop">
-<a class="btn btn-zon" href="kattenhangmat.html">Bekijk de kattenhangmat</a>
-<p class="prijs">€ {PRIJS}<small>{"Gratis verzending" if OPEN else "Binnenkort te koop"}</small></p>
+<a class="btn btn-zon" href="boeket.html">Bekijk het boeket</a>
+<p class="prijs">€ {PRIJS_BOEKET}<small>{"Gratis verzending" if OPEN else "Binnenkort te koop"}</small></p>
 </div>
 </div>
-<figure class="hero-foto"><img src="img/hangmat-blauw.jpg" width="800" height="600" alt="Witte kat ligt op de lichtblauwe kattenhangmat aan het raam" fetchpriority="high"></figure>
+<figure class="hero-foto vierkant"><img src="img/boeket-1.jpg" width="800" height="800" alt="Gehaakt boeket met bordeauxrode rozen en witte madeliefjes in rood papier met een gouden strik" fetchpriority="high"></figure>
 </div></section>
 
 <section class="feiten" aria-label="Goed om te weten"><div class="wrap"><ul>
@@ -263,50 +239,37 @@ home = f'''<section class="hero"><div class="wrap">
 <section class="sec"><div class="wrap">
 <h2>Onze producten</h2>
 <div class="kaarten" style="margin-top:28px">
-{kaart_hangmat("p1")}
-{kaart_boeket("p2")}
+{kaart_boeket("p1")}
+<div class="kaart kaart-leeg"><span class="label">Binnenkort</span><h3>Meer cadeaus</h3>
+<p class="zacht">Nestig is een kleine webwinkel van byXavio uit {PLAATS}. We beginnen met één product en breiden rustig uit. Tip voor ons? <a class="link" href="{WA_VRAAG}" target="_blank" rel="noopener">App ons</a>.</p></div>
 </div>
 </div></section>
 
 <section class="sec" style="padding-top:0"><div class="wrap">
-<h2>Nestig begint klein</h2>
-<p class="sub">Eerst één ding dat goed is, daarna meer.</p>
-<div class="cats">
-<a class="cat cat-dier" href="dieren.html">
-<div class="teken">{raam("cat", label=False)}</div>
-<h3>Dieren</h3><p>Spullen waar je kat of hond blij van wordt.</p><span class="ga">Bekijk dieren</span></a>
-<div class="cat cat-over">
-<h3>Kleine winkel uit {PLAATS}</h3><p>Nestig is een webwinkel van byXavio. We beginnen met één product en breiden rustig uit. Heb je een vraag, dan krijg je antwoord van een mens.</p>
-<a class="ga" href="{WA_VRAAG}" target="_blank" rel="noopener">Stel je vraag via WhatsApp</a></div>
+<h2>Een cadeau dat blijft</h2>
+<p class="sub">Geen water, geen vaas en geen afgevallen blaadjes. Voor Sinterklaas, kerst, Valentijn of gewoon voor jezelf.</p>
+<div class="fotos vierkant">
+<figure><img src="img/boeket-2.jpg" width="800" height="800" alt="Het gehaakte boeket op een nachtkastje naast het bed" loading="lazy"></figure>
+<figure><img src="img/boeket-3.jpg" width="800" height="800" alt="Een man geeft een vrouw het gehaakte boeket" loading="lazy"></figure>
 </div>
-</div></section>
-
-<section class="sec" style="padding-top:0"><div class="wrap">
-<h2>Zo ligt je kat erbij</h2>
-<p class="sub">De hangmat zit met zuignappen tegen het glas. Je kat ligt hoog, in de zon en met uitzicht.</p>
-<div class="fotos">
-<figure><img src="img/hangmat-beige.jpg" width="800" height="600" alt="Witte kat op de beige kattenhangmat aan het raam" loading="lazy"></figure>
-<figure><img src="img/hangmat-twee-katten.jpg" width="564" height="423" alt="Twee katten slapen samen in de hangmat aan het raam" loading="lazy"></figure>
-</div>
-<p style="margin-top:26px"><a class="btn btn-zon" href="kattenhangmat.html">Bekijk de kattenhangmat</a></p>
+<p style="margin-top:26px"><a class="btn btn-zon" href="boeket.html">Bekijk het boeket</a></p>
 </div></section>
 
 <section class="sec band"><div class="wrap ophangen">
 <div>
-<h2>Zo hangt hij in een paar minuten</h2>
-<p class="sub">Geen boor en geen schroeven. In het filmpje zie je hoe het gaat.</p>
-{STAPPEN}
+<h2>Zo ziet het er in het echt uit</h2>
+<p class="sub">Ongeveer 35 cm hoog, in rood cadeaupapier met een gouden strik. Het boeket komt in een doos, klaar om te geven.</p>
 </div>
-<video controls muted playsinline preload="none" poster="img/hangmat-video.jpg" width="540" height="720" aria-label="Filmpje: de hangmat wordt met zuignappen aan het raam gehangen, daarna speelt er een kat op">
-<source src="img/hangmat-video.mp4" type="video/mp4"></video>
+<video controls muted playsinline preload="none" poster="img/boeket-video.jpg" width="720" height="720" aria-label="Filmpje: het gehaakte boeket van dichtbij, in iemands hand en op een bureau">
+<source src="img/boeket-video.mp4" type="video/mp4"></video>
 </div></section>
 
 <section class="sec eerlijk"><div class="wrap">
 <h2>Eerlijk over de levertijd</h2>
 <div>
-<p>Je bestelling komt rechtstreeks van onze leverancier buiten Europa. Daardoor is je pakket {LEVERTIJD} onderweg. Dat is langer dan je misschien gewend bent, en dat zeggen we liever vooraf.</p>
+<p>Je bestelling komt rechtstreeks van onze leverancier buiten Europa. Daardoor is je pakket {LEVERTIJD} onderweg. Dat is langer dan je misschien gewend bent, en dat zeggen we liever vooraf. Geef je het als cadeau, bestel dan ruim op tijd.</p>
 <p>De prijs die je ziet is de prijs die je betaalt, inclusief btw en verzending. Zodra je pakket onderweg is, krijg je een track-en-tracecode.</p>
-<p>Past het toch niet? Dan heb je 14 dagen bedenktijd. <a class="link" href="retourneren.html">Lees hoe retourneren werkt</a>.</p>
+<p>Valt het toch tegen? Dan heb je 14 dagen bedenktijd. <a class="link" href="retourneren.html">Lees hoe retourneren werkt</a>.</p>
 </div>
 </div></section>
 
@@ -324,161 +287,13 @@ home = f'''<section class="hero"><div class="wrap">
 </div></section>'''
 
 page("index.html",
-     "Nestig – kattenhangmat voor het raam en fijne spullen voor thuis",
-     f"Nestig verkoopt fijne spullen voor je dier en je huis: een kattenhangmat voor het raam en een gehaakt boeket dat nooit verwelkt. Gratis verzending en 14 dagen bedenktijd.",
+     "Nestig – gehaakt boeket dat nooit verwelkt",
+     f"Nestig verkoopt cadeaus die blijven, zoals een gehaakt boeket met rozen en madeliefjes. € {PRIJS_BOEKET} met gratis verzending en 14 dagen bedenktijd.",
      home, ld={
          "@context": "https://schema.org", "@type": "OnlineStore", "name": "Nestig", "url": SITE,
          "logo": SITE + "apple-touch-icon.png", "telephone": TEL, "email": MAIL,
          "address": {"@type": "PostalAddress", "streetAddress": STRAAT, "postalCode": POSTCODE, "addressLocality": PLAATS, "addressCountry": "NL"},
          "vatID": BTW, "parentOrganization": {"@type": "Organization", "name": "byXavio", "url": "https://byxavio.nl/"},
-     })
-
-# ---------------------------------------------------------------- dieren
-dieren = f'''<div class="wrap">
-<p class="kruimel"><a href="./">Home</a> / Dieren</p>
-<div class="paginakop"><h1>Voor je dier</h1><p class="sub">Spullen waar je kat of hond blij van wordt.</p></div>
-<div class="kaarten" style="margin-bottom:clamp(56px,8vw,96px)">
-{kaart_hangmat("k1", kop="h2")}
-<div class="kaart kaart-leeg"><span class="label">Binnenkort</span><h2>Meer voor kat en hond</h2>
-<p class="zacht">We zoeken het volgende product uit. Tip voor ons? <a class="link" href="{WA_VRAAG}" target="_blank" rel="noopener">App ons</a>.</p></div>
-</div>
-</div>'''
-page("dieren.html", "Dieren – spullen voor kat en hond | Nestig",
-     "Spullen waar je kat of hond blij van wordt. Nu bij Nestig: de kattenhangmat voor het raam, met gratis verzending.",
-     dieren, current="dieren")
-
-# ---------------------------------------------------------------- product
-SWATCHES = "\n".join(f'<label style="--k:{h}"><input type="radio" name="kleur" value="{k}"{" checked" if i == 0 else ""}><i></i>{n}</label>'
-                     for i, (k, n, h) in enumerate(KLEUREN))
-product = f'''<div class="wrap">
-<p class="kruimel"><a href="./">Home</a> / <a href="dieren.html">Dieren</a> / Kattenhangmat</p>
-<div class="product">
-<div class="galerij">
-<div class="groot"><img data-hoofdfoto src="img/hangmat-beige.jpg" width="800" height="600" alt="Witte kat op de beige kattenhangmat aan het raam"></div>
-<div class="duimen" role="group" aria-label="Kies een foto">
-<button type="button" class="duim" data-duim="kleur" aria-pressed="true" aria-label="Foto van de gekozen kleur"><img data-duimfoto src="img/hangmat-beige.jpg" width="800" height="600" alt=""></button>
-<button type="button" class="duim" data-duim="foto" data-src="img/hangmat-twee-katten.jpg" data-alt="Twee katten slapen samen in de hangmat aan het raam" aria-pressed="false" aria-label="Foto van twee katten in de hangmat"><img src="img/hangmat-twee-katten.jpg" width="564" height="423" alt=""></button>
-</div>
-</div>
-<div class="koop">
-<h1>Kattenhangmat voor het raam</h1>
-<p class="sub">Een eigen plek in de zon, hoog en droog aan het raam. Het ligvlak is 55 bij 35 cm, dus je kat kan er languit op.</p>
-<p class="prijs">€ {PRIJS}<small>Inclusief btw en gratis verzending</small></p>
-<form data-product="kattenhangmat">
-<fieldset class="veld"><legend>Kleur: <span data-gekozen-kleur>{KLEUREN[0][1]}</span></legend>
-<div class="kleuren">
-{SWATCHES}
-</div></fieldset>
-<div data-koop{"" if OPEN else " hidden"}>
-<div class="veld"><span class="veldkop" id="aantal-kop">Aantal</span>
-<div class="teller" role="group" aria-labelledby="aantal-kop">
-<button type="button" data-min aria-label="Eén minder">−</button>
-<input type="number" inputmode="numeric" min="1" max="10" value="1" aria-label="Aantal">
-<button type="button" data-plus aria-label="Eén meer">+</button>
-</div></div>
-<button class="btn btn-zon btn-breed" type="submit">In winkelmand</button>
-</div>
-{"" if OPEN else f'''<div class="seintje" data-seintje>
-<span class="label">Binnenkort te koop</span>
-<p>We gaan binnenkort open. Laat een seintje achter, dan appen we je zodra je kunt bestellen. Je zit nergens aan vast.</p>
-<a class="btn btn-wa btn-breed" data-seintje-knop href="{SEINTJE}" target="_blank" rel="noopener">{WA_ICON}Geef me een seintje</a>
-</div>'''}
-</form>
-<div class="toegevoegd" data-toegevoegd hidden role="status"><span data-toegevoegd-tekst></span><a class="link" href="bestellen.html">Verder naar bestellen</a></div>
-<ul class="zeker">
-<li>Levertijd {LEVERTIJD}, met track-en-trace</li>
-<li>Gratis verzending in Nederland</li>
-<li>14 dagen bedenktijd en wettelijke garantie</li>
-<li>Betalen met iDEAL</li>
-<li>Vragen? <a class="link" href="{WA_VRAAG}" target="_blank" rel="noopener">App {TEL_TOON}</a></li>
-</ul>
-</div>
-</div>
-</div>
-
-<section class="sec band"><div class="wrap uitleg">
-<div>
-<h2>Waarom katten dit fijn vinden</h2>
-<p>Katten zoeken warmte en overzicht. Een plek tegen het raam geeft allebei: de zon op de vacht en zicht op alles wat buiten beweegt.</p>
-<p>De hangmat hangt aan het glas en neemt geen plek in op de vensterbank of de vloer. Handig als je vensterbank smal is of vol planten staat.</p>
-</div>
-<div>
-<h2>Wat je krijgt</h2>
-<table class="specs">
-<tr><th scope="row">In het pakket</th><td>1 kattenhangmat met zuignappen en ophangkabels</td></tr>
-<tr><th scope="row">Artikelnummer</th><td>{ARTIKEL}</td></tr>
-<tr><th scope="row">Ligvlak</th><td>55 × 35 cm, 2,5 cm dik</td></tr>
-<tr><th scope="row">Ophangkabels</th><td>56 cm lang</td></tr>
-<tr><th scope="row">Draagvermogen</th><td>Tot {DRAAGT}, volgens de fabrikant</td></tr>
-<tr><th scope="row">Materiaal</th><td>Oxford-stof, kunststof en staaldraad</td></tr>
-<tr><th scope="row">Bevestiging</th><td>Zuignappen op het raam, zonder boren</td></tr>
-<tr><th scope="row">Kleuren</th><td>{KLEURNAMEN.capitalize()}</td></tr>
-<tr><th scope="row">Levertijd</th><td>{LEVERTIJD}</td></tr>
-<tr><th scope="row">Verzending</th><td>Gratis in Nederland</td></tr>
-</table>
-</div>
-</div></section>
-
-<section class="sec"><div class="wrap ophangen">
-<div>
-<h2>Zo hangt hij in een paar minuten</h2>
-<p class="sub">In het filmpje zie je hoe het gaat. Geen boor en geen schroeven.</p>
-{STAPPEN}
-</div>
-<video controls muted playsinline preload="none" poster="img/hangmat-video.jpg" width="540" height="720" aria-label="Filmpje: de hangmat wordt met zuignappen aan het raam gehangen, daarna speelt er een kat op">
-<source src="img/hangmat-video.mp4" type="video/mp4"></video>
-</div></section>
-
-<section class="sec band"><div class="wrap uitleg">
-<div>
-<h2>Veilig gebruiken</h2>
-<ul class="punten">
-<li>Belast de hangmat met maximaal {DRAAGT}.</li>
-<li>Bevestig hem alleen op glad, schoon en droog glas. Niet op gebarsten glas, folie of ruw glas.</li>
-<li>Trek er stevig aan met je hand voordat je kat erop gaat.</li>
-<li>Controleer de zuignappen elke week en druk ze opnieuw aan. Bij grote temperatuurwisselingen kunnen ze loslaten.</li>
-<li>Hang de hangmat niet hoger dan nodig en niet boven harde of scherpe voorwerpen.</li>
-<li>Dit is geen speelgoed. Laat kinderen er niet op zitten of aan hangen.</li>
-<li>Houd het verpakkingsmateriaal uit de buurt van kinderen en dieren.</li>
-</ul>
-</div>
-<div>
-<h2>Wie staat achter dit product?</h2>
-<p>Nestig verkoopt dit product in Nederland en is je aanspreekpunt bij vragen, klachten of een probleem met de veiligheid.</p>
-{WIE}
-</div>
-</div></section>
-
-<section class="sec" id="vragen"><div class="wrap">
-<h2>Veelgestelde vragen</h2>
-{vragen()}
-</div></section>
-
-<div class="koopbalk" data-koopbalk hidden>
-<div><strong>€ {PRIJS}</strong><span data-koopbalk-tekst>{"Gratis verzending" if OPEN else "Binnenkort te koop"}</span></div>
-<button class="btn btn-zon" type="button" data-koopbalk-knop{"" if OPEN else " hidden"}>In winkelmand</button>
-<a class="btn btn-zon" href="bestellen.html" data-koopbalk-verder hidden>Naar bestellen</a>
-{"" if OPEN else f'<a class="btn btn-wa" data-seintje-knop data-koopbalk-seintje href="{SEINTJE}" target="_blank" rel="noopener">Geef me een seintje</a>'}
-</div>'''
-page("kattenhangmat.html", f"Kattenhangmat voor het raam – € {PRIJS}, gratis verzending | Nestig",
-     f"Kattenhangmat met zuignappen voor het raam. Zonder boren op te hangen, in vijf kleuren. € {PRIJS} met gratis verzending en 14 dagen bedenktijd.",
-     product, current="dieren", ld={
-         "@context": "https://schema.org", "@type": "Product", "name": "Kattenhangmat voor het raam",
-         "description": "Kattenhangmat met zuignappen voor het raam. Ligvlak 55 x 35 cm, zonder boren op te hangen.",
-         "material": "Oxford-stof, kunststof en staaldraad",
-         "image": [SITE + f"img/hangmat-{k}.jpg" for k, _, _ in KLEUREN], "sku": ARTIKEL,
-         "offers": {"@type": "Offer", "url": SITE + "kattenhangmat", "priceCurrency": "EUR", "price": "27.95",
-                    "availability": "https://schema.org/InStock" if OPEN else "https://schema.org/OutOfStock",
-                    "shippingDetails": {"@type": "OfferShippingDetails",
-                                        "shippingRate": {"@type": "MonetaryAmount", "value": "0", "currency": "EUR"},
-                                        "shippingDestination": {"@type": "DefinedRegion", "addressCountry": "NL"},
-                                        "deliveryTime": {"@type": "ShippingDeliveryTime",
-                                                         "handlingTime": {"@type": "QuantitativeValue", "minValue": 1, "maxValue": 3, "unitCode": "DAY"},
-                                                         "transitTime": {"@type": "QuantitativeValue", "minValue": 8, "maxValue": 18, "unitCode": "DAY"}}},
-                    "hasMerchantReturnPolicy": {"@type": "MerchantReturnPolicy", "applicableCountry": "NL",
-                                                "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-                                                "merchantReturnDays": 14, "returnMethod": "https://schema.org/ReturnByMail",
-                                                "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility"}},
      })
 
 # ---------------------------------------------------------------- boeket
@@ -665,10 +480,10 @@ bestellen = f'''<div class="wrap">
 
 <div class="leeg" data-mand-leeg hidden>
 <p class="sub">Je winkelmand is leeg.</p>
-<a class="btn btn-zon" href="kattenhangmat.html">Bekijk de kattenhangmat</a>
+<a class="btn btn-zon" href="boeket.html">Bekijk het boeket</a>
 </div>
 
-<div class="melding" data-testmodus hidden role="status" style="margin:0 0 24px"><strong>De winkel is nog niet open.</strong> {"Betalen staat in testmodus. Als je nu bestelt, wordt er niets afgeschreven en niets geleverd." if OPEN else "Dit formulier is alleen om te testen. Als je nu bestelt, wordt er niets geleverd."} Vragen? <a class="link" href="{WA_VRAAG}" target="_blank" rel="noopener">App ons</a>.</div>
+<div class="melding" data-testmodus hidden role="status" style="margin:0 0 24px"><strong>De winkel is nog niet open.</strong> Als je nu bestelt, wordt er niets afgeschreven en niets geleverd. Vragen? <a class="link" href="{WA_VRAAG}" target="_blank" rel="noopener">App ons</a>.</div>
 
 <div class="bestel" data-mand-vol>
 <form class="form" data-bestelform novalidate-off>
@@ -686,7 +501,7 @@ bestellen = f'''<div class="wrap">
 <label for="akkoord">Ik ga akkoord met de <a class="link" href="algemene-voorwaarden.html" target="_blank" rel="noopener">algemene voorwaarden</a> en heb gelezen hoe <a class="link" href="retourneren.html" target="_blank" rel="noopener">retourneren</a> werkt.</label></div>
 
 <h2>Bestelling plaatsen</h2>
-<p class="zacht">{"Met de knop hieronder plaats je een bestelling met betaalverplichting. Je gaat daarna naar de betaalpagina van Mollie en betaalt met iDEAL. Na je betaling krijg je direct een bevestiging per e-mail." if MOLLIE else "Je krijgt direct een bevestiging per e-mail en daarna een betaalverzoek voor iDEAL. Met de knop hieronder plaats je een bestelling met betaalverplichting."}</p>
+<p class="zacht">{"Met de knop hieronder plaats je een bestelling met betaalverplichting. Je gaat daarna naar de beveiligde betaalpagina van Stripe en betaalt met iDEAL of een andere betaalmethode. Na je betaling krijg je direct een bevestiging per e-mail." if MOLLIE else "Je krijgt direct een bevestiging per e-mail en daarna een betaalverzoek voor iDEAL. Met de knop hieronder plaats je een bestelling met betaalverplichting."}</p>
 <div class="vh" aria-hidden="true"><label>Laat dit veld leeg <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
 <div class="verstuur">
 <button class="btn btn-zon" type="submit">Bestellen en betalen</button>
@@ -707,7 +522,7 @@ bestellen = f'''<div class="wrap">
 page("bestellen.html", "Bestellen | Nestig", "Rond je bestelling bij Nestig af.", bestellen, noindex=True, zweef=False)
 
 # ---------------------------------------------------------------- terug van de betaalpagina
-# Hier komt de klant terug na het betalen bij Mollie. js/shop.js vraagt de status op en toont het juiste blok.
+# Hier komt de klant terug na het betalen bij Stripe. js/shop.js vraagt de status op en toont het juiste blok.
 bedankt = f'''<div class="wrap">
 <p class="kruimel"><a href="./">Home</a> / Bestellen</p>
 <div class="paginakop"><h1>Even geduld</h1></div>
@@ -830,7 +645,7 @@ herroepen = f'''<div class="wrap tekst">
 <div class="velden">
 <div class="heel"><label for="h-naam">Voor- en achternaam</label><input type="text" id="h-naam" name="naam" autocomplete="name" required></div>
 <div class="heel"><label for="h-email">E-mailadres <span>(hier sturen we de bevestiging heen)</span></label><input type="email" id="h-email" name="email" autocomplete="email" required></div>
-<div class="heel"><label for="h-wat">Wat wil je ongedaan maken?</label><input type="text" id="h-wat" name="wat" required placeholder="Bijvoorbeeld: 1 kattenhangmat, beige"></div>
+<div class="heel"><label for="h-wat">Wat wil je ongedaan maken?</label><input type="text" id="h-wat" name="wat" required placeholder="Bijvoorbeeld: 1 gehaakt boeket"></div>
 <div class="heel"><label for="h-datum">Besteld of ontvangen op <span>(mag leeg blijven)</span></label><input type="text" id="h-datum" name="datum" placeholder="Bijvoorbeeld: ontvangen op 20 oktober"></div>
 </div>
 <div class="vh" aria-hidden="true"><label>Laat dit veld leeg <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
@@ -870,7 +685,7 @@ av = f'''<div class="wrap tekst">
 <p>Alle prijzen op de site zijn in euro en inclusief btw en verzendkosten. Een duidelijke vergissing in een prijs of beschrijving bindt ons niet. Afbeeldingen geven een zo goed mogelijk beeld van het product. Kleuren kunnen op je scherm iets afwijken.</p>
 
 <h2>4. Bestellen en betalen</h2>
-<p>{"Je plaatst een bestelling via het bestelformulier op de site en betaalt direct online via onze betaaldienst Mollie. Na je betaling ontvang je een bevestiging per e-mail. De overeenkomst komt tot stand zodra wij je bestelling hebben bevestigd. Lukt online betalen door een storing niet, dan sturen we je een betaalverzoek. We versturen je bestelling nadat je betaling binnen is." if MOLLIE else "Je plaatst een bestelling via het bestelformulier op de site. Je ontvangt direct een bevestiging per e-mail en daarna een betaalverzoek. De overeenkomst komt tot stand zodra wij je bestelling hebben bevestigd. We versturen je bestelling nadat je betaling binnen is."}</p>
+<p>{"Je plaatst een bestelling via het bestelformulier op de site en betaalt direct online via onze betaaldienst Stripe. Na je betaling ontvang je een bevestiging per e-mail. De overeenkomst komt tot stand zodra wij je bestelling hebben bevestigd. Lukt online betalen door een storing niet, dan sturen we je een betaalverzoek. We versturen je bestelling nadat je betaling binnen is." if MOLLIE else "Je plaatst een bestelling via het bestelformulier op de site. Je ontvangt direct een bevestiging per e-mail en daarna een betaalverzoek. De overeenkomst komt tot stand zodra wij je bestelling hebben bevestigd. We versturen je bestelling nadat je betaling binnen is."}</p>
 
 <h2>5. Levering</h2>
 <p>We bezorgen in Nederland. De verwachte levertijd is {LEVERTIJD} na ontvangst van je betaling. Je bestelling wordt rechtstreeks door onze leverancier verstuurd. Je krijgt een track-en-tracecode zodra het pakket onderweg is.</p>
@@ -922,7 +737,7 @@ privacy = f'''<div class="wrap tekst">
 <ul>
 <li><strong>Onze leverancier en de bezorgdienst.</strong> Zij krijgen je naam en adres om het pakket te bezorgen. Onze leverancier is gevestigd buiten de Europese Unie, in China. We geven alleen door wat voor de bezorging nodig is.</li>
 <li><strong>WhatsApp.</strong> Bestel je, stel je een vraag of laat je een seintje achter via WhatsApp, dan loopt je bericht via WhatsApp, een dienst van Meta. Dat gebeurt alleen als je daar zelf voor kiest. Vraag je om een seintje, dan gebruiken we je nummer alleen om je dat ene bericht te sturen.</li>
-{"<li><strong>Onze betaaldienst.</strong> Betalingen lopen via Mollie B.V. in Amsterdam. Mollie verwerkt je betaalgegevens en krijgt van ons het bedrag en de gegevens van je bestelling: je naam, adres, e-mailadres, wat je bestelt en, als je die invult, je telefoonnummer en je opmerking.</li>" + chr(10) if MOLLIE else ""}<li><strong>Onze e-maildienst.</strong> De bevestiging van je bestelling of herroeping en het bericht dat je pakket onderweg is versturen we via Resend, een dienst uit de Verenigde Staten. Die verwerkt daarvoor je naam, je e-mailadres en de inhoud van de mail.</li>
+{"<li><strong>Onze betaaldienst.</strong> Betalingen lopen via Stripe Payments Europe Ltd. in Dublin (Ierland). Stripe verwerkt je betaalgegevens en krijgt van ons het bedrag en de gegevens van je bestelling: je naam, adres, e-mailadres, wat je bestelt en, als je die invult, je telefoonnummer en je opmerking.</li>" + chr(10) if MOLLIE else ""}<li><strong>Onze e-maildienst.</strong> De bevestiging van je bestelling of herroeping en het bericht dat je pakket onderweg is versturen we via Resend, een dienst uit de Verenigde Staten. Die verwerkt daarvoor je naam, je e-mailadres en de inhoud van de mail.</li>
 <li><strong>De hostingpartij van deze website.</strong> De site draait bij Cloudflare. Cloudflare verwerkt technische gegevens zoals je IP-adres om de site te tonen en te beveiligen.</li>
 <li><strong>Onze mailbox.</strong> Mails van en aan ons staan in Gmail, een dienst van Google. Daar komt ook de melding van je bestelling binnen.</li>
 </ul>
@@ -972,10 +787,10 @@ page("404.html", "Pagina niet gevonden | Nestig", "Deze pagina bestaat niet.", n
   Cache-Control: public, max-age=31536000
 """)
 # Oude adressen die niet meer bestaan.
-(OUT / "_redirects").write_text("/kamer / 302\n/kamer.html / 302\n")
+(OUT / "_redirects").write_text("/kamer / 302\n/kamer.html / 302\n/kattenhangmat / 302\n/kattenhangmat.html / 302\n/dieren / 302\n/dieren.html / 302\n")
 (OUT / "_routes.json").write_text('{"version":1,"include":["/api/*"],"exclude":[]}\n')
 (OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nDisallow: /bestellen\nDisallow: /bedankt\nDisallow: /verzonden\nSitemap: {SITE}sitemap.xml\n")
-urls = ["", "kattenhangmat", "dieren", "boeket", "cadeaus", "retourneren", "herroepen", "algemene-voorwaarden", "privacy"]
+urls = ["", "boeket", "cadeaus", "retourneren", "herroepen", "algemene-voorwaarden", "privacy"]
 (OUT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                  + "".join(f"  <url><loc>{SITE}{u}</loc></url>\n" for u in urls) + "</urlset>\n")
 (OUT / "favicon.svg").write_text(f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect x="4" y="4" width="56" height="56" rx="14" fill="#fff" stroke="{INK}" stroke-width="5"/><rect x="12" y="12" width="40" height="40" rx="6" fill="#dcecf1"/><circle cx="38" cy="27" r="10" fill="#ffc83d" stroke="{INK}" stroke-width="3.5"/><rect x="12" y="41" width="40" height="7" rx="3.5" fill="{INK}"/></svg>''')
@@ -983,6 +798,6 @@ if "--og" in sys.argv:
   (OUT / "_og.html").write_text(f'''<!doctype html><html lang="nl"><head><meta charset="utf-8"><link rel="stylesheet" href="css/style.css"><style>
 body{{width:1200px;height:630px;background:var(--glas);display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:40px;padding:0 70px;overflow:hidden}}
 .l{{font:italic 600 64px/1 var(--display);display:flex;align-items:baseline}}.l i{{width:22px;height:22px;border-radius:50%;background:var(--zon);border:3px solid var(--ink);margin-left:8px}}
-h1{{font-size:68px;margin-top:34px}}p{{font-size:30px;margin-top:26px}}.raam{{max-width:400px}}</style></head><body>
-<div><div class="l">nestig<i></i></div><h1>Het beste plekje in huis hangt aan het raam.</h1><p>Kattenhangmat voor het raam, € {PRIJS}</p></div>{raam("og", label=False)}</body></html>''')
+h1{{font-size:68px;margin-top:34px}}p{{font-size:30px;margin-top:26px}}.f{{width:440px;height:440px;object-fit:cover;border:3px solid var(--ink);border-radius:28px;box-shadow:0 8px 0 var(--ink)}}</style></head><body>
+<div><div class="l">nestig<i></i></div><h1>Bloemen die nooit verwelken.</h1><p>Gehaakt boeket, € {PRIJS_BOEKET}</p></div><img class="f" src="img/boeket-1.jpg"></body></html>''')
 print("klaar:", sorted(p.name for p in OUT.iterdir()))

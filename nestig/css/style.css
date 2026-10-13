@@ -319,3 +319,4 @@ fieldset{border:0}
   html{scroll-behavior:auto}
   *{transition:none!important;animation:none!important}
 }
+.hero-foto.vierkant,.fotos.vierkant figure{aspect-ratio:1}
