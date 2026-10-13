@@ -32,6 +32,11 @@ OPEN = True
 SEINTJE = f"https://wa.me/{WA}?text=" + "Hoi%20Nestig%2C%20geef%20me%20een%20seintje%20als%20de%20kattenhangmat%20te%20koop%20is."
 SEINTJE_BOEKET = f"https://wa.me/{WA}?text=" + "Hoi%20Nestig%2C%20geef%20me%20een%20seintje%20als%20het%20gehaakte%20boeket%20te%20koop%20is."
 ARTIKEL_BOEKET = "NES-BQ-01"
+ARTIKEL_KERSTBOOM = "NES-KK-01"
+PRIJS_KERSTBOOM = "39,95"
+# Naam en adres van de fabrikant (opgave leverancier via CJ). Leeg = nog niet te koop, met knop "Geef me een seintje".
+FABRIKANT_KERSTBOOM = ""
+SEINTJE_KERSTBOOM = f"https://wa.me/{WA}?text=" + "Hoi%20Nestig%2C%20geef%20me%20een%20seintje%20als%20het%20kattenhuisje%20kerstboom%20te%20koop%20is."
 # Opgave van de leverancier via CJ (13 oktober 2026). Verplicht op de productpagina (EU-productveiligheid).
 FABRIKANT_BOEKET = "Yiwu Guiyuan Crafts Co., Ltd.<br>6th Floor, Building 2, No. 1 Chunsheng Road<br>Beiyuan Subdistrict, Yiwu City<br>Zhejiang, China"
 ARTIKEL = "NES-KH-01"   # ons eigen artikelnummer, staat op de productpagina (verplicht: het product moet te herkennen zijn)
@@ -97,6 +102,7 @@ def kop(current):
 <header class="top"><div class="wrap">
 <a class="logo" href="./" aria-label="Nestig, naar de homepage">nestig<span class="zon" aria-hidden="true"></span></a>
 <nav class="nav" aria-label="Hoofdmenu">
+{link("dieren.html", "Dieren", "dieren")}
 {link("cadeaus.html", "Cadeaus", "cadeaus")}
 <a class="mand" href="bestellen.html" data-mand-link aria-label="Winkelmand">{MAND_ICON}<span>Winkelmand</span><b data-mand-aantal>0</b></a>
 </nav></div></header>'''
@@ -105,8 +111,9 @@ def kop(current):
 VOET = f'''<footer class="voet"><div class="wrap">
 <div class="kolommen">
 <div><a class="logo" href="./" aria-label="Nestig, naar de homepage">nestig<span class="zon" aria-hidden="true"></span></a>
-<p class="zacht" style="margin-top:10px;max-width:30ch">Cadeaus die blijven.</p></div>
+<p class="zacht" style="margin-top:10px;max-width:30ch">Fijne spullen en cadeaus voor thuis en je dier.</p></div>
 <div><h2>Winkel</h2><ul>
+<li><a href="dieren.html">Dieren</a></li>
 <li><a href="cadeaus.html">Cadeaus</a></li>
 <li><a href="bestellen.html">Winkelmand</a></li></ul></div>
 <div><h2>Klantenservice</h2><ul>
@@ -219,6 +226,47 @@ WhatsApp en telefoon: <a class="link" href="tel:{TEL}">{TEL_TOON}</a><br>
 E-mail: <a class="link" href="mailto:{MAIL}">{MAIL}</a><br>
 KVK {KVK}, btw-id {BTW}</address>'''
 
+# ---------------------------------------------------------------- kattenhuisje kerstboom
+# Te koop zodra FABRIKANT_KERSTBOOM is ingevuld (opgave van de leverancier via CJ) en het product in _worker.js staat.
+KERSTBOOM_TE_KOOP = bool(FABRIKANT_KERSTBOOM)
+VRAGEN_KERSTBOOM = ([] if KERSTBOOM_TE_KOOP else [
+    ("Kan ik nu al bestellen?",
+     f'Nog niet. Het kattenhuisje komt binnenkort in de winkel. Laat een seintje achter via <a class="link" href="{SEINTJE_KERSTBOOM}" target="_blank" rel="noopener">WhatsApp</a>, dan hoor je het als eerste. Je zit nergens aan vast.'),
+]) + [
+    ("Is het op tijd voor Sinterklaas of kerst?",
+     f"Reken op {LEVERTIJD} levertijd, want het kattenhuisje komt rechtstreeks van onze leverancier buiten Europa. Wil je het voor kerst in huis hebben, bestel dan uiterlijk eind november. Zodra je pakket onderweg is, krijg je een track-en-tracecode."),
+    ("Past mijn kat erin?",
+     "Het huisje is ongeveer 60 cm hoog en 42 bij 40 cm breed. Dat past voor de meeste katten. Heb je een heel grote kat, zoals een Maine Coon, dan kan het krap zijn."),
+    ("Waarom komt het plat in een pakket?",
+     "Het huisje wordt opgevouwen verstuurd, zo blijft de verzending betaalbaar. Schud het na het uitpakken op en laat het een dag liggen, dan krijgt het zijn vorm terug."),
+    ("Wat kost verzending?",
+     "Niets. Verzending is gratis. We bezorgen op dit moment alleen in Nederland."),
+    ("Kan ik terugsturen?",
+     'Ja. Je hebt 14 dagen bedenktijd vanaf de dag dat je je pakket ontvangt. De kosten voor het terugsturen betaal je zelf. Hoe het werkt, lees je bij <a class="link" href="retourneren.html">retourneren</a>.'),
+    ("Ik heb een klacht of een andere vraag",
+     f'Je klacht nemen we serieus: je krijgt binnen 14 dagen een inhoudelijk antwoord. Stuur een appje naar <a class="link" href="{WA_VRAAG}" target="_blank" rel="noopener">{TEL_TOON}</a>. Je krijgt meestal dezelfde dag antwoord.'),
+]
+
+KERSTBOOM_FOTOS = [
+    ("img/kerstboom-1.jpg", "Witte kat met een rode sjaal stapt uit het groene kattenhuisje in de vorm van een kerstboom"),
+    ("img/kerstboom-2.jpg", "Het kattenhuisje als kerstboom met een gele ster en gekleurde pompons, een kat zit voor de ingang"),
+    ("img/kerstboom-3.jpg", "Een witte kat ligt in het kattenhuisje naast de kerstboom"),
+    ("img/kerstboom-4.jpg", "Vier foto's van een gestreepte kat die in en uit het kattenhuisje loopt"),
+]
+KERSTBOOM_DUIMEN = "\n".join(
+    (f'<button type="button" class="duim" data-duim="kleur" aria-pressed="true" aria-label="Foto 1"><img data-duimfoto src="{f}" width="800" height="800" alt=""></button>' if i == 0 else
+     f'<button type="button" class="duim" data-duim="foto" data-src="{f}" data-alt="{a}" aria-pressed="false" aria-label="Foto {i + 1}"><img src="{f}" width="800" height="800" alt="" loading="lazy"></button>')
+    for i, (f, a) in enumerate(KERSTBOOM_FOTOS))
+
+
+def kaart_kerstboom(uid, kop="h3"):
+    return f'''<a class="kaart" href="kattenhuisje-kerstboom.html">
+<div class="beeld"><img src="img/kerstboom-2.jpg" width="800" height="800" alt="Groen kattenhuisje in de vorm van een kerstboom met een kat ervoor" loading="lazy" style="aspect-ratio:4/3;object-fit:cover"></div>
+<div class="tekst"><{kop}>Kattenhuisje kerstboom</{kop}>
+<p class="zacht klein">Een warm holletje voor je kat, ongeveer 60 cm hoog.{"" if KERSTBOOM_TE_KOOP else " Binnenkort te koop."}</p>
+<p class="prijs">€ {PRIJS_KERSTBOOM}</p></div></a>'''
+
+
 # ---------------------------------------------------------------- home
 home = f'''<section class="hero"><div class="wrap">
 <div>
@@ -243,8 +291,9 @@ home = f'''<section class="hero"><div class="wrap">
 <h2>Onze producten</h2>
 <div class="kaarten" style="margin-top:28px">
 {kaart_boeket("p1")}
-<div class="kaart kaart-leeg"><span class="label">Binnenkort</span><h3>Meer cadeaus</h3>
-<p class="zacht">Nestig is een kleine webwinkel van byXavio uit {PLAATS}. We beginnen met één product en breiden rustig uit. Tip voor ons? <a class="link" href="{WA_VRAAG}" target="_blank" rel="noopener">App ons</a>.</p></div>
+{kaart_kerstboom("p2")}
+<div class="kaart kaart-leeg"><span class="label">Binnenkort</span><h3>Meer producten</h3>
+<p class="zacht">Nestig is een kleine webwinkel van byXavio uit {PLAATS}. We breiden rustig uit. Tip voor ons? <a class="link" href="{WA_VRAAG}" target="_blank" rel="noopener">App ons</a>.</p></div>
 </div>
 </div></section>
 
@@ -454,6 +503,123 @@ page("boeket.html", f"Gehaakt boeket, bordeauxrood – € {PRIJS_BOEKET}, grati
                                                 "merchantReturnDays": 14, "returnMethod": "https://schema.org/ReturnByMail",
                                                 "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility"}},
      })
+
+# ---------------------------------------------------------------- kattenhuisje kerstboom (pagina)
+kerstboom = f'''<div class="wrap">
+<p class="kruimel"><a href="./">Home</a> / <a href="dieren.html">Dieren</a> / Kattenhuisje kerstboom</p>
+<div class="product">
+<div class="galerij vierkant">
+<div class="groot"><img data-hoofdfoto src="{KERSTBOOM_FOTOS[0][0]}" width="800" height="800" alt="{KERSTBOOM_FOTOS[0][1]}"></div>
+<div class="duimen" role="group" aria-label="Kies een foto">
+{KERSTBOOM_DUIMEN}
+</div>
+</div>
+<div class="koop">
+<h1>Kattenhuisje kerstboom</h1>
+<p class="sub">Een zacht, half gesloten holletje in de vorm van een kerstboom. Warm voor je kat, en het staat ook nog eens leuk onder de echte boom.</p>
+<p class="prijs">€ {PRIJS_KERSTBOOM}<small>Inclusief btw en gratis verzending</small></p>
+<form data-product="kerstboom">
+<input type="radio" name="kleur" value="m" checked hidden>
+<div data-koop{"" if KERSTBOOM_TE_KOOP else " hidden"}>
+<div class="veld"><span class="veldkop" id="aantal-kop">Aantal</span>
+<div class="teller" role="group" aria-labelledby="aantal-kop">
+<button type="button" data-min aria-label="Eén minder">−</button>
+<input type="number" inputmode="numeric" min="1" max="10" value="1" aria-label="Aantal">
+<button type="button" data-plus aria-label="Eén meer">+</button>
+</div></div>
+<button class="btn btn-zon btn-breed" type="submit">In winkelmand</button>
+</div>
+{"" if KERSTBOOM_TE_KOOP else f"""<div class="seintje" data-seintje>
+<span class="label">Binnenkort te koop</span>
+<p>Dit kattenhuisje komt binnenkort in de winkel. Laat een seintje achter, dan appen we je zodra je kunt bestellen. Je zit nergens aan vast.</p>
+<a class="btn btn-wa btn-breed" data-seintje-knop href="{SEINTJE_KERSTBOOM}" target="_blank" rel="noopener">{WA_ICON}Geef me een seintje</a>
+</div>"""}
+</form>
+<div class="toegevoegd" data-toegevoegd hidden role="status"><span data-toegevoegd-tekst></span><a class="link" href="bestellen.html">Verder naar bestellen</a></div>
+<ul class="zeker">
+<li>Levertijd {LEVERTIJD}, met track-en-trace</li>
+<li>Gratis verzending in Nederland</li>
+<li>14 dagen bedenktijd en wettelijke garantie</li>
+<li>Betalen met iDEAL</li>
+<li>Vragen? <a class="link" href="{WA_VRAAG}" target="_blank" rel="noopener">App {TEL_TOON}</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+<section class="sec band"><div class="wrap uitleg">
+<div>
+<h2>Een eigen plekje in de kersttijd</h2>
+<p>Katten houden van een holletje waar ze zich kunnen terugtrekken. Dit huisje is aan de binnenkant zacht en houdt de warmte vast, fijn in de winter.</p>
+<p>Zet het onder of naast de kerstboom, dan heeft je kat een eigen boom. Een leuk cadeau voor iedereen met een kat.</p>
+</div>
+<div>
+<h2>Wat je krijgt</h2>
+<table class="specs">
+<tr><th scope="row">In het pakket</th><td>1 kattenhuisje, plat opgevouwen</td></tr>
+<tr><th scope="row">Artikelnummer</th><td>{ARTIKEL_KERSTBOOM}</td></tr>
+<tr><th scope="row">Maat</th><td>Ongeveer 60 cm hoog, 42 × 40 cm</td></tr>
+<tr><th scope="row">Materiaal</th><td>Zachte stof (vilt volgens de leverancier), met pompons en een ster van stof</td></tr>
+<tr><th scope="row">Kleur</th><td>Groen met een gele ster</td></tr>
+<tr><th scope="row">Levertijd</th><td>{LEVERTIJD}</td></tr>
+<tr><th scope="row">Verzending</th><td>Gratis in Nederland</td></tr>
+</table>
+</div>
+</div></section>
+
+<section class="sec band"><div class="wrap uitleg">
+<div>
+<h2>Veilig gebruiken</h2>
+<ul class="punten">
+<li>Dit is een mand voor huisdieren, geen speelgoed. Laat kinderen er niet in klimmen.</li>
+<li>Controleer af en toe of de pompons en de ster nog goed vastzitten. Haal losse delen weg, zodat je dier ze niet inslikt.</li>
+<li>Zet het huisje niet direct tegen een kachel, open vuur of kaarsen.</li>
+<li>Houd het verpakkingsmateriaal uit de buurt van kinderen en dieren.</li>
+</ul>
+</div>
+<div>
+<h2>Wie staat achter dit product?</h2>
+{f"<h3>Fabrikant</h3><address>{FABRIKANT_KERSTBOOM}</address>" if FABRIKANT_KERSTBOOM else ""}
+<h3{' style="margin-top:20px"' if FABRIKANT_KERSTBOOM else ""}>Verantwoordelijk in de EU</h3>
+<p>Nestig haalt dit product naar de EU en is je aanspreekpunt bij vragen, klachten of een probleem met de veiligheid.</p>
+{WIE}
+</div>
+</div></section>
+
+<section class="sec" id="vragen"><div class="wrap">
+<h2>Veelgestelde vragen</h2>
+{faq(VRAGEN_KERSTBOOM)}
+</div></section>
+
+<div class="koopbalk" data-koopbalk hidden>
+<div><strong>€ {PRIJS_KERSTBOOM}</strong><span data-koopbalk-tekst>{"Gratis verzending" if KERSTBOOM_TE_KOOP else "Binnenkort te koop"}</span></div>
+<button class="btn btn-zon" type="button" data-koopbalk-knop{"" if KERSTBOOM_TE_KOOP else " hidden"}>In winkelmand</button>
+<a class="btn btn-zon" href="bestellen.html" data-koopbalk-verder hidden>Naar bestellen</a>
+{"" if KERSTBOOM_TE_KOOP else f'<a class="btn btn-wa" data-seintje-knop data-koopbalk-seintje href="{SEINTJE_KERSTBOOM}" target="_blank" rel="noopener">Geef me een seintje</a>'}
+</div>'''
+page("kattenhuisje-kerstboom.html", f"Kattenhuisje kerstboom – € {PRIJS_KERSTBOOM}, gratis verzending | Nestig",
+     f"Zacht kattenhuisje in de vorm van een kerstboom, ongeveer 60 cm hoog. € {PRIJS_KERSTBOOM} met gratis verzending en 14 dagen bedenktijd.",
+     kerstboom, current="dieren", dicht=not KERSTBOOM_TE_KOOP, ld={
+         "@context": "https://schema.org", "@type": "Product", "name": "Kattenhuisje kerstboom",
+         "description": "Half gesloten kattenhuisje in de vorm van een kerstboom, ongeveer 60 cm hoog.",
+         "image": [SITE + f[0] for f in KERSTBOOM_FOTOS], "sku": ARTIKEL_KERSTBOOM,
+         "offers": {"@type": "Offer", "url": SITE + "kattenhuisje-kerstboom", "priceCurrency": "EUR", "price": PRIJS_KERSTBOOM.replace(",", "."),
+                    "availability": "https://schema.org/InStock" if KERSTBOOM_TE_KOOP else "https://schema.org/PreOrder"},
+     })
+
+# ---------------------------------------------------------------- dieren
+dieren = f'''<div class="wrap">
+<p class="kruimel"><a href="./">Home</a> / Dieren</p>
+<div class="paginakop"><h1>Voor je dier</h1><p class="sub">Spullen waar je kat of hond blij van wordt.</p></div>
+<div class="kaarten" style="margin-bottom:clamp(56px,8vw,96px)">
+{kaart_kerstboom("d1", kop="h2")}
+<div class="kaart kaart-leeg"><span class="label">Binnenkort</span><h2>Meer voor kat en hond</h2>
+<p class="zacht">We zoeken het volgende product uit. Tip voor ons? <a class="link" href="{WA_VRAAG}" target="_blank" rel="noopener">App ons</a>.</p></div>
+</div>
+</div>'''
+page("dieren.html", "Dieren – spullen voor kat en hond | Nestig",
+     "Spullen waar je kat of hond blij van wordt, zoals een kattenhuisje in de vorm van een kerstboom. Gratis verzending.",
+     dieren, current="dieren")
 
 # ---------------------------------------------------------------- cadeaus
 cadeaus = f'''<div class="wrap">
@@ -790,10 +956,10 @@ page("404.html", "Pagina niet gevonden | Nestig", "Deze pagina bestaat niet.", n
   Cache-Control: public, max-age=31536000
 """)
 # Oude adressen die niet meer bestaan.
-(OUT / "_redirects").write_text("/kamer / 302\n/kamer.html / 302\n/kattenhangmat / 302\n/kattenhangmat.html / 302\n/dieren / 302\n/dieren.html / 302\n")
+(OUT / "_redirects").write_text("/kamer / 302\n/kamer.html / 302\n/kattenhangmat / 302\n/kattenhangmat.html / 302\n")
 (OUT / "_routes.json").write_text('{"version":1,"include":["/api/*"],"exclude":[]}\n')
 (OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nDisallow: /bestellen\nDisallow: /bedankt\nDisallow: /verzonden\nSitemap: {SITE}sitemap.xml\n")
-urls = ["", "boeket", "cadeaus", "retourneren", "herroepen", "algemene-voorwaarden", "privacy"]
+urls = ["", "boeket", "kattenhuisje-kerstboom", "dieren", "cadeaus", "retourneren", "herroepen", "algemene-voorwaarden", "privacy"]
 (OUT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                  + "".join(f"  <url><loc>{SITE}{u}</loc></url>\n" for u in urls) + "</urlset>\n")
 (OUT / "favicon.svg").write_text(f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect x="4" y="4" width="56" height="56" rx="14" fill="#fff" stroke="{INK}" stroke-width="5"/><rect x="12" y="12" width="40" height="40" rx="6" fill="#dcecf1"/><circle cx="38" cy="27" r="10" fill="#ffc83d" stroke="{INK}" stroke-width="3.5"/><rect x="12" y="41" width="40" height="7" rx="3.5" fill="{INK}"/></svg>''')
