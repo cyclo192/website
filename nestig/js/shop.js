@@ -36,6 +36,16 @@ const PRODUCTEN = {
     seintje: "het kattenhuisje kerstboom",
     alt: () => "Witte kat met een rode sjaal stapt uit het groene kattenhuisje in de vorm van een kerstboom",
   },
+  kostuum: {
+    naam: "Kerstboom-kostuum voor kat en hond",
+    prijs: 1995,
+    url: "kerstboom-kostuum.html",
+    kleuren: {
+      een: { naam: "Eén maat", foto: "img/kostuum-1.jpg" },
+    },
+    seintje: "het kerstboom-kostuum",
+    alt: () => "Katten en kleine honden in een groen kerstboom-kostuum",
+  },
 };
 
 const MAX_PER_REGEL = 10;
