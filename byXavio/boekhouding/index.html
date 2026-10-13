@@ -1,0 +1,924 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>byXavio Boekhouding</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23111827'/><text x='16' y='22' font-family='Arial' font-size='16' font-weight='700' fill='white' text-anchor='middle'>€</text></svg>">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+:root{
+  --bg:#f5f6f8;--card:#fff;--text:#111827;--muted:#6b7280;--line:#e5e7eb;
+  --accent:#111827;--accent-text:#fff;--green:#059669;--red:#dc2626;--amber:#d97706;--blue:#2563eb;
+  --soft:#f3f4f6;--radius:12px;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#0b0f17;--card:#141a24;--text:#e5e7eb;--muted:#9ca3af;--line:#243042;
+  --accent:#e5e7eb;--accent-text:#0b0f17;--soft:#1b2330;
+}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+button,input,select,textarea{font:inherit;color:inherit}
+a{color:var(--blue)}
+.hidden{display:none!important}
+/* login */
+#login{min-height:100vh;display:grid;place-items:center;padding:16px}
+#login form{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px;width:100%;max-width:360px;display:grid;gap:12px}
+#login h1{margin:0 0 4px;font-size:22px}
+/* layout */
+#app{display:grid;grid-template-columns:220px 1fr;min-height:100vh}
+nav.side{background:var(--card);border-right:1px solid var(--line);padding:18px 12px;position:sticky;top:0;height:100vh;overflow:auto}
+.brand{font-weight:800;font-size:18px;padding:0 10px 14px}
+.brand small{display:block;font-weight:500;font-size:12px;color:var(--muted)}
+nav.side a{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:8px;color:var(--text);text-decoration:none;margin-bottom:2px}
+nav.side a:hover{background:var(--soft)}
+nav.side a.active{background:var(--accent);color:var(--accent-text)}
+nav.side .foot{margin-top:18px;padding:10px;color:var(--muted);font-size:12px}
+main{padding:20px 24px 60px;min-width:0}
+.top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.top h2{margin:0;font-size:22px;flex:1}
+.menu-btn{display:none}
+/* components */
+.btn{border:1px solid var(--line);background:var(--card);padding:8px 14px;border-radius:9px;cursor:pointer;white-space:nowrap}
+.btn:hover{background:var(--soft)}
+.btn.primary{background:var(--accent);color:var(--accent-text);border-color:var(--accent)}
+.btn.danger{color:var(--red)}
+.btn.sm{padding:4px 9px;font-size:13px}
+input,select,textarea{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--card)}
+textarea{min-height:64px}
+label{display:grid;gap:4px;font-size:13px;color:var(--muted)}
+label>span{font-weight:500}
+.grid{display:grid;gap:12px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px}
+.card h3{margin:0 0 10px;font-size:15px}
+.stat .k{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+.stat .v{font-size:24px;font-weight:700;margin-top:4px}
+.stat .s{color:var(--muted);font-size:12px;margin-top:2px}
+.pos{color:var(--green)}.neg{color:var(--red)}
+.tablewrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:var(--radius)}
+table{width:100%;border-collapse:collapse}
+th,td{padding:9px 12px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
+th{font-size:12px;color:var(--muted);font-weight:600;background:var(--soft)}
+tr:last-child td{border-bottom:none}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+tr.click{cursor:pointer}tr.click:hover td{background:var(--soft)}
+tfoot td{font-weight:700;background:var(--soft)}
+.badge{display:inline-block;padding:2px 8px;border-radius:99px;font-size:12px;font-weight:600;background:var(--soft)}
+.badge.green{background:#d1fae5;color:#065f46}.badge.red{background:#fee2e2;color:#991b1b}.badge.amber{background:#fef3c7;color:#92400e}.badge.blue{background:#dbeafe;color:#1e40af}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.filters>*{width:auto}
+.empty{padding:28px;text-align:center;color:var(--muted)}
+.note{background:var(--soft);border-radius:10px;padding:10px 12px;color:var(--muted);font-size:13px}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.spacer{flex:1}
+.bars{display:flex;align-items:flex-end;gap:6px;height:150px;padding-top:8px}
+.bars .m{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;height:100%;justify-content:flex-end}
+.bars .pair{display:flex;gap:2px;align-items:flex-end;height:100%;width:100%;justify-content:center}
+.bars .b{width:42%;border-radius:3px 3px 0 0;min-height:1px}
+.bars .b.in{background:var(--green)}.bars .b.out{background:var(--red);opacity:.75}
+.bars .l{font-size:11px;color:var(--muted)}
+.legend{display:flex;gap:14px;font-size:12px;color:var(--muted)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+/* modal */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.45);display:flex;align-items:flex-start;justify-content:center;padding:40px 16px;overflow:auto;z-index:50}
+.modal{background:var(--card);border-radius:16px;width:100%;max-width:720px;padding:20px;border:1px solid var(--line)}
+.modal h3{margin:0 0 14px;font-size:18px}
+.modal .actions{display:flex;gap:8px;justify-content:flex-end;margin-top:16px;flex-wrap:wrap}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:9px;overflow:hidden}
+.seg label{display:block;padding:7px 14px;cursor:pointer;color:var(--text)}
+.seg input{display:none}
+.seg input:checked+span{font-weight:700}
+.seg label:has(input:checked){background:var(--accent);color:var(--accent-text)}
+.regels td{padding:4px}
+.regels input{padding:6px 8px}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--accent);color:var(--accent-text);padding:10px 16px;border-radius:10px;z-index:99;box-shadow:0 6px 20px rgba(0,0,0,.2)}
+.btw-table td:first-child{width:56px;color:var(--muted);font-weight:600}
+#print{display:none}
+@media (max-width:860px){
+  #app{grid-template-columns:1fr}
+  nav.side{position:fixed;left:0;top:0;z-index:40;width:240px;transform:translateX(-100%);transition:.2s;box-shadow:0 0 30px rgba(0,0,0,.2)}
+  nav.side.open{transform:none}
+  .menu-btn{display:inline-block}
+  main{padding:16px}
+  .g3,.g4{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:520px){.g2,.g3,.g4{grid-template-columns:1fr}}
+/* print (factuur) */
+@media print{
+  body.printing>*:not(#print){display:none!important}
+  body.printing #print{display:block}
+  body{background:#fff;color:#000}
+  @page{margin:16mm}
+}
+.inv{font-family:system-ui,Arial,sans-serif;color:#111;font-size:12.5px;max-width:760px;margin:0 auto}
+.inv .head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:34px}
+.inv .logo{font-size:26px;font-weight:800}
+.inv .meta td{padding:2px 10px 2px 0;border:none}
+.inv table.lines{width:100%;border-collapse:collapse;margin-top:24px}
+.inv table.lines th{background:#f3f4f6;color:#111;border-bottom:1px solid #ddd;padding:8px}
+.inv table.lines td{border-bottom:1px solid #eee;padding:8px;white-space:normal}
+.inv .tot{margin-left:auto;width:280px;margin-top:12px}
+.inv .tot td{border:none;padding:4px 8px}
+.inv .tot tr.big td{font-weight:800;font-size:15px;border-top:2px solid #111}
+.inv .foot{margin-top:40px;color:#444;font-size:12px;border-top:1px solid #ddd;padding-top:10px}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login" class="hidden">
+  <form id="loginForm">
+    <h1>byXavio Boekhouding</h1>
+    <div class="note">Log in met hetzelfde account als je uren-app.</div>
+    <label><span>E-mail</span><input name="email" type="email" required autocomplete="username"></label>
+    <label><span>Wachtwoord</span><input name="password" type="password" required autocomplete="current-password"></label>
+    <button class="btn primary" type="submit">Inloggen</button>
+    <div id="loginErr" class="neg"></div>
+  </form>
+</div>
+
+<!-- APP -->
+<div id="app" class="hidden">
+  <nav class="side" id="side">
+    <div class="brand">byXavio<small>Boekhouding</small></div>
+    <a href="#dashboard">📊 Dashboard</a>
+    <a href="#boekingen">🧾 Boekingen</a>
+    <a href="#facturen">📄 Facturen</a>
+    <a href="#relaties">👥 Klanten</a>
+    <a href="#btw">🏛️ Btw-aangifte</a>
+    <a href="#activa">💻 Investeringen</a>
+    <a href="#ritten">🚗 Kilometers</a>
+    <a href="#jaar">📘 Jaaroverzicht</a>
+    <a href="#instellingen">⚙️ Instellingen</a>
+    <div class="foot"><span id="userMail"></span><br><a href="#" id="logout">Uitloggen</a></div>
+  </nav>
+  <main>
+    <div class="top">
+      <button class="btn menu-btn" id="menuBtn">☰</button>
+      <h2 id="title">Dashboard</h2>
+      <select id="yearSel" style="width:auto"></select>
+      <button class="btn primary" id="quickAdd">+ Boeking</button>
+    </div>
+    <div id="view"></div>
+  </main>
+</div>
+
+<div id="modalRoot"></div>
+<div id="print"></div>
+
+<script>
+/* ================= CONFIG ================= */
+const SUPABASE_URL = 'https://wifbnkvrhjvlkofsoipg.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_swgxRkVZnkml5-wu3Mv0bw_UEjdNTDt';
+// Optioneel: koppeling met de uren-app (tabel + kolommen) voor het urencriterium
+const UREN = null; // bv. { table:'entries', date:'datum', hours:'uren' }
+
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+/* ================= HELPERS ================= */
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const r2 = n => Math.round((+n + Number.EPSILON) * 100) / 100;
+const num = v => { const n = parseFloat(String(v ?? '').replace(/\s/g,'').replace(/\.(?=\d{3}(\D|$))/g,'').replace(',', '.')); return isNaN(n) ? 0 : n; };
+const eur = n => new Intl.NumberFormat('nl-NL',{style:'currency',currency:'EUR'}).format(+n || 0);
+const eur0 = n => new Intl.NumberFormat('nl-NL',{style:'currency',currency:'EUR',maximumFractionDigits:0,minimumFractionDigits:0}).format(+n || 0);
+const fd = d => d ? new Date(d + 'T00:00:00').toLocaleDateString('nl-NL',{day:'2-digit',month:'2-digit',year:'numeric'}) : '';
+const iso = dt => dt.getFullYear() + '-' + String(dt.getMonth()+1).padStart(2,'0') + '-' + String(dt.getDate()).padStart(2,'0');
+const today = () => iso(new Date());
+const addDays = (d, n) => { const x = new Date(d + 'T00:00:00'); x.setDate(x.getDate() + n); return iso(x); };
+const yearOf = d => +String(d).slice(0,4);
+const qOf = d => Math.floor((+String(d).slice(5,7) - 1) / 3) + 1;
+const MAANDEN = ['jan','feb','mrt','apr','mei','jun','jul','aug','sep','okt','nov','dec'];
+function toast(msg){ const t = document.createElement('div'); t.className='toast'; t.textContent=msg; document.body.appendChild(t); setTimeout(()=>t.remove(), 2600); }
+function fail(e){ console.error(e); alert('Er ging iets mis: ' + (e?.message || e)); }
+
+const TARIEVEN = {
+  '21':        {label:'21% btw'},
+  '9':         {label:'9% btw'},
+  '0':         {label:'0% btw'},
+  'vrij':      {label:'Geen btw / vrijgesteld'},
+  'verlegd':   {label:'Btw verlegd (binnen NL)'},
+  'eu':        {label:'EU – btw verlegd'},
+  'buiten_eu': {label:'Buiten de EU'},
+};
+// percentage dat over bedrag_excl wordt berekend
+function btwPct(type, t){
+  if (t === '21') return 21;
+  if (t === '9') return 9;
+  if (type === 'uitgave' && ['verlegd','eu','buiten_eu'].includes(t)) return 21; // verlegde btw: verschuldigd én aftrekbaar
+  return 0;
+}
+const isVerlegdInkoop = (type, t) => type === 'uitgave' && ['verlegd','eu','buiten_eu'].includes(t);
+
+const CAT_IN = ['Websites','Onderhoud & hosting','AI-automatisering','Fiverr','Overige omzet'];
+const CAT_UIT = ['Software & abonnementen','Hosting & domeinen','Hardware (klein, < €450)','Telefoon & internet','Marketing & advertenties','Kantoorartikelen','Opleiding & boeken','Reiskosten (OV/parkeren)','Bankkosten','Verzekeringen','Representatie (80% aftrekbaar)','Investering (activa)','Overige kosten'];
+
+const DEFAULT_SETTINGS = {
+  bedrijfsnaam:'byXavio', naam:'Djego Reinouwers', adres:'Speltstraat 16', postcode_plaats:'1446 DA Purmerend',
+  kvk:'42165581', btw_id:'NL005549301B15', iban:'', email:'infobyxavio@gmail.com', telefoon:'06-26683986',
+  website:'byxavio.nl', betaaltermijn:14, km_tarief:0.23, voettekst:'', aangiftes:{}
+};
+
+/* ================= STATE ================= */
+const S = { user:null, year:new Date().getFullYear(), b:[], f:[], r:[], a:[], t:[], set:{...DEFAULT_SETTINGS} };
+
+async function loadAll(){
+  const res = await Promise.all([
+    sb.from('bk_boekingen').select('*').order('datum',{ascending:false}).order('created_at',{ascending:false}),
+    sb.from('bk_facturen').select('*').order('datum',{ascending:false}).order('nummer',{ascending:false}),
+    sb.from('bk_relaties').select('*').order('naam'),
+    sb.from('bk_activa').select('*').order('aanschafdatum'),
+    sb.from('bk_ritten').select('*').order('datum',{ascending:false}),
+    sb.from('bk_instellingen').select('*').maybeSingle(),
+  ]);
+  for (const x of res) if (x.error) throw x.error;
+  [S.b, S.f, S.r, S.a, S.t] = res.slice(0,5).map(x => x.data || []);
+  S.set = { ...DEFAULT_SETTINGS, ...(res[5].data?.data || {}) };
+  S.set.aangiftes = S.set.aangiftes || {};
+}
+
+/* ================= AUTH ================= */
+async function init(){
+  const { data:{ session } } = await sb.auth.getSession();
+  if (session) start(session.user); else showLogin();
+  sb.auth.onAuthStateChange((ev, s) => { if (ev === 'SIGNED_OUT') showLogin(); });
+}
+function showLogin(){ $('#app').classList.add('hidden'); $('#login').classList.remove('hidden'); }
+$('#loginForm').onsubmit = async e => {
+  e.preventDefault(); $('#loginErr').textContent = '';
+  const fdat = new FormData(e.target);
+  const { data, error } = await sb.auth.signInWithPassword({ email:fdat.get('email'), password:fdat.get('password') });
+  if (error) { $('#loginErr').textContent = 'Inloggen mislukt: ' + error.message; return; }
+  start(data.user);
+};
+$('#logout').onclick = async e => { e.preventDefault(); await sb.auth.signOut(); };
+
+async function start(user){
+  S.user = user;
+  $('#login').classList.add('hidden'); $('#app').classList.remove('hidden');
+  $('#userMail').textContent = user.email;
+  try { await loadAll(); } catch(e){ fail(e); }
+  fillYears(); route();
+}
+function fillYears(){
+  const ys = new Set([new Date().getFullYear(), S.year]);
+  [...S.b, ...S.f, ...S.t].forEach(x => ys.add(yearOf(x.datum)));
+  S.a.forEach(x => ys.add(yearOf(x.aanschafdatum)));
+  const sel = $('#yearSel');
+  sel.innerHTML = [...ys].sort((a,b)=>b-a).map(y => `<option ${y===S.year?'selected':''}>${y}</option>`).join('');
+}
+$('#yearSel').onchange = e => { S.year = +e.target.value; route(); };
+$('#menuBtn').onclick = () => $('#side').classList.toggle('open');
+$('#quickAdd').onclick = () => boekingForm();
+
+/* ================= ROUTER ================= */
+const VIEWS = {
+  dashboard:['Dashboard', viewDashboard], boekingen:['Boekingen', viewBoekingen], facturen:['Facturen', viewFacturen],
+  relaties:['Klanten', viewRelaties], btw:['Btw-aangifte', viewBtw], activa:['Investeringen & afschrijving', viewActiva],
+  ritten:['Kilometers', viewRitten], jaar:['Jaaroverzicht', viewJaar], instellingen:['Instellingen', viewInstellingen],
+};
+function route(){
+  const key = (location.hash.slice(1) || 'dashboard').split('?')[0];
+  const [title, fn] = VIEWS[key] || VIEWS.dashboard;
+  document.querySelectorAll('nav.side a[href^="#"]').forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + key));
+  $('#title').textContent = title; $('#side').classList.remove('open');
+  $('#view').innerHTML = fn();
+  (POST[key] || (()=>{}))();
+}
+window.addEventListener('hashchange', route);
+const POST = {}; // per view: event binding na render
+async function refresh(){ await loadAll(); fillYears(); route(); }
+
+/* ================= MODAL ================= */
+function modal(title, body, onMount){
+  const root = $('#modalRoot');
+  root.innerHTML = `<div class="modal-bg"><div class="modal"><h3>${esc(title)}</h3>${body}</div></div>`;
+  root.querySelector('.modal-bg').addEventListener('mousedown', e => { if (e.target.classList.contains('modal-bg')) closeModal(); });
+  onMount && onMount(root.querySelector('.modal'));
+}
+const closeModal = () => $('#modalRoot').innerHTML = '';
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+/* ================= BEREKENINGEN ================= */
+const inYear = (arr, y, k='datum') => arr.filter(x => yearOf(x[k]) === y);
+const incl = b => r2(+b.bedrag_excl + (isVerlegdInkoop(b.type, b.btw_tarief) ? 0 : +b.btw_bedrag));
+
+function btwAangifte(y, q){
+  const R = { '1a':[0,0], '1b':[0,0], '1e':[0,0], '2a':[0,0], '3a':[0,0], '3b':[0,0], '4a':[0,0], '4b':[0,0], vb:0 };
+  S.b.filter(b => yearOf(b.datum) === y && qOf(b.datum) === q).forEach(b => {
+    const ex = +b.bedrag_excl, bt = +b.btw_bedrag, t = b.btw_tarief;
+    if (b.type === 'inkomst'){
+      const map = { '21':'1a', '9':'1b', '0':'1e', 'verlegd':'1e', 'eu':'3b', 'buiten_eu':'3a' };
+      const k = map[t]; if (!k) return;
+      R[k][0] += ex; if (k === '1a' || k === '1b') R[k][1] += bt;
+    } else {
+      if (t === '21' || t === '9') R.vb += bt;
+      const map = { 'verlegd':'2a', 'eu':'4b', 'buiten_eu':'4a' };
+      const k = map[t]; if (k){ R[k][0] += ex; R[k][1] += bt; R.vb += bt; }
+    }
+  });
+  // afronden zoals op de aangifte: hele euro's, in jouw voordeel
+  const fl = Math.floor;
+  const A = {};
+  for (const k of ['1a','1b','1e','2a','3a','3b','4a','4b']) A[k] = [fl(R[k][0]), fl(R[k][1])];
+  A['5a'] = A['1a'][1] + A['1b'][1] + A['2a'][1] + A['4a'][1] + A['4b'][1];
+  A['5b'] = Math.ceil(r2(R.vb));
+  A['5g'] = A['5a'] - A['5b'];
+  A.exact = R;
+  return A;
+}
+function aangifteDeadline(y, q){ const m = q*3; const d = new Date(y, m + 1, 0); return iso(d); } // laatste dag maand na kwartaal
+
+function afschrijving(a, y){
+  const start = new Date(a.aanschafdatum + 'T00:00:00');
+  const totMaanden = (+a.jaren || 5) * 12;
+  const perMaand = (+a.aanschafwaarde - +a.restwaarde) / totMaanden;
+  const m0 = start.getFullYear() * 12 + start.getMonth();
+  const countUpTo = endIdx => Math.max(0, Math.min(totMaanden, endIdx - m0 + 1));
+  const tot = countUpTo(y*12 + 11), voor = countUpTo(y*12 - 1);
+  const dit = r2((tot - voor) * perMaand);
+  const boekwaarde = r2(+a.aanschafwaarde - tot * perMaand);
+  return { dit, boekwaarde: y*12+11 < m0 ? +a.aanschafwaarde : boekwaarde };
+}
+
+function winstOverzicht(y){
+  const B = inYear(S.b, y);
+  const omzet = {}, kosten = {};
+  let omzetTot = 0, kostenTot = 0, representatieCorr = 0, investPrive = 0;
+  B.forEach(b => {
+    const ex = +b.bedrag_excl;
+    if (b.type === 'inkomst'){ omzet[b.categorie||'Overig'] = (omzet[b.categorie||'Overig']||0) + ex; omzetTot += ex; }
+    else {
+      if (b.categorie === 'Investering (activa)') { investPrive += ex; return; }
+      kosten[b.categorie||'Overig'] = (kosten[b.categorie||'Overig']||0) + ex; kostenTot += ex;
+      if ((b.categorie||'').startsWith('Representatie')) representatieCorr += ex * 0.2;
+    }
+  });
+  const afschr = S.a.reduce((s,a) => s + afschrijving(a, y).dit, 0);
+  const km = inYear(S.t, y).reduce((s,t) => s + +t.km, 0);
+  const kmVerg = r2(km * (+S.set.km_tarief || 0));
+  const winst = r2(omzetTot - kostenTot + representatieCorr - afschr - kmVerg);
+  return { omzet, kosten, omzetTot:r2(omzetTot), kostenTot:r2(kostenTot), representatieCorr:r2(representatieCorr), afschr:r2(afschr), km, kmVerg, winst, invest:r2(investPrive) };
+}
+
+function factuurTotalen(f){
+  const sub = r2((f.regels||[]).reduce((s,l) => s + num(l.aantal) * num(l.prijs), 0));
+  const pct = btwPct('inkomst', f.btw_tarief);
+  const btw = r2(sub * pct / 100);
+  return { sub, pct, btw, tot: r2(sub + btw) };
+}
+const relNaam = id => S.r.find(r => r.id === id)?.naam || '';
+
+/* ================= DASHBOARD ================= */
+function viewDashboard(){
+  const y = S.year, w = winstOverzicht(y);
+  const nu = new Date(), curQ = qOf(today()), qY = nu.getFullYear();
+  const A = btwAangifte(qY, curQ);
+  const open = S.f.filter(f => f.status === 'verzonden');
+  const openTot = open.reduce((s,f) => s + factuurTotalen(f).tot, 0);
+  const verlopen = open.filter(f => f.vervaldatum && f.vervaldatum < today());
+  // eerstvolgende niet-ingediende aangifte
+  let due = null;
+  for (let yy = qY - 1; yy <= qY && !due; yy++) for (let q = 1; q <= 4; q++){
+    const key = `${yy}-Q${q}`; const dl = aangifteDeadline(yy, q);
+    if ((yy < qY || q < curQ) && !S.set.aangiftes[key] && S.b.some(b => yearOf(b.datum) === yy && qOf(b.datum) === q)) { due = { key, dl, yy, q }; break; }
+  }
+  // maandgrafiek
+  const per = Array.from({length:12}, () => [0,0]);
+  inYear(S.b, y).forEach(b => { const m = +b.datum.slice(5,7) - 1; per[m][b.type === 'inkomst' ? 0 : 1] += +b.bedrag_excl; });
+  const max = Math.max(1, ...per.flat());
+  const recent = S.b.slice(0, 6);
+  return `
+  <div class="grid g4">
+    <div class="card stat"><div class="k">Omzet ${y}</div><div class="v">${eur(w.omzetTot)}</div><div class="s">excl. btw</div></div>
+    <div class="card stat"><div class="k">Kosten ${y}</div><div class="v">${eur(w.kostenTot + w.afschr + w.kmVerg - w.representatieCorr)}</div><div class="s">incl. afschrijving & km</div></div>
+    <div class="card stat"><div class="k">Winst ${y}</div><div class="v ${w.winst<0?'neg':'pos'}">${eur(w.winst)}</div><div class="s">indicatief, vóór aftrekposten</div></div>
+    <div class="card stat"><div class="k">Btw Q${curQ} ${qY}</div><div class="v">${eur0(A['5g'])}</div><div class="s">${A['5g'] >= 0 ? 'te betalen' : 'terug te vragen'} · deadline ${fd(aangifteDeadline(qY,curQ))}</div></div>
+  </div>
+  ${due ? `<div class="card" style="margin-top:12px;border-color:var(--amber)"><div class="row"><b>⚠️ Btw-aangifte ${due.q}e kwartaal ${due.yy} nog niet gemarkeerd als ingediend</b><span class="spacer"></span>deadline ${fd(due.dl)}<a class="btn sm" href="#btw?${due.yy}-${due.q}">Bekijken</a></div></div>` : ''}
+  <div class="grid g2" style="margin-top:12px">
+    <div class="card"><div class="row"><h3 style="margin:0">Per maand ${y}</h3><span class="spacer"></span><div class="legend"><span><i style="background:var(--green)"></i>omzet</span><span><i style="background:var(--red)"></i>kosten</span></div></div>
+      <div class="bars">${per.map((p,i) => `<div class="m" title="${MAANDEN[i]}: omzet ${eur(p[0])}, kosten ${eur(p[1])}"><div class="pair"><div class="b in" style="height:${p[0]/max*100}%"></div><div class="b out" style="height:${p[1]/max*100}%"></div></div><div class="l">${MAANDEN[i]}</div></div>`).join('')}</div>
+    </div>
+    <div class="card"><h3>Openstaande facturen</h3>
+      <div class="stat"><div class="v">${eur(openTot)}</div><div class="s">${open.length} open${verlopen.length ? ` · <span class="neg">${verlopen.length} verlopen</span>` : ''}</div></div>
+      ${open.slice(0,4).map(f => `<div class="row" style="margin-top:8px"><span>${esc(f.nummer)} · ${esc(relNaam(f.relatie_id))}</span><span class="spacer"></span>${eur(factuurTotalen(f).tot)}</div>`).join('')}
+      <div style="margin-top:10px"><a href="#facturen">Alle facturen →</a></div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:12px"><div class="row"><h3 style="margin:0">Laatste boekingen</h3><span class="spacer"></span><a href="#boekingen">Alles →</a></div>
+    ${recent.length ? `<div class="tablewrap" style="margin-top:10px;border:none"><table>${recent.map(b => `<tr class="click" data-id="${b.id}"><td>${fd(b.datum)}</td><td>${esc(b.omschrijving)}</td><td class="num ${b.type==='inkomst'?'pos':'neg'}">${b.type==='inkomst'?'+':'−'} ${eur(incl(b))}</td></tr>`).join('')}</table></div>` : `<div class="empty">Nog geen boekingen. Klik op <b>+ Boeking</b> om te beginnen.</div>`}
+  </div>`;
+}
+POST.dashboard = () => document.querySelectorAll('tr.click[data-id]').forEach(tr => tr.onclick = () => boekingForm(S.b.find(b => b.id === tr.dataset.id)));
+
+/* ================= BOEKINGEN ================= */
+let BF = { type:'', q:'', zoek:'' };
+function viewBoekingen(){
+  return `
+  <div class="filters">
+    <select id="fType"><option value="">Alles</option><option value="inkomst" ${BF.type==='inkomst'?'selected':''}>Inkomsten</option><option value="uitgave" ${BF.type==='uitgave'?'selected':''}>Uitgaven</option></select>
+    <select id="fQ"><option value="">Heel ${S.year}</option>${[1,2,3,4].map(q => `<option value="${q}" ${BF.q==q?'selected':''}>Q${q}</option>`).join('')}</select>
+    <input id="fZoek" placeholder="Zoeken…" value="${esc(BF.zoek)}" style="min-width:180px">
+    <span class="spacer"></span>
+    <button class="btn" id="csv">⬇ CSV</button>
+    <button class="btn primary" id="nieuwB">+ Boeking</button>
+  </div>
+  <div id="bTable"></div>`;
+}
+function boekingenGefilterd(){
+  const z = BF.zoek.toLowerCase();
+  return inYear(S.b, S.year).filter(b => (!BF.type || b.type === BF.type) && (!BF.q || qOf(b.datum) == BF.q) &&
+    (!z || [b.omschrijving, b.relatie, b.categorie, b.notitie].join(' ').toLowerCase().includes(z)));
+}
+function renderBTable(){
+  const L = boekingenGefilterd();
+  const sum = k => r2(L.reduce((s,b) => s + (b.type === 'inkomst' ? 1 : -1) * k(b), 0));
+  $('#bTable').innerHTML = L.length ? `<div class="tablewrap"><table>
+    <thead><tr><th>Datum</th><th>Omschrijving</th><th>Relatie</th><th>Categorie</th><th>Btw</th><th class="num">Excl.</th><th class="num">Btw</th><th class="num">Totaal</th><th></th></tr></thead>
+    <tbody>${L.map(b => `<tr class="click" data-id="${b.id}">
+      <td>${fd(b.datum)}</td><td>${b.type==='inkomst'?'<span class="badge green">in</span>':'<span class="badge red">uit</span>'} ${esc(b.omschrijving)}${b.factuur_id?' <span class="badge blue">factuur</span>':''}</td>
+      <td>${esc(b.relatie)}</td><td>${esc(b.categorie)}</td><td>${esc(TARIEVEN[b.btw_tarief]?.label||b.btw_tarief)}</td>
+      <td class="num">${eur(b.bedrag_excl)}</td><td class="num">${eur(b.btw_bedrag)}</td><td class="num ${b.type==='inkomst'?'pos':'neg'}">${eur(incl(b))}</td>
+      <td>${b.bon_pad?'📎':''}${b.betaald_via==='prive'?' <span class="badge amber" title="Privé betaald">privé</span>':''}</td></tr>`).join('')}</tbody>
+    <tfoot><tr><td colspan="5">Saldo (${L.length} boekingen)</td><td class="num">${eur(sum(b=>+b.bedrag_excl))}</td><td class="num">${eur(sum(b=>+b.btw_bedrag))}</td><td class="num">${eur(sum(incl))}</td><td></td></tr></tfoot>
+  </table></div>` : `<div class="card empty">Geen boekingen gevonden.</div>`;
+  document.querySelectorAll('#bTable tr.click').forEach(tr => tr.onclick = () => boekingForm(S.b.find(b => b.id === tr.dataset.id)));
+}
+POST.boekingen = () => {
+  renderBTable();
+  $('#fType').onchange = e => { BF.type = e.target.value; renderBTable(); };
+  $('#fQ').onchange = e => { BF.q = e.target.value; renderBTable(); };
+  $('#fZoek').oninput = e => { BF.zoek = e.target.value; renderBTable(); };
+  $('#nieuwB').onclick = () => boekingForm();
+  $('#csv').onclick = () => {
+    const L = boekingenGefilterd();
+    const rows = [['Datum','Type','Omschrijving','Relatie','Categorie','Btw-tarief','Bedrag excl','Btw','Totaal','Betaald via','Notitie']]
+      .concat(L.map(b => [b.datum, b.type, b.omschrijving, b.relatie, b.categorie, TARIEVEN[b.btw_tarief]?.label||b.btw_tarief, String(b.bedrag_excl).replace('.',','), String(b.btw_bedrag).replace('.',','), String(incl(b)).replace('.',','), b.betaald_via, b.notitie]));
+    const csv = rows.map(r => r.map(v => `"${String(v ?? '').replace(/"/g,'""')}"`).join(';')).join('\r\n');
+    const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob(['\ufeff' + csv], {type:'text/csv'}));
+    a.download = `boekingen-${S.year}${BF.q?'-Q'+BF.q:''}.csv`; a.click();
+  };
+};
+
+function boekingForm(b){
+  const nieuw = !b; b = b || { type:'uitgave', datum:today(), btw_tarief:'21', betaald_via:'zakelijk' };
+  const viaFactuur = !!b.factuur_id;
+  const catOpts = t => (t === 'inkomst' ? CAT_IN : CAT_UIT).map(c => `<option ${c===b.categorie?'selected':''}>${esc(c)}</option>`).join('');
+  modal(nieuw ? 'Nieuwe boeking' : 'Boeking bewerken', `
+  <form id="bForm" class="grid">
+    ${viaFactuur ? `<div class="note">Deze boeking hoort bij een factuur. Pas de factuur aan om bedragen te wijzigen.</div>` : ''}
+    <div class="row"><div class="seg">
+      <label><input type="radio" name="type" value="uitgave" ${b.type==='uitgave'?'checked':''}><span>Uitgave</span></label>
+      <label><input type="radio" name="type" value="inkomst" ${b.type==='inkomst'?'checked':''}><span>Inkomst</span></label>
+    </div></div>
+    <div class="grid g2">
+      <label><span>Datum (factuurdatum)</span><input type="date" name="datum" value="${b.datum}" required></label>
+      <label><span>Relatie (klant/leverancier)</span><input name="relatie" list="relList" value="${esc(b.relatie)}"><datalist id="relList">${[...new Set([...S.r.map(r=>r.naam), ...S.b.map(x=>x.relatie).filter(Boolean)])].map(n=>`<option value="${esc(n)}">`).join('')}</datalist></label>
+    </div>
+    <label><span>Omschrijving</span><input name="omschrijving" value="${esc(b.omschrijving)}" required placeholder="bv. Claude Pro abonnement oktober"></label>
+    <div class="grid g2">
+      <label><span>Categorie</span><select name="categorie" id="bCat">${catOpts(b.type)}</select></label>
+      <label><span>Btw-tarief</span><select name="btw_tarief" id="bTar">${Object.entries(TARIEVEN).map(([k,v]) => `<option value="${k}" ${k===b.btw_tarief?'selected':''}>${v.label}</option>`).join('')}</select></label>
+    </div>
+    <div class="grid g3">
+      <label><span>Bedrag</span><input name="bedrag" id="bBedrag" inputmode="decimal" value="${b.id ? String(b.bedrag_excl).replace('.',',') : ''}" required></label>
+      <label><span>Bedrag is</span><select id="bInEx"><option value="incl" ${nieuw?'selected':''}>incl. btw</option><option value="excl" ${!nieuw?'selected':''}>excl. btw</option></select></label>
+      <label><span>Btw-bedrag</span><input name="btw_bedrag" id="bBtw" inputmode="decimal" value="${b.id ? String(b.btw_bedrag).replace('.',',') : ''}"></label>
+    </div>
+    <div class="note" id="bCalc"></div>
+    <div class="grid g2">
+      <label><span>Betaald via</span><select name="betaald_via"><option value="zakelijk" ${b.betaald_via!=='prive'?'selected':''}>Zakelijke rekening</option><option value="prive" ${b.betaald_via==='prive'?'selected':''}>Privé betaald</option></select></label>
+      <label><span>Bonnetje / factuur ${b.bon_pad ? '(<a href="#" id="bonOpen">bekijk huidige</a>)' : ''}</span><input type="file" name="bon" accept="image/*,application/pdf"></label>
+    </div>
+    <label><span>Notitie</span><textarea name="notitie">${esc(b.notitie)}</textarea></label>
+    <div class="actions">
+      ${!nieuw && !viaFactuur ? `<button type="button" class="btn danger" id="bDel">Verwijderen</button><span class="spacer"></span>` : '<span class="spacer"></span>'}
+      <button type="button" class="btn" onclick="closeModal()">Annuleren</button>
+      <button class="btn primary" type="submit">Opslaan</button>
+    </div>
+  </form>`, m => {
+    const F = m.querySelector('#bForm');
+    if (viaFactuur) F.querySelectorAll('#bBedrag,#bBtw,#bTar,#bInEx').forEach(x => x.disabled = true);
+    let btwHand = !nieuw;
+    const calc = () => {
+      const type = F.type.value, t = F.btw_tarief.value, pct = btwPct(type, t), amt = num(F.bedrag.value);
+      const verlegd = isVerlegdInkoop(type, t);
+      const ex = (F.querySelector('#bInEx').value === 'incl' && !verlegd) ? r2(amt / (1 + pct/100)) : r2(amt);
+      if (!btwHand) F.btw_bedrag.value = String(r2(ex * pct / 100)).replace('.',',');
+      const bt = num(F.btw_bedrag.value);
+      F.querySelector('#bCalc').innerHTML = verlegd
+        ? `Excl. ${eur(ex)} · verlegde btw ${eur(bt)} (geef je op én trek je af → netto €0) · je betaalt ${eur(ex)}`
+        : `Excl. ${eur(ex)} + btw ${eur(bt)} = <b>${eur(r2(ex + bt))}</b>${type==='uitgave' && pct ? ' · btw terug te vragen' : ''}`;
+      return { ex, bt };
+    };
+    F.querySelectorAll('input[name=type]').forEach(r => r.onchange = () => { F.querySelector('#bCat').innerHTML = (F.type.value==='inkomst'?CAT_IN:CAT_UIT).map(c=>`<option>${c}</option>`).join(''); calc(); });
+    F.bedrag.oninput = () => { btwHand = false; calc(); };
+    F.btw_tarief.onchange = () => { btwHand = false; calc(); };
+    F.querySelector('#bInEx').onchange = () => { btwHand = false; calc(); };
+    F.btw_bedrag.oninput = () => { btwHand = true; calc(); };
+    calc();
+    m.querySelector('#bonOpen')?.addEventListener('click', async e => { e.preventDefault(); openBon(b.bon_pad); });
+    m.querySelector('#bDel')?.addEventListener('click', async () => {
+      if (!confirm('Boeking verwijderen?')) return;
+      if (b.bon_pad) await sb.storage.from('bonnen').remove([b.bon_pad]);
+      const { error } = await sb.from('bk_boekingen').delete().eq('id', b.id);
+      if (error) return fail(error); closeModal(); toast('Verwijderd'); refresh();
+    });
+    F.onsubmit = async e => {
+      e.preventDefault();
+      const btn = F.querySelector('button[type=submit]'); btn.disabled = true; btn.textContent = 'Opslaan…';
+      try {
+        const { ex, bt } = calc();
+        const rec = { datum:F.datum.value, type:F.type.value, omschrijving:F.omschrijving.value.trim(), relatie:F.relatie.value.trim() || null,
+          categorie:F.categorie.value, betaald_via:F.betaald_via.value, notitie:F.notitie.value.trim() || null };
+        if (!viaFactuur) Object.assign(rec, { bedrag_excl:ex, btw_bedrag:bt, btw_tarief:F.btw_tarief.value });
+        let id = b.id;
+        if (nieuw){ const { data, error } = await sb.from('bk_boekingen').insert(rec).select().single(); if (error) throw error; id = data.id; }
+        else { const { error } = await sb.from('bk_boekingen').update(rec).eq('id', id); if (error) throw error; }
+        const file = F.bon.files[0];
+        if (file){
+          const path = `${S.user.id}/${id}/${Date.now()}-${file.name.replace(/[^\w.\-]+/g,'_')}`;
+          const up = await sb.storage.from('bonnen').upload(path, file); if (up.error) throw up.error;
+          if (b.bon_pad) await sb.storage.from('bonnen').remove([b.bon_pad]);
+          const { error } = await sb.from('bk_boekingen').update({ bon_pad:path }).eq('id', id); if (error) throw error;
+        }
+        if (rec.categorie === 'Investering (activa)' && nieuw && confirm('Dit is een investering. Meteen toevoegen aan Investeringen (afschrijving)?')){
+          await sb.from('bk_activa').insert({ omschrijving:rec.omschrijving, aanschafdatum:rec.datum, aanschafwaarde:ex, restwaarde:0, jaren:5 });
+        }
+        closeModal(); toast('Opgeslagen'); refresh();
+      } catch(err){ fail(err); btn.disabled = false; btn.textContent = 'Opslaan'; }
+    };
+  });
+}
+async function openBon(path){
+  const w = window.open('', '_blank');
+  const { data, error } = await sb.storage.from('bonnen').createSignedUrl(path, 300);
+  if (error) { w?.close(); return fail(error); }
+  if (w) w.location = data.signedUrl; else location.href = data.signedUrl;
+}
+
+/* ================= FACTUREN ================= */
+function viewFacturen(){
+  const L = inYear(S.f, S.year);
+  const status = f => f.status === 'betaald' ? '<span class="badge green">betaald</span>'
+    : f.status === 'concept' ? '<span class="badge">concept</span>'
+    : (f.vervaldatum && f.vervaldatum < today()) ? '<span class="badge red">verlopen</span>' : '<span class="badge amber">open</span>';
+  return `
+  <div class="filters"><div class="note">Facturen die je op <b>verzonden</b> of <b>betaald</b> zet worden automatisch als inkomst geboekt (op factuurdatum).</div><span class="spacer"></span><button class="btn primary" id="nieuwF">+ Factuur</button></div>
+  ${L.length ? `<div class="tablewrap"><table>
+    <thead><tr><th>Nummer</th><th>Klant</th><th>Datum</th><th>Vervalt</th><th class="num">Totaal</th><th>Status</th><th></th></tr></thead>
+    <tbody>${L.map(f => `<tr><td><b>${esc(f.nummer)}</b></td><td>${esc(relNaam(f.relatie_id))}</td><td>${fd(f.datum)}</td><td>${fd(f.vervaldatum)}</td>
+      <td class="num">${eur(factuurTotalen(f).tot)}</td><td>${status(f)}</td>
+      <td class="row" style="flex-wrap:nowrap"><button class="btn sm" data-print="${f.id}">PDF</button><button class="btn sm" data-edit="${f.id}">Bewerk</button>${f.status==='verzonden'?`<button class="btn sm" data-paid="${f.id}">✓ Betaald</button>`:''}</td></tr>`).join('')}</tbody>
+  </table></div>` : `<div class="card empty">Nog geen facturen in ${S.year}.</div>`}`;
+}
+POST.facturen = () => {
+  $('#nieuwF').onclick = () => factuurForm();
+  document.querySelectorAll('[data-edit]').forEach(x => x.onclick = () => factuurForm(S.f.find(f => f.id === x.dataset.edit)));
+  document.querySelectorAll('[data-print]').forEach(x => x.onclick = () => printFactuur(S.f.find(f => f.id === x.dataset.print)));
+  document.querySelectorAll('[data-paid]').forEach(x => x.onclick = async () => {
+    const d = prompt('Betaald op (jjjj-mm-dd):', today()); if (!d) return;
+    const { error } = await sb.from('bk_facturen').update({ status:'betaald', betaald_op:d }).eq('id', x.dataset.paid);
+    if (error) return fail(error); toast('Gemarkeerd als betaald'); refresh();
+  });
+};
+function volgendNummer(datum){
+  const y = yearOf(datum || today());
+  const max = S.f.map(f => (f.nummer.match(new RegExp('^' + y + '-(\\d+)$')) || [])[1]).filter(Boolean).map(Number).reduce((a,b) => Math.max(a,b), 0);
+  return `${y}-${String(max + 1).padStart(3,'0')}`;
+}
+function factuurForm(f){
+  const nieuw = !f;
+  f = f || { nummer:volgendNummer(), datum:today(), vervaldatum:addDays(today(), +S.set.betaaltermijn || 14), btw_tarief:'21', categorie:'Websites', status:'concept', regels:[{ omschrijving:'', aantal:1, prijs:'' }] };
+  const regelRow = l => `<tr><td><input data-k="omschrijving" value="${esc(l.omschrijving)}" placeholder="Omschrijving"></td><td style="width:80px"><input data-k="aantal" inputmode="decimal" value="${esc(String(l.aantal).replace('.',','))}"></td><td style="width:120px"><input data-k="prijs" inputmode="decimal" value="${esc(String(l.prijs).replace('.',','))}" placeholder="€ excl."></td><td style="width:36px"><button type="button" class="btn sm" data-del>✕</button></td></tr>`;
+  modal(nieuw ? 'Nieuwe factuur' : `Factuur ${f.nummer}`, `
+  <form id="fForm" class="grid">
+    <div class="grid g2">
+      <label><span>Klant</span><select name="relatie_id" required><option value="">— kies klant —</option>${S.r.map(r => `<option value="${r.id}" ${r.id===f.relatie_id?'selected':''}>${esc(r.naam)}</option>`).join('')}</select></label>
+      <label><span>Factuurnummer</span><input name="nummer" value="${esc(f.nummer)}" required></label>
+    </div>
+    <div style="margin-top:-6px"><a href="#" id="nieuweKlant">+ nieuwe klant</a></div>
+    <div class="grid g3">
+      <label><span>Factuurdatum</span><input type="date" name="datum" value="${f.datum}" required></label>
+      <label><span>Vervaldatum</span><input type="date" name="vervaldatum" value="${f.vervaldatum||''}"></label>
+      <label><span>Status</span><select name="status">${['concept','verzonden','betaald'].map(s => `<option ${s===f.status?'selected':''}>${s}</option>`).join('')}</select></label>
+    </div>
+    <div class="grid g2">
+      <label><span>Btw</span><select name="btw_tarief">${['21','9','0','verlegd','eu','buiten_eu','vrij'].map(k => `<option value="${k}" ${k===f.btw_tarief?'selected':''}>${TARIEVEN[k].label}</option>`).join('')}</select></label>
+      <label><span>Categorie (omzet)</span><select name="categorie">${CAT_IN.map(c => `<option ${c===f.categorie?'selected':''}>${c}</option>`).join('')}</select></label>
+    </div>
+    <div class="tablewrap"><table class="regels"><thead><tr><th>Omschrijving</th><th>Aantal</th><th>Prijs</th><th></th></tr></thead><tbody id="regels">${(f.regels||[]).map(regelRow).join('')}</tbody></table></div>
+    <div class="row"><button type="button" class="btn sm" id="addRegel">+ regel</button><span class="spacer"></span><span id="fTot"></span></div>
+    <label><span>Notitie op factuur (optioneel)</span><textarea name="notitie">${esc(f.notitie)}</textarea></label>
+    <div class="actions">
+      ${!nieuw ? `<button type="button" class="btn danger" id="fDel">Verwijderen</button>` : ''}<span class="spacer"></span>
+      <button type="button" class="btn" onclick="closeModal()">Annuleren</button>
+      <button class="btn" type="submit" data-then="print">Opslaan & PDF</button>
+      <button class="btn primary" type="submit">Opslaan</button>
+    </div>
+  </form>`, m => {
+    const F = m.querySelector('#fForm'), tb = m.querySelector('#regels');
+    const regels = () => [...tb.querySelectorAll('tr')].map(tr => ({ omschrijving:tr.querySelector('[data-k=omschrijving]').value.trim(), aantal:num(tr.querySelector('[data-k=aantal]').value), prijs:num(tr.querySelector('[data-k=prijs]').value) })).filter(l => l.omschrijving || l.prijs);
+    const upd = () => { const t = factuurTotalen({ regels:regels(), btw_tarief:F.btw_tarief.value }); m.querySelector('#fTot').innerHTML = `Subtotaal ${eur(t.sub)} · btw ${eur(t.btw)} · <b>totaal ${eur(t.tot)}</b>`; };
+    const bind = () => tb.querySelectorAll('[data-del]').forEach(x => x.onclick = () => { x.closest('tr').remove(); upd(); });
+    tb.oninput = upd; F.btw_tarief.onchange = upd; bind(); upd();
+    m.querySelector('#addRegel').onclick = () => { tb.insertAdjacentHTML('beforeend', regelRow({ omschrijving:'', aantal:1, prijs:'' })); bind(); };
+    F.datum.onchange = () => { if (nieuw) { F.nummer.value = volgendNummer(F.datum.value); F.vervaldatum.value = addDays(F.datum.value, +S.set.betaaltermijn || 14); } };
+    m.querySelector('#nieuweKlant').onclick = e => { e.preventDefault(); relatieForm(null, () => factuurForm({ ...f, regels:regels() })); };
+    m.querySelector('#fDel')?.addEventListener('click', async () => {
+      if (!confirm(`Factuur ${f.nummer} verwijderen? De bijbehorende boeking wordt ook verwijderd.`)) return;
+      const { error } = await sb.from('bk_facturen').delete().eq('id', f.id); if (error) return fail(error);
+      closeModal(); toast('Verwijderd'); refresh();
+    });
+    F.onsubmit = async e => {
+      e.preventDefault();
+      const thenPrint = e.submitter?.dataset.then === 'print';
+      const R = regels(); if (!R.length) return alert('Voeg minstens één regel toe.');
+      if (S.f.some(x => x.nummer === F.nummer.value.trim() && x.id !== f.id)) return alert('Dit factuurnummer bestaat al.');
+      const rec = { relatie_id:F.relatie_id.value, nummer:F.nummer.value.trim(), datum:F.datum.value, vervaldatum:F.vervaldatum.value || null,
+        status:F.status.value, btw_tarief:F.btw_tarief.value, categorie:F.categorie.value, regels:R, notitie:F.notitie.value.trim() || null };
+      if (rec.status === 'betaald' && f.status !== 'betaald') rec.betaald_op = today();
+      if (rec.status !== 'betaald') rec.betaald_op = null;
+      try {
+        let id = f.id;
+        if (nieuw){ const { data, error } = await sb.from('bk_facturen').insert(rec).select().single(); if (error) throw error; id = data.id; }
+        else { const { error } = await sb.from('bk_facturen').update(rec).eq('id', id); if (error) throw error; }
+        await syncFactuurBoeking({ ...rec, id });
+        closeModal(); toast('Factuur opgeslagen'); await refresh();
+        if (thenPrint) printFactuur(S.f.find(x => x.id === id));
+      } catch(err){ fail(err); }
+    };
+  });
+}
+async function syncFactuurBoeking(f){
+  const bestaand = S.b.find(b => b.factuur_id === f.id);
+  if (f.status === 'concept'){ if (bestaand) await sb.from('bk_boekingen').delete().eq('id', bestaand.id); return; }
+  const t = factuurTotalen(f);
+  const rec = { datum:f.datum, type:'inkomst', omschrijving:`Factuur ${f.nummer}`, relatie:relNaam(f.relatie_id) || null, categorie:f.categorie,
+    bedrag_excl:t.sub, btw_tarief:f.btw_tarief, btw_bedrag:t.btw, factuur_id:f.id, betaald_via:'zakelijk' };
+  const { error } = bestaand ? await sb.from('bk_boekingen').update(rec).eq('id', bestaand.id) : await sb.from('bk_boekingen').insert(rec);
+  if (error) throw error;
+}
+function printFactuur(f){
+  if (!f) return;
+  const s = S.set, r = S.r.find(x => x.id === f.relatie_id) || {}, t = factuurTotalen(f);
+  const btwTekst = { verlegd:'Btw verlegd.', eu:'VAT reverse charged – btw verlegd (art. 196 Btw-richtlijn).', buiten_eu:'Btw niet van toepassing: dienst verricht buiten de EU.', vrij:'Vrijgesteld van btw.', '0':'' }[f.btw_tarief] || '';
+  $('#print').innerHTML = `<div class="inv">
+    <div class="head">
+      <div><div class="logo">${esc(s.bedrijfsnaam)}</div><div>${esc(s.naam)}<br>${esc(s.adres)}<br>${esc(s.postcode_plaats)}<br>${esc(s.email)}${s.telefoon?'<br>'+esc(s.telefoon):''}${s.website?'<br>'+esc(s.website):''}</div></div>
+      <div style="text-align:right"><div style="font-size:26px;font-weight:800">FACTUUR</div>
+        <table class="meta" style="margin-left:auto;margin-top:8px"><tr><td>Factuurnummer</td><td><b>${esc(f.nummer)}</b></td></tr><tr><td>Factuurdatum</td><td>${fd(f.datum)}</td></tr>${f.vervaldatum?`<tr><td>Vervaldatum</td><td>${fd(f.vervaldatum)}</td></tr>`:''}</table></div>
+    </div>
+    <div><b>Factuur aan</b><br>${esc(r.naam)}${r.contactpersoon?'<br>t.a.v. '+esc(r.contactpersoon):''}${r.adres?'<br>'+esc(r.adres):''}${r.postcode_plaats?'<br>'+esc(r.postcode_plaats):''}${r.land && r.land!=='Nederland'?'<br>'+esc(r.land):''}${r.btw_nummer?'<br>Btw-nr: '+esc(r.btw_nummer):''}${r.kvk?'<br>KVK: '+esc(r.kvk):''}</div>
+    <table class="lines"><thead><tr><th style="text-align:left">Omschrijving</th><th style="text-align:right">Aantal</th><th style="text-align:right">Prijs</th><th style="text-align:right">Bedrag</th></tr></thead>
+      <tbody>${f.regels.map(l => `<tr><td>${esc(l.omschrijving)}</td><td style="text-align:right">${String(l.aantal).replace('.',',')}</td><td style="text-align:right">${eur(l.prijs)}</td><td style="text-align:right">${eur(r2(num(l.aantal)*num(l.prijs)))}</td></tr>`).join('')}</tbody></table>
+    <table class="tot"><tr><td>Subtotaal</td><td style="text-align:right">${eur(t.sub)}</td></tr>
+      <tr><td>${t.pct ? `Btw ${t.pct}%` : 'Btw'}</td><td style="text-align:right">${eur(t.btw)}</td></tr>
+      <tr class="big"><td>Totaal</td><td style="text-align:right">${eur(t.tot)}</td></tr></table>
+    ${btwTekst ? `<p><i>${esc(btwTekst)}</i></p>` : ''}
+    ${f.notitie ? `<p>${esc(f.notitie).replace(/\n/g,'<br>')}</p>` : ''}
+    <p>Graag het totaalbedrag van <b>${eur(t.tot)}</b>${f.vervaldatum ? ` vóór <b>${fd(f.vervaldatum)}</b>` : ''} overmaken op <b>${esc(s.iban || '— vul je IBAN in bij Instellingen —')}</b> t.n.v. ${esc(s.bedrijfsnaam)}, o.v.v. factuurnummer ${esc(f.nummer)}.</p>
+    <div class="foot">${esc(s.bedrijfsnaam)} · KVK ${esc(s.kvk)} · Btw-id ${esc(s.btw_id)}${s.iban?' · IBAN '+esc(s.iban):''}${s.voettekst?'<br>'+esc(s.voettekst):''}</div>
+  </div>`;
+  const oud = document.title; document.title = `Factuur ${f.nummer} - ${s.bedrijfsnaam}`;
+  document.body.classList.add('printing');
+  const done = () => { document.body.classList.remove('printing'); document.title = oud; window.removeEventListener('afterprint', done); };
+  window.addEventListener('afterprint', done);
+  setTimeout(() => window.print(), 50);
+}
+
+/* ================= RELATIES ================= */
+function viewRelaties(){
+  return `<div class="filters"><span class="spacer"></span><button class="btn primary" id="nieuwR">+ Klant</button></div>
+  ${S.r.length ? `<div class="tablewrap"><table><thead><tr><th>Naam</th><th>Contact</th><th>E-mail</th><th>Plaats</th><th class="num">Gefactureerd ${S.year}</th></tr></thead>
+  <tbody>${S.r.map(r => { const tot = inYear(S.f, S.year).filter(f => f.relatie_id === r.id && f.status !== 'concept').reduce((s,f) => s + factuurTotalen(f).tot, 0);
+    return `<tr class="click" data-id="${r.id}"><td><b>${esc(r.naam)}</b></td><td>${esc(r.contactpersoon)}</td><td>${esc(r.email)}</td><td>${esc(r.postcode_plaats)}</td><td class="num">${eur(tot)}</td></tr>`; }).join('')}</tbody></table></div>`
+  : `<div class="card empty">Nog geen klanten.</div>`}`;
+}
+POST.relaties = () => {
+  $('#nieuwR').onclick = () => relatieForm();
+  document.querySelectorAll('tr.click').forEach(tr => tr.onclick = () => relatieForm(S.r.find(r => r.id === tr.dataset.id)));
+};
+function relatieForm(r, after){
+  const nieuw = !r; r = r || { land:'Nederland' };
+  modal(nieuw ? 'Nieuwe klant' : r.naam, `
+  <form id="rForm" class="grid">
+    <div class="grid g2"><label><span>Bedrijfs-/klantnaam</span><input name="naam" value="${esc(r.naam)}" required></label><label><span>Contactpersoon</span><input name="contactpersoon" value="${esc(r.contactpersoon)}"></label></div>
+    <div class="grid g2"><label><span>E-mail</span><input name="email" type="email" value="${esc(r.email)}"></label><label><span>Adres</span><input name="adres" value="${esc(r.adres)}"></label></div>
+    <div class="grid g2"><label><span>Postcode + plaats</span><input name="postcode_plaats" value="${esc(r.postcode_plaats)}"></label><label><span>Land</span><input name="land" value="${esc(r.land)}"></label></div>
+    <div class="grid g2"><label><span>KVK (optioneel)</span><input name="kvk" value="${esc(r.kvk)}"></label><label><span>Btw-nummer (verplicht bij EU-verlegd)</span><input name="btw_nummer" value="${esc(r.btw_nummer)}"></label></div>
+    <div class="actions">${!nieuw ? `<button type="button" class="btn danger" id="rDel">Verwijderen</button>` : ''}<span class="spacer"></span><button type="button" class="btn" onclick="closeModal()">Annuleren</button><button class="btn primary">Opslaan</button></div>
+  </form>`, m => {
+    const F = m.querySelector('#rForm');
+    m.querySelector('#rDel')?.addEventListener('click', async () => {
+      if (!confirm('Klant verwijderen? Facturen blijven bestaan.')) return;
+      const { error } = await sb.from('bk_relaties').delete().eq('id', r.id); if (error) return fail(error); closeModal(); refresh();
+    });
+    F.onsubmit = async e => {
+      e.preventDefault();
+      const rec = Object.fromEntries(['naam','contactpersoon','email','adres','postcode_plaats','land','kvk','btw_nummer'].map(k => [k, F[k].value.trim() || null]));
+      const { error } = nieuw ? await sb.from('bk_relaties').insert(rec) : await sb.from('bk_relaties').update(rec).eq('id', r.id);
+      if (error) return fail(error);
+      closeModal(); toast('Opgeslagen'); await refresh(); after && after();
+    };
+  });
+}
+
+/* ================= BTW ================= */
+let BTWQ = null;
+function viewBtw(){
+  const hq = location.hash.split('?')[1];
+  if (hq) { const [yy, q] = hq.split('-').map(Number); S.year = yy; BTWQ = q; $('#yearSel').value = yy; history.replaceState(null, '', '#btw'); }
+  const y = S.year, q = BTWQ || (y === new Date().getFullYear() ? qOf(today()) : 4);
+  const A = btwAangifte(y, q), key = `${y}-Q${q}`, gedaan = S.set.aangiftes[key];
+  const row = (code, txt, k) => `<tr><td>${code}</td><td>${txt}</td><td class="num">${k ? eur0(A[k][0]) : ''}</td><td class="num">${k && A[k][1] !== undefined && !['1e','3a','3b'].includes(k) ? eur0(A[k][1]) : ''}</td></tr>`;
+  return `
+  <div class="filters">
+    <div class="seg">${[1,2,3,4].map(i => `<label><input type="radio" name="bq" value="${i}" ${i===q?'checked':''}><span>Q${i}</span></label>`).join('')}</div>
+    <span class="spacer"></span>
+    ${gedaan ? `<span class="badge green">✓ ingediend op ${fd(gedaan)}</span><button class="btn sm" id="ongedaan">ongedaan</button>` : `<span class="badge amber">deadline ${fd(aangifteDeadline(y,q))}</span><button class="btn primary" id="gedaan">Markeer als ingediend</button>`}
+  </div>
+  <div class="tablewrap"><table class="btw-table">
+    <thead><tr><th>Rubriek</th><th>Omschrijving</th><th class="num">Omzet</th><th class="num">Omzetbelasting</th></tr></thead>
+    <tbody>
+      <tr><td colspan="4"><b>1. Prestaties binnenland</b></td></tr>
+      ${row('1a','Leveringen/diensten belast met hoog tarief','1a')}
+      ${row('1b','Leveringen/diensten belast met laag tarief','1b')}
+      ${row('1e','Leveringen/diensten belast met 0% of niet bij u belast','1e')}
+      <tr><td colspan="4"><b>2. Verleggingsregelingen binnenland</b></td></tr>
+      ${row('2a','Leveringen/diensten waarbij de heffing naar u is verlegd','2a')}
+      <tr><td colspan="4"><b>3. Prestaties naar of in het buitenland</b></td></tr>
+      ${row('3a','Leveringen naar/diensten in landen buiten de EU','3a')}
+      ${row('3b','Leveringen naar/diensten in landen binnen de EU','3b')}
+      <tr><td colspan="4"><b>4. Prestaties vanuit het buitenland aan u verricht</b></td></tr>
+      ${row('4a','Leveringen/diensten uit landen buiten de EU','4a')}
+      ${row('4b','Leveringen/diensten uit landen binnen de EU','4b')}
+      <tr><td colspan="4"><b>5. Voorbelasting en totaal</b></td></tr>
+      <tr><td>5a</td><td>Verschuldigde omzetbelasting</td><td></td><td class="num">${eur0(A['5a'])}</td></tr>
+      <tr><td>5b</td><td>Voorbelasting</td><td></td><td class="num">${eur0(A['5b'])}</td></tr>
+    </tbody>
+    <tfoot><tr><td></td><td>${A['5g'] >= 0 ? 'Te betalen' : 'Terug te vragen'}</td><td></td><td class="num">${eur0(Math.abs(A['5g']))}</td></tr></tfoot>
+  </table></div>
+  ${A.exact['3b'][0] ? `<div class="note" style="margin-top:12px">⚠️ Je hebt diensten aan EU-ondernemers (3b). Vergeet de <b>Opgaaf intracommunautaire prestaties (ICP)</b> niet.</div>` : ''}
+  <div class="note" style="margin-top:12px">Bedragen zijn afgerond op hele euro's in jouw voordeel, zoals op de aangifte. Buitenlandse abonnementen (bv. software uit de VS of EU) boek je als uitgave met tarief <i>EU – btw verlegd</i> of <i>Buiten de EU</i>: die komen in 4a/4b en worden via 5b weer afgetrokken. Controleer altijd zelf voor je indient bij Mijn Belastingdienst Zakelijk.</div>`;
+}
+POST.btw = () => {
+  document.querySelectorAll('input[name=bq]').forEach(r => r.onchange = () => { BTWQ = +r.value; route(); });
+  const y = S.year, q = BTWQ || (y === new Date().getFullYear() ? qOf(today()) : 4), key = `${y}-Q${q}`;
+  const save = async v => { const a = { ...S.set.aangiftes }; if (v) a[key] = v; else delete a[key]; await saveSettings({ ...S.set, aangiftes:a }); route(); };
+  $('#gedaan')?.addEventListener('click', () => save(today()));
+  $('#ongedaan')?.addEventListener('click', () => save(null));
+};
+
+/* ================= ACTIVA ================= */
+function viewActiva(){
+  const y = S.year;
+  return `<div class="filters"><div class="note">Bedrijfsmiddelen vanaf €450 excl. btw (bv. laptop) schrijf je af over meerdere jaren in plaats van in één keer als kosten. Afschrijving gaat hier per maand vanaf aanschaf.</div><span class="spacer"></span><button class="btn primary" id="nieuwA">+ Investering</button></div>
+  ${S.a.length ? `<div class="tablewrap"><table><thead><tr><th>Omschrijving</th><th>Aanschaf</th><th class="num">Waarde</th><th class="num">Rest</th><th class="num">Jaren</th><th class="num">Afschrijving ${y}</th><th class="num">Boekwaarde eind ${y}</th></tr></thead>
+  <tbody>${S.a.map(a => { const x = afschrijving(a, y); return `<tr class="click" data-id="${a.id}"><td><b>${esc(a.omschrijving)}</b></td><td>${fd(a.aanschafdatum)}</td><td class="num">${eur(a.aanschafwaarde)}</td><td class="num">${eur(a.restwaarde)}</td><td class="num">${a.jaren}</td><td class="num">${eur(x.dit)}</td><td class="num">${eur(x.boekwaarde)}</td></tr>`; }).join('')}</tbody>
+  <tfoot><tr><td colspan="5">Totaal</td><td class="num">${eur(S.a.reduce((s,a) => s + afschrijving(a,y).dit, 0))}</td><td class="num">${eur(S.a.reduce((s,a) => s + afschrijving(a,y).boekwaarde, 0))}</td></tr></tfoot></table></div>`
+  : `<div class="card empty">Nog geen investeringen.</div>`}`;
+}
+POST.activa = () => {
+  $('#nieuwA').onclick = () => activaForm();
+  document.querySelectorAll('tr.click').forEach(tr => tr.onclick = () => activaForm(S.a.find(a => a.id === tr.dataset.id)));
+};
+function activaForm(a){
+  const nieuw = !a; a = a || { aanschafdatum:today(), restwaarde:0, jaren:5 };
+  modal(nieuw ? 'Nieuwe investering' : a.omschrijving, `<form id="aForm" class="grid">
+    <label><span>Omschrijving</span><input name="omschrijving" value="${esc(a.omschrijving)}" required placeholder="bv. MacBook Air"></label>
+    <div class="grid g2"><label><span>Aanschafdatum</span><input type="date" name="aanschafdatum" value="${a.aanschafdatum}" required></label><label><span>Aanschafwaarde (excl. btw)</span><input name="aanschafwaarde" inputmode="decimal" value="${a.aanschafwaarde ? String(a.aanschafwaarde).replace('.',',') : ''}" required></label></div>
+    <div class="grid g2"><label><span>Restwaarde</span><input name="restwaarde" inputmode="decimal" value="${String(a.restwaarde).replace('.',',')}"></label><label><span>Afschrijven in (jaren, min. 5 jaar = max 20%/jr)</span><input name="jaren" type="number" min="1" max="30" value="${a.jaren}"></label></div>
+    <div class="note">De aankoop zelf (met btw) boek je bij Boekingen als uitgave met categorie <i>Investering (activa)</i>; dan krijg je de btw terug en telt alleen de afschrijving als kosten.</div>
+    <div class="actions">${!nieuw ? `<button type="button" class="btn danger" id="aDel">Verwijderen</button>` : ''}<span class="spacer"></span><button type="button" class="btn" onclick="closeModal()">Annuleren</button><button class="btn primary">Opslaan</button></div>
+  </form>`, m => {
+    const F = m.querySelector('#aForm');
+    m.querySelector('#aDel')?.addEventListener('click', async () => { if (!confirm('Verwijderen?')) return; const { error } = await sb.from('bk_activa').delete().eq('id', a.id); if (error) return fail(error); closeModal(); refresh(); });
+    F.onsubmit = async e => {
+      e.preventDefault();
+      const rec = { omschrijving:F.omschrijving.value.trim(), aanschafdatum:F.aanschafdatum.value, aanschafwaarde:num(F.aanschafwaarde.value), restwaarde:num(F.restwaarde.value), jaren:+F.jaren.value || 5 };
+      const { error } = nieuw ? await sb.from('bk_activa').insert(rec) : await sb.from('bk_activa').update(rec).eq('id', a.id);
+      if (error) return fail(error); closeModal(); toast('Opgeslagen'); refresh();
+    };
+  });
+}
+
+/* ================= RITTEN ================= */
+function viewRitten(){
+  const L = inYear(S.t, S.year), km = L.reduce((s,t) => s + +t.km, 0);
+  return `<div class="filters"><div class="note">Zakelijke ritten met je privéauto/-scooter mag je aftrekken tegen ${eur(S.set.km_tarief)} per km (aanpasbaar bij Instellingen).</div><span class="spacer"></span><button class="btn primary" id="nieuwT">+ Rit</button></div>
+  <div class="grid g2" style="margin-bottom:12px"><div class="card stat"><div class="k">Zakelijke km ${S.year}</div><div class="v">${km.toLocaleString('nl-NL')} km</div></div><div class="card stat"><div class="k">Aftrekbaar</div><div class="v">${eur(km * S.set.km_tarief)}</div></div></div>
+  ${L.length ? `<div class="tablewrap"><table><thead><tr><th>Datum</th><th>Van</th><th>Naar</th><th>Doel</th><th class="num">Km</th></tr></thead><tbody>${L.map(t => `<tr class="click" data-id="${t.id}"><td>${fd(t.datum)}</td><td>${esc(t.van)}</td><td>${esc(t.naar)}</td><td>${esc(t.doel)}</td><td class="num">${String(t.km).replace('.',',')}</td></tr>`).join('')}</tbody></table></div>` : `<div class="card empty">Nog geen ritten in ${S.year}.</div>`}`;
+}
+POST.ritten = () => {
+  $('#nieuwT').onclick = () => ritForm();
+  document.querySelectorAll('tr.click').forEach(tr => tr.onclick = () => ritForm(S.t.find(t => t.id === tr.dataset.id)));
+};
+function ritForm(t){
+  const nieuw = !t; t = t || { datum:today(), van:'Purmerend' };
+  modal(nieuw ? 'Nieuwe rit' : 'Rit bewerken', `<form id="tForm" class="grid">
+    <div class="grid g2"><label><span>Datum</span><input type="date" name="datum" value="${t.datum}" required></label><label><span>Km (heen + terug)</span><input name="km" inputmode="decimal" value="${t.km ? String(t.km).replace('.',',') : ''}" required></label></div>
+    <div class="grid g2"><label><span>Van</span><input name="van" value="${esc(t.van)}"></label><label><span>Naar</span><input name="naar" value="${esc(t.naar)}"></label></div>
+    <label><span>Zakelijk doel</span><input name="doel" value="${esc(t.doel)}" placeholder="bv. kennismaking klant"></label>
+    <div class="actions">${!nieuw ? `<button type="button" class="btn danger" id="tDel">Verwijderen</button>` : ''}<span class="spacer"></span><button type="button" class="btn" onclick="closeModal()">Annuleren</button><button class="btn primary">Opslaan</button></div>
+  </form>`, m => {
+    const F = m.querySelector('#tForm');
+    m.querySelector('#tDel')?.addEventListener('click', async () => { if (!confirm('Verwijderen?')) return; const { error } = await sb.from('bk_ritten').delete().eq('id', t.id); if (error) return fail(error); closeModal(); refresh(); });
+    F.onsubmit = async e => {
+      e.preventDefault();
+      const rec = { datum:F.datum.value, km:num(F.km.value), van:F.van.value.trim() || null, naar:F.naar.value.trim() || null, doel:F.doel.value.trim() || null };
+      const { error } = nieuw ? await sb.from('bk_ritten').insert(rec) : await sb.from('bk_ritten').update(rec).eq('id', t.id);
+      if (error) return fail(error); closeModal(); toast('Opgeslagen'); refresh();
+    };
+  });
+}
+
+/* ================= JAAROVERZICHT ================= */
+let UREN_CACHE = {};
+function viewJaar(){
+  const y = S.year, w = winstOverzicht(y);
+  const regel = (k, v, cls='') => `<tr><td>${esc(k)}</td><td class="num ${cls}">${eur(v)}</td></tr>`;
+  const openEind = S.f.filter(f => yearOf(f.datum) <= y && f.status !== 'concept' && (f.status !== 'betaald' || (f.betaald_op && yearOf(f.betaald_op) > y)));
+  const prive = inYear(S.b, y).filter(b => b.type === 'uitgave' && b.betaald_via === 'prive');
+  return `
+  <div class="filters"><span class="spacer"></span><button class="btn" onclick="window.print()">🖨 Afdrukken</button></div>
+  <div class="grid g2">
+    <div class="card"><h3>Winst-en-verliesrekening ${y}</h3>
+      <table>
+        <tr><td colspan="2"><b>Omzet</b></td></tr>
+        ${Object.entries(w.omzet).map(([k,v]) => regel(k, v)).join('') || '<tr><td colspan="2" class="empty">—</td></tr>'}
+        <tr><td><b>Totaal omzet</b></td><td class="num"><b>${eur(w.omzetTot)}</b></td></tr>
+        <tr><td colspan="2"><b>Kosten</b></td></tr>
+        ${Object.entries(w.kosten).sort((a,b)=>b[1]-a[1]).map(([k,v]) => regel(k, -v)).join('')}
+        ${w.representatieCorr ? regel('Niet-aftrekbaar deel representatie (20%)', w.representatieCorr) : ''}
+        ${w.afschr ? regel('Afschrijvingen', -w.afschr) : ''}
+        ${w.kmVerg ? regel(`Kilometers (${w.km.toLocaleString('nl-NL')} km)`, -w.kmVerg) : ''}
+        <tr><td><b>Winst uit onderneming</b></td><td class="num ${w.winst<0?'neg':'pos'}"><b>${eur(w.winst)}</b></td></tr>
+      </table>
+    </div>
+    <div class="grid" style="align-content:start">
+      <div class="card"><h3>Urencriterium</h3><div id="urenBox" class="note">${UREN ? 'Uren laden…' : 'Houd je uren bij in je uren-app. Voor zelfstandigenaftrek heb je minimaal 1.225 uur per jaar nodig.'}</div></div>
+      <div class="card"><h3>Balansposten eind ${y}</h3><table>
+        ${regel('Boekwaarde bedrijfsmiddelen', S.a.reduce((s,a) => s + afschrijving(a, y).boekwaarde, 0))}
+        ${regel(`Debiteuren (${openEind.length} openstaande facturen)`, openEind.reduce((s,f) => s + factuurTotalen(f).tot, 0))}
+        ${regel('Investeringen geboekt dit jaar (excl. btw)', w.invest)}
+      </table></div>
+      <div class="card"><h3>Privé voorgeschoten</h3><div class="stat"><div class="v">${eur(prive.reduce((s,b) => s + incl(b), 0))}</div><div class="s">${prive.length} zakelijke uitgaven privé betaald</div></div></div>
+      <div class="note">Dit overzicht is een hulpmiddel voor je aangifte inkomstenbelasting (winst uit onderneming). Ondernemersaftrek, MKB-winstvrijstelling en KIA worden in de aangifte zelf berekend.</div>
+    </div>
+  </div>`;
+}
+POST.jaar = async () => {
+  if (!UREN) return;
+  const y = S.year; const box = $('#urenBox');
+  try {
+    if (UREN_CACHE[y] === undefined){
+      const { data, error } = await sb.from(UREN.table).select(UREN.select || UREN.hours).gte(UREN.date, `${y}-01-01`).lte(UREN.date, `${y}-12-31`);
+      if (error) throw error;
+      UREN_CACHE[y] = r2(data.reduce((s,r) => s + (UREN.calc ? UREN.calc(r) : +r[UREN.hours] || 0), 0));
+    }
+    const u = UREN_CACHE[y], pct = Math.min(100, u / 1225 * 100);
+    if (box) box.innerHTML = `<div class="stat"><div class="v">${u.toLocaleString('nl-NL')} uur</div><div class="s">${u >= 1225 ? '✓ urencriterium gehaald' : `nog ${(1225-u).toLocaleString('nl-NL')} uur tot 1.225`}</div></div><div style="height:8px;background:var(--line);border-radius:9px;margin-top:8px"><div style="height:100%;width:${pct}%;background:${u>=1225?'var(--green)':'var(--amber)'};border-radius:9px"></div></div>`;
+  } catch(e){ if (box) box.textContent = 'Uren konden niet geladen worden.'; console.error(e); }
+};
+
+/* ================= INSTELLINGEN ================= */
+async function saveSettings(data){
+  const { error } = await sb.from('bk_instellingen').upsert({ user_id:S.user.id, data, updated_at:new Date().toISOString() });
+  if (error) throw error; S.set = data;
+}
+function viewInstellingen(){
+  const s = S.set, f = (k, l, extra='') => `<label><span>${l}</span><input name="${k}" value="${esc(s[k])}" ${extra}></label>`;
+  return `<form id="sForm" class="card grid" style="max-width:760px">
+    <h3>Bedrijfsgegevens (voor op je facturen)</h3>
+    <div class="grid g2">${f('bedrijfsnaam','Bedrijfsnaam')}${f('naam','Jouw naam')}</div>
+    <div class="grid g2">${f('adres','Adres')}${f('postcode_plaats','Postcode + plaats')}</div>
+    <div class="grid g2">${f('kvk','KVK-nummer')}${f('btw_id','Btw-identificatienummer')}</div>
+    <div class="grid g2">${f('iban','IBAN zakelijke rekening','placeholder="NL00 BANK 0000 0000 00"')}${f('email','E-mail')}</div>
+    <div class="grid g2">${f('telefoon','Telefoon')}${f('website','Website')}</div>
+    <h3 style="margin-top:8px">Overig</h3>
+    <div class="grid g3">${f('betaaltermijn','Betaaltermijn (dagen)','type="number" min="0"')}${f('km_tarief','Km-tarief (€)','inputmode="decimal"')}<span></span></div>
+    <label><span>Extra voettekst factuur (optioneel)</span><input name="voettekst" value="${esc(s.voettekst)}"></label>
+    <div class="actions"><button class="btn primary">Opslaan</button></div>
+  </form>`;
+}
+POST.instellingen = () => {
+  const F = $('#sForm');
+  F.onsubmit = async e => {
+    e.preventDefault();
+    const d = { ...S.set };
+    ['bedrijfsnaam','naam','adres','postcode_plaats','kvk','btw_id','iban','email','telefoon','website','voettekst'].forEach(k => d[k] = F[k].value.trim());
+    d.betaaltermijn = +F.betaaltermijn.value || 14; d.km_tarief = num(F.km_tarief.value);
+    try { await saveSettings(d); toast('Instellingen opgeslagen'); } catch(err){ fail(err); }
+  };
+};
+
+init();
+</script>
+</body>
+</html>
