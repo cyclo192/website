@@ -31,6 +31,8 @@ OPEN = False
 SEINTJE = f"https://wa.me/{WA}?text=" + "Hoi%20Nestig%2C%20geef%20me%20een%20seintje%20als%20de%20kattenhangmat%20te%20koop%20is."
 SEINTJE_BOEKET = f"https://wa.me/{WA}?text=" + "Hoi%20Nestig%2C%20geef%20me%20een%20seintje%20als%20het%20gehaakte%20boeket%20te%20koop%20is."
 ARTIKEL_BOEKET = "NES-BQ-01"
+# Opgave van de leverancier via CJ (13 oktober 2026). Verplicht op de productpagina (EU-productveiligheid).
+FABRIKANT_BOEKET = "Yiwu Guiyuan Crafts Co., Ltd.<br>6th Floor, Building 2, No. 1 Chunsheng Road<br>Beiyuan Subdistrict, Yiwu City<br>Zhejiang, China"
 ARTIKEL = "NES-KH-01"   # ons eigen artikelnummer, staat op de productpagina (verplicht: het product moet te herkennen zijn)
 DRAAGT = "17,5 kg"   # opgave van de leverancier bij CJ: "within 35 jin" (1 jin = 0,5 kg)
 # sleutel, naam, kleur van het knopje. De foto heet img/hangmat-<sleutel>.jpg. Zelfde lijst staat in js/shop.js.
@@ -596,7 +598,10 @@ boeket = f'''<div class="wrap">
 </div>
 <div>
 <h2>Wie staat achter dit product?</h2>
-<p>Nestig verkoopt dit product in Nederland en is je aanspreekpunt bij vragen, klachten of een probleem met de veiligheid.</p>
+<h3>Fabrikant</h3>
+<address>{FABRIKANT_BOEKET}</address>
+<h3 style="margin-top:20px">Verantwoordelijk in de EU</h3>
+<p>Nestig haalt dit product naar de EU en is je aanspreekpunt bij vragen, klachten of een probleem met de veiligheid.</p>
 {WIE}
 </div>
 </div></section>
