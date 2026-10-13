@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stukadoorsbedrijf van der Hoef – Stukadoor in Purmerend</title>
+<meta name="description" content="Stucwerk, sierpleister, beton ciré en lijstwerk voor particulieren en aannemers in Purmerend en omgeving. Beoordeeld met een 5,0 op Google.">
+<meta name="theme-color" content="#24211c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#24211c;
+  --ink-soft:#4a453d;
+  --muted:#6f685d;
+  --kalk:#f4f0e8;      /* verse kalkpleister */
+  --kalk-2:#ebe5d9;
+  --line:#dcd4c4;
+  --clay:#b4552f;      /* terracotta accent */
+  --clay-deep:#94431f;
+  --sand:#d9c5a3;
+  --display:"Instrument Serif",Georgia,serif;
+  --body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .3 0 0 0 0 .27 0 0 0 0 .22 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{font-family:var(--body);font-size:1.08rem;line-height:1.65;color:var(--ink);background:var(--kalk) var(--grain);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.02;letter-spacing:-.01em}
+h2{font-size:clamp(2.4rem,5vw,3.6rem);max-width:15ch}
+h2 em,h1 em{font-style:italic;color:var(--clay)}
+p{max-width:58ch}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+:focus-visible{outline:3px solid var(--clay);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.sec{padding-block:104px}
+.kicker{display:inline-flex;align-items:center;gap:.6em;font-size:.82rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--clay);margin-bottom:18px}
+.kicker::before{content:"";width:26px;height:2px;background:currentColor}
+.sub{color:var(--ink-soft);margin-top:18px;font-size:1.1rem}
+
+/* knoppen */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6em;font:700 1rem/1 var(--body);padding:1.05em 1.5em;border-radius:999px;border:2px solid transparent;text-decoration:none;cursor:pointer;transition:background-color .15s,color .15s,transform .15s}
+.btn:active{transform:translateY(1px)}
+.btn svg{width:1.25em;height:1.25em;flex:none}
+.btn-clay{background:var(--clay);color:#fff}
+.btn-clay:hover{background:var(--clay-deep)}
+.btn-line{border-color:var(--ink);color:var(--ink)}
+.btn-line:hover{background:var(--ink);color:var(--kalk)}
+.wa{background:#1f8f4e;color:#fff}
+.wa:hover{background:#18763f}
+
+/* kop */
+header{position:sticky;top:0;z-index:30;background:rgba(244,240,232,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:76px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;line-height:1.05}
+.mark{width:44px;height:44px;border-radius:12px;background:var(--ink);display:grid;place-items:center;flex:none}
+.mark svg{width:26px;height:26px}
+.brand b{display:block;font-family:var(--display);font-weight:400;font-size:1.45rem}
+.brand small{display:block;font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+nav{display:flex;align-items:center;gap:30px}
+nav a{text-decoration:none;font-weight:600;font-size:.98rem}
+nav a:not(.btn):hover{color:var(--clay)}
+nav .btn{padding:.85em 1.25em;font-size:.95rem}
+
+/* hero */
+.hero{padding:72px 0 96px;position:relative}
+.hero-grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:56px;align-items:center}
+.hero h1{font-size:clamp(3.1rem,6.2vw,5.5rem);margin-bottom:26px}
+.lead{font-size:1.25rem;color:var(--ink-soft);max-width:34ch}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.rating{display:inline-flex;align-items:center;gap:14px;margin-top:34px;padding:12px 18px 12px 12px;border-radius:16px;background:#fff;border:1px solid var(--line);text-decoration:none;box-shadow:0 18px 34px -24px rgba(36,33,28,.5);transition:transform .15s}
+.rating:hover{transform:translateY(-2px)}
+.rating .g{width:42px;height:42px;border-radius:50%;background:var(--kalk);display:grid;place-items:center;flex:none}
+.rating .g svg{width:22px;height:22px}
+.rating b{font-family:var(--display);font-weight:400;font-size:1.9rem;line-height:1}
+.stars{color:#e0a325;letter-spacing:2px;font-size:1.05rem;line-height:1}
+.rating small{display:block;color:var(--muted);font-size:.9rem;line-height:1.3;margin-top:3px}
+.hero-photo{position:relative}
+.hero-photo .frame{border-radius:240px 240px 22px 22px;overflow:hidden;aspect-ratio:4/5;background:var(--kalk-2);box-shadow:0 40px 70px -40px rgba(36,33,28,.55)}
+.hero-photo img{width:100%;height:100%;object-fit:cover}
+.swatch{position:absolute;left:-34px;bottom:46px;background:var(--ink);color:var(--kalk);border-radius:18px;padding:18px 20px;width:220px;box-shadow:0 24px 40px -22px rgba(0,0,0,.6)}
+.swatch span{display:block;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sand);font-weight:700}
+.swatch b{display:block;font-family:var(--display);font-weight:400;font-size:1.6rem;line-height:1.1;margin-top:6px}
+.stamp{position:absolute;right:-18px;top:30px;width:118px;height:118px;border-radius:50%;background:var(--clay);color:#fff;display:grid;place-items:center;text-align:center;font-weight:800;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;line-height:1.25;transform:rotate(-8deg)}
+.stamp b{display:block;font-family:var(--display);font-weight:400;font-size:2.2rem;letter-spacing:0;text-transform:none;line-height:1}
+@media (prefers-reduced-motion:no-preference){
+  .hero-photo .frame{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+  .swatch{animation:rise .9s .15s cubic-bezier(.2,.7,.2,1) both}
+  .stamp{animation:pop .6s .35s cubic-bezier(.3,1.5,.5,1) both}
+  @keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+  @keyframes pop{from{opacity:0;transform:scale(.6) rotate(-8deg)}to{opacity:1;transform:rotate(-8deg)}}
+}
+
+/* streep met kernpunten */
+.strip{background:var(--ink);color:var(--kalk)}
+.strip ul{list-style:none;display:grid;grid-template-columns:repeat(4,1fr)}
+.strip li{padding:26px 22px;display:flex;gap:14px;align-items:center;font-weight:600;line-height:1.35;border-left:1px solid rgba(244,240,232,.14)}
+.strip li:first-child{border-left:0}
+.strip svg{width:30px;height:30px;flex:none;stroke:var(--sand);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+
+/* diensten */
+.head-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:end;margin-bottom:54px}
+.services{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.svc{position:relative;background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;display:grid;grid-template-rows:auto 1fr;transition:transform .2s,box-shadow .2s}
+.svc:hover{transform:translateY(-4px);box-shadow:0 30px 50px -36px rgba(36,33,28,.6)}
+.svc .tex{height:150px;background-size:cover;background-position:center}
+.svc div{padding:24px 24px 26px}
+.svc .no{position:absolute;top:14px;left:14px;background:rgba(244,240,232,.94);border-radius:999px;font-size:.78rem;font-weight:800;padding:.35em .8em;letter-spacing:.06em}
+.svc h3{font-size:1.75rem;margin-bottom:8px}
+.svc p{color:var(--ink-soft);font-size:1rem}
+
+/* voor wie */
+#voorwie{background:var(--kalk-2);border-block:1px solid var(--line)}
+.who{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:64px;align-items:center}
+.who-photo{border-radius:22px;overflow:hidden;aspect-ratio:5/4}
+.who-photo img{width:100%;height:100%;object-fit:cover}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:34px}
+.pair div{background:var(--kalk);border:1px solid var(--line);border-radius:18px;padding:22px}
+.pair h3{font-size:1.6rem;margin-bottom:6px}
+.pair p{font-size:.98rem;color:var(--ink-soft)}
+.mat{margin-top:26px;display:flex;flex-wrap:wrap;gap:8px}
+.mat span{padding:.45em .9em;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:.92rem;font-weight:600}
+
+/* werkwijze */
+.steps{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:0;counter-reset:s;margin-top:54px;border-top:2px solid var(--ink)}
+.steps li{padding:30px 30px 0 0;counter-increment:s}
+.steps li::before{content:"0" counter(s);display:block;font-family:var(--display);font-size:3.4rem;line-height:1;color:var(--clay);margin-bottom:14px}
+.steps h3{font-size:1.65rem;margin-bottom:8px}
+.steps p{color:var(--ink-soft);font-size:1rem}
+
+/* reviews */
+.reviews{background:var(--clay);color:#fff;text-align:center;position:relative;overflow:hidden}
+.reviews::after{content:"";position:absolute;inset:0;background:var(--grain);opacity:.6;pointer-events:none}
+.reviews .wrap{position:relative;z-index:1}
+.big{font-family:var(--display);font-size:clamp(5rem,14vw,10rem);line-height:.9}
+.reviews .stars{color:#ffd77a;font-size:1.6rem;letter-spacing:6px;margin:10px 0 18px}
+.reviews p{margin:0 auto;font-size:1.25rem;max-width:40ch;color:#fbe7dc}
+.reviews .btn{margin-top:30px;background:#fff;color:var(--ink)}
+.reviews .btn:hover{background:var(--kalk)}
+
+/* contact */
+#contact{background:var(--ink);color:var(--kalk)}
+#contact .sub{color:#c9c0b0}
+#contact .kicker{color:var(--sand)}
+.contact-grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:64px;align-items:start}
+.lines{list-style:none;margin-top:36px;display:grid;gap:4px}
+.lines a,.lines div{display:flex;align-items:center;gap:18px;padding:18px 0;border-bottom:1px solid rgba(244,240,232,.14);text-decoration:none}
+.lines a:hover b{color:var(--sand)}
+.lines .ic{width:50px;height:50px;border-radius:14px;background:rgba(244,240,232,.08);display:grid;place-items:center;flex:none}
+.lines .ic svg{width:24px;height:24px;stroke:var(--sand);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.lines small{display:block;color:#a99f8e;font-size:.88rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.lines b{font-family:var(--display);font-weight:400;font-size:1.7rem;line-height:1.15;transition:color .15s}
+.contact-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.contact-cta .btn-line{border-color:var(--kalk);color:var(--kalk)}
+.contact-cta .btn-line:hover{background:var(--kalk);color:var(--ink)}
+.hours{background:var(--kalk);color:var(--ink);border-radius:24px;padding:30px 30px 26px}
+.hours h3{font-size:2rem;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.open{font-family:var(--body);font-size:.85rem;font-weight:800;padding:.45em .85em;border-radius:999px;background:var(--kalk-2);display:inline-flex;align-items:center;gap:.5em}
+.open::before{content:"";width:9px;height:9px;border-radius:50%;background:#9a9285}
+.open.on{background:#dcefdf;color:#1d6a3a}
+.open.on::before{background:#1f8f4e}
+.hours dl{display:grid;grid-template-columns:1fr auto;margin-top:20px}
+.hours dt,.hours dd{padding:12px 0;border-bottom:1px solid var(--line)}
+.hours dt{font-weight:600}
+.hours dd{text-align:right;font-weight:700}
+.hours .today{color:var(--clay)}
+.hours .closed{color:var(--muted);font-weight:500}
+.hours p{margin-top:16px;font-size:.95rem;color:var(--muted)}
+.area{margin-top:16px;background:rgba(244,240,232,.06);border:1px solid rgba(244,240,232,.14);border-radius:24px;padding:24px 26px}
+.area h3{font-size:1.5rem;margin-bottom:10px}
+.area p{color:#c9c0b0;font-size:1rem}
+
+footer{background:#191713;color:#a99f8e;padding:28px 0;font-size:.92rem}
+footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+footer a{color:var(--kalk)}
+
+/* WhatsApp */
+.wa-float{position:fixed;right:24px;bottom:24px;z-index:25;width:62px;height:62px;border-radius:50%;background:#1f8f4e;display:grid;place-items:center;box-shadow:0 12px 26px -10px rgba(0,0,0,.5);transition:opacity .2s,transform .2s}
+.wa-float:hover{background:#18763f}
+.wa-float svg{width:34px;height:34px}
+.wa-float.hide{opacity:0;pointer-events:none;transform:scale(.8)}
+.wa-tip{position:absolute;right:74px;top:50%;transform:translateY(-50%);white-space:nowrap;background:#fff;color:var(--ink);font-weight:700;font-size:.92rem;padding:.6em .95em;border-radius:12px;box-shadow:0 10px 24px -12px rgba(0,0,0,.45);pointer-events:none;opacity:0;transition:opacity .25s}
+.wa-float.tip .wa-tip{opacity:1}
+@media (prefers-reduced-motion:no-preference){
+  .wa-float::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #1f8f4e;animation:pulse 2.4s ease-out infinite}
+  @keyframes pulse{from{transform:scale(1);opacity:.8}to{transform:scale(1.7);opacity:0}}
+}
+.dock{display:none}
+
+@media (max-width:1000px){
+  nav a:not(.btn){display:none}
+  .services{grid-template-columns:1fr 1fr}
+  .strip ul{grid-template-columns:1fr 1fr}
+  .strip li:nth-child(3){border-left:0}
+  .strip li:nth-child(n+3){border-top:1px solid rgba(244,240,232,.14)}
+}
+@media (max-width:880px){
+  .sec{padding-block:72px}
+  .hero{padding:40px 0 64px}
+  .hero-grid,.who,.contact-grid,.head-row{grid-template-columns:1fr;gap:36px}
+  .head-row{margin-bottom:34px;gap:6px}
+  .hero-photo{max-width:440px;margin:0 auto;width:100%}
+  .swatch{left:-6px;bottom:24px;width:190px;padding:14px 16px}
+  .swatch b{font-size:1.35rem}
+  .stamp{right:-4px;width:100px;height:100px}
+  .stamp b{font-size:1.8rem}
+  .steps{grid-template-columns:1fr;border-top:0}
+  .steps li{padding:24px 0;border-top:2px solid var(--ink)}
+  body{padding-bottom:76px}
+  .wa-float{display:none}
+  .dock{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--kalk);border-top:1px solid var(--line);padding:9px;gap:9px}
+  .dock .btn{padding:.95em .6em}
+}
+@media (max-width:600px){
+  body{font-size:1.04rem}
+  .wrap{padding:0 18px}
+  .brand b{font-size:1.2rem}
+  .brand small{font-size:.66rem}
+  .mark{width:40px;height:40px}
+  header nav .btn{padding:.75em 1em;font-size:.9rem}
+  .hero-cta .btn{flex:1 1 100%}
+  .services{grid-template-columns:1fr}
+  .svc .tex{height:130px}
+  .pair{grid-template-columns:1fr}
+  .strip li{padding:18px 12px;font-size:.92rem;gap:10px}
+  .strip svg{width:24px;height:24px}
+  .lines b{font-size:1.4rem}
+  .hours{padding:22px 20px}
+  .contact-cta .btn{flex:1 1 100%}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#top">
+      <span class="mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 20h17l5-5H10z" fill="#d9c5a3"/><path d="M14 20v4a2 2 0 0 0 2 2h1" fill="none" stroke="#d9c5a3" stroke-width="2.4" stroke-linecap="round"/><path d="M6 10c4-2 8 2 12 0s6-2 9 0" fill="none" stroke="#b4552f" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+      <span><b>van der Hoef</b><small>Stukadoorsbedrijf</small></span>
+    </a>
+    <nav aria-label="Hoofdmenu">
+      <a href="#diensten">Diensten</a>
+      <a href="#voorwie">Voor wie</a>
+      <a href="#werkwijze">Werkwijze</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn-clay" href="tel:+31614695861">Bel 06-14695861</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="kicker">Stukadoor in Purmerend</span>
+        <h1>Strakke muren,<br><em>vakkundig</em> gestuct.</h1>
+        <p class="lead">Van glad pleisterwerk tot sierpleister en beton ciré. Topkwaliteit stucwerk voor een betaalbare prijs, voor particulieren en aannemers.</p>
+        <div class="hero-cta">
+          <a class="btn wa" href="https://wa.me/31614695861?text=Hoi!%20Ik%20wil%20graag%20een%20prijs%20voor%20stucwerk." target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 32 32" fill="#fff"><use href="#wa-icon"/></svg>App voor een prijs</a>
+          <a class="btn btn-line" href="#diensten">Bekijk de diensten</a>
+        </div>
+        <a class="rating" href="https://www.google.com/maps/place/?q=place_id:ChIJL1Ujs7UGxkcR0h-VZ9hv5WA" target="_blank" rel="noopener">
+          <span class="g"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.6 12.3c0-.8-.1-1.5-.2-2.2H12v4.2h5.9a5 5 0 0 1-2.2 3.3v2.7h3.6c2.1-1.9 3.3-4.8 3.3-8z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.3-2.7l-3.6-2.7c-1 .7-2.2 1.1-3.7 1.1-2.9 0-5.3-1.9-6.2-4.5H2.1v2.8A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.8 14.2a6.6 6.6 0 0 1 0-4.2V7.2H2.1a11 11 0 0 0 0 9.8z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .6 4.2 1.6l3.1-3.1A11 11 0 0 0 2.1 7.2L5.8 10C6.7 7.3 9.1 5.4 12 5.4z"/></svg></span>
+          <span><b>5,0</b> <span class="stars" aria-label="5 van 5 sterren">★★★★★</span><small>Zo'n 100 reviews op Google</small></span>
+        </a>
+      </div>
+      <div class="hero-photo">
+        <div class="frame"><img src="https://images.unsplash.com/photo-1724582586529-62622e50c0b3?auto=format&fit=crop&w=900&q=70" width="900" height="1125" alt="Lichte, strak afgewerkte woonkamer met groot raam" fetchpriority="high"></div>
+        <div class="swatch"><span>Specialiteit</span><b>Sierpleister &amp; beton ciré</b></div>
+        <div class="stamp"><div><b>5,0</b>op Google</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="strip">
+    <div class="wrap">
+      <ul>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"/></svg>Particulieren en aannemers</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg>Topkwaliteit, betaalbare prijs</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6-4.5-4.2 6.1-.7z"/></svg>Moderne én traditionele technieken</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-5.3-7-11a7 7 0 0 1 14 0c0 5.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Uit Purmerend, voor de regio</li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="sec" id="diensten">
+    <div class="wrap">
+      <div class="head-row">
+        <div><span class="kicker">Diensten</span><h2>Alles voor <em>strak</em> stucwerk</h2></div>
+        <p class="sub">Of het nu gaat om één wand, een complete verbouwing of een bijzondere afwerking: we stemmen het werk af op jouw wensen en gebruiken alleen materialen van goede kwaliteit.</p>
+      </div>
+      <ul class="services">
+        <li class="svc"><span class="no">01</span><div class="tex" style="background-image:url('https://images.unsplash.com/photo-1533628635777-112b2239b1c7?auto=format&fit=crop&w=700&q=60')"></div><div><h3>Sierpleister</h3><p>Een wand met structuur en karakter, van fijne spachtelputz tot een grovere korrel.</p></div></li>
+        <li class="svc"><span class="no">02</span><div class="tex" style="background-image:url('https://images.unsplash.com/photo-1548685913-fe6678babe8d?auto=format&fit=crop&w=700&q=60')"></div><div><h3>Pleisterwerk</h3><p>Glad en strak pleisterwerk of raapwerk, klaar om te sauzen of te behangen.</p></div></li>
+        <li class="svc"><span class="no">03</span><div class="tex" style="background-image:url('https://images.unsplash.com/photo-1639430257115-f63af9eab97d?auto=format&fit=crop&w=700&q=60')"></div><div><h3>Beton ciré</h3><p>De stoere, naadloze betonlook voor wanden, badkamers en meubels.</p></div></li>
+        <li class="svc"><span class="no">04</span><div class="tex" style="background-image:url('https://images.unsplash.com/photo-1523878288860-7ad281611901?auto=format&fit=crop&w=700&q=60')"></div><div><h3>Schuurwerk</h3><p>Een egale, licht gestructureerde afwerking, binnen én buiten.</p></div></li>
+        <li class="svc"><span class="no">05</span><div class="tex" style="background-image:url('https://images.unsplash.com/photo-1531685250784-7569952593d2?auto=format&fit=crop&w=700&q=60')"></div><div><h3>Lijsten &amp; ornamenten</h3><p>Plafondlijsten en ornamenten die een ruimte die klassieke, afgewerkte uitstraling geven.</p></div></li>
+        <li class="svc"><span class="no">06</span><div class="tex" style="background-image:url('https://images.unsplash.com/photo-1616179058441-37aa58affac8?auto=format&fit=crop&w=700&q=60')"></div><div><h3>Cementgebonden stucwerk</h3><p>Sterk en vochtbestendig stucwerk, ideaal voor gevels, kelders en natte ruimtes.</p></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" id="voorwie">
+    <div class="wrap who">
+      <div class="who-photo"><img src="https://images.unsplash.com/photo-1721825157088-1cf9e64ddba5?auto=format&fit=crop&w=900&q=65" width="900" height="720" loading="lazy" alt="Badkamer met naadloos afgewerkte wanden"></div>
+      <div>
+        <span class="kicker">Voor wie</span>
+        <h2>Vakmanschap van <em>vroeger</em>, technieken van nu</h2>
+        <p class="sub">We combineren modern stucwerk met traditioneel vakmanschap. Dus ook kunststof materialen waar dat beter werkt, en zand, cement en kalk waar het hoort.</p>
+        <div class="pair">
+          <div><h3>Particulieren</h3><p>Een nieuwe woonkamer, een opgeknapte zolder of een badkamer in betonlook.</p></div>
+          <div><h3>Aannemers</h3><p>Een vaste, betrouwbare stukadoor voor nieuwbouw en renovatie.</p></div>
+        </div>
+        <div class="mat"><span>Zand</span><span>Cement</span><span>Kalk</span><span>Kunststof</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="werkwijze">
+    <div class="wrap">
+      <span class="kicker">Werkwijze</span>
+      <h2>Zo simpel gaat het</h2>
+      <ol class="steps">
+        <li><h3>Stuur een appje</h3><p>Vertel kort wat er moet gebeuren, eventueel met een paar foto's van de ruimte.</p></li>
+        <li><h3>Prijs vooraf</h3><p>We komen langs, kijken samen wat het beste resultaat geeft en je krijgt een duidelijke prijs.</p></li>
+        <li><h3>Strak opgeleverd</h3><p>Afspraak is afspraak. Het werk wordt netjes uitgevoerd en de ruimte schoon achtergelaten.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec reviews">
+    <div class="wrap">
+      <div class="big">5,0</div>
+      <div class="stars" aria-label="5 van 5 sterren">★★★★★</div>
+      <p>Zo'n 100 klanten in en rond Purmerend gingen je voor. Lees zelf wat ze van het werk vinden.</p>
+      <a class="btn" href="https://www.google.com/maps/place/?q=place_id:ChIJL1Ujs7UGxkcR0h-VZ9hv5WA" target="_blank" rel="noopener">Lees de reviews op Google</a>
+    </div>
+  </section>
+
+  <section class="sec" id="contact">
+    <div class="wrap contact-grid">
+      <div>
+        <span class="kicker">Contact</span>
+        <h2>Benieuwd wat het <em>kost?</em></h2>
+        <p class="sub">Bel of app gerust. Stuur er een paar foto's bij, dan weet je snel waar je aan toe bent.</p>
+        <ul class="lines">
+          <li><a href="tel:+31614695861"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span><span><small>Bellen</small><b>06-14695861</b></span></a></li>
+          <li><a href="https://wa.me/31614695861?text=Hoi!%20Ik%20wil%20graag%20een%20prijs%20voor%20stucwerk." target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/></svg></span><span><small>WhatsApp</small><b>Stuur een bericht</b></span></a></li>
+          <li><a href="https://maps.google.com/?q=Roggebotstraat+26,+1443+KP+Purmerend" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-5.3-7-11a7 7 0 0 1 14 0c0 5.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span><small>Adres</small><b>Roggebotstraat 26, Purmerend</b></span></a></li>
+        </ul>
+        <div class="contact-cta">
+          <a class="btn wa" href="https://wa.me/31614695861?text=Hoi!%20Ik%20wil%20graag%20een%20prijs%20voor%20stucwerk." target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 32 32" fill="#fff"><use href="#wa-icon"/></svg>WhatsApp</a>
+          <a class="btn btn-line" href="tel:+31614695861">Bel direct</a>
+        </div>
+      </div>
+      <div>
+        <div class="hours">
+          <h3>Bereikbaar <span class="open" id="open">Nu gesloten</span></h3>
+          <dl id="hours">
+            <dt>Maandag</dt><dd>07:00 – 17:00</dd>
+            <dt>Dinsdag</dt><dd>07:00 – 17:00</dd>
+            <dt>Woensdag</dt><dd>07:00 – 17:00</dd>
+            <dt>Donderdag</dt><dd>07:00 – 17:00</dd>
+            <dt>Vrijdag</dt><dd>07:00 – 17:00</dd>
+            <dt>Zaterdag</dt><dd class="closed">Gesloten</dd>
+            <dt>Zondag</dt><dd class="closed">Gesloten</dd>
+          </dl>
+          <p>Buiten deze tijden? Stuur een appje. Dan reageren we zo snel mogelijk.</p>
+        </div>
+        <div class="area">
+          <h3>Werkgebied</h3>
+          <p>Purmerend en omgeving. Twijfel je of we bij jou in de buurt komen? Stuur gerust een appje.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 Stukadoorsbedrijf van der Hoef · KVK 37131022</div>
+    <div>Concept door <a href="https://byxavio.nl">byXavio</a></div>
+  </div>
+</footer>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="wa-icon" viewBox="0 0 32 32"><path d="M16.04 3C8.86 3 3.03 8.82 3.03 16c0 2.3.6 4.54 1.74 6.52L3 29l6.64-1.74A13 13 0 0 0 16.04 29C23.2 29 29 23.18 29 16S23.2 3 16.04 3Zm0 23.8c-2.02 0-4-.54-5.72-1.57l-.41-.24-3.94 1.030 1.05-3.84-.27-.4A10.78 10.78 0 0 1 5.2 16c0-5.97 4.86-10.830 10.840-10.830 5.97 0 10.820 4.86 10.820 10.83 0 5.98-4.85 10.8-10.82 10.8Zm5.94-8.1c-.33-.16-1.93-.95-2.23-1.06-.3-.11-.52-.16-.73.17-.22.32-.84 1.05-1.03 1.27-.19.22-.38.24-.7.08-.33-.16-1.38-.51-2.62-1.62-.97-.86-1.62-1.93-1.81-2.25-.19-.33-.02-.5.14-.66.15-.15.33-.38.49-.57.16-.19.22-.33.33-.54.11-.22.05-.41-.03-.57-.08-.16-.73-1.76-1-2.41-.26-.63-.53-.55-.73-.56h-.62c-.22 0-.57.08-.87.41-.3.32-1.14 1.11-1.14 2.72 0 1.6 1.17 3.15 1.33 3.37.16.22 2.3 3.5 5.56 4.91.78.34 1.39.54 1.86.69.78.25 1.49.21 2.05.13.63-.09 1.93-.79 2.2-1.55.27-.76.27-1.41.19-1.55-.08-.13-.3-.21-.62-.38Z"/></symbol></svg>
+
+<a class="wa-float" id="wafloat" href="https://wa.me/31614695861?text=Hoi!%20Ik%20heb%20een%20vraag%20over%20stucwerk." target="_blank" rel="noopener" aria-label="Stuur een WhatsApp-bericht"><span class="wa-tip">Vraag direct een prijs</span><svg aria-hidden="true" viewBox="0 0 32 32" fill="#fff"><use href="#wa-icon"/></svg></a>
+
+<div class="dock">
+  <a class="btn wa" href="https://wa.me/31614695861?text=Hoi!%20Ik%20heb%20een%20vraag%20over%20stucwerk."><svg aria-hidden="true" viewBox="0 0 32 32" fill="#fff"><use href="#wa-icon"/></svg>WhatsApp</a>
+  <a class="btn btn-clay" href="tel:+31614695861">Bellen</a>
+</div>
+
+<script>
+// Open/gesloten op basis van de huidige tijd in Nederland
+(function(){
+  const hours={1:[7,17],2:[7,17],3:[7,17],4:[7,17],5:[7,17]};
+  const now=new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/Amsterdam'}));
+  const d=now.getDay(),h=now.getHours()+now.getMinutes()/60,el=document.getElementById('open');
+  const rows=document.querySelectorAll('#hours dt');
+  const idx=(d+6)%7;
+  rows[idx].classList.add('today');rows[idx].nextElementSibling.classList.add('today');
+  if(hours[d]&&h>=hours[d][0]&&h<hours[d][1]){el.textContent='Nu bereikbaar';el.classList.add('on');}
+})();
+// Zwevende knop: tooltip kort tonen, verbergen bij contact
+(function(){
+  const f=document.getElementById('wafloat');
+  setTimeout(()=>f.classList.add('tip'),2500);setTimeout(()=>f.classList.remove('tip'),8000);
+  const io=new IntersectionObserver(e=>f.classList.toggle('hide',e[0].isIntersecting),{threshold:.25});
+  io.observe(document.getElementById('contact'));
+})();
+</script>
+</body>
+</html>
