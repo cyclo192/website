@@ -281,7 +281,7 @@ VRAGEN_KOSTUUM = ([] if KOSTUUM_TE_KOOP else [
     ("Is het op tijd voor Sinterklaas of kerst?",
      f"Reken op {LEVERTIJD} levertijd, want het kostuum komt rechtstreeks van onze leverancier buiten Europa. Wil je het voor kerst in huis hebben, bestel dan uiterlijk eind november. Zodra je pakket onderweg is, krijg je een track-en-tracecode."),
     ("Past het mijn kat of hond?",
-     "Het kostuum is er in één maat, met klittenband bij de hals en de borst en elastiek, zodat je het kunt verstellen. Het is gemaakt voor katten en kleine honden. De precieze maten vragen we nog op bij de leverancier en zetten we hier zodra we ze hebben."),
+     "Het kostuum is er in één maat, met klittenband bij de hals en de borst en elastiek, zodat je het kunt verstellen. Het past bij een halsomvang van ongeveer 14 tot 32 cm en een borstomvang van 29 tot 46 cm. Dat is de meeste katten en kleine honden, zoals een chihuahua, maltezer of yorkshire terriër. Meet de borst van je dier vlak achter de voorpoten."),
     ("Moet mijn dier het lang dragen?",
      "Nee. Het is bedoeld voor een leuke foto of een feestje. Laat je dier er niet alleen mee rondlopen en doe het uit als je dier het niet fijn vindt."),
     ("Wat kost verzending?",
@@ -699,8 +699,10 @@ kostuum = f'''<div class="wrap">
 <table class="specs">
 <tr><th scope="row">In het pakket</th><td>1 muts met ster en 1 cape met pompons</td></tr>
 <tr><th scope="row">Artikelnummer</th><td>{ARTIKEL_KOSTUUM}</td></tr>
-<tr><th scope="row">Maat</th><td>Eén maat, verstelbaar met klittenband en elastiek. Voor katten en kleine honden</td></tr>
-<tr><th scope="row">Materiaal</th><td>Polyester fleece, volgens de leverancier</td></tr>
+<tr><th scope="row">Maat</th><td>Eén maat, verstelbaar met klittenband en elastiek</td></tr>
+<tr><th scope="row">Halsomvang</th><td>Ongeveer 14 tot 32 cm</td></tr>
+<tr><th scope="row">Borstomvang</th><td>Ongeveer 29 tot 46 cm</td></tr>
+<tr><th scope="row">Materiaal</th><td>Polyester</td></tr>
 <tr><th scope="row">Kleur</th><td>Groen met een gele ster</td></tr>
 <tr><th scope="row">Levertijd</th><td>{LEVERTIJD}</td></tr>
 <tr><th scope="row">Verzending</th><td>Gratis in Nederland</td></tr>
