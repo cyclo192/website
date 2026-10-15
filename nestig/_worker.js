@@ -39,6 +39,11 @@ const PRODUCTEN = {
     prijs: 2795,
     kleuren: { rood: "Bordeauxrood" },
   },
+  kostuum: {
+    naam: "Kerstboom-kostuum voor kat en hond",
+    prijs: 1995,
+    kleuren: { een: "Eén maat" },
+  },
 };
 
 const ZAAK = {

@@ -35,7 +35,8 @@ ARTIKEL_BOEKET = "NES-BQ-01"
 ARTIKEL_KERSTBOOM = "NES-KK-01"
 ARTIKEL_KOSTUUM = "NES-KD-01"
 PRIJS_KOSTUUM = "19,95"
-FABRIKANT_KOSTUUM = ""
+# Opgave leverancier via CJ (15 oktober 2026).
+FABRIKANT_KOSTUUM = "Guangzhou Duolemi Pet Supplies Co., Ltd.<br>No. 138 Jiefang West Road, Shatou Street<br>Panyu District, Guangzhou City<br>Guangdong Province, China"
 SEINTJE_KOSTUUM = f"https://wa.me/{WA}?text=" + "Hoi%20Nestig%2C%20geef%20me%20een%20seintje%20als%20het%20kerstboom-kostuum%20te%20koop%20is."
 PRIJS_KERSTBOOM = "39,95"
 # Naam en adres van de fabrikant (opgave leverancier via CJ). Leeg = nog niet te koop, met knop "Geef me een seintje".
