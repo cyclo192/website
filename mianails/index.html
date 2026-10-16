@@ -71,8 +71,9 @@ nav .btn{padding:.85em 1.3em;font-size:.92rem}
 .chip{display:inline-flex;align-items:center;gap:.55em;padding:.55em 1em;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:.95rem}
 .chip b{font-family:var(--display);font-size:1.15rem}
 .chip .stars{color:var(--gold);letter-spacing:1px}
-.chip.open i{width:9px;height:9px;border-radius:50%;background:#a9999b}
-.chip.open.on i{background:#2fa35a;box-shadow:0 0 0 4px rgba(47,163,90,.2)}
+.chip.now i{width:9px;height:9px;border-radius:50%;background:#a9999b}
+.chip.now.on i{background:#2fa35a;box-shadow:0 0 0 4px rgba(47,163,90,.2)}
+.chip.now.on{color:#1d6b3a;font-weight:500}
 .stack{position:relative;height:560px}
 .pol{position:absolute;overflow:hidden;background:var(--blush-2);box-shadow:0 34px 60px -34px rgba(90,42,53,.55)}
 .pol img{width:100%;height:100%;object-fit:cover}
@@ -219,7 +220,7 @@ footer a{color:#fff}
         </div>
         <div class="chips">
           <a class="chip" href="https://www.google.com/maps/place/?q=place_id:ChIJXRt1qH8HxkcRkB_ZnGA71gU" target="_blank" rel="noopener" style="text-decoration:none"><b>4,9</b><span class="stars" aria-label="5 sterren">★★★★★</span>149 reviews</a>
-          <span class="chip open" id="openchip"><i></i><span id="opentxt">Vandaag gesloten</span></span>
+          <span class="chip now" id="openchip"><i></i><span id="opentxt">Vandaag gesloten</span></span>
         </div>
       </div>
       <div class="stack" aria-hidden="true">
