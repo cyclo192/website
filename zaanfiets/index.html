@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zaanfiets – Fietsenmaker in Zaandam</title>
+<meta name="description" content="Zaanfiets in Zaandam: fietsreparatie en onderhoud, vaak dezelfde dag klaar. Lekke band, remmen, versnellingen en mountainbikes. Beoordeeld met een 4,9 op Google.">
+<meta name="theme-color" content="#0f3d2e">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#0f3d2e;
+  --green-2:#17543f;
+  --lime:#c6f24e;
+  --lime-2:#b3e033;
+  --paper:#f4f6f1;
+  --white:#fff;
+  --ink:#10201a;
+  --muted:#5d6b64;
+  --line:#dde3dc;
+  --head:"Space Grotesk",system-ui,sans-serif;
+  --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:var(--body);font-size:1.06rem;line-height:1.65;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--head);font-weight:700;line-height:1;letter-spacing:-.03em}
+h2{font-size:clamp(2.4rem,5.4vw,4rem)}
+p{max-width:56ch}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+:focus-visible{outline:3px solid var(--lime);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.sec{padding-block:100px}
+.tag{display:inline-flex;align-items:center;gap:.5em;font:600 .82rem/1 var(--head);letter-spacing:.06em;text-transform:uppercase;padding:.6em .9em;border-radius:999px;background:var(--lime);color:var(--green);margin-bottom:20px}
+.sub{color:var(--muted);margin-top:18px;font-size:1.1rem}
+.hl{color:var(--green-2);position:relative;white-space:nowrap}
+.hl::after{content:"";position:absolute;left:0;right:0;bottom:.04em;height:.26em;background:var(--lime);z-index:-1;border-radius:4px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6em;font:600 1rem/1 var(--head);padding:1.05em 1.5em;border-radius:14px;border:2px solid transparent;text-decoration:none;cursor:pointer;transition:background-color .15s,color .15s,transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn svg{width:1.25em;height:1.25em;flex:none}
+.btn-lime{background:var(--lime);color:var(--green)}
+.btn-lime:hover{background:var(--lime-2)}
+.btn-green{background:var(--green);color:#fff}
+.btn-green:hover{background:var(--green-2)}
+.btn-ghost{border-color:rgba(255,255,255,.4);color:#fff}
+.btn-ghost:hover{background:#fff;color:var(--green)}
+.wa{background:#1f8f4e;color:#fff}
+.wa:hover{background:#18763f}
+
+header{position:sticky;top:0;z-index:30;background:var(--green);color:#fff}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:72px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand .ic{width:42px;height:42px;border-radius:12px;background:var(--lime);display:grid;place-items:center}
+.brand .ic svg{width:28px;height:28px;stroke:var(--green);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.brand b{font:700 1.45rem/1 var(--head);letter-spacing:-.03em}
+nav{display:flex;align-items:center;gap:28px}
+nav a{text-decoration:none;font:500 .98rem var(--head)}
+nav a:not(.btn):hover{color:var(--lime)}
+nav .btn{padding:.8em 1.15em;font-size:.94rem}
+
+.hero{background:var(--green);color:#fff;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;right:-180px;top:-180px;width:560px;height:560px;border-radius:50%;border:70px solid rgba(198,242,78,.07)}
+.hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:56px;align-items:center;padding-block:64px 90px}
+.hero h1{font-size:clamp(3.2rem,8vw,6.6rem)}
+.hero h1 span{color:var(--lime)}
+.lead{font-size:1.22rem;color:#cfe0d7;max-width:36ch;margin-top:24px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.stats{display:flex;flex-wrap:wrap;gap:14px;margin-top:44px}
+.stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:14px 18px;text-decoration:none;display:block}
+.stat b{display:block;font:700 1.9rem/1 var(--head);color:var(--lime)}
+.stat span{font-size:.9rem;color:#cfe0d7}
+.stat .stars{color:var(--lime);letter-spacing:2px;font-size:.9rem}
+.photo{position:relative}
+.photo .main{border-radius:28px;overflow:hidden;aspect-ratio:4/5;background:var(--green-2)}
+.photo .main img{width:100%;height:100%;object-fit:cover}
+.badge{position:absolute;left:-22px;bottom:34px;background:var(--lime);color:var(--green);border-radius:20px;padding:16px 20px;font:700 1.15rem/1.15 var(--head);box-shadow:0 20px 34px -18px rgba(0,0,0,.6);transform:rotate(-3deg)}
+.badge small{display:block;font:500 .82rem var(--body);margin-top:4px;color:var(--green-2)}
+.spin{position:absolute;right:-24px;top:-24px;width:110px;height:110px}
+.spin svg{width:100%;height:100%}
+@media (prefers-reduced-motion:no-preference){
+  .spin svg{animation:rot 14s linear infinite}
+  @keyframes rot{to{transform:rotate(360deg)}}
+  .photo .main,.badge{animation:up .9s cubic-bezier(.2,.7,.2,1) both}
+  .badge{animation-delay:.2s}
+  @keyframes up{from{opacity:0;translate:0 24px}to{opacity:1;translate:0 0}}
+}
+
+.services{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:48px}
+.svc{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:26px 24px 28px;display:flex;flex-direction:column;gap:10px;transition:transform .2s,border-color .2s}
+.svc:hover{transform:translateY(-4px);border-color:var(--green)}
+.svc .ic{width:54px;height:54px;border-radius:16px;background:var(--paper);display:grid;place-items:center;margin-bottom:6px}
+.svc .ic svg{width:30px;height:30px;stroke:var(--green);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.svc h3{font-size:1.5rem}
+.svc p{color:var(--muted);font-size:.98rem}
+.svc.feat{background:var(--lime);border-color:var(--lime)}
+.svc.feat .ic{background:rgba(15,61,46,.1)}
+.svc.feat p{color:var(--green-2)}
+
+.split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:64px;align-items:center}
+.pics{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pics img{width:100%;height:100%;object-fit:cover;border-radius:20px;aspect-ratio:1/1;background:var(--line)}
+.pics img:first-child{grid-column:1/-1;aspect-ratio:16/10}
+.steps{list-style:none;margin-top:30px;counter-reset:s}
+.steps li{display:grid;grid-template-columns:auto 1fr;gap:4px 18px;padding:18px 0;border-bottom:1px solid var(--line);counter-increment:s}
+.steps li::before{content:counter(s);grid-row:span 2;width:44px;height:44px;border-radius:12px;background:var(--green);color:var(--lime);display:grid;place-items:center;font:700 1.2rem var(--head)}
+.steps b{font:600 1.2rem var(--head)}
+.steps span{color:var(--muted);font-size:.98rem}
+
+.band{background:var(--lime);color:var(--green)}
+.band .wrap{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap;padding-block:60px}
+.band h2{font-size:clamp(2.2rem,5vw,3.6rem);max-width:16ch}
+.band .rate{display:flex;align-items:center;gap:18px;text-decoration:none}
+.band .rate b{font:700 5rem/1 var(--head)}
+.band .rate span{font-weight:600;line-height:1.35}
+.band .rate .stars{display:block;letter-spacing:3px;font-size:1.2rem}
+
+#contact{background:var(--green);color:#fff}
+#contact .sub{color:#cfe0d7}
+.c-grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:60px;align-items:start}
+.c-lines{list-style:none;margin-top:30px}
+.c-lines a{display:flex;gap:18px;align-items:center;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.14);text-decoration:none}
+.c-lines a:hover b{color:var(--lime)}
+.c-lines .ic{width:50px;height:50px;border-radius:14px;background:rgba(255,255,255,.08);display:grid;place-items:center;flex:none}
+.c-lines .ic svg{width:24px;height:24px;stroke:var(--lime);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.c-lines small{display:block;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:#a8c2b5}
+.c-lines b{font:600 1.55rem/1.2 var(--head);transition:color .15s}
+.c-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.hours{background:var(--paper);color:var(--ink);border-radius:26px;padding:30px}
+.hours h3{font-size:1.8rem;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.open{font:600 .82rem var(--body);letter-spacing:0;padding:.5em .9em;border-radius:999px;background:#e5e9e3;display:inline-flex;gap:.5em;align-items:center}
+.open::before{content:"";width:9px;height:9px;border-radius:50%;background:#98a39d}
+.open.on{background:var(--lime);color:var(--green)}
+.open.on::before{background:var(--green)}
+.hours dl{display:grid;grid-template-columns:1fr auto;margin-top:18px}
+.hours dt,.hours dd{padding:11px 0;border-bottom:1px solid var(--line)}
+.hours dd{text-align:right;font-weight:600}
+.hours .today{color:var(--green-2);font-weight:700}
+.hours .closed{color:#98a39d;font-weight:500}
+
+footer{background:#0a2a20;color:#a8c2b5;padding:24px 0;font-size:.9rem}
+footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+footer a{color:#fff}
+
+.wa-float{position:fixed;right:24px;bottom:24px;z-index:25;width:62px;height:62px;border-radius:50%;background:#1f8f4e;display:grid;place-items:center;box-shadow:0 12px 26px -10px rgba(0,0,0,.5);transition:opacity .2s,transform .2s}
+.wa-float:hover{background:#18763f}
+.wa-float svg{width:34px;height:34px}
+.wa-float.hide{opacity:0;pointer-events:none;transform:scale(.8)}
+@media (prefers-reduced-motion:no-preference){
+  .wa-float::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #1f8f4e;animation:pulse 2.4s ease-out infinite}
+  @keyframes pulse{from{transform:scale(1);opacity:.8}to{transform:scale(1.7);opacity:0}}
+}
+.dock{display:none}
+
+@media (max-width:1000px){
+  nav a:not(.btn){display:none}
+  .services{grid-template-columns:1fr 1fr}
+}
+@media (max-width:860px){
+  .sec{padding-block:70px}
+  .hero-grid,.split,.c-grid{grid-template-columns:1fr;gap:36px}
+  .hero-grid{padding-block:36px 64px}
+  .photo{max-width:420px;width:100%;margin:0 auto}
+  .badge{left:-6px}
+  .spin{right:-6px;width:90px;height:90px}
+  body{padding-bottom:78px}
+  .wa-float{display:none}
+  .dock{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--green);padding:10px;gap:10px}
+  .dock .btn{padding:.95em .6em}
+}
+@media (max-width:560px){
+  .wrap{padding:0 18px}
+  .brand b{font-size:1.25rem}
+  .brand .ic{width:38px;height:38px}
+  header nav .btn{padding:.75em .95em;font-size:.88rem}
+  .services{grid-template-columns:1fr}
+  .hero-cta .btn,.c-cta .btn{flex:1 1 100%}
+  .stat{flex:1 1 40%}
+  .band .rate b{font-size:3.8rem}
+  .c-lines b{font-size:1.3rem}
+  .hours{padding:22px 18px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#top"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="16" r="4"/><circle cx="18" cy="16" r="4"/><path d="M6 16l4-8h5l3 8M10 8l2 8M14 5h3"/></svg></span><b>Zaanfiets</b></a>
+    <nav aria-label="Hoofdmenu">
+      <a href="#diensten">Diensten</a>
+      <a href="#werkwijze">Werkwijze</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn-lime" href="https://wa.me/31615897276?text=Hoi!%20Mijn%20fiets%20moet%20gerepareerd%20worden." target="_blank" rel="noopener">App ons</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="tag">Fietsenmaker in Zaandam</span>
+        <h1>Fiets kapot? <span>Vandaag</span> weer rijden.</h1>
+        <p class="lead">Snelle, vakkundige reparaties voor een eerlijke prijs. Van een lekke band tot remmen, versnellingen en mountainbikes, vaak dezelfde dag klaar.</p>
+        <div class="hero-cta">
+          <a class="btn wa" href="https://wa.me/31615897276?text=Hoi!%20Mijn%20fiets%20moet%20gerepareerd%20worden." target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 32 32" fill="#fff"><use href="#wa-icon"/></svg>App je probleem</a>
+          <a class="btn btn-ghost" href="#diensten">Wat we doen</a>
+        </div>
+        <div class="stats">
+          <a class="stat" href="https://www.google.com/maps/place/?q=place_id:ChIJTUqET5H9xUcRrAMLAG-eWzU" target="_blank" rel="noopener"><b>4,9</b><span><span class="stars">★★★★★</span> 97 reviews</span></a>
+          <div class="stat"><b>Vaak</b><span>dezelfde dag klaar</span></div>
+          <div class="stat"><b>6 dagen</b><span>per week open</span></div>
+        </div>
+      </div>
+      <div class="photo">
+        <div class="main"><img src="https://images.unsplash.com/photo-1673870861138-3d7b92d8b619?auto=format&fit=crop&w=800&q=70" alt="Fietsenmaker aan het werk in de werkplaats" fetchpriority="high"></div>
+        <div class="badge">Eerlijke prijzen<small>Betaalbaar in Zaandam</small></div>
+        <div class="spin" aria-hidden="true"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#c6f24e"/><circle cx="50" cy="50" r="30" fill="none" stroke="#0f3d2e" stroke-width="4"/><circle cx="50" cy="50" r="6" fill="#0f3d2e"/><g stroke="#0f3d2e" stroke-width="2.5"><line x1="50" y1="20" x2="50" y2="80"/><line x1="20" y1="50" x2="80" y2="50"/><line x1="29" y1="29" x2="71" y2="71"/><line x1="71" y1="29" x2="29" y2="71"/></g></svg></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="diensten">
+    <div class="wrap">
+      <span class="tag">Diensten</span>
+      <h2>Alles voor een fiets die <span class="hl">soepel</span> rijdt</h2>
+      <p class="sub">Stadsfiets of mountainbike: kom langs of stuur een appje met wat er aan de hand is.</p>
+      <ul class="services">
+        <li class="svc feat"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v6M12 15v6M3 12h6M15 12h6"/></svg></span><h3>Lekke band</h3><p>Snel geplakt of vervangen, zodat je zo weer verder kunt.</p></li>
+        <li class="svc"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></svg></span><h3>Reparatie</h3><p>Rammelt, piept of hapert er iets? Wij zoeken het uit en lossen het op.</p></li>
+        <li class="svc"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span><h3>Onderhoud</h3><p>Afstellen, smeren en nalopen, zodat je fiets langer meegaat.</p></li>
+        <li class="svc"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18l6-10 4 6 3-4 5 8z"/></svg></span><h3>Mountainbikes</h3><p>Ook voor remmen, versnellingen en aanpassingen aan je MTB.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" id="werkwijze" style="padding-top:0">
+    <div class="wrap split">
+      <div class="pics">
+        <img src="https://images.unsplash.com/photo-1675798226681-c1983af8ce92?auto=format&fit=crop&w=900&q=65" alt="Fiets wordt afgesteld in de werkplaats" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1671543565338-8b22a87b8359?auto=format&fit=crop&w=500&q=60" alt="Gereedschap aan de wand van de werkplaats" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1684166472907-e17eec7e9475?auto=format&fit=crop&w=500&q=60" alt="Close-up van ketting en tandwielen" loading="lazy">
+      </div>
+      <div>
+        <span class="tag">Werkwijze</span>
+        <h2>Zo simpel is het</h2>
+        <ol class="steps">
+          <li><b>Stuur een appje</b><span>Vertel wat er mis is, eventueel met een foto.</span></li>
+          <li><b>Breng je fiets langs</b><span>We kijken er direct naar en zeggen eerlijk wat het kost.</span></li>
+          <li><b>Weer op weg</b><span>Vaak is je fiets dezelfde dag nog klaar.</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Snel, vakkundig en betaalbaar.</h2>
+      <a class="rate" href="https://www.google.com/maps/place/?q=place_id:ChIJTUqET5H9xUcRrAMLAG-eWzU" target="_blank" rel="noopener"><b>4,9</b><span><span class="stars">★★★★★</span>97 reviews op Google<br>Lees ze zelf →</span></a>
+    </div>
+  </section>
+
+  <section class="sec" id="contact">
+    <div class="wrap c-grid">
+      <div>
+        <span class="tag">Contact</span>
+        <h2>Kom langs of stuur een appje</h2>
+        <p class="sub">Je vindt Zaanfiets aan de Dodonaeusstraat in Zaandam. Volg ons ook op Instagram.</p>
+        <ul class="c-lines">
+          <li><a href="https://wa.me/31615897276?text=Hoi!%20Mijn%20fiets%20moet%20gerepareerd%20worden." target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/></svg></span><span><small>WhatsApp of bellen</small><b>06-15897276</b></span></a></li>
+          <li><a href="https://maps.google.com/?q=Dodonaeusstraat,+1504+KK+Zaandam" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-5.3-7-11a7 7 0 0 1 14 0c0 5.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span><small>Werkplaats</small><b>Dodonaeusstraat, Zaandam</b></span></a></li>
+          <li><a href="https://www.instagram.com/zaanfiets1/" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6"/></svg></span><span><small>Instagram</small><b>@zaanfiets1</b></span></a></li>
+        </ul>
+        <div class="c-cta">
+          <a class="btn wa" href="https://wa.me/31615897276?text=Hoi!%20Mijn%20fiets%20moet%20gerepareerd%20worden." target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 32 32" fill="#fff"><use href="#wa-icon"/></svg>Stuur een WhatsApp</a>
+          <a class="btn btn-ghost" href="tel:+31615897276">Bel direct</a>
+        </div>
+      </div>
+      <div class="hours">
+        <h3>Openingstijden <span class="open" id="open">Gesloten</span></h3>
+        <dl id="hours">
+          <dt>Maandag</dt><dd>12:00 – 17:00</dd>
+          <dt>Dinsdag</dt><dd>09:00 – 17:00</dd>
+          <dt>Woensdag</dt><dd>09:00 – 17:00</dd>
+          <dt>Donderdag</dt><dd>09:00 – 17:00</dd>
+          <dt>Vrijdag</dt><dd>09:00 – 17:00</dd>
+          <dt>Zaterdag</dt><dd>09:00 – 16:00</dd>
+          <dt>Zondag</dt><dd class="closed">Gesloten</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 Zaanfiets · Zaandam</div>
+    <div>Concept door <a href="https://byxavio.nl">byXavio</a></div>
+  </div>
+</footer>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="wa-icon" viewBox="0 0 32 32"><path d="M16.04 3C8.86 3 3.03 8.82 3.03 16c0 2.3.6 4.54 1.74 6.52L3 29l6.64-1.74A13 13 0 0 0 16.04 29C23.2 29 29 23.18 29 16S23.2 3 16.04 3Zm0 23.8c-2.02 0-4-.54-5.72-1.57l-.41-.24-3.94 1.03 1.05-3.84-.27-.4A10.78 10.78 0 0 1 5.2 16c0-5.97 4.86-10.83 10.84-10.83 5.97 0 10.82 4.86 10.82 10.83 0 5.98-4.85 10.8-10.82 10.8Zm5.94-8.1c-.33-.16-1.93-.95-2.23-1.06-.3-.11-.52-.16-.73.17-.22.32-.84 1.05-1.03 1.27-.19.22-.38.24-.7.08-.33-.16-1.38-.51-2.62-1.62-.97-.86-1.62-1.93-1.81-2.25-.19-.33-.02-.5.14-.66.15-.15.33-.38.49-.57.16-.19.22-.33.33-.54.11-.22.05-.41-.03-.57-.08-.16-.73-1.76-1-2.41-.26-.63-.53-.55-.73-.56h-.62c-.22 0-.57.08-.87.41-.3.32-1.14 1.11-1.14 2.72 0 1.6 1.17 3.15 1.33 3.37.16.22 2.3 3.5 5.56 4.91.78.34 1.39.54 1.86.69.78.25 1.49.21 2.05.13.63-.09 1.93-.79 2.2-1.55.27-.76.27-1.41.19-1.55-.08-.13-.3-.21-.62-.38Z"/></symbol></svg>
+
+<a class="wa-float" id="wafloat" href="https://wa.me/31615897276?text=Hoi!%20Ik%20heb%20een%20vraag%20over%20mijn%20fiets." target="_blank" rel="noopener" aria-label="Stuur een WhatsApp-bericht"><svg aria-hidden="true" viewBox="0 0 32 32" fill="#fff"><use href="#wa-icon"/></svg></a>
+
+<div class="dock">
+  <a class="btn wa" href="https://wa.me/31615897276?text=Hoi!%20Mijn%20fiets%20moet%20gerepareerd%20worden."><svg aria-hidden="true" viewBox="0 0 32 32" fill="#fff"><use href="#wa-icon"/></svg>WhatsApp</a>
+  <a class="btn btn-lime" href="tel:+31615897276">Bellen</a>
+</div>
+
+<script>
+(function(){
+  const hours={1:[12,17],2:[9,17],3:[9,17],4:[9,17],5:[9,17],6:[9,16]};
+  const now=new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/Amsterdam'}));
+  const d=now.getDay(),h=now.getHours()+now.getMinutes()/60,el=document.getElementById('open');
+  const dt=document.querySelectorAll('#hours dt')[(d+6)%7];dt.classList.add('today');dt.nextElementSibling.classList.add('today');
+  if(hours[d]&&h>=hours[d][0]&&h<hours[d][1]){el.textContent='Nu open';el.classList.add('on');}
+  const w=document.getElementById('wafloat');
+  new IntersectionObserver(e=>w.classList.toggle('hide',e[0].isIntersecting),{threshold:.25}).observe(document.getElementById('contact'));
+})();
+</script>
+</body>
+</html>

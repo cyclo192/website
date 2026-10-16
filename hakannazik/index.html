@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hakan Nazik Hair Salon – Kapper in Wormerveer</title>
+<meta name="description" content="Hakan Nazik Hair Salon aan de Zaanweg in Wormerveer. Knippen, kleuren en stylen voor dames en heren. Beoordeeld met een 5,0 op Google.">
+<meta name="theme-color" content="#14110f">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,600;1,6..96,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --noir:#14110f;
+  --noir-2:#1d1916;
+  --noir-3:#29231f;
+  --gold:#c9a464;
+  --gold-2:#e3c78f;
+  --bone:#f3ede4;
+  --muted:#a59a8c;
+  --line:rgba(201,164,100,.22);
+  --display:"Bodoni Moda",Georgia,serif;
+  --body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:var(--body);font-size:1.06rem;line-height:1.7;color:var(--bone);background:var(--noir);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.02;letter-spacing:-.01em}
+h2{font-size:clamp(2.5rem,5.2vw,4rem)}
+h1 em,h2 em{font-style:italic;color:var(--gold)}
+p{max-width:56ch}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.sec{padding-block:110px}
+.eyebrow{display:inline-flex;align-items:center;gap:.8em;font-size:.78rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.eyebrow::before{content:"";width:30px;height:1px;background:currentColor}
+.sub{color:var(--muted);margin-top:18px;font-size:1.1rem}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6em;font:600 .95rem/1 var(--body);letter-spacing:.08em;text-transform:uppercase;padding:1.15em 1.7em;border-radius:2px;border:1px solid transparent;text-decoration:none;cursor:pointer;transition:background-color .2s,color .2s,transform .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn svg{width:1.25em;height:1.25em;flex:none}
+.btn-gold{background:var(--gold);color:var(--noir)}
+.btn-gold:hover{background:var(--gold-2)}
+.btn-line{border-color:var(--gold);color:var(--gold)}
+.btn-line:hover{background:var(--gold);color:var(--noir)}
+.wa{background:#1f8f4e;color:#fff}
+.wa:hover{background:#18763f}
+
+header{position:fixed;top:0;left:0;right:0;z-index:30;transition:background-color .3s,border-color .3s;border-bottom:1px solid transparent}
+header.solid{background:rgba(20,17,15,.94);backdrop-filter:blur(10px);border-color:var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:78px}
+.brand{text-decoration:none;line-height:1;text-align:center}
+.brand b{display:block;font-family:var(--display);font-weight:600;font-size:1.5rem;letter-spacing:.06em}
+.brand small{display:block;font-size:.62rem;letter-spacing:.42em;text-transform:uppercase;color:var(--gold);margin-top:6px}
+nav{display:flex;align-items:center;gap:34px}
+nav a{text-decoration:none;font-size:.86rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#d9d1c5}
+nav a:not(.btn):hover{color:var(--gold)}
+nav .btn{padding:.95em 1.3em;font-size:.8rem;color:var(--noir)}
+
+.hero{position:relative;min-height:min(100svh,900px);display:flex;align-items:flex-end;overflow:hidden}
+.hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,17,15,.96) 0%,rgba(20,17,15,.75) 46%,rgba(20,17,15,.25) 100%),linear-gradient(0deg,var(--noir) 0%,transparent 40%)}
+.hero .wrap{position:relative;z-index:1;width:100%;padding-top:160px;padding-bottom:80px}
+.hero h1{font-size:clamp(3.4rem,8.4vw,7.4rem);max-width:10ch}
+.lead{font-size:1.22rem;color:#d4cabd;max-width:38ch;margin-top:26px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:38px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:18px 46px;margin-top:60px;padding-top:28px;border-top:1px solid var(--line)}
+.hero-meta a,.hero-meta div{display:flex;align-items:center;gap:14px;text-decoration:none}
+.hero-meta b{font-family:var(--display);font-size:2.6rem;line-height:1;color:var(--gold)}
+.hero-meta span{font-size:.9rem;color:var(--muted);line-height:1.35}
+.hero-meta .stars{display:block;color:var(--gold);letter-spacing:3px}
+@media (prefers-reduced-motion:no-preference){
+  .hero img.bg{animation:zoom 16s ease-out both}
+  @keyframes zoom{from{transform:scale(1.12)}to{transform:scale(1)}}
+  .hero h1,.lead,.hero-cta{animation:up .9s cubic-bezier(.2,.7,.2,1) both}
+  .lead{animation-delay:.12s}.hero-cta{animation-delay:.24s}
+  @keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+}
+
+.services-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:70px;align-items:start}
+.sticky{position:sticky;top:110px}
+.sticky .img{margin-top:36px;aspect-ratio:4/5;overflow:hidden;border-radius:2px;border:1px solid var(--line)}
+.sticky .img img{width:100%;height:100%;object-fit:cover}
+.svc{list-style:none}
+.svc li{display:grid;grid-template-columns:auto 1fr;gap:4px 26px;padding:32px 0;border-bottom:1px solid var(--line)}
+.svc li:first-child{border-top:1px solid var(--line)}
+.svc .n{grid-row:span 2;font-family:var(--display);font-style:italic;font-size:2.1rem;color:var(--gold);line-height:1}
+.svc h3{font-size:2.1rem}
+.svc p{color:var(--muted);font-size:1.02rem}
+.svc .for{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.svc .for span{font-size:.76rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:.45em .8em;border:1px solid var(--line);color:var(--gold-2)}
+
+.gallery{background:var(--noir-2);border-block:1px solid var(--line)}
+.g-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:260px 260px;gap:12px;margin-top:48px}
+.g-grid figure{position:relative;overflow:hidden;border-radius:2px;background:var(--noir-3)}
+.g-grid figure:first-child{grid-row:span 2}
+.g-grid img{width:100%;height:100%;object-fit:cover;transition:transform .7s}
+.g-grid figure:hover img{transform:scale(1.05)}
+.g-grid figcaption{position:absolute;left:14px;bottom:14px;font-size:.74rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;background:rgba(20,17,15,.8);padding:.5em .85em;color:var(--gold-2)}
+
+.welcome{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:70px;align-items:center}
+.quote{font-family:var(--display);font-style:italic;font-size:clamp(1.8rem,3.4vw,2.6rem);line-height:1.25;color:var(--bone)}
+.quote::before{content:"“";display:block;font-size:5rem;line-height:.6;color:var(--gold);margin-bottom:10px;font-style:normal}
+.perks{list-style:none;display:grid;gap:0;border-top:1px solid var(--line)}
+.perks li{display:flex;gap:18px;align-items:center;padding:22px 0;border-bottom:1px solid var(--line)}
+.perks svg{width:34px;height:34px;flex:none;stroke:var(--gold);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.perks b{display:block;font-family:var(--display);font-weight:500;font-size:1.45rem;line-height:1.2}
+.perks span{color:var(--muted);font-size:.95rem}
+
+.rating{text-align:center;background:radial-gradient(ellipse at center,var(--noir-3) 0%,var(--noir) 70%);border-top:1px solid var(--line)}
+.rating .big{font-family:var(--display);font-size:clamp(5.5rem,14vw,10rem);line-height:.9;color:var(--gold)}
+.rating .stars{color:var(--gold);font-size:1.5rem;letter-spacing:8px;margin:10px 0 18px}
+.rating p{margin:0 auto;font-size:1.2rem;color:#d4cabd}
+.rating .btn{margin-top:30px}
+
+#contact{background:var(--bone);color:var(--noir)}
+#contact .eyebrow{color:#8c6a2f}
+#contact h2 em{color:#8c6a2f}
+#contact .sub{color:#6f655a}
+.c-grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:64px;align-items:start}
+.phone{display:block;margin-top:30px;font-family:var(--display);font-size:clamp(2.6rem,6vw,4.6rem);line-height:1;text-decoration:none}
+.phone:hover{color:#8c6a2f}
+.addr{display:flex;gap:14px;align-items:center;margin-top:22px;text-decoration:none;font-size:1.15rem;font-weight:600}
+.addr svg{width:24px;height:24px;stroke:#8c6a2f;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.addr:hover{text-decoration:underline}
+.c-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.c-cta .btn-line{border-color:var(--noir);color:var(--noir)}
+.c-cta .btn-line:hover{background:var(--noir);color:var(--bone)}
+.hours{background:var(--noir);color:var(--bone);padding:34px;border-radius:2px}
+.hours h3{font-size:1.9rem;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.open{font-family:var(--body);font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.6em .9em;border:1px solid var(--line);display:inline-flex;gap:.55em;align-items:center;color:var(--muted)}
+.open::before{content:"";width:8px;height:8px;border-radius:50%;background:#6c6258}
+.open.on{color:#9fe3b6;border-color:rgba(63,192,112,.4)}
+.open.on::before{background:#3fc070}
+.hours dl{display:grid;grid-template-columns:1fr auto;margin-top:20px}
+.hours dt,.hours dd{padding:12px 0;border-bottom:1px solid var(--line)}
+.hours dt{color:#d4cabd}
+.hours dd{text-align:right;font-weight:600}
+.hours .today{color:var(--gold)}
+.hours .closed{color:#6c6258;font-weight:500}
+.hours p{margin-top:16px;font-size:.92rem;color:var(--muted)}
+
+footer{background:var(--noir);color:var(--muted);padding:26px 0;font-size:.88rem;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+footer a{color:var(--gold-2)}
+
+.wa-float{position:fixed;right:24px;bottom:24px;z-index:25;width:62px;height:62px;border-radius:50%;background:#1f8f4e;display:grid;place-items:center;box-shadow:0 12px 26px -10px rgba(0,0,0,.6);transition:opacity .2s,transform .2s}
+.wa-float:hover{background:#18763f}
+.wa-float svg{width:34px;height:34px}
+.wa-float.hide{opacity:0;pointer-events:none;transform:scale(.8)}
+@media (prefers-reduced-motion:no-preference){
+  .wa-float::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #1f8f4e;animation:pulse 2.4s ease-out infinite}
+  @keyframes pulse{from{transform:scale(1);opacity:.8}to{transform:scale(1.7);opacity:0}}
+}
+.dock{display:none}
+
+@media (max-width:1000px){
+  nav a:not(.btn){display:none}
+  .services-grid,.welcome,.c-grid{grid-template-columns:1fr;gap:40px}
+  .sticky{position:static}
+  .sticky .img{display:none}
+}
+@media (max-width:760px){
+  .sec{padding-block:72px}
+  .hero{min-height:auto}
+  .hero .wrap{padding-top:128px;padding-bottom:48px}
+  .hero::after{background:linear-gradient(0deg,rgba(20,17,15,.97) 15%,rgba(20,17,15,.55) 100%)}
+  .hero-meta{margin-top:40px;gap:16px 30px}
+  .hero-meta b{font-size:2rem}
+  .g-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto;grid-auto-rows:180px}
+  .g-grid figure:first-child{grid-column:1/-1;grid-row:auto;height:260px}
+  body{padding-bottom:78px}
+  .wa-float{display:none}
+  .dock{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--noir);border-top:1px solid var(--line);padding:10px;gap:10px}
+  .dock .btn{padding:1em .6em;font-size:.82rem}
+}
+@media (max-width:560px){
+  .wrap{padding:0 18px}
+  .brand b{font-size:1.2rem}
+  .brand small{font-size:.54rem;letter-spacing:.34em}
+  header nav .btn{padding:.85em 1em;font-size:.72rem}
+  .hero-cta .btn,.c-cta .btn{flex:1 1 100%}
+  .svc li{gap:4px 16px;padding:24px 0}
+  .svc h3{font-size:1.7rem}
+  .svc .n{font-size:1.6rem}
+  .hours{padding:24px 20px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="wrap bar">
+    <a class="brand" href="#top"><b>HAKAN NAZIK</b><small>Hair Salon</small></a>
+    <nav aria-label="Hoofdmenu">
+      <a href="#diensten">Diensten</a>
+      <a href="#salon">De salon</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn-gold" href="https://wa.me/31642871301?text=Hoi%20Hakan!%20Ik%20wil%20graag%20een%20afspraak%20maken." target="_blank" rel="noopener">Afspraak</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <img class="bg" src="https://images.unsplash.com/photo-1773904215697-e6c21fc27ac2?auto=format&fit=crop&w=1800&q=70" alt="" fetchpriority="high">
+    <div class="wrap">
+      <span class="eyebrow">Kapper in Wormerveer</span>
+      <h1>Jouw haar, <em>vakkundig</em> in vorm.</h1>
+      <p class="lead">Knippen, kleuren en stylen voor dames en heren. Met aandacht, een kop koffie en precies het resultaat dat jij voor ogen hebt.</p>
+      <div class="hero-cta">
+        <a class="btn wa" href="https://wa.me/31642871301?text=Hoi%20Hakan!%20Ik%20wil%20graag%20een%20afspraak%20maken." target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 32 32" fill="#fff"><use href="#wa-icon"/></svg>App voor een afspraak</a>
+        <a class="btn btn-line" href="#diensten">Bekijk diensten</a>
+      </div>
+      <div class="hero-meta">
+        <a href="https://www.google.com/maps/place/?q=place_id:ChIJoRA03gr9xUcR1XUNzXBrobA" target="_blank" rel="noopener"><b>5,0</b><span><span class="stars">★★★★★</span>166 reviews op Google</span></a>
+        <div><b>Di–za</b><span>Geopend van<br>09:00 tot 18:00</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="diensten">
+    <div class="wrap services-grid">
+      <div class="sticky">
+        <span class="eyebrow">Diensten</span>
+        <h2>Vakmanschap voor <em>ieder</em> haartype</h2>
+        <p class="sub">Neem gerust een foto mee. Hakan neemt de tijd om te luisteren en knipt precies zoals jij het wilt.</p>
+        <div class="img"><img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=700&q=65" alt="Kapper föhnt het haar van een klant met een ronde borstel" loading="lazy"></div>
+      </div>
+      <ul class="svc">
+        <li><span class="n">01</span><h3>Knippen</h3><p>Een frisse coupe of een compleet nieuwe look, helemaal afgestemd op jouw haar en gezicht.</p><div class="for"><span>Dames</span><span>Heren</span></div></li>
+        <li><span class="n">02</span><h3>Kleuren</h3><p>Van een subtiele verfrissing tot een opvallende nieuwe kleur, met zorg voor je haar.</p><div class="for"><span>Kleuring</span></div></li>
+        <li><span class="n">03</span><h3>Föhnen &amp; stylen</h3><p>Volume, glans en een strakke finish. Voor elke dag, of voor een speciale gelegenheid.</p><div class="for"><span>Föhnen</span><span>Styling</span></div></li>
+        <li><span class="n">04</span><h3>Wassen &amp; verzorgen</h3><p>Een ontspannende wasbeurt met verzorging die je haar gezond en soepel houdt.</p><div class="for"><span>Verzorging</span></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec gallery" id="salon">
+    <div class="wrap">
+      <span class="eyebrow">De salon</span>
+      <h2>Stap binnen aan de <em>Zaanweg</em></h2>
+      <div class="g-grid">
+        <figure><img src="https://images.unsplash.com/photo-1600948836101-f9ffda59d250?auto=format&fit=crop&w=900&q=65" alt="Salonstoelen voor ronde spiegels" loading="lazy"><figcaption>De salon</figcaption></figure>
+        <figure><img src="https://images.unsplash.com/photo-1707812343087-c9ff9e5abb43?auto=format&fit=crop&w=600&q=60" alt="Kleurbehandeling met folies" loading="lazy"><figcaption>Kleuren</figcaption></figure>
+        <figure><img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=600&q=60" alt="Kapper stylet het haar van een man" loading="lazy"><figcaption>Heren</figcaption></figure>
+        <figure><img src="https://images.unsplash.com/photo-1779350676620-fde279b1d023?auto=format&fit=crop&w=600&q=60" alt="Strak geknipt bruin haar" loading="lazy"><figcaption>Knippen</figcaption></figure>
+        <figure><img src="https://images.unsplash.com/photo-1761839256791-6a93f89fb8b0?auto=format&fit=crop&w=600&q=60" alt="Wasbeurt in de salon" loading="lazy"><figcaption>Verzorging</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap welcome">
+      <p class="quote">Bij ons word je ontvangen als familie. Met koffie, iets lekkers en alle tijd voor jouw haar.</p>
+      <ul class="perks">
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10h13v4a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM17 11h1.5a2.5 2.5 0 0 1 0 5H16M8 3v3M12 3v3"/></svg><span><b>Warm welkom</b>Koffie en iets lekkers staan klaar.</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span><b>Geen wachttijd</b>Op afspraak, dus je bent direct aan de beurt.</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.6 7.6 20 18M8.6 16.4 20 6"/></svg><span><b>Precies zoals jij wilt</b>Neem een foto mee, wij maken het.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec rating">
+    <div class="wrap">
+      <div class="big">5,0</div>
+      <div class="stars" aria-label="5 van 5 sterren">★★★★★</div>
+      <p>166 klanten gaven Hakan Nazik Hair Salon de hoogste score op Google.</p>
+      <a class="btn btn-line" href="https://www.google.com/maps/place/?q=place_id:ChIJoRA03gr9xUcR1XUNzXBrobA" target="_blank" rel="noopener">Lees de reviews</a>
+    </div>
+  </section>
+
+  <section class="sec" id="contact">
+    <div class="wrap c-grid">
+      <div>
+        <span class="eyebrow">Afspraak maken</span>
+        <h2>Klaar voor een <em>nieuwe look?</em></h2>
+        <p class="sub">App of bel voor een afspraak. Je bent welkom van dinsdag tot en met zaterdag.</p>
+        <a class="phone" href="tel:+31642871301">06-42871301</a>
+        <a class="addr" href="https://maps.google.com/?q=Zaanweg+125,+1521+DS+Wormerveer" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-5.3-7-11a7 7 0 0 1 14 0c0 5.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Zaanweg 125, 1521 DS Wormerveer</a>
+        <div class="c-cta">
+          <a class="btn wa" href="https://wa.me/31642871301?text=Hoi%20Hakan!%20Ik%20wil%20graag%20een%20afspraak%20maken." target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 32 32" fill="#fff"><use href="#wa-icon"/></svg>Stuur een WhatsApp</a>
+          <a class="btn btn-line" href="tel:+31642871301">Bel direct</a>
+        </div>
+      </div>
+      <div class="hours">
+        <h3>Openingstijden <span class="open" id="open">Gesloten</span></h3>
+        <dl id="hours">
+          <dt>Maandag</dt><dd class="closed">Gesloten</dd>
+          <dt>Dinsdag</dt><dd>09:00 – 18:00</dd>
+          <dt>Woensdag</dt><dd>09:00 – 18:00</dd>
+          <dt>Donderdag</dt><dd>09:00 – 18:00</dd>
+          <dt>Vrijdag</dt><dd>09:00 – 18:00</dd>
+          <dt>Zaterdag</dt><dd>09:00 – 18:00</dd>
+          <dt>Zondag</dt><dd class="closed">Gesloten</dd>
+        </dl>
+        <p>Liefst op afspraak, dan ben je direct aan de beurt.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 Hakan Nazik Hair Salon · Wormerveer</div>
+    <div>Concept door <a href="https://byxavio.nl">byXavio</a></div>
+  </div>
+</footer>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="wa-icon" viewBox="0 0 32 32"><path d="M16.04 3C8.86 3 3.03 8.82 3.03 16c0 2.3.6 4.54 1.74 6.52L3 29l6.64-1.74A13 13 0 0 0 16.04 29C23.2 29 29 23.18 29 16S23.2 3 16.04 3Zm0 23.8c-2.02 0-4-.54-5.72-1.57l-.41-.24-3.94 1.03 1.05-3.84-.27-.4A10.78 10.78 0 0 1 5.2 16c0-5.97 4.86-10.83 10.84-10.83 5.97 0 10.82 4.86 10.82 10.83 0 5.98-4.85 10.8-10.82 10.8Zm5.94-8.1c-.33-.16-1.93-.95-2.23-1.06-.3-.11-.52-.16-.73.17-.22.32-.84 1.05-1.03 1.27-.19.22-.38.24-.7.08-.33-.16-1.38-.51-2.62-1.62-.97-.86-1.62-1.93-1.81-2.25-.19-.33-.02-.5.14-.66.15-.15.33-.38.49-.57.16-.19.22-.33.33-.54.11-.22.05-.41-.03-.57-.08-.16-.73-1.76-1-2.41-.26-.63-.53-.55-.73-.56h-.62c-.22 0-.57.08-.87.41-.3.32-1.14 1.11-1.14 2.72 0 1.6 1.17 3.15 1.33 3.37.16.22 2.3 3.5 5.56 4.91.78.34 1.39.54 1.86.69.78.25 1.49.21 2.05.13.63-.09 1.93-.79 2.2-1.55.27-.76.27-1.41.19-1.55-.08-.13-.3-.21-.62-.38Z"/></symbol></svg>
+
+<a class="wa-float" id="wafloat" href="https://wa.me/31642871301?text=Hoi%20Hakan!%20Ik%20heb%20een%20vraag." target="_blank" rel="noopener" aria-label="Stuur een WhatsApp-bericht"><svg aria-hidden="true" viewBox="0 0 32 32" fill="#fff"><use href="#wa-icon"/></svg></a>
+
+<div class="dock">
+  <a class="btn wa" href="https://wa.me/31642871301?text=Hoi%20Hakan!%20Ik%20wil%20graag%20een%20afspraak%20maken."><svg aria-hidden="true" viewBox="0 0 32 32" fill="#fff"><use href="#wa-icon"/></svg>WhatsApp</a>
+  <a class="btn btn-gold" href="tel:+31642871301">Bellen</a>
+</div>
+
+<script>
+(function(){
+  const hdr=document.getElementById('hdr');
+  const s=()=>hdr.classList.toggle('solid',scrollY>40);s();addEventListener('scroll',s,{passive:true});
+  const hours={2:[9,18],3:[9,18],4:[9,18],5:[9,18],6:[9,18]};
+  const now=new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/Amsterdam'}));
+  const d=now.getDay(),h=now.getHours()+now.getMinutes()/60,el=document.getElementById('open');
+  const dt=document.querySelectorAll('#hours dt')[(d+6)%7];dt.classList.add('today');dt.nextElementSibling.classList.add('today');
+  if(hours[d]&&h>=hours[d][0]&&h<hours[d][1]){el.textContent='Nu open';el.classList.add('on');}
+  const w=document.getElementById('wafloat');
+  new IntersectionObserver(e=>w.classList.toggle('hide',e[0].isIntersecting),{threshold:.25}).observe(document.getElementById('contact'));
+})();
+</script>
+</body>
+</html>
