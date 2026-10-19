@@ -255,7 +255,7 @@ fieldset{border:0}
 .velden .heel{grid-column:1/-1}
 .form label{display:block;font-weight:600;margin-bottom:6px}
 .form label span{font-weight:400;color:var(--ink-soft)}
-.form input[type=text],.form input[type=email],.form input[type=tel],.form textarea{width:100%;padding:14px 14px;border:2px solid var(--ink);border-radius:12px;background:var(--wit);min-height:54px}
+.form input[type=text],.form input[type=email],.form input[type=tel],.form textarea,.form select{width:100%;padding:14px 14px;border:2px solid var(--ink);border-radius:12px;background:var(--wit);min-height:54px}
 .form textarea{min-height:96px;resize:vertical}
 .form input:user-invalid,.form textarea:user-invalid{border-color:var(--bes)}
 .akkoord{display:flex;gap:12px;align-items:flex-start;margin-top:22px}

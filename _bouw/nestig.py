@@ -196,7 +196,7 @@ def vragen():
         ("Hoe lang duurt de levering?",
          f"Reken op {LEVERTIJD}. Je bestelling komt rechtstreeks van onze leverancier buiten Europa. Zodra je pakket onderweg is, krijg je van ons een track-en-tracecode."),
         ("Wat kost verzending?",
-         "Niets. Verzending is gratis. We bezorgen op dit moment alleen in Nederland."),
+         "Niets. Verzending is gratis. We bezorgen in Nederland en België."),
         ("Hoe betaal ik?",
          "Je betaalt direct bij het bestellen met iDEAL, via je eigen bank. De betaling loopt veilig via Stripe. Je kunt ook met een betaalkaart betalen. Zodra je betaald hebt, krijg je een bevestiging per e-mail en gaat je bestelling de deur uit."
          if MOLLIE else
@@ -245,7 +245,7 @@ VRAGEN_KERSTBOOM = ([] if KERSTBOOM_TE_KOOP else [
     ("Waarom komt het plat in een pakket?",
      "Het huisje wordt opgevouwen verstuurd, zo blijft de verzending betaalbaar. Schud het na het uitpakken op en laat het een dag liggen, dan krijgt het zijn vorm terug."),
     ("Wat kost verzending?",
-     "Niets. Verzending is gratis. We bezorgen op dit moment alleen in Nederland."),
+     "Niets. Verzending is gratis. We bezorgen in Nederland en België."),
     ("Kan ik terugsturen?",
      'Ja. Je hebt 14 dagen bedenktijd vanaf de dag dat je je pakket ontvangt. De kosten voor het terugsturen betaal je zelf. Hoe het werkt, lees je bij <a class="link" href="retourneren.html">retourneren</a>.'),
     ("Ik heb een klacht of een andere vraag",
@@ -286,7 +286,7 @@ VRAGEN_KOSTUUM = ([] if KOSTUUM_TE_KOOP else [
     ("Moet mijn dier het lang dragen?",
      "Nee. Het is bedoeld voor een leuke foto of een feestje. Laat je dier er niet alleen mee rondlopen en doe het uit als je dier het niet fijn vindt."),
     ("Wat kost verzending?",
-     "Niets. Verzending is gratis. We bezorgen op dit moment alleen in Nederland."),
+     "Niets. Verzending is gratis. We bezorgen in Nederland en België."),
     ("Kan ik terugsturen?",
      'Ja. Je hebt 14 dagen bedenktijd vanaf de dag dat je je pakket ontvangt. De kosten voor het terugsturen betaal je zelf. Hoe het werkt, lees je bij <a class="link" href="retourneren.html">retourneren</a>.'),
     ("Ik heb een klacht of een andere vraag",
@@ -318,7 +318,7 @@ def kaart_kostuum(uid, kop="h3"):
 home = f'''<section class="hero"><div class="wrap">
 <div>
 <h1>Fijne spullen voor thuis, je dier en om te geven.</h1>
-<p class="sub">Een kleine webwinkel met zorgvuldig uitgekozen producten. Gratis verzonden in heel Nederland.</p>
+<p class="sub">Een kleine webwinkel met zorgvuldig uitgekozen producten. Gratis verzonden in Nederland en België.</p>
 <div class="hero-koop">
 <a class="btn btn-zon" href="#producten">Bekijk alle producten</a>
 </div>
@@ -330,7 +330,7 @@ home = f'''<section class="hero"><div class="wrap">
 </div></section>
 
 <section class="feiten" aria-label="Goed om te weten"><div class="wrap"><ul>
-<li><strong>Gratis verzending</strong><span>In heel Nederland</span></li>
+<li><strong>Gratis verzending</strong><span>In Nederland en België</span></li>
 <li><strong>Levertijd {LEVERTIJD}</strong><span>Rechtstreeks van de leverancier</span></li>
 <li><strong>14 dagen bedenktijd</strong><span>Terugsturen mag altijd</span></li>
 <li><strong>Vragen? App ons</strong><span>{TEL_TOON}</span></li>
@@ -378,7 +378,7 @@ home = f'''<section class="hero"><div class="wrap">
 
 page("index.html",
      "Nestig – fijne spullen voor thuis, je dier en om te geven",
-     "Nestig is een kleine webwinkel met cadeaus en spullen voor thuis en je dier. Gratis verzending in Nederland en 14 dagen bedenktijd.",
+     "Nestig is een kleine webwinkel met cadeaus en spullen voor thuis en je dier. Gratis verzending in Nederland en België en 14 dagen bedenktijd.",
      home, ld={
          "@context": "https://schema.org", "@type": "OnlineStore", "name": "Nestig", "url": SITE,
          "logo": SITE + "apple-touch-icon.png", "telephone": TEL, "email": MAIL,
@@ -398,7 +398,7 @@ VRAGEN_BOEKET = ([] if OPEN else [
     ("Hoe houd ik het mooi?",
      "Zet het boeket op een droge plek, uit de volle zon. Stof het af met een zachte borstel of een föhn op de koude stand. Niet in de wasmachine."),
     ("Wat kost verzending?",
-     "Niets. Verzending is gratis. We bezorgen op dit moment alleen in Nederland."),
+     "Niets. Verzending is gratis. We bezorgen in Nederland en België."),
     ("Kan ik terugsturen?",
      'Ja. Je hebt 14 dagen bedenktijd vanaf de dag dat je je pakket ontvangt. De kosten voor het terugsturen betaal je zelf. Hoe het werkt, lees je bij <a class="link" href="retourneren.html">retourneren</a>.'),
     ("Heb ik garantie?",
@@ -451,7 +451,7 @@ boeket = f'''<div class="wrap">
 <div class="toegevoegd" data-toegevoegd hidden role="status"><span data-toegevoegd-tekst></span><a class="link" href="bestellen.html">Verder naar bestellen</a></div>
 <ul class="zeker">
 <li>Levertijd {LEVERTIJD}, met track-en-trace</li>
-<li>Gratis verzending in Nederland</li>
+<li>Gratis verzending in Nederland en België</li>
 <li>14 dagen bedenktijd en wettelijke garantie</li>
 <li>Betalen met iDEAL</li>
 <li>Vragen? <a class="link" href="{WA_VRAAG}" target="_blank" rel="noopener">App {TEL_TOON}</a></li>
@@ -476,7 +476,7 @@ boeket = f'''<div class="wrap">
 <tr><th scope="row">Materiaal</th><td>Gehaakt garen, kunstblaadjes, cadeaupapier en lint</td></tr>
 <tr><th scope="row">Gewicht</th><td>Ongeveer 400 gram, met doos</td></tr>
 <tr><th scope="row">Levertijd</th><td>{LEVERTIJD}</td></tr>
-<tr><th scope="row">Verzending</th><td>Gratis in Nederland</td></tr>
+<tr><th scope="row">Verzending</th><td>Gratis in Nederland en België</td></tr>
 </table>
 </div>
 </div></section>
@@ -532,11 +532,11 @@ page("boeket.html", f"Gehaakt boeket, bordeauxrood – € {PRIJS_BOEKET}, grati
                     "availability": "https://schema.org/InStock" if OPEN else "https://schema.org/OutOfStock",
                     "shippingDetails": {"@type": "OfferShippingDetails",
                                         "shippingRate": {"@type": "MonetaryAmount", "value": "0", "currency": "EUR"},
-                                        "shippingDestination": {"@type": "DefinedRegion", "addressCountry": "NL"},
+                                        "shippingDestination": [{"@type": "DefinedRegion", "addressCountry": "NL"}, {"@type": "DefinedRegion", "addressCountry": "BE"}],
                                         "deliveryTime": {"@type": "ShippingDeliveryTime",
                                                          "handlingTime": {"@type": "QuantitativeValue", "minValue": 1, "maxValue": 3, "unitCode": "DAY"},
                                                          "transitTime": {"@type": "QuantitativeValue", "minValue": 8, "maxValue": 18, "unitCode": "DAY"}}},
-                    "hasMerchantReturnPolicy": {"@type": "MerchantReturnPolicy", "applicableCountry": "NL",
+                    "hasMerchantReturnPolicy": {"@type": "MerchantReturnPolicy", "applicableCountry": ["NL", "BE"],
                                                 "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
                                                 "merchantReturnDays": 14, "returnMethod": "https://schema.org/ReturnByMail",
                                                 "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility"}},
@@ -576,7 +576,7 @@ kerstboom = f'''<div class="wrap">
 <div class="toegevoegd" data-toegevoegd hidden role="status"><span data-toegevoegd-tekst></span><a class="link" href="bestellen.html">Verder naar bestellen</a></div>
 <ul class="zeker">
 <li>Levertijd {LEVERTIJD}, met track-en-trace</li>
-<li>Gratis verzending in Nederland</li>
+<li>Gratis verzending in Nederland en België</li>
 <li>14 dagen bedenktijd en wettelijke garantie</li>
 <li>Betalen met iDEAL</li>
 <li>Vragen? <a class="link" href="{WA_VRAAG}" target="_blank" rel="noopener">App {TEL_TOON}</a></li>
@@ -600,7 +600,7 @@ kerstboom = f'''<div class="wrap">
 <tr><th scope="row">Materiaal</th><td>Zachte stof aan de buitenkant, wanden van schuim, bodem van oxford-stof, gevuld met PP-katoen. Met pompons en een ster van stof</td></tr>
 <tr><th scope="row">Kleur</th><td>Groen met een gele ster</td></tr>
 <tr><th scope="row">Levertijd</th><td>{LEVERTIJD}</td></tr>
-<tr><th scope="row">Verzending</th><td>Gratis in Nederland</td></tr>
+<tr><th scope="row">Verzending</th><td>Gratis in Nederland en België</td></tr>
 </table>
 </div>
 </div></section>
@@ -671,7 +671,7 @@ kostuum = f'''<div class="wrap">
 <div class="toegevoegd" data-toegevoegd hidden role="status"><span data-toegevoegd-tekst></span><a class="link" href="bestellen.html">Verder naar bestellen</a></div>
 <ul class="zeker">
 <li>Levertijd {LEVERTIJD}, met track-en-trace</li>
-<li>Gratis verzending in Nederland</li>
+<li>Gratis verzending in Nederland en België</li>
 <li>14 dagen bedenktijd en wettelijke garantie</li>
 <li>Betalen met iDEAL</li>
 <li>Vragen? <a class="link" href="{WA_VRAAG}" target="_blank" rel="noopener">App {TEL_TOON}</a></li>
@@ -697,7 +697,7 @@ kostuum = f'''<div class="wrap">
 <tr><th scope="row">Materiaal</th><td>Polyester</td></tr>
 <tr><th scope="row">Kleur</th><td>Groen met een gele ster</td></tr>
 <tr><th scope="row">Levertijd</th><td>{LEVERTIJD}</td></tr>
-<tr><th scope="row">Verzending</th><td>Gratis in Nederland</td></tr>
+<tr><th scope="row">Verzending</th><td>Gratis in Nederland en België</td></tr>
 </table>
 </div>
 </div></section>
@@ -795,7 +795,8 @@ bestellen = f'''<div class="wrap">
 <div class="velden">
 <div class="heel"><label for="naam">Voor- en achternaam</label><input type="text" id="naam" name="naam" autocomplete="name" required></div>
 <div class="heel"><label for="straat">Straat en huisnummer</label><input type="text" id="straat" name="straat" autocomplete="street-address" required></div>
-<div><label for="postcode">Postcode</label><input type="text" id="postcode" name="postcode" autocomplete="postal-code" required pattern="[1-9][0-9]{{3}} ?[A-Za-z]{{2}}" title="Vul een postcode in zoals 1441 AB" placeholder="1441 AB"></div>
+<div class="heel"><label for="land">Land</label><select id="land" name="land" autocomplete="country"><option value="NL">Nederland</option><option value="BE">België</option></select></div>
+<div><label for="postcode">Postcode</label><input type="text" id="postcode" name="postcode" autocomplete="postal-code" required pattern="[1-9][0-9]{{3}}( ?[A-Za-z]{{2}})?" title="Vul een postcode in zoals 1441 AB (Nederland) of 2000 (België)" placeholder="1441 AB"></div>
 <div><label for="plaats">Plaats</label><input type="text" id="plaats" name="plaats" autocomplete="address-level2" required></div>
 <div><label for="email">E-mailadres</label><input type="email" id="email" name="email" autocomplete="email" required></div>
 <div><label for="telefoon">Telefoon <span>(mag leeg blijven)</span></label><input type="tel" id="telefoon" name="telefoon" autocomplete="tel"></div>
@@ -992,7 +993,7 @@ av = f'''<div class="wrap tekst">
 <p>{"Je plaatst een bestelling via het bestelformulier op de site en betaalt direct online via onze betaaldienst Stripe. Na je betaling ontvang je een bevestiging per e-mail. De overeenkomst komt tot stand zodra wij je bestelling hebben bevestigd. Lukt online betalen door een storing niet, dan sturen we je een betaalverzoek. We versturen je bestelling nadat je betaling binnen is." if MOLLIE else "Je plaatst een bestelling via het bestelformulier op de site. Je ontvangt direct een bevestiging per e-mail en daarna een betaalverzoek. De overeenkomst komt tot stand zodra wij je bestelling hebben bevestigd. We versturen je bestelling nadat je betaling binnen is."}</p>
 
 <h2>5. Levering</h2>
-<p>We bezorgen in Nederland. De verwachte levertijd is {LEVERTIJD} na ontvangst van je betaling. Je bestelling wordt rechtstreeks door onze leverancier verstuurd. Je krijgt een track-en-tracecode zodra het pakket onderweg is.</p>
+<p>We bezorgen in Nederland en België. De verwachte levertijd is {LEVERTIJD} na ontvangst van je betaling. Je bestelling wordt rechtstreeks door onze leverancier verstuurd. Je krijgt een track-en-tracecode zodra het pakket onderweg is.</p>
 <p>Is je bestelling 30 dagen na je betaling nog niet geleverd, dan mag je de bestelling kosteloos annuleren en betalen wij het bedrag binnen 14 dagen terug. Het risico van beschadiging of verlies ligt bij ons tot je het pakket hebt ontvangen.</p>
 
 <h2>6. Bedenktijd en retourneren</h2>
@@ -1103,5 +1104,5 @@ if "--og" in sys.argv:
 body{{width:1200px;height:630px;background:var(--glas);display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:40px;padding:0 70px;overflow:hidden}}
 .l{{font:italic 600 64px/1 var(--display);display:flex;align-items:baseline}}.l i{{width:22px;height:22px;border-radius:50%;background:var(--zon);border:3px solid var(--ink);margin-left:8px}}
 h1{{font-size:68px;margin-top:34px}}p{{font-size:30px;margin-top:26px}}.f{{width:250px;height:250px;object-fit:cover;border:3px solid var(--ink);border-radius:28px;box-shadow:0 8px 0 var(--ink)}}</style></head><body>
-<div><div class="l">nestig<i></i></div><h1>Fijne spullen voor thuis en je dier.</h1><p>Gratis verzending in Nederland</p></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:16px"><img class="f" src="img/boeket-2.jpg"><img class="f" src="img/kostuum-2.jpg"></div></body></html>''')
+<div><div class="l">nestig<i></i></div><h1>Fijne spullen voor thuis en je dier.</h1><p>Gratis verzending in Nederland en België</p></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:16px"><img class="f" src="img/boeket-2.jpg"><img class="f" src="img/kostuum-2.jpg"></div></body></html>''')
 print("klaar:", sorted(p.name for p in OUT.iterdir()))

@@ -96,7 +96,7 @@ function toonAantal() {
 /* ---------- onthouden tussen bestellen en betalen ---------- */
 
 /* Wat de klant invulde blijft in dit tabblad bewaard, zodat hij na een mislukte betaling niet opnieuw hoeft te typen. */
-const FORMVELDEN = ["naam", "straat", "postcode", "plaats", "email", "telefoon", "opmerking"];
+const FORMVELDEN = ["naam", "straat", "land", "postcode", "plaats", "email", "telefoon", "opmerking"];
 function bewaarFormulier(form) {
   try {
     const wat = {};
@@ -376,7 +376,7 @@ function startBestellen() {
       "Totaal: " + euro(totaal(mand)) + " (gratis verzending)",
       "",
       "Naam: " + v("naam"),
-      "Adres: " + v("straat") + ", " + v("postcode").toUpperCase() + " " + v("plaats"),
+      "Adres: " + v("straat") + ", " + v("postcode").toUpperCase() + " " + v("plaats") + (v("land") === "BE" ? ", België" : ""),
       "E-mail: " + v("email"),
     ];
     if (v("telefoon")) tekst.push("Telefoon: " + v("telefoon"));
@@ -387,6 +387,11 @@ function startBestellen() {
   const bedankt = document.querySelector("[data-bedankt]");
   const knop = form.querySelector("button[type=submit]");
   const v = (naam) => (form.elements[naam].value || "").trim();
+
+  /* Nederland of België: andere voorbeeldpostcode. */
+  const zetLand = () => { if (form.elements.land) form.elements.postcode.placeholder = form.elements.land.value === "BE" ? "2000" : "1441 AB"; };
+  if (form.elements.land) form.elements.land.addEventListener("change", zetLand);
+  zetLand();
 
   function meld(tekst, fout) {
     melding.hidden = false;
@@ -413,7 +418,7 @@ function startBestellen() {
     knop.textContent = "Bezig met bestellen…";
     const uit = await stuurNaarServer("/api/bestelling", {
       regels: leesMand(),
-      naam: v("naam"), straat: v("straat"), postcode: v("postcode"), plaats: v("plaats"),
+      naam: v("naam"), straat: v("straat"), land: v("land"), postcode: v("postcode"), plaats: v("plaats"),
       email: v("email"), telefoon: v("telefoon"), opmerking: v("opmerking"),
       akkoord: form.elements.akkoord.checked, website: v("website"),
     });

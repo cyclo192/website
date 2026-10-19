@@ -204,15 +204,24 @@ function leesBestelling(d) {
 
   const naam = regel(d.naam, "naam", { min: 2, max: 80 });
   const straat = regel(d.straat, "straat", { min: 3, max: 100 });
-  const postcode = regel(d.postcode, "postcode", { min: 6, max: 7 }).toUpperCase().replace(/^(\d{4})\s?([A-Z]{2})$/, "$1 $2");
-  if (!/^[1-9]\d{3} [A-Z]{2}$/.test(postcode)) throw new Ongeldig("Vul een postcode in zoals 1441 AB.", "postcode");
+  const land = d.land === "BE" ? "BE" : "NL";
+  let postcode;
+  if (land === "BE") {
+    postcode = regel(d.postcode, "postcode", { min: 4, max: 4 });
+    if (!/^[1-9]\d{3}$/.test(postcode)) throw new Ongeldig("Vul een Belgische postcode in zoals 2000.", "postcode");
+  } else {
+    postcode = regel(d.postcode, "postcode", { min: 6, max: 7 }).toUpperCase().replace(/^(\d{4})\s?([A-Z]{2})$/, "$1 $2");
+    if (!/^[1-9]\d{3} [A-Z]{2}$/.test(postcode)) throw new Ongeldig("Vul een postcode in zoals 1441 AB.", "postcode");
+  }
   const plaats = regel(d.plaats, "plaats", { min: 2, max: 60 });
   const mail = email(d.email, "email");
   const telefoon = regel(d.telefoon, "telefoon", { max: 20, verplicht: false });
   const opmerking = regel(d.opmerking, "opmerking", { max: 300, verplicht: false });
   if (d.akkoord !== true) throw new Ongeldig("Ga akkoord met de voorwaarden om te bestellen.", "akkoord");
-  return { regels, naam, straat, postcode, plaats, mail, telefoon, opmerking };
+  return { regels, naam, straat, postcode, plaats, land, mail, telefoon, opmerking };
 }
+
+const LANDEN = { NL: "Nederland", BE: "België" };
 
 function totaalVan(o) {
   return o.regels.reduce((som, r) => som + r.prijs * r.aantal, 0);
@@ -237,6 +246,7 @@ function overzichtVan(o, nr, besteldOp) {
     o.naam,
     o.straat,
     o.postcode + " " + o.plaats,
+    LANDEN[o.land] || LANDEN.NL,
   ];
 }
 
@@ -254,7 +264,7 @@ function klantMail(o, overzicht, betalen, test) {
     betalen,
     "",
     "Levering",
-    "De levertijd is " + ZAAK.levertijd + " na je betaling. Je krijgt een track-en-tracecode zodra je pakket onderweg is. We bezorgen in Nederland.",
+    "De levertijd is " + ZAAK.levertijd + " na je betaling. Je krijgt een track-en-tracecode zodra je pakket onderweg is. We bezorgen in Nederland en België.",
     "",
     "Bedenktijd en retourneren",
     "Je hebt 14 dagen bedenktijd vanaf de dag dat je je pakket ontvangt. Je aankoop ongedaan maken doe je hier: " + ZAAK.site + "/herroepen",
@@ -360,6 +370,7 @@ function inpakken(nr, o) {
     r: o.regels.map((r) => [r.id, r.kleur, r.aantal, r.prijs].join(":")).join(","),
     n: o.naam, s: o.straat, pc: o.postcode, pl: o.plaats, e: o.mail,
   };
+  if (o.land === "BE") m.l = "BE";
   if (o.telefoon) m.t = o.telefoon;
   if (o.opmerking) m.o = o.opmerking.length > MAX_WAARDE ? o.opmerking.slice(0, MAX_WAARDE - 12).trimEnd() + " [ingekort]" : o.opmerking;
   for (const k of Object.keys(m)) m[k] = String(m[k]).slice(0, MAX_WAARDE);
@@ -373,7 +384,7 @@ function uitpakken(m) {
     return { id, kleur, aantal: Number(aantal) || 0, prijs: Number(prijs) || 0 };
   }).filter((r) => r.id && r.aantal > 0);
   return {
-    regels, naam: tekst(m.n), straat: tekst(m.s), postcode: tekst(m.pc), plaats: tekst(m.pl),
+    regels, naam: tekst(m.n), straat: tekst(m.s), postcode: tekst(m.pc), plaats: tekst(m.pl), land: m.l === "BE" ? "BE" : "NL",
     mail: tekst(m.e), telefoon: tekst(m.t), opmerking: tekst(m.o),
   };
 }
@@ -613,7 +624,7 @@ async function verzondenInfo(url, env) {
   return json({
     nummer: String(m.nr),
     naam: o.naam,
-    adres: o.straat + ", " + o.postcode + " " + o.plaats,
+    adres: o.straat + ", " + o.postcode + " " + o.plaats + ", " + (LANDEN[o.land] || LANDEN.NL),
     email: o.mail,
     regels: overzichtVan(o, String(m.nr), "").filter((x) => x.startsWith("- ")),
     al: m.v ? String(m.v) : null,
