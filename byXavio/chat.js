@@ -10,7 +10,7 @@
       title: 'Xavio', sub: 'AI-assistent van byXavio · antwoordt direct',
       hello: 'Hoi! Ik ben Xavio, de AI-assistent van byXavio. Ik beantwoord je vragen, help je het juiste pakket kiezen en kan je aanvraag direct naar Djego sturen.',
       ph: 'Typ je vraag…', send: 'Verstuur', open: 'Open de chat', close: 'Sluit de chat', reset: 'Nieuw gesprek',
-      chips: ['Help me een pakket kiezen', 'Wat kost een website?', 'Offerte aanvragen'],
+      chips: ['Help me een pakket kiezen', 'Wat kost een chatbot?', 'Offerte aanvragen'],
       cta: 'Offerteformulier', wa: 'WhatsApp Djego',
       error: 'Ik kan nu even niet antwoorden. Stuur Djego een WhatsApp, dan krijg je meestal dezelfde dag antwoord.',
       rate: 'Je stuurt wel heel veel berichten achter elkaar. Probeer het over een paar minuten opnieuw, of stuur Djego een WhatsApp.',
