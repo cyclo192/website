@@ -186,6 +186,7 @@ def page(slug, title, desc, body, current=None, noindex=False, ld=None, geheim=F
 </main>
 {VOET}
 <script src="js/shop.js?v={versie("js/shop.js")}" defer></script>
+<script src="js/chat.js?v={versie("js/chat.js")}" defer></script>
 </body>
 </html>
 '''
@@ -1038,6 +1039,7 @@ privacy = f'''<div class="wrap tekst">
 <ul>
 <li><strong>Bij een bestelling:</strong> je naam, adres, e-mailadres, wat je bestelt en, als je het invult, je telefoonnummer en je opmerking.</li>
 <li><strong>Bij een vraag:</strong> wat je ons via WhatsApp, e-mail of telefoon stuurt of vertelt.</li>
+<li><strong>In de chat:</strong> de berichten die je aan de AI-assistent op deze site stuurt, en de naam van de pagina waarop je chat.</li>
 <li><strong>Bij een betaling:</strong> {"dat je betaald hebt, het bedrag en de betaalwijze. Je bankgegevens zien wij alleen voor zover onze betaaldienst of het bankafschrift ze toont." if MOLLIE else "dat je betaald hebt en het bedrag. Je bankgegevens zien wij alleen voor zover ze op het bankafschrift staan."}</li>
 </ul>
 
@@ -1055,6 +1057,7 @@ privacy = f'''<div class="wrap tekst">
 <li><strong>WhatsApp.</strong> Bestel je, stel je een vraag of laat je een seintje achter via WhatsApp, dan loopt je bericht via WhatsApp, een dienst van Meta. Dat gebeurt alleen als je daar zelf voor kiest. Vraag je om een seintje, dan gebruiken we je nummer alleen om je dat ene bericht te sturen.</li>
 {"<li><strong>Onze betaaldienst.</strong> Betalingen lopen via Stripe Payments Europe Ltd. in Dublin (Ierland). Stripe verwerkt je betaalgegevens en krijgt van ons het bedrag en de gegevens van je bestelling: je naam, adres, e-mailadres, wat je bestelt en, als je die invult, je telefoonnummer en je opmerking.</li>" + chr(10) if MOLLIE else ""}<li><strong>Onze e-maildienst.</strong> De bevestiging van je bestelling of herroeping en het bericht dat je pakket onderweg is versturen we via Resend, een dienst uit de Verenigde Staten. Die verwerkt daarvoor je naam, je e-mailadres en de inhoud van de mail.</li>
 <li><strong>De hostingpartij van deze website.</strong> De site draait bij Cloudflare. Cloudflare verwerkt technische gegevens zoals je IP-adres om de site te tonen en te beveiligen.</li>
+<li><strong>De AI-assistent.</strong> Stel je een vraag in de chat, dan gaan je berichten naar Cloudflare Workers AI, dat er een antwoord bij maakt. Wij bewaren de gesprekken niet; ze staan alleen in je eigen browser zolang het tabblad open is. Deel in de chat dus geen persoonlijke gegevens. De chat is een AI en kan fouten maken: voor afspraken over je bestelling geldt wat wij je zelf via WhatsApp of e-mail laten weten.</li>
 <li><strong>Onze mailbox.</strong> Mails van en aan ons staan in Gmail, een dienst van Google. Daar komt ook de melding van je bestelling binnen.</li>
 </ul>
 
