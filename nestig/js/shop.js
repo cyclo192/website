@@ -26,6 +26,16 @@ const PRODUCTEN = {
     seintje: "het gehaakte boeket",
     alt: () => "Gehaakt boeket met bordeauxrode rozen en witte madeliefjes in rood papier met een gouden strik",
   },
+  kerstboom: {
+    naam: "Kattenhuisje kerstboom",
+    prijs: 3995,
+    url: "kattenhuisje-kerstboom.html",
+    kleuren: {
+      m: { naam: "Maat M", foto: "img/kerstboom-1.jpg" },
+    },
+    seintje: "het kattenhuisje kerstboom",
+    alt: () => "Witte kat met een rode sjaal stapt uit het groene kattenhuisje in de vorm van een kerstboom",
+  },
   kostuum: {
     naam: "Kerstboom-kostuum voor kat en hond",
     prijs: 1995,

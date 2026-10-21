@@ -40,7 +40,8 @@ FABRIKANT_KOSTUUM = "Guangzhou Duolemi Pet Supplies Co., Ltd.<br>No. 138 Jiefang
 SEINTJE_KOSTUUM = f"https://wa.me/{WA}?text=" + "Hoi%20Nestig%2C%20geef%20me%20een%20seintje%20als%20het%20kerstboom-kostuum%20te%20koop%20is."
 PRIJS_KERSTBOOM = "39,95"
 # Naam en adres van de fabrikant (opgave leverancier via CJ). Leeg = nog niet te koop, met knop "Geef me een seintje".
-FABRIKANT_KERSTBOOM = ""
+# Opgave leverancier via CJ (21 oktober 2026), SKU CJJJCWMY00303. Handelsbedrijf, daarom "Fabrikant / leverancier".
+FABRIKANT_KERSTBOOM = "Yiwu Cujia Trade Co.<br>4th Floor, South Gate 1, Building 2, Sujia Aihua Factory<br>No. 1511 Jingang Avenue, Fucun Town, Jindong District<br>Jinhua City, Zhejiang Province, 321000<br>China"
 SEINTJE_KERSTBOOM = f"https://wa.me/{WA}?text=" + "Hoi%20Nestig%2C%20geef%20me%20een%20seintje%20als%20het%20kattenhuisje%20kerstboom%20te%20koop%20is."
 # Opgave van de leverancier via CJ (13 oktober 2026). Verplicht op de productpagina (EU-productveiligheid).
 FABRIKANT_BOEKET = "Yiwu Guiyuan Crafts Co., Ltd.<br>6th Floor, Building 2, No. 1 Chunsheng Road<br>Beiyuan Subdistrict, Yiwu City<br>Zhejiang, China"
@@ -350,6 +351,7 @@ home = f'''<section class="hero"><div class="wrap">
 <h2>Alle producten</h2>
 <div class="kaarten producten">
 {kaart_boeket("p1")}
+{kaart_kerstboom("p2")}
 {kaart_kostuum("p3")}
 </div>
 </div></section>
@@ -617,7 +619,7 @@ kerstboom = f'''<div class="wrap">
 </div>
 <div>
 <h2>Wie staat achter dit product?</h2>
-{f"<h3>Fabrikant</h3><address>{FABRIKANT_KERSTBOOM}</address>" if FABRIKANT_KERSTBOOM else ""}
+{f"<h3>Fabrikant / leverancier</h3><address>{FABRIKANT_KERSTBOOM}</address>" if FABRIKANT_KERSTBOOM else ""}
 <h3{' style="margin-top:20px"' if FABRIKANT_KERSTBOOM else ""}>Verantwoordelijk in de EU</h3>
 <p>Nestig haalt dit product naar de EU en is je aanspreekpunt bij vragen, klachten of een probleem met de veiligheid.</p>
 {WIE}
@@ -635,7 +637,15 @@ kerstboom = f'''<div class="wrap">
 <a class="btn btn-zon" href="bestellen.html" data-koopbalk-verder hidden>Naar bestellen</a>
 {"" if KERSTBOOM_TE_KOOP else f'<a class="btn btn-wa" data-seintje-knop data-koopbalk-seintje href="{SEINTJE_KERSTBOOM}" target="_blank" rel="noopener">Geef me een seintje</a>'}
 </div>'''
-# Kattenhuisje kerstboom: van de site gehaald (16 okt 2026), leverancier geeft geen fabrikant.
+page("kattenhuisje-kerstboom.html", f"Kattenhuisje kerstboom – € {PRIJS_KERSTBOOM}, gratis verzending | Nestig",
+     f"Zacht kattenhuisje in de vorm van een kerstboom, ongeveer 60 cm hoog. € {PRIJS_KERSTBOOM} met gratis verzending en 14 dagen bedenktijd.",
+     kerstboom, current="dieren", dicht=not KERSTBOOM_TE_KOOP, ld={
+         "@context": "https://schema.org", "@type": "Product", "name": "Kattenhuisje kerstboom",
+         "description": "Half gesloten kattenhuisje in de vorm van een kerstboom, ongeveer 60 cm hoog.",
+         "image": [SITE + f[0] for f in KERSTBOOM_FOTOS], "sku": ARTIKEL_KERSTBOOM,
+         "offers": {"@type": "Offer", "url": SITE + "kattenhuisje-kerstboom", "priceCurrency": "EUR", "price": PRIJS_KERSTBOOM.replace(",", "."),
+                    "availability": "https://schema.org/InStock" if KERSTBOOM_TE_KOOP else "https://schema.org/PreOrder"},
+     })
 
 # ---------------------------------------------------------------- kerstboom-kostuum (pagina)
 kostuum = f'''<div class="wrap">
@@ -684,7 +694,7 @@ kostuum = f'''<div class="wrap">
 <div>
 <h2>De leukste kerstfoto</h2>
 <p>Zet de muts op, maak de cape vast met het klittenband en je dier is klaar voor de foto. De stof is zacht en de pompons zijn vastgenaaid, niet geplakt.</p>
-<p>Een leuk cadeau voor iedereen met een kat of kleine hond.</p>
+<p>Een leuk cadeau voor iedereen met een kat of kleine hond, ook samen met het <a class="link" href="kattenhuisje-kerstboom.html">kattenhuisje in kerstboomvorm</a>.</p>
 </div>
 <div>
 <h2>Wat je krijgt</h2>
@@ -747,13 +757,14 @@ dieren = f'''<div class="wrap">
 <p class="kruimel"><a href="./">Home</a> / Dieren</p>
 <div class="paginakop"><h1>Voor je dier</h1><p class="sub">Spullen waar je kat of hond blij van wordt.</p></div>
 <div class="kaarten producten" style="margin-bottom:clamp(56px,8vw,96px)">
+{kaart_kerstboom("d1", kop="h2")}
 {kaart_kostuum("d2", kop="h2")}
 <div class="kaart kaart-leeg"><span class="label">Binnenkort</span><h2>Meer voor kat en hond</h2>
 <p class="zacht">We zoeken het volgende product uit. Tip voor ons? <a class="link" href="{WA_VRAAG}" target="_blank" rel="noopener">App ons</a>.</p></div>
 </div>
 </div>'''
 page("dieren.html", "Dieren – spullen voor kat en hond | Nestig",
-     "Spullen waar je kat of hond blij van wordt, zoals een kerstboom-kostuum voor kat en hond. Gratis verzending.",
+     "Spullen waar je kat of hond blij van wordt, zoals een kattenhuisje in de vorm van een kerstboom en een kerstboom-kostuum. Gratis verzending.",
      dieren, current="dieren")
 
 # ---------------------------------------------------------------- cadeaus
@@ -1092,10 +1103,10 @@ page("404.html", "Pagina niet gevonden | Nestig", "Deze pagina bestaat niet.", n
   Cache-Control: public, max-age=31536000
 """)
 # Oude adressen die niet meer bestaan.
-(OUT / "_redirects").write_text("/kamer / 302\n/kamer.html / 302\n/kattenhangmat / 302\n/kattenhangmat.html / 302\n/kattenhuisje-kerstboom /dieren 302\n/kattenhuisje-kerstboom.html /dieren 302\n")
+(OUT / "_redirects").write_text("/kamer / 302\n/kamer.html / 302\n/kattenhangmat / 302\n/kattenhangmat.html / 302\n")
 (OUT / "_routes.json").write_text('{"version":1,"include":["/api/*"],"exclude":[]}\n')
 (OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nDisallow: /bestellen\nDisallow: /bedankt\nDisallow: /verzonden\nSitemap: {SITE}sitemap.xml\n")
-urls = ["", "boeket", "kerstboom-kostuum", "dieren", "cadeaus", "retourneren", "herroepen", "algemene-voorwaarden", "privacy"]
+urls = ["", "boeket", "kattenhuisje-kerstboom", "kerstboom-kostuum", "dieren", "cadeaus", "retourneren", "herroepen", "algemene-voorwaarden", "privacy"]
 (OUT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                  + "".join(f"  <url><loc>{SITE}{u}</loc></url>\n" for u in urls) + "</urlset>\n")
 (OUT / "favicon.svg").write_text(f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect x="4" y="4" width="56" height="56" rx="14" fill="#fff" stroke="{INK}" stroke-width="5"/><rect x="12" y="12" width="40" height="40" rx="6" fill="#dcecf1"/><circle cx="38" cy="27" r="10" fill="#ffc83d" stroke="{INK}" stroke-width="3.5"/><rect x="12" y="41" width="40" height="7" rx="3.5" fill="{INK}"/></svg>''')

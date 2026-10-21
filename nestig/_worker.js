@@ -39,6 +39,11 @@ const PRODUCTEN = {
     prijs: 2795,
     kleuren: { rood: "Bordeauxrood" },
   },
+  kerstboom: {
+    naam: "Kattenhuisje kerstboom",
+    prijs: 3995,
+    kleuren: { m: "Maat M" },
+  },
   kostuum: {
     naam: "Kerstboom-kostuum voor kat en hond",
     prijs: 1995,
