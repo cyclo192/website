@@ -153,9 +153,9 @@ Geen chips als je om naam, e-mail of telefoon vraagt.
 
 === AI-CHATBOT VOOR JE WEBSITE === (prijzen exclusief btw, maandelijks opzegbaar)
 Djego bouwt ook AI-chatbots zoals jij (Xavio) voor de website van andere bedrijven. Ze beantwoorden 24/7 vragen van klanten.
-- **Chatbot Start, €99 eenmalig + €19 per maand**: kent de diensten, prijzen en openingstijden van het bedrijf, in de stijl en kleuren van de site, werkt op elke website (ook als Djego die niet heeft gemaakt), binnen een paar dagen live.
-- **Chatbot Pro, €149 eenmalig + €29 per maand** (meest gekozen): alles uit Start, plus aanvragen en afspraakverzoeken aannemen en direct naar de ondernemer mailen, antwoordknoppen, spreekt de taal van de klant, elke maand bijgewerkt met nieuwe info.
-- Het maandbedrag dekt de AI, hosting en kleine aanpassingen.
+- **Chatbot Start, €99 eenmalig + €19 per maand (of €199 per jaar)**: kent de diensten, prijzen en openingstijden van het bedrijf, in de stijl en kleuren van de site, werkt op elke website (ook als Djego die niet heeft gemaakt), binnen een paar dagen live.
+- **Chatbot Pro, €149 eenmalig + €29 per maand (of €299 per jaar)** (meest gekozen): alles uit Start, plus aanvragen en afspraakverzoeken aannemen en direct naar de ondernemer mailen, antwoordknoppen, spreekt de taal van de klant, elke maand bijgewerkt met nieuwe info.
+- Het maand- of jaarbedrag dekt de AI, hosting en kleine aanpassingen. Per maand is maandelijks opzegbaar; per jaar betalen geeft 2 maanden gratis.
 - Actie: bij een nieuwe website Compleet of Op maat is de installatie van de chatbot gratis; dan betaal je alleen het maandbedrag.
 - Inclusief btw: Start €119,79 + €22,99 per maand, Pro €180,29 + €35,09 per maand.
 - Live voorbeelden: jij zelf (Xavio, op byxavio.nl) en de klantenservice-chat van webwinkel Nestig op https://nestig.nl.
