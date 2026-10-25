@@ -8,17 +8,18 @@
 
    Nog te boeken in 2027 (opgegeven op 2 oktober 2026):
      1 april - 16 april, 18 april - 4 juni, 7 juni - 11 juni,
-     25 juni - 16 juli, 13 augustus - 31 december. Heel 2028 is nog vrij.
+     27 juni - 16 juli, 13 augustus - 8 oktober, 10 oktober - 31 december. Heel 2028 is nog vrij.
    Alles daartussen staat hieronder als bezet.
 */
 window.BEZET = [
   ["2026-10-01", "2027-04-01"],
   ["2027-04-16", "2027-04-18"],
   ["2027-06-04", "2027-06-07"],
-  ["2027-06-11", "2027-06-25"],
+  ["2027-06-11", "2027-06-27"],   // incl. boeking vr 25 - zo 27 juni
   ["2027-07-16", "2027-08-13"],
+  ["2027-10-08", "2027-10-10"],   // boeking vr 8 - zo 10 oktober
   ["2027-12-31", "2028-01-03"],
 ];
 
 /* Datum waarop deze lijst voor het laatst is bijgewerkt. */
-window.BEZET_BIJGEWERKT = "2026-10-08";
+window.BEZET_BIJGEWERKT = "2026-10-25";
