@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://byxavio.nl/ontwerpen/sunny-side-bakery/">
+<title>Sunny Side Bakery – American baked goods in Purmerend</title>
+<meta name="description" content="Sunny Side Bakery: zelfgebakken Amerikaanse taarten, pies, brownies en cookies, plus catering. Gratis bezorgd in Purmerend.">
+<meta name="theme-color" content="#c8102e">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Pacifico&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--red:#c8102e;--red2:#a30d25;--cream:#fff6e5;--butter:#ffd166;--navy:#13294b;--mint:#9ad7c8;--ink:#2a1a12;--soft:#6e5a4c}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font:400 17px/1.65 Rubik,system-ui,sans-serif;color:var(--ink);background:var(--cream);overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+.slab{font-family:"Alfa Slab One",Georgia,serif;font-weight:400;letter-spacing:.01em}
+.script{font-family:Pacifico,cursive;font-weight:400}
+.wrap{width:min(1160px,100% - 40px);margin-inline:auto}
+.check{background:repeating-conic-gradient(var(--red) 0 25%,#fff 0 50%) 0 0/36px 36px}
+/* top */
+.bar{background:var(--navy);color:#fff;text-align:center;font-size:.9rem;padding:8px 16px;font-weight:500}
+.bar b{color:var(--butter)}
+header{background:var(--red);color:#fff;position:sticky;top:0;z-index:40;box-shadow:0 4px 0 var(--red2)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;height:78px}
+.logo{text-decoration:none;line-height:1}
+.logo .script{font-size:1.7rem;display:block}
+.logo small{font-family:"Alfa Slab One";font-size:.62rem;letter-spacing:.24em;opacity:.9}
+nav{display:flex;gap:26px;font-weight:600}
+nav a{text-decoration:none}
+nav a:hover{color:var(--butter)}
+.btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;padding:14px 24px;border-radius:999px;background:var(--butter);color:var(--navy);border:3px solid var(--navy);transition:.15s;box-shadow:4px 4px 0 var(--navy)}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--navy)}
+.btn svg{width:20px;height:20px;fill:currentColor}
+.btn.rd{background:var(--red);color:#fff}
+.btn.w{background:#fff}
+header .btn{box-shadow:none;border-color:#fff;padding:10px 18px}
+/* hero */
+.hero{position:relative;padding:70px 0 0;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.hero .script{color:var(--red);font-size:1.8rem}
+.hero h1{font-family:"Alfa Slab One";font-weight:400;font-size:clamp(2.8rem,6.6vw,5.6rem);line-height:.98;color:var(--navy);margin:6px 0 20px}
+.hero h1 span{color:var(--red)}
+.hero p{font-size:1.15rem;color:var(--soft);max-width:480px;margin-bottom:30px}
+.hero .row{display:flex;gap:14px;flex-wrap:wrap}
+.plate{position:relative;justify-self:center;width:min(500px,100%);aspect-ratio:1}
+.plate .ring{position:absolute;inset:0;border-radius:50%;background:#fff;border:10px solid var(--mint);box-shadow:0 30px 60px -20px rgba(42,26,18,.35)}
+.plate img{position:absolute;inset:9%;border-radius:50%;width:82%;height:82%;object-fit:cover}
+.badge{position:absolute;width:140px;height:140px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;text-align:center;top:-6px;right:-6px;transform:rotate(12deg);border:4px dashed var(--butter);outline:6px solid var(--red)}
+.badge b{font-family:"Alfa Slab One";font-size:1.05rem;line-height:1.1;font-weight:400}
+.badge small{display:block;font-size:.72rem;opacity:.9}
+.stripe{height:36px;margin-top:70px}
+/* menu board */
+section{padding:100px 0}
+.title{text-align:center;margin-bottom:50px}
+.title .script{color:var(--red);font-size:1.7rem}
+.title h2{font-family:"Alfa Slab One";font-weight:400;font-size:clamp(2.2rem,5vw,3.6rem);color:var(--navy);line-height:1.05}
+.menu{background:#fff;border:4px solid var(--navy);border-radius:24px;padding:46px;box-shadow:10px 10px 0 var(--navy);display:grid;grid-template-columns:1fr 1fr;gap:0 60px}
+.menu h3{font-family:"Alfa Slab One";font-weight:400;color:var(--red);font-size:1.5rem;margin:6px 0 14px;grid-column:span 1;display:flex;align-items:center;gap:12px}
+.menu h3:after{content:"";flex:1;height:3px;background:repeating-linear-gradient(90deg,var(--red) 0 8px,transparent 8px 14px)}
+.col{margin-bottom:24px}
+.li{display:flex;align-items:baseline;gap:10px;padding:9px 0}
+.li b{font-weight:600}
+.li i{flex:1;border-bottom:2px dotted #d9c8b4;transform:translateY(-4px)}
+.li span{color:var(--soft);font-size:.92rem;text-align:right}
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.c{background:#fff;border-radius:26px;overflow:hidden;border:3px solid var(--navy);transition:.25s}
+.c:hover{transform:rotate(-1deg) translateY(-6px)}
+.c img{aspect-ratio:4/3;object-fit:cover;width:100%;border-bottom:3px solid var(--navy)}
+.c div{padding:22px 24px}
+.c h3{font-family:"Alfa Slab One";font-weight:400;font-size:1.4rem;color:var(--navy)}
+.c p{color:var(--soft);font-size:.96rem;margin-top:6px}
+/* thanksgiving */
+.tg{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+.tg .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+.tg .script{color:var(--butter);font-size:2rem}
+.tg h2{font-family:"Alfa Slab One";font-weight:400;font-size:clamp(2.4rem,5vw,4rem);line-height:1;margin:8px 0 20px}
+.tg p{color:#c9d3e6;margin-bottom:28px}
+.tg ul{list-style:none;display:flex;flex-wrap:wrap;gap:10px;margin-bottom:30px}
+.tg li{background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.25);border-radius:30px;padding:7px 16px;font-weight:500}
+.tg .pic{border-radius:50% 50% 24px 24px;overflow:hidden;aspect-ratio:4/5;border:6px solid var(--butter)}
+.tg .pic img{width:100%;height:100%;object-fit:cover}
+/* reviews */
+.rv{display:grid;grid-template-columns:1fr 2fr;gap:50px;align-items:center}
+.score{background:var(--red);color:#fff;border-radius:50%;aspect-ratio:1;display:grid;place-items:center;text-align:center;max-width:280px;margin:auto;border:8px solid #fff;outline:4px solid var(--red)}
+.score{padding:30px}.score b{font-family:"Alfa Slab One";font-size:3.4rem;font-weight:400;line-height:1;display:block}
+.score span{font-weight:600}
+.notes{display:grid;gap:16px}
+.note{background:#fff;border-left:6px solid var(--mint);border-radius:14px;padding:20px 24px;font-size:1.05rem}
+.note small{display:block;color:var(--soft);font-size:.85rem;margin-top:6px}
+/* contact */
+.contact{background:var(--butter)}
+.ticket{background:#fff;border:4px solid var(--navy);border-radius:26px;display:grid;grid-template-columns:1.2fr .8fr;overflow:hidden;box-shadow:10px 10px 0 var(--navy)}
+.ticket .l{padding:50px}
+.ticket .r{background:var(--red);color:#fff;padding:50px;border-left:4px dashed var(--navy)}
+.ticket h2{font-family:"Alfa Slab One";font-weight:400;font-size:clamp(2.2rem,4.6vw,3.6rem);line-height:1;color:var(--navy)}
+.ticket .tel{font-family:"Alfa Slab One";font-size:2rem;display:block;margin:22px 0 4px;text-decoration:none;color:var(--red)}
+.ticket .r div{padding:12px 0;border-bottom:2px dotted rgba(255,255,255,.45)}
+.ticket .r span{display:block;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;opacity:.8}
+.ticket .r b{font-weight:600}
+footer{background:var(--navy);color:#c9d3e6;padding:24px 0;font-size:.9rem}
+footer .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.waf{position:fixed;right:20px;bottom:20px;z-index:60;width:64px;height:64px;border-radius:50%;background:#25d366;border:3px solid var(--navy);box-shadow:4px 4px 0 var(--navy);display:grid;place-items:center}
+.waf svg{width:32px;height:32px;fill:#fff}
+@media (max-width:900px){
+ nav{display:none}
+ .hero .wrap,.menu,.cards,.tg .wrap,.rv,.ticket{grid-template-columns:1fr}
+ .menu{padding:30px 22px}
+ .ticket .r{border-left:0;border-top:4px dashed var(--navy)}
+ .ticket .l,.ticket .r{padding:32px 24px}
+ .badge{width:110px;height:110px}.badge b{font-size:.85rem}
+ section{padding:80px 0}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="bar">🚚 <b>Gratis bezorgd</b> binnen Purmerend · Bestellen via WhatsApp</div>
+<header><div class="wrap">
+ <a class="logo" href="#top"><span class="script">Sunny Side Bakery</span><small>AMERICAN BAKED GOODS</small></a>
+ <nav><a href="#menu">Menu</a><a href="#catering">Catering</a><a href="#reviews">Reviews</a><a href="#bestellen">Bestellen</a></nav>
+ <a class="btn" href="https://wa.me/31626683986?text=Hoi%20Djego%21%20Ik%20zag%20het%20ontwerp%20%22Sunny%20Side%20Bakery%22%20en%20wil%20ook%20zo%27n%20website." target="_blank" rel="noopener"><svg viewBox="0 0 32 32"><path d="M16.04 3C8.86 3 3.03 8.82 3.03 16c0 2.3.6 4.54 1.74 6.52L3 29l6.64-1.74A13 13 0 0 0 16.04 29C23.2 29 29 23.18 29 16S23.2 3 16.04 3Zm0 23.8c-2.02 0-4-.54-5.72-1.57l-.41-.24-3.94 1.03 1.05-3.84-.27-.4A10.78 10.78 0 0 1 5.2 16c0-5.97 4.86-10.83 10.84-10.83 5.97 0 10.82 4.86 10.82 10.83 0 5.98-4.85 10.8-10.82 10.8Zm5.94-8.1c-.33-.16-1.93-.95-2.23-1.06-.3-.11-.52-.16-.73.17-.22.32-.84 1.05-1.03 1.27-.19.22-.38.24-.7.08-.33-.16-1.38-.51-2.62-1.62-.97-.86-1.62-1.93-1.81-2.25-.19-.33-.02-.5.14-.66.15-.15.33-.38.49-.57.16-.19.22-.33.33-.54.11-.22.05-.41-.03-.57-.08-.16-.73-1.76-1-2.41-.26-.63-.53-.55-.73-.56h-.62c-.22 0-.57.08-.87.41-.3.32-1.14 1.11-1.14 2.72 0 1.6 1.17 3.15 1.33 3.37.16.22 2.3 3.5 5.56 4.91.78.34 1.39.54 1.86.69.78.25 1.49.21 2.05.13.63-.09 1.93-.79 2.2-1.55.27-.76.27-1.41.19-1.55-.08-.13-.3-.21-.62-.38Z"/></svg>Bestel</a>
+</div></header>
+
+<section class="hero" id="top" style="padding-bottom:0"><div class="wrap">
+ <div>
+  <span class="script">Baked with love by Amy</span>
+  <h1>Echte <span>American</span> treats, gewoon in Purmerend.</h1>
+  <p>Zelfgebakken pies, cakes, brownies en cookies volgens Amerikaans recept. Voor bij de koffie, op je feest of als complete catering. Binnen Purmerend gratis thuisbezorgd.</p>
+  <div class="row"><a class="btn rd" href="https://wa.me/31626683986?text=Hoi%20Djego%21%20Ik%20zag%20het%20ontwerp%20%22Sunny%20Side%20Bakery%22%20en%20wil%20ook%20zo%27n%20website." target="_blank" rel="noopener"><svg viewBox="0 0 32 32"><path d="M16.04 3C8.86 3 3.03 8.82 3.03 16c0 2.3.6 4.54 1.74 6.52L3 29l6.64-1.74A13 13 0 0 0 16.04 29C23.2 29 29 23.18 29 16S23.2 3 16.04 3Zm0 23.8c-2.02 0-4-.54-5.72-1.57l-.41-.24-3.94 1.03 1.05-3.84-.27-.4A10.78 10.78 0 0 1 5.2 16c0-5.97 4.86-10.83 10.84-10.83 5.97 0 10.82 4.86 10.82 10.83 0 5.98-4.85 10.8-10.82 10.8Zm5.94-8.1c-.33-.16-1.93-.95-2.23-1.06-.3-.11-.52-.16-.73.17-.22.32-.84 1.05-1.03 1.27-.19.22-.38.24-.7.08-.33-.16-1.38-.51-2.62-1.62-.97-.86-1.62-1.93-1.81-2.25-.19-.33-.02-.5.14-.66.15-.15.33-.38.49-.57.16-.19.22-.33.33-.54.11-.22.05-.41-.03-.57-.08-.16-.73-1.76-1-2.41-.26-.63-.53-.55-.73-.56h-.62c-.22 0-.57.08-.87.41-.3.32-1.14 1.11-1.14 2.72 0 1.6 1.17 3.15 1.33 3.37.16.22 2.3 3.5 5.56 4.91.78.34 1.39.54 1.86.69.78.25 1.49.21 2.05.13.63-.09 1.93-.79 2.2-1.55.27-.76.27-1.41.19-1.55-.08-.13-.3-.21-.62-.38Z"/></svg>Bestel via WhatsApp</a><a class="btn w" href="#menu">Bekijk het menu</a></div>
+ </div>
+ <div class="plate"><div class="ring"></div><img src="https://images.unsplash.com/photo-1519915028121-7d3463d20b13?auto=format&fit=crop&w=900&q=75" alt="Zelfgebakken pie met meringue" fetchpriority="high"><div class="badge"><b>Gratis<br>bezorgd<small>in Purmerend</small></b></div></div>
+</div><div class="stripe check"></div></section>
+
+<section id="menu"><div class="wrap">
+ <div class="title"><span class="script">from our kitchen</span><h2>Het menu</h2></div>
+ <div class="menu">
+  <div class="col"><h3>Pies &amp; cakes</h3>
+   <div class="li"><b>Pies</b><i></i><span>Klassiek Amerikaans</span></div>
+   <div class="li"><b>Cakes</b><i></i><span>Voor elk feest</span></div>
+   <div class="li"><b>Cheesecake</b><i></i><span>Romig &amp; rijk</span></div>
+  </div>
+  <div class="col"><h3>Sweet treats</h3>
+   <div class="li"><b>Brownies</b><i></i><span>Fudgy &amp; chocolatey</span></div>
+   <div class="li"><b>Cookies</b><i></i><span>Vers uit de oven</span></div>
+   <div class="li"><b>Treat boxes</b><i></i><span>Om te delen</span></div>
+  </div>
+  <div class="col"><h3>Holiday sides</h3>
+   <div class="li"><b>Dressing / stuffing</b><i></i><span>Voor bij het diner</span></div>
+   <div class="li"><b>Sweet potato casserole</b><i></i><span>Thanksgiving-klassieker</span></div>
+  </div>
+  <div class="col"><h3>Catering</h3>
+   <div class="li"><b>Feestjes &amp; events</b><i></i><span>Op maat</span></div>
+   <div class="li"><b>Bezorging</b><i></i><span>Gratis in Purmerend</span></div>
+  </div>
+ </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap cards">
+ <div class="c"><img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=700&q=70" alt="Fudgy brownies" loading="lazy"><div><h3>Brownies</h3><p>Dik, fudgy en precies zoals ze in Amerika horen te zijn.</p></div></div>
+ <div class="c"><img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=700&q=70" alt="Chocolate chip cookies" loading="lazy"><div><h3>Cookies</h3><p>Knapperig aan de rand, zacht in het midden.</p></div></div>
+ <div class="c"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=70" alt="Chocoladetaart" loading="lazy"><div><h3>Cakes</h3><p>Voor verjaardagen, feestjes of gewoon omdat het kan.</p></div></div>
+</div></section>
+
+<section class="tg" id="catering"><div class="wrap">
+ <div><span class="script">Coming soon</span><h2>Thanksgiving is bijna daar!</h2><p>Er is nog ruimte voor bestellingen voor jouw Thanksgiving-diner. Van pies en cakes tot dressing en sweet potato casserole: Amy maakt het voor je, zodat jij alleen nog hoeft te genieten.</p>
+  <ul><li>Pies</li><li>Cakes</li><li>Dressing / stuffing</li><li>Sweet potato casserole</li></ul>
+  <a class="btn" href="https://wa.me/31626683986?text=Hoi%20Djego%21%20Ik%20zag%20het%20ontwerp%20%22Sunny%20Side%20Bakery%22%20en%20wil%20ook%20zo%27n%20website." target="_blank" rel="noopener">Reserveer je bestelling</a></div>
+ <div class="pic"><img src="https://images.unsplash.com/photo-1464305795204-6f5bbfc7fb81?auto=format&fit=crop&w=800&q=72" alt="Zelfgemaakte mini pies met fruit" loading="lazy"></div>
+</div></section>
+
+<section id="reviews"><div class="wrap rv">
+ <div class="score"><div><b>♥</b><span>baked with love</span></div></div>
+ <div class="notes">
+  <div class="note">“Heerlijk eten, met liefde gemaakt door de liefste eigenaren. Het voelt als thuis!”<small>Voorbeeldreview</small></div>
+  <div class="note">“Brownies, cheesecake, bagels en pancakes: alles zelfgemaakt en precies zoals in Amerika.”<small>Voorbeeldreview</small></div>
+  <div class="note">“Vriendelijke mensen en heel lekker. Het is de reis echt waard.”<small>Voorbeeldreview</small></div>
+ </div>
+</div></section>
+
+<section class="contact" id="bestellen"><div class="wrap"><div class="ticket">
+ <div class="l"><span class="script" style="color:var(--red);font-size:1.6rem">order up!</span><h2>Zin in iets lekkers?</h2>
+  <a class="tel" href="https://wa.me/31626683986?text=Hoi%20Djego%21%20Ik%20zag%20het%20ontwerp%20%22Sunny%20Side%20Bakery%22%20en%20wil%20ook%20zo%27n%20website.">06 12 34 56 78</a><p style="color:var(--soft);margin-bottom:24px">Stuur Amy een appje of een bericht via Facebook met wat je wilt en voor wanneer.</p>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center"><a class="btn rd" href="https://wa.me/31626683986?text=Hoi%20Djego%21%20Ik%20zag%20het%20ontwerp%20%22Sunny%20Side%20Bakery%22%20en%20wil%20ook%20zo%27n%20website." target="_blank" rel="noopener"><svg viewBox="0 0 32 32"><path d="M16.04 3C8.86 3 3.03 8.82 3.03 16c0 2.3.6 4.54 1.74 6.52L3 29l6.64-1.74A13 13 0 0 0 16.04 29C23.2 29 29 23.18 29 16S23.2 3 16.04 3Zm0 23.8c-2.02 0-4-.54-5.72-1.57l-.41-.24-3.94 1.03 1.05-3.84-.27-.4A10.78 10.78 0 0 1 5.2 16c0-5.97 4.86-10.83 10.84-10.83 5.97 0 10.82 4.86 10.82 10.83 0 5.98-4.85 10.8-10.82 10.8Zm5.94-8.1c-.33-.16-1.93-.95-2.23-1.06-.3-.11-.52-.16-.73.17-.22.32-.84 1.05-1.03 1.27-.19.22-.38.24-.7.08-.33-.16-1.38-.51-2.62-1.62-.97-.86-1.62-1.93-1.81-2.25-.19-.33-.02-.5.14-.66.15-.15.33-.38.49-.57.16-.19.22-.33.33-.54.11-.22.05-.41-.03-.57-.08-.16-.73-1.76-1-2.41-.26-.63-.53-.55-.73-.56h-.62c-.22 0-.57.08-.87.41-.3.32-1.14 1.11-1.14 2.72 0 1.6 1.17 3.15 1.33 3.37.16.22 2.3 3.5 5.56 4.91.78.34 1.39.54 1.86.69.78.25 1.49.21 2.05.13.63-.09 1.93-.79 2.2-1.55.27-.76.27-1.41.19-1.55-.08-.13-.3-.21-.62-.38Z"/></svg>WhatsApp</a><a class="btn" href="https://wa.me/31626683986?text=Hoi%20Djego%21%20Ik%20zag%20het%20ontwerp%20%22Sunny%20Side%20Bakery%22%20en%20wil%20ook%20zo%27n%20website.">Mail</a></div></div>
+ <div class="r">
+  <div><span>Bestellen</span><b>WhatsApp, Facebook of mail</b></div>
+  <div><span>Bezorgen</span><b>Gratis binnen Purmerend</b></div>
+  <div><span>Catering</span><b>Op aanvraag</b></div>
+  <div><span>Mail</span><b>hello@sunnysidebakery.nl</b></div>
+  <div style="border:0"><span>Facebook</span><b><a href="https://byxavio.nl" target="_blank" rel="noopener">SunnySideBakery</a></b></div>
+ </div>
+</div></div></section>
+<footer><div class="wrap"><span>© 2026 Sunny Side Bakery · Purmerend</span><span>Concept door <a href="https://byxavio.nl" style="color:var(--butter)">byXavio</a></span></div></footer>
+<a class="waf" href="https://wa.me/31626683986?text=Hoi%20Djego%21%20Ik%20zag%20het%20ontwerp%20%22Sunny%20Side%20Bakery%22%20en%20wil%20ook%20zo%27n%20website." target="_blank" rel="noopener" aria-label="Stuur een WhatsApp-bericht"><svg viewBox="0 0 32 32"><path d="M16.04 3C8.86 3 3.03 8.82 3.03 16c0 2.3.6 4.54 1.74 6.52L3 29l6.64-1.74A13 13 0 0 0 16.04 29C23.2 29 29 23.18 29 16S23.2 3 16.04 3Zm0 23.8c-2.02 0-4-.54-5.72-1.57l-.41-.24-3.94 1.03 1.05-3.84-.27-.4A10.78 10.78 0 0 1 5.2 16c0-5.97 4.86-10.83 10.84-10.83 5.97 0 10.82 4.86 10.82 10.83 0 5.98-4.85 10.8-10.82 10.8Zm5.94-8.1c-.33-.16-1.93-.95-2.23-1.06-.3-.11-.52-.16-.73.17-.22.32-.84 1.05-1.03 1.27-.19.22-.38.24-.7.08-.33-.16-1.38-.51-2.62-1.62-.97-.86-1.62-1.93-1.81-2.25-.19-.33-.02-.5.14-.66.15-.15.33-.38.49-.57.16-.19.22-.33.33-.54.11-.22.05-.41-.03-.57-.08-.16-.73-1.76-1-2.41-.26-.63-.53-.55-.73-.56h-.62c-.22 0-.57.08-.87.41-.3.32-1.14 1.11-1.14 2.72 0 1.6 1.17 3.15 1.33 3.37.16.22 2.3 3.5 5.56 4.91.78.34 1.39.54 1.86.69.78.25 1.49.21 2.05.13.63-.09 1.93-.79 2.2-1.55.27-.76.27-1.41.19-1.55-.08-.13-.3-.21-.62-.38Z"/></svg></a>
+<a href="https://byxavio.nl/#voorbeelden" style="position:fixed;left:16px;bottom:16px;z-index:9999;display:inline-flex;align-items:center;gap:8px;background:#101128;color:#fff;font:600 13px/1.2 system-ui,sans-serif;text-decoration:none;padding:10px 14px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.3)"><span style="background:#00d2df;color:#101128;border-radius:999px;padding:2px 8px;font-size:11px">Concept</span>Ontwerp door byXavio &rarr;</a>
+</body>
+</html>

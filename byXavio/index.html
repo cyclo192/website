@@ -276,6 +276,10 @@
   .notice b{font-weight:700; color:var(--navy);}
 
   .phones{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:clamp(16px,2.6vw,32px);}
+  .phones.six{grid-template-columns:repeat(3,minmax(0,270px)); justify-content:space-between; row-gap:48px;}
+  .more-head{margin:clamp(56px,8vw,90px) 0 28px; max-width:62ch;}
+  .more-head h3{font-size:clamp(1.4rem,2.6vw,1.9rem); font-weight:700; letter-spacing:-.02em;}
+  .more-head p{color:var(--muted); margin-top:8px;}
   .pd{position:relative;}
   .pd-phone{
     border-radius:32px; padding:7px; background:var(--night);
@@ -604,7 +608,7 @@
   <div class="wrap">
     <div class="head">
       <h2 data-i18n="voorb.h2">Zo kan jouw site eruitzien.</h2>
-      <p class="lead" data-i18n="voorb.lead">Een site voor een echte klant, en vier voorbeelden uit verschillende branches, elk met een eigen kleur, opbouw en formulier.</p>
+      <p class="lead" data-i18n="voorb.lead">Een site voor een echte klant, en voorbeelden uit verschillende branches, elk met een eigen stijl, opbouw en sfeer.</p>
     </div>
 
     <article class="case">
@@ -630,7 +634,7 @@
 
     <p class="notice">
       <svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="7.5"/><path d="M9 8.2v4.4M9 5.4v.2"/></svg>
-      <span data-i18n-html="notice.html"><b>Goed om te weten:</b> de vier sites hieronder zijn voorbeeldsites voor verzonnen bedrijven, gemaakt om te laten zien wat er kan. Je eigen site maak ik volledig op maat, of we gebruiken een van deze als basis.</span>
+      <span data-i18n-html="notice.html"><b>Goed om te weten:</b> de sites hieronder zijn voorbeeldsites en concepten voor verzonnen bedrijven, gemaakt om te laten zien wat er kan. Je eigen site maak ik volledig op maat, in een stijl die bij jou past.</span>
     </p>
 
     <div class="phones">
@@ -663,6 +667,55 @@
         <span class="kind" data-i18n="demo4.kind">Bouwbedrijf</span>
         <h3><a href="https://winkelaar.byxavio.nl" target="_blank" rel="noopener">Winkelaar</a></h3>
         <p data-i18n="demo4.desc">Specialismen, werkwijze en een projectenoverzicht.</p>
+        <span class="go" aria-hidden="true"><span data-i18n="demo.go">Bekijk demo</span><svg class="arr"><use href="#arr"/></svg></span>
+      </article>
+    </div>
+
+    <div class="more-head">
+      <h3 data-i18n="more.h3">Elke site een eigen stijl</h3>
+      <p data-i18n="more.p">Zes conceptontwerpen voor verzonnen bedrijven. Geen template: elk ontwerp heeft een eigen lay-out, lettertype en sfeer.</p>
+    </div>
+    <div class="phones six">
+      <article class="pd">
+        <div class="pd-phone"><div class="screen" data-w="390" data-h="800"><iframe src="https://byxavio.nl/ontwerpen/nova-nails/" title="Conceptontwerp Nova Nails" loading="lazy" tabindex="-1" scrolling="no"></iframe></div></div>
+        <span class="kind"><span data-i18n="d1.kind">Nagelstudio</span> · <span data-i18n="concept.lbl">Concept</span></span>
+        <h3><a href="https://byxavio.nl/ontwerpen/nova-nails/" target="_blank" rel="noopener">Nova Nails</a></h3>
+        <p data-i18n="d1.desc">Donker en glanzend, met chrome-tekst en roze accenten.</p>
+        <span class="go" aria-hidden="true"><span data-i18n="demo.go">Bekijk demo</span><svg class="arr"><use href="#arr"/></svg></span>
+      </article>
+      <article class="pd">
+        <div class="pd-phone"><div class="screen" data-w="390" data-h="800"><iframe src="https://byxavio.nl/ontwerpen/lune-fotografie/" title="Conceptontwerp Lune Fotografie" loading="lazy" tabindex="-1" scrolling="no"></iframe></div></div>
+        <span class="kind"><span data-i18n="d2.kind">Fotograaf</span> · <span data-i18n="concept.lbl">Concept</span></span>
+        <h3><a href="https://byxavio.nl/ontwerpen/lune-fotografie/" target="_blank" rel="noopener">Lune Fotografie</a></h3>
+        <p data-i18n="d2.desc">Rustig en chic, opgebouwd als een tijdschrift.</p>
+        <span class="go" aria-hidden="true"><span data-i18n="demo.go">Bekijk demo</span><svg class="arr"><use href="#arr"/></svg></span>
+      </article>
+      <article class="pd">
+        <div class="pd-phone"><div class="screen" data-w="390" data-h="800"><iframe src="https://byxavio.nl/ontwerpen/sunny-side-bakery/" title="Conceptontwerp Sunny Side Bakery" loading="lazy" tabindex="-1" scrolling="no"></iframe></div></div>
+        <span class="kind"><span data-i18n="d3.kind">Bakkerij</span> · <span data-i18n="concept.lbl">Concept</span></span>
+        <h3><a href="https://byxavio.nl/ontwerpen/sunny-side-bakery/" target="_blank" rel="noopener">Sunny Side Bakery</a></h3>
+        <p data-i18n="d3.desc">Retro Amerikaans diner met een menukaart.</p>
+        <span class="go" aria-hidden="true"><span data-i18n="demo.go">Bekijk demo</span><svg class="arr"><use href="#arr"/></svg></span>
+      </article>
+      <article class="pd">
+        <div class="pd-phone"><div class="screen" data-w="390" data-h="800"><iframe src="https://byxavio.nl/ontwerpen/hout-en-beton/" title="Conceptontwerp Hout &amp; Beton Noord" loading="lazy" tabindex="-1" scrolling="no"></iframe></div></div>
+        <span class="kind"><span data-i18n="d4.kind">Schuttingbouwer</span> · <span data-i18n="concept.lbl">Concept</span></span>
+        <h3><a href="https://byxavio.nl/ontwerpen/hout-en-beton/" target="_blank" rel="noopener">Hout &amp; Beton Noord</a></h3>
+        <p data-i18n="d4.desc">Stoer en industrieel, met een getekende schutting.</p>
+        <span class="go" aria-hidden="true"><span data-i18n="demo.go">Bekijk demo</span><svg class="arr"><use href="#arr"/></svg></span>
+      </article>
+      <article class="pd">
+        <div class="pd-phone"><div class="screen" data-w="390" data-h="800"><iframe src="https://byxavio.nl/ontwerpen/snuffelpret/" title="Conceptontwerp Snuffelpret" loading="lazy" tabindex="-1" scrolling="no"></iframe></div></div>
+        <span class="kind"><span data-i18n="d5.kind">Hondenwinkel</span> · <span data-i18n="concept.lbl">Concept</span></span>
+        <h3><a href="https://byxavio.nl/ontwerpen/snuffelpret/" target="_blank" rel="noopener">Snuffelpret</a></h3>
+        <p data-i18n="d5.desc">Vrolijk en kleurrijk, met speelse kaarten.</p>
+        <span class="go" aria-hidden="true"><span data-i18n="demo.go">Bekijk demo</span><svg class="arr"><use href="#arr"/></svg></span>
+      </article>
+      <article class="pd">
+        <div class="pd-phone"><div class="screen" data-w="390" data-h="800"><iframe src="https://byxavio.nl/ontwerpen/pepernoot-magie/" title="Conceptontwerp Pepernoot Magie" loading="lazy" tabindex="-1" scrolling="no"></iframe></div></div>
+        <span class="kind"><span data-i18n="d6.kind">Sinterklaasbezoek</span> · <span data-i18n="concept.lbl">Concept</span></span>
+        <h3><a href="https://byxavio.nl/ontwerpen/pepernoot-magie/" target="_blank" rel="noopener">Pepernoot Magie</a></h3>
+        <p data-i18n="d6.desc">Theater met een rood gordijn en toegangskaartjes.</p>
         <span class="go" aria-hidden="true"><span data-i18n="demo.go">Bekijk demo</span><svg class="arr"><use href="#arr"/></svg></span>
       </article>
     </div>
@@ -998,12 +1051,12 @@
       "step2.num":"STAP 02","step2.title":"Ontwerp","step2.desc":"Ik maak een ontwerp op maat dat past bij jouw bedrijf. Geen kant-en-klaar sjabloon.",
       "step3.num":"STAP 03","step3.title":"Feedback","step3.desc":"Je geeft feedback en ik verwerk de aanpassingen, tot de site precies klopt.",
       "step4.num":"STAP 04","step4.title":"Livegang","step4.desc":"Je site gaat live en is vindbaar. Ook daarna blijf ik gewoon bereikbaar voor vragen.",
-      "voorb.h2":"Zo kan jouw site eruitzien.","voorb.lead":"Een site voor een echte klant, en vier voorbeelden uit verschillende branches, elk met een eigen kleur, opbouw en formulier.",
-      "notice.html":"<b>Goed om te weten:</b> de vier sites hieronder zijn voorbeeldsites voor verzonnen bedrijven, gemaakt om te laten zien wat er kan. Je eigen site maak ik volledig op maat, of we gebruiken een van deze als basis.",
+      "voorb.h2":"Zo kan jouw site eruitzien.","voorb.lead":"Een site voor een echte klant, en voorbeelden uit verschillende branches, elk met een eigen stijl, opbouw en sfeer.",
+      "notice.html":"<b>Goed om te weten:</b> de sites hieronder zijn voorbeeldsites en concepten voor verzonnen bedrijven, gemaakt om te laten zien wat er kan. Je eigen site maak ik volledig op maat, in een stijl die bij jou past.",
       "demo1.kind":"Kapperszaak","demo1.desc":"Diensten, openingstijden en een afsprakenformulier.",
       "demo2.kind":"Bistro & keuken","demo2.desc":"Menukaart, openingstijden en een reserveringsformulier.",
       "demo3.kind":"Kinderkleding","demo3.desc":"Collectie, maten en een pasafspraak-formulier.",
-      "demo4.kind":"Bouwbedrijf","demo4.desc":"Specialismen, werkwijze en een projectenoverzicht.",
+      "demo4.kind":"Bouwbedrijf","demo4.desc":"Specialismen, werkwijze en een projectenoverzicht.","concept.lbl":"Concept","more.h3":"Elke site een eigen stijl","more.p":"Zes conceptontwerpen voor verzonnen bedrijven. Geen template: elk ontwerp heeft een eigen lay-out, lettertype en sfeer.","d1.kind":"Nagelstudio","d1.desc":"Donker en glanzend, met chrome-tekst en roze accenten.","d2.kind":"Fotograaf","d2.desc":"Rustig en chic, opgebouwd als een tijdschrift.","d3.kind":"Bakkerij","d3.desc":"Retro Amerikaans diner met een menukaart.","d4.kind":"Schuttingbouwer","d4.desc":"Stoer en industrieel, met een getekende schutting.","d5.kind":"Hondenwinkel","d5.desc":"Vrolijk en kleurrijk, met speelse kaarten.","d6.kind":"Sinterklaasbezoek","d6.desc":"Theater met een rood gordijn en toegangskaartjes.",
       "demo.go":"Bekijk demo",
       "case.badge":"Klantproject","case.kind":"Vakantiechalet in Drenthe","case.desc":"Website voor een chalet op een camping in Wijster. Gasten bekijken de foto’s, zien meteen welke dagen vrij zijn en vragen hun verblijf aan via WhatsApp of e-mail.","case.tag1":"Fotogalerij","case.tag2":"Beschikbaarheidskalender","case.tag3":"Eigen domeinnaam","case.go":"Bekijk de website",
       "pak.h2":"Kies wat bij je bedrijf past.","pak.lead":"Drie opties, zodat je vooraf weet wat je krijgt en wat het kost. Past er geen precies? Dan stel ik in een kort gesprek iets op maat samen.",
@@ -1043,12 +1096,12 @@
       "step2.num":"STEP 02","step2.title":"Design","step2.desc":"I create a custom design that fits your business. No ready-made template.",
       "step3.num":"STEP 03","step3.title":"Feedback","step3.desc":"You give feedback and I process the changes, until the site is exactly right.",
       "step4.num":"STEP 04","step4.title":"Launch","step4.desc":"Your site goes live and is findable. I stay reachable for questions afterwards too.",
-      "voorb.h2":"This is what your site could look like.","voorb.lead":"A site for a real client, plus four examples from different industries, each with its own colour, layout and form.",
-      "notice.html":"<b>Good to know:</b> the four sites below are example sites for made-up businesses, built to show what's possible. Your own site is fully custom-made, or we can use one of these as a starting point.",
+      "voorb.h2":"This is what your site could look like.","voorb.lead":"A site for a real client, plus examples from different industries, each with its own style, layout and mood.",
+      "notice.html":"<b>Good to know:</b> the sites below are example sites and concepts for made-up businesses, built to show what's possible. Your own site is fully custom-made, in a style that suits you.",
       "demo1.kind":"Hair salon","demo1.desc":"Services, opening hours and an appointment form.",
       "demo2.kind":"Bistro & kitchen","demo2.desc":"Menu, opening hours and a reservation form.",
       "demo3.kind":"Children's clothing","demo3.desc":"Collection, sizes and a fitting appointment form.",
-      "demo4.kind":"Construction company","demo4.desc":"Specialties, working method and a project overview.",
+      "demo4.kind":"Construction company","demo4.desc":"Specialties, working method and a project overview.","concept.lbl":"Concept","more.h3":"Every site its own style","more.p":"Six concept designs for made-up businesses. No template: each design has its own layout, typeface and mood.","d1.kind":"Nail studio","d1.desc":"Dark and glossy, with chrome text and pink accents.","d2.kind":"Photographer","d2.desc":"Calm and elegant, laid out like a magazine.","d3.kind":"Bakery","d3.desc":"Retro American diner with a menu board.","d4.kind":"Fence builder","d4.desc":"Bold and industrial, with an illustrated fence.","d5.kind":"Dog shop","d5.desc":"Bright and colourful, with playful cards.","d6.kind":"Sinterklaas visits","d6.desc":"A theatre with a red curtain and ticket stubs.",
       "demo.go":"View demo",
       "case.badge":"Client project","case.kind":"Holiday chalet in Drenthe","case.desc":"Website for a chalet on a campsite in Wijster. Guests browse the photos, see at a glance which days are free and request their stay via WhatsApp or email.","case.tag1":"Photo gallery","case.tag2":"Availability calendar","case.tag3":"Own domain name","case.go":"Visit the website",
       "pak.h2":"Choose what fits your business.","pak.lead":"Three options, so you know upfront what you get and what it costs. Nothing quite fit? I'll put together something custom in a short conversation.",
@@ -1088,12 +1141,12 @@
       "step2.num":"SCHRITT 02","step2.title":"Design","step2.desc":"Ich erstelle ein maßgeschneidertes Design, das zu deinem Unternehmen passt. Keine Fertigvorlage.",
       "step3.num":"SCHRITT 03","step3.title":"Feedback","step3.desc":"Du gibst Feedback und ich setze die Anpassungen um, bis die Website genau passt.",
       "step4.num":"SCHRITT 04","step4.title":"Livegang","step4.desc":"Deine Website geht live und ist auffindbar. Auch danach bleibe ich für Fragen erreichbar.",
-      "voorb.h2":"So könnte deine Website aussehen.","voorb.lead":"Eine Website für einen echten Kunden und vier Beispiele aus verschiedenen Branchen, jedes mit eigener Farbe, Aufbau und Formular.",
-      "notice.html":"<b>Gut zu wissen:</b> Die vier Seiten unten sind Beispielseiten für erfundene Unternehmen, die zeigen, was möglich ist. Deine eigene Seite baue ich komplett nach Maß, oder wir nehmen eine davon als Basis.",
+      "voorb.h2":"So könnte deine Website aussehen.","voorb.lead":"Eine Website für einen echten Kunden und Beispiele aus verschiedenen Branchen, jedes mit eigenem Stil, Aufbau und Stimmung.",
+      "notice.html":"<b>Gut zu wissen:</b> Die Seiten unten sind Beispielseiten und Konzepte für erfundene Unternehmen, die zeigen, was möglich ist. Deine eigene Seite baue ich komplett nach Maß, in einem Stil, der zu dir passt.",
       "demo1.kind":"Friseursalon","demo1.desc":"Dienstleistungen, Öffnungszeiten und ein Terminformular.",
       "demo2.kind":"Bistro & Küche","demo2.desc":"Speisekarte, Öffnungszeiten und ein Reservierungsformular.",
       "demo3.kind":"Kinderkleidung","demo3.desc":"Kollektion, Größen und ein Formular für Anprobetermine.",
-      "demo4.kind":"Bauunternehmen","demo4.desc":"Spezialgebiete, Arbeitsweise und eine Projektübersicht.",
+      "demo4.kind":"Bauunternehmen","demo4.desc":"Spezialgebiete, Arbeitsweise und eine Projektübersicht.","concept.lbl":"Konzept","more.h3":"Jede Website ein eigener Stil","more.p":"Sechs Konzeptentwürfe für erfundene Unternehmen. Keine Vorlage: Jeder Entwurf hat ein eigenes Layout, eine eigene Schrift und Stimmung.","d1.kind":"Nagelstudio","d1.desc":"Dunkel und glänzend, mit Chrom-Schrift und pinken Akzenten.","d2.kind":"Fotograf","d2.desc":"Ruhig und edel, aufgebaut wie ein Magazin.","d3.kind":"Bäckerei","d3.desc":"Retro-amerikanisches Diner mit Menütafel.","d4.kind":"Zaunbauer","d4.desc":"Kräftig und industriell, mit gezeichnetem Zaun.","d5.kind":"Hundeladen","d5.desc":"Fröhlich und bunt, mit verspielten Karten.","d6.kind":"Nikolausbesuch","d6.desc":"Ein Theater mit rotem Vorhang und Eintrittskarten.",
       "demo.go":"Demo ansehen",
       "case.badge":"Kundenprojekt","case.kind":"Ferienchalet in Drenthe","case.desc":"Website für ein Chalet auf einem Campingplatz in Wijster. Gäste sehen sich die Fotos an, erkennen sofort, welche Tage frei sind, und fragen ihren Aufenthalt per WhatsApp oder E-Mail an.","case.tag1":"Fotogalerie","case.tag2":"Verfügbarkeitskalender","case.tag3":"Eigene Domain","case.go":"Website ansehen",
       "pak.h2":"Wähle, was zu deinem Unternehmen passt.","pak.lead":"Drei Optionen, damit du vorab weißt, was du bekommst und was es kostet. Passt nichts genau? Dann stellen wir in einem kurzen Gespräch etwas Individuelles zusammen.",
@@ -1133,12 +1186,12 @@
       "step2.num":"ÉTAPE 02","step2.title":"Conception","step2.desc":"Je crée un design sur mesure adapté à votre entreprise. Pas de modèle tout fait.",
       "step3.num":"ÉTAPE 03","step3.title":"Retours","step3.desc":"Vous donnez votre avis et j'apporte les modifications, jusqu'à ce que le site soit parfait.",
       "step4.num":"ÉTAPE 04","step4.title":"Mise en ligne","step4.desc":"Votre site est mis en ligne et devient visible. Je reste joignable pour toute question par la suite.",
-      "voorb.h2":"Voici à quoi pourrait ressembler votre site.","voorb.lead":"Un site pour un vrai client, et quatre exemples de secteurs différents, chacun avec sa propre couleur, structure et formulaire.",
-      "notice.html":"<b>Bon à savoir :</b> les quatre sites ci-dessous sont des sites d'exemple pour des entreprises inventées, créés pour montrer ce qui est possible. Votre site est entièrement sur mesure, ou nous partons de l'un d'eux.",
+      "voorb.h2":"Voici à quoi pourrait ressembler votre site.","voorb.lead":"Un site pour un vrai client, et des exemples de secteurs différents, chacun avec son propre style, sa structure et son ambiance.",
+      "notice.html":"<b>Bon à savoir :</b> les sites ci-dessous sont des sites d'exemple et des concepts pour des entreprises inventées, créés pour montrer ce qui est possible. Votre site est entièrement sur mesure, dans un style qui vous ressemble.",
       "demo1.kind":"Salon de coiffure","demo1.desc":"Services, horaires d'ouverture et un formulaire de rendez-vous.",
       "demo2.kind":"Bistro & cuisine","demo2.desc":"Carte, horaires d'ouverture et un formulaire de réservation.",
       "demo3.kind":"Vêtements pour enfants","demo3.desc":"Collection, tailles et un formulaire de rendez-vous d'essayage.",
-      "demo4.kind":"Entreprise de construction","demo4.desc":"Spécialités, méthode de travail et un aperçu des projets.",
+      "demo4.kind":"Entreprise de construction","demo4.desc":"Spécialités, méthode de travail et un aperçu des projets.","concept.lbl":"Concept","more.h3":"Chaque site, son propre style","more.p":"Six concepts pour des entreprises inventées. Aucun modèle : chaque design a sa propre mise en page, sa typographie et son ambiance.","d1.kind":"Onglerie","d1.desc":"Sombre et brillant, avec du texte chromé et des touches de rose.","d2.kind":"Photographe","d2.desc":"Calme et élégant, construit comme un magazine.","d3.kind":"Boulangerie","d3.desc":"Diner américain rétro avec un menu.","d4.kind":"Poseur de clôtures","d4.desc":"Robuste et industriel, avec une clôture illustrée.","d5.kind":"Boutique pour chiens","d5.desc":"Gai et coloré, avec des cartes ludiques.","d6.kind":"Visite de Saint-Nicolas","d6.desc":"Un théâtre avec un rideau rouge et des billets.",
       "demo.go":"Voir la démo",
       "case.badge":"Projet client","case.kind":"Chalet de vacances en Drenthe","case.desc":"Site web pour un chalet dans un camping à Wijster. Les visiteurs regardent les photos, voient tout de suite quels jours sont libres et demandent leur séjour par WhatsApp ou e-mail.","case.tag1":"Galerie photo","case.tag2":"Calendrier des disponibilités","case.tag3":"Nom de domaine propre","case.go":"Voir le site",
       "pak.h2":"Choisissez ce qui convient à votre entreprise.","pak.lead":"Trois options, pour que vous sachiez à l'avance ce que vous obtenez et ce que cela coûte. Rien ne vous convient exactement ? Je compose une offre sur mesure lors d'un court échange.",
@@ -1178,12 +1231,12 @@
       "step2.num":"PASO 02","step2.title":"Diseño","step2.desc":"Creo un diseño a medida que encaja con tu negocio. Sin plantillas prefabricadas.",
       "step3.num":"PASO 03","step3.title":"Comentarios","step3.desc":"Das tu opinión y aplico los cambios, hasta que el sitio quede perfecto.",
       "step4.num":"PASO 04","step4.title":"Lanzamiento","step4.desc":"Tu sitio se publica y es fácil de encontrar. Sigo disponible para preguntas después también.",
-      "voorb.h2":"Así podría verse tu sitio.","voorb.lead":"Un sitio para un cliente real y cuatro ejemplos de diferentes sectores, cada uno con su propio color, estructura y formulario.",
-      "notice.html":"<b>Bueno saber:</b> los cuatro sitios de abajo son sitios de ejemplo para empresas inventadas, creados para mostrar lo que es posible. Tu propio sitio se hace totalmente a medida, o usamos uno de estos como base.",
+      "voorb.h2":"Así podría verse tu sitio.","voorb.lead":"Un sitio para un cliente real y ejemplos de diferentes sectores, cada uno con su propio estilo, estructura y ambiente.",
+      "notice.html":"<b>Bueno saber:</b> los sitios de abajo son sitios de ejemplo y conceptos para empresas inventadas, creados para mostrar lo que es posible. Tu propio sitio se hace totalmente a medida, con un estilo que encaje contigo.",
       "demo1.kind":"Peluquería","demo1.desc":"Servicios, horarios y un formulario de citas.",
       "demo2.kind":"Bistró y cocina","demo2.desc":"Carta, horarios y un formulario de reservas.",
       "demo3.kind":"Ropa infantil","demo3.desc":"Colección, tallas y un formulario de cita para pruebas.",
-      "demo4.kind":"Empresa de construcción","demo4.desc":"Especialidades, forma de trabajo y una visión general de proyectos.",
+      "demo4.kind":"Empresa de construcción","demo4.desc":"Especialidades, forma de trabajo y una visión general de proyectos.","concept.lbl":"Concepto","more.h3":"Cada sitio, su propio estilo","more.p":"Seis diseños conceptuales para empresas inventadas. Sin plantilla: cada diseño tiene su propia estructura, tipografía y ambiente.","d1.kind":"Estudio de uñas","d1.desc":"Oscuro y brillante, con texto cromado y toques rosas.","d2.kind":"Fotógrafo","d2.desc":"Tranquilo y elegante, como una revista.","d3.kind":"Panadería","d3.desc":"Diner americano retro con pizarra de menú.","d4.kind":"Constructor de vallas","d4.desc":"Robusto e industrial, con una valla ilustrada.","d5.kind":"Tienda para perros","d5.desc":"Alegre y colorido, con tarjetas divertidas.","d6.kind":"Visita de San Nicolás","d6.desc":"Un teatro con telón rojo y entradas.",
       "demo.go":"Ver demo",
       "case.badge":"Proyecto de cliente","case.kind":"Chalet de vacaciones en Drenthe","case.desc":"Sitio web para un chalet en un camping de Wijster. Los huéspedes ven las fotos, comprueban al instante qué días están libres y solicitan su estancia por WhatsApp o correo electrónico.","case.tag1":"Galería de fotos","case.tag2":"Calendario de disponibilidad","case.tag3":"Dominio propio","case.go":"Ver el sitio web",
       "pak.h2":"Elige lo que encaje con tu negocio.","pak.lead":"Tres opciones, para que sepas de antemano qué obtienes y cuánto cuesta. ¿Ninguna encaja del todo? En una breve charla preparamos algo a medida.",
