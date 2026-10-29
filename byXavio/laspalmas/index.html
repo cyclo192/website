@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Kapsalon Las Palmas · Purmerend</title>
+<meta name="description" content="Kapsalon Las Palmas aan het Tramplein in Purmerend. Herenkapper, met of zonder afspraak. Knippen, fade en baard.">
+<meta name="theme-color" content="#f7ead2">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shrikhand&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<style>
+:root{--sun:#f7ead2;--o1:#f2a03d;--o2:#e2632b;--o3:#b63e2a;--br:#4a2a1c;--teal:#2f7f73;--soft:#7b5b47;--white:#fffaf0}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font:400 17px/1.65 "DM Sans",system-ui,sans-serif;color:var(--br);background:var(--sun);overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{width:min(1160px,100% - 40px);margin-inline:auto}
+.sk{font-family:Shrikhand,Georgia,serif;font-weight:400}
+h1,h2,h3{text-wrap:balance}
+.stripes{height:30px;background:linear-gradient(var(--o1) 0 33.3%,var(--o2) 33.3% 66.6%,var(--o3) 66.6%)}
+.lbl{font-weight:700;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--o3)}
+
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:80px;gap:16px}
+.logo{text-decoration:none;font-family:Shrikhand;font-size:1.7rem;color:var(--o3);line-height:1}
+.logo small{display:block;font-family:"DM Sans";font-size:.62rem;letter-spacing:.32em;text-transform:uppercase;color:var(--br);font-weight:700;margin-top:4px}
+nav{display:flex;gap:24px;align-items:center}
+nav a{text-decoration:none;font-weight:700;font-size:.95rem}
+nav a:hover{color:var(--o2)}
+.btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;padding:15px 26px;border-radius:999px;background:var(--o3);color:var(--white);border:2.5px solid var(--br);box-shadow:0 5px 0 var(--br);transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(3px);box-shadow:0 2px 0 var(--br)}
+.btn.y{background:var(--o1);color:var(--br)}
+.btn.w{background:var(--white);color:var(--br)}
+.btn svg{width:20px;height:20px}
+header .btn{padding:10px 18px;font-size:.9rem;box-shadow:0 4px 0 var(--br)}
+
+/* hero */
+.hero{position:relative;padding:30px 0 0;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center}
+.hero h1{font-family:Shrikhand;font-weight:400;font-size:clamp(3.4rem,8.5vw,6.8rem);line-height:.95;color:var(--o3);text-shadow:4px 4px 0 var(--o1)}
+.hero h1 span{display:block;color:var(--br);text-shadow:4px 4px 0 var(--o1);font-size:.55em;margin-bottom:6px}
+.hero p{font-size:1.15rem;max-width:40ch;margin:22px 0 30px}
+.ctas{display:flex;gap:14px;flex-wrap:wrap}
+.sunset{position:relative;aspect-ratio:1;max-width:520px;width:100%;justify-self:center}
+.sunset .disc{position:absolute;inset:0;border-radius:50%;background:repeating-linear-gradient(180deg,var(--o1) 0 14%,var(--o2) 14% 28%,var(--o3) 28% 42%);overflow:hidden;border:3px solid var(--br)}
+.sunset .disc img{position:absolute;inset:16% 16% 0;width:68%;height:84%;object-fit:cover;border-radius:999px 999px 0 0;border:3px solid var(--br);border-bottom:0}
+.palm{position:absolute;width:42%;bottom:-2%;left:-10%;color:var(--teal)}
+.palm.r{left:auto;right:-12%;width:34%;transform:scaleX(-1)}
+.walk{position:absolute;top:2%;right:2%;width:122px;height:122px;border-radius:50%;background:var(--white);border:3px solid var(--br);display:grid;place-items:center;text-align:center;transform:rotate(12deg);font-weight:700;font-size:.82rem;line-height:1.15}
+.walk b{display:block;font-family:Shrikhand;font-weight:400;font-size:1.35rem;color:var(--o3)}
+
+.ticker{background:var(--br);color:var(--sun);overflow:hidden;white-space:nowrap;margin-top:60px}
+.ticker div{display:inline-block;padding:16px 0;animation:tk 28s linear infinite;font-family:Shrikhand;font-size:1.3rem}
+.ticker span{margin:0 26px;color:var(--o1)}
+@keyframes tk{to{transform:translateX(-50%)}}
+
+section{padding:96px 0}
+.h2{font-family:Shrikhand;font-weight:400;font-size:clamp(2.4rem,5.4vw,4rem);line-height:1;color:var(--br)}
+.h2 em{font-style:normal;color:var(--o2)}
+
+/* services */
+.svc{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:44px}
+.s{background:var(--white);border:2.5px solid var(--br);border-radius:28px;padding:28px 22px;display:grid;gap:10px;align-content:start;transition:transform .2s}
+.s:hover{transform:rotate(-1.5deg)}
+.s:nth-child(2){background:var(--o1)}
+.s:nth-child(3){background:var(--teal);color:var(--white)}
+.s:nth-child(3) p{color:#d9efe9}
+.s:nth-child(4){background:var(--o2);color:var(--white)}
+.s:nth-child(4) p{color:#ffe1cc}
+.s .ic{width:54px;height:54px;border-radius:50%;background:var(--sun);border:2.5px solid var(--br);display:grid;place-items:center}
+.s .ic svg{width:28px;height:28px;color:var(--br)}
+.s h3{font-family:Shrikhand;font-weight:400;font-size:1.5rem;line-height:1.1}
+.s p{color:var(--soft);font-size:.97rem}
+
+/* walk-in */
+.wi{background:var(--o2);color:var(--white);border-top:3px solid var(--br);border-bottom:3px solid var(--br);position:relative;overflow:hidden}
+.wi::before{content:"";position:absolute;right:-140px;top:-140px;width:420px;height:420px;border-radius:50%;background:repeating-radial-gradient(circle,rgba(255,255,255,.12) 0 18px,transparent 18px 36px)}
+.wi .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:40px;align-items:center;position:relative}
+.wi .h2{color:var(--white);text-shadow:4px 4px 0 var(--o3)}
+.wi p{font-size:1.15rem;margin:18px 0 28px;color:#ffe9d9;max-width:44ch}
+.wi .opts{display:grid;gap:14px}
+.opt{background:var(--sun);color:var(--br);border:2.5px solid var(--br);border-radius:22px;padding:20px 22px;display:flex;gap:16px;align-items:center}
+.opt b{font-family:Shrikhand;font-weight:400;font-size:1.35rem;display:block}
+.opt .em{font-size:2rem}
+
+/* photos */
+.pics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:40px}
+.pics figure{border:2.5px solid var(--br);border-radius:200px 200px 24px 24px;overflow:hidden;background:var(--o1)}
+.pics figure:nth-child(2){border-radius:24px;transform:translateY(30px)}
+.pics img{width:100%;aspect-ratio:3/4;object-fit:cover}
+
+/* reviews + hours */
+.duo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}
+.card{border:2.5px solid var(--br);border-radius:30px;padding:clamp(24px,4vw,40px);background:var(--white)}
+.rating{display:flex;align-items:center;gap:18px;margin:16px 0 22px}
+.rating b{font-family:Shrikhand;font-weight:400;font-size:4.4rem;line-height:1;color:var(--o3)}
+.rating span{font-weight:700;line-height:1.3}
+.rating .st{color:var(--o2);font-size:1.3rem;letter-spacing:2px;display:block}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chips span{background:var(--sun);border:2px solid var(--br);border-radius:999px;padding:8px 16px;font-weight:700;font-size:.95rem}
+.hrs{margin-top:16px}
+.hrs div{display:flex;justify-content:space-between;padding:11px 0;border-bottom:2px dotted rgba(74,42,28,.25);font-weight:500}
+.hrs div.off{color:var(--soft)}
+.hrs div.today{color:var(--o3);font-weight:700}
+
+.contact{text-align:center}
+.contact .h2{margin-bottom:16px}
+.contact p{max-width:46ch;margin:0 auto 30px;color:var(--soft)}
+.contact .ctas{justify-content:center}
+.addr{margin-top:34px;display:flex;justify-content:center;gap:12px 34px;flex-wrap:wrap;font-weight:700}
+.addr a{text-decoration:none;border-bottom:2px solid var(--o2)}
+footer{background:var(--br);color:#e9d5bd;font-size:.9rem}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:22px 0}
+footer a{color:var(--o1)}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:900px){
+  nav a:not(.btn){display:none}
+  .hero .wrap,.wi .wrap,.duo{grid-template-columns:minmax(0,1fr)}
+  .sunset{max-width:400px}
+  .svc{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:560px){
+  section{padding:70px 0}
+  .svc{grid-template-columns:minmax(0,1fr)}
+  .pics{grid-template-columns:1fr 1fr}
+  .pics figure:nth-child(3){display:none}
+  .pics figure:nth-child(2){transform:none}
+  .walk{width:100px;height:100px;font-size:.72rem}
+  .walk b{font-size:1.1rem}
+  .logo{font-size:1.4rem}
+  header .btn{padding:9px 14px}
+}
+</style>
+</head>
+<body>
+<div class="stripes"></div>
+<header><div class="wrap">
+  <a class="logo" href="#">Las Palmas<small>Herenkapper · Purmerend</small></a>
+  <nav>
+    <a href="#diensten">Diensten</a>
+    <a href="#tijden">Openingstijden</a>
+    <a class="btn" href="tel:+31626200623">Bel voor afspraak</a>
+  </nav>
+</div></header>
+
+<section class="hero" style="padding-bottom:0"><div class="wrap">
+  <div class="reveal">
+    <h1><span>Kapsalon</span>Las Palmas</h1>
+    <p>Dé herenkapper aan het Tramplein in Purmerend. Strak geknipt, netjes afgewerkt. Kom langs met of zonder afspraak.</p>
+    <div class="ctas">
+      <a class="btn" href="tel:+31626200623"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>06 26 20 06 23</a>
+      <a class="btn y" href="#tijden">Openingstijden</a>
+    </div>
+  </div>
+  <div class="sunset reveal">
+    <div class="disc"><img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=800&q=70" alt="Kapper aan het werk"></div>
+    <svg class="palm" viewBox="0 0 200 260" fill="currentColor"><path d="M100 260c-4-60 0-110 8-150l6 1c-7 40-10 90-6 149z" fill="#4a2a1c"/><path d="M108 108c-30-30-70-36-100-20 30-6 62 2 92 26zM110 104c-6-40-34-70-70-80 30 16 52 44 62 82zM112 104c16-38 50-58 86-56-32 6-60 28-78 60zM112 110c34-18 70-14 88 8-26-12-56-12-84 0zM108 112c-26 6-50 26-58 54 14-24 34-42 60-48z"/></svg>
+    <svg class="palm r" viewBox="0 0 200 260" fill="currentColor"><path d="M100 260c-4-60 0-110 8-150l6 1c-7 40-10 90-6 149z" fill="#4a2a1c"/><path d="M108 108c-30-30-70-36-100-20 30-6 62 2 92 26zM110 104c-6-40-34-70-70-80 30 16 52 44 62 82zM112 104c16-38 50-58 86-56-32 6-60 28-78 60zM112 110c34-18 70-14 88 8-26-12-56-12-84 0z"/></svg>
+    <div class="walk"><div><b>Walk-in</b>welkom,<br>ook zonder<br>afspraak</div></div>
+  </div>
+</div>
+<div class="ticker" aria-hidden="true"><div>Knippen <span>✦</span> Fade <span>✦</span> Baard <span>✦</span> Tondeuse <span>✦</span> Met of zonder afspraak <span>✦</span> Tramplein 4 <span>✦</span> Knippen <span>✦</span> Fade <span>✦</span> Baard <span>✦</span> Tondeuse <span>✦</span> Met of zonder afspraak <span>✦</span> Tramplein 4 <span>✦</span></div></div>
+</section>
+
+<section id="diensten"><div class="wrap">
+  <div class="reveal"><span class="lbl">Wat we doen</span><h2 class="h2" style="margin-top:10px">Fris de deur <em>uit</em></h2></div>
+  <div class="svc reveal">
+    <div class="s"><div class="ic"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="21" r="3.5"/><circle cx="15" cy="21" r="3.5"/><path d="M9.5 18.5L23 4M12.5 18.5L5 5"/></svg></div><h3>Knippen</h3><p>Klassiek of modern. Vertel wat je wilt, wij zorgen dat het strak zit.</p></div>
+    <div class="s"><div class="ic"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6h16v8H6z"/><path d="M8 14v8M12 14v8M16 14v8M20 14v8"/></svg></div><h3>Fade</h3><p>Van skin fade tot low fade, mooi strak in de overloop.</p></div>
+    <div class="s"><div class="ic"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 9c3 13 15 13 18 0"/><path d="M9 15c2 4 8 4 10 0"/></svg></div><h3>Baard</h3><p>Trimmen en contouren, zodat je baard er weer netjes bij staat.</p></div>
+    <div class="s"><div class="ic"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2"><circle cx="14" cy="9" r="4"/><path d="M7 24c1-5 13-5 14 0"/></svg></div><h3>Op maat</h3><p>Iets speciaals in gedachten? Neem een foto mee, dan maken we het na.</p></div>
+  </div>
+</div></section>
+
+<section class="wi"><div class="wrap">
+  <div class="reveal">
+    <h2 class="h2">Gewoon even binnenlopen?</h2>
+    <p>Bij Las Palmas hoeft dat geen probleem te zijn. Heb je liever zekerheid? Bel of app dan even voor een afspraak.</p>
+    <a class="btn w" href="tel:+31626200623">Bel 06 26 20 06 23</a>
+  </div>
+  <div class="opts reveal">
+    <div class="opt"><span class="em">🚶</span><div><b>Zonder afspraak</b>Loop binnen en schuif aan</div></div>
+    <div class="opt"><span class="em">📞</span><div><b>Met afspraak</b>Bel voor een vaste tijd</div></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="reveal" style="text-align:center"><span class="lbl">Uit de stoel</span><h2 class="h2" style="margin-top:10px">Strak <em>werk</em></h2></div>
+  <div class="pics reveal">
+    <figure><img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=700&q=70" alt="Getextureerd herenkapsel" loading="lazy"></figure>
+    <figure><img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=700&q=70" alt="Kappersgereedschap" loading="lazy"></figure>
+    <figure><img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=700&q=70" alt="Baard trimmen" loading="lazy"></figure>
+  </div>
+</div></section>
+
+<section id="tijden" style="padding-top:60px"><div class="wrap duo">
+  <div class="card reveal">
+    <span class="lbl">Klanten zeggen</span>
+    <div class="rating"><b>4,8</b><span><span class="st">★★★★★</span>121 reviews<br>op Google</span></div>
+    <div class="chips"><span>“Top”</span><span>“Super”</span><span>“Tevreden met mijn knipbeurt”</span><span>“Professioneel”</span></div>
+  </div>
+  <div class="card reveal">
+    <span class="lbl">Openingstijden</span>
+    <div class="hrs" id="hrs">
+      <div data-d="1"><span>Maandag</span><span>13:00 – 18:00</span></div>
+      <div data-d="2"><span>Dinsdag</span><span>09:00 – 18:00</span></div>
+      <div data-d="3"><span>Woensdag</span><span>09:00 – 18:00</span></div>
+      <div data-d="4"><span>Donderdag</span><span>09:00 – 18:00</span></div>
+      <div data-d="5"><span>Vrijdag</span><span>09:00 – 18:00</span></div>
+      <div data-d="6"><span>Zaterdag</span><span>08:30 – 17:00</span></div>
+      <div data-d="0" class="off"><span>Zondag</span><span>Gesloten</span></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="contact"><div class="wrap reveal">
+  <span class="lbl">Tot zo!</span>
+  <h2 class="h2">Tijd voor een <em>frisse</em> coupe</h2>
+  <p>Kom langs aan het Tramplein, of bel even voor een afspraak.</p>
+  <div class="ctas">
+    <a class="btn" href="tel:+31626200623">Bel voor afspraak</a>
+    <a class="btn y" href="https://www.instagram.com/las_palmas_purmerend_/" target="_blank" rel="noopener">Volg op Instagram</a>
+  </div>
+  <div class="addr"><span>📍 <a href="https://www.google.com/maps/search/?api=1&query=Kapsalon+Las+Palmas+Tramplein+4+Purmerend" target="_blank" rel="noopener">Tramplein 4, 1441 CG Purmerend</a></span><span>📞 06 26 20 06 23</span><span>📸 @las_palmas_purmerend_</span></div>
+</div></section>
+
+<div class="stripes"></div>
+<footer><div class="wrap"><span>© 2026 Kapsalon Las Palmas · Purmerend</span><span>Concept door <a href="https://byxavio.nl">byXavio</a></span></div></footer>
+
+<script>
+const d=new Date().getDay();const t=document.querySelector('#hrs [data-d="'+d+'"]');if(t)t.classList.add('today');
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

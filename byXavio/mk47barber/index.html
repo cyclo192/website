@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>MK47 Barber · Zaandam</title>
+<meta name="description" content="MK47 Barber aan de Zuiddijk in Zaandam. Knippen, baard, hot towel en klassieke scheerbeurt bij Mazlum. Koffie bij binnenkomst, gratis parkeren voor de deur.">
+<meta name="theme-color" content="#0e0d0b">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Manrope:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0e0d0b;--bg2:#16140f;--line:#2c271d;--brass:#c9a35b;--brass2:#e6c886;--cream:#efe6d4;--mute:#9c927f}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font:400 16.5px/1.75 Manrope,system-ui,sans-serif;color:var(--cream);background:var(--bg);overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{width:min(1160px,100% - 40px);margin-inline:auto}
+.cz{font-family:Cinzel,Georgia,serif;font-weight:500;letter-spacing:.04em}
+.k{font-size:.72rem;letter-spacing:.38em;text-transform:uppercase;color:var(--brass);font-weight:600}
+h1,h2,h3{text-wrap:balance}
+.pattern{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56'%3E%3Cpath d='M28 4l24 24-24 24L4 28z' fill='none' stroke='%23c9a35b' stroke-opacity='.09'/%3E%3Ccircle cx='28' cy='28' r='3' fill='%23c9a35b' fill-opacity='.08'/%3E%3C/svg%3E")}
+
+header{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+header.s{background:rgba(14,13,11,.92);backdrop-filter:blur(8px);border-color:var(--line)}
+header .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:78px}
+header nav{display:flex;gap:28px}
+header nav a{text-decoration:none;font-size:.78rem;letter-spacing:.24em;text-transform:uppercase;color:var(--mute)}
+header nav a:hover{color:var(--brass2)}
+.logo{font-family:Cinzel;font-weight:700;font-size:1.5rem;letter-spacing:.18em;text-decoration:none;text-align:center}
+.logo b{color:var(--brass)}
+.hbtn{justify-self:end}
+.btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-size:.78rem;letter-spacing:.24em;text-transform:uppercase;font-weight:700;padding:15px 26px;border:1px solid var(--brass);color:var(--bg);background:var(--brass);transition:background .25s,color .25s}
+.btn:hover{background:transparent;color:var(--brass2)}
+.btn.ghost{background:transparent;color:var(--brass2)}
+.btn.ghost:hover{background:var(--brass);color:var(--bg)}
+.btn svg{width:18px;height:18px;flex:none}
+header .btn{padding:11px 18px;font-size:.7rem}
+
+.hero{min-height:100svh;display:grid;place-items:center;text-align:center;position:relative;padding:120px 0 80px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:url("https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1800&q=70") center/cover;opacity:.32;filter:grayscale(.3) sepia(.25)}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(14,13,11,.35),var(--bg) 78%)}
+.hero .in{position:relative;z-index:2;display:grid;justify-items:center;gap:22px}
+.crest{width:96px;height:96px}
+.hero h1{font-family:Cinzel;font-weight:500;font-size:clamp(3.4rem,11vw,8.6rem);line-height:.92;letter-spacing:.06em}
+.hero h1 span{display:block;font-size:.32em;letter-spacing:.5em;color:var(--brass2);margin-top:14px;padding-left:.5em}
+.hero p{max-width:46ch;color:#cfc4ae;font-size:1.05rem}
+.rule{display:flex;align-items:center;gap:14px;color:var(--brass)}
+.rule::before,.rule::after{content:"";width:60px;height:1px;background:var(--brass)}
+.ctas{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.meta{display:flex;gap:28px;flex-wrap:wrap;justify-content:center;margin-top:12px;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+.meta b{color:var(--brass2);font-weight:600}
+
+section{padding:110px 0}
+.title{text-align:center;display:grid;gap:14px;justify-items:center;margin-bottom:60px}
+.title h2{font-family:Cinzel;font-weight:500;font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.05}
+.title p{max-width:52ch;color:var(--mute)}
+
+/* ritual */
+.ritual{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.r{padding:38px 26px;border-left:1px solid var(--line);position:relative}
+.r:first-child{border-left:0}
+.r .n{font-family:Cinzel;font-size:3rem;color:var(--brass);line-height:1;opacity:.85}
+.r h3{font-family:Cinzel;font-weight:500;font-size:1.25rem;margin:16px 0 8px;letter-spacing:.06em}
+.r p{color:var(--mute);font-size:.96rem}
+.r:hover{background:var(--bg2)}
+
+/* split */
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;align-items:stretch;border:1px solid var(--line)}
+.split .ph{position:relative;min-height:520px}
+.split .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(.15) sepia(.15)}
+.split .tx{padding:clamp(32px,6vw,72px);display:grid;align-content:center;gap:20px;background:var(--bg2)}
+.split h2{font-family:Cinzel;font-weight:500;font-size:clamp(2rem,4.4vw,3.2rem);line-height:1.08}
+.split p{color:#cfc4ae}
+.list{list-style:none;display:grid;gap:12px;margin-top:6px}
+.list li{display:flex;gap:14px;align-items:baseline;border-bottom:1px dashed var(--line);padding-bottom:12px}
+.list li::before{content:"◆";color:var(--brass);font-size:.7rem}
+
+/* services */
+.svc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.card{border:1px solid var(--line);padding:34px 28px;position:relative;background:linear-gradient(180deg,var(--bg2),var(--bg));transition:border-color .3s,transform .3s}
+.card:hover{border-color:var(--brass);transform:translateY(-4px)}
+.card::before{content:"";position:absolute;inset:8px;border:1px solid rgba(201,163,91,.12);pointer-events:none}
+.card svg{width:40px;height:40px;color:var(--brass);margin-bottom:18px}
+.card h3{font-family:Cinzel;font-weight:500;font-size:1.3rem;margin-bottom:8px;letter-spacing:.04em}
+.card p{color:var(--mute);font-size:.96rem}
+.card.wide{grid-column:span 3;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:26px;align-items:center;border-color:var(--brass)}
+.card.wide h3{font-size:1.6rem}
+.card.wide::before{border-color:rgba(201,163,91,.3)}
+
+/* gallery */
+.gal{display:grid;grid-template-columns:1.2fr .8fr 1fr;grid-template-rows:260px 260px;gap:14px}
+.gal img{width:100%;height:100%;object-fit:cover;filter:grayscale(.2) sepia(.15);border:1px solid var(--line)}
+.gal img:nth-child(1){grid-row:span 2}
+.gal img:nth-child(4){grid-column:span 2}
+.iglink{display:flex;justify-content:center;margin-top:30px}
+
+/* quotes */
+.quotes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+blockquote{border-top:1px solid var(--brass);padding-top:26px}
+blockquote p{font-family:Cinzel;font-size:1.12rem;line-height:1.55;letter-spacing:.01em}
+blockquote cite{display:block;margin-top:16px;font-style:normal;font-size:.74rem;letter-spacing:.26em;text-transform:uppercase;color:var(--mute)}
+.score{display:flex;justify-content:center;align-items:center;gap:18px;margin-top:54px;color:var(--mute);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;flex-wrap:wrap;text-align:center}
+.score b{font-family:Cinzel;font-size:2.6rem;color:var(--brass2);letter-spacing:0;font-weight:500}
+
+/* visit */
+.visit{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:start}
+.hours{width:100%;border-collapse:collapse}
+.hours td{padding:13px 0;border-bottom:1px solid var(--line)}
+.hours td:last-child{text-align:right;color:var(--brass2)}
+.hours tr.off td:last-child{color:var(--mute)}
+.info{display:grid;gap:22px}
+.info dt{font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--brass)}
+.info dd{font-family:Cinzel;font-size:1.3rem;margin-top:4px}
+.info dd a{text-decoration:none;border-bottom:1px solid var(--brass)}
+.perks{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+.perks span{border:1px solid var(--line);padding:6px 14px;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:#cfc4ae}
+
+.final{text-align:center;border-top:1px solid var(--line)}
+.final h2{font-family:Cinzel;font-weight:500;font-size:clamp(2.4rem,6vw,4.6rem);line-height:1;margin:18px 0 26px}
+footer{border-top:1px solid var(--line);color:var(--mute);font-size:.85rem}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:24px 0}
+footer a{color:var(--brass2)}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s,transform .8s}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:900px){
+  header .wrap{grid-template-columns:auto 1fr;gap:12px}
+  header nav{display:none}
+  .logo{text-align:left;font-size:1.25rem}
+  .ritual{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .r:nth-child(3){border-left:0}
+  .r:nth-child(n+3){border-top:1px solid var(--line)}
+  .split,.visit{grid-template-columns:minmax(0,1fr)}
+  .split .ph{min-height:340px}
+  .svc,.quotes{grid-template-columns:minmax(0,1fr)}
+  .card.wide{grid-column:auto;grid-template-columns:minmax(0,1fr)}
+  .gal{grid-template-columns:1fr 1fr;grid-template-rows:200px 200px 200px}
+  .gal img:nth-child(1){grid-row:span 1;grid-column:span 2}
+  .gal img:nth-child(4){grid-column:span 2}
+}
+@media (max-width:520px){
+  section{padding:80px 0}
+  .ritual{grid-template-columns:minmax(0,1fr)}
+  .r{border-left:0!important;border-top:1px solid var(--line)}
+  .r:first-child{border-top:0}
+  .meta{gap:12px;flex-direction:column}
+  header .btn{padding:10px 12px;letter-spacing:.14em}
+}
+</style>
+</head>
+<body class="pattern">
+
+<header id="hd"><div class="wrap">
+  <nav><a href="#ritueel">Ritueel</a><a href="#behandelingen">Behandelingen</a><a href="#bezoek">Bezoek</a></nav>
+  <a class="logo" href="#">MK<b>47</b></a>
+  <a class="btn hbtn" href="https://m.me/100093585562626" target="_blank" rel="noopener">Afspraak</a>
+</div></header>
+
+<section class="hero"><div class="in wrap">
+  <svg class="crest" viewBox="0 0 100 100" fill="none" stroke="#c9a35b" stroke-width="1.6"><path d="M50 4l42 46-42 46L8 50z"/><path d="M50 16l31 34-31 34-31-34z" stroke-opacity=".5"/><path d="M38 36l24 28M62 36L38 64" stroke-width="2.2"/><circle cx="35" cy="33" r="5"/><circle cx="65" cy="33" r="5"/></svg>
+  <span class="k">Barbershop · Zaandam</span>
+  <h1>MK47<span>Barber</span></h1>
+  <div class="rule"><span class="k" style="letter-spacing:.3em">Mazlum</span></div>
+  <p>Knippen, baard, hot towel en de klassieke scheerbeurt. Je loopt binnen, krijgt een kop koffie en kunt achterover leunen. Mazlum regelt de rest.</p>
+  <div class="ctas">
+    <a class="btn" href="https://m.me/100093585562626" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.91 1.19 5.44 3.14 7.17.16.14.26.35.27.57l.05 1.78a.8.8 0 0 0 1.12.71l1.98-.87c.17-.08.36-.09.53-.05.91.25 1.87.38 2.91.38 5.64 0 10-4.13 10-9.7S17.64 2 12 2zm6 7.46-2.94 4.66a1.5 1.5 0 0 1-2.17.4l-2.34-1.75a.6.6 0 0 0-.72 0l-3.16 2.4c-.42.32-.97-.18-.69-.63l2.94-4.66a1.5 1.5 0 0 1 2.17-.4l2.34 1.75a.6.6 0 0 0 .72 0l3.16-2.4c.42-.32.97.18.69.63z"/></svg>Plan je afspraak</a>
+    <a class="btn ghost" href="tel:+31649744888">06 49 74 48 88</a>
+  </div>
+  <div class="meta"><span><b>4,9★</b> · 139 Google reviews</span><span><b>23K</b> volgers op Instagram</span><span>Zuiddijk 205A</span></div>
+</div></section>
+
+<section id="ritueel"><div class="wrap">
+  <div class="title reveal"><span class="k">Het ritueel</span><h2>Geen knipbeurt.<br>Een moment voor jezelf.</h2><p>Elke stoel begint hetzelfde: rustig, met aandacht en zonder haast.</p></div>
+  <div class="ritual reveal">
+    <div class="r"><div class="n">I</div><h3>Koffie</h3><p>Je wordt ontvangen met een kop koffie of thee. Even landen.</p></div>
+    <div class="r"><div class="n">II</div><h3>Advies</h3><p>Mazlum stelt de juiste vragen, zodat je precies krijgt wat bij je past.</p></div>
+    <div class="r"><div class="n">III</div><h3>Het werk</h3><p>Schaar, tondeuse en mes. Strak, verzorgd en tot in het detail.</p></div>
+    <div class="r"><div class="n">IV</div><h3>Hot towel</h3><p>Een warme handdoek en de juiste verzorging. Je loopt scherp naar buiten.</p></div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <div class="split reveal">
+    <div class="ph"><img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=1100&q=70" alt="Baard wordt strak getrimd" loading="lazy"></div>
+    <div class="tx">
+      <span class="k">De barbier</span>
+      <h2>Vakmanschap van de oude school</h2>
+      <p>Bij MK47 draait alles om het klassieke barbiersvak. Van een strakke fade tot een verzorgde baard en een scheerbeurt met warm schuim, alles gebeurt met de hand en met aandacht.</p>
+      <ul class="list">
+        <li>Engelstalig? Geen probleem, Mazlum helpt je ook in het Engels</li>
+        <li>Advies over haarverzorging voor thuis</li>
+        <li>Gratis parkeren direct voor de deur</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<section id="behandelingen" style="padding-top:20px"><div class="wrap">
+  <div class="title reveal"><span class="k">Behandelingen</span><h2>Wat je kunt verwachten</h2></div>
+  <div class="svc reveal">
+    <div class="card"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10" cy="30" r="5"/><circle cx="22" cy="30" r="5"/><path d="M13 26L32 6M19 26L8 8"/></svg><h3>Knippen</h3><p>Van een klassieke coupe tot een strakke fade. Precies zoals jij hem wilt.</p></div>
+    <div class="card"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 12c4 18 20 18 24 0"/><path d="M12 20c2 6 14 6 16 0"/><path d="M20 26v8"/></svg><h3>Baard</h3><p>Trimmen, contouren en verzorgen. Een baard die er altijd goed uitziet.</p></div>
+    <div class="card"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 30L28 8l6 6-22 22z"/><path d="M24 12l6 6"/></svg><h3>Scheerbeurt</h3><p>Klassiek scheren met warm schuim en mes. Ouderwets glad.</p></div>
+    <div class="card"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 26h24v6H8z"/><path d="M14 22c0-4 4-4 4-8M22 22c0-4 4-4 4-8"/></svg><h3>Hot towel</h3><p>Warme handdoek die je huid opent en ontspant. Het perfecte begin of einde.</p></div>
+    <div class="card"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="20" cy="18" r="9"/><path d="M14 32c2-3 10-3 12 0"/></svg><h3>Gezichtsverzorging</h3><p>Reinigen en verzorgen, voor een frisse en verzorgde huid.</p></div>
+    <div class="card"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 34V14l10-8 10 8v20"/><path d="M16 34V22h8v12"/></svg><h3>Haarverzorging</h3><p>Behandeling en advies, zodat je kapsel thuis ook goed blijft zitten.</p></div>
+    <div class="card wide"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" style="margin:0"><path d="M20 4l16 16-16 16L4 20z"/><path d="M20 12v16M12 20h16"/></svg><div><h3>Private cut</h3><p>De stoel helemaal voor jou alleen, buiten de drukte om. Vraag naar de mogelijkheden.</p></div><a class="btn ghost" href="https://m.me/100093585562626" target="_blank" rel="noopener">Vraag aan</a></div>
+  </div>
+</div></section>
+
+<section style="padding-top:20px"><div class="wrap">
+  <div class="title reveal"><span class="k">Uit de stoel</span><h2>Het werk</h2></div>
+  <div class="gal reveal">
+    <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=900&q=70" alt="Strakke coupe met textuur" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=700&q=70" alt="Gereedschap van de barbier" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1512690459411-b9245aed614b?w=700&q=70" alt="Leren barbiersstoel" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1200&q=70" alt="Barbershop interieur" loading="lazy">
+  </div>
+  <div class="iglink"><a class="btn ghost" href="https://www.instagram.com/mazlum_mk47/" target="_blank" rel="noopener">Meer op Instagram · @mazlum_mk47</a></div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="title reveal"><span class="k">Wat klanten zeggen</span><h2>139 keer bijna perfect</h2></div>
+  <div class="quotes reveal">
+    <blockquote><p>“De beste barber die ik in Nederland ben tegengekomen. Hij weet precies wat hij doet.”</p><cite>Google review</cite></blockquote>
+    <blockquote><p>“Koffie bij binnenkomst en nul stress. Je kunt gewoon achterover leunen en hem vertrouwen. Een 10/10.”</p><cite>Google review</cite></blockquote>
+    <blockquote><p>“Vakmanschap en een warme sfeer. Elk bezoek is een plezier en je loopt er scherp weer uit.”</p><cite>Google review</cite></blockquote>
+  </div>
+  <div class="score reveal"><b>4,9</b><span>gemiddeld uit 139 reviews op Google</span></div>
+</div></section>
+
+<section id="bezoek" style="background:var(--bg2);border-top:1px solid var(--line)"><div class="wrap visit">
+  <div class="reveal">
+    <span class="k">Openingstijden</span>
+    <table class="hours" style="margin-top:18px">
+      <tr class="off"><td>Maandag</td><td>Gesloten</td></tr>
+      <tr><td>Dinsdag</td><td>09:00 – 18:00</td></tr>
+      <tr><td>Woensdag</td><td>09:00 – 18:00</td></tr>
+      <tr><td>Donderdag</td><td>09:00 – 18:00</td></tr>
+      <tr><td>Vrijdag</td><td>09:00 – 18:00</td></tr>
+      <tr><td>Zaterdag</td><td>09:00 – 18:00</td></tr>
+      <tr class="off"><td>Zondag</td><td>Gesloten</td></tr>
+    </table>
+  </div>
+  <div class="info reveal">
+    <div><dt>Adres</dt><dd>Zuiddijk 205A<br>1501 CJ Zaandam</dd></div>
+    <div><dt>Telefoon</dt><dd><a href="tel:+31649744888">06 49 74 48 88</a></dd></div>
+    <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/mazlum_mk47/" target="_blank" rel="noopener">@mazlum_mk47</a></dd></div>
+    <div class="perks"><span>Gratis parkeren</span><span>Koffie &amp; thee</span><span>English spoken</span></div>
+  </div>
+</div></section>
+
+<section class="final"><div class="wrap reveal">
+  <span class="k">Tijd voor een frisse coupe?</span>
+  <h2>Neem plaats.</h2>
+  <div class="ctas">
+    <a class="btn" href="https://m.me/100093585562626" target="_blank" rel="noopener">Stuur een bericht</a>
+    <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=MK47+Barber+Zuiddijk+205A+Zaandam" target="_blank" rel="noopener">Route</a>
+  </div>
+</div></section>
+
+<footer><div class="wrap"><span>© 2026 MK47 Barber · Zaandam</span><span>Concept door <a href="https://byxavio.nl">byXavio</a></span></div></footer>
+
+<script>
+const hd=document.getElementById('hd');addEventListener('scroll',()=>hd.classList.toggle('s',scrollY>40),{passive:true});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

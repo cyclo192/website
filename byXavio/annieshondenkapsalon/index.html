@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Annie's Hondenkapsalon · Heerhugowaard</title>
+<meta name="description" content="Annie's Hondenkapsalon aan de Middenweg in Heerhugowaard. Wassen, knippen en trimmen met alle aandacht voor het welzijn van je hond.">
+<meta name="theme-color" content="#f3f1e4">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Figtree:wght@400;500;700&family=Caveat+Brush&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f3f1e4;--sage:#7d9a7a;--sage2:#557456;--deep:#2f3d2f;--butter:#f4d06f;--blush:#efb8a6;--soft:#5f6b5c;--white:#fffdf6}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{overflow-x:clip;font:400 17px/1.7 Figtree,system-ui,sans-serif;color:var(--deep);background:var(--paper);overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{width:min(1140px,100% - 40px);margin-inline:auto}
+.ys{font-family:"Young Serif",Georgia,serif;font-weight:400}
+.hand{font-family:"Caveat Brush",cursive;font-weight:400}
+h1,h2,h3{text-wrap:balance;font-family:"Young Serif",Georgia,serif;font-weight:400}
+.under{position:relative;white-space:nowrap}
+.under svg{position:absolute;left:-2%;bottom:-.18em;width:104%;height:.4em;color:var(--butter);z-index:-1}
+
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:84px;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo svg{width:40px;height:40px;color:var(--sage2)}
+.logo b{font-family:"Young Serif";font-weight:400;font-size:1.3rem;line-height:1}
+.logo small{display:block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);margin-top:3px}
+nav{display:flex;gap:24px;align-items:center}
+nav a{text-decoration:none;font-weight:500}
+nav a:hover{color:var(--sage2)}
+.btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;padding:15px 26px;border-radius:16px;background:var(--sage2);color:var(--white);transition:transform .2s,background .2s}
+.btn:hover{background:var(--deep);transform:translateY(-2px)}
+.btn.lt{background:var(--white);color:var(--deep);box-shadow:inset 0 0 0 2px var(--deep)}
+.btn.y{background:var(--butter);color:var(--deep)}
+.btn svg{width:20px;height:20px}
+header .btn{padding:10px 18px}
+
+.hero{padding:30px 0 80px}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:50px;align-items:center}
+.hero .hand{font-size:1.8rem;color:var(--sage2)}
+.hero h1{font-size:clamp(2.8rem,6.4vw,5.2rem);line-height:1.02;margin:6px 0 20px;position:relative;z-index:1}
+.hero p{color:var(--soft);max-width:42ch;margin-bottom:30px;font-size:1.08rem}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.polas{position:relative;height:520px}
+.pola{position:absolute;background:var(--white);padding:12px 12px 46px;box-shadow:0 14px 30px rgba(47,61,47,.16);width:62%}
+.pola img{width:100%;aspect-ratio:1;object-fit:cover}
+.pola span{position:absolute;bottom:10px;left:0;right:0;text-align:center;font-family:"Caveat Brush";font-size:1.4rem}
+.pola.a{left:0;top:30px;transform:rotate(-6deg)}
+.pola.b{right:0;top:150px;transform:rotate(5deg);width:56%}
+.tape{position:absolute;top:-12px;left:50%;width:90px;height:26px;background:rgba(244,208,111,.75);transform:translateX(-50%) rotate(-3deg)}
+.paw{position:absolute;color:var(--blush)}
+.paw.p1{right:6%;top:0;width:60px;transform:rotate(18deg)}
+.paw.p2{left:8%;bottom:0;width:46px;transform:rotate(-20deg);color:var(--sage)}
+
+section{padding:96px 0}
+.center{text-align:center;max-width:640px;margin:0 auto 52px}
+.center .hand{font-size:1.6rem;color:var(--sage2)}
+.center h2{font-size:clamp(2.2rem,5vw,3.4rem);line-height:1.08;margin-top:4px}
+.center p{color:var(--soft);margin-top:14px}
+
+/* promise */
+.promise{background:var(--sage2);color:var(--white);border-radius:40px;margin-inline:max(12px,env(safe-area-inset-left,0px))}
+.promise .center .hand{color:var(--butter)}
+.promise .center p{color:#dbe7d8}
+.pr{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.pr div{background:rgba(255,253,246,.08);border:1.5px solid rgba(255,253,246,.25);border-radius:26px;padding:30px 26px}
+.pr svg{width:46px;height:46px;color:var(--butter);margin-bottom:14px}
+.pr h3{font-size:1.4rem;margin-bottom:8px}
+.pr p{color:#dbe7d8}
+
+/* treatments */
+.tr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.t{background:var(--white);border-radius:26px;padding:28px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:20px;align-items:start;border:1.5px solid #e2dfcc}
+.t .ico{width:62px;height:62px;border-radius:20px;display:grid;place-items:center;background:var(--butter)}
+.t:nth-child(2) .ico{background:var(--blush)}
+.t:nth-child(3) .ico{background:#cfe0cb}
+.t:nth-child(4) .ico{background:#e6dcf2}
+.t .ico svg{width:30px;height:30px;color:var(--deep)}
+.t h3{font-size:1.35rem;margin-bottom:4px}
+.t p{color:var(--soft)}
+
+/* day */
+.day{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:56px;align-items:center}
+.day img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:200px 200px 30px 30px}
+.steps{list-style:none;display:grid;gap:0;margin-top:24px;position:relative}
+.steps::before{content:"";position:absolute;left:21px;top:10px;bottom:10px;border-left:2px dashed var(--sage)}
+.steps li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:18px;padding:12px 0;position:relative}
+.steps li b{width:44px;height:44px;border-radius:50%;background:var(--paper);border:2px solid var(--sage2);display:grid;place-items:center;font-family:"Young Serif";font-weight:400;color:var(--sage2)}
+.steps h3{font-size:1.2rem}
+.steps p{color:var(--soft);font-size:.97rem}
+
+/* reviews */
+.revs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.note{background:var(--white);padding:30px 26px 26px;position:relative;box-shadow:0 10px 24px rgba(47,61,47,.1)}
+.note:nth-child(1){transform:rotate(-1.5deg);background:#fff8dc}
+.note:nth-child(2){transform:rotate(1deg)}
+.note:nth-child(3){transform:rotate(-.6deg);background:#fde9e2}
+.note p{font-size:1.04rem}
+.note .dog{font-family:"Caveat Brush";font-size:1.6rem;color:var(--sage2);margin-top:14px;display:block}
+.stars{text-align:center;margin-top:40px;font-weight:700}
+.stars b{font-family:"Young Serif";font-weight:400;font-size:2.6rem;color:var(--sage2);margin-right:8px}
+
+/* visit */
+.visit{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:24px}
+.v{background:var(--white);border-radius:30px;padding:clamp(24px,4vw,42px);border:1.5px solid #e2dfcc}
+.v h3{font-size:1.6rem;margin-bottom:16px}
+.v dl{display:grid;gap:18px}
+.v dt{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sage2);font-weight:700}
+.v dd{font-size:1.2rem;font-weight:500}
+.v dd a{text-decoration:none;border-bottom:2px solid var(--butter)}
+.hrs div{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1.5px dashed #ddd9c3}
+.hrs div.off{color:#9aa395}
+.v.y{background:var(--butter);border-color:var(--butter)}
+
+footer{padding:30px 0;color:var(--soft);font-size:.9rem}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+footer a{color:var(--sage2)}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:none}
+.note.reveal.in:nth-child(1){transform:rotate(-1.5deg)}
+.note.reveal.in:nth-child(2){transform:rotate(1deg)}
+.note.reveal.in:nth-child(3){transform:rotate(-.6deg)}
+
+@media (max-width:900px){
+  nav a:not(.btn){display:none}
+  .hero .wrap,.day,.visit{grid-template-columns:minmax(0,1fr)}
+  .polas{height:440px;max-width:480px;width:100%;margin:0 auto}
+  .pr,.revs{grid-template-columns:minmax(0,1fr)}
+  .tr{grid-template-columns:minmax(0,1fr)}
+  .day img{max-width:420px}
+}
+@media (max-width:520px){
+  section{padding:70px 0}
+  .polas{height:360px}
+  .promise{border-radius:28px}
+  .logo small{display:none}
+  .under{white-space:normal}
+  .under svg{left:0;width:100%}
+  .hero h1{font-size:2.6rem}
+  .t{grid-template-columns:minmax(0,1fr)}
+}
+</style>
+</head>
+<body>
+
+<header><div class="wrap">
+  <a class="logo" href="#"><svg viewBox="0 0 40 40" fill="currentColor"><ellipse cx="20" cy="26" rx="8" ry="7"/><ellipse cx="9" cy="17" rx="3.6" ry="4.6"/><ellipse cx="31" cy="17" rx="3.6" ry="4.6"/><ellipse cx="15" cy="9" rx="3.4" ry="4.4"/><ellipse cx="25" cy="9" rx="3.4" ry="4.4"/></svg><span><b>Annie's</b><small>Hondenkapsalon</small></span></a>
+  <nav>
+    <a href="#behandelingen">Behandelingen</a>
+    <a href="#bezoek">Contact</a>
+    <a class="btn" href="tel:+31643965939">Afspraak maken</a>
+  </nav>
+</div></header>
+
+<section class="hero" style="padding-top:20px"><div class="wrap">
+  <div class="reveal">
+    <span class="hand">Hondenkapsalon in Heerhugowaard</span>
+    <h1>Mooi, schoon en <span class="under">helemaal ontspannen<svg viewBox="0 0 200 20" preserveAspectRatio="none"><path d="M2 14c40-10 90-12 196-6" stroke="currentColor" stroke-width="12" fill="none" stroke-linecap="round"/></svg></span></h1>
+    <p>Bij Annie staat het welzijn van je hond altijd voorop. Ze neemt de tijd, let op signalen en zorgt dat je hond er prachtig uitziet én heerlijk ruikt.</p>
+    <div class="ctas">
+      <a class="btn" href="tel:+31643965939"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>06 43 96 59 39</a>
+      <a class="btn lt" href="https://www.instagram.com/annies_hondenkapsalon/" target="_blank" rel="noopener">Bekijk Instagram</a>
+    </div>
+  </div>
+  <div class="polas reveal">
+    <svg class="paw p1" viewBox="0 0 40 40" fill="currentColor"><ellipse cx="20" cy="26" rx="8" ry="7"/><ellipse cx="9" cy="17" rx="3.6" ry="4.6"/><ellipse cx="31" cy="17" rx="3.6" ry="4.6"/><ellipse cx="15" cy="9" rx="3.4" ry="4.4"/><ellipse cx="25" cy="9" rx="3.4" ry="4.4"/></svg>
+    <div class="pola a"><div class="tape"></div><img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?w=700&q=70" alt="Hond wordt geborsteld"><span>even borstelen…</span></div>
+    <div class="pola b"><div class="tape"></div><img src="https://images.unsplash.com/photo-1625316708582-7c38734be31d?w=700&q=70" alt="Vrolijke schnauzer"><span>klaar! ✨</span></div>
+    <svg class="paw p2" viewBox="0 0 40 40" fill="currentColor"><ellipse cx="20" cy="26" rx="8" ry="7"/><ellipse cx="9" cy="17" rx="3.6" ry="4.6"/><ellipse cx="31" cy="17" rx="3.6" ry="4.6"/><ellipse cx="15" cy="9" rx="3.4" ry="4.4"/><ellipse cx="25" cy="9" rx="3.4" ry="4.4"/></svg>
+  </div>
+</div></section>
+
+<section class="promise"><div class="wrap">
+  <div class="center reveal"><span class="hand">Waarom Annie?</span><h2>Je hond in goede handen</h2><p>Baasjes komen jaren terug. Niet alleen voor het resultaat, maar vooral om hoe hun hond behandeld wordt.</p></div>
+  <div class="pr reveal">
+    <div><svg viewBox="0 0 46 46" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 40S6 30 6 17a9 9 0 0 1 17-4 9 9 0 0 1 17 4c0 13-17 23-17 23z"/></svg><h3>Welzijn voorop</h3><p>Rust en geduld, ook voor drukke of spannende honden. Geen haast, wel aandacht.</p></div>
+    <div><svg viewBox="0 0 46 46" fill="none" stroke="currentColor" stroke-width="2"><circle cx="23" cy="23" r="16"/><circle cx="23" cy="23" r="5"/><path d="M23 3v6M23 37v6M3 23h6M37 23h6"/></svg><h3>Oog voor signalen</h3><p>Annie let op wat ze ziet en tipt je als er iets is waar je op moet letten.</p></div>
+    <div><svg viewBox="0 0 46 46" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="18" width="34" height="18" rx="5"/><path d="M12 18l4-8h14l4 8"/><circle cx="14" cy="36" r="3"/><circle cx="32" cy="36" r="3"/></svg><h3>Makkelijk bereikbaar</h3><p>De salon ligt makkelijk te bereiken en er is genoeg parkeerplek in de buurt.</p></div>
+  </div>
+</div></section>
+
+<section id="behandelingen"><div class="wrap">
+  <div class="center reveal"><span class="hand">Behandelingen</span><h2>Van neus tot staart verzorgd</h2></div>
+  <div class="tr reveal">
+    <div class="t"><div class="ico"><svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 14h20v6a6 6 0 0 1-6 6h-8a6 6 0 0 1-6-6z"/><path d="M9 10c0-3 2-3 2-6M15 10c0-3 2-3 2-6M21 10c0-3 2-3 2-6"/></svg></div><div><h3>Wassen &amp; föhnen</h3><p>Een heerlijke wasbeurt met passende shampoo. Daarna lekker droog en luchtig geföhnd.</p></div></div>
+    <div class="t"><div class="ico"><svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="22" r="4"/><circle cx="17" cy="22" r="4"/><path d="M10.5 19L25 4M14.5 19L6 5"/></svg></div><div><h3>Knippen &amp; trimmen</h3><p>Een mooie vacht in model, passend bij het ras en wat jij fijn vindt.</p></div></div>
+    <div class="t"><div class="ico"><svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 24L22 8"/><path d="M10 6v6M14 4v6M18 4v6"/><path d="M8 10l14 0"/></svg></div><div><h3>Borstelen &amp; ontwollen</h3><p>Losse onderwol eruit en klitten zacht weggewerkt. Fijn voor je hond, minder haren in huis.</p></div></div>
+    <div class="t"><div class="ico"><svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="15" cy="19" rx="6" ry="5"/><ellipse cx="7" cy="12" rx="2.6" ry="3.4"/><ellipse cx="23" cy="12" rx="2.6" ry="3.4"/><ellipse cx="11" cy="6" rx="2.4" ry="3.2"/><ellipse cx="19" cy="6" rx="2.4" ry="3.2"/></svg></div><div><h3>Nagels &amp; pootjes</h3><p>Nagels knippen en de haartjes tussen de voetzooltjes netjes bijgewerkt.</p></div></div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap day">
+  <div class="reveal"><img src="https://images.unsplash.com/photo-1558788353-f76d92427f16?w=900&q=70" alt="Gelukkige golden retriever" loading="lazy"></div>
+  <div class="reveal">
+    <span class="hand" style="font-size:1.6rem;color:var(--sage2)">Zo gaat een bezoekje</span>
+    <h2 style="font-size:clamp(2rem,4.4vw,3rem);line-height:1.1;margin-top:4px">Ontspannen van begin tot eind</h2>
+    <ol class="steps">
+      <li><b>1</b><div><h3>Even kennismaken</h3><p>Je vertelt wat je wilt en Annie maakt rustig kennis met je hond.</p></div></li>
+      <li><b>2</b><div><h3>Verwennen</h3><p>Wassen, föhnen, knippen of trimmen, in het tempo van je hond.</p></div></li>
+      <li><b>3</b><div><h3>Ophalen</h3><p>Je hond is klaar, ziet er prachtig uit en ruikt heerlijk.</p></div></li>
+    </ol>
+  </div>
+</div></section>
+
+<section style="padding-top:20px"><div class="wrap">
+  <div class="center reveal"><span class="hand">Van de baasjes</span><h2>Ze komen graag terug</h2></div>
+  <div class="revs">
+    <div class="note reveal"><p>“Ik breng Coco elke paar maanden naar Annie en ze komt altijd prachtig en heerlijk ruikend terug. Een lief en zorgzaam persoon.”</p><span class="dog">— baasje van Coco</span></div>
+    <div class="note reveal"><p>“Onze hond gaat nu al twee jaar naar Annie en we zijn super tevreden! Hij is op zijn gemak en ruikt heerlijk.”</p><span class="dog">— Google review</span></div>
+    <div class="note reveal"><p>“Brownie is best druk en dus geen makkelijke klant 😉 maar ze ziet er weer netjes en kort uit. Brownie komt graag terug.”</p><span class="dog">— baasje van Brownie</span></div>
+  </div>
+  <p class="stars reveal"><b>4,9</b>★★★★★ op Google</p>
+</div></section>
+
+<section id="bezoek" style="padding-top:20px"><div class="wrap visit">
+  <div class="v reveal">
+    <h3>Kom langs</h3>
+    <dl>
+      <div><dt>Adres</dt><dd>Middenweg 235A<br>1701 GC Heerhugowaard</dd></div>
+      <div><dt>Telefoon</dt><dd><a href="tel:+31643965939">06 43 96 59 39</a></dd></div>
+      <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/annies_hondenkapsalon/" target="_blank" rel="noopener">@annies_hondenkapsalon</a></dd></div>
+    </dl>
+    <div class="ctas" style="margin-top:26px"><a class="btn" href="tel:+31643965939">Bel voor een afspraak</a><a class="btn lt" href="https://www.google.com/maps/search/?api=1&query=Annie%27s+Honden+Kapsalon+Middenweg+235A+Heerhugowaard" target="_blank" rel="noopener">Route</a></div>
+  </div>
+  <div class="v y reveal">
+    <h3>Openingstijden</h3>
+    <div class="hrs">
+      <div><span>Maandag</span><span>09:00 – 17:00</span></div>
+      <div><span>Dinsdag</span><span>09:00 – 17:00</span></div>
+      <div><span>Woensdag</span><span>09:00 – 17:00</span></div>
+      <div><span>Donderdag</span><span>09:00 – 17:00</span></div>
+      <div class="off"><span>Vrijdag</span><span>Gesloten</span></div>
+      <div class="off"><span>Zaterdag</span><span>Gesloten</span></div>
+      <div class="off"><span>Zondag</span><span>Gesloten</span></div>
+    </div>
+  </div>
+</div></section>
+
+<footer><div class="wrap"><span>© 2026 Annie's Hondenkapsalon · Heerhugowaard</span><span>Concept door <a href="https://byxavio.nl">byXavio</a></span></div></footer>
+
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
