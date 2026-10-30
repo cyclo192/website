@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Kapsalon Qarizma · Beverwijk</title>
+<meta name="description" content="Kapsalon Qarizma in Beverwijk. Barbershop, 7 dagen per week open. Donderdag tot 21:00. Knippen, fade en baard, met of zonder afspraak.">
+<meta name="theme-color" content="#0b3236">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;800&family=Archivo:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--teal:#0b3236;--teal2:#124a4f;--tan:#ff7a29;--tan2:#ffb380;--ice:#eaf4f3;--soft:#9cbfbd}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font:400 17px/1.65 Archivo,system-ui,sans-serif;color:var(--ice);background:var(--teal);overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{width:min(1200px,100% - 40px);margin-inline:auto}
+h1,h2,h3{font-family:Syne,sans-serif;font-weight:800;text-wrap:balance;line-height:.95;letter-spacing:-.02em}
+.k{font-weight:700;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--tan)}
+.btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;padding:16px 26px;background:var(--tan);color:var(--teal);border-radius:12px;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-2px);background:var(--tan2)}
+.btn.o{background:transparent;color:var(--ice);box-shadow:inset 0 0 0 2px var(--ice)}
+.btn svg{width:20px;height:20px}
+
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:80px;gap:14px}
+.logo{text-decoration:none;font-family:Syne;font-weight:800;font-size:1.6rem;letter-spacing:-.02em}
+.logo b{color:var(--tan)}
+.live{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:.9rem;background:var(--teal2);padding:8px 14px;border-radius:999px}
+.live i{width:9px;height:9px;border-radius:50%;background:#3ddc84;box-shadow:0 0 0 0 #3ddc84;animation:p 1.8s infinite}
+.live.closed i{background:#ff5d5d;animation:none}
+@keyframes p{70%{box-shadow:0 0 0 10px transparent}}
+
+.hero{padding:40px 0 80px}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:40px;align-items:center}
+.seven{font-family:Syne;font-weight:800;font-size:clamp(8rem,26vw,20rem);line-height:.8;letter-spacing:-.06em;color:var(--tan)}
+.seven span{color:var(--ice);font-size:.42em;letter-spacing:-.02em;display:inline-block;vertical-align:top;margin-top:.15em}
+.hero h1{font-size:clamp(2.2rem,5vw,3.8rem);margin:18px 0 18px}
+.hero p{color:var(--soft);font-size:1.1rem;max-width:44ch;margin-bottom:28px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.himg{position:relative}
+.himg img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:24px}
+.himg .st{position:absolute;left:-18px;top:24px;background:var(--ice);color:var(--teal);border-radius:16px;padding:12px 16px;font-weight:700;line-height:1.2}
+.himg .st b{display:block;font-family:Syne;font-size:2rem;color:var(--tan)}
+
+/* week strip */
+.week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px;margin-top:10px}
+.day{background:var(--teal2);border-radius:16px;padding:18px 12px;text-align:center;border:2px solid transparent}
+.day b{display:block;font-family:Syne;font-size:1.5rem}
+.day span{font-size:.85rem;color:var(--soft)}
+.day.late{background:var(--tan);color:var(--teal)}
+.day.late span{color:var(--teal)}
+.day.today{border-color:var(--ice)}
+.weeknote{margin-top:16px;color:var(--soft)}
+
+section{padding:96px 0}
+.sh{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:44px}
+.sh h2{font-size:clamp(2.6rem,6vw,4.6rem)}
+.sh p{color:var(--soft);max-width:38ch}
+
+.svc{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.s{background:var(--ice);color:var(--teal);border-radius:20px;padding:26px 22px;display:grid;gap:10px;align-content:start;min-height:220px}
+.s .n{font-family:Syne;font-weight:800;font-size:2.6rem;color:var(--tan);line-height:1}
+.s h3{font-size:1.5rem}
+.s p{font-size:.96rem;color:#3d6a6c}
+.s:nth-child(2){background:var(--tan2)}
+
+.after{background:var(--ice);color:var(--teal)}
+.after .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:50px;align-items:center}
+.after h2{font-size:clamp(2.4rem,5vw,4rem);margin:12px 0 16px}
+.after p{color:#3d6a6c;max-width:44ch;margin-bottom:12px}
+.clock{position:relative;width:min(380px,100%);aspect-ratio:1;border-radius:50%;background:var(--teal);margin:0 auto;display:grid;place-items:center;color:var(--ice)}
+.clock::before{content:"";position:absolute;inset:16px;border-radius:50%;border:2px dashed var(--teal2)}
+.clock .hand{position:absolute;left:50%;top:50%;width:6px;height:36%;background:var(--tan);border-radius:4px;transform-origin:50% 0;transform:translate(-50%,0) rotate(90deg)}
+.clock .hand.m{height:42%;width:4px;background:var(--ice);transform:translate(-50%,0) rotate(180deg)}
+.clock span{position:relative;font-family:Syne;font-weight:800;font-size:clamp(2.6rem,7vw,4rem);margin-top:46%}
+
+.revs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.rv{background:var(--teal2);border-radius:20px;padding:26px}
+.rv .st{color:var(--tan);letter-spacing:3px}
+.rv p{margin:10px 0;font-size:1.05rem}
+.rv span{color:var(--soft);font-size:.88rem}
+.big{display:flex;align-items:center;gap:16px;margin-top:30px;flex-wrap:wrap}
+.big b{font-family:Syne;font-size:4rem;color:var(--tan);line-height:1}
+
+.contact{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}
+.cb{background:var(--teal2);border-radius:24px;padding:clamp(24px,4vw,40px);display:grid;gap:18px;align-content:start}
+.cb dt{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--tan);font-weight:700}
+.cb dd{font-family:Syne;font-weight:600;font-size:1.4rem}
+.cb dd a{text-decoration:none;border-bottom:2px solid var(--tan)}
+.cb.o{background:var(--tan);color:var(--teal)}
+.cb.o h3{font-size:2.4rem}
+.cb.o .btn{background:var(--teal);color:var(--ice);justify-self:start}
+footer{border-top:1px solid var(--teal2);color:var(--soft);font-size:.9rem}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:22px 0}
+footer a{color:var(--tan)}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:none}
+@media (max-width:960px){
+  .hero .wrap,.after .wrap,.contact{grid-template-columns:minmax(0,1fr)}
+  .himg{max-width:420px}
+  .week{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .svc{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .revs{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:520px){section{padding:72px 0}.svc{grid-template-columns:minmax(0,1fr)}.s{min-height:0}.himg .st{left:-6px}.live span{display:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="#">Qarizma<b>.</b></a>
+  <span class="live" id="live"><i></i><span id="livet">Open</span></span>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <div class="reveal">
+    <div class="seven">7<span>/7</span></div>
+    <h1>Barbershop in Beverwijk. Elke dag open.</h1>
+    <p>Ook op zondag en donderdag tot 21:00. Even na je werk langs voor een frisse fade of een strakke baard? Bij Qarizma kan het altijd.</p>
+    <div class="ctas"><a class="btn" href="tel:+31251820642"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>0251 820 642</a><a class="btn o" href="https://www.instagram.com/barbersalon.qarizma/" target="_blank" rel="noopener">Instagram</a></div>
+  </div>
+  <div class="himg reveal"><img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=900&q=70" alt="Barbier aan het werk"><span class="st"><b>4,7★</b>223 reviews</span></div>
+</div>
+<div class="wrap reveal" style="margin-top:50px">
+  <span class="k">Openingstijden</span>
+  <div class="week" id="week">
+    <div class="day" data-d="1"><b>Ma</b><span>9 – 18</span></div><div class="day" data-d="2"><b>Di</b><span>9 – 18</span></div><div class="day" data-d="3"><b>Wo</b><span>9 – 18</span></div><div class="day late" data-d="4"><b>Do</b><span>9 – 21</span></div><div class="day" data-d="5"><b>Vr</b><span>9 – 18</span></div><div class="day" data-d="6"><b>Za</b><span>9 – 18</span></div><div class="day" data-d="0"><b>Zo</b><span>9 – 18</span></div>
+  </div>
+  <p class="weeknote">Zeven dagen per week, ook in het weekend.</p>
+</div></section>
+
+<section style="padding-top:20px"><div class="wrap">
+  <div class="sh reveal"><h2>Fris in<br>elke stijl</h2><p>Van strakke fade tot klassieke knipbeurt. Vertel wat je wilt, wij maken het.</p></div>
+  <div class="svc reveal">
+    <div class="s"><span class="n">01</span><h3>Knippen</h3><p>Klassiek of modern, precies zoals jij hem wilt.</p></div>
+    <div class="s"><span class="n">02</span><h3>Fade</h3><p>Skin, low of high fade. Strak in de overloop.</p></div>
+    <div class="s"><span class="n">03</span><h3>Baard</h3><p>Trimmen, contouren en scherpe lijnen.</p></div>
+    <div class="s"><span class="n">04</span><h3>Wassen &amp; stylen</h3><p>Afgemaakt zodat het de hele dag goed zit.</p></div>
+  </div>
+</div></section>
+
+<section class="after"><div class="wrap">
+  <div class="clock reveal" aria-hidden="true"><span class="hand"></span><span class="hand m"></span><span style="margin-top:56%">21:00</span></div>
+  <div class="reveal">
+    <span class="k">Donderdag koopavond</span>
+    <h2>Na je werk nog langs?</h2>
+    <p>Op donderdag zijn we open tot 21:00. Perfect om na het werk of na de sportschool nog even fris te worden.</p>
+    <p>Klanten noemen het zelf: “Fijn dat je na het werk een afspraak kunt maken.”</p>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="revs reveal">
+    <div class="rv"><div class="st">★★★★★</div><p>“Super service, luistert goed en doet wat het beste voor je is. Zes sterren service.”</p><span>Google review</span></div>
+    <div class="rv"><div class="st">★★★★★</div><p>“Alle barbiers knippen goed, en dat je na het werk kunt boeken is top.”</p><span>Google review</span></div>
+    <div class="rv"><div class="st">★★★★★</div><p>“Voor het eerst hier geweest. Precies geknipt zoals ik vroeg, hele fijne mensen.”</p><span>Google review</span></div>
+  </div>
+  <div class="big reveal"><b>4,7</b><span>gemiddeld uit 223 reviews op Google</span></div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap contact">
+  <dl class="cb reveal">
+    <div><dt>Adres</dt><dd>Jacob van Deventerstraat 5<br>1941 EP Beverwijk</dd></div>
+    <div><dt>Telefoon</dt><dd><a href="tel:+31251820642">0251 820 642</a></dd></div>
+    <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/barbersalon.qarizma/" target="_blank" rel="noopener">@barbersalon.qarizma</a></dd></div>
+  </dl>
+  <div class="cb o reveal"><h3>Kom gewoon langs.</h3><p>Met of zonder afspraak, zeven dagen per week.</p><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Kapsalon+Qarizma+Jacob+van+Deventerstraat+5+Beverwijk" target="_blank" rel="noopener">Plan je route</a></div>
+</div></section>
+
+<footer><div class="wrap"><span>© 2026 Kapsalon Qarizma · Beverwijk</span><span>Concept door <a href="https://byxavio.nl">byXavio</a></span></div></footer>
+<script>
+const H={0:[9,18],1:[9,18],2:[9,18],3:[9,18],4:[9,21],5:[9,18],6:[9,18]};const n=new Date(),d=n.getDay(),h=n.getHours()+n.getMinutes()/60,[o,c]=H[d];
+const t=document.querySelector('.day[data-d="'+d+'"]');if(t)t.classList.add('today');
+const L=document.getElementById('live'),T=document.getElementById('livet');if(h>=o&&h<c){T.textContent='Nu open tot '+c+':00'}else{L.classList.add('closed');T.textContent=h<o?'Vandaag open vanaf '+o+':00':'Morgen open vanaf 9:00'}
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

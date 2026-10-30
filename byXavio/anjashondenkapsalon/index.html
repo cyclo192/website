@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Anja's Hondenkapsalon · Alkmaar</title>
+<meta name="description" content="Anja's Hondenkapsalon aan de Herenweg in Alkmaar. Een gezellige kleine hondenkapsalon: wassen, knippen en trimmen met aandacht voor elke hond.">
+<meta name="theme-color" content="#f7f5ef">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Nunito+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--w:#f7f5ef;--blue:#1f3f8f;--blue2:#3e63c4;--pale:#dfe6f6;--ink:#17213d;--soft:#5b6584}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font:400 17px/1.7 "Nunito Sans",system-ui,sans-serif;color:var(--ink);background:var(--w);overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{width:min(1140px,100% - 40px);margin-inline:auto}
+h1,h2,h3{font-family:"DM Serif Display",Georgia,serif;font-weight:400;text-wrap:balance;line-height:1.05}
+em{font-style:italic;color:var(--blue2)}
+.tile{background-color:var(--w);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Crect width='120' height='120' fill='none' stroke='%231f3f8f' stroke-opacity='.18'/%3E%3Cg fill='none' stroke='%231f3f8f' stroke-width='2' stroke-opacity='.55'%3E%3Ccircle cx='60' cy='60' r='16'/%3E%3Cpath d='M60 26c6 8 6 16 0 18-6-2-6-10 0-18zM60 94c6-8 6-16 0-18-6 2-6 10 0 18zM26 60c8 6 16 6 18 0-2-6-10-6-18 0zM94 60c-8 6-16 6-18 0 2-6 10-6 18 0z'/%3E%3Cpath d='M4 4q10 2 12 12M116 4q-10 2-12 12M4 116q10-2 12-12M116 116q-10-2-12-12'/%3E%3C/g%3E%3C/svg%3E")}
+.lbl{font-weight:800;font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blue2)}
+.btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;padding:15px 26px;background:var(--blue);color:#fff;border-radius:4px;transition:background .2s,transform .2s}
+.btn:hover{background:var(--blue2);transform:translateY(-2px)}
+.btn.o{background:transparent;color:var(--blue);box-shadow:inset 0 0 0 2px var(--blue)}
+.btn.o:hover{background:var(--blue);color:#fff}
+.btn svg{width:20px;height:20px}
+
+header{border-bottom:2px solid var(--blue);background:var(--w);position:sticky;top:0;z-index:30}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:76px;gap:14px}
+.logo{display:flex;gap:12px;align-items:center;text-decoration:none}
+.logo .t{width:46px;height:46px;border:2px solid var(--blue);display:grid;place-items:center;background:#fff}
+.logo .t svg{width:30px;height:30px;color:var(--blue)}
+.logo b{font-family:"DM Serif Display";font-weight:400;font-size:1.4rem;line-height:1}
+.logo small{display:block;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--soft)}
+nav{display:flex;gap:24px;align-items:center}
+nav a:not(.btn){text-decoration:none;font-weight:600}
+header .btn{padding:10px 18px}
+
+.hero{padding:70px 0 90px}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:56px;align-items:center}
+.hero h1{font-size:clamp(3rem,7vw,5.6rem);margin:14px 0 20px}
+.hero p{font-size:1.12rem;color:var(--soft);max-width:44ch;margin-bottom:30px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.frame{position:relative;padding:18px;background:#fff;border:2px solid var(--blue);box-shadow:14px 14px 0 var(--pale)}
+.frame::before{content:"";position:absolute;inset:6px;border:1px solid var(--blue);pointer-events:none;opacity:.5}
+.frame img{width:100%;aspect-ratio:1;object-fit:cover}
+.frame .cap{position:absolute;left:50%;bottom:-22px;transform:translateX(-50%);background:var(--blue);color:#fff;padding:8px 18px;font-family:"DM Serif Display";font-size:1.2rem;white-space:nowrap}
+
+section{padding:96px 0}
+.head{text-align:center;max-width:620px;margin:0 auto 54px;display:grid;gap:12px}
+.head h2{font-size:clamp(2.2rem,5vw,3.6rem)}
+.head p{color:var(--soft)}
+
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:2px solid var(--blue);background:#fff}
+.tl{padding:34px 28px;border-right:2px solid var(--blue);border-bottom:2px solid var(--blue);display:grid;gap:10px;align-content:start}
+.tl:nth-child(3n){border-right:0}
+.tl:nth-last-child(-n+3){border-bottom:0}
+.tl .ic{width:58px;height:58px;border-radius:50%;background:var(--pale);display:grid;place-items:center}
+.tl .ic svg{width:30px;height:30px;color:var(--blue)}
+.tl h3{font-size:1.5rem}
+.tl p{color:var(--soft);font-size:.98rem}
+
+.small{background:var(--blue);color:#fff}
+.small .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center}
+.small h2{font-size:clamp(2.2rem,5vw,3.6rem);margin:12px 0 18px}
+.small h2 em{color:#b9caf3}
+.small p{color:#d6def3;margin-bottom:14px;max-width:46ch}
+.small .lbl{color:#b9caf3}
+.pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}
+.pair img{width:100%;aspect-ratio:3/4;object-fit:cover;border:6px solid #fff}
+.pair img:nth-child(2){margin-top:46px}
+
+.revs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.rv{background:#fff;border:2px solid var(--blue);padding:30px 26px;position:relative}
+.rv::after{content:"";position:absolute;right:-2px;top:-2px;width:28px;height:28px;background:var(--blue);clip-path:polygon(0 0,100% 0,100% 100%)}
+.rv p{font-family:"DM Serif Display";font-size:1.3rem;line-height:1.3}
+.rv span{display:block;margin-top:14px;color:var(--soft);font-size:.9rem;font-weight:600}
+
+.visit{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}
+.card{background:#fff;border:2px solid var(--blue);padding:clamp(24px,4vw,42px)}
+.card h3{font-size:1.8rem;margin-bottom:16px}
+.hrs div{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px dashed #b7c3e3}
+.hrs div.off{color:#9aa3bd}
+dl{display:grid;gap:18px}
+dt{font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:var(--blue2);font-weight:800}
+dd{font-size:1.2rem;font-weight:600}
+dd a{text-decoration:none;border-bottom:2px solid var(--pale)}
+footer{border-top:2px solid var(--blue);padding:24px 0;color:var(--soft);font-size:.9rem}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+footer a{color:var(--blue)}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:none}
+@media (max-width:900px){
+  nav a:not(.btn){display:none}
+  .hero .wrap,.small .wrap,.visit{grid-template-columns:minmax(0,1fr)}
+  .frame{max-width:440px;margin:0 auto 20px}
+  .tiles{grid-template-columns:minmax(0,1fr)}
+  .tl{border-right:0!important;border-bottom:2px solid var(--blue)!important}
+  .tl:last-child{border-bottom:0!important}
+  .revs{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:520px){section{padding:72px 0}.logo small{display:none}.hero{padding-top:44px}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="#"><span class="t"><svg viewBox="0 0 40 40" fill="currentColor"><ellipse cx="20" cy="26" rx="8" ry="7"/><ellipse cx="9" cy="17" rx="3.6" ry="4.6"/><ellipse cx="31" cy="17" rx="3.6" ry="4.6"/><ellipse cx="15" cy="9" rx="3.4" ry="4.4"/><ellipse cx="25" cy="9" rx="3.4" ry="4.4"/></svg></span><span><b>Anja's</b><small>Hondenkapsalon · Alkmaar</small></span></a>
+  <nav><a href="#diensten">Diensten</a><a href="#bezoek">Contact</a><a class="btn" href="https://m.me/anjashondenkapsalon" target="_blank" rel="noopener">Afspraak</a></nav>
+</div></header>
+
+<section class="hero tile"><div class="wrap">
+  <div class="reveal">
+    <span class="lbl">Herenweg 191 · Alkmaar</span>
+    <h1>Een gezellige, kleine <em>hondenkapsalon</em></h1>
+    <p>Bij Anja krijgt je hond alle aandacht. Rustig wassen, knippen en trimmen in een kleine salon, zodat je hond zich op z'n gemak voelt en er weer prachtig uitziet.</p>
+    <div class="ctas">
+      <a class="btn" href="https://m.me/anjashondenkapsalon" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.91 1.19 5.44 3.14 7.17.16.14.26.35.27.57l.05 1.78a.8.8 0 0 0 1.12.71l1.98-.87c.17-.08.36-.09.53-.05.91.25 1.87.38 2.91.38 5.64 0 10-4.13 10-9.7S17.64 2 12 2zm6 7.46-2.94 4.66a1.5 1.5 0 0 1-2.17.4l-2.34-1.75a.6.6 0 0 0-.72 0l-3.16 2.4c-.42.32-.97-.18-.69-.63l2.94-4.66a1.5 1.5 0 0 1 2.17-.4l2.34 1.75a.6.6 0 0 0 .72 0l3.16-2.4c.42-.32.97.18.69.63z"/></svg>Maak een afspraak</a>
+      <a class="btn o" href="tel:+31725619021">072 561 90 21</a>
+    </div>
+  </div>
+  <div class="frame reveal"><img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=900&q=70" alt="Vrolijke hond na een trimbeurt"><span class="cap">Klaar voor de wandeling</span></div>
+</div></section>
+
+<section id="diensten"><div class="wrap">
+  <div class="head reveal"><span class="lbl">Wat Anja doet</span><h2>Van <em>wasbeurt</em> tot model</h2><p>Voor kleine en grote honden, kort- of langharig. Vertel wat je wilt, Anja denkt met je mee.</p></div>
+  <div class="tiles reveal">
+    <div class="tl"><span class="ic"><svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 14h20v6a6 6 0 0 1-6 6h-8a6 6 0 0 1-6-6z"/><path d="M10 10c0-3 2-3 2-6M16 10c0-3 2-3 2-6"/></svg></span><h3>Wassen &amp; föhnen</h3><p>Een fijne wasbeurt met milde shampoo en daarna lekker droog geföhnd.</p></div>
+    <div class="tl"><span class="ic"><svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="22" r="4"/><circle cx="17" cy="22" r="4"/><path d="M10.5 19L25 4M14.5 19L6 5"/></svg></span><h3>Knippen in model</h3><p>Een vacht die past bij het ras en bij wat jij mooi en praktisch vindt.</p></div>
+    <div class="tl"><span class="ic"><svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 24L22 8"/><path d="M10 6v6M14 4v6M18 4v6"/></svg></span><h3>Trimmen &amp; plukken</h3><p>Voor ruwharige rassen die geplukt moeten worden, netjes en geduldig.</p></div>
+    <div class="tl"><span class="ic"><svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 26c0-8 3-14 7-14s7 6 7 14"/><circle cx="15" cy="7" r="3"/></svg></span><h3>Ontwollen</h3><p>Losse onderwol eruit. Fijn voor je hond, minder haren op de bank.</p></div>
+    <div class="tl"><span class="ic"><svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="15" cy="19" rx="6" ry="5"/><ellipse cx="7" cy="12" rx="2.6" ry="3.4"/><ellipse cx="23" cy="12" rx="2.6" ry="3.4"/></svg></span><h3>Nagels &amp; voetjes</h3><p>Nagels knippen en de haartjes tussen de voetzooltjes bijwerken.</p></div>
+    <div class="tl"><span class="ic"><svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 26S5 20 5 12a5 5 0 0 1 10-2 5 5 0 0 1 10 2c0 8-10 14-10 14z"/></svg></span><h3>Puppy-kennismaking</h3><p>Een rustige eerste keer, zodat je pup went aan de salon.</p></div>
+  </div>
+</div></section>
+
+<section class="small tile" style="background-color:var(--blue);background-blend-mode:normal"><div class="wrap">
+  <div class="pair reveal"><img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?w=600&q=70" alt="Hond wordt geborsteld" loading="lazy"><img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=600&q=70" alt="Franse bulldog" loading="lazy"></div>
+  <div class="reveal">
+    <span class="lbl">Klein &amp; persoonlijk</span>
+    <h2>Geen lopende band, wel <em>aandacht</em></h2>
+    <p>Anja werkt in een kleine salon, één hond tegelijk. Zo blijft het rustig en heeft je hond niet de stress van een drukke ruimte vol blaffende soortgenoten.</p>
+    <p>Baasjes rijden er zelfs een uur voor om, en dat zegt genoeg.</p>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="head reveal"><span class="lbl">Van de baasjes</span><h2>Wat ze <em>zeggen</em></h2></div>
+  <div class="revs reveal">
+    <div class="rv"><p>“De beste van het land. We rijden een uur om bij Anja te komen, en dat is het waard.”</p><span>Google review</span></div>
+    <div class="rv"><p>“Gisteren was Suus voor het eerst bij Anja. Iedereen geeft me al complimenten, ze ziet er prachtig uit.”</p><span>Google review</span></div>
+    <div class="rv"><p>“Nieuw in Alkmaar en op zoek naar een trimsalon. Onze hond is perfect getrimd. Dankjewel!”</p><span>Google review</span></div>
+  </div>
+</div></section>
+
+<section id="bezoek" style="padding-top:0"><div class="wrap visit">
+  <div class="card reveal"><h3>Openingstijden</h3><div class="hrs">
+    <div><span>Maandag</span><span>09:00 – 17:00</span></div><div><span>Dinsdag</span><span>09:00 – 17:00</span></div><div><span>Woensdag</span><span>09:00 – 17:00</span></div><div><span>Donderdag</span><span>09:00 – 17:00</span></div><div><span>Vrijdag</span><span>09:00 – 17:00</span></div><div class="off"><span>Zaterdag</span><span>Gesloten</span></div><div class="off"><span>Zondag</span><span>Gesloten</span></div>
+  </div></div>
+  <div class="card reveal"><h3>Contact</h3><dl>
+    <div><dt>Adres</dt><dd>Herenweg 191<br>1822 AE Alkmaar</dd></div>
+    <div><dt>Telefoon</dt><dd><a href="tel:+31725619021">072 561 90 21</a></dd></div>
+    <div><dt>WhatsApp</dt><dd><a href="https://wa.me/31616831764" target="_blank" rel="noopener">06 16 83 17 64</a></dd></div>
+    <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/anjas_hondenkapsalon/" target="_blank" rel="noopener">@anjas_hondenkapsalon</a></dd></div>
+  </dl></div>
+</div></section>
+
+<footer><div class="wrap"><span>© 2026 Anja's Hondenkapsalon · Alkmaar</span><span>Concept door <a href="https://byxavio.nl">byXavio</a></span></div></footer>
+<script>const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));</script>
+</body>
+</html>

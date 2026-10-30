@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Pedicurepraktijk Purmerend · Pedicure aan huis</title>
+<meta name="description" content="Pedicurepraktijk Purmerend: gediplomeerd (medisch) pedicure die bij u thuis komt en ruim de tijd neemt. Ook voor mensen met diabetes of reuma.">
+<meta name="theme-color" content="#ffffff">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#14302a;--green:#1d6b57;--green2:#e3f1ec;--sun:#f6c453;--bg:#fbfaf6;--soft:#4c5f59;--fs:19px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:var(--fs)}
+body{font:400 1rem/1.7 "Atkinson Hyperlegible",Verdana,sans-serif;color:var(--ink);background:var(--bg);overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{width:min(1100px,100% - 40px);margin-inline:auto}
+h1,h2,h3{font-weight:700;text-wrap:balance;line-height:1.15}
+.btn{display:inline-flex;align-items:center;gap:12px;text-decoration:none;font-weight:700;font-size:1.05rem;padding:18px 28px;background:var(--green);color:#fff;border-radius:14px;min-height:60px}
+.btn:hover{background:var(--ink)}
+.btn.o{background:#fff;color:var(--green);box-shadow:inset 0 0 0 3px var(--green)}
+.btn svg{width:24px;height:24px}
+:focus-visible{outline:4px solid var(--sun);outline-offset:3px}
+
+.top{background:var(--green);color:#fff;font-size:.85rem}
+.top .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:8px 0;align-items:center}
+.size{display:flex;gap:6px;align-items:center}
+.size button{font:700 .85rem "Atkinson Hyperlegible";background:#fff;color:var(--green);border:0;border-radius:8px;padding:4px 12px;cursor:pointer}
+.size button[aria-pressed="true"]{background:var(--sun);color:var(--ink)}
+header{background:#fff;border-bottom:1px solid #dfe7e3}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:84px;gap:16px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo svg{width:44px;height:44px;color:var(--green)}
+.logo b{display:block;font-size:1.15rem;line-height:1.1}
+.logo small{color:var(--soft);font-size:.8rem}
+nav{display:flex;gap:22px}
+nav a{text-decoration:none;font-weight:700}
+nav a:hover{text-decoration:underline}
+
+.hero{padding:64px 0 80px}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:48px;align-items:center}
+.badge{display:inline-flex;gap:10px;align-items:center;background:var(--green2);color:var(--green);font-weight:700;border-radius:999px;padding:8px 16px}
+.hero h1{font-size:clamp(2.2rem,5vw,3.4rem);margin:20px 0 18px}
+.hero h1 span{color:var(--green)}
+.hero p{font-size:1.1rem;color:var(--soft);max-width:46ch;margin-bottom:28px}
+.ctas{display:flex;gap:14px;flex-wrap:wrap}
+.himg{position:relative}
+.himg img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:28px}
+.himg .home{position:absolute;right:-12px;bottom:-12px;background:var(--sun);border-radius:20px;padding:16px 20px;font-weight:700;display:flex;gap:10px;align-items:center;box-shadow:0 10px 24px rgba(20,48,42,.15)}
+.himg .home svg{width:30px;height:30px}
+
+section{padding:84px 0}
+.sh{max-width:680px;margin-bottom:40px}
+.sh h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:10px}
+.sh p{color:var(--soft)}
+
+.why{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.w{background:#fff;border:2px solid #dfe7e3;border-radius:20px;padding:28px}
+.w svg{width:48px;height:48px;color:var(--green);margin-bottom:14px}
+.w h3{font-size:1.25rem;margin-bottom:8px}
+.w p{color:var(--soft)}
+
+.care{background:var(--green2)}
+.list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.li{background:#fff;border-radius:18px;padding:22px 24px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:start}
+.li i{width:40px;height:40px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-style:normal;font-weight:700}
+.li h3{font-size:1.15rem}
+.li p{color:var(--soft);font-size:.95rem}
+
+.special{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}
+.sp{border-radius:22px;padding:32px;background:var(--ink);color:#fff}
+.sp:nth-child(2){background:var(--green)}
+.sp h3{font-size:1.5rem;margin-bottom:10px}
+.sp p{opacity:.9}
+
+.how{counter-reset:h;display:grid;gap:14px;max-width:760px}
+.how li{counter-increment:h;list-style:none;display:grid;grid-template-columns:64px minmax(0,1fr);gap:18px;align-items:center;background:#fff;border:2px solid #dfe7e3;border-radius:18px;padding:18px}
+.how li::before{content:counter(h);width:56px;height:56px;border-radius:50%;background:var(--sun);display:grid;place-items:center;font-weight:700;font-size:1.4rem}
+.how b{display:block;font-size:1.1rem}
+.how span{color:var(--soft)}
+
+.contact{background:var(--ink);color:#fff}
+.contact .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center}
+.contact h2{font-size:clamp(1.9rem,4vw,2.8rem);margin-bottom:14px}
+.contact p{opacity:.85;margin-bottom:24px}
+.cbox{background:#fff;color:var(--ink);border-radius:22px;padding:28px;display:grid;gap:18px}
+.cbox dt{font-size:.85rem;color:var(--soft);font-weight:700}
+.cbox dd{font-size:1.2rem;font-weight:700;word-break:break-word}
+.cbox dd a{color:var(--green)}
+footer{padding:26px 0;color:var(--soft);font-size:.85rem}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+footer a{color:var(--green)}
+@media (max-width:900px){
+  nav{display:none}
+  .hero .wrap,.contact .wrap,.special{grid-template-columns:minmax(0,1fr)}
+  .himg{max-width:420px}
+  .why,.list{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:520px){section{padding:64px 0}.himg .home{right:-4px}.logo small{display:none}}
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap"><span>Gediplomeerd (medisch) pedicure · aan huis in Purmerend</span><span class="size" role="group" aria-label="Tekstgrootte">Tekst: <button type="button" data-fs="19px" aria-pressed="true">A</button><button type="button" data-fs="22px" aria-pressed="false">A+</button><button type="button" data-fs="25px" aria-pressed="false">A++</button></span></div></div>
+<header><div class="wrap">
+  <a class="logo" href="#"><svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M14 38c-4-6-2-14 2-20 3-5 8-8 12-6 4 2 3 8 0 12-3 5-4 9-2 14"/><circle cx="31" cy="7" r="2.5"/><circle cx="36" cy="11" r="2"/><circle cx="38" cy="16" r="1.6"/></svg><span><b>Pedicurepraktijk Purmerend</b><small>Pedicure aan huis</small></span></a>
+  <nav><a href="#behandelingen">Behandelingen</a><a href="#werkwijze">Werkwijze</a><a href="#contact">Contact</a></nav>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <div>
+    <span class="badge">✓ Gediplomeerd · ook medisch</span>
+    <h1>De pedicure die <span>bij u thuis</span> komt en ruim de tijd neemt</h1>
+    <p>Geen reistijd, geen wachtkamer. Ik kom met alle spullen bij u thuis in Purmerend en verzorg uw voeten rustig en vakkundig. Ook voor mensen met diabetes of reuma.</p>
+    <div class="ctas">
+      <a class="btn" href="https://m.me/pedicurepraktijkpurmerend" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.91 1.19 5.44 3.14 7.17.16.14.26.35.27.57l.05 1.78a.8.8 0 0 0 1.12.71l1.98-.87c.17-.08.36-.09.53-.05.91.25 1.87.38 2.91.38 5.64 0 10-4.13 10-9.7S17.64 2 12 2z"/></svg>Stuur een bericht</a>
+      <a class="btn o" href="mailto:pedicurepraktijkpurmerend@hotmail.com">E-mail sturen</a>
+    </div>
+  </div>
+  <div class="himg"><img src="https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?w=800&q=70" alt="Verzorgde voeten in een voetenbad"><span class="home"><svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 14L15 5l11 9"/><path d="M7 12v13h16V12"/></svg>Bij u thuis</span></div>
+</div></section>
+
+<section style="padding-top:20px"><div class="wrap">
+  <div class="sh"><h2>Waarom pedicure aan huis?</h2><p>Juist als lopen of reizen lastig is, is goede voetverzorging belangrijk.</p></div>
+  <div class="why">
+    <div class="w"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 22L24 9l16 13"/><path d="M12 19v20h24V19"/></svg><h3>Vertrouwde omgeving</h3><p>U blijft gewoon in uw eigen stoel zitten. Rustig en zonder gedoe.</p></div>
+    <div class="w"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="24" cy="24" r="17"/><path d="M24 13v11l7 5"/></svg><h3>Ruim de tijd</h3><p>Geen haast. Er is altijd tijd voor uitleg en een praatje.</p></div>
+    <div class="w"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M24 6l14 6v10c0 10-6 17-14 20-8-3-14-10-14-20V12z"/><path d="M17 24l5 5 9-10"/></svg><h3>Gediplomeerd</h3><p>Vakkundige zorg, ook voor kwetsbare voeten.</p></div>
+  </div>
+</div></section>
+
+<section class="care" id="behandelingen"><div class="wrap">
+  <div class="sh"><h2>Behandelingen</h2><p>Een behandeling is altijd afgestemd op uw voeten.</p></div>
+  <div class="list">
+    <div class="li"><i>1</i><div><h3>Nagels knippen en vijlen</h3><p>Ook bij dikke of ingegroeide nagels.</p></div></div>
+    <div class="li"><i>2</i><div><h3>Eelt verwijderen</h3><p>Zachte, verzorgde voeten zonder drukplekken.</p></div></div>
+    <div class="li"><i>3</i><div><h3>Likdoorns behandelen</h3><p>Pijnlijke plekjes vakkundig verholpen.</p></div></div>
+    <div class="li"><i>4</i><div><h3>Voetmassage &amp; verzorging</h3><p>Afsluiten met een verzorgende crème.</p></div></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="sh"><h2>Extra zorg wanneer het nodig is</h2></div>
+  <div class="special">
+    <div class="sp"><h3>Diabetes</h3><p>Bij diabetes zijn de voeten extra kwetsbaar. Een medisch pedicure let op wondjes, drukplekken en veranderingen, en werkt extra voorzichtig.</p></div>
+    <div class="sp"><h3>Reuma</h3><p>Bij reuma kan bukken of lopen pijnlijk zijn. Behandeling aan huis maakt goede voetzorg een stuk makkelijker.</p></div>
+  </div>
+</div></section>
+
+<section id="werkwijze" style="padding-top:0"><div class="wrap">
+  <div class="sh"><h2>Zo werkt het</h2></div>
+  <ol class="how">
+    <li><span><b>Neem contact op</b><span>Via Messenger of e-mail. Ook familie of mantelzorgers mogen een afspraak maken.</span></span></li>
+    <li><span><b>We plannen een moment</b><span>Een dag en tijd die u goed uitkomt.</span></span></li>
+    <li><span><b>Ik kom bij u thuis</b><span>Met alle spullen. U hoeft niets voor te bereiden.</span></span></li>
+  </ol>
+</div></section>
+
+<section class="contact" id="contact"><div class="wrap">
+  <div><h2>Een afspraak maken?</h2><p>Stuur gerust een bericht met uw vraag of wens. U krijgt zo snel mogelijk antwoord.</p><a class="btn" style="background:var(--sun);color:var(--ink)" href="https://m.me/pedicurepraktijkpurmerend" target="_blank" rel="noopener">Bericht via Messenger</a></div>
+  <dl class="cbox">
+    <div><dt>E-mail</dt><dd><a href="mailto:pedicurepraktijkpurmerend@hotmail.com">pedicurepraktijkpurmerend@hotmail.com</a></dd></div>
+    <div><dt>Werkgebied</dt><dd>Purmerend en directe omgeving</dd></div>
+    <div><dt>Facebook</dt><dd><a href="https://www.facebook.com/pedicurepraktijkpurmerend" target="_blank" rel="noopener">Pedicurepraktijk Purmerend</a></dd></div>
+  </dl>
+</div></section>
+
+<footer><div class="wrap"><span>© 2026 Pedicurepraktijk Purmerend</span><span>Concept door <a href="https://byxavio.nl">byXavio</a></span></div></footer>
+<script>
+document.querySelectorAll('[data-fs]').forEach(b=>b.addEventListener('click',()=>{document.documentElement.style.setProperty('--fs',b.dataset.fs);document.querySelectorAll('[data-fs]').forEach(x=>x.setAttribute('aria-pressed',x===b))}));
+</script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>London Cut · Barbershop Den Helder</title>
+<meta name="description" content="London Cut aan de Spoorstraat in Den Helder. Barbier Samir uit de UK, met meer dan 20 jaar ervaring in elk haartype: Aziatisch, Afro en Europees.">
+<meta name="theme-color" content="#ffffff">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--red:#dc241f;--blue:#0019a8;--ink:#111;--grey:#f1f1ef;--soft:#5c5c5c;--yel:#ffd329}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font:400 17px/1.65 "Open Sans",system-ui,sans-serif;color:var(--ink);background:#fff;overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+.hs{font-family:"Hammersmith One","Gill Sans",sans-serif;font-weight:400;letter-spacing:.01em}
+h1,h2,h3{font-family:"Hammersmith One","Gill Sans",sans-serif;font-weight:400;text-wrap:balance;line-height:1.05}
+.roundel{position:relative;display:inline-grid;place-items:center;width:var(--s,120px);aspect-ratio:1}
+.roundel::before{content:"";position:absolute;inset:0;border-radius:50%;border:calc(var(--s,120px)*.17) solid var(--red)}
+.roundel span{position:relative;background:var(--blue);color:#fff;font-family:"Hammersmith One";font-size:calc(var(--s,120px)*.15);padding:calc(var(--s,120px)*.03) calc(var(--s,120px)*.08);white-space:nowrap;letter-spacing:.04em}
+.btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-family:"Hammersmith One";font-size:1.05rem;padding:15px 26px;background:var(--blue);color:#fff;border-radius:999px;transition:background .2s}
+.btn:hover{background:var(--red)}
+.btn.w{background:#fff;color:var(--blue);box-shadow:inset 0 0 0 2px var(--blue)}
+.btn.w:hover{background:var(--blue);color:#fff}
+
+header{border-bottom:1px solid #ddd;background:#fff;position:sticky;top:0;z-index:30}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:74px;gap:14px}
+.logo{display:flex;gap:12px;align-items:center;text-decoration:none}
+.logo .roundel{--s:54px}
+.logo b{font-family:"Hammersmith One";font-weight:400;font-size:1.35rem}
+nav{display:flex;gap:24px;align-items:center}
+nav a:not(.btn){text-decoration:none;font-weight:600}
+header .btn{padding:10px 18px;font-size:.95rem}
+
+.hero{background:var(--grey);border-bottom:8px solid var(--red)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:50px;align-items:center;padding-block:70px}
+.board{display:inline-flex;gap:12px;align-items:center;background:var(--ink);color:var(--yel);font-family:"Hammersmith One";padding:8px 14px;font-size:.95rem;letter-spacing:.06em}
+.board i{width:8px;height:8px;border-radius:50%;background:var(--yel);animation:bl 1.4s infinite}
+@keyframes bl{50%{opacity:.2}}
+.hero h1{font-size:clamp(3.2rem,8vw,6.4rem);margin:20px 0 18px}
+.hero h1 span{color:var(--red)}
+.hero p{font-size:1.12rem;color:var(--soft);max-width:44ch;margin-bottom:28px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.himg{position:relative}
+.himg img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:6px}
+.himg .roundel{--s:150px;position:absolute;left:-40px;bottom:30px;background:#fff;border-radius:50%}
+
+section{padding:96px 0}
+.sh{margin-bottom:46px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:end}
+.sh h2{font-size:clamp(2.4rem,5vw,3.8rem)}
+.sh p{color:var(--soft);max-width:40ch}
+
+/* tube line */
+.line{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;padding-top:40px}
+.line::before{content:"";position:absolute;left:4%;right:4%;top:52px;height:10px;background:var(--red);border-radius:6px}
+.stop{position:relative;padding-top:42px}
+.stop::before{content:"";position:absolute;top:0;left:0;width:34px;height:34px;border-radius:50%;background:#fff;border:7px solid var(--ink)}
+.stop h3{font-size:1.5rem;margin-bottom:6px}
+.stop p{color:var(--soft);font-size:.97rem}
+.stop small{font-family:"Hammersmith One";color:var(--blue);font-size:.85rem;letter-spacing:.06em}
+
+/* hair types */
+.types{background:var(--blue);color:#fff}
+.types .sh h2,.types .sh p{color:#fff}
+.types .sh p{opacity:.8}
+.tg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.tc{background:#fff;color:var(--ink);border-radius:8px;overflow:hidden}
+.tc img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.tc div{padding:22px}
+.tc h3{font-size:1.5rem}
+.tc p{color:var(--soft);font-size:.96rem}
+.tc .tag{display:inline-block;background:var(--red);color:#fff;font-family:"Hammersmith One";font-size:.8rem;padding:3px 10px;margin-bottom:10px;letter-spacing:.06em}
+
+.story{display:grid;grid-template-columns:auto minmax(0,1fr);gap:50px;align-items:center}
+.story .roundel{--s:220px}
+.story h2{font-size:clamp(2.2rem,4.6vw,3.4rem);margin-bottom:16px}
+.story p{color:var(--soft);margin-bottom:12px;max-width:56ch}
+
+.revs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.rv{border-left:8px solid var(--red);background:var(--grey);padding:26px}
+.rv p{font-family:"Hammersmith One";font-size:1.25rem;line-height:1.35}
+.rv span{display:block;margin-top:12px;color:var(--soft);font-size:.9rem}
+
+.times{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:24px}
+.depart{background:var(--ink);color:var(--yel);font-family:"Hammersmith One";padding:clamp(22px,4vw,40px);border-radius:8px}
+.depart h3{color:#fff;font-size:1.6rem;margin-bottom:14px}
+.depart div{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #333;font-size:1.1rem;letter-spacing:.04em}
+.depart div.off{color:#777}
+.info{border:2px solid var(--ink);border-radius:8px;padding:clamp(22px,4vw,40px);display:grid;gap:18px;align-content:start}
+.info dt{font-family:"Hammersmith One";color:var(--red);letter-spacing:.06em}
+.info dd{font-size:1.2rem;font-weight:700}
+.info dd a{text-decoration:none;border-bottom:3px solid var(--blue)}
+footer{background:var(--blue);color:#d7dcff;font-size:.9rem}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:22px 0}
+footer a{color:#fff}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:none}
+@media (max-width:900px){
+  nav a:not(.btn){display:none}
+  .hero .wrap,.times{grid-template-columns:minmax(0,1fr)}
+  .himg{max-width:440px}
+  .himg .roundel{left:-10px;--s:120px}
+  .line{grid-template-columns:minmax(0,1fr);padding-top:0;gap:0}
+  .line::before{left:12px;right:auto;top:0;bottom:0;width:10px;height:auto}
+  .stop{padding:0 0 30px 56px}
+  .tg,.revs{grid-template-columns:minmax(0,1fr)}
+  .story{grid-template-columns:minmax(0,1fr)}
+  .story .roundel{--s:160px}
+}
+@media (max-width:520px){section{padding:72px 0}.logo b{font-size:1.15rem}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="#"><span class="roundel"><span>LC</span></span><b>London Cut</b></a>
+  <nav><a href="#service">Service</a><a href="#samir">Samir</a><a href="#tijden">Tijden</a><a class="btn" href="https://ig.me/m/london.cut.den.helder" target="_blank" rel="noopener">Afspraak</a></nav>
+</div></header>
+
+<section class="hero" style="padding:0"><div class="wrap">
+  <div class="reveal">
+    <span class="board"><i></i>NEXT CUT · SPOORSTRAAT 20</span>
+    <h1>Fresh from<br><span>London.</span></h1>
+    <p>Barbershop in Den Helder met meer dan 20 jaar ervaring uit de UK. Elk haartype, Aziatisch, Afro of Europees: kwaliteit en de tijd die jouw coupe verdient.</p>
+    <div class="ctas"><a class="btn" href="tel:+31687911912">Bel 06 87 91 19 12</a><a class="btn w" href="https://www.instagram.com/london.cut.den.helder/" target="_blank" rel="noopener">Bekijk Instagram</a></div>
+  </div>
+  <div class="himg reveal"><img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=900&q=70" alt="Barbier aan het werk"><span class="roundel"><span>4,7 ★ · 118</span></span></div>
+</div></section>
+
+<section id="service"><div class="wrap">
+  <div class="sh reveal"><h2>Your route to a fresh cut</h2><p>Vier stops, één resultaat: je loopt strak de deur uit.</p></div>
+  <div class="line reveal">
+    <div class="stop"><small>STOP 1</small><h3>Consult</h3><p>Laat een foto zien of vertel wat je wilt. Samir denkt mee.</p></div>
+    <div class="stop"><small>STOP 2</small><h3>Cut &amp; fade</h3><p>Schaar, tondeuse en een strakke overloop.</p></div>
+    <div class="stop"><small>STOP 3</small><h3>Beard</h3><p>Baard in model, contouren scherp.</p></div>
+    <div class="stop"><small>STOP 4</small><h3>Finish</h3><p>Styling zodat het thuis ook goed zit.</p></div>
+  </div>
+</div></section>
+
+<section class="types"><div class="wrap">
+  <div class="sh reveal"><h2>Every hair type. Every style.</h2><p>Waar veel barbiers zich op één type richten, knipt London Cut alles.</p></div>
+  <div class="tg reveal">
+    <div class="tc"><img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=700&q=70" alt="Getextureerde coupe" loading="lazy"><div><span class="tag">EUROPEAN</span><h3>Classic &amp; textured</h3><p>Van een nette zijscheiding tot een moderne crop.</p></div></div>
+    <div class="tc"><img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=700&q=70" alt="Baard en fade" loading="lazy"><div><span class="tag">AFRO</span><h3>Fades &amp; line-ups</h3><p>Skin fades, scherpe lijnen en designs.</p></div></div>
+    <div class="tc"><img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=700&q=70" alt="Scheerbeurt" loading="lazy"><div><span class="tag">ASIAN</span><h3>Precision cuts</h3><p>Steil en dik haar netjes in model gebracht.</p></div></div>
+  </div>
+</div></section>
+
+<section id="samir"><div class="wrap story">
+  <span class="roundel reveal"><span>SAMIR · 20+ YRS</span></span>
+  <div class="reveal">
+    <h2>Van de UK naar Den Helder</h2>
+    <p>Samir knipt al meer dan twintig jaar. In Engeland leerde hij werken met elk denkbaar haartype, en die ervaring neemt hij mee naar de Spoorstraat.</p>
+    <p>Bij London Cut draait het om kwaliteit en tijd. Geen haast, wel een coupe waar je tevreden mee naar buiten loopt. Ook je zoon is welkom.</p>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <div class="revs reveal">
+    <div class="rv"><p>“Goede barbershop, altijd goede kwaliteit voor een goede prijs. Mijn zoon gaat er graag heen. Echte meesters!”</p><span>Google review</span></div>
+    <div class="rv"><p>“Een hele goede ervaring, aanrader. Vakmensen en een prettige zaak.”</p><span>Google review</span></div>
+    <div class="rv"><p>“Goede service en goede stylisten. Blij met het resultaat.”</p><span>Google review</span></div>
+  </div>
+</div></section>
+
+<section id="tijden" style="padding-top:0"><div class="wrap times">
+  <div class="depart reveal"><h3>Openingstijden</h3>
+    <div><span>MAANDAG</span><span>09:00 – 18:00</span></div><div><span>DINSDAG</span><span>09:00 – 18:00</span></div><div><span>WOENSDAG</span><span>09:00 – 18:00</span></div><div><span>DONDERDAG</span><span>09:00 – 19:00</span></div><div><span>VRIJDAG</span><span>09:00 – 18:00</span></div><div><span>ZATERDAG</span><span>09:00 – 17:00</span></div><div class="off"><span>ZONDAG</span><span>GESLOTEN</span></div>
+  </div>
+  <dl class="info reveal">
+    <div><dt>ADRES</dt><dd>Spoorstraat 20<br>1781 JG Den Helder</dd></div>
+    <div><dt>TELEFOON</dt><dd><a href="tel:+31687911912">06 87 91 19 12</a></dd></div>
+    <div><dt>INSTAGRAM</dt><dd><a href="https://www.instagram.com/london.cut.den.helder/" target="_blank" rel="noopener">@london.cut.den.helder</a></dd></div>
+    <a class="btn" style="justify-self:start" href="https://www.google.com/maps/search/?api=1&query=London+Cut+Spoorstraat+20+Den+Helder" target="_blank" rel="noopener">Plan je route</a>
+  </dl>
+</div></section>
+
+<footer><div class="wrap"><span>© 2026 London Cut · Den Helder</span><span>Concept door <a href="https://byxavio.nl">byXavio</a></span></div></footer>
+<script>const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));</script>
+</body>
+</html>

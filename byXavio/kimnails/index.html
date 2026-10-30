@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Kim Nails · Beverwijk</title>
+<meta name="description" content="Kim Nails aan de Jacob van Deventerstraat in Beverwijk. Nagels, manicure en pedicure. Netjes, sterk en mooi afgewerkt. 100% aanbevolen op Facebook.">
+<meta name="theme-color" content="#f6f1fb">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f1fb;--card:#fff;--ink:#2d2340;--lil:#9b7fd1;--lil2:#e6dcf7;--soft:#6d6283;--c1:#e8a5b4;--c2:#c9302c;--c3:#f3d4c2;--c4:#7b5ea7;--c5:#2d2340;--c6:#cfe3d7;--c7:#f7c8a2;--c8:#b7c7ef}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font:400 17px/1.7 Nunito,system-ui,sans-serif;color:var(--ink);background:var(--bg);overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{width:min(1140px,100% - 40px);margin-inline:auto}
+h1,h2,h3{font-family:"Gilda Display",Georgia,serif;font-weight:400;text-wrap:balance;line-height:1.05}
+.k{font-weight:800;font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--lil)}
+.btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;padding:15px 26px;border-radius:999px;background:var(--ink);color:#fff;transition:background .2s,transform .2s}
+.btn:hover{background:var(--lil);transform:translateY(-2px)}
+.btn.o{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+.btn svg{width:20px;height:20px}
+
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:82px;gap:14px}
+.logo{text-decoration:none;font-family:"Gilda Display";font-size:1.7rem;display:flex;gap:10px;align-items:center}
+.logo .dot{width:14px;height:22px;border-radius:7px 7px 4px 4px;background:var(--c1);box-shadow:16px 0 0 var(--lil),32px 0 0 var(--c3);margin-right:34px}
+nav{display:flex;gap:24px;align-items:center}
+nav a:not(.btn){text-decoration:none;font-weight:600}
+header .btn{padding:10px 18px}
+
+.hero{padding:40px 0 90px}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:50px;align-items:center}
+.hero h1{font-size:clamp(3rem,7.5vw,6rem);margin:16px 0 18px}
+.hero h1 i{font-style:normal;color:var(--lil)}
+.hero p{color:var(--soft);font-size:1.1rem;max-width:42ch;margin-bottom:28px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.himg{position:relative}
+.himg img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:50% 50% 24px 24px}
+.bottle{position:absolute;right:-10px;bottom:-20px;width:110px}
+
+/* swatch picker */
+.pick{background:var(--card);border-radius:30px;padding:clamp(24px,4vw,44px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center;box-shadow:0 20px 50px rgba(45,35,64,.06)}
+.pick h2{font-size:clamp(2.2rem,4.6vw,3.4rem);margin:10px 0 12px}
+.pick p{color:var(--soft)}
+.sw{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:22px}
+.sw button{aspect-ratio:1;border-radius:50%;border:4px solid #fff;box-shadow:0 0 0 2px var(--lil2);cursor:pointer;transition:transform .2s}
+.sw button:hover{transform:scale(1.08)}
+.sw button[aria-pressed="true"]{box-shadow:0 0 0 3px var(--ink)}
+.hand{position:relative;max-width:300px;margin:0 auto}
+.hand svg{width:100%;height:auto}
+.hand .nl{transition:fill .4s}
+.cname{text-align:center;font-family:"Gilda Display";font-size:1.4rem;margin-top:8px}
+
+section{padding:96px 0}
+.c{text-align:center;max-width:620px;margin:0 auto 50px;display:grid;gap:12px}
+.c h2{font-size:clamp(2.4rem,5.4vw,3.8rem)}
+.c p{color:var(--soft)}
+.menu{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.m{background:var(--card);border-radius:24px;padding:28px 26px;display:grid;gap:10px;align-content:start}
+.m .ch{width:46px;height:46px;border-radius:50%}
+.m h3{font-size:1.7rem}
+.m p{color:var(--soft);font-size:.97rem}
+
+.trust{background:var(--ink);color:#fff;border-radius:36px;margin-inline:max(12px,env(safe-area-inset-left,0px))}
+.trust .wrap{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:50px;align-items:center}
+.trust .big{font-family:"Gilda Display";font-size:clamp(5rem,14vw,10rem);line-height:.8;color:var(--lil2)}
+.trust .big small{display:block;font-family:Nunito;font-size:1rem;font-weight:600;color:#cbbfe6;margin-top:16px}
+.qs{display:grid;gap:16px}
+.q{background:rgba(255,255,255,.06);border-radius:20px;padding:22px 24px}
+.q p{font-family:"Gilda Display";font-size:1.3rem;line-height:1.35}
+.q span{display:block;margin-top:8px;color:#cbbfe6;font-size:.88rem}
+
+.gal{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.gal img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:20px}
+.visit{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}
+.v{background:var(--card);border-radius:28px;padding:clamp(24px,4vw,42px)}
+.v h3{font-size:2rem;margin-bottom:14px}
+.hrs div{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px dashed var(--lil2)}
+.hrs div.off{color:#b0a6c2}
+dl{display:grid;gap:18px}
+dt{font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:var(--lil);font-weight:800}
+dd{font-size:1.2rem;font-weight:600}
+dd a{text-decoration:none;border-bottom:2px solid var(--lil2)}
+footer{padding:26px 0;color:var(--soft);font-size:.88rem}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+footer a{color:var(--lil)}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:none}
+@media (max-width:900px){
+  nav a:not(.btn){display:none}
+  .hero .wrap,.pick,.trust .wrap,.visit{grid-template-columns:minmax(0,1fr)}
+  .himg{max-width:420px}
+  .menu{grid-template-columns:minmax(0,1fr)}
+  .gal{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+}
+@media (max-width:520px){section{padding:72px 0}.bottle{width:80px;right:-4px}.trust{border-radius:24px}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="#"><span class="dot"></span>Kim Nails</a>
+  <nav><a href="#kleur">Kleuren</a><a href="#behandelingen">Behandelingen</a><a href="#bezoek">Bezoek</a><a class="btn" href="https://m.me/kimnailsbeverwijk" target="_blank" rel="noopener">Afspraak</a></nav>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <div class="reveal">
+    <span class="k">Nagelstudio · Beverwijk</span>
+    <h1>Nagels die <i>blijven</i> zitten</h1>
+    <p>Netjes, sterk en mooi afgewerkt. Klanten komen al jaren elke vier weken terug, omdat hun nagels er gewoon perfect uit blijven zien.</p>
+    <div class="ctas"><a class="btn" href="https://m.me/kimnailsbeverwijk" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.91 1.19 5.44 3.14 7.17.16.14.26.35.27.57l.05 1.78a.8.8 0 0 0 1.12.71l1.98-.87c.17-.08.36-.09.53-.05.91.25 1.87.38 2.91.38 5.64 0 10-4.13 10-9.7S17.64 2 12 2z"/></svg>Maak een afspraak</a><a class="btn o" href="#kleur">Kies je kleur</a></div>
+  </div>
+  <div class="himg reveal"><img src="https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=900&q=70" alt="Gelakte nagels">
+    <svg class="bottle" viewBox="0 0 80 120"><rect x="28" y="0" width="24" height="40" rx="4" fill="#2d2340"/><rect x="10" y="38" width="60" height="78" rx="18" fill="#e8a5b4" stroke="#fff" stroke-width="4"/><rect x="20" y="52" width="10" height="40" rx="5" fill="#fff" opacity=".5"/></svg>
+  </div>
+</div></section>
+
+<section id="kleur" style="padding-top:0"><div class="wrap">
+  <div class="pick reveal">
+    <div>
+      <span class="k">Probeer het even</span>
+      <h2>Welke kleur wordt het deze keer?</h2>
+      <p>Tik op een kleur en zie hem meteen op de nagels. In de salon kies je uit nog veel meer tinten.</p>
+      <div class="sw" id="sw">
+        <button type="button" style="background:#e8a5b4" data-c="#e8a5b4" data-n="Soft pink" aria-pressed="true" aria-label="Soft pink"></button>
+        <button type="button" style="background:#c9302c" data-c="#c9302c" data-n="Classic red" aria-pressed="false" aria-label="Classic red"></button>
+        <button type="button" style="background:#f3d4c2" data-c="#f3d4c2" data-n="Nude" aria-pressed="false" aria-label="Nude"></button>
+        <button type="button" style="background:#7b5ea7" data-c="#7b5ea7" data-n="Lavender" aria-pressed="false" aria-label="Lavender"></button>
+        <button type="button" style="background:#2d2340" data-c="#2d2340" data-n="Midnight" aria-pressed="false" aria-label="Midnight"></button>
+        <button type="button" style="background:#cfe3d7" data-c="#cfe3d7" data-n="Mint" aria-pressed="false" aria-label="Mint"></button>
+        <button type="button" style="background:#f7c8a2" data-c="#f7c8a2" data-n="Peach" aria-pressed="false" aria-label="Peach"></button>
+        <button type="button" style="background:#b7c7ef" data-c="#b7c7ef" data-n="Baby blue" aria-pressed="false" aria-label="Baby blue"></button>
+      </div>
+    </div>
+    <div class="hand">
+      <svg viewBox="0 0 300 300"><path d="M70 300V170c0-14 20-14 20 0v-90c0-14 22-14 22 0v80-110c0-14 22-14 22 0v110-96c0-14 22-14 22 0v100-70c0-14 22-14 22 0v130c0 50-30 76-70 76h-38z" fill="#f2d5c4" stroke="#d9b3a0" stroke-width="3"/>
+        <rect class="nl" x="73" y="160" width="14" height="22" rx="7" fill="#e8a5b4"/><rect class="nl" x="94" y="70" width="14" height="24" rx="7" fill="#e8a5b4"/><rect class="nl" x="116" y="40" width="14" height="24" rx="7" fill="#e8a5b4"/><rect class="nl" x="138" y="54" width="14" height="24" rx="7" fill="#e8a5b4"/><rect class="nl" x="160" y="84" width="14" height="24" rx="7" fill="#e8a5b4"/></svg>
+      <div class="cname" id="cname">Soft pink</div>
+    </div>
+  </div>
+</div></section>
+
+<section id="behandelingen" style="padding-top:20px"><div class="wrap">
+  <div class="c reveal"><span class="k">Behandelingen</span><h2>Handen &amp; voeten verzorgd</h2></div>
+  <div class="menu reveal">
+    <div class="m"><span class="ch" style="background:var(--c1)"></span><h3>Nagels</h3><p>Sterke nagels die niet dun gevijld worden en niet loslaten.</p></div>
+    <div class="m"><span class="ch" style="background:var(--c4)"></span><h3>Manicure</h3><p>Verzorgde handen en mooie nagelriemen, met of zonder lak.</p></div>
+    <div class="m"><span class="ch" style="background:var(--c6)"></span><h3>Pedicure</h3><p>Verzorgde voeten en een frisse kleur op de teennagels.</p></div>
+  </div>
+</div></section>
+
+<section class="trust"><div class="wrap">
+  <div class="big reveal">100%<small>raadt Kim Nails aan op Facebook · 4,6★ op Google</small></div>
+  <div class="qs reveal">
+    <div class="q"><p>“Ik laat elke vier weken mijn nagels doen bij Kim. Nog nooit is er een nagel losgegaan, en ze worden niet dun gevijld.”</p><span>Google review</span></div>
+    <div class="q"><p>“Al ruim drie en een half jaar klant en nog nooit een nagel gebroken, terwijl ik met mijn handen werk.”</p><span>Google review</span></div>
+    <div class="q"><p>“Manicure en pedicure gehad bij Tien. Heel vriendelijk en ik ben super blij met het resultaat.”</p><span>Google review</span></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="gal reveal">
+    <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=500&q=70" alt="Nagels" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=500&q=70" alt="Nail art" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1599206676335-193c82b13c9e?w=500&q=70" alt="Manicure" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1607779097040-26e80aa78e66?w=500&q=70" alt="Nagels" loading="lazy">
+  </div>
+</div></section>
+
+<section id="bezoek" style="padding-top:0"><div class="wrap visit">
+  <div class="v reveal"><h3>Openingstijden</h3><div class="hrs">
+    <div><span>Maandag</span><span>09:00 – 18:00</span></div><div><span>Dinsdag</span><span>09:00 – 18:00</span></div><div><span>Woensdag</span><span>09:00 – 18:00</span></div><div><span>Donderdag</span><span>09:00 – 18:00</span></div><div><span>Vrijdag</span><span>09:00 – 18:00</span></div><div><span>Zaterdag</span><span>09:30 – 17:00</span></div><div class="off"><span>Zondag</span><span>Gesloten</span></div>
+  </div></div>
+  <div class="v reveal"><h3>Kom langs</h3><dl>
+    <div><dt>Adres</dt><dd>Jacob van Deventerstraat 11<br>1941 EP Beverwijk</dd></div>
+    <div><dt>Telefoon</dt><dd><a href="tel:+31619045175">06 19 04 51 75</a></dd></div>
+    <div><dt>Facebook</dt><dd><a href="https://www.facebook.com/kimnailsbeverwijk/" target="_blank" rel="noopener">Kim Nails Beverwijk</a></dd></div>
+  </dl></div>
+</div></section>
+
+<footer><div class="wrap"><span>© 2026 Kim Nails · Beverwijk</span><span>Concept door <a href="https://byxavio.nl">byXavio</a></span></div></footer>
+<script>
+document.querySelectorAll('#sw button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.nl').forEach(n=>n.setAttribute('fill',b.dataset.c));document.getElementById('cname').textContent=b.dataset.n;document.querySelectorAll('#sw button').forEach(x=>x.setAttribute('aria-pressed',x===b))}));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
