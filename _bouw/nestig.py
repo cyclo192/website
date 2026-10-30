@@ -145,6 +145,33 @@ def versie(pad):
     return hashlib.md5((OUT / pad).read_bytes()).hexdigest()[:8]
 
 
+# Vaste gegevens voor Google (Merchant listings): merk, gratis verzending naar NL en BE, levertijd en retourbeleid.
+# Geen review of aggregateRating: die komen er pas als er echte reviews zijn.
+def product_ld(ld):
+    ld = dict(ld)
+    ld.setdefault("brand", {"@type": "Brand", "name": "Nestig"})
+    offer = dict(ld["offers"])
+    offer["shippingDetails"] = [{
+        "@type": "OfferShippingDetails",
+        "shippingRate": {"@type": "MonetaryAmount", "value": "0", "currency": "EUR"},
+        "shippingDestination": {"@type": "DefinedRegion", "addressCountry": land},
+        "deliveryTime": {"@type": "ShippingDeliveryTime",
+                         "handlingTime": {"@type": "QuantitativeValue", "minValue": 1, "maxValue": 3, "unitCode": "DAY"},
+                         "transitTime": {"@type": "QuantitativeValue", "minValue": 10, "maxValue": 18, "unitCode": "DAY"}},
+    } for land in ("NL", "BE")]
+    offer["hasMerchantReturnPolicy"] = {
+        "@type": "MerchantReturnPolicy",
+        "applicableCountry": ["NL", "BE"],
+        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+        "merchantReturnDays": 14,
+        "returnMethod": "https://schema.org/ReturnByMail",
+        "returnFees": "https://schema.org/ReturnShippingFees",
+        "merchantReturnLink": SITE + "retourneren",
+    }
+    ld["offers"] = offer
+    return ld
+
+
 def page(slug, title, desc, body, current=None, noindex=False, ld=None, geheim=False, zweef=True, dicht=None):
     """dicht: True = op deze pagina geen bestelknop maar "Geef me een seintje" (product nog niet te koop)."""
     if dicht is None:
@@ -153,6 +180,8 @@ def page(slug, title, desc, body, current=None, noindex=False, ld=None, geheim=F
     robots = '<meta name="robots" content="noindex">\n' if noindex else ''
     if geheim:  # het adres van deze pagina bevat een kenmerk: niet meesturen als iemand doorklikt naar een andere site
         robots += '<meta name="referrer" content="no-referrer">\n'
+    if ld and ld.get("@type") == "Product":
+        ld = product_ld(ld)
     ldtag = f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>\n' if ld else ''
     html = f'''<!DOCTYPE html>
 <html lang="nl">
