@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Danny's Tattoo Place · Eindhoven</title>
+<meta name="description" content="Danny's Tattoo Place aan de Leenderweg in Eindhoven. Al 13 jaar een begrip. Tattoos van klein tot groot, gezet door Danny Lodewijks. 4,8 uit 527 Google reviews.">
+<meta name="theme-color" content="#0b0b0b">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0b0b0b;--ink2:#161616;--line:#2a2a2a;--lime:#c8ff2e;--bone:#f1efe9;--mute:#9a9a92}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font:400 16.5px/1.65 Inter,system-ui,sans-serif;color:var(--bone);background:var(--ink);overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{width:min(1240px,100% - 40px);margin-inline:auto}
+.bs{font-family:"Big Shoulders Display",Impact,sans-serif;font-weight:900;text-transform:uppercase;line-height:.86;letter-spacing:-.01em}
+.mono{font-family:"Space Mono",ui-monospace,monospace;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase}
+h1,h2,h3{text-wrap:balance}
+
+header{position:sticky;top:0;z-index:50;background:var(--ink);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+.logo{text-decoration:none;font-family:"Big Shoulders Display";font-weight:900;font-size:1.6rem;text-transform:uppercase;letter-spacing:.02em}
+.logo b{color:var(--lime)}
+nav{display:flex;gap:26px;align-items:center}
+nav a{text-decoration:none}
+nav a.mono:hover{color:var(--lime)}
+.btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-family:"Space Mono";font-weight:700;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;padding:16px 24px;background:var(--lime);color:var(--ink);border:2px solid var(--lime);transition:background .2s,color .2s}
+.btn:hover{background:transparent;color:var(--lime)}
+.btn.o{background:transparent;color:var(--bone);border-color:var(--bone)}
+.btn.o:hover{background:var(--bone);color:var(--ink)}
+.btn svg{width:18px;height:18px;flex:none}
+header .btn{padding:10px 16px}
+
+/* hero */
+.hero{padding:44px 0 0;position:relative}
+.hero .top{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--mute);margin-bottom:18px}
+.hero h1{font-size:clamp(4.6rem,17vw,15rem)}
+.hero h1 .l{color:var(--lime)}
+.hero h1 .s{display:block;-webkit-text-stroke:2px var(--bone);color:transparent}
+.hgrid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:32px;margin-top:34px;align-items:end}
+.hgrid p{font-size:1.15rem;max-width:44ch;color:#d4d2cc}
+.ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.himg{position:relative}
+.himg img{width:100%;aspect-ratio:4/3;object-fit:cover;filter:grayscale(1) contrast(1.1)}
+.himg .stk{position:absolute;left:-14px;bottom:-14px;background:var(--lime);color:var(--ink);padding:12px 16px;transform:rotate(-4deg)}
+.himg .stk b{display:block;font-family:"Big Shoulders Display";font-weight:900;font-size:2.4rem;line-height:.9}
+.tv{position:absolute;right:12px;top:12px;background:var(--ink);border:1px solid var(--lime);color:var(--lime);padding:6px 10px}
+
+.marq{border-block:1px solid var(--line);overflow:hidden;white-space:nowrap;margin-top:70px;background:var(--lime);color:var(--ink)}
+.marq div{display:inline-block;padding:14px 0;animation:m 30s linear infinite}
+.marq span{font-family:"Big Shoulders Display";font-weight:900;font-size:1.9rem;text-transform:uppercase;margin-right:40px}
+@keyframes m{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.marq div{animation:none}}
+
+section{padding:110px 0}
+.sh{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:end;margin-bottom:50px}
+.sh h2{font-size:clamp(3rem,8vw,6.4rem)}
+.sh h2 em{font-style:normal;color:var(--lime)}
+.sh p{color:var(--mute);max-width:42ch;justify-self:end}
+
+/* numbers */
+.nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line)}
+.n{padding:30px 20px 0;border-left:1px solid var(--line)}
+.n:first-child{border-left:0;padding-left:0}
+.n b{display:block;font-family:"Big Shoulders Display";font-weight:900;font-size:clamp(3rem,6vw,5rem);line-height:.9;color:var(--lime)}
+.n span{color:var(--mute)}
+
+/* work grid */
+.work{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));grid-auto-rows:220px;gap:10px}
+.work figure{position:relative;overflow:hidden;background:var(--ink2)}
+.work img{width:100%;height:100%;object-fit:cover;filter:grayscale(.35);transition:filter .4s,transform .5s}
+.work figure:hover img{filter:none;transform:scale(1.05)}
+.work figcaption{position:absolute;left:0;bottom:0;background:var(--ink);padding:6px 10px}
+.w1{grid-column:span 3;grid-row:span 2}.w2{grid-column:span 3}.w3{grid-column:span 2}.w4{grid-column:span 1}.w5{grid-column:span 2}.w6{grid-column:span 4}
+.follow{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:26px;color:var(--mute)}
+
+/* services list */
+.svc{border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:90px minmax(0,1.1fr) minmax(0,1.4fr) auto;gap:24px;align-items:center;padding:30px 0;border-bottom:1px solid var(--line);transition:background .2s}
+.row:hover{background:var(--ink2)}
+.row .i{color:var(--lime)}
+.row h3{font-family:"Big Shoulders Display";font-weight:900;text-transform:uppercase;font-size:clamp(2rem,4vw,3rem);line-height:.9}
+.row p{color:var(--mute)}
+.row .arr{font-size:1.6rem;color:var(--lime)}
+
+/* review */
+.quote{background:var(--bone);color:var(--ink)}
+.quote .wrap{display:grid;grid-template-columns:auto minmax(0,1fr);gap:50px;align-items:center}
+.score{text-align:center}
+.score b{font-family:"Big Shoulders Display";font-weight:900;font-size:clamp(6rem,14vw,10rem);line-height:.8;display:block}
+.score .st{font-size:1.4rem;letter-spacing:4px}
+.quote blockquote{font-family:"Big Shoulders Display";font-weight:700;text-transform:uppercase;font-size:clamp(1.8rem,3.6vw,2.9rem);line-height:1.02}
+.quote cite{display:block;margin-top:18px;font-style:normal}
+.minis{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.minis span{border:2px solid var(--ink);padding:6px 12px;font-family:"Space Mono";font-size:.8rem;font-weight:700}
+
+/* care */
+.care{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.c{background:var(--ink2);border:1px solid var(--line);padding:28px 22px;display:grid;gap:10px;align-content:start}
+.c .mono{color:var(--lime)}
+.c h3{font-family:"Big Shoulders Display";font-weight:900;text-transform:uppercase;font-size:1.7rem;line-height:.95}
+.c p{color:var(--mute);font-size:.96rem}
+.balm{margin-top:10px;border:1px dashed var(--lime);padding:20px 22px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+.balm b{font-family:"Big Shoulders Display";font-weight:900;text-transform:uppercase;font-size:1.6rem}
+
+/* visit */
+.visit{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;border:1px solid var(--line)}
+.visit>div{padding:clamp(24px,4vw,46px)}
+.visit>div+div{border-left:1px solid var(--line)}
+.hrs div{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line);font-family:"Space Mono";font-size:.92rem}
+.hrs div.off{color:var(--mute)}
+.hrs div.now{color:var(--lime)}
+.ct{display:grid;gap:22px}
+.ct dt{color:var(--lime)}
+.ct dd{font-family:"Big Shoulders Display";font-weight:700;text-transform:uppercase;font-size:1.9rem;line-height:1}
+.ct dd a{text-decoration:none}
+.ct dd a:hover{color:var(--lime)}
+
+.final{text-align:center;padding:120px 0}
+.final h2{font-size:clamp(3.6rem,13vw,11rem)}
+.final h2 span{color:var(--lime)}
+.final .ctas{justify-content:center;margin-top:36px}
+footer{border-top:1px solid var(--line);color:var(--mute)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:22px 0}
+footer a{color:var(--lime)}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:900px){
+  nav a.mono{display:none}
+  .hgrid,.sh,.visit,.quote .wrap{grid-template-columns:minmax(0,1fr)}
+  .sh p{justify-self:start}
+  .visit>div+div{border-left:0;border-top:1px solid var(--line)}
+  .nums{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .n:nth-child(3){border-left:0;padding-left:0}
+  .n{padding-bottom:24px}
+  .work{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:180px}
+  .w1{grid-column:span 2;grid-row:span 2}.w2,.w6{grid-column:span 2}.w3,.w4,.w5{grid-column:span 1}
+  .row{grid-template-columns:50px minmax(0,1fr) auto}
+  .row p{grid-column:2/4}
+  .care{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:540px){
+  section{padding:80px 0}
+  .hero h1 .s{-webkit-text-stroke:1.5px var(--bone)}
+  .care{grid-template-columns:minmax(0,1fr)}
+  .w5{grid-column:span 2}
+  .himg .stk{left:-6px}
+  header .btn{padding:9px 12px;font-size:.72rem}
+}
+</style>
+</head>
+<body>
+
+<header><div class="wrap">
+  <a class="logo" href="#">Danny's <b>Tattoo</b></a>
+  <nav>
+    <a class="mono" href="#werk">Werk</a>
+    <a class="mono" href="#nazorg">Nazorg</a>
+    <a class="mono" href="#bezoek">Bezoek</a>
+    <a class="btn" href="https://m.me/www.dannystattooplace.nl" target="_blank" rel="noopener">Afspraak</a>
+  </nav>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <div class="top mono"><span>Leenderweg 315 · Eindhoven</span><span>Sinds 13 jaar een begrip</span></div>
+  <h1 class="bs reveal">Danny's<span class="s">Tattoo</span><span class="l">Place</span></h1>
+  <div class="hgrid">
+    <div class="reveal">
+      <p>The place voor jouw tattoo. Van een klein symbool tot een stuk met een verhaal: Danny neemt de tijd, werkt rustig en levert kwaliteit.</p>
+      <div class="ctas">
+        <a class="btn" href="https://m.me/www.dannystattooplace.nl" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.91 1.19 5.44 3.14 7.17.16.14.26.35.27.57l.05 1.78a.8.8 0 0 0 1.12.71l1.98-.87c.17-.08.36-.09.53-.05.91.25 1.87.38 2.91.38 5.64 0 10-4.13 10-9.7S17.64 2 12 2zm6 7.46-2.94 4.66a1.5 1.5 0 0 1-2.17.4l-2.34-1.75a.6.6 0 0 0-.72 0l-3.16 2.4c-.42.32-.97-.18-.69-.63l2.94-4.66a1.5 1.5 0 0 1 2.17-.4l2.34 1.75a.6.6 0 0 0 .72 0l3.16-2.4c.42-.32.97.18.69.63z"/></svg>Stuur je idee</a>
+        <a class="btn o" href="tel:+31641397679">06 41 39 76 79</a>
+      </div>
+    </div>
+    <div class="himg reveal">
+      <img src="https://images.unsplash.com/photo-1565058379802-bbe93b2f703a?w=1100&q=70" alt="Tattoo wordt gezet">
+      <span class="tv mono">📺 Bekend van tv</span>
+      <div class="stk mono"><b>4,8★</b>527 reviews</div>
+    </div>
+  </div>
+</div>
+<div class="marq" aria-hidden="true"><div><span>#daspaskwaliteit</span><span>★</span><span>#daspashandel</span><span>★</span><span>Eindhoven</span><span>★</span><span>The place voor jouw tattoo</span><span>★</span><span>#daspaskwaliteit</span><span>★</span><span>#daspashandel</span><span>★</span><span>Eindhoven</span><span>★</span><span>The place voor jouw tattoo</span><span>★</span></div></div>
+</section>
+
+<section style="padding-bottom:40px"><div class="wrap">
+  <div class="nums reveal">
+    <div class="n"><b>13+</b><span>jaar in Eindhoven</span></div>
+    <div class="n"><b>4,8</b><span>op Google, 527 reviews</span></div>
+    <div class="n"><b>16K</b><span>volgers op Instagram</span></div>
+    <div class="n"><b>14K</b><span>volgers op Facebook</span></div>
+  </div>
+</div></section>
+
+<section id="werk" style="padding-top:70px"><div class="wrap">
+  <div class="sh reveal"><h2 class="bs">Vers van<br>de <em>naald</em></h2><p>Blackwork, realistisch, fineline of lettering. Elk stuk op maat, samen met jou ontworpen.</p></div>
+  <div class="work reveal">
+    <figure class="w1"><img src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?w=1000&q=70" alt="Grote tattoo op rug en arm" loading="lazy"><figcaption class="mono">Groot werk</figcaption></figure>
+    <figure class="w2"><img src="https://images.unsplash.com/photo-1604374376934-2df6fad6519b?w=900&q=70" alt="Volledige sleeve" loading="lazy"><figcaption class="mono">Sleeve</figcaption></figure>
+    <figure class="w3"><img src="https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?w=600&q=70" alt="Bloemen op bovenarm" loading="lazy"><figcaption class="mono">Blackwork</figcaption></figure>
+    <figure class="w4"><img src="https://images.unsplash.com/photo-1542727365-19732a80dcfd?w=400&q=70" alt="Fineline tekst" loading="lazy"><figcaption class="mono">Fine</figcaption></figure>
+    <figure class="w5"><img src="https://images.unsplash.com/photo-1562962230-16e4623d36e6?w=600&q=70" alt="Pioenroos onderarm" loading="lazy"><figcaption class="mono">Bloem</figcaption></figure>
+    <figure class="w6"><img src="https://images.unsplash.com/photo-1568515045052-f9a854d70bfd?w=1100&q=70" alt="Tatoeëren met handschoenen" loading="lazy"><figcaption class="mono">In de stoel</figcaption></figure>
+  </div>
+  <div class="follow mono reveal"><span>Hier komen straks jullie eigen foto's te staan</span><a class="btn o" href="https://www.instagram.com/dannystattooplace/" target="_blank" rel="noopener">@dannystattooplace</a></div>
+</div></section>
+
+<section style="padding-top:20px"><div class="wrap">
+  <div class="sh reveal"><h2 class="bs">Wat we <em>doen</em></h2><p>Stuur een foto of omschrijving, dan krijg je een eerlijke prijs vooraf.</p></div>
+  <div class="svc reveal">
+    <div class="row"><span class="i mono">01</span><h3>Nieuwe tattoo</h3><p>Van je eerste kleintje tot een compleet stuk. Rustig gezet, zonder haast.</p><span class="arr">→</span></div>
+    <div class="row"><span class="i mono">02</span><h3>Tattoo met een verhaal</h3><p>Een herinnering, een mijlpaal of een nieuwe start. Samen maken we er iets bijzonders van.</p><span class="arr">→</span></div>
+    <div class="row"><span class="i mono">03</span><h3>Cover-up</h3><p>Een oude tattoo waar je vanaf wilt? We kijken wat er mogelijk is.</p><span class="arr">→</span></div>
+    <div class="row"><span class="i mono">04</span><h3>Bijwerken</h3><p>Vervaagde lijnen of kleuren weer helemaal scherp.</p><span class="arr">→</span></div>
+  </div>
+</div></section>
+
+<section class="quote"><div class="wrap">
+  <div class="score reveal"><b>4,8</b><span class="st">★★★★★</span><div class="mono" style="margin-top:8px">527 Google reviews</div></div>
+  <div class="reveal">
+    <blockquote>“Danny, super bedankt voor je tijd. Je bent een rustige, supergoeie tatoeëerder en een tof mens.”</blockquote>
+    <cite class="mono">— ouder van een vaste klant, Google</cite>
+    <div class="minis"><span>“Cool people and good tattoos”</span><span>“Top 👌”</span><span>“Recommend 100%”</span></div>
+  </div>
+</div></section>
+
+<section id="nazorg"><div class="wrap">
+  <div class="sh reveal"><h2 class="bs">Na<em>zorg</em></h2><p>Een goede tattoo begint in de stoel, maar wordt pas echt mooi met de juiste verzorging.</p></div>
+  <div class="care reveal">
+    <div class="c"><span class="mono">Stap 01</span><h3>Folie eraf</h3><p>Na een paar uur voorzichtig wassen met lauw water en milde zeep.</p></div>
+    <div class="c"><span class="mono">Stap 02</span><h3>Dun insmeren</h3><p>Een paar keer per dag een dun laagje balm. Niet te veel.</p></div>
+    <div class="c"><span class="mono">Stap 03</span><h3>Niet krabben</h3><p>Jeuk en velletjes zijn normaal. Laat ze vanzelf loslaten.</p></div>
+    <div class="c"><span class="mono">Stap 04</span><h3>Uit de zon</h3><p>De eerste weken geen zonnebank, zee of zwembad.</p></div>
+  </div>
+  <div class="balm reveal"><div><span class="mono" style="color:var(--lime)">Tip van Danny</span><br><b>Tattoo balm in de shop verkrijgbaar</b></div><span class="mono" style="color:var(--mute)">Vraag ernaar bij je afspraak</span></div>
+</div></section>
+
+<section id="bezoek" style="padding-top:20px"><div class="wrap visit reveal">
+  <div>
+    <span class="mono" style="color:var(--lime)">Openingstijden</span>
+    <div class="hrs" id="hrs" style="margin-top:14px">
+      <div data-d="1"><span>Maandag</span><span>10:00 – 14:00</span></div>
+      <div data-d="2"><span>Dinsdag</span><span>10:00 – 18:00</span></div>
+      <div data-d="3"><span>Woensdag</span><span>10:00 – 18:00</span></div>
+      <div data-d="4"><span>Donderdag</span><span>10:00 – 18:00</span></div>
+      <div data-d="5"><span>Vrijdag</span><span>10:00 – 18:00</span></div>
+      <div data-d="6"><span>Zaterdag</span><span>10:00 – 17:00</span></div>
+      <div data-d="0" class="off"><span>Zondag</span><span>Gesloten</span></div>
+    </div>
+  </div>
+  <dl class="ct">
+    <div><dt class="mono">Adres</dt><dd>Leenderweg 315<br>5643 AK Eindhoven</dd></div>
+    <div><dt class="mono">Telefoon / WhatsApp</dt><dd><a href="tel:+31641397679">06 41 39 76 79</a></dd></div>
+    <div><dt class="mono">Mail</dt><dd style="font-size:1.3rem;text-transform:none"><a href="mailto:dannystattooplace@live.nl">dannystattooplace@live.nl</a></dd></div>
+    <a class="btn" style="justify-self:start" href="https://www.google.com/maps/search/?api=1&query=Danny%27s+Tattoo+Place+Leenderweg+315+Eindhoven" target="_blank" rel="noopener">Plan je route</a>
+  </dl>
+</div></section>
+
+<section class="final"><div class="wrap reveal">
+  <span class="mono" style="color:var(--mute)">Klaar voor je volgende stuk?</span>
+  <h2 class="bs">Let's <span>ink.</span></h2>
+  <div class="ctas">
+    <a class="btn" href="https://m.me/www.dannystattooplace.nl" target="_blank" rel="noopener">Stuur een bericht</a>
+    <a class="btn o" href="tel:+31641397679">Bel Danny</a>
+  </div>
+</div></section>
+
+<footer><div class="wrap mono"><span>© 2026 Danny's Tattoo Place · Eindhoven</span><span>Concept door <a href="https://byxavio.nl">byXavio</a></span></div></footer>
+
+<script>
+const t=document.querySelector('#hrs [data-d="'+new Date().getDay()+'"]');if(t&&!t.classList.contains('off'))t.classList.add('now');
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
