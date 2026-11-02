@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Agenda beheren – Slinger Ottertje 30 (demo)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Young+Serif&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1c2742;--ink-soft:#33405f;--green:#2e5a44;--rose:#c5364c;--rose-deep:#a82b3f;--sun:#f2b632;--sun-soft:#fdf3d7;--paper:#f6f5ef;--line:#dedfd6;--muted:#586178;--vrij:#cdebd4;--vrij-rand:#9ccfa9;
+--display:"Young Serif",Georgia,serif;--body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--body);font-size:1.0625rem;line-height:1.55;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;padding-bottom:110px}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.1}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+.demo{background:var(--sun-soft);border-bottom:1px solid #ecd9a2;font-size:.95rem;text-align:center;padding:9px 16px}
+.demo b{color:var(--rose-deep)}
+header{background:rgba(246,245,239,.96);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}
+.brand{font-family:var(--display);font-size:1.3rem;display:flex;align-items:center;gap:.55em;white-space:nowrap}
+.num{display:inline-grid;place-items:center;min-width:38px;height:30px;padding:0 7px;border-radius:5px;background:var(--ink);color:#fff;font:700 1rem/1 var(--body);box-shadow:inset 0 0 0 2px var(--ink),inset 0 0 0 3px rgba(255,255,255,.55)}
+.uit{background:none;border:0;color:var(--muted);text-decoration:underline;cursor:pointer;font-size:.98rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;font:700 1.02rem/1 var(--body);padding:.95em 1.4em;border-radius:999px;border:2px solid transparent;cursor:pointer;transition:background-color .15s,transform .15s}
+.btn:active{transform:translateY(1px)}
+.btn-rose{background:var(--rose);color:#fff}.btn-rose:hover{background:var(--rose-deep)}
+.btn-groen{background:var(--green);color:#fff}.btn-groen:hover{background:#244a37}
+.btn-line{border-color:var(--ink);background:transparent}.btn-line:hover{background:var(--ink);color:#fff}
+.btn:disabled{opacity:.45;cursor:default;transform:none}
+
+/* inloggen */
+.login{max-width:420px;margin:70px auto 0;background:#fff;border:1px solid var(--line);border-radius:22px;padding:34px 30px;box-shadow:0 20px 40px -28px rgba(28,39,66,.45)}
+.login h1{font-size:2rem}
+.login p{color:var(--muted);margin-top:8px}
+.login label{display:block;font-weight:700;margin-top:22px}
+.login input{width:100%;margin-top:8px;border:2px solid var(--line);border-radius:12px;padding:13px 14px;background:var(--paper)}
+.login input:focus{border-color:var(--ink);outline:0}
+.login .btn{width:100%;margin-top:18px}
+.login small{display:block;margin-top:14px;color:var(--muted);font-size:.88rem}
+
+/* beheer */
+.kop{padding:34px 0 8px}
+.kop h1{font-size:clamp(1.9rem,4vw,2.5rem)}
+.kop p{color:var(--muted);margin-top:8px;max-width:60ch}
+.uitleg{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:16px;font-size:.98rem}
+.uitleg span{display:inline-flex;align-items:center;gap:8px}
+.uitleg i{width:20px;height:20px;border-radius:6px;display:inline-block}
+.k-vrij{background:var(--vrij);border:1px solid var(--vrij-rand)}
+.k-bezet{background:var(--rose);border:1px solid var(--rose-deep)}
+.k-nieuw{background:var(--vrij);box-shadow:inset 0 0 0 3px var(--sun)}
+
+.paneel{background:#fff;border:1px solid var(--line);border-radius:22px;padding:24px;margin-top:22px}
+.modus{display:flex;gap:8px;flex-wrap:wrap}
+.modus button{border:2px solid var(--line);background:var(--paper);border-radius:999px;padding:.6em 1.1em;font-weight:700;cursor:pointer}
+.modus button[aria-pressed="true"]{border-color:var(--ink);background:var(--ink);color:#fff}
+.hint{margin-top:12px;color:var(--muted);font-size:.98rem;min-height:1.5em}
+.hint.ok{color:var(--green);font-weight:700}
+
+.cal-nav{display:flex;justify-content:space-between;align-items:center;margin:18px 0 10px}
+.cal-nav button{border:2px solid var(--ink);background:transparent;border-radius:999px;padding:.5em 1em;font-weight:700;cursor:pointer}
+.cal-nav button:disabled{opacity:.3;cursor:default}
+.cal-months{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.cal-month h3{font-size:1.3rem;text-align:center;margin-bottom:10px;text-transform:capitalize}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+.cal-wd{text-align:center;font-size:.9rem;color:var(--muted);padding-bottom:4px}
+.cal-day{height:50px;border:0;border-radius:12px;background:var(--vrij);font:700 1.15rem/1 var(--body);cursor:pointer;padding:0;position:relative}
+.cal-day:hover{box-shadow:inset 0 0 0 2px var(--ink)}
+.cal-day.past{background:transparent;color:#a9aebb;font-weight:400;cursor:default;box-shadow:none}
+.cal-day.bezet{background:var(--rose);color:#fff}
+.cal-day.gewijzigd::after{content:"";position:absolute;inset:0;border-radius:12px;box-shadow:inset 0 0 0 3px var(--sun)}
+.cal-day.start{box-shadow:inset 0 0 0 3px var(--ink)}
+.cal-day.pre{background:#f7c7cf;color:var(--ink)}
+
+.lijst h2{font-size:1.5rem}
+.lijst ul{list-style:none;margin-top:12px}
+.lijst li{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.lijst li b{display:block}
+.lijst li small{color:var(--muted)}
+.lijst li button{background:none;border:0;color:var(--rose-deep);text-decoration:underline;cursor:pointer;font-weight:700;white-space:nowrap}
+.leeg{color:var(--muted);margin-top:10px}
+
+.opslaan{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:2px solid var(--ink);padding:12px 20px calc(12px + env(safe-area-inset-bottom));z-index:10}
+.opslaan .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:0}
+.opslaan p{font-weight:700}
+.opslaan small{display:block;font-weight:400;color:var(--muted)}
+.knoppen{display:flex;gap:8px}
+.toast{position:fixed;left:50%;bottom:100px;transform:translateX(-50%);background:var(--green);color:#fff;font-weight:700;padding:13px 22px;border-radius:999px;box-shadow:0 16px 30px -16px rgba(0,0,0,.5);z-index:20;max-width:calc(100% - 32px);text-align:center}
+@media (max-width:760px){
+  .cal-months{grid-template-columns:1fr}
+  .cal-day{height:46px}
+  .paneel{padding:18px 14px}
+  .opslaan .wrap{flex-direction:column;align-items:stretch}
+  .knoppen .btn{flex:1}
+  .brand .t{display:none}
+}
+</style>
+</head>
+<body>
+<div class="demo"><b>Demo</b> van byXavio. Probeer gerust alles uit: er wordt niets opgeslagen en de echte agenda verandert niet.</div>
+
+<header><div class="wrap bar">
+  <div class="brand"><span class="num">30</span><span>Slinger Ottertje <span class="t">· agenda</span></span></div>
+  <button class="uit" id="uit" type="button" hidden>Uitloggen</button>
+</div></header>
+
+<main class="wrap">
+  <!-- Inloggen -->
+  <section class="login" id="login">
+    <h1>Agenda beheren</h1>
+    <p>Log in om boekingen in je agenda te zetten.</p>
+    <form id="loginform">
+      <label for="ww">Wachtwoord</label>
+      <input id="ww" type="password" autocomplete="current-password" placeholder="Je wachtwoord">
+      <button class="btn btn-rose" type="submit">Inloggen</button>
+      <small>In deze demo werkt elk wachtwoord.</small>
+    </form>
+  </section>
+
+  <!-- Beheer -->
+  <section id="beheer" hidden>
+    <div class="kop">
+      <h1>Je agenda</h1>
+      <p>Kies hieronder wat je wilt doen en tik in de agenda. Druk daarna op <b>Opslaan</b>, dan staat het direct op de website.</p>
+      <div class="uitleg">
+        <span><i class="k-vrij"></i>Groen is vrij</span>
+        <span><i class="k-bezet"></i>Rood is geboekt</span>
+        <span><i class="k-nieuw"></i>Nog niet opgeslagen</span>
+      </div>
+    </div>
+
+    <div class="paneel">
+      <div class="modus" role="group" aria-label="Wat wil je doen?">
+        <button type="button" data-m="boek" aria-pressed="true">Boeking toevoegen</button>
+        <button type="button" data-m="vrij" aria-pressed="false">Weer vrijgeven</button>
+        <button type="button" data-m="los" aria-pressed="false">Losse dag aan/uit</button>
+      </div>
+      <p class="hint" id="hint"></p>
+      <div class="cal-nav">
+        <button type="button" id="prev">‹ Vorige</button>
+        <button type="button" id="next">Volgende ›</button>
+      </div>
+      <div class="cal-months" id="maanden"></div>
+    </div>
+
+    <div class="paneel lijst">
+      <h2>Geboekte periodes</h2>
+      <ul id="lijst"></ul>
+    </div>
+  </section>
+</main>
+
+<div class="opslaan" id="balk" hidden>
+  <div class="wrap">
+    <p id="balktekst">Geen wijzigingen<small>Alles staat al op de website.</small></p>
+    <div class="knoppen">
+      <button class="btn btn-line" type="button" id="herstel" disabled>Ongedaan maken</button>
+      <button class="btn btn-groen" type="button" id="bewaar" disabled>Opslaan</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  // Startsituatie: dezelfde boekingen als nu op slingerottertje30.com
+  var START=[["2026-10-01","2027-04-01"],["2027-04-16","2027-04-25"],["2027-05-14","2027-05-17"],["2027-06-04","2027-06-07"],["2027-06-11","2027-06-25"],["2027-07-16","2027-08-13"],["2027-10-08","2027-10-11"],["2027-12-31","2028-01-03"]];
+  var $=function(id){return document.getElementById(id)};
+  var iso=function(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+  var add=function(s,n){var d=new Date(s+'T12:00:00');d.setDate(d.getDate()+n);return iso(d)};
+  var lang=function(s,jaar){return new Date(s+'T12:00:00').toLocaleDateString('nl-NL',{weekday:'short',day:'numeric',month:'long',year:jaar?'numeric':undefined})};
+  var today=iso(new Date());
+
+  function naarNachten(r){var set={};r.forEach(function(p){for(var s=p[0];s<p[1];s=add(s,1))set[s]=1});return set}
+  function naarPeriodes(set){var d=Object.keys(set).sort(),uit=[];d.forEach(function(s){var l=uit[uit.length-1];if(l&&l[1]===s)l[1]=add(s,1);else uit.push([s,add(s,1)])});return uit}
+
+  var opgeslagen=naarNachten(START),nu=Object.assign({},opgeslagen);
+  var modus='boek',startDag='',view=new Date(new Date().getFullYear(),new Date().getMonth(),1);
+  var eerste=new Date(view),laatste=new Date(view.getFullYear()+2,11,1);
+  // Open op de eerste maand waarin nog een nacht vrij is
+  (function(){var d=today,eind=iso(laatste);while(nu[d]&&d<eind)d=add(d,1);view=new Date(+d.slice(0,4),+d.slice(5,7)-1,1)})();
+  var twee=matchMedia('(min-width:761px)');
+
+  function hint(t,ok){$('hint').textContent=t;$('hint').className='hint'+(ok?' ok':'')}
+  function standaardHint(){
+    if(modus==='boek')hint('Tik op de eerste nacht van de boeking, en daarna op de laatste nacht.');
+    else if(modus==='vrij')hint('Tik op de eerste nacht die weer vrij moet, en daarna op de laatste.');
+    else hint('Tik op een dag om hem rood of groen te maken.');
+  }
+  function aantalWijzigingen(){var n=0,k={};Object.keys(nu).concat(Object.keys(opgeslagen)).forEach(function(s){if(k[s])return;k[s]=1;if(!!nu[s]!==!!opgeslagen[s])n++});return n}
+
+  function teken(){
+    var n=twee.matches?2:1,box=$('maanden');box.innerHTML='';
+    for(var i=0;i<n;i++){
+      var m=new Date(view.getFullYear(),view.getMonth()+i,1),el=document.createElement('div');el.className='cal-month';
+      var h=document.createElement('h3');h.textContent=m.toLocaleDateString('nl-NL',{month:'long',year:'numeric'});el.appendChild(h);
+      var g=document.createElement('div');g.className='cal-grid';
+      ['ma','di','wo','do','vr','za','zo'].forEach(function(w){var e=document.createElement('span');e.className='cal-wd';e.textContent=w;g.appendChild(e)});
+      for(var k=0;k<(m.getDay()+6)%7;k++)g.appendChild(document.createElement('span'));
+      var dagen=new Date(m.getFullYear(),m.getMonth()+1,0).getDate();
+      for(var d=1;d<=dagen;d++){
+        var s=iso(new Date(m.getFullYear(),m.getMonth(),d)),b=document.createElement('button');
+        b.type='button';b.className='cal-day';b.textContent=d;b.dataset.d=s;
+        if(s<today){b.classList.add('past');b.disabled=true}
+        else{
+          if(nu[s])b.classList.add('bezet');
+          if(!!nu[s]!==!!opgeslagen[s])b.classList.add('gewijzigd');
+          if(s===startDag)b.classList.add('start');
+        }
+        b.setAttribute('aria-label',lang(s,true)+(nu[s]?', geboekt':', vrij'));
+        g.appendChild(b);
+      }
+      el.appendChild(g);box.appendChild(el);
+    }
+    $('prev').disabled=view<=eerste;
+    $('next').disabled=new Date(view.getFullYear(),view.getMonth()+n-1,1)>=laatste;
+    lijst();balk();
+  }
+
+  function lijst(){
+    var ul=$('lijst');ul.innerHTML='';
+    var p=naarPeriodes(nu).filter(function(x){return x[1]>today});
+    if(!p.length){ul.innerHTML='<li class="leeg">Er staan geen boekingen in de agenda.</li>';return}
+    p.forEach(function(x){
+      var nachten=Math.round((new Date(x[1]+'T12:00:00')-new Date(x[0]+'T12:00:00'))/864e5);
+      var li=document.createElement('li');
+      li.innerHTML='<div><b></b><small></small></div><button type="button">Verwijderen</button>';
+      li.querySelector('b').textContent=lang(x[0],true)+' t/m '+lang(add(x[1],-1),true);
+      li.querySelector('small').textContent=nachten+(nachten===1?' nacht':' nachten')+' · vertrek '+lang(x[1]);
+      li.querySelector('button').addEventListener('click',function(){for(var s=x[0];s<x[1];s=add(s,1))delete nu[s];hint('Periode weer vrijgegeven. Vergeet niet op Opslaan te drukken.');teken()});
+      ul.appendChild(li);
+    });
+  }
+
+  function balk(){
+    var n=aantalWijzigingen();
+    $('balktekst').innerHTML=n?n+(n===1?' dag gewijzigd':' dagen gewijzigd')+'<small>Druk op Opslaan om het op de website te zetten.</small>':'Geen wijzigingen<small>Alles staat al op de website.</small>';
+    $('bewaar').disabled=!n;$('herstel').disabled=!n;
+  }
+
+  $('maanden').addEventListener('click',function(e){
+    var b=e.target.closest('.cal-day');if(!b||b.disabled)return;var s=b.dataset.d;
+    if(modus==='los'){if(nu[s])delete nu[s];else nu[s]=1;startDag='';hint(nu[s]?lang(s,true)+' staat nu op rood.':lang(s,true)+' staat nu op groen.',true);teken();return}
+    if(!startDag){startDag=s;hint('Eerste nacht: '+lang(s,true)+'. Tik nu op de laatste nacht.');teken();return}
+    var a=startDag<s?startDag:s,z=startDag<s?s:startDag;startDag='';
+    for(var x=a;x<=z;x=add(x,1)){if(modus==='boek')nu[x]=1;else delete nu[x]}
+    var n=Math.round((new Date(z+'T12:00:00')-new Date(a+'T12:00:00'))/864e5)+1;
+    hint((modus==='boek'?'Geboekt: ':'Weer vrij: ')+lang(a)+' t/m '+lang(z)+' ('+n+(n===1?' nacht':' nachten')+'). Druk op Opslaan als het klopt.',true);
+    teken();
+  });
+  $('maanden').addEventListener('mouseover',function(e){
+    var b=e.target.closest('.cal-day');if(!b||!startDag||modus==='los')return;var s=b.dataset.d,a=startDag<s?startDag:s,z=startDag<s?s:startDag;
+    document.querySelectorAll('.cal-day').forEach(function(x){x.classList.toggle('pre',modus==='boek'&&x.dataset.d>=a&&x.dataset.d<=z&&!x.disabled)});
+  });
+  $('maanden').addEventListener('mouseleave',function(){document.querySelectorAll('.pre').forEach(function(x){x.classList.remove('pre')})});
+
+  document.querySelectorAll('.modus button').forEach(function(b){b.addEventListener('click',function(){
+    modus=b.dataset.m;startDag='';document.querySelectorAll('.modus button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});standaardHint();teken();
+  })});
+  $('prev').addEventListener('click',function(){view=new Date(view.getFullYear(),view.getMonth()-1,1);teken()});
+  $('next').addEventListener('click',function(){view=new Date(view.getFullYear(),view.getMonth()+1,1);teken()});
+  twee.addEventListener('change',teken);
+  $('herstel').addEventListener('click',function(){nu=Object.assign({},opgeslagen);startDag='';standaardHint();teken()});
+  $('bewaar').addEventListener('click',function(){
+    var b=$('bewaar');b.disabled=true;b.textContent='Opslaan…';
+    setTimeout(function(){
+      opgeslagen=Object.assign({},nu);b.textContent='Opslaan';teken();
+      var t=document.createElement('div');t.className='toast';t.setAttribute('role','status');
+      t.textContent='Opgeslagen! In de echte versie staat het nu meteen op de website.';
+      document.body.appendChild(t);setTimeout(function(){t.remove()},3800);
+    },700);
+  });
+  $('loginform').addEventListener('submit',function(e){
+    e.preventDefault();$('login').hidden=true;$('beheer').hidden=false;$('balk').hidden=false;$('uit').hidden=false;standaardHint();teken();window.scrollTo(0,0);
+  });
+  $('uit').addEventListener('click',function(){$('login').hidden=false;$('beheer').hidden=true;$('balk').hidden=true;$('uit').hidden=true;$('ww').value=''});
+})();
+</script>
+</body>
+</html>
