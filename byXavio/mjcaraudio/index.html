@@ -78,7 +78,7 @@ section{padding:96px 0}
 
 .box{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;border:1px solid var(--line)}
 .box .l{padding:clamp(28px,5vw,60px);display:grid;gap:18px;align-content:center}
-.box h2{font-size:clamp(2.2rem,4.6vw,3.4rem)}
+.box .l{min-width:0}.box h2{font-size:clamp(1.9rem,4.6vw,3.4rem);overflow-wrap:anywhere;hyphens:auto}
 .box p{color:var(--mute)}
 .box ul{list-style:none;display:grid;gap:10px}
 .box li{display:flex;gap:12px;align-items:baseline}
