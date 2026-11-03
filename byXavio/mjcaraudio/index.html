@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>M.J. Car Audio · Krabbendijke</title>
+<meta name="description" content="M.J. Car Audio in Krabbendijke. Je complete car audio dealer, van ISO-kabel tot subwoofer. Officieel dealer van B2 Audio, Vibe, Edge en JBL.">
+<meta name="theme-color" content="#0b0c0f">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0c0f;--panel:#14161b;--line:#262a33;--txt:#e9ecf2;--mute:#8b93a3;--amb:#ffb000;--red:#ff3b30;--grn:#38e07b}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font:400 17px/1.65 Barlow,system-ui,sans-serif;color:var(--txt);background:var(--bg);overflow-x:clip}
+a{color:inherit}
+.wrap{width:min(1200px,100% - 40px);margin-inline:auto}
+h1,h2,h3,.cp{font-family:"Chakra Petch",system-ui,sans-serif;font-weight:700;line-height:1.02;text-transform:uppercase;letter-spacing:.01em}
+.k{font-family:"Chakra Petch";font-weight:500;font-size:.78rem;letter-spacing:.24em;text-transform:uppercase;color:var(--amb)}
+.btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-family:"Chakra Petch";font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:.88rem;padding:15px 24px;background:var(--amb);color:#111;clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);transition:filter .2s}
+.btn:hover{filter:brightness(1.12)}
+.btn.o{background:transparent;color:var(--txt);box-shadow:inset 0 0 0 2px var(--line);clip-path:none}
+.carbon{background-color:#101216;background-image:linear-gradient(45deg,#15181d 25%,transparent 25%,transparent 75%,#15181d 75%),linear-gradient(45deg,#15181d 25%,transparent 25%,transparent 75%,#15181d 75%);background-size:8px 8px;background-position:0 0,4px 4px}
+
+.top{background:var(--amb);color:#111;font-family:"Chakra Petch";font-weight:700;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase}
+.top .wrap{display:flex;justify-content:center;gap:28px;padding:8px 0;flex-wrap:wrap;text-align:center}
+header{position:sticky;top:0;z-index:20;background:rgba(11,12,15,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:74px;gap:14px}
+.logo{text-decoration:none;display:flex;align-items:center;gap:12px}
+.logo b{font-family:"Chakra Petch";font-size:1.5rem;letter-spacing:.02em}
+.logo b span{color:var(--amb)}
+.eq{display:flex;gap:3px;align-items:flex-end;height:22px}
+.eq i{width:4px;background:var(--amb);animation:eq 1s ease-in-out infinite alternate}
+.eq i:nth-child(2){animation-delay:-.4s}.eq i:nth-child(3){animation-delay:-.7s}.eq i:nth-child(4){animation-delay:-.2s}
+@keyframes eq{from{height:4px}to{height:22px}}
+nav{display:flex;gap:26px;align-items:center;font-weight:600}
+nav a:not(.btn){text-decoration:none;color:var(--mute)}
+nav a:not(.btn):hover{color:var(--txt)}
+header .btn{padding:11px 18px}
+
+.hero{padding:80px 0 90px;position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:50px;align-items:center}
+.hero h1{font-size:clamp(2.9rem,7vw,5.6rem)}
+.hero h1 em{font-style:normal;color:var(--amb)}
+.hero p{color:var(--mute);font-size:1.15rem;max-width:44ch;margin:22px 0 30px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.woofer{position:relative;aspect-ratio:1;max-width:460px;width:100%;justify-self:center}
+.woofer svg{width:100%;height:100%;display:block}
+.cone{transform-origin:200px 200px;animation:thump .55s cubic-bezier(.3,0,.2,1) infinite}
+@keyframes thump{0%,100%{transform:scale(1)}18%{transform:scale(1.045)}}
+@media (prefers-reduced-motion:reduce){.cone,.eq i,.bars i{animation:none}}
+.vu{position:absolute;left:0;right:0;bottom:-6px;display:flex;justify-content:center}
+.chip{font-family:"Chakra Petch";font-weight:700;background:var(--panel);border:1px solid var(--line);padding:10px 16px;display:flex;gap:10px;align-items:center;font-size:.9rem}
+.chip b{color:var(--amb);font-size:1.3rem}
+
+.bars{position:absolute;inset:auto 0 0 0;height:90px;display:flex;gap:6px;align-items:flex-end;padding:0 20px;opacity:.16;pointer-events:none}
+.bars i{flex:1;background:linear-gradient(var(--red),var(--amb) 30%,var(--grn));animation:eq 1.2s ease-in-out infinite alternate}
+
+.stats{border-block:1px solid var(--line)}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.stats div{padding:26px 20px;border-right:1px solid var(--line)}
+.stats div:last-child{border-right:0}
+.stats b{display:block;font-family:"Chakra Petch";font-size:2rem;color:var(--txt)}
+.stats span{color:var(--mute);font-size:.92rem}
+
+section{padding:96px 0}
+.hd{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:40px}
+.hd h2{font-size:clamp(2.2rem,5vw,3.6rem);margin-top:10px}
+.hd p{color:var(--mute);max-width:44ch}
+.cats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.cat{background:var(--panel);border:1px solid var(--line);padding:22px;display:grid;gap:10px;text-decoration:none;position:relative;transition:border-color .2s,transform .2s}
+.cat:hover{border-color:var(--amb);transform:translateY(-3px)}
+.cat svg{width:34px;height:34px;color:var(--amb)}
+.cat h3{font-size:1.15rem}
+.cat p{color:var(--mute);font-size:.92rem}
+.cat::after{content:"→";position:absolute;right:18px;top:18px;color:var(--mute)}
+
+.box{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;border:1px solid var(--line)}
+.box .l{padding:clamp(28px,5vw,60px);display:grid;gap:18px;align-content:center}
+.box h2{font-size:clamp(2.2rem,4.6vw,3.4rem)}
+.box p{color:var(--mute)}
+.box ul{list-style:none;display:grid;gap:10px}
+.box li{display:flex;gap:12px;align-items:baseline}
+.box li::before{content:"";width:10px;height:10px;background:var(--amb);flex:none;transform:translateY(-1px)}
+.box .r{position:relative;min-height:340px;border-left:1px solid var(--line);display:grid;place-items:center;overflow:hidden}
+.blueprint{width:86%;max-width:420px}
+
+.deals{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.deal{background:var(--panel);border:1px solid var(--line);padding:24px;display:grid;gap:12px;position:relative}
+.tag{position:absolute;top:0;right:0;background:var(--red);color:#fff;font-family:"Chakra Petch";font-weight:700;padding:6px 12px;font-size:.9rem}
+.deal small{color:var(--mute);font-family:"Chakra Petch";letter-spacing:.14em;text-transform:uppercase;font-size:.72rem}
+.deal h3{font-size:1.25rem;text-transform:none;letter-spacing:0}
+.deal .pr{display:flex;align-items:baseline;gap:12px}
+.deal .pr b{font-family:"Chakra Petch";font-size:2rem;color:var(--amb)}
+.deal .pr s{color:var(--mute)}
+.deal .lv{height:6px;background:var(--line);position:relative}
+.deal .lv::after{content:"";position:absolute;inset:0 auto 0 0;width:var(--w);background:linear-gradient(90deg,var(--grn),var(--amb),var(--red))}
+
+.makes{display:flex;flex-wrap:wrap;gap:8px}
+.makes span{border:1px solid var(--line);padding:8px 14px;font-family:"Chakra Petch";font-weight:500;font-size:.88rem;color:var(--mute)}
+.makes span:hover{color:var(--txt);border-color:var(--amb)}
+.dealer{display:flex;flex-wrap:wrap;gap:16px;margin-top:34px;align-items:center}
+.dealer b{font-family:"Chakra Petch";font-size:1.6rem;padding:10px 20px;border:2px solid var(--txt)}
+
+.usp{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.usp div{border-top:3px solid var(--amb);padding-top:16px}
+.usp h3{font-size:1.05rem;margin-bottom:6px}
+.usp p{color:var(--mute);font-size:.94rem}
+
+.visit{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+.pnl{background:var(--panel);border:1px solid var(--line);padding:clamp(24px,4vw,44px);display:grid;gap:16px;align-content:start}
+.pnl h3{font-size:2rem}
+.hrs div{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line);font-family:"Chakra Petch";font-weight:500}
+.hrs .off{color:var(--mute)}
+.hrs .now{color:var(--amb)}
+dl{display:grid;gap:16px}
+dt{font-family:"Chakra Petch";font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+dd{font-size:1.15rem;font-weight:600}
+dd a{text-decoration:none;border-bottom:2px solid var(--amb)}
+footer{border-top:1px solid var(--line);padding:24px 0;color:var(--mute);font-size:.88rem}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+footer a{color:var(--amb)}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:none}
+@media (max-width:960px){
+  nav a:not(.btn){display:none}
+  .hero .wrap,.box,.visit{grid-template-columns:minmax(0,1fr)}
+  .woofer{max-width:340px}
+  .cats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .deals{grid-template-columns:minmax(0,1fr)}
+  .stats .wrap,.usp{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stats div:nth-child(2){border-right:0}.stats div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .box .r{border-left:0;border-top:1px solid var(--line);min-height:260px}
+}
+@media (max-width:520px){section{padding:72px 0}.cats{grid-template-columns:minmax(0,1fr)}.hero{padding-top:50px}.top .wrap{gap:10px 18px;font-size:.7rem}.logo b{font-size:1.2rem}}
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap"><span>Gratis verzending vanaf €300</span><span>Vandaag besteld, morgen verzonden*</span><span>Officieel dealer B2 · Vibe · Edge · JBL</span></div></div>
+<header><div class="wrap">
+  <a class="logo" href="#"><span class="eq"><i></i><i></i><i></i><i></i></span><b>M.J. <span>Car Audio</span></b></a>
+  <nav><a href="#shop">Assortiment</a><a href="#kisten">Kisten op maat</a><a href="#aanbiedingen">Aanbiedingen</a><a href="#winkel">Winkel</a><a class="btn" href="https://wa.me/31620262200" target="_blank" rel="noopener">Advies via WhatsApp</a></nav>
+</div></header>
+
+<section class="hero carbon">
+  <div class="bars" aria-hidden="true"><i style="animation-delay:-.1s"></i><i style="animation-delay:-.6s"></i><i style="animation-delay:-.3s"></i><i style="animation-delay:-.9s"></i><i style="animation-delay:-.2s"></i><i style="animation-delay:-.5s"></i><i style="animation-delay:-.8s"></i><i style="animation-delay:-.4s"></i><i style="animation-delay:-.7s"></i><i style="animation-delay:-.15s"></i><i style="animation-delay:-.55s"></i><i style="animation-delay:-.35s"></i><i style="animation-delay:-.85s"></i><i style="animation-delay:-.25s"></i><i style="animation-delay:-.65s"></i><i style="animation-delay:-.45s"></i></div>
+  <div class="wrap">
+    <div class="reveal">
+      <span class="k">Car audio dealer · Krabbendijke</span>
+      <h1 style="margin-top:16px">Van ISO-kabel<br>tot <em>subwoofer.</em></h1>
+      <p>Alles voor het geluid in je auto onder één dak. Radio's met CarPlay en Android Auto, speakers, versterkers, DSP's en subwooferkisten die we zelf op maat bouwen.</p>
+      <div class="ctas"><a class="btn" href="#shop">Bekijk het assortiment</a><a class="btn o" href="tel:+31620262200">Bel 06 20 26 22 00</a></div>
+    </div>
+    <div class="woofer reveal" aria-hidden="true">
+      <svg viewBox="0 0 400 400">
+        <defs><radialGradient id="cg" cx="50%" cy="45%"><stop offset="0" stop-color="#3a3f4a"/><stop offset="1" stop-color="#0f1115"/></radialGradient></defs>
+        <rect x="20" y="20" width="360" height="360" rx="26" fill="#14161b" stroke="#262a33" stroke-width="2"/>
+        <g fill="#0b0c0f" stroke="#262a33"><circle cx="48" cy="48" r="8"/><circle cx="352" cy="48" r="8"/><circle cx="48" cy="352" r="8"/><circle cx="352" cy="352" r="8"/></g>
+        <circle cx="200" cy="200" r="165" fill="#0b0c0f" stroke="#ffb000" stroke-width="3"/>
+        <g class="cone">
+          <circle cx="200" cy="200" r="150" fill="#1b1e24" stroke="#30343e" stroke-width="10"/>
+          <circle cx="200" cy="200" r="132" fill="url(#cg)"/>
+          <circle cx="200" cy="200" r="132" fill="none" stroke="#2b2f38" stroke-width="1" stroke-dasharray="2 6"/>
+          <circle cx="200" cy="200" r="58" fill="#0f1115" stroke="#ffb000" stroke-width="2"/>
+          <text x="200" y="207" text-anchor="middle" font-family="Chakra Petch,sans-serif" font-weight="700" font-size="22" fill="#ffb000">M.J.</text>
+        </g>
+      </svg>
+      <div class="vu"><span class="chip"><b>100%</b> raadt ons aan · 27 reviews</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="stats"><div class="wrap">
+  <div><b>3.200+</b><span>volgers op Facebook</span></div>
+  <div><b>4 merken</b><span>officieel dealer</span></div>
+  <div><b>Op maat</b><span>unieke kistdesigns</span></div>
+  <div><b>&lt; 24 uur</b><span>antwoord op je mail</span></div>
+</div></div>
+
+<section id="shop"><div class="wrap">
+  <div class="hd reveal"><div><span class="k">Assortiment</span><h2>Alles voor je setup</h2></div><p>Van een simpele speakerupgrade tot een complete competitie-installatie. Zoek je iets specifieks? Stuur een appje.</p></div>
+  <div class="cats reveal">
+    <a class="cat" href="#"><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="9" width="28" height="16" rx="2"/><rect x="8" y="13" width="12" height="8"/><circle cx="25" cy="17" r="3"/></svg><h3>Radio's &amp; CarPlay</h3><p>Single en double DIN, CarPlay en Android Auto voor elk model.</p></a>
+    <a class="cat" href="#"><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2"><circle cx="17" cy="17" r="13"/><circle cx="17" cy="17" r="5"/></svg><h3>Speakers</h3><p>Composet, coaxiaal en speakeradapters per automerk.</p></a>
+    <a class="cat" href="#"><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="28" height="24" rx="2"/><circle cx="17" cy="17" r="8"/><circle cx="17" cy="17" r="2"/></svg><h3>Subwoofers</h3><p>Losse woofers, actieve en passieve kisten, underseat.</p></a>
+    <a class="cat" href="#"><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="10" width="28" height="14" rx="2"/><path d="M8 10v-3M14 10v-3M20 10v-3M26 10v-3M8 17h18"/></svg><h3>Versterkers &amp; DSP</h3><p>Eindversterkers, DSP's en equalizers om alles af te stemmen.</p></a>
+    <a class="cat" href="#"><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="9" width="26" height="18" rx="2"/><path d="M10 9V5h4v4M20 9V5h4v4M13 18h8M17 14v8"/></svg><h3>Audio-accu's</h3><p>AGM, HC en SPV accu's, condensators en polen.</p></a>
+    <a class="cat" href="#"><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 26c8 0 8-18 16-18h10M4 20c6 0 6-6 12-6"/></svg><h3>Kabels &amp; voeding</h3><p>OFC en CCA kabelsets, zekeringen en verdeelblokken.</p></a>
+    <a class="cat" href="#"><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 28l10-10M18 6l10 10-6 6-10-10z"/></svg><h3>Inbouwmateriaal</h3><p>Demping, bekledingsstof, tools, RCA en line-outs.</p></a>
+    <a class="cat" href="#"><svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 4l4 9 9 1-7 6 2 9-8-5-8 5 2-9-7-6 9-1z"/></svg><h3>Tweedehands</h3><p>Gebruikte speakers, versterkers, radio's en kisten.</p></a>
+  </div>
+</div></section>
+
+<section id="kisten" style="padding-top:0"><div class="wrap">
+  <div class="box reveal">
+    <div class="l">
+      <span class="k">Uniek kistdesign</span>
+      <h2>Subwooferkisten op maat</h2>
+      <p>Geen standaard doos, maar een kist die precies past bij jouw auto, jouw woofer en jouw geluid. Ontworpen en gebouwd door M.J. Car Audio.</p>
+      <ul><li>Afgestemd op je woofer en kofferbak</li><li>Hardcore-kisten en speakerplankkisten</li><li>Ook lege fabriekskisten op voorraad</li></ul>
+      <div class="ctas"><a class="btn" href="https://wa.me/31620262200" target="_blank" rel="noopener">Vraag je kist aan</a></div>
+    </div>
+    <div class="r carbon" aria-hidden="true">
+      <svg class="blueprint" viewBox="0 0 420 300" fill="none" stroke="#ffb000" stroke-width="1.6">
+        <path d="M60 90L170 40H380L270 90Z" opacity=".6"/><path d="M60 90V250H270V90" /><path d="M270 250L380 200V40" opacity=".6"/>
+        <circle cx="120" cy="170" r="48"/><circle cx="120" cy="170" r="30" opacity=".6"/><circle cx="215" cy="170" r="34"/><circle cx="215" cy="170" r="20" opacity=".6"/>
+        <path d="M60 272H270M60 266v12M270 266v12" stroke="#8b93a3"/><text x="150" y="292" fill="#8b93a3" stroke="none" font-family="Chakra Petch" font-size="13">OP MAAT</text>
+        <path d="M290 250l90-40" stroke="#8b93a3" stroke-dasharray="4 4"/>
+      </svg>
+    </div>
+  </div>
+</div></section>
+
+<section id="aanbiedingen" class="carbon"><div class="wrap">
+  <div class="hd reveal"><div><span class="k">B-stock &amp; aanbiedingen</span><h2>Scherpe deals</h2></div><p>Nieuwe producten met een beschadigde doos of B-stock, voor een flink lagere prijs. Op = op.</p></div>
+  <div class="deals reveal">
+    <div class="deal"><span class="tag">-39%</span><small>JBL · B-stock</small><h3>JBL Stage 1 41F</h3><div class="pr"><b>€18,00</b><s>€29,50</s></div><div class="lv" style="--w:61%"></div></div>
+    <div class="deal"><span class="tag">-20%</span><small>Kenwood · doos beschadigd</small><h3>Kenwood KFC-S1766 16,5 cm</h3><div class="pr"><b>€40,00</b><s>€50,00</s></div><div class="lv" style="--w:80%"></div></div>
+    <div class="deal"><span class="tag">-45%</span><small>JBL · B-stock</small><h3>JBL Stage 1 621</h3><div class="pr"><b>€30,00</b><s>€54,50</s></div><div class="lv" style="--w:55%"></div></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="hd reveal"><div><span class="k">Kies op merk</span><h2>Past het in jouw auto?</h2></div><p>Speakeradapters, radio-inbouwsets en kabels per automerk.</p></div>
+  <div class="makes reveal"><span>Audi</span><span>BMW</span><span>Citroën</span><span>Dacia</span><span>Fiat</span><span>Ford</span><span>Hyundai</span><span>Mercedes</span><span>Mini</span><span>Nissan</span><span>Opel</span><span>Peugeot</span><span>Polestar</span><span>Porsche</span><span>Renault</span><span>Scania</span><span>Seat</span><span>Skoda</span><span>Tesla</span><span>Toyota</span><span>Volvo</span><span>VW</span><span>+ meer</span></div>
+  <div class="dealer reveal"><span class="k">Officieel dealer van</span><b>B2 AUDIO</b><b>VIBE</b><b>EDGE</b><b>JBL</b></div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap usp reveal">
+  <div><h3>Gratis verzending</h3><p>Bij bestellingen vanaf €300.</p></div>
+  <div><h3>Snel in huis</h3><p>Vandaag besteld, morgen verzonden, zolang de voorraad strekt.</p></div>
+  <div><h3>Gratis goodiebag</h3><p>Bij elke bestelling vanaf €100.</p></div>
+  <div><h3>Echt advies</h3><p>Twijfel je? Stuur een appje, we denken mee.</p></div>
+</div></section>
+
+<section id="winkel" style="padding-top:0"><div class="wrap visit">
+  <div class="pnl reveal"><h3>Openingstijden</h3><div class="hrs">
+    <div data-d="1"><span>Maandag</span><span>10:00 – 16:00</span></div>
+    <div data-d="2" class="off"><span>Dinsdag</span><span>Gesloten</span></div>
+    <div data-d="3"><span>Woensdag</span><span>10:00 – 16:00</span></div>
+    <div data-d="4"><span>Donderdag</span><span>10:00 – 16:00</span></div>
+    <div data-d="5"><span>Vrijdag</span><span>10:00 – 16:00</span></div>
+    <div data-d="6"><span>Zaterdag</span><span>10:00 – 16:00</span></div>
+    <div data-d="0"><span>Zondag</span><span>10:00 – 16:00</span></div>
+  </div></div>
+  <div class="pnl reveal"><h3>Kom langs</h3><dl>
+    <div><dt>Adres</dt><dd>Oostpolderweg 1q, 4413 NN Krabbendijke</dd></div>
+    <div><dt>Telefoon &amp; WhatsApp</dt><dd><a href="tel:+31620262200">06 20 26 22 00</a></dd></div>
+    <div><dt>E-mail</dt><dd><a href="mailto:M.J.audio@hotmail.com">M.J.audio@hotmail.com</a></dd></div>
+  </dl><div class="ctas"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Oostpolderweg+1q+Krabbendijke" target="_blank" rel="noopener">Route plannen</a><a class="btn o" href="https://www.facebook.com/michael.jansen.caraudio" target="_blank" rel="noopener">Facebook</a></div></div>
+</div></section>
+
+<footer><div class="wrap"><span>© 2026 M.J. Car Audio · Krabbendijke · KVK 65333004</span><span>Concept door <a href="https://byxavio.nl">byXavio</a></span></div></footer>
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const r=document.querySelector('[data-d="'+new Date().getDay()+'"]');if(r&&!r.classList.contains('off'))r.classList.add('now');
+</script>
+</body>
+</html>
