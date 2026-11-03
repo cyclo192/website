@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>JK The Barber · Schagen</title>
+<meta name="description" content="JK The Barber aan de Gedempte Gracht in Schagen. Kapper en barbier, 24/7 online te boeken.">
+<meta name="theme-color" content="#eef0ea">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;700&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef0ea;--paper:#f8f8f4;--sage:#7d8c74;--deep:#2f3a2c;--ink:#1d211b;--mute:#6b7066;--line:#d4d8cc}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font:400 17px/1.7 "Familjen Grotesk",system-ui,sans-serif;color:var(--ink);background:var(--bg);overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{width:min(1200px,100% - 48px);margin-inline:auto}
+.serif{font-family:Newsreader,Georgia,serif;font-weight:400}
+h1,h2,h3{font-weight:500;letter-spacing:-.02em;line-height:1.05;text-wrap:balance}
+.lab{font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--sage);font-weight:700}
+.btn{display:inline-flex;align-items:center;gap:12px;text-decoration:none;font-weight:500;padding:15px 24px;background:var(--deep);color:var(--paper);border-radius:2px;transition:background .2s}
+.btn:hover{background:var(--ink)}
+.btn.l{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.btn svg{width:16px;height:16px}
+
+header .wrap{display:flex;justify-content:space-between;align-items:center;height:84px;border-bottom:1px solid var(--line)}
+.logo{text-decoration:none;display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.06em;font-size:.9rem;text-transform:uppercase}
+.logo i{width:38px;height:38px;border:1px solid var(--ink);display:grid;place-items:center;font-style:normal;font-family:Newsreader,serif;font-size:1.05rem;letter-spacing:0;text-transform:none}
+nav{display:flex;gap:30px;align-items:center;font-size:.95rem}
+nav a:not(.btn){text-decoration:none;color:var(--mute)}
+nav a:not(.btn):hover{color:var(--ink)}
+header .btn{padding:11px 18px}
+
+.hero{padding:64px 0 90px}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center}
+.mono{position:relative;aspect-ratio:4/5;background:var(--sage);overflow:hidden}
+.mono img{width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply;filter:grayscale(1) contrast(1.1)}
+.mono span{position:absolute;left:-2%;bottom:-8%;font-family:Newsreader,serif;font-size:clamp(9rem,24vw,20rem);line-height:1;color:var(--paper);letter-spacing:-.06em;mix-blend-mode:normal;opacity:.92}
+.hero h1{font-size:clamp(2.8rem,6vw,5rem);margin:18px 0 22px}
+.hero h1 .serif{font-style:italic;color:var(--sage)}
+.hero p{color:var(--mute);max-width:44ch;font-size:1.1rem;margin-bottom:30px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:46px;border-top:1px solid var(--line)}
+.facts div{padding:18px 16px 0 0}
+.facts b{display:block;font-size:1.9rem;font-weight:500;letter-spacing:-.02em}
+.facts small{color:var(--mute);font-size:.86rem}
+
+section{padding:100px 0}
+.split{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:56px}
+.split h2{font-size:clamp(2.2rem,4.5vw,3.6rem)}
+.rows{border-top:1px solid var(--ink)}
+.rows div{display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:18px;align-items:baseline;padding:24px 0;border-bottom:1px solid var(--line)}
+.rows .n{font-family:Newsreader,serif;font-style:italic;color:var(--sage);font-size:1.2rem}
+.rows h3{font-size:1.5rem}
+.rows p{color:var(--mute);font-size:.98rem;grid-column:2}
+.rows .t{font-size:.82rem;color:var(--mute);grid-row:1;grid-column:3}
+
+.quote{background:var(--deep);color:var(--paper)}
+.quote .wrap{display:grid;gap:44px}
+.big{font-family:Newsreader,serif;font-size:clamp(2rem,4.6vw,3.8rem);line-height:1.15;max-width:22ch;letter-spacing:-.01em}
+.big em{color:#b9c6ae}
+.ql{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px;border-top:1px solid rgba(255,255,255,.18);padding-top:30px}
+.ql p{font-family:Newsreader,serif;font-size:1.15rem;line-height:1.5;color:#e4e8de}
+.ql span{display:block;margin-top:12px;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:#9fae95}
+
+.pics{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1fr);gap:14px}
+.pics img{width:100%;height:100%;aspect-ratio:3/4;object-fit:cover;filter:grayscale(.35)}
+.pics img:first-child{aspect-ratio:auto}
+
+.book{background:var(--paper);border:1px solid var(--line);padding:clamp(28px,5vw,64px);display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:48px;align-items:center}
+.book h2{font-size:clamp(2.2rem,5vw,4rem)}
+.book h2 .serif{font-style:italic;color:var(--sage)}
+.book p{color:var(--mute);margin:16px 0 26px;max-width:42ch}
+dl{display:grid;gap:22px}
+dt{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--sage);font-weight:700}
+dd{font-size:1.25rem;font-weight:500}
+dd a{text-decoration:none;border-bottom:1px solid var(--sage)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:28px 0;border-top:1px solid var(--line);color:var(--mute);font-size:.88rem}
+footer a{color:var(--deep)}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .8s,transform .8s}
+.reveal.in{opacity:1;transform:none}
+@media (max-width:900px){
+  nav a:not(.btn){display:none}
+  .hero .wrap,.split,.book{grid-template-columns:minmax(0,1fr)}
+  .hero{padding-top:36px}
+  .mono{aspect-ratio:1}
+  .ql{grid-template-columns:minmax(0,1fr)}
+  .pics{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pics img:first-child{grid-column:1/-1;aspect-ratio:16/10}
+}
+@media (max-width:520px){section{padding:72px 0}.facts b{font-size:1.5rem}.rows div{grid-template-columns:36px minmax(0,1fr)}.rows .t{grid-column:2;grid-row:auto}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="#"><i>JK</i>The Barber</a>
+  <nav><a href="#diensten">Diensten</a><a href="#reviews">Reviews</a><a href="#boeken">Contact</a><a class="btn" href="https://jkbarber.mijnsalon.nl/" target="_blank" rel="noopener">Boek online</a></nav>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <div class="mono reveal"><img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=900&q=70" alt="Strakke knipbeurt"><span>JK</span></div>
+  <div class="reveal">
+    <span class="lab">Kapper &amp; barbier · Schagen</span>
+    <h1>Rustig, precies en <span class="serif">altijd goed.</span></h1>
+    <p>JK The Barber aan de Gedempte Gracht. Voor een strakke coupe, een perfect gestylede baard en een kapper die weet wat hij doet, ook met lastig haar.</p>
+    <div class="ctas"><a class="btn" href="https://jkbarber.mijnsalon.nl/" target="_blank" rel="noopener">Boek 24/7 online <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a><a class="btn l" href="tel:+31625435899">06 25 43 58 99</a></div>
+    <div class="facts">
+      <div><b>4,8</b><small>Google-score</small></div>
+      <div><b>36</b><small>reviews</small></div>
+      <div><b>24/7</b><small>online boeken</small></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="diensten" style="padding-top:20px"><div class="wrap split">
+  <div class="reveal"><span class="lab">Diensten</span><h2 style="margin-top:14px">Haar en baard, met aandacht.</h2></div>
+  <div class="rows reveal">
+    <div><span class="n">01</span><h3>Knippen</h3><span class="t">Heren</span><p>Klassiek of modern, afgestemd op jouw haar en hoe je het draagt.</p></div>
+    <div><span class="n">02</span><h3>Baard</h3><span class="t">Trimmen &amp; stylen</span><p>Een baard die perfect in model zit, met strakke lijnen.</p></div>
+    <div><span class="n">03</span><h3>Knippen + baard</h3><span class="t">Compleet</span><p>De volledige behandeling in één afspraak.</p></div>
+    <div><span class="n">04</span><h3>Lastig haar</h3><span class="t">Specialiteit</span><p>Steil haar vol kruinen? JK weet er raad mee.</p></div>
+  </div>
+</div></section>
+
+<section class="quote" id="reviews"><div class="wrap">
+  <p class="big reveal">“De beste kapper en barbier van de stad. <em>JK rules.</em>”</p>
+  <div class="ql reveal">
+    <div><p>“Mijn baard is perfect gestyled. Precies zoals ik het wilde.”</p><span>Google review</span></div>
+    <div><p>“Mijn dochters stopten met lachen en mijn vrouw zei: hé, lekker ding.”</p><span>Google review</span></div>
+    <div><p>“Hij weet hoe hij steil haar vol kruinen moet aanpakken.”</p><span>Google review</span></div>
+  </div>
+</div></section>
+
+<section><div class="wrap pics reveal">
+  <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1000&q=70" alt="Interieur barbershop" loading="lazy">
+  <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=500&q=70" alt="Baard trimmen" loading="lazy">
+  <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=500&q=70" alt="Gereedschap" loading="lazy">
+</div></section>
+
+<section id="boeken" style="padding-top:0"><div class="wrap">
+  <div class="book reveal">
+    <div><span class="lab">Afspraak maken</span><h2 style="margin-top:14px">Plan je stoel, <span class="serif">wanneer het jou uitkomt.</span></h2><p>Online boeken kan dag en nacht. Kies je behandeling en een tijd die past.</p><a class="btn" href="https://jkbarber.mijnsalon.nl/" target="_blank" rel="noopener">Naar de agenda <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
+    <dl>
+      <div><dt>Adres</dt><dd>Gedempte Gracht 48<br>1741 GD Schagen</dd></div>
+      <div><dt>Telefoon</dt><dd><a href="tel:+31625435899">06 25 43 58 99</a></dd></div>
+      <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/jkthebarberschagen/" target="_blank" rel="noopener">@jkthebarberschagen</a></dd></div>
+    </dl>
+  </div>
+</div></section>
+
+<footer><div class="wrap"><span>© 2026 JK The Barber · Schagen</span><span>Concept door <a href="https://byxavio.nl">byXavio</a></span></div></footer>
+<script>const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));</script>
+</body>
+</html>

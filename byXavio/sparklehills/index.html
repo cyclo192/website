@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>SparkleHills Nails · Uitgeest</title>
+<meta name="description" content="SparkleHills in Uitgeest. Nagelstyliste Esther maakt van elk idee een kunstwerk: gel extensions, BIAB, acrylgel, hardgel, gelpolish en manicure.">
+<meta name="theme-color" content="#f7f3ff">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Lexend:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f3ff;--ink:#2a1f45;--soft:#6c6286;--lav:#b9a3ff;--mint:#9ff0d8;--pink:#ffb3d9;--sun:#ffe08a;--white:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font:300 17px/1.7 Lexend,system-ui,sans-serif;color:var(--ink);background:var(--bg);overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{width:min(1160px,100% - 40px);margin-inline:auto}
+h1,h2,h3{font-family:"Bagel Fat One",system-ui,sans-serif;font-weight:400;text-wrap:balance;line-height:1}
+.holo{background:linear-gradient(115deg,var(--lav),var(--pink) 30%,var(--sun) 50%,var(--mint) 70%,var(--lav));background-size:300% 300%;animation:h 10s ease infinite}
+@keyframes h{50%{background-position:100% 50%}}
+@media (prefers-reduced-motion:reduce){.holo{animation:none}}
+.k{font-weight:600;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:#7c5cf0}
+.btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;padding:15px 26px;border-radius:999px;background:var(--ink);color:#fff;transition:transform .2s}
+.btn:hover{transform:translateY(-2px) rotate(-1deg)}
+.btn.w{background:var(--white);color:var(--ink);box-shadow:0 0 0 2px var(--ink)}
+.btn svg{width:20px;height:20px}
+.spark{display:inline-block;width:1em;height:1em;background:currentColor;clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%)}
+
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:82px;gap:14px}
+.logo{text-decoration:none;font-family:"Bagel Fat One";font-size:1.7rem;display:flex;gap:8px;align-items:center}
+.logo .spark{color:#7c5cf0;font-size:1.1rem}
+nav{display:flex;gap:24px;align-items:center}
+nav a:not(.btn){text-decoration:none;font-weight:400}
+header .btn{padding:10px 18px}
+
+.hero{padding:30px 0 90px}
+.hero .card{border-radius:40px;padding:clamp(28px,6vw,70px);position:relative;overflow:hidden}
+.hero .card::after{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 12% 20%,#fff 0 2px,transparent 3px),radial-gradient(circle at 80% 30%,#fff 0 2px,transparent 3px),radial-gradient(circle at 60% 80%,#fff 0 1.5px,transparent 3px),radial-gradient(circle at 30% 70%,#fff 0 1.5px,transparent 3px);opacity:.9;pointer-events:none}
+.hero .in{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:40px;align-items:center}
+.hero h1{font-size:clamp(3.4rem,10vw,7.4rem);color:var(--ink)}
+.hero p{font-size:1.12rem;max-width:40ch;margin:20px 0 28px;font-weight:400}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.stack{position:relative;height:440px}
+.stack img{position:absolute;width:62%;aspect-ratio:3/4;object-fit:cover;border-radius:28px;border:6px solid #fff;box-shadow:0 20px 40px rgba(42,31,69,.18)}
+.stack img:nth-child(1){left:0;top:20px;transform:rotate(-7deg)}
+.stack img:nth-child(2){right:0;top:60px;transform:rotate(6deg)}
+.stack .tag{position:absolute;left:30%;bottom:0;background:#fff;border-radius:999px;padding:10px 18px;font-weight:600;box-shadow:0 10px 24px rgba(42,31,69,.15);display:flex;gap:8px;align-items:center}
+
+section{padding:90px 0}
+.c{text-align:center;max-width:640px;margin:0 auto 50px;display:grid;gap:12px}
+.c h2{font-size:clamp(2.6rem,6vw,4.4rem)}
+.c p{color:var(--soft)}
+.menu{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.m{background:#fff;border-radius:28px;padding:28px 24px;display:grid;gap:8px;align-content:start;transition:transform .25s}
+.m:hover{transform:translateY(-4px) rotate(-.6deg)}
+.m .dot{width:48px;height:48px;border-radius:16px;display:grid;place-items:center;font-size:1.3rem}
+.m h3{font-size:1.7rem}
+.m p{color:var(--soft);font-size:.96rem}
+
+.esther{background:var(--ink);color:#fff;border-radius:40px;margin-inline:max(12px,env(safe-area-inset-left,0px))}
+.esther .wrap{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:50px;align-items:center}
+.esther img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:50%;border:8px solid transparent;background:linear-gradient(var(--ink),var(--ink)) padding-box,linear-gradient(115deg,var(--lav),var(--pink),var(--sun),var(--mint)) border-box}
+.esther h2{font-size:clamp(2.4rem,5vw,3.8rem);margin:12px 0 18px}
+.esther p{color:#cfc6ea;margin-bottom:12px;max-width:46ch}
+.esther .k{color:var(--mint)}
+
+.walls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.q{border-radius:28px;padding:28px;background:#fff;display:grid;gap:12px}
+.q:nth-child(1){background:var(--pink)}.q:nth-child(2){background:var(--mint)}.q:nth-child(3){background:var(--sun)}
+.q p{font-size:1.08rem;font-weight:400}
+.q span{font-size:.85rem;font-weight:600}
+.five{display:flex;justify-content:center;gap:12px;align-items:center;margin-top:30px;font-weight:600}
+.five b{font-family:"Bagel Fat One";font-size:3rem;font-weight:400}
+
+.gal{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.gal img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:24px}
+.gal img:nth-child(odd){transform:rotate(-2deg)}.gal img:nth-child(even){transform:rotate(2deg)}
+
+.book{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}
+.bk{border-radius:32px;padding:clamp(24px,4vw,44px);background:#fff;display:grid;gap:16px;align-content:start}
+.bk h3{font-size:2.2rem}
+.bk.holo h3{color:var(--ink)}
+.hrs div{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px dashed #d9cff5}
+.hrs div.off{color:#aaa1c2}
+dl{display:grid;gap:14px}
+dt{font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:#7c5cf0;font-weight:600}
+dd{font-size:1.2rem;font-weight:600}
+dd a{text-decoration:none;border-bottom:2px solid var(--lav)}
+footer{padding:26px 0;color:var(--soft);font-size:.88rem}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+footer a{color:#7c5cf0}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:none}
+.gal.reveal.in img:nth-child(odd){transform:rotate(-2deg)}.gal.reveal.in img:nth-child(even){transform:rotate(2deg)}
+@media (max-width:900px){
+  nav a:not(.btn){display:none}
+  .hero .in,.esther .wrap,.book{grid-template-columns:minmax(0,1fr)}
+  .stack{height:360px;max-width:420px}
+  .menu,.walls{grid-template-columns:minmax(0,1fr)}
+  .gal{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .esther img{max-width:320px;margin:0 auto}
+}
+@media (max-width:520px){section{padding:70px 0}.stack{height:300px}.esther{border-radius:28px}.hero .card{border-radius:28px}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="#"><span class="spark"></span>SparkleHills</a>
+  <nav><a href="#nagels">Nagels</a><a href="#esther">Esther</a><a href="#boeken">Boeken</a><a class="btn" href="https://sparklehills.salonized.com/" target="_blank" rel="noopener">Boek nu</a></nav>
+</div></header>
+
+<section class="hero" style="padding-top:10px"><div class="wrap">
+  <div class="card holo"><div class="in">
+    <div class="reveal">
+      <span class="k" style="color:var(--ink)">Nagelstudio · Uitgeest</span>
+      <h1>Nails that sparkle.</h1>
+      <p>Wat jij in je hoofd hebt, maakt Esther waar op je nagels. Van subtiel en verfijnd tot een complete nail art-set, en ze blijven lang mooi.</p>
+      <div class="ctas"><a class="btn" href="https://sparklehills.salonized.com/" target="_blank" rel="noopener">Plan je afspraak</a><a class="btn w" href="https://m.me/SparkleHillsNails" target="_blank" rel="noopener">Stuur een bericht</a></div>
+    </div>
+    <div class="stack reveal">
+      <img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=600&q=70" alt="Nail art">
+      <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&q=70" alt="Gelakte nagels">
+      <span class="tag"><span class="spark" style="color:#7c5cf0"></span>5,0 · 17 reviews</span>
+    </div>
+  </div></div>
+</div></section>
+
+<section id="nagels" style="padding-top:20px"><div class="wrap">
+  <div class="c reveal"><span class="k">Het menu</span><h2>Kies je basis</h2><p>Elke behandeling wordt afgemaakt met de kleur of het design dat jij wilt.</p></div>
+  <div class="menu reveal">
+    <div class="m"><span class="dot" style="background:var(--pink)">✦</span><h3>Gel extensions</h3><p>Verlenging met gel, sterk en licht. Elke vorm en lengte.</p></div>
+    <div class="m"><span class="dot" style="background:var(--mint)">✦</span><h3>BIAB</h3><p>Builder in a bottle: versteviging van je eigen nagels.</p></div>
+    <div class="m"><span class="dot" style="background:var(--sun)">✦</span><h3>Acrylgel</h3><p>Het beste van acryl en gel, stevig en natuurlijk.</p></div>
+    <div class="m"><span class="dot" style="background:var(--lav)">✦</span><h3>Hardgel</h3><p>Duurzaam en glanzend, perfect voor een langere set.</p></div>
+    <div class="m"><span class="dot" style="background:var(--pink)">✦</span><h3>Gelpolish</h3><p>Kleur op je natuurlijke nagels die weken mooi blijft.</p></div>
+    <div class="m"><span class="dot" style="background:var(--mint)">✦</span><h3>Manicure</h3><p>Verzorgde nagelriemen en handen, de basis van mooie nagels.</p></div>
+  </div>
+</div></section>
+
+<section class="esther" id="esther"><div class="wrap">
+  <img class="reveal" src="https://images.unsplash.com/photo-1599206676335-193c82b13c9e?w=700&q=70" alt="Esther aan het werk met een manicure" loading="lazy">
+  <div class="reveal">
+    <span class="k">Achter SparkleHills</span>
+    <h2>Een echte nail artist</h2>
+    <p>Klanten noemen Esther een kunstenaar. Ze luistert goed, neemt de tijd en vertaalt elk idee naar je nagels, of je nu iets simpels wilt of een compleet design.</p>
+    <p>Bij SparkleHills voel je je meteen thuis. Een schone, frisse salon en altijd een gezellige afspraak.</p>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="c reveal"><span class="k">Reviews</span><h2>5 sterren, elke keer</h2></div>
+  <div class="walls reveal">
+    <div class="q"><p>“De beste nagelstyliste waar ik ooit ben geweest. Ik voelde me meteen thuis.”</p><span>Google review</span></div>
+    <div class="q"><p>“Esther is een echte kunstenaar in hoe ze tot leven brengt wat je in je hoofd hebt.”</p><span>Google review</span></div>
+    <div class="q"><p>“Ze werkt netjes en luistert echt. Mijn nagels blijven lang mooi en verzorgd.”</p><span>Google review</span></div>
+  </div>
+  <div class="five reveal"><b>5,0</b><span>★★★★★ · 17 reviews op Google</span></div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <div class="gal reveal">
+    <img src="https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=500&q=70" alt="Nagels" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=500&q=70" alt="Nagels" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1607779097040-26e80aa78e66?w=500&q=70" alt="Nagels" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=500&q=70" alt="Nail art" loading="lazy">
+  </div>
+</div></section>
+
+<section id="boeken"><div class="wrap book">
+  <div class="bk holo reveal"><h3>Boek je set</h3><p style="font-weight:400">Online boeken kan altijd, of stuur een privébericht voor een afspraak.</p><a class="btn" style="justify-self:start" href="https://sparklehills.salonized.com/" target="_blank" rel="noopener">Online boeken</a></div>
+  <div class="bk reveal"><div class="hrs">
+    <div><span>Ma – vr</span><span>09:00 – 18:00</span></div><div><span>Zaterdag</span><span>10:00 – 15:00</span></div><div class="off"><span>Zondag</span><span>Gesloten</span></div>
+  </div><dl>
+    <div><dt>Adres</dt><dd>Hornevenstraat 3, 1911 VW Uitgeest</dd></div>
+    <div><dt>Telefoon</dt><dd><a href="tel:+31652570769">06 52 57 07 69</a></dd></div>
+    <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/sparklehillsnails/" target="_blank" rel="noopener">@sparklehillsnails</a></dd></div>
+  </dl></div>
+</div></section>
+
+<footer><div class="wrap"><span>© 2026 SparkleHills · Uitgeest</span><span>Concept door <a href="https://byxavio.nl">byXavio</a></span></div></footer>
+<script>const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));</script>
+</body>
+</html>
