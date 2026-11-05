@@ -761,8 +761,9 @@ dialog::backdrop{background:rgba(15,20,36,.95)}
 </dialog>
 
 <script>
-// De agenda altijd vers ophalen, zodat een wijziging in beschikbaarheid.js meteen te zien is
+// De agenda altijd vers ophalen. Eerst beschikbaarheid.js als reserve, daarna de agenda die de eigenaar zelf beheert (/beheer).
 document.write('<script src="beschikbaarheid.js?t='+Date.now()+'"><\/script>');
+document.write('<script src="/api/agenda.js?t='+Date.now()+'"><\/script>');
 </script>
 <script>
 // Lightbox
