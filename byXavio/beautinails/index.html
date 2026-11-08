@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Beauti &amp; Nails · Almere Buiten</title>
+<meta name="description" content="Beauti & Nails in Almere Buiten. BIAB, acrylgel, gellak en nail art door Ti.">
+<meta name="theme-color" content="#f6efe9">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;1,6..96,400&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f6efe9;--ink:#141012;--blush:#e7b7b0;--rose:#b5524a;--mute:#6e6361;--line:#d9cbc4}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font:400 16px/1.7 Manrope,system-ui,sans-serif;color:var(--ink);background:var(--paper);overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{width:min(1220px,100% - 40px);margin-inline:auto}
+.bd{font-family:"Bodoni Moda",Didot,Georgia,serif}
+.cap{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;font-weight:700}
+.btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;padding:16px 26px;background:var(--ink);color:var(--paper);transition:background .2s}
+.btn:hover{background:var(--rose)}
+.btn.l{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+
+.mast{border-bottom:1px solid var(--ink)}
+.mast .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:64px;gap:12px}
+.mast .cap:last-child{justify-self:end}
+.mast nav{display:flex;gap:22px}
+.mast nav a{text-decoration:none}
+.logo{font-family:"Bodoni Moda";font-weight:700;font-size:1.5rem;text-decoration:none;letter-spacing:-.01em}
+.logo i{color:var(--rose)}
+
+.cover{padding:30px 0 70px;border-bottom:1px solid var(--ink)}
+.cover .wrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:40px;align-items:end}
+.issue{display:flex;justify-content:space-between;border-bottom:1px solid var(--ink);padding-bottom:10px;margin-bottom:18px}
+.cover h1{font-family:"Bodoni Moda";font-weight:400;font-size:clamp(4rem,13vw,11rem);line-height:.84;letter-spacing:-.04em}
+.cover h1 i{color:var(--rose)}
+.cover .dek{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:26px;margin-top:30px;align-items:start}
+.cover .dek p{color:var(--mute);max-width:36ch}
+.ctas{display:flex;gap:10px;flex-wrap:wrap}
+.cfig{position:relative}
+.cfig img{width:100%;aspect-ratio:3/4;object-fit:cover;filter:saturate(.9)}
+.cfig .stamp{position:absolute;left:-26px;top:30px;width:120px;height:120px;border-radius:50%;background:var(--blush);display:grid;place-items:center;text-align:center;transform:rotate(-12deg);font-family:"Bodoni Moda"}
+.cfig .stamp b{display:block;font-size:2.2rem;line-height:1}
+.cfig .stamp span{font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;font-family:Manrope;font-weight:700}
+.cfig figcaption{font-size:.78rem;color:var(--mute);margin-top:8px}
+
+section{padding:90px 0}
+.sec-h{display:flex;justify-content:space-between;align-items:baseline;gap:20px;border-bottom:1px solid var(--ink);padding-bottom:12px;margin-bottom:34px;flex-wrap:wrap}
+.sec-h h2{font-family:"Bodoni Moda";font-weight:400;font-size:clamp(2.4rem,5vw,4rem);line-height:1}
+.sec-h h2 i{color:var(--rose)}
+
+.menu{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-left:1px solid var(--line)}
+.it{padding:26px 22px;border-right:1px solid var(--line);display:grid;gap:10px;align-content:start}
+.it .n{font-family:"Bodoni Moda";font-style:italic;color:var(--rose);font-size:1.4rem}
+.it h3{font-family:"Bodoni Moda";font-weight:700;font-size:1.6rem;line-height:1.1}
+.it p{color:var(--mute);font-size:.95rem}
+
+.levels{background:var(--ink);color:var(--paper)}
+.levels .sec-h{border-color:var(--paper)}
+.lv{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.lv div{border:1px solid #3a3234;padding:30px 26px;display:grid;gap:14px}
+.lv .dots{display:flex;gap:6px}
+.lv .dots i{width:12px;height:12px;border-radius:50%;border:1px solid var(--blush)}
+.lv .dots i.on{background:var(--blush)}
+.lv h3{font-family:"Bodoni Moda";font-weight:400;font-size:2rem}
+.lv p{color:#bfb2ae}
+
+.story{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:50px;align-items:center}
+.story img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.pull{font-family:"Bodoni Moda";font-style:italic;font-size:clamp(1.8rem,3.6vw,2.8rem);line-height:1.2;margin:18px 0}
+.pull::first-letter{color:var(--rose)}
+.story p{color:var(--mute);max-width:52ch;margin-bottom:12px}
+
+.quotes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px}
+.q{border-top:2px solid var(--ink);padding-top:18px;display:grid;gap:12px}
+.q p{font-family:"Bodoni Moda";font-size:1.3rem;line-height:1.4}
+.score{display:flex;align-items:baseline;gap:16px;margin-top:40px;flex-wrap:wrap}
+.score b{font-family:"Bodoni Moda";font-size:5rem;line-height:1;font-weight:400}
+
+.gal{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.gal img{width:100%;aspect-ratio:1;object-fit:cover}
+
+.info{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid var(--ink)}
+.info>div{padding:30px 24px 0 0;display:grid;gap:12px;align-content:start}
+.info h3{font-family:"Bodoni Moda";font-size:1.8rem;font-weight:400}
+.hrs div{display:flex;justify-content:space-between;border-bottom:1px dotted var(--line);padding:6px 0;font-size:.95rem}
+.hrs .off{color:var(--mute)}
+footer{border-top:1px solid var(--ink);margin-top:80px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:22px 0;font-size:.85rem;color:var(--mute)}
+footer a{color:var(--rose)}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .8s,transform .8s}
+.reveal.in{opacity:1;transform:none}
+@media (max-width:900px){
+  .mast nav{display:none}.mast .wrap{grid-template-columns:auto 1fr}.mast .wrap>.cap:first-child{display:none}
+  .cover .wrap,.story{grid-template-columns:minmax(0,1fr)}
+  .cover .dek{grid-template-columns:minmax(0,1fr)}
+  .cfig{max-width:420px;margin-left:26px}
+  .menu{grid-template-columns:repeat(2,minmax(0,1fr))}.it{border-bottom:1px solid var(--line)}
+  .lv,.quotes,.info{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:520px){section{padding:70px 0}.menu{grid-template-columns:minmax(0,1fr)}.gal{grid-template-columns:repeat(2,minmax(0,1fr))}.cfig .stamp{width:96px;height:96px;left:-18px}.cfig .stamp b{font-size:1.7rem}}
+</style>
+</head>
+<body>
+<div class="mast"><div class="wrap">
+  <span class="cap">Almere Buiten</span>
+  <a class="logo" href="#">Beauti <i>&amp;</i> Nails</a>
+  <span class="cap"><a href="https://wa.me/31617378826" target="_blank" rel="noopener" style="text-decoration:none">Afspraak ↗</a></span>
+</div></div>
+
+<section class="cover" style="padding-top:26px"><div class="wrap">
+  <div class="reveal">
+    <div class="issue cap"><span>Editie Nº 116</span><span>Nagels · Almere Buiten</span></div>
+    <h1>Nails,<br><i>perfected.</i></h1>
+    <div class="dek">
+      <p>BIAB, acrylgel, gellak en nail art. Ti werkt precies, hygiënisch en luistert echt naar wat jij wilt. Van een cleane set tot een volledig design.</p>
+      <div class="ctas"><a class="btn" href="https://wa.me/31617378826" target="_blank" rel="noopener">Afspraak maken</a><a class="btn l" href="#menu">Behandelingen</a></div>
+    </div>
+  </div>
+  <figure class="cfig reveal">
+    <img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=800&q=70" alt="Nail art">
+    <div class="stamp"><div><b>4,9</b><span>116 reviews</span></div></div>
+    <figcaption>Nail art in verschillende niveaus, van subtiel tot statement.</figcaption>
+  </figure>
+</div></section>
+
+<section id="menu"><div class="wrap">
+  <div class="sec-h reveal"><h2>Het <i>menu</i></h2><span class="cap">04 behandelingen</span></div>
+  <div class="menu reveal">
+    <div class="it"><span class="n">i.</span><h3>BIAB</h3><p>Versteviging van je eigen nagels. Sterk, natuurlijk en goed voor je nagelgezondheid.</p></div>
+    <div class="it"><span class="n">ii.</span><h3>Acrylgel</h3><p>Verlenging die stevig én licht is, in elke vorm en lengte.</p></div>
+    <div class="it"><span class="n">iii.</span><h3>Gellak</h3><p>Kleur die weken mooi blijft, strak aangebracht.</p></div>
+    <div class="it"><span class="n">iv.</span><h3>Nail art</h3><p>Van één accentnagel tot een complete set, in jouw stijl.</p></div>
+  </div>
+</div></section>
+
+<section class="levels"><div class="wrap">
+  <div class="sec-h reveal"><h2>Nail art in <i style="color:var(--blush)">niveaus</i></h2><span class="cap">Kies wat bij je past</span></div>
+  <div class="lv reveal">
+    <div><span class="dots"><i class="on"></i><i></i><i></i></span><h3>Subtiel</h3><p>Een fijne lijn, een stipje of een glanzende french. Klein detail, groot verschil.</p></div>
+    <div><span class="dots"><i class="on"></i><i class="on"></i><i></i></span><h3>Accent</h3><p>Een paar nagels met een design, de rest strak in kleur.</p></div>
+    <div><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i></span><h3>Statement</h3><p>Volledig design op elke nagel. Neem je inspiratie mee, Ti denkt mee.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap story">
+  <img class="reveal" src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&q=70" alt="Gelakte nagels" loading="lazy">
+  <div class="reveal">
+    <span class="cap" style="color:var(--rose)">Achter de tafel</span>
+    <p class="pull">“Ti werkt precies, zoekt de perfectie en staat open voor elk verzoek.”</p>
+    <p>Bij Beauti &amp; Nails sta je centraal. Van het maken van de afspraak tot het bespreken van je design verloopt alles soepel. De salon is schoon en gezellig, en je nagels blijven gezond.</p>
+    <p>Klanten komen terug voor één reden: het resultaat. Elke klant, elke hand, verdient het beste.</p>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <div class="sec-h reveal"><h2>Wat klanten <i>zeggen</i></h2><span class="cap">Google reviews</span></div>
+  <div class="quotes reveal">
+    <div class="q"><p>“De beste nagelsalon waar ik in Nederland ben geweest. Alles verliep soepel.”</p><span class="cap">Google review</span></div>
+    <div class="q"><p>“Mijn eerste BIAB ooit bij Ti, en ik ben klant voor het leven.”</p><span class="cap">Google review</span></div>
+    <div class="q"><p>“Super vriendelijk en professioneel. Een must-visit in Almere Buiten.”</p><span class="cap">Google review</span></div>
+  </div>
+  <div class="score reveal"><b>4,9</b><span class="cap">★★★★★ · 116 reviews op Google</span></div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap gal reveal">
+  <img src="https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=600&q=70" alt="Nagels" loading="lazy">
+  <img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=600&q=70" alt="Manicure" loading="lazy">
+  <img src="https://images.unsplash.com/photo-1607779097040-26e80aa78e66?w=600&q=70" alt="Nagels" loading="lazy">
+</div></section>
+
+<section id="contact" style="padding-top:0"><div class="wrap">
+  <div class="sec-h reveal"><h2>Langs<i>komen</i></h2><span class="cap">Almere Buiten</span></div>
+  <div class="info reveal">
+    <div><h3>Adres</h3><p>Nertspad 12<br>1338 BH Almere Buiten</p></div>
+    <div><h3>Open</h3><div class="hrs"><div><span>Ma – za</span><span>09:30 – 18:00</span></div><div class="off"><span>Zondag</span><span>Gesloten</span></div></div></div>
+    <div><h3>Contact</h3><p>WhatsApp of bel <a href="tel:+31617378826">06 17 37 88 26</a><br><a href="https://www.instagram.com/beauti.nails.almere/" target="_blank" rel="noopener">@beauti.nails.almere</a></p><a class="btn" style="justify-self:start" href="https://wa.me/31617378826" target="_blank" rel="noopener">Stuur een appje</a></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap"><span>© 2026 Beauti &amp; Nails · Almere Buiten</span><span>Concept door <a href="https://byxavio.nl">byXavio</a></span></div></footer>
+<script>const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));</script>
+</body>
+</html>

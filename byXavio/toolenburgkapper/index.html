@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Toolenburg Kapper · Hoofddorp</title>
+<meta name="description" content="Toolenburg Kapper aan de Markenburg in Hoofddorp. Gewoon binnenlopen, snel en netjes geknipt voor een scherpe prijs.">
+<meta name="theme-color" content="#0f1b2d">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0f1b2d;--deep:#0a1320;--tile:#16243a;--y:#ffd23f;--w:#f4f6fa;--mute:#93a1b8;--grn:#4ade80;--line:#24354f}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font:400 17px/1.6 Archivo,system-ui,sans-serif;color:var(--w);background:var(--navy);overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+.mono{font-family:"Space Mono",ui-monospace,monospace}
+h1,h2,h3{font-family:Archivo;font-weight:800;line-height:1;letter-spacing:-.02em}
+.btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-family:"Space Mono";font-weight:700;text-transform:uppercase;font-size:.85rem;letter-spacing:.06em;padding:15px 22px;background:var(--y);color:var(--deep);border-radius:4px}
+.btn.o{background:transparent;color:var(--w);box-shadow:inset 0 0 0 2px var(--line)}
+.lab{font-family:"Space Mono";font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--y)}
+
+header{border-bottom:1px solid var(--line)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;height:76px;gap:12px}
+.logo{text-decoration:none;display:flex;align-items:center;gap:12px}
+.logo .sign{width:40px;height:40px;background:var(--y);color:var(--deep);display:grid;place-items:center;font-family:"Space Mono";font-weight:700;border-radius:4px}
+.logo b{font-weight:800;font-size:1.15rem;line-height:1.1}
+.logo small{display:block;font-family:"Space Mono";font-size:.65rem;color:var(--mute);letter-spacing:.14em;text-transform:uppercase}
+nav{display:flex;gap:26px;align-items:center}
+nav a:not(.btn){text-decoration:none;color:var(--mute);font-weight:600}
+header .btn{padding:10px 16px}
+.clock{font-family:"Space Mono";color:var(--y)}
+
+.hero{padding:70px 0 80px}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:50px;align-items:center}
+.hero h1{font-size:clamp(3rem,7vw,5.6rem);margin:16px 0 20px}
+.hero h1 span{color:var(--y)}
+.hero p{color:var(--mute);font-size:1.12rem;max-width:42ch;margin-bottom:28px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+
+.board{background:var(--deep);border-radius:10px;padding:20px;border:1px solid var(--line);box-shadow:0 30px 60px rgba(0,0,0,.35)}
+.board .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:10px}
+.board .top b{font-family:"Space Mono";color:var(--y);font-size:.9rem;letter-spacing:.1em}
+.row{display:grid;grid-template-columns:62px minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
+.flap{display:flex;gap:3px}
+.flap i{font-style:normal;font-family:"Space Mono";font-weight:700;background:var(--tile);color:var(--w);width:1.3em;height:1.7em;display:grid;place-items:center;border-radius:3px;position:relative;font-size:clamp(.8rem,2.4vw,1rem)}
+.flap i::after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(0,0,0,.6)}
+.row .t{font-family:"Space Mono";color:var(--y);font-weight:700}
+.st{font-family:"Space Mono";font-size:.78rem;font-weight:700;padding:4px 8px;border-radius:3px;white-space:nowrap}
+.st.go{background:var(--grn);color:var(--deep)}.st.wt{background:var(--y);color:var(--deep)}.st.cl{background:#ef4444;color:#fff}
+.board .foot{display:flex;justify-content:space-between;color:var(--mute);font-family:"Space Mono";font-size:.75rem;margin-top:12px;gap:10px;flex-wrap:wrap}
+
+.strip{background:var(--y);color:var(--deep)}
+.strip .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.strip div{padding:22px 18px;border-right:1px solid rgba(10,19,32,.15)}
+.strip div:last-child{border-right:0}
+.strip b{display:block;font-size:1.9rem;font-weight:800}
+.strip span{font-family:"Space Mono";font-size:.78rem}
+
+section{padding:96px 0}
+.hd{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:40px}
+.hd h2{font-size:clamp(2.4rem,5vw,3.8rem);margin-top:10px}
+.hd p{color:var(--mute);max-width:42ch}
+.gates{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.gate{background:var(--tile);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.gate img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.gate div{padding:20px;display:grid;gap:6px}
+.gate .g{font-family:"Space Mono";color:var(--y);font-size:.78rem;letter-spacing:.14em}
+.gate h3{font-size:1.5rem}
+.gate p{color:var(--mute);font-size:.95rem}
+
+.how{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:1px solid var(--line);border-radius:8px}
+.how div{padding:28px;border-right:1px solid var(--line)}
+.how div:last-child{border-right:0}
+.how .mono{font-size:2.6rem;color:var(--y);font-weight:700}
+.how h3{font-size:1.5rem;margin:6px 0 8px}
+.how p{color:var(--mute)}
+
+.rev{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.ticket{background:var(--w);color:var(--deep);border-radius:8px;padding:24px;display:grid;gap:12px;position:relative}
+.ticket::after{content:"";position:absolute;left:0;right:0;bottom:56px;border-top:2px dashed #c7cfdb}
+.ticket p{font-size:1.06rem;font-weight:600;margin-bottom:24px}
+.ticket span{font-family:"Space Mono";font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:#56627a}
+
+.visit{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+.pnl{background:var(--tile);border:1px solid var(--line);border-radius:8px;padding:clamp(24px,4vw,40px);display:grid;gap:16px;align-content:start}
+.pnl h3{font-size:2rem}
+.hrs div{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--line);font-family:"Space Mono";font-size:.92rem}
+.hrs .off{color:var(--mute)}.hrs .now{color:var(--y)}
+dl{display:grid;gap:16px}
+dt{font-family:"Space Mono";font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+dd{font-size:1.25rem;font-weight:700}
+dd a{text-decoration:none;border-bottom:2px solid var(--y)}
+footer{border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:22px 0;color:var(--mute);font-size:.86rem}
+footer a{color:var(--y)}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:none}
+@media (max-width:900px){
+  nav a:not(.btn),.clock{display:none}
+  .hero .wrap,.visit{grid-template-columns:minmax(0,1fr)}
+  .gates,.how,.rev{grid-template-columns:minmax(0,1fr)}
+  .how div{border-right:0;border-bottom:1px solid var(--line)}.how div:last-child{border-bottom:0}
+  .strip .wrap{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .strip div:nth-child(2){border-right:0}.strip div:nth-child(-n+2){border-bottom:1px solid rgba(10,19,32,.15)}
+}
+@media (max-width:520px){section{padding:70px 0}.row{grid-template-columns:52px minmax(0,1fr)}.row .st{grid-column:2;justify-self:start}.board{padding:14px}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="#"><span class="sign">TK</span><b>Toolenburg Kapper<small>Markenburg · Hoofddorp</small></b></a>
+  <nav><span class="clock" id="clock">--:--</span><a href="#diensten">Diensten</a><a href="#reviews">Reviews</a><a class="btn" href="#langs">Kom langs</a></nav>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <div class="reveal">
+    <span class="lab">Kapper · Winkelcentrum Toolenburg</span>
+    <h1>Geen afspraak?<br><span>Geen probleem.</span></h1>
+    <p>Loop gewoon binnen bij Toolenburg Kapper aan de Markenburg. Vaak hoef je niet eens te wachten. Schoon, netjes en voor een scherpe prijs geknipt zoals jij het wilt.</p>
+    <div class="ctas"><a class="btn" href="#langs">Route &amp; openingstijden</a><a class="btn o" href="tel:+31235836778">023 583 67 78</a></div>
+  </div>
+  <div class="board reveal" aria-label="Vertrekbord">
+    <div class="top"><b>VERTREK · STOEL</b><span class="st go" id="status">OPEN</span></div>
+    <div class="row"><span class="t">NU</span><span class="flap" data-w="KNIPPEN"></span><span class="st go">INSTAPPEN</span></div>
+    <div class="row"><span class="t">+10</span><span class="flap" data-w="TONDEUSE"></span><span class="st wt">WACHTEN</span></div>
+    <div class="row"><span class="t">+20</span><span class="flap" data-w="BAARD"></span><span class="st wt">WACHTEN</span></div>
+    <div class="row"><span class="t">+30</span><span class="flap" data-w="JIJ"></span><span class="st go">LOOP BINNEN</span></div>
+    <div class="foot"><span>Markenburg 125</span><span>Geen afspraak nodig</span></div>
+  </div>
+</div></section>
+
+<div class="strip"><div class="wrap">
+  <div><b>267</b><span>reviews op Google</span></div>
+  <div><b>96%</b><span>raadt ons aan op Facebook</span></div>
+  <div><b>6 dagen</b><span>open per week</span></div>
+  <div><b>0 min</b><span>vaak geen wachttijd</span></div>
+</div></div>
+
+<section id="diensten"><div class="wrap">
+  <div class="hd reveal"><div><span class="lab">Diensten</span><h2>Waar wil je naartoe?</h2></div><p>Van een snelle opfrisbeurt tot een compleet nieuwe coupe. Laat zien wat je wilt, wij knippen het.</p></div>
+  <div class="gates reveal">
+    <div class="gate"><img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=700&q=70" alt="Knipbeurt" loading="lazy"><div><span class="g">GATE A</span><h3>Knippen</h3><p>Klassiek of modern, kort of langer. Netjes afgewerkt.</p></div></div>
+    <div class="gate"><img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=700&q=70" alt="Fade" loading="lazy"><div><span class="g">GATE B</span><h3>Fade &amp; tondeuse</h3><p>Strak verlopen of gewoon kort. Snel en precies.</p></div></div>
+    <div class="gate"><img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=700&q=70" alt="Baard" loading="lazy"><div><span class="g">GATE C</span><h3>Baard</h3><p>Trimmen en in model brengen, met strakke lijnen.</p></div></div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <div class="hd reveal"><div><span class="lab">Zo werkt het</span><h2>In drie stappen klaar</h2></div></div>
+  <div class="how reveal">
+    <div><span class="mono">01</span><h3>Loop binnen</h3><p>Geen afspraak nodig. Kom langs wanneer het jou uitkomt.</p></div>
+    <div><span class="mono">02</span><h3>Neem plaats</h3><p>Vaak ben je direct aan de beurt. Laat een foto zien van wat je wilt.</p></div>
+    <div><span class="mono">03</span><h3>Vertrek strak</h3><p>Geknipt zoals jij het wilt, voor een scherpe prijs.</p></div>
+  </div>
+</div></section>
+
+<section id="reviews" style="padding-top:0"><div class="wrap">
+  <div class="hd reveal"><div><span class="lab">Boarding passes</span><h2>Wat klanten zeggen</h2></div></div>
+  <div class="rev reveal">
+    <div class="ticket"><p>“Heel goed, we hoeven niet eens te wachten als we zonder afspraak komen.”</p><span>Google review</span></div>
+    <div class="ticket"><p>“Vriendelijk en snel, met een perfecte haarstyling.”</p><span>Google review</span></div>
+    <div class="ticket"><p>“Schone, hygiënische zaak en de prijs is heel scherp.”</p><span>Google review</span></div>
+  </div>
+</div></section>
+
+<section id="langs" style="padding-top:0"><div class="wrap visit">
+  <div class="pnl reveal"><h3>Openingstijden</h3><div class="hrs">
+    <div data-d="1"><span>Maandag</span><span>10:00 – 18:00</span></div>
+    <div data-d="2"><span>Dinsdag</span><span>10:00 – 18:00</span></div>
+    <div data-d="3"><span>Woensdag</span><span>10:00 – 18:00</span></div>
+    <div data-d="4"><span>Donderdag</span><span>10:00 – 18:00</span></div>
+    <div data-d="5"><span>Vrijdag</span><span>10:00 – 18:00</span></div>
+    <div data-d="6"><span>Zaterdag</span><span>10:00 – 18:00</span></div>
+    <div data-d="0" class="off"><span>Zondag</span><span>Gesloten</span></div>
+  </div></div>
+  <div class="pnl reveal"><h3>Kom langs</h3><dl>
+    <div><dt>Adres</dt><dd>Markenburg 125<br>2135 DX Hoofddorp</dd></div>
+    <div><dt>Telefoon</dt><dd><a href="tel:+31235836778">023 583 67 78</a></dd></div>
+    <div><dt>Afspraak</dt><dd>Niet nodig, loop binnen</dd></div>
+  </dl><a class="btn" style="justify-self:start" href="https://www.google.com/maps/search/?api=1&query=Markenburg+125+Hoofddorp" target="_blank" rel="noopener">Route plannen</a></div>
+</div></section>
+
+<footer><div class="wrap"><span>© 2026 Toolenburg Kapper · Hoofddorp</span><span>Concept door <a href="https://byxavio.nl">byXavio</a></span></div></footer>
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const A='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+document.querySelectorAll('.flap').forEach((f,k)=>{const w=f.dataset.w;f.innerHTML=[...w].map(()=>'<i> </i>').join('');const cells=[...f.children];cells.forEach((c,i)=>{let n=0;const target=w[i];const iv=setInterval(()=>{c.textContent=A[Math.floor(Math.random()*26)];if(++n>8+i*2+k*3){clearInterval(iv);c.textContent=target}},55)})});
+const n=new Date(),d=n.getDay(),m=n.getHours()*60+n.getMinutes(),open=d!==0&&m>=600&&m<1080;
+document.getElementById('clock').textContent=String(n.getHours()).padStart(2,'0')+':'+String(n.getMinutes()).padStart(2,'0');
+const s=document.getElementById('status');if(!open){s.textContent='GESLOTEN';s.className='st cl'}
+const r=document.querySelector('[data-d="'+d+'"]');if(r&&!r.classList.contains('off'))r.classList.add('now');
+</script>
+</body>
+</html>
