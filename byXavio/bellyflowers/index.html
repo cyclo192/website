@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Bellyflowers · Redesign-concept</title>
+<meta name="description" content="Redesign-concept voor Bellyflowers: handgemaakte bloemenbanden voor babyshowers, gender reveals en fotoshoots.">
+<meta name="theme-color" content="#fbf3ef">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,300;1,9..144,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#fbf3ef;--blush:#f3d9d3;--rose:#d79a90;--deep:#8c4b47;--ink:#3b2826;--mute:#8a716d;--line:#ead6d0;--white:#fffdfb;--gold:#c8a46a}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font:300 17px/1.7 Jost,system-ui,sans-serif;color:var(--ink);background:var(--cream);overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;cursor:pointer}
+.wrap{width:min(1240px,100% - 40px);margin-inline:auto}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:300;line-height:1.08;letter-spacing:-.01em;text-wrap:balance}
+em{font-style:italic;color:var(--deep)}
+.lab{font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;font-weight:500;color:var(--rose)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;font-weight:500;font-size:.9rem;letter-spacing:.06em;padding:16px 28px;border-radius:999px;background:var(--deep);color:var(--white);border:1px solid var(--deep);transition:background .2s,color .2s}
+.btn:hover{background:var(--ink);border-color:var(--ink)}
+.btn.o{background:transparent;color:var(--deep)}
+.btn.o:hover{background:var(--deep);color:var(--white)}
+.btn svg{width:18px;height:18px}
+
+.notice{background:var(--deep);color:var(--white);font-size:.78rem;letter-spacing:.08em;text-align:center;padding:8px 16px}
+.usp{background:var(--blush);font-size:.82rem}
+.usp .wrap{display:flex;justify-content:center;gap:34px;flex-wrap:wrap;padding:9px 0}
+.usp span::before{content:"✿ ";color:var(--deep)}
+header{position:sticky;top:0;z-index:30;background:rgba(251,243,239,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;height:78px;gap:12px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo img{width:52px;height:52px;object-fit:contain}
+.logo b{font-family:Fraunces;font-weight:300;font-size:1.5rem;letter-spacing:.02em}
+nav{display:flex;gap:28px;font-size:.92rem}
+nav a{text-decoration:none}
+nav a:hover{color:var(--deep)}
+.hr{display:flex;gap:14px;align-items:center}
+.cart{background:none;border:0;display:flex;align-items:center;gap:6px;font-size:.9rem}
+.cart b{min-width:22px;height:22px;border-radius:11px;background:var(--deep);color:#fff;display:inline-grid;place-items:center;font-size:.72rem;font-weight:500}
+
+.hero{padding:50px 0 80px}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:56px;align-items:center}
+.hero h1{font-size:clamp(2.8rem,6vw,5rem);margin:16px 0 20px}
+.hero p{font-size:1.12rem;color:var(--mute);max-width:44ch;margin-bottom:28px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.trust{display:flex;gap:22px;margin-top:30px;flex-wrap:wrap;align-items:center}
+.trust .stars{color:var(--gold);letter-spacing:2px}
+.trust small{color:var(--mute);font-size:.85rem}
+.collage{position:relative;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:14px}
+.collage img{width:100%;object-fit:cover;border-radius:200px 200px 18px 18px}
+.collage .a{aspect-ratio:3/4.2}
+.collage .b{aspect-ratio:3/4;margin-top:70px;border-radius:18px}
+.collage .badge{position:absolute;left:-18px;bottom:30px;background:var(--white);border-radius:18px;padding:14px 18px;box-shadow:0 18px 40px rgba(140,75,71,.15);display:flex;gap:12px;align-items:center}
+.collage .badge b{font-family:Fraunces;font-size:1.6rem;font-weight:500;color:var(--deep)}
+
+section{padding:90px 0}
+.c{text-align:center;max-width:660px;margin:0 auto 46px;display:grid;gap:12px}
+.c h2{font-size:clamp(2.2rem,4.6vw,3.4rem)}
+.c p{color:var(--mute)}
+
+.prods{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.p{background:var(--white);border-radius:22px;overflow:hidden;display:grid;grid-template-rows:auto 1fr;border:1px solid var(--line);transition:transform .25s,box-shadow .25s}
+.p:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(140,75,71,.12)}
+.p .ph{position:relative;aspect-ratio:1;overflow:hidden}
+.p .ph img{width:100%;height:100%;object-fit:cover}
+.p .tg{position:absolute;top:12px;left:12px;background:var(--white);border-radius:999px;padding:4px 12px;font-size:.72rem;font-weight:500;letter-spacing:.06em}
+.p .bd{padding:18px 18px 20px;display:grid;gap:8px;align-content:space-between}
+.p h3{font-size:1.25rem;font-weight:400}
+.p .row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.p .pr{font-weight:500;font-size:1.05rem}
+.p .stars{color:var(--gold);font-size:.8rem;letter-spacing:1px}
+.p button{border:0;background:var(--blush);color:var(--deep);border-radius:999px;padding:10px 16px;font-weight:500;font-size:.85rem;transition:background .2s}
+.p button:hover{background:var(--deep);color:#fff}
+.more{text-align:center;margin-top:34px}
+
+.occ{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.o{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:3/4;display:grid;align-items:end;color:#fff;text-decoration:none}
+.o img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.o:hover img{transform:scale(1.05)}
+.o div{position:relative;padding:22px;background:linear-gradient(transparent,rgba(59,40,38,.7))}
+.o h3{font-size:1.6rem;color:#fff}
+.o span{font-size:.85rem;opacity:.9}
+
+.steps{background:var(--white);border-block:1px solid var(--line)}
+.st{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px;counter-reset:s}
+.st div{display:grid;gap:10px;justify-items:start}
+.st div::before{counter-increment:s;content:counter(s);font-family:Fraunces;font-size:3rem;color:var(--rose);line-height:1}
+.st h3{font-size:1.5rem}
+.st p{color:var(--mute)}
+
+.rev{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.r{background:var(--white);border-radius:22px;padding:28px;display:grid;gap:14px;border:1px solid var(--line)}
+.r .stars{color:var(--gold);letter-spacing:2px}
+.r p{font-family:Fraunces;font-size:1.3rem;line-height:1.35;font-style:italic}
+.r b{font-weight:500;font-size:.88rem;letter-spacing:.06em}
+
+.story{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:60px;align-items:center}
+.story img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:24px}
+.story h2{font-size:clamp(2.2rem,4.4vw,3.2rem);margin:14px 0 18px}
+.story p{color:var(--mute);margin-bottom:14px;max-width:52ch}
+.sig{font-family:Fraunces;font-style:italic;font-size:1.6rem;color:var(--deep)}
+
+.faq{max-width:820px;margin:0 auto}
+.faq details{border-bottom:1px solid var(--line);padding:20px 4px}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;font-family:Fraunces;font-size:1.3rem}
+.faq summary::after{content:"+";color:var(--deep)}
+.faq details[open] summary::after{content:"–"}
+.faq p{color:var(--mute);margin-top:10px}
+
+.cta{background:var(--blush);text-align:center;border-radius:32px;padding:clamp(40px,6vw,80px) 24px;display:grid;gap:18px;justify-items:center}
+.cta h2{font-size:clamp(2.2rem,5vw,3.6rem)}
+.cta p{color:var(--ink);max-width:48ch}
+
+footer{padding:60px 0 100px;border-top:1px solid var(--line);margin-top:90px}
+footer .wrap{display:grid;grid-template-columns:1.4fr repeat(3,minmax(0,1fr));gap:30px}
+footer h4{font-weight:500;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--rose);margin-bottom:12px}
+footer ul{list-style:none;display:grid;gap:6px;font-size:.95rem}
+footer a{text-decoration:none}
+.note{grid-column:1/-1;border-top:1px solid var(--line);padding-top:20px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.84rem;color:var(--mute)}
+.note a{color:var(--deep)}
+
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--white);border-top:1px solid var(--line);padding:10px max(16px,env(safe-area-inset-left,0px));padding-bottom:max(10px,env(safe-area-inset-bottom,0px));display:none;gap:10px}
+.sticky a{flex:1;padding:13px 10px;font-size:.85rem}
+.toast{position:fixed;left:50%;top:100px;transform:translate(-50%,-10px);background:var(--ink);color:#fff;border-radius:999px;padding:10px 20px;font-size:.88rem;opacity:0;transition:.3s;z-index:60;pointer-events:none}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s,transform .8s}
+.reveal.in{opacity:1;transform:none}
+@media (max-width:980px){
+  nav{display:none}
+  .hero .wrap,.story{grid-template-columns:minmax(0,1fr)}
+  .prods,.occ{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rev,.st{grid-template-columns:minmax(0,1fr)}
+  footer .wrap{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sticky{display:flex}
+  .collage .badge{left:8px}
+}
+@media (max-width:520px){
+  section{padding:66px 0}
+  .prods{gap:12px}
+  .p .bd{padding:14px}
+  .p h3{font-size:1.05rem}
+  .p .row{flex-direction:column;align-items:stretch}
+  .usp .wrap{gap:4px 18px;font-size:.76rem}
+  .logo b{font-size:1.25rem}
+}
+</style>
+</head>
+<body>
+<div class="notice">Redesign-concept door byXavio · met de echte foto's en teksten van Bellyflowers</div>
+<div class="usp"><div class="wrap"><span>Tijdelijk gratis bezorging</span><span>Gratis Babyshowergids t.w.v. €9,99</span><span>Handmade &amp; uniek</span></div></div>
+<header><div class="wrap">
+  <a class="logo" href="#"><img src="https://bellyflowers.nl/wp-content/uploads/2020/09/logo-transparant-1024x1024.png" alt="Bellyflowers logo"><b>Bellyflowers</b></a>
+  <nav><a href="#shop">Shop</a><a href="#gelegenheden">Gelegenheden</a><a href="#zo">Op maat</a><a href="#verhaal">Ons verhaal</a><a href="#faq">Vragen</a></nav>
+  <div class="hr"><button class="cart" aria-label="Winkelwagen">Winkelwagen <b id="cnt">0</b></button></div>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <div class="reveal">
+    <span class="lab">Handgemaakte bloemenbanden</span>
+    <h1>Laat haar <em>stralen</em> op haar mooiste moment.</h1>
+    <p>Een Bellyflower is geen standaard cadeau, maar een blijvende herinnering. Met de hand gemaakt voor babyshowers, gender reveals en fotoshoots, in haar kleuren en stijl.</p>
+    <div class="ctas"><a class="btn" href="#shop">Shop de collectie</a><a class="btn o" href="https://wa.me/31620491588" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2z"/></svg>Ontwerp op maat</a></div>
+    <div class="trust"><span><span class="stars">★★★★★</span><br><small>Geliefd door de Bellyflowers Family</small></span><span><b style="font-family:Fraunces;font-weight:500;font-size:1.3rem;color:var(--deep)">100% handgemaakt</b><br><small>in jouw kleuren en stijl</small></span></div>
+  </div>
+  <div class="collage reveal">
+    <img class="a" src="https://bellyflowers.nl/wp-content/uploads/2025/07/bellyflowers-shoot-10-1152x1536.jpg" alt="Babyshower met Bellyflower">
+    <img class="b" src="https://bellyflowers.nl/wp-content/uploads/2026/10/BDAE6CC5-3E43-4D88-8010-F4DB30557E33-600x600.avif" alt="Satin Grace Bellyflower">
+    <div class="badge"><b>2 wkn</b><small>Bestel op tijd: elk stuk<br>wordt met de hand gemaakt</small></div>
+  </div>
+</div></section>
+
+<section id="shop" style="padding-top:20px"><div class="wrap">
+  <div class="c reveal"><span class="lab">Meest verkocht</span><h2>Onze <em>favoriete</em> Bellyflowers</h2><p>Kies een ontwerp uit de collectie of laat hem helemaal op maat maken.</p></div>
+  <div class="prods reveal">
+    <article class="p"><div class="ph"><img src="https://bellyflowers.nl/wp-content/uploads/2025/08/Babyshower-cadeau-moeder-9.avif" alt="Blush Blossom Bellyflower" loading="lazy"><span class="tg">Bestseller</span></div><div class="bd"><div><h3>Blush Blossom</h3></div><div class="row"><span class="pr">€49,99</span><button data-add>In winkelwagen</button></div></div></article>
+    <article class="p"><div class="ph"><img src="https://bellyflowers.nl/wp-content/uploads/2026/10/BDAE6CC5-3E43-4D88-8010-F4DB30557E33-600x600.avif" alt="Satin Grace Bellyflower" loading="lazy"><span class="tg">Nieuw</span></div><div class="bd"><div><h3>Satin Grace</h3></div><div class="row"><span class="pr">€49,99</span><button data-add>In winkelwagen</button></div></div></article>
+    <article class="p"><div class="ph"><img src="https://bellyflowers.nl/wp-content/uploads/2026/10/322F482F-4DCC-46D7-AEB3-6AEC4CD90586-600x600.avif" alt="Princess Petal Mini Bloom" loading="lazy"><span class="tg">Voor de kleintjes</span></div><div class="bd"><div><h3>Princess Petal Mini Bloom</h3></div><div class="row"><span class="pr">€29,99</span><button data-add>In winkelwagen</button></div></div></article>
+    <article class="p"><div class="ph"><img src="https://bellyflowers.nl/wp-content/uploads/2025/09/image00046-scaled-600x600.avif" alt="Blush Garden Bellyflower" loading="lazy"></div><div class="bd"><div><h3>Blush Garden</h3></div><div class="row"><span class="pr">€49,99</span><button data-add>In winkelwagen</button></div></div></article>
+  </div>
+  <div class="more reveal"><a class="btn o" href="#shop">Bekijk de hele collectie</a></div>
+</div></section>
+
+<section id="gelegenheden" style="padding-top:0"><div class="wrap">
+  <div class="c reveal"><span class="lab">Voor iedere gelegenheid</span><h2>Waar vier jij het <em>moment?</em></h2></div>
+  <div class="occ reveal">
+    <a class="o" href="#shop"><img src="https://bellyflowers.nl/wp-content/uploads/2025/08/cadeau-moeder-bellyshower-4-768x1024.avif" alt="" loading="lazy"><div><h3>Babyshower</h3><span>Het perfecte cadeau voor de Mommy to Be</span></div></a>
+    <a class="o" href="#shop"><img src="https://bellyflowers.nl/wp-content/uploads/2025/08/Babyshower-cadeau-moeder-3.avif" alt="" loading="lazy"><div><h3>Gender reveal</h3><span>Met polscorsages voor de gasten</span></div></a>
+    <a class="o" href="#shop"><img src="https://bellyflowers.nl/wp-content/uploads/2025/08/image00060-768x1075.avif" alt="" loading="lazy"><div><h3>Fotoshoot</h3><span>Een blijvende herinnering op beeld</span></div></a>
+    <a class="o" href="#shop"><img src="https://bellyflowers.nl/wp-content/uploads/2025/08/Bellyflower-cadeau-moeder-768x1075.avif" alt="" loading="lazy"><div><h3>Voor jezelf</h3><span>Vier jouw zwangerschap op een unieke manier</span></div></a>
+  </div>
+</div></section>
+
+<section class="steps" id="zo"><div class="wrap">
+  <div class="c reveal"><span class="lab">Helemaal op maat</span><h2>Zo ontwerp je <em>jouw</em> Bellyflower</h2></div>
+  <div class="st reveal">
+    <div><h3>Deel je wensen</h3><p>Stuur een berichtje via WhatsApp met de datum, kleuren en stijl van de jurk of het thema.</p></div>
+    <div><h3>Samen kiezen</h3><p>We kiezen samen de bloemen, van satijn tot gedroogd, en de details zoals parels en linten.</p></div>
+    <div><h3>Met liefde verzonden</h3><p>Jouw Bellyflower wordt met de hand gemaakt, zorgvuldig verpakt en thuisbezorgd.</p></div>
+  </div>
+  <div class="more reveal"><a class="btn" href="https://wa.me/31620491588" target="_blank" rel="noopener">Start jouw ontwerp via WhatsApp</a></div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="c reveal"><span class="lab">De liefde van onze Bellyflowers Family</span><h2>Wat zij <em>voelden</em></h2></div>
+  <div class="rev reveal">
+    <div class="r"><span class="stars">★★★★★</span><p>“Tijdens de babyshower was dit het hoogtepunt!”</p><b>Anouk</b></div>
+    <div class="r"><span class="stars">★★★★★</span><p>“Mijn vriendin moest huilen toen ze hem zag.”</p><b>Priscila</b></div>
+    <div class="r"><span class="stars">★★★★★</span><p>“Mijn vrouw straalde met deze prachtige Bellyflower die ik haar cadeau gaf!”</p><b>Jessica &amp; Randy</b></div>
+  </div>
+</div></section>
+
+<section id="verhaal" style="padding-top:0"><div class="wrap story">
+  <img class="reveal" src="https://bellyflowers.nl/wp-content/uploads/2025/10/Bellyflowers6years-44-800x1120.jpg" alt="Hanae van Bellyflowers" loading="lazy">
+  <div class="reveal">
+    <span class="lab">Ons verhaal</span>
+    <h2>Begonnen met één cadeau <em>vol liefde</em></h2>
+    <p>Het idee voor Bellyflowers ontstond tijdens de babyshower van een lieve vriendin. Ik wilde haar iets geven dat écht speciaal was, iets unieks dat haar zou laten stralen op haar bijzondere dag.</p>
+    <p>Toen ik zag hoe blij en ontroerd ze was, wist ik dat ik iets moois had gecreëerd. Sindsdien maak ik elk ontwerp met de hand, afgestemd op jouw stijl, jouw moment en jouw verhaal.</p>
+    <p class="sig">Liefs, Hanae</p>
+  </div>
+</div></section>
+
+<section id="faq" style="padding-top:0"><div class="wrap">
+  <div class="c reveal"><span class="lab">Goed om te weten</span><h2>Veelgestelde <em>vragen</em></h2></div>
+  <div class="faq reveal">
+    <details open><summary>Wat is een Bellyflower precies?</summary><p>Een handgemaakte bloemenband, speciaal ontworpen voor de Mommy to Be die wil stralen tijdens haar bijzondere moment. Samengesteld uit droogbloemen, satijnen bloemen of een combinatie, met details zoals parels en linten.</p></details>
+    <details><summary>Kan ik zelf de kleuren, bloemen en details kiezen?</summary><p>Ja, samen kiezen we de sfeer, kleuren en stijl die het beste bij haar passen. Zo wordt elke Bellyflower uniek.</p></details>
+    <details><summary>Hoe lang van tevoren moet ik bestellen?</summary><p>Minimaal 2 weken van tevoren, omdat elke Bellyflower met de hand wordt gemaakt. Spoed? Stuur een berichtje, dan kijken we samen naar de mogelijkheden.</p></details>
+    <details><summary>Wordt mijn Bellyflower thuisbezorgd?</summary><p>Ja, zorgvuldig verpakt en met liefde verzonden. Je krijgt een berichtje zodra hij onderweg is.</p></details>
+    <details><summary>Hoe lang blijft mijn Bellyflower mooi?</summary><p>Droogbloemen blijven maandenlang mooi, satijnen bloemen zelfs voor altijd. Na de babyshower kun je hem ook inlijsten.</p></details>
+  </div>
+</div></section>
+
+<div class="wrap"><div class="cta reveal">
+  <span class="lab" style="color:var(--deep)">Jouw eigen Bellyflower</span>
+  <h2>Klaar om haar te laten <em>stralen?</em></h2>
+  <p>Kies een ontwerp uit de collectie of laat hem helemaal op maat maken, voor jezelf of als cadeau.</p>
+  <div class="ctas" style="justify-content:center"><a class="btn" href="#shop">Shop de collectie</a><a class="btn o" href="https://wa.me/31620491588" target="_blank" rel="noopener">Ontwerp op maat</a></div>
+</div></div>
+
+<footer><div class="wrap">
+  <div><a class="logo" href="#"><img src="https://bellyflowers.nl/wp-content/uploads/2020/09/logo-transparant-1024x1024.png" alt=""><b>Bellyflowers</b></a><p style="color:var(--mute);margin-top:12px;max-width:32ch">Handgemaakte bloemenbanden voor babyshowers, gender reveals, fotoshoots en meer.</p></div>
+  <div><h4>Shop</h4><ul><li><a href="#shop">Bellyflowers</a></li><li><a href="#gelegenheden">Gender reveal</a></li><li><a href="#shop">Babyshowergids</a></li></ul></div>
+  <div><h4>Info</h4><ul><li><a href="#verhaal">Ons verhaal</a></li><li><a href="#faq">Veelgestelde vragen</a></li><li><a href="#faq">Contact &amp; retour</a></li></ul></div>
+  <div><h4>Contact</h4><ul><li>info@bellyflowers.nl</li><li>WhatsApp 06 20 49 15 88</li></ul></div>
+  <div class="note"><span>© 2026 Bellyflowers · Redesign-concept, foto's en teksten van bellyflowers.nl</span><span>Concept door <a href="https://byxavio.nl">byXavio</a></span></div>
+</div></footer>
+
+<div class="sticky"><a class="btn" href="#shop">Shop</a><a class="btn o" href="https://wa.me/31620491588" target="_blank" rel="noopener">Ontwerp op maat</a></div>
+<div class="toast" id="toast">Toegevoegd aan je winkelwagen ✿</div>
+<script>
+let n=0,tt;document.addEventListener('click',e=>{if(e.target.closest('[data-add]')){n++;document.getElementById('cnt').textContent=n;const t=document.getElementById('toast');t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),1600)}});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
