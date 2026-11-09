@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>NONKL · Accessible premium essentials</title>
+<meta name="description" content="NONKL. Accessible premium essentials, designed in Belgium. Maximum from minimum.">
+<meta name="theme-color" content="#e9e4dc">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--sand:#e9e4dc;--stone:#cfc8bc;--ink:#151515;--char:#2a2a28;--mute:#77726a;--line:#c9c2b6;--white:#faf8f4}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font:400 16px/1.65 "Work Sans",system-ui,sans-serif;color:var(--ink);background:var(--sand);overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;cursor:pointer}
+.wrap{width:min(1320px,100% - 40px);margin-inline:auto}
+.sy{font-family:Syncopate,"Arial Black",sans-serif;text-transform:uppercase;letter-spacing:.18em}
+.logo-box{display:inline-block;border:1.5px solid currentColor;padding:6px 14px;font-family:Syncopate,sans-serif;font-weight:400;letter-spacing:.42em;font-size:.95rem;line-height:1;padding-right:calc(14px - .42em)}
+.lab{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;font-weight:600;color:var(--mute)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;text-decoration:none;font-family:Syncopate;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;padding:18px 28px;background:var(--ink);color:var(--white);border:1.5px solid var(--ink);transition:background .2s,color .2s}
+.btn:hover{background:transparent;color:var(--ink)}
+.btn.l{background:transparent;color:var(--white);border-color:var(--white)}
+.btn.l:hover{background:var(--white);color:var(--ink)}
+
+.bar{background:var(--ink);color:var(--sand);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;text-align:center;padding:9px 16px}
+header{position:sticky;top:0;z-index:30;background:rgba(233,228,220,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:70px;gap:12px}
+header nav{display:flex;gap:26px;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500}
+header nav a{text-decoration:none}
+header .r{justify-self:end;display:flex;gap:18px;align-items:center;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500}
+.cartbtn{background:none;border:0;display:flex;gap:8px;align-items:center;text-transform:uppercase;letter-spacing:.16em;font-size:.78rem;font-weight:500}
+.cartbtn b{display:inline-grid;place-items:center;min-width:22px;height:22px;border-radius:11px;background:var(--ink);color:var(--sand);font-size:.7rem;letter-spacing:0}
+
+.hero{position:relative;min-height:min(88vh,860px);display:grid;align-items:end;color:var(--white);overflow:hidden;background:var(--char)}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(.35) contrast(1.05) brightness(.82)}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(0,0,0,.55))}
+.hero .wrap{position:relative;z-index:2;padding:0 0 64px;display:grid;gap:22px}
+.hero h1{font-family:Syncopate;font-weight:700;font-size:clamp(2.3rem,7.5vw,6.6rem);line-height:.95;letter-spacing:.02em;text-transform:uppercase}
+.hero h1 span{display:block;font-weight:400;-webkit-text-stroke:1.2px var(--white);color:transparent}
+.hero .row{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap}
+.hero p{max-width:40ch;color:#e7e3dc}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+
+.tick{border-block:1px solid var(--ink);overflow:hidden;white-space:nowrap;padding:14px 0;background:var(--sand)}
+.tick div{display:inline-block;animation:t 32s linear infinite;font-family:Syncopate;font-size:.85rem;letter-spacing:.3em}
+.tick i{font-style:normal;margin:0 26px;color:var(--mute)}
+@keyframes t{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.tick div{animation:none}}
+
+section{padding:100px 0}
+.hd{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:36px;border-bottom:1px solid var(--ink);padding-bottom:16px}
+.hd h2{font-family:Syncopate;font-weight:700;font-size:clamp(1.6rem,3.4vw,2.6rem);letter-spacing:.06em;text-transform:uppercase;line-height:1}
+.hd p{max-width:44ch;color:var(--mute)}
+
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.p{display:grid;gap:12px}
+.p .ph{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--stone)}
+.p .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.p:hover .ph img{transform:scale(1.04)}
+.p .tagx{position:absolute;top:12px;left:12px;background:var(--sand);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;padding:5px 9px;font-weight:600}
+.p .mark{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%);color:rgba(20,20,20,.75);font-size:.55rem;padding:3px 7px;letter-spacing:.38em;mix-blend-mode:multiply}
+.p .mark.w{color:rgba(250,248,244,.9);mix-blend-mode:normal}
+.p .quick{position:absolute;left:12px;right:12px;bottom:12px;display:flex;gap:6px;opacity:0;transform:translateY(8px);transition:.25s}
+.p:hover .quick,.p:focus-within .quick{opacity:1;transform:none}
+.quick button{flex:1;background:var(--white);border:1px solid var(--ink);padding:9px 0;font-size:.72rem;font-weight:600;letter-spacing:.06em}
+.quick button:hover{background:var(--ink);color:var(--white)}
+.p .meta{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.p h3{font-size:.86rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
+.p .pr{font-weight:500}
+.p .sw{display:flex;gap:6px}
+.p .sw i{width:14px;height:14px;border-radius:50%;border:1px solid var(--line)}
+
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:620px;background:var(--ink);color:var(--sand)}
+.split .ph{position:relative;overflow:hidden}
+.split img{width:100%;height:100%;object-fit:cover;filter:grayscale(.2)}
+.split .tx{padding:clamp(34px,6vw,90px);display:grid;align-content:center;gap:24px}
+.split h2{font-family:Syncopate;font-weight:700;font-size:clamp(1.8rem,3.6vw,3rem);line-height:1.05;text-transform:uppercase}
+.split p{color:#bdb6aa;max-width:46ch}
+.pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid #3a3936;margin-top:10px}
+.pillars div{padding:18px 14px 0 0}
+.pillars b{display:block;font-family:Syncopate;font-size:.8rem;letter-spacing:.2em;margin-bottom:6px;color:var(--white)}
+.pillars span{font-size:.88rem;color:#9e978b}
+
+.eps{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);gap:18px}
+.ep{position:relative;overflow:hidden;background:var(--char);color:var(--white);min-height:380px;display:grid;align-items:end}
+.ep img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.78;transition:transform .6s}
+.ep:hover img{transform:scale(1.04)}
+.ep div{position:relative;padding:22px;background:linear-gradient(transparent,rgba(0,0,0,.6))}
+.ep small{font-family:Syncopate;font-size:.62rem;letter-spacing:.3em}
+.ep h3{font-family:Syncopate;font-size:1.05rem;letter-spacing:.08em;text-transform:uppercase;margin-top:6px}
+
+.size{overflow-x:auto;border:1px solid var(--ink)}
+.size table{width:100%;border-collapse:collapse;min-width:520px;font-size:.92rem}
+.size th,.size td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--line)}
+.size th{font-family:Syncopate;font-size:.66rem;letter-spacing:.2em;font-weight:400;background:var(--ink);color:var(--sand)}
+.size tr:last-child td{border-bottom:0}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:50px}
+.faq details{border-bottom:1px solid var(--ink);padding:18px 0}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:.88rem}
+.faq summary::after{content:"+";font-family:Syncopate}
+.faq details[open] summary::after{content:"–"}
+.faq p{color:var(--mute);margin-top:10px;max-width:56ch}
+
+.drop{background:var(--stone);text-align:center}
+.drop .wrap{display:grid;gap:20px;justify-items:center}
+.drop h2{font-family:Syncopate;font-weight:700;font-size:clamp(1.8rem,4.4vw,3.4rem);text-transform:uppercase;letter-spacing:.04em;line-height:1}
+.drop p{color:var(--char);max-width:46ch}
+.drop form{display:flex;width:min(520px,100%);border:1.5px solid var(--ink)}
+.drop input{flex:1;min-width:0;border:0;background:transparent;padding:16px 18px;font:inherit}
+.drop input:focus{outline:none}
+.drop form button{border:0;background:var(--ink);color:var(--sand);padding:0 22px;font-family:Syncopate;font-size:.66rem;letter-spacing:.2em}
+.drop .ok{font-weight:600}
+
+footer{background:var(--ink);color:#b8b1a5;padding:70px 0 26px}
+footer .top{display:grid;grid-template-columns:1.4fr repeat(3,minmax(0,1fr));gap:30px;padding-bottom:40px;border-bottom:1px solid #33322f}
+footer h4{font-family:Syncopate;font-size:.66rem;letter-spacing:.24em;color:var(--sand);margin-bottom:14px;font-weight:400}
+footer ul{list-style:none;display:grid;gap:8px;font-size:.92rem}
+footer a{text-decoration:none}
+footer a:hover{color:var(--white)}
+footer .big{font-family:Syncopate;font-weight:700;font-size:clamp(3rem,15vw,13rem);letter-spacing:.06em;color:#22211f;line-height:1;text-align:center;margin:30px 0 10px;user-select:none}
+footer .bot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.8rem}
+footer .bot a{color:var(--sand)}
+
+.drawer{position:fixed;inset:0 0 0 auto;width:min(420px,100%);background:var(--white);z-index:60;transform:translateX(100%);transition:transform .35s;display:grid;grid-template-rows:auto 1fr auto;box-shadow:-20px 0 60px rgba(0,0,0,.2)}
+.drawer.open{transform:none}
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:55;opacity:0;pointer-events:none;transition:opacity .3s}
+.scrim.open{opacity:1;pointer-events:auto}
+.drawer .h{display:flex;justify-content:space-between;align-items:center;padding:22px 24px;border-bottom:1px solid var(--line);padding-top:max(22px,env(safe-area-inset-top,0px))}
+.drawer .h button{background:none;border:0;font-size:1.4rem}
+.items{overflow:auto;padding:12px 24px;display:grid;gap:14px;align-content:start}
+.it{display:grid;grid-template-columns:70px minmax(0,1fr) auto;gap:14px;align-items:center;border-bottom:1px solid var(--line);padding-bottom:14px}
+.it img{width:70px;aspect-ratio:4/5;object-fit:cover}
+.it b{display:block;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase}
+.it small{color:var(--mute)}
+.it button{background:none;border:0;color:var(--mute);font-size:.8rem;text-decoration:underline}
+.drawer .f{padding:20px 24px;border-top:1px solid var(--line);display:grid;gap:12px;padding-bottom:max(20px,env(safe-area-inset-bottom,0px))}
+.drawer .f .tot{display:flex;justify-content:space-between;font-weight:600}
+.drawer .f small{color:var(--mute)}
+.empty{color:var(--mute);padding:30px 0;text-align:center}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);background:var(--ink);color:var(--sand);padding:12px 20px;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;opacity:0;transition:.3s;z-index:70;pointer-events:none}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s,transform .8s}
+.reveal.in{opacity:1;transform:none}
+@media (max-width:980px){
+  header nav{display:none}
+  header .wrap{grid-template-columns:auto 1fr;}
+  header .wrap>.logo-box{justify-self:start}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .split,.two{grid-template-columns:minmax(0,1fr)}
+  .split .ph{min-height:420px}
+  .eps{grid-template-columns:minmax(0,1fr)}
+  .ep{min-height:300px}
+  footer .top{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .p .quick{opacity:1;transform:none}
+}
+@media (max-width:520px){
+  section{padding:70px 0}
+  .grid{gap:12px}
+  .pillars{grid-template-columns:minmax(0,1fr)}
+  header .r .acc{display:none}
+  .hero .wrap{padding-bottom:40px}
+  .quick button{font-size:.66rem;padding:7px 0}
+}
+</style>
+</head>
+<body>
+<div class="bar">Drop 02 nu live · Gratis verzending in België vanaf €75</div>
+<header><div class="wrap">
+  <nav><a href="#drop">Drop 02</a><a href="#story">Over NONKL</a><a href="#episodes">Episodes</a></nav>
+  <a class="logo-box" href="#" style="text-decoration:none;justify-self:center">NONKL</a>
+  <div class="r"><a class="acc" href="#info" style="text-decoration:none">Info</a><button class="cartbtn" id="openCart" aria-label="Winkelmand openen">Mand <b id="count">0</b></button></div>
+</div></header>
+
+<section class="hero" style="padding:0">
+  <img src="https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=1800&q=70" alt="NONKL essential tee">
+  <div class="wrap">
+    <span class="lab" style="color:#d8d2c8">Accessible premium essentials · Designed in Belgium</span>
+    <div class="row">
+      <h1>Maximum<span>from minimum.</span></h1>
+      <div style="display:grid;gap:18px;max-width:420px">
+        <p>Basics die je elke dag draagt, met de kwaliteit die je verdient. Strak, rustig en tot in het detail doordacht.</p>
+        <div class="ctas"><a class="btn l" href="#drop">Shop Drop 02</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="tick" aria-hidden="true"><div>NONKL<i>/</i>DROP 02<i>/</i>DESIGNED IN BELGIUM<i>/</i>MAXIMUM FROM MINIMUM<i>/</i>NONKL<i>/</i>DROP 02<i>/</i>DESIGNED IN BELGIUM<i>/</i>MAXIMUM FROM MINIMUM<i>/</i></div></div>
+
+<section id="drop"><div class="wrap">
+  <div class="hd reveal"><h2>Drop 02</h2><p>Beperkte oplage. Wat weg is, is weg.</p></div>
+  <div class="grid reveal" id="grid"></div>
+</div></section>
+
+<section class="split" id="story" style="padding:0">
+  <div class="ph"><img src="https://images.unsplash.com/photo-1622445275463-afa2ab738c34?w=1100&q=70" alt="NONKL gedragen" loading="lazy"></div>
+  <div class="tx reveal">
+    <span class="lab" style="color:#9e978b">Over NONKL</span>
+    <h2>Minder ruis.<br>Meer kwaliteit.</h2>
+    <p>NONKL begon met één simpel idee: premium basics hoeven niet onbereikbaar te zijn. Ontworpen in België, gemaakt om lang mee te gaan, met een pasvorm die gewoon klopt.</p>
+    <p>Geen overbodige details. Alleen wat telt.</p>
+    <div class="pillars">
+      <div><b>Premium</b><span>Stevige stoffen die hun vorm houden.</span></div>
+      <div><b>Bereikbaar</b><span>Eerlijke prijzen, geen merkentaks.</span></div>
+      <div><b>Belgisch</b><span>Ontworpen in eigen land.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="episodes"><div class="wrap">
+  <div class="hd reveal"><h2>Episodes</h2><p>Achter de schermen, de drops en de mensen die NONKL dragen.</p></div>
+  <div class="eps reveal">
+    <a class="ep" href="https://www.instagram.com/nonkl.co/" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=900&q=70" alt="" loading="lazy"><div><small>Episode 02</small><h3>Drop 02: in de straten</h3></div></a>
+    <a class="ep" href="https://www.instagram.com/nonkl.co/" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=700&q=70" alt="" loading="lazy"><div><small>Spotted</small><h3>Jullie in NONKL</h3></div></a>
+    <a class="ep" href="https://www.instagram.com/nonkl.co/" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=700&q=70" alt="" loading="lazy"><div><small>Episode 01</small><h3>Hoe het begon</h3></div></a>
+  </div>
+</div></section>
+
+<section id="info" style="padding-top:0"><div class="wrap two">
+  <div class="reveal">
+    <div class="hd" style="margin-bottom:24px"><h2>Maattabel</h2></div>
+    <div class="size"><table>
+      <thead><tr><th>Maat</th><th>Borst (cm)</th><th>Lengte (cm)</th><th>Pasvorm</th></tr></thead>
+      <tbody><tr><td>S</td><td>51</td><td>70</td><td rowspan="5" style="vertical-align:top;border-left:1px solid var(--line)">Regular fit. Twijfel je tussen twee maten? Kies de kleinste voor een strakkere look.</td></tr><tr><td>M</td><td>54</td><td>72</td></tr><tr><td>L</td><td>57</td><td>74</td></tr><tr><td>XL</td><td>60</td><td>76</td></tr><tr><td>XXL</td><td>63</td><td>78</td></tr></tbody>
+    </table></div>
+  </div>
+  <div class="faq reveal">
+    <div class="hd" style="margin-bottom:8px"><h2>Vragen</h2></div>
+    <details><summary>Hoe snel wordt mijn bestelling verzonden?</summary><p>Binnen 1 tot 2 werkdagen gaat je pakket de deur uit, met track &amp; trace.</p></details>
+    <details><summary>Verzenden jullie ook naar Nederland?</summary><p>Ja. We verzenden naar België en Nederland.</p></details>
+    <details><summary>Kan ik ruilen of retourneren?</summary><p>Binnen 14 dagen, ongedragen en met labels eraan. Stuur ons een bericht en we regelen het.</p></details>
+    <details><summary>Hoe was ik mijn NONKL?</summary><p>Binnenstebuiten op 30 graden, niet in de droger. Zo blijft de vorm en de print perfect.</p></details>
+  </div>
+</div></section>
+
+<section class="drop"><div class="wrap reveal">
+  <span class="logo-box">NONKL</span>
+  <h2>Mis Drop 03 niet</h2>
+  <p>Schrijf je in en hoor als eerste wanneer de volgende drop live gaat. Geen spam, alleen drops.</p>
+  <form id="nl"><input type="email" required placeholder="Jouw e-mailadres" aria-label="E-mailadres"><button>Inschrijven</button></form>
+  <p class="ok" id="ok" hidden>Top, je staat op de lijst.</p>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="top">
+    <div><span class="logo-box" style="color:var(--sand)">NONKL</span><p style="margin-top:16px;max-width:30ch">Accessible premium essentials. Designed in Belgium.</p></div>
+    <div><h4>Shop</h4><ul><li><a href="#drop">Drop 02</a></li><li><a href="#drop">Tees</a></li><li><a href="#drop">Sweaters</a></li></ul></div>
+    <div><h4>Info</h4><ul><li><a href="#info">Maattabel</a></li><li><a href="#info">Verzenden &amp; retour</a></li><li><a href="#story">Over NONKL</a></li></ul></div>
+    <div><h4>Volg ons</h4><ul><li><a href="https://www.instagram.com/nonkl.co/" target="_blank" rel="noopener">Instagram</a></li><li>thisisnonkl@gmail.com</li></ul></div>
+  </div>
+  <div class="big" aria-hidden="true">NONKL</div>
+  <div class="bot"><span>© 2026 NONKL · Producten en prijzen in deze demo zijn voorbeelden</span><span>Concept door <a href="https://byxavio.nl">byXavio</a></span></div>
+</div></footer>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Winkelmand">
+  <div class="h"><span class="sy" style="font-size:.8rem">Winkelmand</span><button id="closeCart" aria-label="Sluiten">×</button></div>
+  <div class="items" id="items"></div>
+  <div class="f"><div class="tot"><span>Subtotaal</span><span id="sub">€0</span></div><small id="ship"></small><button class="btn" id="checkout">Afrekenen</button></div>
+</aside>
+<div class="toast" id="toast"></div>
+
+<script>
+const P=[
+ {id:'tee-white',n:'Essential Tee',c:'Off-white',p:39,img:'1521572163474-6864f9cf17ab',tag:'Bestseller',sw:['#f4f1ea','#151515','#c9c2b6'],m:''},
+ {id:'tee-black',n:'Essential Tee',c:'Black',p:39,img:'1581655353564-df123a1eb820',tag:'Drop 02',sw:['#151515','#f4f1ea'],m:''},
+ {id:'crew-white',n:'Heavy Crewneck',c:'Off-white',p:69,img:'1620799140408-edc6dcb6d633',tag:'Nieuw',sw:['#f4f1ea','#c9c2b6'],m:''},
+ {id:'tee-sage',n:'Essential Tee',c:'Sage',p:39,img:'1523381210434-271e8be1f52b',tag:'Beperkt',sw:['#7f8f80','#151515'],m:'w'}
+];
+const S=['S','M','L','XL'];
+let cart=[];
+const eur=n=>'€'+n.toFixed(0);
+const g=document.getElementById('grid');
+g.innerHTML=P.map(p=>`<article class="p"><div class="ph"><img src="https://images.unsplash.com/photo-${p.img}?w=700&h=875&fit=crop&q=70" alt="${p.n} ${p.c}" loading="lazy"><span class="tagx">${p.tag}</span><div class="quick">${S.map(s=>`<button data-add="${p.id}" data-s="${s}" aria-label="Voeg ${p.n} maat ${s} toe">${s}</button>`).join('')}</div></div><div class="meta"><h3>${p.n}</h3><span class="pr">${eur(p.p)}</span></div><div class="meta"><span style="color:var(--mute);font-size:.9rem">${p.c}</span><span class="sw">${p.sw.map(c=>`<i style="background:${c}"></i>`).join('')}</span></div></article>`).join('');
+const drawer=document.getElementById('drawer'),scrim=document.getElementById('scrim');
+const open=()=>{drawer.classList.add('open');scrim.classList.add('open')},close=()=>{drawer.classList.remove('open');scrim.classList.remove('open')};
+document.getElementById('openCart').onclick=open;document.getElementById('closeCart').onclick=close;scrim.onclick=close;
+function render(){
+ const items=document.getElementById('items');
+ document.getElementById('count').textContent=cart.reduce((a,b)=>a+b.q,0);
+ if(!cart.length){items.innerHTML='<p class="empty">Je winkelmand is nog leeg.</p>'}
+ else items.innerHTML=cart.map((c,i)=>{const p=P.find(x=>x.id===c.id);return `<div class="it"><img src="https://images.unsplash.com/photo-${p.img}?w=160&h=200&fit=crop&q=60" alt=""><div><b>${p.n}</b><small>${p.c} · Maat ${c.s} · ${c.q}×</small><br><button data-rm="${i}">Verwijderen</button></div><span>${eur(p.p*c.q)}</span></div>`}).join('');
+ const sub=cart.reduce((a,c)=>a+P.find(x=>x.id===c.id).p*c.q,0);
+ document.getElementById('sub').textContent=eur(sub);
+ document.getElementById('ship').textContent=sub>=75?'Je verzending is gratis.':sub?('Nog '+eur(75-sub)+' tot gratis verzending.'):'';
+}
+let tt;const toast=m=>{const t=document.getElementById('toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),1800)};
+document.addEventListener('click',e=>{
+ const a=e.target.closest('[data-add]');if(a){const f=cart.find(c=>c.id===a.dataset.add&&c.s===a.dataset.s);f?f.q++:cart.push({id:a.dataset.add,s:a.dataset.s,q:1});render();toast('Toegevoegd · maat '+a.dataset.s);return}
+ const r=e.target.closest('[data-rm]');if(r){cart.splice(+r.dataset.rm,1);render()}
+});
+document.getElementById('checkout').onclick=()=>toast(cart.length?'Demo: hier komt de betaalpagina':'Je mand is leeg');
+document.getElementById('nl').addEventListener('submit',e=>{e.preventDefault();e.target.hidden=true;document.getElementById('ok').hidden=false});
+render();
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
