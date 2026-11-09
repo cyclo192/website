@@ -106,7 +106,7 @@ section{padding:100px 0}
 .faq p{color:var(--mute);margin-top:10px;max-width:56ch}
 
 .drop{background:var(--stone);text-align:center}
-.drop .wrap{display:grid;gap:20px;justify-items:center}
+.drop .wrap{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;justify-items:center}
 .drop h2{font-family:Syncopate;font-weight:700;font-size:clamp(1.8rem,4.4vw,3.4rem);text-transform:uppercase;letter-spacing:.04em;line-height:1}
 .drop p{color:var(--char);max-width:46ch}
 .drop form{display:flex;width:min(520px,100%);border:1.5px solid var(--ink)}
@@ -125,8 +125,8 @@ footer .big{font-family:Syncopate;font-weight:700;font-size:clamp(3rem,15vw,13re
 footer .bot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.8rem}
 footer .bot a{color:var(--sand)}
 
-.drawer{position:fixed;inset:0 0 0 auto;width:min(420px,100%);background:var(--white);z-index:60;transform:translateX(100%);transition:transform .35s;display:grid;grid-template-rows:auto 1fr auto;box-shadow:-20px 0 60px rgba(0,0,0,.2)}
-.drawer.open{transform:none}
+.drawer{position:fixed;inset:0 0 0 auto;width:min(420px,100%);background:var(--white);z-index:60;transform:translateX(100%);transition:transform .35s,visibility .35s;visibility:hidden;display:grid;grid-template-rows:auto 1fr auto;box-shadow:-20px 0 60px rgba(0,0,0,.2)}
+.drawer.open{transform:none;visibility:visible}
 .scrim{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:55;opacity:0;pointer-events:none;transition:opacity .3s}
 .scrim.open{opacity:1;pointer-events:auto}
 .drawer .h{display:flex;justify-content:space-between;align-items:center;padding:22px 24px;border-bottom:1px solid var(--line);padding-top:max(22px,env(safe-area-inset-top,0px))}
